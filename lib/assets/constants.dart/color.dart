@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+Color light = Color(0xFFF7F8FC);
+Color lightGrey = Color(0xFFA4A6B3);
+Color dark = Color(0xFF363740);
+Color active = Color(0xFF3C19C0);
+Color haian = Color(0xFF09227e);
+Color button = Color(0xFF2E3192);
+Color green = Colors.green;
+Color red = Colors.red;
+Color grey = Colors.grey;
+Color black87 = Colors.black87;
+Color white = Colors.white;
+Color black = Colors.black;
+Color violet = Color(0xff8C1E7F);
+Color blue = Colors.blue;
+Color footerColor = Color(0xFF99A0A4);
+Color backgroundColor = Color(0xFFEEF2F7);
+Color normalColor = Color(0xff1E338C);
+Color contentColor = Color(0xfffffffff);
