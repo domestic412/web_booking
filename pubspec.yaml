@@ -61,7 +61,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - E:/Work/Android-IOS-web/web_booking/lib/assets/images/VesselHA.jpg
+      - E:/Work/Android-IOS-web/web_booking/lib/assets/images/VesselHA1.jpg
       - E:/Work/Android-IOS-web/web_booking/lib/assets/images/hats_logo.png
 
       - E:/Work/Android-IOS-web/web_booking/lib/resources/langs/en-EN.json
