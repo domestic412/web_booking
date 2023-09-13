@@ -1,10 +1,8 @@
-
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../assets/constants.dart/color.dart';
+import '../assets/constants/color.dart';
 
-Color color_vn = normalColor;          //Lang EN
+Color color_vn = normalColor; //Lang EN
 Color color_text_vn = Colors.white;
 Color color_en = backgroundColor;
 Color color_text_en = normalColor;
@@ -24,7 +22,6 @@ class AppbarWidget extends StatefulWidget {
   State<AppbarWidget> createState() => _AppbarWidgetState();
 }
 
-
 class _AppbarWidgetState extends State<AppbarWidget> {
   @override
   Widget build(BuildContext context) {
@@ -42,12 +39,12 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           children: [
             Container(
               alignment: Alignment.bottomLeft,
-              width: MediaQuery.of(context).size.width/2,
+              width: MediaQuery.of(context).size.width / 2,
               padding: EdgeInsets.only(bottom: 5, left: 40),
               // child: Image.asset('lib/assets/images/logo_white_appbar_web_lotus.png',)
-              ),
+            ),
             Container(
-              width: MediaQuery.of(context).size.width/2,
+              width: MediaQuery.of(context).size.width / 2,
               padding: EdgeInsets.only(right: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -55,7 +52,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        context.setLocale(Locale('vi','VN'));
+                        context.setLocale(Locale('vi', 'VN'));
                         color_vn = backgroundColor;
                         color_text_vn = normalColor;
                         color_en = normalColor;
@@ -69,10 +66,19 @@ class _AppbarWidgetState extends State<AppbarWidget> {
                       width: 50,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5)),
                         color: color_vn,
                       ),
-                      child: Text('VN', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: color_text_vn), textAlign: TextAlign.center,),
+                      child: Text(
+                        'VN',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: color_text_vn),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   InkWell(
@@ -92,10 +98,19 @@ class _AppbarWidgetState extends State<AppbarWidget> {
                       width: 50,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5)),
                         color: color_en,
                       ),
-                      child: Text('EN', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: color_text_en), textAlign: TextAlign.center,),
+                      child: Text(
+                        'EN',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: color_text_en),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   )
                 ],

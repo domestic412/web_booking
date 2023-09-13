@@ -1,16 +1,15 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/constants.dart/color.dart';
+import 'package:web_booking/assets/constants/color.dart';
 
 class LoginScreen extends StatefulWidget {
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 var _user = TextEditingController();
 var _password = TextEditingController();
+
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
@@ -55,23 +54,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: Text(
                     'SIGN IN',
-                    style: TextStyle(
-                        color: button,
-                        fontWeight: FontWeight.w900
-                        ),
+                    style:
+                        TextStyle(color: button, fontWeight: FontWeight.w900),
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 InkWell(
-                  onTap: (){
-                  },
+                  onTap: () {},
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white70,
-                      borderRadius: BorderRadius.circular(5)
-                    ),
-                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                    child: Text('Create Account', style: TextStyle(fontSize: 14, color: haian, fontWeight: FontWeight.w500),)),
+                      decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.circular(5)),
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: Text(
+                        'Create Account',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: haian,
+                            fontWeight: FontWeight.w500),
+                      )),
                 )
               ],
             ),
@@ -130,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //         setState(() {
   //           visibi = false;
   //           name_tienich = 'TIỆN ÍCH KHÁCH HÀNG';
-  //           widgetbody = const DashboardScreen();          
+  //           widgetbody = const DashboardScreen();
   //           });
   //           // ignore: use_build_context_synchronously
   //           Navigator.push(
