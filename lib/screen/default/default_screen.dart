@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/constants.dart/color.dart';
-import 'package:web_booking/assets/constants.dart/style.dart';
+import 'package:web_booking/assets/constants/color.dart';
+import 'package:web_booking/assets/constants/style.dart';
 
 class DefaultScreen extends StatefulWidget {
-
   @override
   State<DefaultScreen> createState() => _DefaultScreenState();
 }
@@ -30,15 +28,26 @@ class _DefaultScreenState extends State<DefaultScreen> {
               children: [
                 Container(
                   width: 1430,
-                  child: Text('Welcome to Hai An Transport And Stevedoring Joint Stock Company', style: style14_white, textAlign: TextAlign.left,),
+                  child: Text(
+                    'Welcome to Hai An Transport And Stevedoring Joint Stock Company',
+                    style: style14_white,
+                    textAlign: TextAlign.left,
+                  ),
                 ),
                 Container(
                   width: 50,
-                  child: Text('English', style: style14_white, textAlign: TextAlign.left,),
+                  child: Text(
+                    'English',
+                    style: style14_white,
+                    textAlign: TextAlign.left,
+                  ),
                 ),
                 Container(
                   width: 20,
-                  child: Icon(Icons.arrow_drop_down, color: white,),
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                    color: white,
+                  ),
                 )
               ],
             ),
@@ -50,19 +59,18 @@ class _DefaultScreenState extends State<DefaultScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 200,
-                  padding: EdgeInsets.all(15),
-                  child: Image.asset('E:/Work/Android-IOS-web/web_booking/lib/assets/images/hats_logo.png')
-                ),
+                    width: 200,
+                    padding: EdgeInsets.all(15),
+                    child: Image.asset(
+                        'D:/android software/web_booking1/lib/assets/images/hats_logo.png')),
                 Container(
                   width: 1300,
                 )
               ],
             ),
           )
-          ],
+        ],
       ),
     ));
   }
 }
-
