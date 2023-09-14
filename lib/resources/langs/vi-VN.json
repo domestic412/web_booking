@@ -9,5 +9,14 @@
     "title_container":  "Thông tin vị trí Container",
     "status_container": "Trạng thái",
     "location_container":"Vị trí",
-    "eventDate_container":"Thời gian"
+    "eventDate_container":"Thời gian",
+
+    "appbarText": "Chào mừng đến với Công Ty Vận Tải Và Xếp Dỡ Hải An",
+    "slogan": "Customer Satisfaction is Our Success",
+    "search_containerTracking": "Container Tracking",
+    "search_schedule": "Schedule",
+    "hintText_search_containerTracking": "B/L No. or Container No.",
+    "hintText_search_schedule_departure": "Departure",
+    "hintText_search_schedule_arrival": "Arrival"
+
 }

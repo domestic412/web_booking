@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/assets/constants/color.dart';
 import 'package:web_booking/assets/constants/message.dart';
-import 'package:web_booking/assets/constants/style.dart';
 import 'package:web_booking/widgets/appbar.dart';
 import 'package:web_booking/widgets/footer.dart';
 

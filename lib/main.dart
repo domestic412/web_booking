@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:web_booking/screen/default/default_screen.dart';
 import 'package:web_booking/screen/login/login_screen.dart';
 import 'package:web_booking/screen/signup/view.dart';
+import 'package:web_booking/widgets/customScroll.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -42,21 +43,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'HAI AN Service',
-        theme: ThemeData(
-          textTheme:
-              GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-          textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(primary: Colors.blueGrey)),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xFF3D45EE)))),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        ),
+        // theme: ThemeData(
+        //   textTheme:
+        //       GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+        //   textButtonTheme: TextButtonThemeData(
+        //       style: TextButton.styleFrom(primary: Colors.blueGrey)),
+        //   elevatedButtonTheme: ElevatedButtonThemeData(
+        //       style: ButtonStyle(
+        //           backgroundColor:
+        //               MaterialStateProperty.all<Color>(Color(0xFF3D45EE)))),
+        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        // ),
         debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        home: SignInPage());
+        scrollBehavior: MyCustomScrollBehavior(),
+        home: DefaultScreen()
+        );
   }
 }

@@ -1,3 +1,4 @@
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +6,6 @@ import '../../assets/constants/color.dart';
 import '../../assets/constants/style.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/footer.dart';
-
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
 
@@ -35,27 +35,21 @@ class _BookingScreenState extends State<BookingScreen> {
                 child: Container(
                   margin: EdgeInsets.fromLTRB(10, 10, 10, 40),
                   decoration: BoxDecoration(
-                      color: contentColor,
-                      borderRadius: BorderRadius.circular(10)),
+                    color: contentColor, 
+                    borderRadius: BorderRadius.circular(10)
+                  ),
                   width: 1004,
                   padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SelectableText(
-                        'containerTracking'.tr(),
-                        style: style20_blue,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      SelectableText('containerTracking'.tr(), style: style20_blue,),
+                      const SizedBox(height: 10,),
                       Divider(
                         color: normalColor,
                         height: 1,
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20,),
                     ],
                   ),
                 ),
@@ -63,7 +57,10 @@ class _BookingScreenState extends State<BookingScreen> {
             ],
           ),
         ),
-      ),
+        ),
     );
   }
+
 }
+
+

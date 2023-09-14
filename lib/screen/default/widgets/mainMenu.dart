@@ -26,7 +26,8 @@ class _mainMenuState extends State<mainMenu> {
         child: Image.asset('E:/Work/Android-IOS-web/web_booking/lib/assets/images/hats_logo.png')
       ),
       Container(
-        width: 1300,
+        // width: 1300,
+        width: 900,
       )
     ],
               ),
