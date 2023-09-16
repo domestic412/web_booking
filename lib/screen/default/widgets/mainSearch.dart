@@ -20,11 +20,11 @@ class _mainSearchState extends State<mainSearch> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           containerTrackingSearch(),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           sheduleSearch(),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Container(
@@ -33,7 +33,7 @@ class _mainSearchState extends State<mainSearch> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: Colors.white54,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                       color: Colors.white30,
                       spreadRadius: 7,
@@ -47,11 +47,11 @@ class _mainSearchState extends State<mainSearch> {
                   height: 7,
                   decoration: BoxDecoration(
                       color: haian,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(5),
                           topRight: Radius.circular(5))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -65,7 +65,7 @@ class _mainSearchState extends State<mainSearch> {
                     color: Colors.white60,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                         hintText: 'B/L No. or Container No.',
                         border: InputBorder.none),
@@ -87,7 +87,7 @@ Container containerTrackingSearch() {
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.white54,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Colors.white30,
               spreadRadius: 7,
@@ -101,37 +101,37 @@ Container containerTrackingSearch() {
           height: 7,
           decoration: BoxDecoration(
               color: haian,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5), topRight: Radius.circular(5))),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
             alignment: Alignment.center,
             child: Text('Container Tracking',
                 style: TextStyle(fontSize: 25, color: haian))),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
-          padding: EdgeInsets.only(left: 10),
+          margin: const EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 10),
           decoration: BoxDecoration(
             color: Colors.white60,
             borderRadius: BorderRadius.circular(5),
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
                 hintText: 'B/L No. or Container No.', border: InputBorder.none),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 60,
         ),
         Container(
           alignment: Alignment.topRight,
-          padding: EdgeInsets.only(right: 20),
+          padding: const EdgeInsets.only(right: 20),
           child: InkWell(
             splashColor: green,
             highlightColor: blue,
@@ -161,7 +161,7 @@ Container sheduleSearch() {
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.white54,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Colors.white30,
               spreadRadius: 7,
@@ -175,20 +175,20 @@ Container sheduleSearch() {
           height: 7,
           decoration: BoxDecoration(
               color: haian,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5), topRight: Radius.circular(5))),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Text(
           'Schedule',
           style: TextStyle(fontSize: 25, color: haian),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
-          padding: EdgeInsets.only(left: 15),
+          margin: const EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
             color: Colors.white60,
             borderRadius: BorderRadius.circular(5),
@@ -203,17 +203,17 @@ Container sheduleSearch() {
                 border: InputBorder.none),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
-          padding: EdgeInsets.only(left: 15),
+          margin: const EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
             color: Colors.white60,
             borderRadius: BorderRadius.circular(5),
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
                 icon: Icon(
                   Icons.location_on,
@@ -223,12 +223,12 @@ Container sheduleSearch() {
                 border: InputBorder.none),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Container(
           alignment: Alignment.topRight,
-          padding: EdgeInsets.only(right: 20),
+          padding: const EdgeInsets.only(right: 20),
           child: InkWell(
             splashColor: green,
             highlightColor: blue,
