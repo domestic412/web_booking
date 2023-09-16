@@ -1,6 +1,7 @@
 //Basic Information
 const String textFieldUserId = 'User ID';
 const String textFieldPassword = 'Password';
+const String textFieldPasswordConfirm = 'Re-enter password';
 const String textFieldName = 'Name';
 const String textFieldTelNo = 'Tel No.';
 const String textFieldEmail = 'Email';
@@ -13,7 +14,7 @@ const String textFieldPostalCode = 'Postal Code';
 const String textFieldAddress = 'Address';
 const String textFieldOfficeInCharge = 'Office in charge';
 const String textFieldAgreeToTermsAndConditions =
-    'Agree to terms and conditions';
+    'I agree to terms and conditions.';
 
 //Error message basic information
 const String textFieldUserIdError = "ID MUST BE AT LEAST 5 DIGITS!";
