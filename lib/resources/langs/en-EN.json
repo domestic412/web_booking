@@ -9,5 +9,13 @@
     "title_container":  "Contianer Tracking Detail",
     "status_container": "Status",
     "location_container":"Location",
-    "eventDate_container":"Event Date"
+    "eventDate_container":"Event Date",
+
+    "appbarText": "Welcome to Hai An Transport And Stevedoring Joint Stock Company",
+    "slogan": "Customers Satisfaction is Our Success",
+    "search_containerTracking": "Container Tracking",
+    "search_schedule": "Schedule",
+    "hintText_search_containerTracking": "B/L No. or Container No.",
+    "hintText_search_schedule_departure": "Departure",
+    "hintText_search_schedule_arrival": "Arrival"
 }

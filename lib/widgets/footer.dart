@@ -8,7 +8,7 @@ class Footer extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       width: double.infinity,
-      color: footerColor,
+      color: Color.fromARGB(17, 49, 49, 49),
       padding: EdgeInsets.fromLTRB(40, 5, 20, 5),
       height: 40,
       child: Text(
