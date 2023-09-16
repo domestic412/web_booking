@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:web_booking/assets/utils/project/routes/app_route_config.dart';
 import 'package:web_booking/screen/default/default_screen.dart';
 import 'package:web_booking/screen/login/login_screen.dart';
 import 'package:web_booking/screen/signup/view.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
         title: 'HAI AN Service',
         theme: ThemeData(
           textTheme:
@@ -57,6 +58,6 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        home: SignInPage());
+        routerConfig: AppRoutes.router);
   }
 }
