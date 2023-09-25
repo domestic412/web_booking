@@ -66,6 +66,10 @@ flutter:
   assets:
       - lib/assets/images/VesselHA1.jpg
       - lib/assets/images/hats_logo.png
+<<<<<<< HEAD
+=======
+
+>>>>>>> e40f36c050197315ecc206bafe4e62518ea65185
       - lib/resources/langs/en-EN.json
       - lib/resources/langs/vi-VN.json
   #   - images/a_dot_burr.jpeg
