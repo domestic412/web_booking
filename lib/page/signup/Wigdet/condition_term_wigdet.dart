@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/assets/constants/message.dart';
-import 'package:web_booking/screen/signup/Wigdet/combobox.dart';
-import 'package:web_booking/screen/signup/view.dart';
 
 class ConditionTermWidget extends StatelessWidget {
   const ConditionTermWidget({

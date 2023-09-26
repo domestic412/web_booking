@@ -52,7 +52,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        context.setLocale(Locale('vi', 'VN'));
+                        context.setLocale(Locale('vn', 'VN'));
                         color_vn = backgroundColor;
                         color_text_vn = normalColor;
                         color_en = normalColor;

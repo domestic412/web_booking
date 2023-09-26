@@ -1,5 +1,4 @@
 {
-    "containerTracking":   "Booking Online",
     "search":   "Search",
     "note":     "Our system does not accept House BL numbers assigned by NVOCC or Freight Forwarder.",
     "title_booking":    "Booking Detail",
@@ -11,11 +10,14 @@
     "location_container":"Location",
     "eventDate_container":"Event Date",
 
-    "appbarText": "Welcome to Hai An Transport And Stevedoring Joint Stock Company",
-    "slogan": "Customers Satisfaction is Our Success",
-    "search_containerTracking": "Container Tracking",
-    "search_schedule": "Schedule",
-    "hintText_search_containerTracking": "B/L No. or Container No.",
-    "hintText_search_schedule_departure": "Departure",
-    "hintText_search_schedule_arrival": "Arrival"
+    "welcome": "Welcome to Hai An Transport And Stevedoring Joint Stock Company",
+    "booking": "Booking",
+    "tracking": "Tracking",
+    "container tracking":   "Container Tracking",
+    "searchNumber": "B/L No. or Container No.",
+    "schedule": "Schedule",
+    "departure": "Departure",
+    "arrival": "Arrival",
+    "signin": "SIGN IN",
+    "inquiry": "Inquiry"
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/assets/constants/message.dart';
-import 'package:web_booking/screen/signup/view.dart';
+import 'package:web_booking/page/signup/signup_page.dart';
 
 class UserInforWidget extends StatelessWidget {
   const UserInforWidget({

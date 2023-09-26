@@ -3,9 +3,6 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:web_booking/assets/utils/project/routes/app_route_config.dart';
-import 'package:web_booking/screen/default/default_screen.dart';
-import 'package:web_booking/screen/login/login_screen.dart';
-import 'package:web_booking/screen/signup/view.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -23,8 +20,8 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   runApp(EasyLocalization(
-    // startLocale: Locale('vi','VN'),
-    startLocale: Locale('en', 'EN'),
+    startLocale: Locale('vi','VN'),
+    // startLocale: Locale('en', 'EN'),
     supportedLocales: const [
       Locale('en', 'EN'),
       Locale('vi', 'VN'),
