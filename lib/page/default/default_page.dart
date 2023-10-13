@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/screen/default/widgets/appbarTest.dart';
-import 'package:web_booking/screen/default/widgets/mainMenu.dart';
-import 'package:web_booking/screen/default/widgets/mainSearch.dart';
-import 'package:web_booking/widgets/footer.dart';
+import 'package:web_booking/page/default/widgets/appbarTest.dart';
+import 'package:web_booking/page/default/widgets/mainMenu.dart';
+import 'package:web_booking/page/default/widgets/mainSearch.dart';
 
-class DefaultScreen extends StatefulWidget {
+class DefaultPage extends StatefulWidget {
   @override
-  State<DefaultScreen> createState() => _DefaultScreenState();
+  State<DefaultPage> createState() => _DefaultPageState();
 }
 
-class _DefaultScreenState extends State<DefaultScreen> {
+class _DefaultPageState extends State<DefaultPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

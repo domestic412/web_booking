@@ -1,5 +1,4 @@
 {
-    "containerTracking":   "Booking Online",
     "search":   "Tìm kiếm",
     "note":     "Hệ thống không áp dụng với số vận đơn do bên thứ 3 cung cấp.",
     "title_booking":    "Thông tin Booking",
@@ -11,12 +10,14 @@
     "location_container":"Vị trí",
     "eventDate_container":"Thời gian",
 
-    "appbarText": "Chào mừng đến với Công Ty Vận Tải Và Xếp Dỡ Hải An",
-    "slogan": "Customer Satisfaction is Our Success",
-    "search_containerTracking": "Container Tracking",
-    "search_schedule": "Schedule",
-    "hintText_search_containerTracking": "B/L No. or Container No.",
-    "hintText_search_schedule_departure": "Departure",
-    "hintText_search_schedule_arrival": "Arrival"
-
+    "welcome": "Chào mừng bạn đến với Công Ty Vận Tải Và Xếp Dỡ Hải An",
+    "booking": "Đặt chỗ",
+    "tracking": "Tra cứu vị trí",
+    "container tracking":   "Tra cứu vị trí Container",
+    "searchNumber": "Số Container",
+    "schedule": "Lịch trình",
+    "departure": "Điểm khởi hành",
+    "arrival": "Điểm đến",
+    "signin": "Đăng nhập",
+    "inquiry": "Tìm"
 }

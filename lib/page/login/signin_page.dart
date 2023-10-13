@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
 var _user = TextEditingController();
 var _password = TextEditingController();
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
