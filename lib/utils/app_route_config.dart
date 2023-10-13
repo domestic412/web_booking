@@ -4,6 +4,7 @@ import 'package:web_booking/page/booking/booking_screen.dart';
 import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/login/signin_page.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
+import 'package:web_booking/screen/home/homepage_screen.dart';
 
 import '../../../../page/tracking/tracking_page.dart';
 
@@ -14,6 +15,7 @@ class AppRoutes {
   static const TrackingRoute = "/Tracking";
   static const TestRoute = "/Test";
   static const BookingRoute = "/Booking";
+  static const AdminRoute = "/AdminDashboard";
 
   static final GoRouter router = GoRouter(routes: <GoRoute>[
     GoRoute(
@@ -28,10 +30,6 @@ class AppRoutes {
       path: SignInRoute,
       builder: (BuildContext context, state) => SignInPage(),
     ),
-    // GoRoute(
-    //   path: TestRoute,
-    //   builder: (BuildContext context, state) => TestPage(),
-    // ),
     GoRoute(
       path: BookingRoute,
       builder: (BuildContext context, state) => BookingPage(),
@@ -40,8 +38,9 @@ class AppRoutes {
       path: TrackingRoute,
       builder: (BuildContext context, state) => TrackingPage(),
     ),
+    GoRoute(
+      path: AdminRoute,
+      builder: (BuildContext context, state) => const HomePage(),
+    ),
   ]);
-  // static String? _redirect(BuildContext context) {
-  //   return null;
-  // }
 }

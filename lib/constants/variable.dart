@@ -29,3 +29,15 @@ String? checkRemark_CheckCntr;
 String? checkDetKh_CheckCntr;
 String? updateUser_CheckCntr;
 String? updateTime_CheckCntr;
+// Appbar Leaguage
+String dropdownValue = 'EN';
+
+// Booking page
+String? nameVoyage;
+String? dateVoyage;
+String? idVoyage;
+List dataPorts = [];
+
+String? nameDepo;
+String? idDepo;
+int? soluongcontDepo;

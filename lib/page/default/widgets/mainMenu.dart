@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/assets/constants/variable.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 
 class mainMenu extends StatefulWidget {

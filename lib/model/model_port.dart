@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import '../assets/constants/global.dart';
 import 'package:http/http.dart' as http;
-
-import '../assets/constants/variable.dart';
+import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/constants/variable.dart';
+import '../constants/variable.dart';
 
 class Ports {
   String? portId;
@@ -22,18 +22,18 @@ class Ports {
     data['portName'] = this.portName;
     return data;
   }
-  
+
   Future<List<Ports>> fetchPorts() async {
-  var url = ServerPorts;
-  final response = await http.get(Uri.parse(url), headers:{"Content-Type": "application/json"});
-  if (response.statusCode == 200) {
-    var body = response.body;
-    print(body);
+    var url = ServerPorts;
+    final response = await http
+        .get(Uri.parse(url), headers: {"Content-Type": "application/json"});
+    if (response.statusCode == 200) {
+      var body = response.body;
+      print(body);
       dataPorts = json.decode(body);
-    return dataPorts.map((data) => Ports.fromJson(data)).toList();
-  } else {
-    throw Exception('Error ');
+      return dataPorts.map((data) => Ports.fromJson(data)).toList();
+    } else {
+      throw Exception('Error ');
+    }
   }
 }
-}
-

@@ -9,7 +9,7 @@ import 'package:web_booking/page/default/widgets/appbar.dart';
 import '../../constants/color.dart';
 import '../../constants/global.dart';
 import '../../constants/style.dart';
-import '../../assets/constants/variable.dart';
+import '../../constants/variable.dart';
 import '../../model/model_port.dart';
 import '../../model/model_voyage.dart';
 
