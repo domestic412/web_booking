@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/constants/color.dart';
-import 'package:web_booking/assets/constants/style.dart';
-import 'package:web_booking/assets/constants/variable.dart';
 import 'package:web_booking/screen/default/widgets/appbarTest.dart';
 import 'package:web_booking/screen/default/widgets/mainMenu.dart';
 import 'package:web_booking/screen/default/widgets/mainSearch.dart';
@@ -22,7 +19,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
           constraints: const BoxConstraints.expand(),
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('lib/assets/images/VesselHA1.jpg'),
+                  image: AssetImage('assets/images/VesselHA1.jpg'),
                   fit: BoxFit.cover)),
           child: const SingleChildScrollView(
             scrollDirection: Axis.vertical,

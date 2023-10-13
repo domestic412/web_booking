@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../assets/constants/color.dart';
-
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

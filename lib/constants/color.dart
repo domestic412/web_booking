@@ -5,6 +5,7 @@ Color lightGrey = Color(0xFFA4A6B3);
 Color dark = Color(0xFF363740);
 Color active = Color(0xFF3C19C0);
 Color haian = Color(0xFF09227e);
+Color haian_nhat = Color(0x1dafec);
 Color button = Color(0xFF2E3192);
 Color green = Colors.green;
 Color red = Colors.red;

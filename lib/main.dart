@@ -2,10 +2,7 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/utils/project/routes/app_route_config.dart';
-import 'package:web_booking/screen/default/default_screen.dart';
-import 'package:web_booking/screen/login/login_screen.dart';
-import 'package:web_booking/screen/signup/view.dart';
+import 'package:web_booking/utils/app_route_config.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override

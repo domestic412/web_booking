@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../assets/constants/color.dart';
-import '../../../assets/constants/style.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
 
 class appbar extends StatelessWidget {
   const appbar({
@@ -17,9 +16,7 @@ class appbar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-            flex: 1,
-            child: SizedBox()),
+          Expanded(flex: 1, child: SizedBox()),
           Expanded(
             flex: 10,
             child: SizedBox(
@@ -43,12 +40,12 @@ class appbar extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-              width: 20,
-              child: Icon(
-                Icons.arrow_drop_down,
-                color: white,
-              ),
-            )
+                  width: 20,
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                    color: white,
+                  ),
+                )
               ],
             ),
           ),

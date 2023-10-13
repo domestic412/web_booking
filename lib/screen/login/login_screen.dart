@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/constants/color.dart';
+import 'package:web_booking/constants/color.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('lib/assets/images/VesselHA1.jpg'),
+              image: AssetImage('assets/images/VesselHA1.jpg'),
               fit: BoxFit.cover)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -160,7 +160,7 @@ Widget _buildAppbarImage() {
   return Padding(
     padding: const EdgeInsets.only(top: 30),
     child: Image.asset(
-      'lib/assets/images/hats_logo.png',
+      'assets/images/hats_logo.png',
       height: 100,
       width: 200,
     ),

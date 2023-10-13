@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/constants/color.dart';
-import 'package:web_booking/assets/constants/message.dart';
-import 'package:web_booking/assets/constants/style.dart';
-import 'package:web_booking/screen/signup/Wigdet/company_information_wigdet.dart';
+import 'package:web_booking/constants/color.dart';
+
 import 'package:web_booking/screen/signup/Wigdet/account_widget.dart';
 import 'package:web_booking/widgets/appbar.dart';
-import 'package:web_booking/widgets/footer.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});

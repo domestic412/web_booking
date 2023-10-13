@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:web_booking/assets/constants/color.dart';
-import 'package:web_booking/assets/constants/variable.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 
 class mainMenu extends StatefulWidget {
   const mainMenu({
@@ -54,8 +54,7 @@ class _mainMenuState extends State<mainMenu> {
                           height: 100,
                           width: 200,
                           padding: const EdgeInsets.all(15),
-                          child:
-                              Image.asset('lib/assets/images/hats_logo.png')),
+                          child: Image.asset('assets/images/hats_logo.png')),
                       MouseRegion(
                         onEnter: handleMouseEnter,
                         onExit: handleMouseExit,

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
 
-import '../../assets/constants/color.dart';
-import '../../assets/constants/style.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/footer.dart';
 
