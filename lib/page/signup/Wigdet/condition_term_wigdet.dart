@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/constants/message.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 
 class ConditionTermWidget extends StatelessWidget {
   const ConditionTermWidget({
@@ -41,7 +39,9 @@ class ConditionTermWidget extends StatelessWidget {
             child: Row(
               children: [
                 Checkbox(value: _value, onChanged: (_value) {}),
-                SizedBox(width: 20,),
+                SizedBox(
+                  width: 20,
+                ),
                 Text(
                   // textFieldAgreeToTermsAndConditions,
                   'i agree to terms'.tr(),

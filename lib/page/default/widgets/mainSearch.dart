@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-
-import '../../../assets/constants/color.dart';
+import 'package:web_booking/constants/color.dart';
 
 class mainSearch extends StatefulWidget {
   const mainSearch({
@@ -36,7 +35,6 @@ class _mainSearchState extends State<mainSearch> {
       ),
     );
   }
-
 }
 
 Container containerTrackingSearch() {
@@ -212,50 +210,48 @@ Container sheduleSearch() {
 
 Container Noname() {
   return Container(
-        height: 230,
-        width: 400,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: Colors.white54,
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.white30,
-                  spreadRadius: 7,
-                  blurRadius: 7,
-                  offset: Offset(0, 3))
-            ]),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 7,
-              decoration: BoxDecoration(
-                  color: haian,
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(5),
-                      topRight: Radius.circular(5))),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              'No Name',
-              style: TextStyle(fontSize: 25, color: haian),
-            ),
-            Container(
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.only(left: 10),
-              decoration: BoxDecoration(
-                color: Colors.white60,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                    hintText: 'B/L No. or Container No.',
-                    border: InputBorder.none),
-              ),
-            )
-          ],
+    height: 230,
+    width: 400,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: Colors.white54,
+        boxShadow: const [
+          BoxShadow(
+              color: Colors.white30,
+              spreadRadius: 7,
+              blurRadius: 7,
+              offset: Offset(0, 3))
+        ]),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          height: 7,
+          decoration: BoxDecoration(
+              color: haian,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(5), topRight: Radius.circular(5))),
         ),
-      );
+        const SizedBox(
+          height: 20,
+        ),
+        Text(
+          'No Name',
+          style: TextStyle(fontSize: 25, color: haian),
+        ),
+        Container(
+          margin: EdgeInsets.all(20),
+          padding: EdgeInsets.only(left: 10),
+          decoration: BoxDecoration(
+            color: Colors.white60,
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: const TextField(
+            decoration: InputDecoration(
+                hintText: 'B/L No. or Container No.', border: InputBorder.none),
+          ),
+        )
+      ],
+    ),
+  );
 }

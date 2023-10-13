@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/assets/constants/color.dart';
+import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/page/signup/Wigdet/button_confirm.dart';
 import 'package:web_booking/page/signup/Wigdet/company_information_wigdet.dart';
 import 'package:web_booking/page/signup/Wigdet/condition_term_wigdet.dart';

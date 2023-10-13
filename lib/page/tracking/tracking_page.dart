@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/page/default/widgets/appbar.dart';
-import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
 
-import '../../assets/constants/color.dart';
-import '../../assets/constants/style.dart';
+import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
+import 'package:web_booking/widgets/appbar.dart';
+
 import '../../widgets/footer.dart';
 
 class TrackingPage extends StatefulWidget {
@@ -39,21 +40,27 @@ class _TrackingPageState extends State<TrackingPage> {
                 child: Container(
                   margin: EdgeInsets.fromLTRB(10, 10, 10, 40),
                   decoration: BoxDecoration(
-                    color: contentColor, 
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+                      color: contentColor,
+                      borderRadius: BorderRadius.circular(10)),
                   width: 1004,
                   padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SelectableText('container tracking'.tr(), style: style20_blue,),
-                      const SizedBox(height: 10,),
+                      SelectableText(
+                        'container tracking'.tr(),
+                        style: style20_blue,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Divider(
                         color: normalColor,
                         height: 1,
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Container(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Row(
@@ -65,14 +72,14 @@ class _TrackingPageState extends State<TrackingPage> {
                               height: 40,
                               width: 500,
                               child: TextField(
-                                controller: input,
-                                style: style15_black,
-                                decoration:const InputDecoration(
-                                  border: OutlineInputBorder()
-                                )
-                              ),
+                                  controller: input,
+                                  style: style15_black,
+                                  decoration: const InputDecoration(
+                                      border: OutlineInputBorder())),
                             ),
-                            const SizedBox(width: 20,),
+                            const SizedBox(
+                              width: 20,
+                            ),
                             InkWell(
                               onTap: () {
                                 // setState(() {
@@ -85,11 +92,11 @@ class _TrackingPageState extends State<TrackingPage> {
                                 height: 40,
                                 width: 80,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: normalColor
-                                ),
-                                child: Text('search'.tr(), 
-                                style: style15_white,
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: normalColor),
+                                child: Text(
+                                  'search'.tr(),
+                                  style: style15_white,
                                 ),
                               ),
                             )
@@ -97,11 +104,14 @@ class _TrackingPageState extends State<TrackingPage> {
                         ),
                       ),
                       Container(
-                        child: SelectableText('note'.tr(), 
-                        style: style13_black,
+                        child: SelectableText(
+                          'note'.tr(),
+                          style: style13_black,
                         ),
                       ),
-                      SizedBox(height: 30,),
+                      SizedBox(
+                        height: 30,
+                      ),
                       // Data_Booking(updateDataContainer),
                       // Container(
                       //   child: bool_data_container ?  Data_Container() : null,
@@ -113,7 +123,7 @@ class _TrackingPageState extends State<TrackingPage> {
             ],
           ),
         ),
-        ),
+      ),
     );
   }
 
@@ -162,5 +172,3 @@ class _TrackingPageState extends State<TrackingPage> {
   //   });
   // }
 }
-
-

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/page/default/widgets/appbar.dart';
+
 import 'package:web_booking/page/default/widgets/mainMenu.dart';
 import 'package:web_booking/page/default/widgets/mainSearch.dart';
+import 'package:web_booking/widgets/appbar.dart';
 
 class DefaultPage extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _DefaultPageState extends State<DefaultPage> {
           constraints: const BoxConstraints.expand(),
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('lib/assets/images/VesselHA1.jpg'),
+                  image: AssetImage('assets/images/VesselHA1.jpg'),
                   fit: BoxFit.cover)),
           child: const SingleChildScrollView(
             scrollDirection: Axis.vertical,
