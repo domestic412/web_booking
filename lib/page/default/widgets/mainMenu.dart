@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/utils/app_route_config.dart';
@@ -178,8 +179,7 @@ class _mainMenuState extends State<mainMenu> {
                           height: 100,
                           width: 200,
                           padding: const EdgeInsets.all(15),
-                          child:
-                              Image.asset('lib/assets/images/hats_logo.png')),
+                          child: Image.asset('assets/images/hats_logo.png')),
                       SizedBox(
                         width: 200,
                       ),
@@ -193,7 +193,7 @@ class _mainMenuState extends State<mainMenu> {
                               margin: EdgeInsets.only(top: 35),
                               width: 200,
                               child: Text(
-                                'Booking',
+                                'booking'.tr(),
                                 style: TextStyle(
                                     fontSize: 23,
                                     fontWeight: FontWeight.bold,
@@ -227,7 +227,7 @@ class _mainMenuState extends State<mainMenu> {
                                         onExit: handleMouseExit_bookingRequest,
                                         child: InkWell(
                                           onTap: () {
-                                            print('Booking Request');
+                                            context.go(AppRoutes.BookingRoute);
                                           },
                                           child: Text(
                                             'Booking Request',
@@ -253,7 +253,7 @@ class _mainMenuState extends State<mainMenu> {
                               margin: EdgeInsets.only(top: 35),
                               width: 200,
                               child: Text(
-                                'Tracking',
+                                'tracking'.tr(),
                                 style: TextStyle(
                                     fontSize: 23,
                                     fontWeight: FontWeight.bold,
@@ -288,7 +288,7 @@ class _mainMenuState extends State<mainMenu> {
                                             handleMouseExit_containerTracking,
                                         child: InkWell(
                                           onTap: () {
-                                            print('Container Tracking');
+                                            context.go(AppRoutes.TrackingRoute);
                                           },
                                           child: Text(
                                             'Container Tracking',
@@ -314,7 +314,7 @@ class _mainMenuState extends State<mainMenu> {
                               margin: EdgeInsets.only(top: 35),
                               width: 200,
                               child: Text(
-                                'Schedule',
+                                'schedule'.tr(),
                                 style: TextStyle(
                                     fontSize: 23,
                                     fontWeight: FontWeight.bold,
@@ -401,7 +401,7 @@ class _mainMenuState extends State<mainMenu> {
                                   color: signUp_color,
                                   borderRadius: BorderRadius.circular(15)),
                               child: Text(
-                                'Sign Up',
+                                'signup'.tr(),
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,

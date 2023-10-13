@@ -1,124 +1,67 @@
-// import 'package:easy_localization/easy_localization.dart';
-// import 'package:flutter/material.dart';
-// import '../assets/constants/color.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/default/widgets/dropdownLeaguage.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/utils/app_route_config.dart';
 
-// Color color_vn = normalColor; //Lang EN
-// Color color_text_vn = Colors.white;
-// Color color_en = backgroundColor;
-// Color color_text_en = normalColor;
-// bool bool_lang = false;
+class appbar extends StatelessWidget {
+  const appbar({
+    super.key,
+  });
 
-// // Color color_en = normalColor;           //Lang VN
-// // Color color_text_en = Colors.white;
-// // Color color_vn = backgroundColor;
-// // Color color_text_vn = normalColor;
-// // bool bool_lang = true;
-
-// class AppbarWidget extends StatefulWidget {
-//   // Function updateLanguage;
-//   // AppbarWidget(this.updateLanguage);
-
-//   @override
-//   State<AppbarWidget> createState() => _AppbarWidgetState();
-// }
-
-// class _AppbarWidgetState extends State<AppbarWidget> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       alignment: Alignment.center,
-//       width: double.infinity,
-//       color: normalColor,
-//       padding: EdgeInsets.only(top: 5),
-//       height: 50,
-//       child: SingleChildScrollView(
-//         scrollDirection: Axis.horizontal,
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           crossAxisAlignment: CrossAxisAlignment.end,
-//           children: [
-//             Container(
-//               alignment: Alignment.bottomLeft,
-//               width: MediaQuery.of(context).size.width / 2,
-//               padding: EdgeInsets.only(bottom: 5, left: 40),
-//               // child: Image.asset('lib/assets/images/logo_white_appbar_web_lotus.png',)
-//             ),
-//             Container(
-//               width: MediaQuery.of(context).size.width / 2,
-//               padding: EdgeInsets.only(right: 40),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.end,
-//                 children: [
-//                   InkWell(
-//                     onTap: () {
-//                       setState(() {
-//                         context.setLocale(Locale('vn', 'VN'));
-//                         color_vn = backgroundColor;
-//                         color_text_vn = normalColor;
-//                         color_en = normalColor;
-//                         color_text_en = Colors.white;
-//                         bool_lang = true;
-//                         // this.widget.updateLanguage();
-//                       });
-//                     },
-//                     child: Container(
-//                       height: 30,
-//                       width: 50,
-//                       alignment: Alignment.center,
-//                       decoration: BoxDecoration(
-//                         borderRadius: BorderRadius.only(
-//                             topLeft: Radius.circular(5),
-//                             topRight: Radius.circular(5)),
-//                         color: color_vn,
-//                       ),
-//                       child: Text(
-//                         'VN',
-//                         style: TextStyle(
-//                             fontSize: 14,
-//                             fontWeight: FontWeight.bold,
-//                             color: color_text_vn),
-//                         textAlign: TextAlign.center,
-//                       ),
-//                     ),
-//                   ),
-//                   InkWell(
-//                     onTap: () {
-//                       setState(() {
-//                         context.setLocale(Locale('en', 'EN'));
-//                         color_en = backgroundColor;
-//                         color_text_en = normalColor;
-//                         color_vn = normalColor;
-//                         color_text_vn = Colors.white;
-//                         bool_lang = false;
-//                         // this.widget.updateLanguage();
-//                       });
-//                     },
-//                     child: Container(
-//                       height: 30,
-//                       width: 50,
-//                       alignment: Alignment.center,
-//                       decoration: BoxDecoration(
-//                         borderRadius: BorderRadius.only(
-//                             topLeft: Radius.circular(5),
-//                             topRight: Radius.circular(5)),
-//                         color: color_en,
-//                       ),
-//                       child: Text(
-//                         'EN',
-//                         style: TextStyle(
-//                             fontSize: 14,
-//                             fontWeight: FontWeight.bold,
-//                             color: color_text_en),
-//                         textAlign: TextAlign.center,
-//                       ),
-//                     ),
-//                   )
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: deviceWidth(context),
+      height: 40,
+      alignment: Alignment.center,
+      color: haian,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 50),
+              width: 1296,
+              child: Text(
+                'welcome'.tr(),
+                style: style14_white,
+                textAlign: TextAlign.left,
+              ),
+            ),
+            const DropdownLeaguage(),
+            SizedBox(
+              width: 30,
+            ),
+            InkWell(
+              onTap: () {
+                context.go(AppRoutes.SignInRoute);
+              },
+              child: Container(
+                  width: 70,
+                  child: Text(
+                    'signin'.tr(),
+                    style: style14_white,
+                  )),
+            ),
+            SizedBox(
+              width: 30,
+            ),
+            // InkWell(
+            //   onTap: () {
+            //     context.go(AppRoutes.TestRoute);
+            //   },
+            //   child: Container(
+            //     width: 70,
+            //     child: Text('Test', style: style14_white,)),
+            // )
+          ],
+        ),
+      ),
+    );
+  }
+}

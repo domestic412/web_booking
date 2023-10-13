@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/constants/message.dart';
 import 'package:web_booking/page/signup/Wigdet/combobox.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 
 class CompanyInforWidget extends StatelessWidget {
   const CompanyInforWidget({

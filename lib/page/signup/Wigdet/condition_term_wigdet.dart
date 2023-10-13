@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/constants/message.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class ConditionTermWidget extends StatelessWidget {

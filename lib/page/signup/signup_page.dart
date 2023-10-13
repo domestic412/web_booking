@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/page/default/widgets/appbar.dart';
 import 'package:web_booking/page/signup/Wigdet/account_widget.dart';
+import 'package:web_booking/widgets/appbar.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

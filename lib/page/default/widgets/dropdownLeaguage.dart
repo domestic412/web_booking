@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/constants/color.dart';
-import 'package:easy_localization/easy_localization.dart';
 
-import '../../../constants/variable.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 
 const List<String> list = <String>['EN', 'VN'];
 
@@ -27,10 +27,10 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
         onChanged: (String? value) {
           setState(() {
             dropdownValue = value!;
-            if (dropdownValue == "EN") {
-              setleaguage(context);
+            if (dropdownValue == 'EN') {
+              setLeaguageEN(context);
             } else {
-              context.setLocale(const Locale('vi', 'VN'));
+              setLeaguageVN(context);
             }
           });
         },
@@ -45,6 +45,8 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
         }).toList());
   }
 
-  Future<void> setleaguage(BuildContext context) =>
+  Future<void> setLeaguageEN(BuildContext context) =>
       context.setLocale(const Locale('en', 'EN'));
+  Future<void> setLeaguageVN(BuildContext context) =>
+      context.setLocale(const Locale('vi', 'VN'));
 }

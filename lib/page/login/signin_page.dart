@@ -18,7 +18,7 @@ class _SignInPageState extends State<SignInPage> {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('lib/assets/images/VesselHA1.jpg'),
+              image: AssetImage('assets/images/VesselHA1.jpg'),
               fit: BoxFit.cover)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

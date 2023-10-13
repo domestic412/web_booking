@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/page/default/widgets/appbar.dart';
-import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
 
-import '../../constants/color.dart';
-import '../../constants/style.dart';
+import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
+import 'package:web_booking/widgets/appbar.dart';
+
 import '../../widgets/footer.dart';
 
 class TrackingPage extends StatefulWidget {

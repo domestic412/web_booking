@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/page/default/widgets/appbar.dart';
+
 import 'package:web_booking/page/default/widgets/mainMenu.dart';
 import 'package:web_booking/page/default/widgets/mainSearch.dart';
+import 'package:web_booking/widgets/appbar.dart';
 
 class DefaultPage extends StatefulWidget {
   @override
