@@ -20,8 +20,8 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   runApp(EasyLocalization(
-    startLocale: Locale('vi', 'VN'),
-    // startLocale: Locale('en', 'EN'),
+    // startLocale: Locale('vi','VN'),
+    startLocale: Locale('en', 'EN'),
     supportedLocales: const [
       Locale('en', 'EN'),
       Locale('vi', 'VN'),
@@ -39,17 +39,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
         title: 'HAI AN Service',
-        theme: ThemeData(
-            // textTheme:
-            //     GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-            // textButtonTheme: TextButtonThemeData(
-            //     style: TextButton.styleFrom(primary: Colors.blueGrey)),
-            // elevatedButtonTheme: ElevatedButtonThemeData(
-            //     style: ButtonStyle(
-            //         backgroundColor:
-            //             MaterialStateProperty.all<Color>(Color(0xFF3D45EE)))),
-            // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-            ),
+        // theme: ThemeData(
+        // textTheme:
+        //     GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+        // textButtonTheme: TextButtonThemeData(
+        //     style: TextButton.styleFrom(primary: Colors.blueGrey)),
+        // elevatedButtonTheme: ElevatedButtonThemeData(
+        //     style: ButtonStyle(
+        //         backgroundColor:
+        //             MaterialStateProperty.all<Color>(Color(0xFF3D45EE)))),
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        // ),
         debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,

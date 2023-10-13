@@ -28,7 +28,7 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
           setState(() {
             dropdownValue = value!;
             if (dropdownValue == "EN") {
-              context.setLocale(const Locale('en', 'EN'));
+              setleaguage(context);
             } else {
               context.setLocale(const Locale('vi', 'VN'));
             }
@@ -44,4 +44,7 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
           );
         }).toList());
   }
+
+  Future<void> setleaguage(BuildContext context) =>
+      context.setLocale(const Locale('en', 'EN'));
 }

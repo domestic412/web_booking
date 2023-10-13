@@ -29,7 +29,7 @@ class _BookingScreenState extends State<BookingScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              AppbarWidget(),
+              // AppbarWidget(),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Container(
