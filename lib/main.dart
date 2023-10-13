@@ -28,7 +28,7 @@ void main() async {
     ],
     saveLocale: false,
     path: "lib/resources/langs",
-    child: const MyApp(),
+    child: MyApp(),
   ));
 }
 

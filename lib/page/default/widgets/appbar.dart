@@ -26,7 +26,7 @@ class appbar extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 50),
               width: 1296,
               child: Text(
                 'welcome'.tr(),

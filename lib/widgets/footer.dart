@@ -10,8 +10,8 @@ class Footer extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(40, 5, 20, 5),
       height: 40,
       child: Text(
-        'Copyright 2023 © LOTUS LINK',
-        style: TextStyle(color: Colors.white),
+        'Copyright 2023 © HAI AN',
+        style: TextStyle(color: const Color.fromARGB(255, 77, 77, 77)),
       ),
     );
   }

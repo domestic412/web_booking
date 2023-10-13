@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../../../assets/constants/variable.dart';
+
 const List<String> list = <String>['EN', 'VN'];
 
 class DropdownLeaguage extends StatefulWidget {
@@ -12,8 +14,6 @@ class DropdownLeaguage extends StatefulWidget {
 }
 
 class _DropdownLeaguageState extends State<DropdownLeaguage> {
-  String dropdownValue = 'EN';
-
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
