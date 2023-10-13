@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:web_booking/assets/utils/project/routes/app_route_config.dart';
+import 'package:web_booking/page/page_test/test_page.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -17,7 +18,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  runApp(EasyLocalization(
+  runApp(
+    EasyLocalization(
     // startLocale: Locale('vi','VN'),
     startLocale: Locale('en', 'EN'),
     supportedLocales: const [
@@ -26,7 +28,7 @@ void main() async {
     ],
     saveLocale: false,
     path: "lib/resources/langs",
-    child: const MyApp(),
+    child: MyApp(),
   ));
 }
 
@@ -53,6 +55,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       routerConfig: AppRoutes.router
+      // home: TestPage(),
     );
   }
 }

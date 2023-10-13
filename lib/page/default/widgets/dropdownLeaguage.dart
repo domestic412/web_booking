@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:web_booking/assets/constants/color.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../../../assets/constants/variable.dart';
+
 
 
 const List<String> list = <String>['EN', 'VN'];
@@ -14,7 +16,6 @@ class DropdownLeaguage extends StatefulWidget {
 }
 
 class _DropdownLeaguageState extends State<DropdownLeaguage> {
-  String dropdownValue = 'EN';
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +28,10 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
-          if (dropdownValue == "EN") {
-            setleaguage(context);
+          if (dropdownValue == 'EN') {
+            setLeaguageEN(context);
           } else {
-            context.setLocale(const Locale('vi', 'VN'));
+            setLeaguageVN(context);
           }
         });
       },
@@ -42,5 +43,6 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
       );
   }
 
-  Future<void> setleaguage(BuildContext context) => context.setLocale(const Locale('en', 'EN'));
+  Future<void> setLeaguageEN(BuildContext context) => context.setLocale(const Locale('en', 'EN'));
+  Future<void> setLeaguageVN(BuildContext context) => context.setLocale(const Locale('vi', 'VN'));
 }

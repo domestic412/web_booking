@@ -26,7 +26,7 @@ class appbar extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 50),
               width: 1296,
               child: Text(
                 'welcome'.tr(),
@@ -43,7 +43,16 @@ class appbar extends StatelessWidget {
               child: Container(
                 width: 70,
                 child: Text('signin'.tr(), style: style14_white,)),
-            )
+            ),
+            SizedBox(width: 30,),
+            // InkWell(
+            //   onTap: () {
+            //     context.go(AppRoutes.TestRoute);
+            //   },
+            //   child: Container(
+            //     width: 70,
+            //     child: Text('Test', style: style14_white,)),
+            // )
           ],
         ),
       ),

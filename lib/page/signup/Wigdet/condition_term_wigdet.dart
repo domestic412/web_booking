@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/assets/constants/message.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class ConditionTermWidget extends StatelessWidget {
   const ConditionTermWidget({
@@ -14,8 +16,8 @@ class ConditionTermWidget extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.centerLeft,
-            child: const Text(
-              'Agree to terms and conditions',
+            child: Text(
+              'agree to terms'.tr(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -29,7 +31,7 @@ class ConditionTermWidget extends StatelessWidget {
             height: 20,
           ),
           Container(
-            width: 620,
+            width: 660,
             //padding: const EdgeInsets.only(bottom: 10),
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
@@ -39,8 +41,10 @@ class ConditionTermWidget extends StatelessWidget {
             child: Row(
               children: [
                 Checkbox(value: _value, onChanged: (_value) {}),
+                SizedBox(width: 20,),
                 Text(
-                  textFieldAgreeToTermsAndConditions,
+                  // textFieldAgreeToTermsAndConditions,
+                  'i agree to terms'.tr(),
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 16,

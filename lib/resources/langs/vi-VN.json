@@ -12,12 +12,32 @@
 
     "welcome": "Chào mừng bạn đến với Công Ty Vận Tải Và Xếp Dỡ Hải An",
     "booking": "Đặt chỗ",
-    "tracking": "Tra cứu vị trí",
+    "tracking": "Vị trí",
     "container tracking":   "Tra cứu vị trí Container",
     "searchNumber": "Số Container",
     "schedule": "Lịch trình",
     "departure": "Điểm khởi hành",
     "arrival": "Điểm đến",
     "signin": "Đăng nhập",
-    "inquiry": "Tìm"
+    "signup": "Đăng ký",
+    "inquiry": "Tìm",
+
+    "user information": "Thông tin tài khoản",
+    "user id": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "re password": "Nhập lại\nmật khẩu",
+    "full name": "Họ và tên",
+    "tel no": "Số điện thoại",
+    "email": "Email",
+    "company information": "Thông tin công ty",
+    "company name": "Tên công ty",
+    "business number": "Số điện thoại công ty",
+    "address": "Địa chỉ",
+    "office in charge": "Khu vực\nđăng ký",
+    "agree to terms": "Agree to terms and conditions",
+    "i agree to terms": "I agree to terms and conditions.",
+    "create account": "TẠO TÀI KHOẢN",
+    "cancle": "Hủy bỏ",
+
+    "hello": "Xin chào !!"
 }

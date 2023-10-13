@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:web_booking/assets/constants/message.dart';
 import 'package:web_booking/page/signup/Wigdet/combobox.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class CompanyInforWidget extends StatelessWidget {
   const CompanyInforWidget({
@@ -18,8 +20,8 @@ class CompanyInforWidget extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.centerLeft,
-            child: const Text(
-              'Company Information',
+            child: Text(
+              'company information'.tr(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -41,12 +43,13 @@ class CompanyInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldBusinessNumber.trim(),
+                      // textFieldBusinessNumber.trim(),
+                      'business number'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -55,7 +58,7 @@ class CompanyInforWidget extends StatelessWidget {
                   width: 20,
                 ),
                 Container(
-                  width: 500,
+                  width: 520,
                   child: TextField(
                       controller: inputUserID,
                       decoration: InputDecoration(
@@ -81,12 +84,13 @@ class CompanyInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldCompanyName.trim(),
+                      // textFieldCompanyName.trim(),
+                      'company name'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -95,12 +99,12 @@ class CompanyInforWidget extends StatelessWidget {
                   width: 20,
                 ),
                 Container(
-                  width: 500,
+                  width: 520,
                   child: TextField(
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Please enter a company name',
+                        hintText: 'company name'.tr(),
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -121,12 +125,13 @@ class CompanyInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldAddress.trim(),
+                      // textFieldAddress.trim(),
+                      'address'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -135,12 +140,12 @@ class CompanyInforWidget extends StatelessWidget {
                   width: 20,
                 ),
                 Container(
-                  width: 500,
+                  width: 520,
                   child: TextField(
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Please enter an address',
+                        hintText: 'address'.tr(),
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -162,12 +167,13 @@ class CompanyInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldOfficeInCharge.trim(),
+                      // textFieldOfficeInCharge.trim(),
+                      'office in charge'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -198,7 +204,7 @@ class CompanyInforWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 20),
                 Container(
-                  width: 330,
+                  width: 350,
                   child: const DropdownButton1(),
                 ),
               ],

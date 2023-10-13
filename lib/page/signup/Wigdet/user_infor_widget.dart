@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/assets/constants/message.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class UserInforWidget extends StatelessWidget {
   const UserInforWidget({
@@ -21,10 +22,10 @@ class UserInforWidget extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.topCenter,
-            child: const Text(
+            child: Text(
               textAlign: TextAlign.center,
-              'CREATE ACCOUNT',
-              style: TextStyle(
+              'create account'.tr(),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 36,
               ),
@@ -34,15 +35,15 @@ class UserInforWidget extends StatelessWidget {
             height: 30,
           ),
           Container(
-            child: const Text(
-              'User Information',
-              style: TextStyle(
+            child: Text(
+              'user information'.tr(),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
             ),
           ),
-          Divider(
+          const Divider(
             color: Colors.black,
           ),
           const SizedBox(
@@ -57,12 +58,13 @@ class UserInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldUserId.trim(),
+                      // textFieldUserId.trim(),
+                      'user id'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -71,12 +73,12 @@ class UserInforWidget extends StatelessWidget {
                   width: 20,
                 ),
                 Container(
-                  width: 300,
+                  width: 520,
                   child: TextField(
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'User ID',
+                        hintText: 'user id'.tr(),
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -98,12 +100,13 @@ class UserInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldPassword.trim(),
+                      // textFieldPassword.trim(),
+                      'password'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -120,7 +123,7 @@ class UserInforWidget extends StatelessWidget {
                           controller: inputPassword,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            hintText: 'Password',
+                            hintText: 'password'.tr(),
                             errorText: _validate
                                 ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                                 : null,
@@ -138,18 +141,19 @@ class UserInforWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldPasswordConfirm.trim(),
+                      // textFieldPasswordConfirm.trim(),
+                      're password'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
                 ),
                 Container(
-                  width: 200,
+                  width: 220,
                   child: TextFormField(
                       controller: inputPassword,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Re-enter password',
+                        hintText: 're password'.tr(),
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -171,12 +175,13 @@ class UserInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldName.trim(),
+                      // textFieldName.trim(),
+                      'full name'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -193,7 +198,7 @@ class UserInforWidget extends StatelessWidget {
                           controller: inputPassword,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            hintText: 'Name',
+                            hintText: 'full name'.tr(),
                             errorText: _validate
                                 ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                                 : null,
@@ -211,18 +216,19 @@ class UserInforWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldTelNo.trim(),
+                      // textFieldTelNo.trim(),
+                      'tel no'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
                 ),
                 Container(
-                  width: 200,
+                  width: 220,
                   child: TextFormField(
                       controller: inputPassword,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Tel No.',
+                        hintText: 'tel no'.tr(),
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -244,12 +250,13 @@ class UserInforWidget extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.centerLeft,
                     height: 40,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      textFieldEmail.trim(),
+                      // textFieldEmail.trim(),
+                      'email'.tr(),
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -258,12 +265,12 @@ class UserInforWidget extends StatelessWidget {
                   width: 20,
                 ),
                 Container(
-                  width: 500,
+                  width: 520,
                   child: TextField(
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Email',
+                        hintText: 'email'.tr(),
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,

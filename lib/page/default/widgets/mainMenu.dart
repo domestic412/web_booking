@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:web_booking/assets/constants/color.dart';
 import 'package:web_booking/assets/constants/variable.dart';
 import 'package:web_booking/assets/utils/project/routes/app_route_config.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class mainMenu extends StatefulWidget {
   const mainMenu({
@@ -192,7 +193,7 @@ void handleMouseEnter_schedulePort(PointerEnterEvent event) {
                                 alignment: Alignment.center,
                                 margin: EdgeInsets.only(top: 35),
                                 width: 200,
-                                child: Text('Booking', style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold, color: booking_color),),
+                                child: Text('booking'.tr(), style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold, color: booking_color),),
                               ),
                               if (isHovered_booking)
                               Container(
@@ -221,7 +222,7 @@ void handleMouseEnter_schedulePort(PointerEnterEvent event) {
                                       onExit: handleMouseExit_bookingRequest,
                                       child: InkWell(
                                         onTap: () {
-                                          print('Booking Request');
+                                          context.go(AppRoutes.BookingRoute);
                                         },
                                         child: Text('Booking Request', 
                                           textAlign: TextAlign.center, 
@@ -242,7 +243,7 @@ void handleMouseEnter_schedulePort(PointerEnterEvent event) {
                                 alignment: Alignment.center,
                                 margin: EdgeInsets.only(top: 35),
                                 width: 200,
-                                child: Text('Tracking', style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold, color: tracking_color),),
+                                child: Text('tracking'.tr(), style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold, color: tracking_color),),
                               ),
                               if (isHovered_tracking)
                               Container(
@@ -271,7 +272,7 @@ void handleMouseEnter_schedulePort(PointerEnterEvent event) {
                                       onExit: handleMouseExit_containerTracking,
                                       child: InkWell(
                                         onTap: () {
-                                          print('Container Tracking');
+                                          context.go(AppRoutes.TrackingRoute);
                                         },
                                         child: Text('Container Tracking', 
                                           textAlign: TextAlign.center, 
@@ -292,7 +293,7 @@ void handleMouseEnter_schedulePort(PointerEnterEvent event) {
                                 alignment: Alignment.center,
                                 margin: EdgeInsets.only(top: 35),
                                 width: 200,
-                                child: Text('Schedule', style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold, color: schedule_color),),
+                                child: Text('schedule'.tr(), style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold, color: schedule_color),),
                               ),
                               if (isHovered_schedule)
                               Container(
@@ -366,7 +367,7 @@ void handleMouseEnter_schedulePort(PointerEnterEvent event) {
                                   color: signUp_color,
                                   borderRadius: BorderRadius.circular(15)
                                 ),
-                                child: Text('Sign Up', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white),),
+                                child: Text('signup'.tr(), style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: white),),
                               ),
                             ),
                           ),
