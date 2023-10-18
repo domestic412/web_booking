@@ -28,8 +28,10 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
           setState(() {
             dropdownValue = value!;
             if (dropdownValue == 'EN') {
+              bool_lang = false;
               setLeaguageEN(context);
             } else {
+              bool_lang = true;
               setLeaguageVN(context);
             }
           });

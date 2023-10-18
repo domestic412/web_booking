@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/utils/app_assets.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>

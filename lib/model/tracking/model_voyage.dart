@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+import 'package:web_booking/constants/global.dart';
+
 class Voyage {
   List<ListBookingVoys>? listBookingVoys;
   List<Depots>? depots;
@@ -29,6 +34,28 @@ class Voyage {
       data['depots'] = this.depots!.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+    Future<Voyage> fetchDataVoyage(String pol, String pod, String etd) async {
+    var url = '$SERVER_TEST/Booking?POLId=$pol&PODId=$pod&ETD=$etd';
+    var data = {'POLId': pol, 'PODId': pod, 'ETD': etd};
+    var body = json.encode(data);
+    if (pol.isNotEmpty & pod.isNotEmpty & etd.isNotEmpty) {
+      final response = await http.post(Uri.parse(url),
+          headers: {"Content-Type": "application/json"}, body: body);
+      if (response.statusCode == 200) {
+        var body = response.body;
+        print(body);
+        // // convert json to list and return function
+        // List dataVoyage = json.decode(body);
+        // return dataVoyage.map((data) => Voyage.fromJson(data)).toList();
+        final dataVoyage = json.decode(body);
+        return Voyage.fromJson(dataVoyage);
+      } else
+        throw Exception('Error');
+    } else {
+      throw Exception('Error');
+    }
   }
 }
 

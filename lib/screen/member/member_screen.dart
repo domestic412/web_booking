@@ -7,8 +7,7 @@ class MemberPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
+    return Column(
       children: [
         Expanded(
             child: Container(
@@ -32,6 +31,6 @@ class MemberPage extends StatelessWidget {
           ),
         )),
       ],
-    ));
+    );
   }
 }

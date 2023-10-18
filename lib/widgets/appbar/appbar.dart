@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/page/default/widgets/dropdownLeaguage.dart';
+import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 
@@ -34,7 +34,7 @@ class appbar extends StatelessWidget {
               ),
             ),
             const DropdownLeaguage(),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
             InkWell(
@@ -48,7 +48,7 @@ class appbar extends StatelessWidget {
                     style: style14_white,
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
             // InkWell(
