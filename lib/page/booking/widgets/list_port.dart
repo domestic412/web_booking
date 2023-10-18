@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/tracking/model_port.dart';
 
-import '../../../model/model_port.dart';
 
 class ListPort extends StatefulWidget {
   const ListPort({super.key});
@@ -14,10 +16,6 @@ class _ListPortState extends State<ListPort> {
 
   TextEditingController port_select1 = TextEditingController();
   TextEditingController port_select2 = TextEditingController();
-  Ports? selectPort1;
-  Ports? selectPort2;
-  String? idPort1;
-  String? idPort2;
 
   @override
   Widget build(BuildContext context) {
@@ -41,43 +39,35 @@ class _ListPortState extends State<ListPort> {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 50,
-                width: 275,
-                child: DropdownMenu<Ports>(
-                  menuHeight: 500,
-                  controller: port_select1,
-                  enableFilter: true,
-                  label: const Text('Cảng đi '),
-                  dropdownMenuEntries: portEntries,
-                  onSelected: (Ports? id) {
-                    setState(() {
-                      selectPort1 = id;
-                      idPort1 = selectPort1?.portId;
-                    });
-                  },
-                  ),
-              ),
+              DropdownMenu<Ports>(
+                menuHeight: 500,
+                controller: port_select1,
+                enableFilter: true,
+                label: const Text('Cảng đi '),
+                dropdownMenuEntries: portEntries,
+                onSelected: (Ports? id) {
+                  setState(() {
+                    selectPort1 = id;
+                    idPort1 = selectPort1?.portId;
+                  });
+                },
+                ),
               const SizedBox(width: 10,),
               const Icon(Icons.arrow_right_alt),
               const SizedBox(width: 10,),
-              SizedBox(
-                height: 50,
-                width: 275,
-                child: DropdownMenu<Ports>(
-                  menuHeight: 500,
-                  controller: port_select2,
-                  enableFilter: true,
-                  label: const Text('Cảng đến '),
-                  dropdownMenuEntries: portEntries,
-                  onSelected: (Ports? id) {
-                    setState(() {
-                      selectPort2 = id;
-                      idPort2 = selectPort2?.portId;
-                    });
-                  },
-                  ),
-              )
+              DropdownMenu<Ports>(
+                menuHeight: 500,
+                controller: port_select2,
+                enableFilter: true,
+                label: const Text('Cảng đến '),
+                dropdownMenuEntries: portEntries,
+                onSelected: (Ports? id) {
+                  setState(() {
+                    selectPort2 = id;
+                    idPort2 = selectPort2?.portId;
+                  });
+                },
+                )
             ],
           );
         } return Text('Error');    

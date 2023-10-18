@@ -1,14 +1,23 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/popUpAlert/alert.dart';
+import 'package:web_booking/utils/app_route_config.dart';
+import 'package:http/http.dart' as http;
 
 class SignInPage extends StatefulWidget {
   @override
   State<SignInPage> createState() => _SignInPageState();
 }
 
-var _user = TextEditingController();
-var _password = TextEditingController();
+TextEditingController _user = TextEditingController();
+TextEditingController _password= TextEditingController();
 
 class _SignInPageState extends State<SignInPage> {
   @override
@@ -49,8 +58,8 @@ class _SignInPageState extends State<SignInPage> {
                 CupertinoButton(
                   color: Colors.white70,
                   onPressed: () {
-                    // login(_user.text.toString(),
-                    //     _password.text.toString());
+                    signin(_user.text.toString(),
+                        _password.text.toString());
                   },
                   child: Text(
                     'SIGN IN',
@@ -62,7 +71,9 @@ class _SignInPageState extends State<SignInPage> {
                   height: 20,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context.go(AppRoutes.SignUpRoute);
+                  },
                   child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white70,
@@ -84,76 +95,60 @@ class _SignInPageState extends State<SignInPage> {
     ));
   }
 
-  // Future<void> login(String username, String password) async {
-  //   var url = URL_LOGIN;
-  //   Map data = {
-  //     'username': username,
-  //     'password': '123@ha'.toString()+password+'haian'.toString(),
-  //   };
-  //   var body = json.encode(data);
-  //   if (username.isNotEmpty && password.isNotEmpty) {
-  //     EasyLoading.show(
-  //       status: 'Loading...',
-  //       maskType: EasyLoadingMaskType.black,
-  //       dismissOnTap: false,
-  //       );
-  //     final response = await http.post(Uri.parse(url),
-  //         headers: {"Content-Type": "application/json"}, body: body);
-  //     if (response.statusCode == 200) {
-  //       EasyLoading.dismiss();
-  //       var body = response.body;
-  //       var data = jsonDecode(body.toString());
-  //       // print(data['token']);
-  //       Map<String, dynamic> decodedToken = JwtDecoder.decode(data['token']);
-  //       var results = decodedToken.values.toList();
-  //       tokenLogin = results[2];
-  //       user = results[3].substring(0, 5);
-  //       code = results[4];
-  //       // print(user);
-  //       // print(tokenLogin);
-  //       // print(code);
-  //       if (user == 'admin') {
-  //         UserNameController.clear();
-  //         PasswordController.clear();
-  //         // ignore: use_build_context_synchronously
-  //         setState(() {
-  //           visibi = true;
-  //           name_tienich = 'TIỆN ÍCH';
-  //           widgetbody = const DashboardScreen();
-  //         });
-  //         // ignore: use_build_context_synchronously
-  //         Navigator.push(
-  //           context,
-  //           MaterialPageRoute(
-  //             builder: (context) => const DefaultScreen(),
-  //           ));}
-  //       else {
-  //         UserNameController.clear();
-  //         PasswordController.clear();
-  //         setState(() {
-  //           visibi = false;
-  //           name_tienich = 'TIỆN ÍCH KHÁCH HÀNG';
-  //           widgetbody = const DashboardScreen();
-  //           });
-  //           // ignore: use_build_context_synchronously
-  //           Navigator.push(
-  //           context,
-  //           MaterialPageRoute(
-  //             builder: (context) => const DefaultScreen(),
-  //           ));
-
-  //       }
-  //     } else {
-  //       EasyLoading.dismiss();
-  //       // ignore: use_build_context_synchronously
-  //       // loginAlert.showMyAlert(context);
-  //       LoginAlert(context);
-  //     }
-  //   } else {
-  //     ScaffoldMessenger.of(context)
-  //         .showSnackBar(const SnackBar(content: Text("Invalid")));
-  //   }
-  // }
+  Future<void> signin(String username, String password) async {
+    var url = URL_LOGIN;
+    Map data = {
+      'username': username,
+      'password': '123@ha'.toString()+password+'haian'.toString(),
+    };
+    var body = json.encode(data);
+    if (username.isNotEmpty && password.isNotEmpty) {
+      const CircularProgressIndicator();
+      // EasyLoading.show(
+      //   status: 'Loading...',
+      //   maskType: EasyLoadingMaskType.black,
+      //   dismissOnTap: false,
+      //   );
+      final response = await http.post(Uri.parse(url),
+          headers: {"Content-Type": "application/json"}, body: body);
+      if (response.statusCode == 200) {
+        // EasyLoading.dismiss();
+        var body = response.body;
+        var data = jsonDecode(body.toString());
+        // print(data['token']);
+        Map<String, dynamic> decodedToken = JwtDecoder.decode(data['token']);
+        var results = decodedToken.values.toList();
+        tokenLogin = results[2];
+        user = results[3].substring(0, 5);
+        code = results[4];
+        // print(user);
+        // print(tokenLogin);
+        // print(code);
+        if (user == 'admin') {
+          _user.clear();
+          _password.clear();
+          // ignore: use_build_context_synchronously
+          // setState(() {
+            visibi = true;
+          // });
+          context.go(AppRoutes.AdminRoute);
+        }
+        else {
+          _user.clear();
+          _password.clear();
+          // setState(() {
+            visibi = false;
+            // });
+          context.go(AppRoutes.UserRoute);
+        }
+      } else {
+        LoginAlert(context);
+      }
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Invalid")));
+    }
+  }
 }
 
 Widget _buildAppbarImage() {

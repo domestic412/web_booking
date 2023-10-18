@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
-import '../constants/variable.dart';
 
 class Ports {
   String? portId;
@@ -29,7 +28,6 @@ class Ports {
         .get(Uri.parse(url), headers: {"Content-Type": "application/json"});
     if (response.statusCode == 200) {
       var body = response.body;
-      print(body);
       dataPorts = json.decode(body);
       return dataPorts.map((data) => Ports.fromJson(data)).toList();
     } else {

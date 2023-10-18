@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:web_booking/page/default/widgets/mainMenu.dart';
-import 'package:web_booking/page/default/widgets/mainSearch.dart';
-import 'package:web_booking/widgets/appbar.dart';
+import 'package:web_booking/page/default/widgets/mainMenu/mainMenu.dart';
+import 'package:web_booking/page/default/widgets/mainSearch/mainSearch.dart';
+import 'package:web_booking/widgets/appbar/appbar.dart';
 
 class DefaultPage extends StatefulWidget {
   @override
@@ -21,11 +21,8 @@ class _DefaultPageState extends State<DefaultPage> {
               image: DecorationImage(
                   image: AssetImage('assets/images/VesselHA1.jpg'),
                   fit: BoxFit.cover)),
-          child: const SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+          child: ListView(
+            children: <Widget>[
                   appbar(),
                   mainMenu(),
                   mainSearch(),
@@ -36,7 +33,6 @@ class _DefaultPageState extends State<DefaultPage> {
           ),
         ),
         // bottomSheet: Footer(),
-      ),
-    );
+      );
   }
 }

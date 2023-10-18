@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:web_booking/model/tracking/model_voyage.dart';
+
+import '../model/tracking/model_port.dart';
 
 double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
-String? code;
+// String? code;
 int? id_CheckCntr;
 String? cntrno_CheckCntr;
 String? sizeType_CheckCntr;
@@ -32,12 +35,38 @@ String? updateTime_CheckCntr;
 // Appbar Leaguage
 String dropdownValue = 'EN';
 
+// Login
+String? user;
+String? tokenLogin;
+String? code;
+bool? visibi;
+
+// List Request
+int? id_ListRequest;
+String? cntrno_ListRequest;
+String? trangThaiYc_ListRequest;
+
+// List Request Detail
+String? id_request;
+String savecntr = '';
+
 // Booking page
 String? nameVoyage;
 String? dateVoyage;
 String? idVoyage;
 List dataPorts = [];
+Ports? selectPort1;
+Ports? selectPort2;
+String? idPort1;
+String? idPort2;
+Future<Voyage>? fetchVoyage;
 
 String? nameDepo;
 String? idDepo;
 int? soluongcontDepo;
+
+bool bool_data_container = false;
+String? cntr_no;
+
+// Choose language
+bool bool_lang = false;
