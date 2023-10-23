@@ -16,7 +16,7 @@ class _ListVoyageState extends State<ListVoyage> {
   Widget build(BuildContext context) {
     return buildVoyage();
   }
-  
+
   FutureBuilder<Voyage> buildVoyage() {
     return FutureBuilder<Voyage>(
         future: fetchVoyage,
@@ -76,9 +76,11 @@ class _ListVoyageState extends State<ListVoyage> {
                                   width: 300,
                                   alignment: Alignment.bottomRight,
                                   child: Text(
-                                    dateVoyage.toString().substring(8, 10)+'/'
-                                    + dateVoyage.toString().substring(5, 7)+'/'
-                                    + dateVoyage.toString().substring(0, 4),
+                                    dateVoyage.toString().substring(8, 10) +
+                                        '/' +
+                                        dateVoyage.toString().substring(5, 7) +
+                                        '/' +
+                                        dateVoyage.toString().substring(0, 4),
                                     style: text_style2,
                                   ),
                                 )
@@ -93,5 +95,5 @@ class _ListVoyageState extends State<ListVoyage> {
           }
           return const Text('');
         });
-  }  
+  }
 }

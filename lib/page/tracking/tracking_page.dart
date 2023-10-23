@@ -88,8 +88,9 @@ class _TrackingPageState extends State<TrackingPage> {
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                    containerTracking = fetchContainerTracking(input.text.toUpperCase());
-                                    bool_data_container = false;
+                                  containerTracking = fetchContainerTracking(
+                                      input.text.toUpperCase());
+                                  bool_data_container = false;
                                 });
                               },
                               child: Container(
@@ -119,7 +120,7 @@ class _TrackingPageState extends State<TrackingPage> {
                       ),
                       Data_Booking(updateDataContainer),
                       Container(
-                        child: bool_data_container ?  Data_Container() : null,
+                        child: bool_data_container ? Data_Container() : null,
                       )
                     ],
                   ),
@@ -133,43 +134,43 @@ class _TrackingPageState extends State<TrackingPage> {
   }
 
   Future<ContainerTracking> fetchContainerTracking(String inputt) async {
-  final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
-  final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
-  // final url_bk = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=&BookingNo=$inputt';
-  // final url_cntr = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=$inputt&BookingNo=';
-  String? url;
-  if (selectedValue == 'bk') {
-    setState(() {
-      url = url_bk_en;
-    });
-  } else {
-    setState(() {
-      url = url_cntr_en;
-    });
-  }
-
-  final response = await http.get(
-    Uri.parse(url!),
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-    },
-  );
-
-  print(response.statusCode);
-
-  if (response.statusCode == 200) {
-    var body = response.body;
-    if (body == '[]') {
-      return throw Exception();
+    final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
+    final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
+    // final url_bk = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=&BookingNo=$inputt';
+    // final url_cntr = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=$inputt&BookingNo=';
+    String? url;
+    if (selectedValue == 'bk') {
+      setState(() {
+        url = url_bk_en;
+      });
+    } else {
+      setState(() {
+        url = url_cntr_en;
+      });
     }
-    var dataCntrTracking = jsonDecode(body);
-    return ContainerTracking.fromJson(dataCntrTracking);
-  } else {
-    print('Error');
-    throw Exception('Error');
+
+    final response = await http.get(
+      Uri.parse(url!),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+      },
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      var body = response.body;
+      if (body == '[]') {
+        return throw Exception();
+      }
+      var dataCntrTracking = jsonDecode(body);
+      return ContainerTracking.fromJson(dataCntrTracking);
+    } else {
+      print('Error');
+      throw Exception('Error');
+    }
   }
-}
 
   void updateDataContainer() {
     setState(() {

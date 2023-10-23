@@ -9,10 +9,9 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_voyage.dart';
 import 'package:web_booking/page/booking/widgets/list_port.dart';
+import 'package:web_booking/page/booking/widgets/list_voyage%20copy.dart';
 import 'package:web_booking/page/booking/widgets/list_voyage.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
-
-
 
 class BookingPage extends StatefulWidget {
   @override
@@ -45,7 +44,7 @@ class _BookingPageState extends State<BookingPage> {
               child: Column(
                 children: [
                   SelectableText(
-                    'Booking Request',
+                    'Schedule',
                     style: style20_blue,
                   ),
                   const SizedBox(
@@ -70,7 +69,10 @@ class _BookingPageState extends State<BookingPage> {
                           controller: date_select,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            label: Text('Chọn ngày đi', style: TextStyle(fontSize: 14),),
+                            label: Text(
+                              'Chọn ngày đi',
+                              style: TextStyle(fontSize: 14),
+                            ),
                             icon: Icon(Icons.calendar_month),
                           ),
                           onTap: () async {
@@ -81,10 +83,10 @@ class _BookingPageState extends State<BookingPage> {
                                 lastDate: DateTime(2123));
                             if (pickeddate != null) {
                               setState(() {
-                                date_select.text = DateFormat('dd/MM/yyyy')
-                                    .format(pickeddate);
-                                dateSelect = DateFormat('MM/dd/yyyy')
-                                    .format(pickeddate);
+                                date_select.text =
+                                    DateFormat('dd/MM/yyyy').format(pickeddate);
+                                dateSelect =
+                                    DateFormat('MM/dd/yyyy').format(pickeddate);
                                 print(dateSelect);
                               });
                             }
@@ -128,7 +130,7 @@ class _BookingPageState extends State<BookingPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ListVoyage(),
+                  ListVoyage1(),
                 ],
               ),
             )

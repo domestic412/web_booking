@@ -6,11 +6,7 @@ void selectedItem(BuildContext context, int index) {
   switch (index) {
     case 0:
       widgetbody = AdminPage();
-      nameAppbar = 'HAI AN Container';
-      break;
-    case 1:
       widgetbody = SideBar();
-      nameAppbar = 'List Requests';
       break;
   }
 }

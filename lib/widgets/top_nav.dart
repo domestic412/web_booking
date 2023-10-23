@@ -6,7 +6,7 @@ import 'package:web_booking/utils/app_route_config.dart';
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
     AppBar(
       leading: Container(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 16,
         ),
         child: Image.asset(

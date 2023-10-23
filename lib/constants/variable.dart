@@ -54,6 +54,8 @@ String savecntr = '';
 String? nameVoyage;
 String? dateVoyage;
 String? idVoyage;
+String? vesselName;
+String? pol;
 List dataPorts = [];
 Ports? selectPort1;
 Ports? selectPort2;

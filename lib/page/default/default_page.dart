@@ -21,18 +21,17 @@ class _DefaultPageState extends State<DefaultPage> {
               image: DecorationImage(
                   image: AssetImage('assets/images/VesselHA1.jpg'),
                   fit: BoxFit.cover)),
-          child: ListView(
-            children: <Widget>[
-                  appbar(),
-                  mainMenu(),
-                  mainSearch(),
-                  SizedBox(
-                    height: 50,
-                  )
-                ]),
-          ),
+          child: ListView(children: <Widget>[
+            appbar(),
+            mainMenu(),
+            mainSearch(),
+            SizedBox(
+              height: 50,
+            )
+          ]),
         ),
-        // bottomSheet: Footer(),
-      );
+      ),
+      // bottomSheet: Footer(),
+    );
   }
 }

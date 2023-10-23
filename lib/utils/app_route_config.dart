@@ -9,8 +9,6 @@ import 'package:web_booking/screen/admin/admin_page.dart';
 import 'package:web_booking/screen/member/member_screen.dart';
 import 'package:web_booking/screen/user/user_page.dart';
 
-
-
 class AppRoutes {
   static const defaultRoute = "/";
   static const SignUpRoute = "/SignUp";
