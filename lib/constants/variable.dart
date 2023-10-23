@@ -55,7 +55,7 @@ String? nameVoyage;
 String? dateVoyage;
 String? idVoyage;
 String? vesselName;
-String? pol;
+String? polVoyage;
 List dataPorts = [];
 Ports? selectPort1;
 Ports? selectPort2;
