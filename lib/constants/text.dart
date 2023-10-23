@@ -49,7 +49,7 @@ TextStyle text_button_detail =
 TextStyle text_Table = TextStyle(fontSize: 16, color: black);
 TextStyle text_Table_bold =
     TextStyle(fontSize: 18, color: black, fontWeight: FontWeight.bold);
-TextStyle text_Table_small = TextStyle(fontSize: 14, color: black);
+TextStyle text_Table_small = TextStyle(fontSize: 13, color: black);
 TextStyle text_Table_small_bold =
     TextStyle(fontSize: 14, color: black, fontWeight: FontWeight.bold);
 TextStyle text_style7 = TextStyle(fontSize: 16, color: light);

@@ -133,8 +133,8 @@ class _TrackingPageState extends State<TrackingPage> {
   }
 
   Future<ContainerTracking> fetchContainerTracking(String inputt) async {
-  final url_bk_en = '$SERVER_TEST/Tracking?BookingNo=$inputt&CntrNo=';
-  final url_cntr_en = '$SERVER_TEST/Tracking?BookingNo=&CntrNo=$inputt';
+  final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
+  final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
   // final url_bk = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=&BookingNo=$inputt';
   // final url_cntr = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=$inputt&BookingNo=';
   String? url;

@@ -1,9 +1,8 @@
-import 'dart:convert';
+
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_list_request.dart';
@@ -19,9 +18,9 @@ class ListRequestPage extends StatefulWidget {
 class _ListRequestPageState extends State<ListRequestPage> {
 
   Future<List<ListRequestResponse>>? listRequest;
-  List<ListRequestResponse> list_filter = [];
+  List<ListRequestResponse> _list_filter = [];          //comment when test
 
-  TextEditingController search_text = TextEditingController();
+  TextEditingController _search_text = TextEditingController();
 
   Color? _color;
   String? _trangthai;
@@ -48,139 +47,241 @@ class _ListRequestPageState extends State<ListRequestPage> {
     builder:(context, snapshot) {
       if (snapshot.hasData) {
         print('show data list request');
-        if (search_text.text.isEmpty) {
-          list_filter = snapshot.data!;
+        if (_search_text.text.isEmpty) {
+          _list_filter = snapshot.data!;
           print('filter show data list request');
         }
-        return Container(
+        return SizedBox(
           height: deviceHeight(context),
-          padding: EdgeInsets.only(left: deviceWidth(context)*0.02, right: deviceWidth(context)*0.02),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget> [
-                SizedBox(height: 10,),
-                Card(
-                  child: ListTile(
-                    leading: const Icon(Icons.search),
-                    title: TextField(
-                      controller: search_text,
-                      decoration: const InputDecoration(
-                        hintText: 'Search', border: InputBorder.none
-                        ),
-                      onChanged: (value) {
-                        setState(() {
-                          list_filter = snapshot.data!.where((item) => item.cntrno!.contains(value.toUpperCase())).toList();
-                        });
-                      },
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.cancel),
-                        onPressed: () {
+                Container(
+                  padding: const EdgeInsets.only(top: 32, left: 32, right: 32),
+                  child: Text(
+                      "List Request",
+                      style: TextStyle(fontSize: 30, color: haian),
+                    ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: white,
+                    border: Border.all(color: blue.withOpacity(.4), width: .5),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 6),
+                          color: blue.withOpacity(.1),
+                          blurRadius: 12)
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.black26)
+                    ),
+                    child: ListTile(
+                      leading: const Icon(Icons.search),
+                      title: TextField(
+                        controller: _search_text,
+                        decoration: const InputDecoration(
+                          hintText: 'Search', border: InputBorder.none
+                          ),
+                        onChanged: (value) {
                           setState(() {
-                            search_text.clear();
-                            // list_filter = snapshot.data!;
+                            _list_filter = snapshot.data!.where((item) => item.cntrno!.contains(value.toUpperCase())).toList();
                           });
                         },
-                      ),
-                  ),),
-                DataTable(
-                  // sortColumnIndex: 3,
-                  // sortAscending: true,
-                  columnSpacing: deviceWidth(context)*0.02,
-                  columns: [
-                          DataColumn(
-                            label: Expanded(child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('STT', style: text_Table_small,),
-                              ],
-                            )),
-                          ),
-                          DataColumn(
-                            label: Expanded(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Số container', style: text_Table_small),
-                                ],
-                              ),
+                        ),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.cancel),
+                          onPressed: () {
+                            setState(() {
+                              _search_text.clear();
+                              // list_filter = snapshot.data!;
+                            });
+                          },
+                        ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: deviceWidth(context),
+                  decoration: BoxDecoration(
+                    color: white,
+                    border: Border.all(color: blue.withOpacity(.4), width: .5),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 6),
+                          color: blue.withOpacity(.1),
+                          blurRadius: 12)
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  margin: const EdgeInsets.only(bottom: 16, left: 32, right: 32),
+                  child: DataTable(
+                    border: const TableBorder(verticalInside: BorderSide(color: Colors.black26)),
+                    sortColumnIndex: 0,
+                    // sortAscending: true,
+                    dataRowMaxHeight: 70,
+                    columnSpacing: 16,
+                    columns: [
+                            DataColumn(
+                              label: Expanded(
+                                child: Text('STT', style: text_Table_small_bold,)),
                             ),
-                          ),
-                          DataColumn(
-                            label: Expanded(
-                              child: InkWell(
-                                onTap: (){
-                                  setState(() {
-                            list_filter = snapshot.data!.where(
-                              (item) => item.trangThaiYc!.contains('C')
-                              ).toList();
-                              // print(list_filter);
-                              search_text.text = 'Chờ duyệt';
-                                  });
-                                },
+                            DataColumn(
+                              label: Expanded(
+                                child: Center(child: Text('Tên yêu cầu', style: text_Table_small_bold,))),
+                            ),
+                            DataColumn(
+                              label: Expanded(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children:[
-                                    Text('Kết quả', style: text_Table_small)
-                                    ]
-                                  ),
-                              ),
-                            ),
-                          ),
-                        ],
-                        rows: List.generate(list_filter.length, (index) {
-                          var data = list_filter[index];
-                          id_ListRequest = data.id;
-                          cntrno_ListRequest = data.cntrno;
-                          trangThaiYc_ListRequest = data.trangThaiYc;
-                          if (trangThaiYc_ListRequest == 'A') {
-                            _color = green;
-                            _trangthai = 'Đồng ý';
-                          } else if (trangThaiYc_ListRequest == 'C'){
-                            _color = grey;
-                            _trangthai = 'Chờ xử lý';
-                          }
-                          else {
-                            _color = red;
-                            _trangthai = 'Từ chối';
-                          }
-                          return DataRow(cells: [
-                            DataCell(Container(
-                              width: deviceWidth(context)*0.15,
-                              child: Center(child: Text((index+1).toString(), style: text_Table_small,)))),
-                            DataCell(Container(
-                              width: deviceWidth(context)*0.3,
-                              child: Center(child: SelectableText(cntrno_ListRequest.toString(), style: text_Table_small)))),
-                            DataCell(Container(
-                              width: deviceWidth(context)*0.4,
-                              child: Center(
-                                child: Container(
-                                  width: 110,
-                                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      // fetchListRequestDetail(list_filter[index].id.toString());      /// here
-                                      // setState(() {
-                                        id_request = list_filter[index].id.toString();
-                                        print(id_request);
-                                      // });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: _color,
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius:
-                                          BorderRadius.all(Radius.circular(20)))),
-                                    child: Text(_trangthai.toString(), style: text_style_status, textAlign: TextAlign.center,),
-                                  ),
+                                  children: [
+                                    Text('Số Container', style: text_Table_small_bold),
+                                  ],
                                 ),
                               ),
-                            )),
-                          ]);
-                        })
-                        ),
+                            ),
+                            DataColumn(
+                              label: Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Kích cỡ', style: text_Table_small_bold,),
+                                  ],
+                                )
+                              ),
+                            ),
+                            DataColumn(
+                              label: Expanded(child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Nội dung yêu cầu và cam kết khách hàng', style: text_Table_small_bold,),
+                                ],
+                              )),
+                            ),
+                            DataColumn(
+                              label: Expanded(child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Ghi chú hãng tàu', style: text_Table_small_bold,),
+                                ],
+                              )),
+                            ),
+                            DataColumn(
+                              label: Expanded(
+                                child: InkWell(
+                                  onTap: (){
+                                    setState(() {
+                              _list_filter = snapshot.data!.where(
+                                (item) => item.trangThaiYc!.contains('C')
+                                ).toList();
+                                _search_text.text = 'Chờ duyệt';
+                                    });
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children:[
+                                      Text('Trạng thái', style: text_Table_small_bold)
+                                      ]
+                                    ),
+                                ),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Expanded(child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Ngày cập nhật', style: text_Table_small_bold,),
+                                ],
+                              )),
+                            ),
+                            DataColumn(
+                              label: Expanded(child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Chi tiết', style: text_Table_small_bold,),
+                                ],
+                              )),
+                            ),
+                          ],
+                          rows: List.generate(_list_filter.length, (index) {
+                            var data = _list_filter[index];
+                            // id_ListRequest = data.id;
+                            // cntrno_ListRequest = data.cntrno;
+                            trangThaiYc_ListRequest = data.trangThaiYc;
+                            if (trangThaiYc_ListRequest == 'A') {
+                              _color = green;
+                              _trangthai = 'Đồng ý';
+                            } else if (trangThaiYc_ListRequest == 'C'){
+                              _color = grey;
+                              _trangthai = 'Chờ xử lý';
+                            }
+                            else {
+                              _color = red;
+                              _trangthai = 'Từ chối';
+                            }
+                            return DataRow(cells: [
+                              DataCell(Container(
+                                // width: deviceWidth(context)*0.15,
+                                child: Text((index+1).toString(), style: text_Table_small,))),
+                              DataCell(Container(
+                                // width: deviceWidth(context)*0.3,
+                                child: Center(child: SelectableText(data.tenYeuCau.toString(), style: text_Table_small)))),
+                              DataCell(Container(
+                                // width: deviceWidth(context)*0.3,
+                                child: Center(child: SelectableText(data.cntrno.toString(), style: text_Table_small)))),
+                              DataCell(Container(
+                                // width: deviceWidth(context)*0.3,
+                                child: Center(child: SelectableText(data.sizeType.toString(), style: text_Table_small)))),
+                              DataCell(Container(
+                                // width: deviceWidth(context)*0.3,
+                                child: Center(child: SelectableText(data.noiDung.toString(), style: text_Table_small)))),
+                              DataCell(Container(
+                                // width: deviceWidth(context)*0.3,
+                                child: Center(child: SelectableText(data.noteHangTau.toString(), style: text_Table_small)))),
+                              DataCell(Container(
+                                // width: deviceWidth(context)*0.4,
+                                child: Center(
+                                  child: Container(
+                                    width: 110,
+                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        // fetchListRequestDetail(list_filter[index].id.toString());      /// here
+                                        // setState(() {
+                                          id_request = _list_filter[index].id.toString();
+                                          print(id_request);
+                                        // });
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: _color,
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius:
+                                            BorderRadius.all(Radius.circular(20)))),
+                                      child: Text(_trangthai.toString(), style: text_style_status, textAlign: TextAlign.center,),
+                                    ),
+                                  ),
+                                ),
+                              )),
+                              DataCell(Container(
+                                padding: EdgeInsets.all(5),
+                                // width: deviceWidth(context)*0.3,
+                                child: Center(child: SelectableText(data.updateTime.toString(), style: text_Table_small)))),
+                              DataCell(Container(
+                                padding: EdgeInsets.all(5),
+                                // width: deviceWidth(context)*0.3,
+                                child: Center(child: SelectableText('Button detail', style: text_Table_small)))),
+                            ]);
+                          })
+                          ),
+                ),
                         ]
             ),
           ),
