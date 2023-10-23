@@ -9,6 +9,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_voyage.dart';
 import 'package:web_booking/page/booking/widgets/list_port.dart';
+import 'package:web_booking/page/booking/widgets/list_voyage%20copy.dart';
 import 'package:web_booking/page/booking/widgets/list_voyage.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
@@ -43,7 +44,7 @@ class _BookingPageState extends State<BookingPage> {
               child: Column(
                 children: [
                   SelectableText(
-                    'Booking Request',
+                    'Schedule',
                     style: style20_blue,
                   ),
                   const SizedBox(
@@ -129,7 +130,7 @@ class _BookingPageState extends State<BookingPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ListVoyage(),
+                  ListVoyage1(),
                 ],
               ),
             )

@@ -36,7 +36,7 @@ class Voyage {
     return data;
   }
 
-    Future<Voyage> fetchDataVoyage(String pol, String pod, String etd) async {
+  Future<Voyage> fetchDataVoyage(String pol, String pod, String etd) async {
     var url = '$SERVER_TEST/Booking?POLId=$pol&PODId=$pod&ETD=$etd';
     var data = {'POLId': pol, 'PODId': pod, 'ETD': etd};
     var body = json.encode(data);
@@ -63,13 +63,18 @@ class ListBookingVoys {
   String? voyDetail;
   String? etd;
   String? voyId;
+  String? vesselName;
+  String? pol;
 
-  ListBookingVoys({this.voyDetail, this.etd, this.voyId});
+  ListBookingVoys(
+      {this.voyDetail, this.etd, this.voyId, this.vesselName, this.pol});
 
   ListBookingVoys.fromJson(Map<String, dynamic> json) {
     voyDetail = json['voyDetail'];
     etd = json['etd'];
     voyId = json['voyId'];
+    vesselName = json['vesselName'];
+    pol = json['pol'];
   }
 
   Map<String, dynamic> toJson() {
@@ -77,6 +82,8 @@ class ListBookingVoys {
     data['voyDetail'] = this.voyDetail;
     data['etd'] = this.etd;
     data['voyId'] = this.voyId;
+    data['vesselName'] = this.vesselName;
+    data['pol'] = this.pol;
     return data;
   }
 }
