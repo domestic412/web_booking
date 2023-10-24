@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_image_request_detail.dart';
-
+import 'package:web_booking/widgets/horizontal_scroll.dart';
 
 class ImageRequest extends StatefulWidget {
   const ImageRequest({Key? key}) : super(key: key);
@@ -20,46 +22,46 @@ class _ImageRequestState extends State<ImageRequest> {
   }
 
   FutureBuilder<List<imageRequestDetailResponse>> ImageResponse() {
-  return FutureBuilder<List<imageRequestDetailResponse>> (
-    future: imageRequestDetailResponse().fetchImageRequestDetail(),
-    builder: (context, snapshot) {
-      if (snapshot.hasData) {
-        var dataImage = snapshot.data!;
-        return Container(
-          padding: EdgeInsets.only(bottom: 10),
-          height: 100,
-          width: 590,
-          child: ListView.builder(
-            itemCount: dataImage.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, index) {
-              return Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 5),
+    return FutureBuilder<List<imageRequestDetailResponse>>(
+        future: imageRequestDetailResponse().fetchImageRequestDetail(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            var dataImage = snapshot.data!;
+            return Container(
+              padding: EdgeInsets.only(bottom: 10),
+              height: 150,
+              width: 800,
+              child: ListView.builder(
+                  itemCount: dataImage.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: InkWell(
-                        onTap: () async {
-                          await showDialog(
+                        onTap: () {
+                          showDialog(
                               context: context,
-                              builder: (_) => InkWell(
-                                onTap: () {
-                                  Navigator.of(context).pop();
-                                },
-                                  child: Image.memory(base64.decode(snapshot.data![index].data!))));
+                              builder: (BuildContext context) {
+                                return Dialog(
+                                  child: InkWell(
+                                    onTap: () => Navigator.of(context).pop(),
+                                    child: Image.memory(base64
+                                        .decode(snapshot.data![index].data!)),
+                                  ),
+                                );
+                              });
                         },
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: 
-                            Image.memory(base64.decode(snapshot.data![index].data!))
-                            ),
+                            child: Image.memory(
+                                base64.decode(snapshot.data![index].data!))),
                       ),
                     );
-            }
-            ),
-        );
-      } else {
-        return Text('');
-      }
-    }
-    );
+                  }),
+            );
+          } else {
+            return Text('');
+          }
+        });
   }
 }

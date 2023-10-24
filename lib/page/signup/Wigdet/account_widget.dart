@@ -5,6 +5,7 @@ import 'package:web_booking/page/signup/Wigdet/company_information_wigdet.dart';
 import 'package:web_booking/page/signup/Wigdet/condition_term_wigdet.dart';
 import 'package:web_booking/page/signup/Wigdet/user_infor_widget.dart';
 
+// ignore: must_be_immutable
 class AccountPage extends StatelessWidget {
   final ScrollController horizontalScroll = ScrollController();
   double width_20 = 20;

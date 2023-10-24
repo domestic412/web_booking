@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_list_request.dart';
+import 'package:intl/intl.dart';
+import 'package:web_booking/screen/list_request/popUp_detail/detail_list_request.dart';
 
 // ignore: must_be_immutable
 class ListRequestPage extends StatefulWidget {
@@ -51,8 +56,10 @@ class _ListRequestPageState extends State<ListRequestPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
+                      width: deviceWidth(context),
+                      alignment: Alignment.bottomCenter,
                       padding:
-                          const EdgeInsets.only(top: 32, left: 32, right: 32),
+                          const EdgeInsets.only(top: 32, left: 50, right: 32),
                       child: Text(
                         "List Request",
                         style: TextStyle(fontSize: 30, color: haian),
@@ -127,15 +134,18 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                   BorderSide(color: Colors.black26)),
                           sortColumnIndex: 0,
                           // sortAscending: true,
-                          dataRowMaxHeight: 70,
+                          dataRowMaxHeight: 80,
                           columnSpacing: 16,
                           columns: [
                             DataColumn(
                               label: Expanded(
+                                child: Center(
                                   child: Text(
-                                'STT',
-                                style: text_Table_small_bold,
-                              )),
+                                    'STT',
+                                    style: text_Table_small_bold,
+                                  ),
+                                ),
+                              ),
                             ),
                             DataColumn(
                               label: Expanded(
@@ -147,100 +157,69 @@ class _ListRequestPageState extends State<ListRequestPage> {
                             ),
                             DataColumn(
                               label: Expanded(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Số Container',
-                                        style: text_Table_small_bold),
-                                  ],
+                                  child: Center(
+                                      child: Text('Số Container',
+                                          style: text_Table_small_bold))),
+                            ),
+                            DataColumn(
+                              label: Expanded(
+                                  child: Center(
+                                      child: Text(
+                                'Kích cỡ',
+                                style: text_Table_small_bold,
+                              ))),
+                            ),
+                            DataColumn(
+                              label: Expanded(
+                                  child: Center(
+                                      child: Text(
+                                'Nội dung yêu cầu và cam kết khách hàng',
+                                style: text_Table_small_bold,
+                              ))),
+                            ),
+                            DataColumn(
+                              label: Expanded(
+                                  child: Center(
+                                      child: Text(
+                                'Ghi chú hãng tàu',
+                                style: text_Table_small_bold,
+                              ))),
+                            ),
+                            DataColumn(
+                              label: Expanded(
+                                child: Center(
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        _list_filter = snapshot.data!
+                                            .where((item) =>
+                                                item.trangThaiYc!.contains('C'))
+                                            .toList();
+                                        _search_text.text = 'Chờ duyệt';
+                                      });
+                                    },
+                                    child: Center(
+                                        child: Text('Trạng thái',
+                                            style: text_Table_small_bold)),
+                                  ),
                                 ),
                               ),
                             ),
                             DataColumn(
                               label: Expanded(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Kích cỡ',
-                                    style: text_Table_small_bold,
-                                  ),
-                                ],
-                              )),
-                            ),
-                            DataColumn(
-                              label: Expanded(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Nội dung yêu cầu và cam kết khách hàng',
-                                    style: text_Table_small_bold,
-                                  ),
-                                ],
-                              )),
-                            ),
-                            DataColumn(
-                              label: Expanded(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Ghi chú hãng tàu',
-                                    style: text_Table_small_bold,
-                                  ),
-                                ],
-                              )),
-                            ),
-                            DataColumn(
-                              label: Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      _list_filter = snapshot.data!
-                                          .where((item) =>
-                                              item.trangThaiYc!.contains('C'))
-                                          .toList();
-                                      _search_text.text = 'Chờ duyệt';
-                                    });
-                                  },
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text('Trạng thái',
-                                            style: text_Table_small_bold)
-                                      ]),
-                                ),
-                              ),
-                            ),
-                            DataColumn(
-                              label: Expanded(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Ngày cập nhật',
-                                    style: text_Table_small_bold,
-                                  ),
-                                ],
-                              )),
-                            ),
-                            DataColumn(
-                              label: Expanded(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Chi tiết',
-                                    style: text_Table_small_bold,
-                                  ),
-                                ],
-                              )),
+                                  child: Center(
+                                      child: Text(
+                                'Ngày cập nhật',
+                                style: text_Table_small_bold,
+                              ))),
                             ),
                           ],
                           rows: List.generate(_list_filter.length, (index) {
                             var data = _list_filter[index];
+                            String dt = DateFormat("yyyy-MM-dd  hh:mm")
+                                .format(DateTime.parse(data.updateTime!));
+                            // id_ListRequest = data.id;
+                            // cntrno_ListRequest = data.cntrno;
                             trangThaiYc_ListRequest = data.trangThaiYc;
                             if (trangThaiYc_ListRequest == 'A') {
                               _color = green;
@@ -253,83 +232,60 @@ class _ListRequestPageState extends State<ListRequestPage> {
                               _trangthai = 'Từ chối';
                             }
                             return DataRow(cells: [
-                              DataCell(Container(
-                                  // width: deviceWidth(context)*0.15,
-                                  child: Text(
-                                (index + 1).toString(),
-                                style: text_Table_small,
-                              ))),
-                              DataCell(Container(
-                                  // width: deviceWidth(context)*0.3,
-                                  child: Center(
-                                      child: SelectableText(
-                                          data.tenYeuCau.toString(),
-                                          style: text_Table_small)))),
-                              DataCell(Container(
-                                  // width: deviceWidth(context)*0.3,
-                                  child: Center(
-                                      child: SelectableText(
-                                          data.cntrno.toString(),
-                                          style: text_Table_small)))),
-                              DataCell(Container(
-                                  // width: deviceWidth(context)*0.3,
-                                  child: Center(
-                                      child: SelectableText(
-                                          data.sizeType.toString(),
-                                          style: text_Table_small)))),
-                              DataCell(Container(
-                                  // width: deviceWidth(context)*0.3,
-                                  child: Center(
-                                      child: SelectableText(
-                                          data.noiDung.toString(),
-                                          style: text_Table_small)))),
-                              DataCell(Container(
-                                  // width: deviceWidth(context)*0.3,
-                                  child: Center(
-                                      child: SelectableText(
-                                          data.noteHangTau.toString(),
-                                          style: text_Table_small)))),
-                              DataCell(Container(
-                                // width: deviceWidth(context)*0.4,
-                                child: Center(
-                                  child: Container(
-                                    width: 110,
-                                    padding: const EdgeInsets.only(
-                                        top: 10, bottom: 10),
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        id_request =
-                                            _list_filter[index].id.toString();
-                                        print(id_request);
-                                        // });
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: _color,
-                                          shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(20)))),
-                                      child: Text(
-                                        _trangthai.toString(),
-                                        style: text_style_status,
-                                        textAlign: TextAlign.center,
-                                      ),
+                              DataCell(Center(
+                                child: Text(
+                                  (index + 1).toString(),
+                                  style: text_Table_small,
+                                ),
+                              )),
+                              DataCell(Center(
+                                  child: SelectableText(
+                                      data.tenYeuCau.toString(),
+                                      style: text_Table_small))),
+                              DataCell(Center(
+                                  child: SelectableText(data.cntrno.toString(),
+                                      style: text_Table_small))),
+                              DataCell(Center(
+                                  child: SelectableText(
+                                      data.sizeType.toString(),
+                                      style: text_Table_small))),
+                              DataCell(Center(
+                                  child: SelectableText(data.noiDung.toString(),
+                                      style: text_Table_small))),
+                              DataCell(Center(
+                                  child: SelectableText(
+                                      data.noteHangTau.toString(),
+                                      style: text_Table_small))),
+                              DataCell(Center(
+                                child: Container(
+                                  width: 110,
+                                  padding: const EdgeInsets.only(
+                                      top: 10, bottom: 10),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      fetchListRequestDetail(
+                                          _list_filter[index].id.toString());
+                                      // setState(() {
+                                      id_request =
+                                          _list_filter[index].id.toString();
+                                      // });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: _color,
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20)))),
+                                    child: Text(
+                                      _trangthai.toString(),
+                                      style: text_style_status,
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                 ),
                               )),
-                              DataCell(Container(
-                                  padding: EdgeInsets.all(5),
-                                  // width: deviceWidth(context)*0.3,
-                                  child: Center(
-                                      child: SelectableText(
-                                          data.updateTime.toString(),
-                                          style: text_Table_small)))),
-                              DataCell(Container(
-                                  padding: EdgeInsets.all(5),
-                                  // width: deviceWidth(context)*0.3,
-                                  child: Center(
-                                      child: SelectableText('Button detail',
-                                          style: text_Table_small)))),
+                              DataCell(Center(
+                                  child: SelectableText(dt,
+                                      style: text_Table_small))),
                             ]);
                           })),
                     ),
@@ -342,35 +298,36 @@ class _ListRequestPageState extends State<ListRequestPage> {
     );
   }
 
-  // Future<void> fetchListRequestDetail(String id) async {
-  //   var url = '$SERVER/Requests/$id';
-  //   if (id.isNotEmpty) {
-  //     // EasyLoading.show(
-  //     //   status: 'Loading...',
-  //     //   maskType: EasyLoadingMaskType.black,
-  //     //   dismissOnTap: true,
-  //     //   );
-  //     final response = await http.get(Uri.parse(url),);
-  //     if (response.statusCode == 200) {
-  //       // EasyLoading.dismiss();
-  //       var body = response.body;
-  //       print('Data List Request Detail');
-  //       final dataDetail = jsonDecode(body);
-  //       tenYeuCau_ListRequestDetail = dataDetail['tenYeuCau'];
-  //       noiDung_ListRequestDetail = dataDetail['noiDung'];
-  //       cntrno_ListRequestDetail = dataDetail['cntrno'];
-  //       sizeType_ListRequestDetail = dataDetail['sizeType'];
-  //       trangThaiYc_ListRequestDetail = dataDetail['trangThaiYc'];
-  //       noteHangTau_ListRequestDetail = dataDetail['noteHangTau'];
-  //       updateTime_ListRequestDetail = dataDetail['updateTime'];
-
-  //       PopUpListRequest(context);
-  //       } else {
-  //         EasyLoading.dismiss();
-  //         throw Exception('Cannot connect to server');
-  //       }
-  //   } else {
-  //     throw Exception('Failed to load because no have ID');
-  //   }
-  // }
+  Future<void> fetchListRequestDetail(String id) async {
+    var url = '$SERVER/Requests/$id';
+    if (id.isNotEmpty) {
+      // EasyLoading.show(
+      //   status: 'Loading...',
+      //   maskType: EasyLoadingMaskType.black,
+      //   dismissOnTap: true,
+      //   );
+      final response = await http.get(
+        Uri.parse(url),
+      );
+      if (response.statusCode == 200) {
+        // EasyLoading.dismiss();
+        var body = response.body;
+        print('Data List Request Detail');
+        final dataDetail = jsonDecode(body);
+        tenYeuCau_ListRequestDetail = dataDetail['tenYeuCau'];
+        noiDung_ListRequestDetail = dataDetail['noiDung'];
+        cntrno_ListRequestDetail = dataDetail['cntrno'];
+        sizeType_ListRequestDetail = dataDetail['sizeType'];
+        trangThaiYc_ListRequestDetail = dataDetail['trangThaiYc'];
+        noteHangTau_ListRequestDetail = dataDetail['noteHangTau'];
+        updateTime_ListRequestDetail = dataDetail['updateTime'];
+        PopUpListRequest(context);
+      } else {
+        // EasyLoading.dismiss();
+        throw Exception('Cannot connect to server');
+      }
+    } else {
+      throw Exception('Failed to load because no have ID');
+    }
+  }
 }

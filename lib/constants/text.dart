@@ -52,6 +52,14 @@ TextStyle text_Table_bold =
 TextStyle text_Table_small = TextStyle(fontSize: 13, color: black);
 TextStyle text_Table_small_bold =
     TextStyle(fontSize: 14, color: black, fontWeight: FontWeight.bold);
+TextStyle text_Table_small_underline =
+    TextStyle(fontSize: 13, color: black, decoration: TextDecoration.underline);
+TextStyle title_detail =
+    TextStyle(fontSize: 18, color: black, fontWeight: FontWeight.bold);
+TextStyle text_detail = TextStyle(fontSize: 16, color: black);
+TextStyle text_detail_bold =
+    TextStyle(fontSize: 17, color: black, fontWeight: FontWeight.bold);
+TextStyle text_cntr_detail = TextStyle(fontSize: 16, color: red);
 TextStyle text_style7 = TextStyle(fontSize: 16, color: light);
 TextStyle text_dashboard = TextStyle(fontSize: 18, color: black);
 TextStyle text_delete = TextStyle(fontSize: 15, color: blue);
