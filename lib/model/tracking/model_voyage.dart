@@ -45,7 +45,7 @@ class Voyage {
           headers: {"Content-Type": "application/json"}, body: body);
       if (response.statusCode == 200) {
         var body = response.body;
-        print(body);
+        print('Data Voyage');
         // // convert json to list and return function
         // List dataVoyage = json.decode(body);
         // return dataVoyage.map((data) => Voyage.fromJson(data)).toList();

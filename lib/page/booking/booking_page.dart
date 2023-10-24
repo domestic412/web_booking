@@ -1,16 +1,12 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_voyage.dart';
 import 'package:web_booking/page/booking/widgets/list_port.dart';
 import 'package:web_booking/page/booking/widgets/list_voyage%20copy.dart';
-import 'package:web_booking/page/booking/widgets/list_voyage.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 class BookingPage extends StatefulWidget {

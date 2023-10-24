@@ -49,6 +49,13 @@ String? trangThaiYc_ListRequest;
 // List Request Detail
 String? id_request;
 String savecntr = '';
+String? tenYeuCau_ListRequestDetail;
+String? noiDung_ListRequestDetail;
+String? cntrno_ListRequestDetail;
+String? sizeType_ListRequestDetail;
+String? trangThaiYc_ListRequestDetail;
+String? noteHangTau_ListRequestDetail;
+String? updateTime_ListRequestDetail;
 
 // Booking page
 String? nameVoyage;

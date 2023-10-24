@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:web_booking/page/booking/booking_screen.dart';
+import 'package:web_booking/page/booking/booking_page.dart';
 import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/page/signup/signup_page.dart';

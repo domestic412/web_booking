@@ -97,7 +97,7 @@ class _ListVoyage1State extends State<ListVoyage1> {
                                       var dataVoyage1 = snapshot.data!.listBookingVoys?[index];
                                       nameVoyage = dataVoyage1?.vesselName;
                                       dateVoyage = dataVoyage1?.etd;
-                                      String _dt = DateFormat("yyyy-MM-dd  hh:mm").format(
+                                      String dt = DateFormat("yyyy-MM-dd  hh:mm").format(
                                         DateTime.parse(dateVoyage!));
                                       idVoyage = dataVoyage1?.voyId;
                                       polVoyage = dataVoyage1?.pol;
@@ -146,7 +146,7 @@ class _ListVoyage1State extends State<ListVoyage1> {
                                             // width: 500,
                                             alignment: Alignment.bottomLeft,
                                             child: Text(
-                                              _dt,
+                                              dt,
                                               style: text_style2,
                                             ),
                                           ),

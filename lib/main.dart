@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/widgets/horizontal_scroll.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         // ),
         debugShowCheckedModeBanner: false,
+        scrollBehavior: CustomHorizontalScroll(),
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
