@@ -9,13 +9,13 @@ TextEditingController soluongcntr = TextEditingController();
 
 Future<void> ListDepo(BuildContext context) {
   return showDialog<void>(
-    context: context, 
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Chon Depo'),
-        content: buildDepo(),
-      );
-    });
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Chọn Depot'),
+          content: buildDepo(),
+        );
+      });
 }
 
 FutureBuilder<Voyage> buildDepo() {
@@ -48,7 +48,7 @@ FutureBuilder<Voyage> buildDepo() {
                               Row(
                                 children: [
                                   Text(
-                                    'Tên depo: $nameDepo',
+                                    'Tên depot: $nameDepo',
                                     // style: text_style4,
                                   ),
                                   const SizedBox(
@@ -62,8 +62,7 @@ FutureBuilder<Voyage> buildDepo() {
                                     height: 40,
                                     width: 60,
                                     child: TextField(
-                                      textAlignVertical:
-                                          TextAlignVertical.top,
+                                      textAlignVertical: TextAlignVertical.top,
                                       // style: text_style4,
                                       controller: soluongcntr,
                                       keyboardType: TextInputType.number,
@@ -75,8 +74,7 @@ FutureBuilder<Voyage> buildDepo() {
                                       decoration: const InputDecoration(
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                                color: Colors.black,
-                                                width: 5)),
+                                                color: Colors.black, width: 5)),
                                       ),
                                     ),
                                   ),
