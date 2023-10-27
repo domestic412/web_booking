@@ -24,13 +24,16 @@ class appbar extends StatelessWidget {
         child: Row(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              padding: EdgeInsets.only(left: 50),
-              width: 1296,
-              child: Text(
-                'welcome'.tr(),
-                style: style14_white,
-                textAlign: TextAlign.left,
+            InkWell(
+              onTap: () => context.go(AppRoutes.defaultRoute),
+              child: Container(
+                padding: EdgeInsets.only(left: 50),
+                width: 1296,
+                child: Text(
+                  'welcome'.tr(),
+                  style: style14_white,
+                  textAlign: TextAlign.left,
+                ),
               ),
             ),
             const DropdownLeaguage(),

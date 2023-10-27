@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
@@ -124,17 +123,10 @@ class ContainerResponse {
   static Future<List<ContainerResponse>> fetchContainerResponses(
       String cntr) async {
     var url = '$SERVER/CheckContainer?container=$cntr&code=$code';
-    // var url = '$SERVER_TEST/CheckContainer?container=$cntr&code=$code';
     if (cntr.isNotEmpty) {
-      EasyLoading.show(
-        status: 'Loading...',
-        maskType: EasyLoadingMaskType.black,
-        dismissOnTap: true,
-      );
       final response = await http
           .post(Uri.parse(url), headers: {"Content-Type": "application/json"});
       if (response.statusCode == 200) {
-        EasyLoading.dismiss();
         var body = response.body;
         List dataCheckCntr = jsonDecode(body);
         // print(dataCheckCntr);
@@ -142,7 +134,6 @@ class ContainerResponse {
             .map((data) => ContainerResponse.fromJson(data))
             .toList();
       } else {
-        EasyLoading.dismiss();
         throw Exception('Error');
       }
     } else {

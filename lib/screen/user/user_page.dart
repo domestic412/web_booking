@@ -8,7 +8,6 @@ import 'package:web_booking/screen/widgets/list_item.dart';
 
 import 'package:web_booking/widgets/top_nav.dart';
 
-
 Widget widgetbody = MemberPage();
 
 class UserPage extends StatelessWidget {

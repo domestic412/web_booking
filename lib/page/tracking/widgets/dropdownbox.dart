@@ -36,7 +36,7 @@ class _DropdownButtonSearchState extends State<DropdownButtonSearch> {
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black54),
             borderRadius: BorderRadius.circular(5)),
-        height: 40,
+        height: 50,
       ),
       menuItemStyleData: const MenuItemStyleData(
         height: 40,

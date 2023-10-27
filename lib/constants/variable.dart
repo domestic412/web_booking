@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/model/tracking/model_voyage.dart';
 
 import '../model/tracking/model_port.dart';
@@ -39,7 +40,6 @@ String dropdownValue = 'EN';
 String? user;
 String? tokenLogin;
 String? code;
-bool? visibi;
 
 // List Request
 int? id_ListRequest;
@@ -69,6 +69,13 @@ Ports? selectPort2;
 String? idPort1;
 String? idPort2;
 Future<Voyage>? fetchVoyage;
+
+// Tracking page
+Future<ContainerTracking>? containerTracking;
+List? list_filter;
+
+// Container Details page
+Color? color_time;
 
 String? nameDepo;
 String? idDepo;

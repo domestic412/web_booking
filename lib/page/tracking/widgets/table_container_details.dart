@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
+import 'package:web_booking/constants/variable.dart';
+
+class TableContainerDetails extends StatelessWidget {
+  TableContainerDetails({super.key});
+
+  String? _dt;
+
+  @override
+  Widget build(BuildContext context) {
+    return DataTable(
+        border: TableBorder.all(),
+        columns: [
+          DataColumn(
+              label: Expanded(
+                  child: Center(
+            child: SelectableText(
+              'seq'.tr(),
+              style: style_text_Table_small_bold,
+            ),
+          ))),
+          DataColumn(
+              label: Expanded(
+                  child: Center(
+            child: SelectableText(
+              'container'.tr(),
+              style: style_text_Table_small_bold,
+            ),
+          ))),
+          DataColumn(
+              label: Expanded(
+                  child: Center(
+            child: SelectableText(
+              'status_container'.tr(),
+              style: style_text_Table_small_bold,
+            ),
+          ))),
+          DataColumn(
+              label: Expanded(
+                  child: Center(
+            child: SelectableText(
+              'location_container'.tr(),
+              style: style_text_Table_small_bold,
+            ),
+          ))),
+          DataColumn(
+              label: Expanded(
+                  child: Center(
+            child: SelectableText(
+              'eventDate_container'.tr(),
+              style: style_text_Table_small_bold,
+            ),
+          )))
+        ],
+        rows: List.generate(list_filter!.length, (index) {
+          if (list_filter![index].eventDate != null) {
+            _dt = DateFormat("yyyy-MM-dd  hh:mm")
+                .format(DateTime.parse(list_filter![index].eventDate));
+            var dt =
+                DateTime.tryParse(list_filter![index].eventDate.toString());
+            if (dt!.compareTo(DateTime.now()) < 0) {
+              color_time = normalColor;
+            } else {
+              color_time = Colors.black;
+            }
+          } else {
+            _dt = '';
+          }
+          return DataRow(cells: [
+            DataCell(Center(
+                child: SelectableText(
+              (index + 1).toString(),
+              style: style_text_Table_small,
+            ))),
+            DataCell(Center(
+                child: SelectableText(
+              list_filter![index].container.toString(),
+              style: style_text_Table_small,
+            ))),
+            DataCell(Center(
+              child: SelectableText(
+                list_filter![index].status.toString(),
+                style: style_text_Table_small,
+              ),
+            )),
+            DataCell(Center(
+                child: SelectableText(
+              list_filter![index].location.toString(),
+              style: style_text_Table_small,
+            ))),
+            DataCell(Center(
+                child: SelectableText(
+              '$_dt',
+              style: TextStyle(
+                fontSize: 14,
+                color: color_time,
+              ),
+            )))
+          ]);
+        }));
+  }
+}

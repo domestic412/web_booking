@@ -16,35 +16,41 @@ class DropdownLeaguage extends StatefulWidget {
 class _DropdownLeaguageState extends State<DropdownLeaguage> {
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-        value: dropdownValue,
-        icon: Icon(Icons.arrow_drop_down, color: white),
-        elevation: 16,
-        dropdownColor: haian,
-        underline: Container(
-          color: haian,
-        ),
-        onChanged: (String? value) {
-          setState(() {
-            dropdownValue = value!;
-            if (dropdownValue == 'EN') {
-              bool_lang = false;
-              setLeaguageEN(context);
-            } else {
-              bool_lang = true;
-              setLeaguageVN(context);
-            }
-          });
-        },
-        items: list.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(
-              value,
-              style: TextStyle(color: white),
-            ),
-          );
-        }).toList());
+    return Container(
+      height: 40,
+      padding: EdgeInsets.only(left: 10, right: 5),
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(5), color: haian),
+      child: DropdownButton<String>(
+          value: dropdownValue,
+          icon: Icon(Icons.arrow_drop_down, color: white),
+          elevation: 16,
+          dropdownColor: haian,
+          underline: Container(
+            color: haian,
+          ),
+          onChanged: (String? value) {
+            setState(() {
+              dropdownValue = value!;
+              if (dropdownValue == 'EN') {
+                bool_lang = false;
+                setLeaguageEN(context);
+              } else {
+                bool_lang = true;
+                setLeaguageVN(context);
+              }
+            });
+          },
+          items: list.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(
+                value,
+                style: TextStyle(color: white),
+              ),
+            );
+          }).toList()),
+    );
   }
 
   Future<void> setLeaguageEN(BuildContext context) =>

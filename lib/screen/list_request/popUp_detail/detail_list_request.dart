@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/list_request/popUp_detail/detail_image_list_request.dart';
 import 'package:intl/intl.dart';
+import 'package:web_booking/screen/widgets/list_item.dart';
 
 final keytext = GlobalKey();
 String _dt = DateFormat("yyyy-MM-dd  hh:mm")
@@ -25,7 +27,7 @@ Future<void> PopUpListRequest(BuildContext context) {
                 children: [
                   Text(
                     "Thông tin chi tiết",
-                    style: title_detail,
+                    style: style_title_detail,
                   ),
                   const Divider(
                     color: Colors.black,
@@ -38,35 +40,35 @@ Future<void> PopUpListRequest(BuildContext context) {
                 children: [
                   Text(
                     'Yêu cầu',
-                    style: text_detail_bold,
+                    style: style_text_detail_bold,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   Text(
                     '$tenYeuCau_ListRequestDetail',
-                    style: text_detail,
+                    style: style_text_detail,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
                     'Nội dung',
-                    style: text_detail_bold,
+                    style: style_text_detail_bold,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   Text('$noiDung_ListRequestDetail',
                       textAlign: TextAlign.left,
-                      style: text_detail,
+                      style: style_text_detail,
                       key: keytext),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
                     'Container / Size',
-                    style: text_detail_bold,
+                    style: style_text_detail_bold,
                   ),
                   const SizedBox(
                     height: 5,
@@ -75,10 +77,10 @@ Future<void> PopUpListRequest(BuildContext context) {
                       text: TextSpan(children: <TextSpan>[
                     TextSpan(
                         text: '$cntrno_ListRequestDetail ',
-                        style: text_cntr_detail),
+                        style: style_text_cntr_detail),
                     TextSpan(
                         text: '/ $sizeType_ListRequestDetail',
-                        style: text_detail)
+                        style: style_text_detail)
                   ])),
                   const SizedBox(
                     height: 10,
@@ -88,7 +90,7 @@ Future<void> PopUpListRequest(BuildContext context) {
                     children: [
                       Text(
                         'Ảnh thực tế',
-                        style: text_detail_bold,
+                        style: style_text_detail_bold,
                       ),
                       const SizedBox(
                         height: 5,
@@ -98,7 +100,7 @@ Future<void> PopUpListRequest(BuildContext context) {
                   ),
                   Text(
                     'Trạng thái xử lý',
-                    style: text_detail_bold,
+                    style: style_text_detail_bold,
                   ),
                   const SizedBox(
                     height: 5,
@@ -114,7 +116,7 @@ Future<void> PopUpListRequest(BuildContext context) {
                   ),
                   Text(
                     'Ghi chú hãng tàu',
-                    style: text_detail_bold,
+                    style: style_text_detail_bold,
                   ),
                   const SizedBox(
                     height: 5,
@@ -124,21 +126,21 @@ Future<void> PopUpListRequest(BuildContext context) {
                   else
                     Text(
                       '$noteHangTau_ListRequestDetail',
-                      style: text_detail,
+                      style: style_text_detail,
                     ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
                     'Ngày cập nhật',
-                    style: text_detail_bold,
+                    style: style_text_detail_bold,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   Text(
                     _dt,
-                    style: text_detail,
+                    style: style_text_detail,
                   ),
                   const SizedBox(
                     height: 10,
@@ -149,14 +151,19 @@ Future<void> PopUpListRequest(BuildContext context) {
                     const Text(''),
                 ],
               ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => Navigator.pop(context, 'OK'),
-                  child: const Text(
-                    'OK',
-                    style: TextStyle(fontSize: 16),
+              actions: [
+                Container(
+                  margin: EdgeInsets.only(right: 10, bottom: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5), color: haian),
+                  child: TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(
+                      'OK',
+                      style: style_text_button_detail,
+                    ),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -220,16 +227,12 @@ class button_detailRequest extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(8)))),
             onPressed: () {
               savecntr = cntrno_ListRequestDetail!;
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => DefaultScreen(),
-              //     ));
+              sideBarController.index.value = 2;
             },
             child: Container(
               padding: EdgeInsets.all(10),
               child: Text('Gửi lại yêu cầu kết hợp',
-                  style: TextStyle(fontSize: 18, color: light)),
+                  style: style_text_button_detail),
             )));
   }
 }
