@@ -25,12 +25,15 @@ class _ImageRequestState extends State<ImageRequest> {
     return FutureBuilder<List<imageRequestDetailResponse>>(
         future: imageRequestDetailResponse().fetchImageRequestDetail(),
         builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
           if (snapshot.hasData) {
             var dataImage = snapshot.data!;
             return Container(
               padding: EdgeInsets.only(bottom: 10),
               height: 150,
-              width: 800,
+              width: 630,
               child: ListView.builder(
                   itemCount: dataImage.length,
                   scrollDirection: Axis.horizontal,

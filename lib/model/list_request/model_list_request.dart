@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/constants/variable.dart';
 
 // List<ListRequestResponse> postFromJson(String str) =>
 //     List<ListRequestResponse>.from(json.decode(str).map((x) => ListRequestResponse.fromJson(x)));
@@ -63,19 +64,13 @@ class ListRequestResponse {
   }
 
   Future<List<ListRequestResponse>> fetchListRequest() async {
-    // var url = '$SERVER/Requests/GetRequestByUser?user=$tokenLogin';
-    var url = '$SERVER/Requests/GetRequestByUser?user=Phòng IT'; //use for debug
-    // EasyLoading.show(
-    //     status: 'Loading...',
-    //     maskType: EasyLoadingMaskType.black,
-    //     dismissOnTap: true,
-    //     );
+    tokenLogin = 'Phòng IT';
+    var url = '$SERVER/Requests/GetRequestByUser?user=$tokenLogin';
     final response = await http.get(Uri.parse(url), headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET", //use fot http, not use https
     });
     if (response.statusCode == 200) {
-      // EasyLoading.dismiss();
       var body = response.body;
       print('Data List Request');
       List dataListRequest = json.decode(body);
@@ -83,7 +78,6 @@ class ListRequestResponse {
           .map((data) => ListRequestResponse.fromJson(data))
           .toList();
     } else {
-      // EasyLoading.dismiss();
       throw Exception('Error');
     }
   }

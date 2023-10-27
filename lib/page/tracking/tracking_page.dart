@@ -1,14 +1,10 @@
-import 'dart:convert';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
-import 'package:web_booking/page/tracking/widgets/detail_container.dart';
+import 'package:web_booking/page/tracking/widgets/container_details.dart';
 
 import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
 import 'package:web_booking/page/tracking/widgets/list_container.dart';
@@ -54,7 +50,7 @@ class _TrackingPageState extends State<TrackingPage> {
                     children: [
                       SelectableText(
                         'container tracking'.tr(),
-                        style: style20_blue,
+                        style: style_title_page,
                       ),
                       const SizedBox(
                         height: 10,
@@ -74,11 +70,11 @@ class _TrackingPageState extends State<TrackingPage> {
                             DropdownButtonSearch(),
                             const SizedBox(width: 20),
                             Container(
-                              height: 40,
+                              height: 50,
                               width: 500,
                               child: TextField(
                                   controller: input,
-                                  style: style15_black,
+                                  style: style_textfield,
                                   decoration: const InputDecoration(
                                       border: OutlineInputBorder())),
                             ),
@@ -88,21 +84,22 @@ class _TrackingPageState extends State<TrackingPage> {
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                  containerTracking = fetchContainerTracking(
-                                      input.text.toUpperCase());
+                                  containerTracking = ContainerTracking()
+                                      .fetchContainerTracking(
+                                          input.text.toUpperCase());
                                   bool_data_container = false;
                                 });
                               },
                               child: Container(
                                 alignment: Alignment.center,
-                                height: 40,
+                                height: 50,
                                 width: 80,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
                                     color: normalColor),
                                 child: Text(
                                   'search'.tr(),
-                                  style: style15_white,
+                                  style: style_text_button_detail,
                                 ),
                               ),
                             )
@@ -112,16 +109,13 @@ class _TrackingPageState extends State<TrackingPage> {
                       Container(
                         child: SelectableText(
                           'note'.tr(),
-                          style: style13_black,
+                          style: style_text_Table_small,
                         ),
                       ),
                       SizedBox(
                         height: 30,
                       ),
-                      Data_Booking(updateDataContainer),
-                      Container(
-                        child: bool_data_container ? Data_Container() : null,
-                      )
+                      ListContainer(),
                     ],
                   ),
                 ),
@@ -131,50 +125,5 @@ class _TrackingPageState extends State<TrackingPage> {
         ),
       ),
     );
-  }
-
-  Future<ContainerTracking> fetchContainerTracking(String inputt) async {
-    final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
-    final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
-    // final url_bk = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=&BookingNo=$inputt';
-    // final url_cntr = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=$inputt&BookingNo=';
-    String? url;
-    if (selectedValue == 'bk') {
-      setState(() {
-        url = url_bk_en;
-      });
-    } else {
-      setState(() {
-        url = url_cntr_en;
-      });
-    }
-
-    final response = await http.get(
-      Uri.parse(url!),
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-      },
-    );
-
-    print(response.statusCode);
-
-    if (response.statusCode == 200) {
-      var body = response.body;
-      if (body == '[]') {
-        return throw Exception();
-      }
-      var dataCntrTracking = jsonDecode(body);
-      return ContainerTracking.fromJson(dataCntrTracking);
-    } else {
-      print('Error');
-      throw Exception('Error');
-    }
-  }
-
-  void updateDataContainer() {
-    setState(() {
-      bool_data_container = true;
-    });
   }
 }

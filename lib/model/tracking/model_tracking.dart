@@ -1,3 +1,10 @@
+import 'dart:convert';
+
+import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
+import 'package:http/http.dart' as http;
+
 class ContainerTracking {
   List<TrackingContainers>? trackingContainers;
   List<TrackingZimsEN>? trackingZimsEN;
@@ -43,6 +50,43 @@ class ContainerTracking {
     }
     return data;
   }
+
+  Future<ContainerTracking> fetchContainerTracking(String inputt) async {
+    final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
+    final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
+    // final url_bk = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=&BookingNo=$inputt';
+    // final url_cntr = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=$inputt&BookingNo=';
+    String? url;
+    selectedValue == 'bk' ? url = url_bk_en : url = url_cntr_en;
+
+    final response = await http.get(
+      Uri.parse(url!),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+      },
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      var body = response.body;
+      if (body == '[]') {
+        return throw Exception();
+      }
+      var dataCntrTracking = jsonDecode(body);
+      return ContainerTracking.fromJson(dataCntrTracking);
+    } else {
+      print('Error');
+      throw Exception('Error');
+    }
+  }
+
+  // void updateDataContainer() {
+  //   setState(() {
+  //   bool_data_container = true;
+  //   });
+  // }
 }
 
 class TrackingContainers {

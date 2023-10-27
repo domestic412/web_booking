@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/constants/text.dart';
+import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_list_request.dart';
 import 'package:intl/intl.dart';
@@ -42,6 +42,9 @@ class _ListRequestPageState extends State<ListRequestPage> {
     return FutureBuilder<List<ListRequestResponse>>(
       future: listRequest,
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
         if (snapshot.hasData) {
           print('show data list request');
           if (_search_text.text.isEmpty) {
@@ -57,12 +60,11 @@ class _ListRequestPageState extends State<ListRequestPage> {
                   children: <Widget>[
                     Container(
                       width: deviceWidth(context),
-                      alignment: Alignment.bottomCenter,
-                      padding:
-                          const EdgeInsets.only(top: 32, left: 50, right: 32),
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.only(top: 32),
                       child: Text(
                         "List Request",
-                        style: TextStyle(fontSize: 30, color: haian),
+                        style: style_title_page,
                       ),
                     ),
                     Container(
@@ -83,8 +85,8 @@ class _ListRequestPageState extends State<ListRequestPage> {
                           horizontal: 32, vertical: 16),
                       child: Container(
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.black26)),
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black45)),
                         child: ListTile(
                           leading: const Icon(Icons.search),
                           title: TextField(
@@ -131,7 +133,7 @@ class _ListRequestPageState extends State<ListRequestPage> {
                       child: DataTable(
                           border: const TableBorder(
                               verticalInside:
-                                  BorderSide(color: Colors.black26)),
+                                  BorderSide(color: Colors.black12)),
                           sortColumnIndex: 0,
                           // sortAscending: true,
                           dataRowMaxHeight: 80,
@@ -142,7 +144,7 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                 child: Center(
                                   child: Text(
                                     'STT',
-                                    style: text_Table_small_bold,
+                                    style: style_text_Table_small_bold,
                                   ),
                                 ),
                               ),
@@ -152,21 +154,21 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                   child: Center(
                                       child: Text(
                                 'Tên yêu cầu',
-                                style: text_Table_small_bold,
+                                style: style_text_Table_small_bold,
                               ))),
                             ),
                             DataColumn(
                               label: Expanded(
                                   child: Center(
                                       child: Text('Số Container',
-                                          style: text_Table_small_bold))),
+                                          style: style_text_Table_small_bold))),
                             ),
                             DataColumn(
                               label: Expanded(
                                   child: Center(
                                       child: Text(
                                 'Kích cỡ',
-                                style: text_Table_small_bold,
+                                style: style_text_Table_small_bold,
                               ))),
                             ),
                             DataColumn(
@@ -174,7 +176,7 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                   child: Center(
                                       child: Text(
                                 'Nội dung yêu cầu và cam kết khách hàng',
-                                style: text_Table_small_bold,
+                                style: style_text_Table_small_bold,
                               ))),
                             ),
                             DataColumn(
@@ -182,7 +184,7 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                   child: Center(
                                       child: Text(
                                 'Ghi chú hãng tàu',
-                                style: text_Table_small_bold,
+                                style: style_text_Table_small_bold,
                               ))),
                             ),
                             DataColumn(
@@ -200,7 +202,8 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                     },
                                     child: Center(
                                         child: Text('Trạng thái',
-                                            style: text_Table_small_bold)),
+                                            style:
+                                                style_text_Table_small_bold)),
                                   ),
                                 ),
                               ),
@@ -210,7 +213,7 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                   child: Center(
                                       child: Text(
                                 'Ngày cập nhật',
-                                style: text_Table_small_bold,
+                                style: style_text_Table_small_bold,
                               ))),
                             ),
                           ],
@@ -235,27 +238,27 @@ class _ListRequestPageState extends State<ListRequestPage> {
                               DataCell(Center(
                                 child: Text(
                                   (index + 1).toString(),
-                                  style: text_Table_small,
+                                  style: style_text_Table_small,
                                 ),
                               )),
                               DataCell(Center(
                                   child: SelectableText(
                                       data.tenYeuCau.toString(),
-                                      style: text_Table_small))),
+                                      style: style_text_Table_small))),
                               DataCell(Center(
                                   child: SelectableText(data.cntrno.toString(),
-                                      style: text_Table_small))),
+                                      style: style_text_Table_small))),
                               DataCell(Center(
                                   child: SelectableText(
                                       data.sizeType.toString(),
-                                      style: text_Table_small))),
+                                      style: style_text_Table_small))),
                               DataCell(Center(
                                   child: SelectableText(data.noiDung.toString(),
-                                      style: text_Table_small))),
+                                      style: style_text_Table_small))),
                               DataCell(Center(
                                   child: SelectableText(
                                       data.noteHangTau.toString(),
-                                      style: text_Table_small))),
+                                      style: style_text_Table_small))),
                               DataCell(Center(
                                 child: Container(
                                   width: 110,
@@ -285,7 +288,7 @@ class _ListRequestPageState extends State<ListRequestPage> {
                               )),
                               DataCell(Center(
                                   child: SelectableText(dt,
-                                      style: text_Table_small))),
+                                      style: style_text_Table_small))),
                             ]);
                           })),
                     ),

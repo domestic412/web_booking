@@ -21,7 +21,7 @@ class _DefaultPageState extends State<DefaultPage> {
               image: DecorationImage(
                   image: AssetImage('assets/images/VesselHA1.jpg'),
                   fit: BoxFit.cover)),
-          child: ListView(children: <Widget>[
+          child: ListView(children: const <Widget>[
             appbar(),
             mainMenu(),
             mainSearch(),

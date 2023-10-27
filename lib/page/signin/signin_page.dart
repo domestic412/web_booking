@@ -10,6 +10,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/widgets/appbar/appbar.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class SignInPage extends StatefulWidget {
 }
 
 TextEditingController _user = TextEditingController();
-TextEditingController _password= TextEditingController();
+TextEditingController _password = TextEditingController();
 
 class _SignInPageState extends State<SignInPage> {
   @override
@@ -29,68 +30,68 @@ class _SignInPageState extends State<SignInPage> {
           image: DecorationImage(
               image: AssetImage('assets/images/VesselHA1.jpg'),
               fit: BoxFit.cover)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(
-            height: 160,
-          ),
-          Container(
-            height: 440,
-            width: 400,
-            decoration: BoxDecoration(
-              color: Colors.white70,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                _buildAppbarImage(),
-                _buildAppbarName(),
-                const SizedBox(
-                  height: 30,
-                ),
-                _buildInputUser(),
-                const SizedBox(
-                  height: 10,
-                ),
-                CupertinoButton(
-                  color: Colors.white70,
-                  onPressed: () {
-                    signin(_user.text.toString(),
-                        _password.text.toString());
-                  },
-                  child: Text(
-                    'SIGN IN',
-                    style:
-                        TextStyle(color: button, fontWeight: FontWeight.w900),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            appbar(),
+            Container(
+              height: 440,
+              width: 400,
+              margin: EdgeInsets.only(top: 160, bottom: 20),
+              decoration: BoxDecoration(
+                color: Colors.white70,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  _buildAppbarImage(),
+                  _buildAppbarName(),
+                  const SizedBox(
+                    height: 30,
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                InkWell(
-                  onTap: () {
-                    context.go(AppRoutes.SignUpRoute);
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white70,
-                          borderRadius: BorderRadius.circular(5)),
-                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                      child: Text(
-                        'Create Account',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: haian,
-                            fontWeight: FontWeight.w500),
-                      )),
-                )
-              ],
-            ),
-          )
-        ],
+                  _buildInputUser(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CupertinoButton(
+                    color: Colors.white70,
+                    onPressed: () {
+                      signin(_user.text.toString(), _password.text.toString());
+                    },
+                    child: Text(
+                      'SIGN IN',
+                      style:
+                          TextStyle(color: button, fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      context.go(AppRoutes.SignUpRoute);
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white70,
+                            borderRadius: BorderRadius.circular(5)),
+                        padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                        child: Text(
+                          'Create Account',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: haian,
+                              fontWeight: FontWeight.w500),
+                        )),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     ));
   }
@@ -99,48 +100,30 @@ class _SignInPageState extends State<SignInPage> {
     var url = URL_LOGIN;
     Map data = {
       'username': username,
-      'password': '123@ha'.toString()+password+'haian'.toString(),
+      'password': '123@ha'.toString() + password + 'haian'.toString(),
     };
     var body = json.encode(data);
     if (username.isNotEmpty && password.isNotEmpty) {
-      const CircularProgressIndicator();
-      // EasyLoading.show(
-      //   status: 'Loading...',
-      //   maskType: EasyLoadingMaskType.black,
-      //   dismissOnTap: false,
-      //   );
+      LoadingAlert(context);
+
       final response = await http.post(Uri.parse(url),
           headers: {"Content-Type": "application/json"}, body: body);
+
       if (response.statusCode == 200) {
-        // EasyLoading.dismiss();
         var body = response.body;
         var data = jsonDecode(body.toString());
         // print(data['token']);
         Map<String, dynamic> decodedToken = JwtDecoder.decode(data['token']);
+
         var results = decodedToken.values.toList();
         tokenLogin = results[2];
         user = results[3].substring(0, 5);
         code = results[4];
-        // print(user);
-        // print(tokenLogin);
-        // print(code);
-        if (user == 'admin') {
-          _user.clear();
-          _password.clear();
-          // ignore: use_build_context_synchronously
-          // setState(() {
-            visibi = true;
-          // });
-          context.go(AppRoutes.AdminRoute);
-        }
-        else {
-          _user.clear();
-          _password.clear();
-          // setState(() {
-            visibi = false;
-            // });
-          context.go(AppRoutes.UserRoute);
-        }
+
+        _user.clear();
+        _password.clear();
+
+        context.go(AppRoutes.HomeRoute);
       } else {
         LoginAlert(context);
       }

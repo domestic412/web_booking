@@ -5,9 +5,8 @@ import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
 import 'package:web_booking/page/tracking/tracking_page.dart';
-import 'package:web_booking/screen/admin/admin_page.dart';
+import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/member/member_screen.dart';
-import 'package:web_booking/screen/user/user_page.dart';
 
 class AppRoutes {
   static const defaultRoute = "/";
@@ -16,8 +15,7 @@ class AppRoutes {
   static const TrackingRoute = "/Tracking";
   static const TestRoute = "/Test";
   static const BookingRoute = "/Booking";
-  static const AdminRoute = "/Admin";
-  static const UserRoute = "/User";
+  static const HomeRoute = "/Home";
   static const MemberRoute = "/MemberDashboard";
 
   static final GoRouter router = GoRouter(routes: <GoRoute>[
@@ -42,12 +40,8 @@ class AppRoutes {
       builder: (BuildContext context, state) => TrackingPage(),
     ),
     GoRoute(
-      path: AdminRoute,
-      builder: (BuildContext context, state) => AdminPage(),
-    ),
-    GoRoute(
-      path: UserRoute,
-      builder: (BuildContext context, state) => UserPage(),
+      path: HomeRoute,
+      builder: (BuildContext context, state) => HomePage(),
     ),
     GoRoute(
       path: MemberRoute,

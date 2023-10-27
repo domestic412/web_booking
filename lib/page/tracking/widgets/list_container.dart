@@ -4,24 +4,19 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
+import 'package:web_booking/page/tracking/popUp_detailContainer/popUp_container_detail.dart';
 import 'package:web_booking/page/tracking/tracking_page.dart';
-import 'package:web_booking/page/tracking/widgets/detail_container.dart';
+import 'package:web_booking/page/tracking/widgets/container_details.dart';
 
 // ignore: must_be_immutable
-class Data_Booking extends StatefulWidget {
-  Function updateDataContainer;
-  Data_Booking(this.updateDataContainer);
-
+class ListContainer extends StatefulWidget {
   @override
-  State<Data_Booking> createState() => _Data_BookingState();
+  State<ListContainer> createState() => _ListContainerState();
 }
-
-Future<ContainerTracking>? containerTracking;
-List? list_filter;
 // List<TrackingZimsEN>? list_filter_en;
 // List<TrackingZimsVN>? list_filter_vn;
 
-class _Data_BookingState extends State<Data_Booking> {
+class _ListContainerState extends State<ListContainer> {
   @override
   Widget build(BuildContext context) {
     return dataBooking();
@@ -68,99 +63,7 @@ class _Data_BookingState extends State<Data_Booking> {
                     SizedBox(
                       height: 5,
                     ),
-                    DataTable(
-                        border: TableBorder.all(),
-                        columns: [
-                          DataColumn(
-                            label: Expanded(
-                                child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SelectableText('seq'.tr(),
-                                    style: style15_black_bold),
-                              ],
-                            )),
-                          ),
-                          DataColumn(
-                            label: Expanded(
-                                child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SelectableText('container'.tr(),
-                                    style: style15_black_bold),
-                              ],
-                            )),
-                          ),
-                          DataColumn(
-                            label: Expanded(
-                                child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SelectableText('size_booking'.tr(),
-                                    style: style15_black_bold),
-                              ],
-                            )),
-                          ),
-                        ],
-                        rows: List.generate(data_bk!.length, (index) {
-                          return DataRow(cells: [
-                            DataCell(Container(
-                              width: 30,
-                              child: Center(
-                                  child: SelectableText(
-                                (index + 1).toString(),
-                                style: style13_black,
-                              )),
-                            )),
-                            DataCell(Row(
-                              children: [
-                                Container(
-                                  child: InkWell(
-                                      onTap: () {
-                                        print(bool_lang);
-                                        cntr_no =
-                                            data_bk[index].container.toString();
-                                        if (bool_lang == false) {
-                                          list_filter = data_cntr_en!
-                                              .where((item) => item.container!
-                                                  .contains(cntr_no!))
-                                              .toList();
-                                        } else {
-                                          list_filter = data_cntr_vn!
-                                              .where((item) => item.container!
-                                                  .contains(cntr_no!))
-                                              .toList();
-                                        }
-                                        print('$list_filter');
-                                        this.widget.updateDataContainer();
-                                      },
-                                      child: Container(
-                                          padding: EdgeInsets.only(bottom: 2),
-                                          decoration: BoxDecoration(
-                                              border: Border(
-                                                  bottom: BorderSide(
-                                            color: normalColor,
-                                            width: 1,
-                                          ))),
-                                          child: Text(
-                                            data_bk[index].container.toString(),
-                                            style: style13_blue_underline,
-                                          ))),
-                                ),
-                                SizedBox(
-                                  width: 520,
-                                )
-                              ],
-                            )),
-                            DataCell(Container(
-                              width: 120,
-                              child: Center(
-                                  child: SelectableText(
-                                      data_bk[index].size.toString(),
-                                      style: style13_black)),
-                            )),
-                          ]);
-                        })),
+                    DataListCont(data_bk, data_cntr_en, data_cntr_vn, context),
                   ]),
             );
           } else {
@@ -176,19 +79,111 @@ class _Data_BookingState extends State<Data_Booking> {
                     .toList();
               }
               print(list_filter);
-              return Data_Container();
+              return ContainerDetails();
             } else {
-              return Text('');
+              return SizedBox();
             }
           }
         }
-        return Text('');
+        return SizedBox();
       },
     );
   }
 
-  // void updateLanguage() {
-  //   setState(() {
-  //   });
-  // }
+  DataTable DataListCont(
+      List<TrackingContainers>? data_bk,
+      List<TrackingZimsEN>? data_cntr_en,
+      List<TrackingZimsVN>? data_cntr_vn,
+      BuildContext context) {
+    return DataTable(
+        border: TableBorder.all(),
+        columns: [
+          DataColumn(
+            label: Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SelectableText('seq'.tr(), style: style_text_Table_small_bold),
+              ],
+            )),
+          ),
+          DataColumn(
+            label: Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SelectableText('container'.tr(),
+                    style: style_text_Table_small_bold),
+              ],
+            )),
+          ),
+          DataColumn(
+            label: Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SelectableText('size_booking'.tr(),
+                    style: style_text_Table_small_bold),
+              ],
+            )),
+          ),
+        ],
+        rows: List.generate(data_bk!.length, (index) {
+          return DataRow(cells: [
+            DataCell(Container(
+              width: 30,
+              child: Center(
+                  child: SelectableText(
+                (index + 1).toString(),
+                style: style_text_Table_small,
+              )),
+            )),
+            DataCell(Row(
+              children: [
+                Container(
+                  child: InkWell(
+                      onTap: () {
+                        print(bool_lang);
+                        cntr_no = data_bk[index].container.toString();
+                        if (bool_lang == false) {
+                          list_filter = data_cntr_en!
+                              .where(
+                                  (item) => item.container!.contains(cntr_no!))
+                              .toList();
+                        } else {
+                          list_filter = data_cntr_vn!
+                              .where(
+                                  (item) => item.container!.contains(cntr_no!))
+                              .toList();
+                        }
+                        PopUpContainerDetail(context);
+                        // print('$list_filter');
+                      },
+                      child: Container(
+                          padding: EdgeInsets.only(bottom: 2),
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                            color: normalColor,
+                            width: 1,
+                          ))),
+                          child: Text(
+                            data_bk[index].container.toString(),
+                            style: style_text_Table_small_bold_container,
+                          ))),
+                ),
+                SizedBox(
+                  width: 520,
+                )
+              ],
+            )),
+            DataCell(Container(
+              width: 120,
+              child: Center(
+                  child: SelectableText(data_bk[index].size.toString(),
+                      style: style_text_Table_small)),
+            )),
+          ]);
+        }));
+  }
 }
