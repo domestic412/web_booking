@@ -9,7 +9,7 @@ class SideBarController extends GetxController {
   RxInt index = 0.obs;
 
   var pages = [
-    const MemberPage(),
+    MemberPage(),
     ListRequestPage(),
     RequestPage(),
     CheckContainerPage(),

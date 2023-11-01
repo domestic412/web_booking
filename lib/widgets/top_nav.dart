@@ -3,10 +3,49 @@ import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/screen/secure_storage/storage.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 
-AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
+// getTokenLogin() async {
+//   try {
+//     tokenLogin = await SecureStorage().readData('tokenLogin');
+//   } catch (error) {
+//     print(error);
+//     print('testsadgasgash');
+//   }
+// }
+
+// class Textuser extends StatefulWidget {
+//   const Textuser({super.key});
+
+//   @override
+//   State<Textuser> createState() => _TextuserState();
+// }
+
+// class _TextuserState extends State<Textuser> {
+//   @override
+//   void initState() {
+//     super.initState();
+//     getTokenLogin();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: 50,
+//       height: 50,
+//       child: Text(
+//         tokenLogin!,
+//         style: style_text_detail,
+//       ),
+//     );
+//   }
+// }
+
+AppBar topNavigationBar(
+  BuildContext context,
+) =>
     AppBar(
       leading: Container(
         padding: EdgeInsets.only(
@@ -52,8 +91,10 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           const SizedBox(
             width: 12,
           ),
+          // Textuser(),
           Text(
-            tokenLogin!,
+            // 'test',
+            tokenLogin,
             style: style_text_detail,
           ),
           const SizedBox(

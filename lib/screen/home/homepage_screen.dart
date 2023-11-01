@@ -2,20 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/screen/widgets/header.dart';
 import 'package:web_booking/screen/widgets/list_item.dart';
 import 'package:web_booking/widgets/top_nav.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+SideBarController sideBarController = Get.put(SideBarController());
+
+class _HomePageState extends State<HomePage> {
+  Future<void> getDataStorage() async {
+    await getData();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('initial 1');
+    getDataStorage();
+    print('initial 2');
+  }
 
   @override
   Widget build(BuildContext context) {
-    SideBarController sideBarController = Get.put(SideBarController());
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    // final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     // double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: topNavigationBar(context, scaffoldKey),
+      appBar: topNavigationBar(context),
       body: Row(
         children: [
           Drawer(

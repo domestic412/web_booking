@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/tracking/model_port.dart';
+import 'package:web_booking/model/schedule/model_port.dart';
 
 class ListPort extends StatefulWidget {
   const ListPort({super.key});
@@ -10,9 +10,8 @@ class ListPort extends StatefulWidget {
 }
 
 class _ListPortState extends State<ListPort> {
-  TextEditingController port_select1 = TextEditingController();
-  TextEditingController port_select2 = TextEditingController();
-
+  // TextEditingController port_select1 = TextEditingController();
+  // TextEditingController port_select2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return buildPort();
@@ -22,6 +21,9 @@ class _ListPortState extends State<ListPort> {
     return FutureBuilder<List<Ports>>(
         future: Ports().fetchPorts(),
         builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
           if (snapshot.hasData) {
             List listports = snapshot.data!;
             final List<DropdownMenuEntry<Ports>> portEntries =

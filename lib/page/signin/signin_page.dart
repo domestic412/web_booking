@@ -8,6 +8,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
+import 'package:web_booking/screen/secure_storage/storage.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/widgets/appbar/appbar.dart';
@@ -111,14 +112,18 @@ class _SignInPageState extends State<SignInPage> {
 
       if (response.statusCode == 200) {
         var body = response.body;
-        var data = jsonDecode(body.toString());
-        // print(data['token']);
-        Map<String, dynamic> decodedToken = JwtDecoder.decode(data['token']);
+        dataAuthorize = jsonDecode(body.toString())['token'];
 
-        var results = decodedToken.values.toList();
-        tokenLogin = results[2];
-        user = results[3].substring(0, 5);
-        code = results[4];
+        // // print(data['token']);
+        Map<String, dynamic> decodedToken = JwtDecoder.decode(dataAuthorize!);
+        results = decodedToken.values.toList();
+        // tokenLogin = results[2];
+        // user = results[3].substring(0, 5);
+        // code = results[4];     // use for model check container
+
+        // Save tokenLogin
+        await saveData();
+        await getData();
 
         _user.clear();
         _password.clear();
@@ -132,6 +137,20 @@ class _SignInPageState extends State<SignInPage> {
           .showSnackBar(const SnackBar(content: Text("Invalid")));
     }
   }
+}
+
+Future<void> saveData() async {
+  await SecureStorage().writeData('authorize', dataAuthorize!);
+  await SecureStorage().writeData('tokenLogin', results[2]);
+  await SecureStorage().writeData('user', results[3].substring(0, 5));
+  await SecureStorage().writeData('code', results[4]);
+}
+
+Future<void> getData() async {
+  tokenLogin = await SecureStorage().readData('tokenLogin');
+  user = await SecureStorage().readData('user');
+  code = await SecureStorage().readData('code');
+  tokenAuthorize = await SecureStorage().readData('authorize');
 }
 
 Widget _buildAppbarImage() {

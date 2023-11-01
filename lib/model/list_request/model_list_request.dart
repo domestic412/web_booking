@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/screen/secure_storage/storage.dart';
 
 // List<ListRequestResponse> postFromJson(String str) =>
 //     List<ListRequestResponse>.from(json.decode(str).map((x) => ListRequestResponse.fromJson(x)));
@@ -64,12 +66,17 @@ class ListRequestResponse {
   }
 
   Future<List<ListRequestResponse>> fetchListRequest() async {
-    tokenLogin = 'Phòng IT';
+    // String _token = await SecureStorage().readData('tokenLogin');
+    // print(_token);
+
+    // var url = '$SERVER/Requests/GetRequestByUser?user=$tokenLogin';
     var url = '$SERVER/Requests/GetRequestByUser?user=$tokenLogin';
     final response = await http.get(Uri.parse(url), headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+      "Authorization": "Bearer $tokenAuthorize",
     });
+    print(tokenAuthorize);
     if (response.statusCode == 200) {
       var body = response.body;
       print('Data List Request');

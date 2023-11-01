@@ -8,6 +8,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_list_request.dart';
 import 'package:intl/intl.dart';
+import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/screen/list_request/popUp_detail/detail_list_request.dart';
 
 // ignore: must_be_immutable
@@ -25,12 +26,16 @@ class _ListRequestPageState extends State<ListRequestPage> {
   Color? _color;
   String? _trangthai;
 
+  // Future<void> getDataStorage() async {
+  //   await getData();
+  // }
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // fetch data list request
     listRequest = ListRequestResponse().fetchListRequest();
+    // getDataStorage();
   }
 
   @override

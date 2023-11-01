@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/screen/secure_storage/storage.dart';
 
 class ContainerResponse {
   int? id;
@@ -122,6 +123,8 @@ class ContainerResponse {
 
   static Future<List<ContainerResponse>> fetchContainerResponses(
       String cntr) async {
+    // String _code = await SecureStorage().readData('code');
+    // print(_code);
     var url = '$SERVER/CheckContainer?container=$cntr&code=$code';
     if (cntr.isNotEmpty) {
       final response = await http

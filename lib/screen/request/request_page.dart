@@ -6,7 +6,9 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/request/popUpAlert/alert.dart';
+import 'package:web_booking/screen/secure_storage/storage.dart';
 import 'dart:html' as html;
 
 import 'package:web_booking/screen/widgets/list_item.dart';
@@ -265,14 +267,10 @@ class _RequestPageState extends State<RequestPage> {
   }
 
   Future<void> PostRequest(String cntr) async {
+    // String _token = await SecureStorage().readData('tokenLogin');
+
     //PostRequest with multipartFile
     if (cntr.isNotEmpty) {
-      // EasyLoading.show(
-      //   status: 'Loading...',
-      //   maskType: EasyLoadingMaskType.black,
-      //   dismissOnTap: false,
-      //   );
-
       // Create a FormData object to store your files
       final formData = html.FormData();
       // Assuming a list of XFile objects in _listImage
@@ -286,11 +284,15 @@ class _RequestPageState extends State<RequestPage> {
       formData.append('TenYeuCau', NameRequest);
       formData.append('NoiDung', noiDung);
       formData.append('Cntrno', cntr.toUpperCase());
-      formData.append('NguoiGui', tokenLogin!);
+      // formData.append('NguoiGui', _token);
+      formData.append('NguoiGui', tokenLogin);
       formData.append('Id', '0');
 
       final request = html.HttpRequest();
-      request.open('POST', URL_REQUEST);
+      request.open(
+        'POST',
+        URL_REQUEST,
+      );
       request.send(formData);
       request.onLoad.listen((html.ProgressEvent event) {
         if (request.status == 200) {

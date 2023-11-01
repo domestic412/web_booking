@@ -1,11 +1,21 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/tracking/model_tracking.dart';
+import 'package:web_booking/utils/app_route_config.dart';
 
-class ContainerTrackingSearch extends StatelessWidget {
+class ContainerTrackingSearch extends StatefulWidget {
   const ContainerTrackingSearch({super.key});
+
+  @override
+  State<ContainerTrackingSearch> createState() =>
+      _ContainerTrackingSearchState();
+}
+
+class _ContainerTrackingSearchState extends State<ContainerTrackingSearch> {
+  TextEditingController _input = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +60,7 @@ class ContainerTrackingSearch extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
             ),
             child: TextField(
+              controller: _input,
               decoration: InputDecoration(
                   hintText: 'searchNumber'.tr(), border: InputBorder.none),
             ),
@@ -63,7 +74,14 @@ class ContainerTrackingSearch extends StatelessWidget {
             child: InkWell(
               splashColor: green,
               highlightColor: blue,
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  cntr_no_tracking = _input.text;
+                  containerTracking = ContainerTracking()
+                      .fetchContainerTracking(_input.text.toUpperCase());
+                  context.go(AppRoutes.TrackingRoute);
+                });
+              },
               child: Container(
                 alignment: Alignment.center,
                 width: 100,

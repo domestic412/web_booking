@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
-import 'package:web_booking/model/tracking/model_voyage.dart';
+import 'package:web_booking/model/schedule/model_voyage.dart';
+import 'package:intl/intl.dart';
 
-import '../model/tracking/model_port.dart';
+import '../model/schedule/model_port.dart';
 
 double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
@@ -37,9 +38,12 @@ String? updateTime_CheckCntr;
 String dropdownValue = 'EN';
 
 // Login
-String? user;
-String? tokenLogin;
-String? code;
+List results = [];
+String? dataAuthorize;
+String tokenAuthorize = '';
+String user = '';
+String tokenLogin = '';
+String code = '';
 
 // List Request
 int? id_ListRequest;
@@ -70,9 +74,19 @@ String? idPort1;
 String? idPort2;
 Future<Voyage>? fetchVoyage;
 
+// Port select in Booking page and Schedule
+String? dateSelect;
+String port1 = '';
+String port2 = '';
+TextEditingController port_select1 = TextEditingController();
+TextEditingController port_select2 = TextEditingController();
+TextEditingController date_select = TextEditingController();
+// final List<DropdownMenuEntry<Ports>> portEntries = <DropdownMenuEntry<Ports>>[];
+
 // Tracking page
 Future<ContainerTracking>? containerTracking;
 List? list_filter;
+String cntr_no_tracking = '';
 
 // Container Details page
 Color? color_time;
@@ -81,7 +95,6 @@ String? nameDepo;
 String? idDepo;
 int? soluongcontDepo;
 
-bool bool_data_container = false;
 String? cntr_no;
 
 // Choose language
