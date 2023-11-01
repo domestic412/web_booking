@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:web_booking/screen/secure_storage/storage.dart';
 
-SideBarController sideBarController = Get.put(SideBarController());
+// SideBarController sideBarController = Get.put(SideBarController());
+
+// getUser() async {
+//   String _user = await SecureStorage().readData('user');
+//   return _user;
+// }
 
 Widget buiderMenuItems(BuildContext context) {
   return Container(

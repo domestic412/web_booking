@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/screen/member/widgets/members_table.dart';
+import 'package:web_booking/screen/secure_storage/storage.dart';
 
 class MemberPage extends StatelessWidget {
   const MemberPage({super.key});
@@ -21,6 +22,11 @@ class MemberPage extends StatelessWidget {
                     "User's List",
                     style: TextStyle(fontSize: 30, color: haian),
                   ),
+                  TextButton(
+                      onPressed: () {
+                        print1();
+                      },
+                      child: Text('Print'))
                 ],
               ),
               SizedBox(
@@ -32,5 +38,10 @@ class MemberPage extends StatelessWidget {
         )),
       ],
     );
+  }
+
+  print1() async {
+    String abc = await SecureStorage().readData('tokenLogin');
+    print(abc);
   }
 }

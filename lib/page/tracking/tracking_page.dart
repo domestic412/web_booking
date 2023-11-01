@@ -4,7 +4,6 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
-import 'package:web_booking/page/tracking/widgets/container_details.dart';
 
 import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
 import 'package:web_booking/page/tracking/widgets/list_container.dart';
@@ -24,6 +23,12 @@ final ScrollController horizontalScroll = ScrollController();
 double width_20 = 20;
 
 class _TrackingPageState extends State<TrackingPage> {
+  @override
+  void initState() {
+    super.initState();
+    input.text = cntr_no_tracking;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +92,6 @@ class _TrackingPageState extends State<TrackingPage> {
                                   containerTracking = ContainerTracking()
                                       .fetchContainerTracking(
                                           input.text.toUpperCase());
-                                  bool_data_container = false;
                                 });
                               },
                               child: Container(

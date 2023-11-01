@@ -16,10 +16,10 @@ class UserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SideBarController sideBarController = Get.put(SideBarController());
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    // final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     // double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: topNavigationBar(context, scaffoldKey),
+      appBar: topNavigationBar(context),
       body: Row(
         children: [
           Drawer(
