@@ -4,10 +4,10 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 
-List<imageRequestDetailResponse> postFromJson(String str) =>
-    List<imageRequestDetailResponse>.from(json.decode(str).map((x) => imageRequestDetailResponse.fromJson(x)));
+List<imageResponse> postFromJson(String str) => List<imageResponse>.from(
+    json.decode(str).map((x) => imageResponse.fromJson(x)));
 
-class imageRequestDetailResponse {
+class imageResponse {
   int? id;
   int? requestId;
   String? data;
@@ -15,7 +15,7 @@ class imageRequestDetailResponse {
   String? requestImage;
   Null request;
 
-  imageRequestDetailResponse(
+  imageResponse(
       {this.id,
       this.requestId,
       this.data,
@@ -23,7 +23,7 @@ class imageRequestDetailResponse {
       this.requestImage,
       this.request});
 
-  imageRequestDetailResponse.fromJson(Map<String, dynamic> json) {
+  imageResponse.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     requestId = json['requestId'];
     data = json['data'];
@@ -43,27 +43,22 @@ class imageRequestDetailResponse {
     return data;
   }
 
-  Future<List<imageRequestDetailResponse>> fetchImageRequestDetail() async {
-    var url = '$SERVER/Requests/GetDBMultiImage?id=$id_request';
-    if (id_request!.isNotEmpty) {
-      // EasyLoading.show(
-      //   status: 'Loading...',
-      //   maskType: EasyLoadingMaskType.black,
-      //   dismissOnTap: true,
-      //   );
-      final response = await http.get(Uri.parse(url),);
-      if (response.statusCode == 200) {
-        // EasyLoading.dismiss();
-        var body = response.body;
-        print('Data Image Request Detail');
-        List dataDetail = jsonDecode(body);
-        return dataDetail.map((data) => imageRequestDetailResponse.fromJson(data)).toList();
-        } else {
-          // EasyLoading.dismiss();
-          throw Exception('Cannot connect to Server or no have Image');
-        }
+  Future<List<imageResponse>> fetchImage(int id) async {
+    var url = '$SERVER/Requests/GetDBMultiImage?id=$id';
+    final response = await http.get(Uri.parse(url), headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+      "Authorization": "Bearer $tokenAuthorize",
+    });
+    if (response.statusCode == 200) {
+      // EasyLoading.dismiss();
+      var body = response.body;
+      print('Data Image Request Detail');
+      List dataDetail = jsonDecode(body);
+      return dataDetail.map((data) => imageResponse.fromJson(data)).toList();
     } else {
-      throw Exception('Failed to load because no have ID');
+      // EasyLoading.dismiss();
+      throw Exception('Cannot connect to Server or no have Image');
     }
   }
 }

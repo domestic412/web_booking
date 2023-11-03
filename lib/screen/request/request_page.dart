@@ -8,7 +8,7 @@ import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/request/popUpAlert/alert.dart';
-import 'package:web_booking/screen/secure_storage/storage.dart';
+import 'package:web_booking/screen/Data_storage/dataStorage.dart';
 import 'dart:html' as html;
 
 import 'package:web_booking/screen/widgets/list_item.dart';
@@ -56,7 +56,7 @@ class _RequestPageState extends State<RequestPage> {
         itemCount: numberImage,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            margin: EdgeInsets.only(right: 5),
+            margin: EdgeInsets.only(right: 5, top: 10),
             child: InkWell(
               onTap: () {
                 showDialog(

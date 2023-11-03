@@ -1,15 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:web_booking/constants/global.dart';
-import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/screen/Data_storage/dataStorage.dart';
+import 'package:http/http.dart' as http;
 
-// List<ListRequestResponse> postFromJson(String str) =>
-//     List<ListRequestResponse>.from(json.decode(str).map((x) => ListRequestResponse.fromJson(x)));
-
-class ListRequestResponse {
+class ListApprovalResponse {
   int? id;
   String? tenYeuCau;
   String? noiDung;
@@ -21,8 +16,9 @@ class ListRequestResponse {
   String? userXuly;
   String? updateTimeCheckRequest;
   String? updateTime;
+  String? imageName;
 
-  ListRequestResponse(
+  ListApprovalResponse(
       {this.id,
       this.tenYeuCau,
       this.noiDung,
@@ -33,20 +29,24 @@ class ListRequestResponse {
       this.noteHangTau,
       this.userXuly,
       this.updateTimeCheckRequest,
-      this.updateTime});
+      this.updateTime,
+      this.imageName});
 
-  ListRequestResponse.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    tenYeuCau = json['tenYeuCau'];
-    noiDung = json['noiDung'];
-    cntrno = json['cntrno'];
-    sizeType = json['sizeType'];
-    nguoiGui = json['nguoiGui'];
-    trangThaiYc = json['trangThaiYc'];
-    noteHangTau = json['noteHangTau'];
-    userXuly = json['userXuly'];
-    updateTimeCheckRequest = json['updateTimeCheckRequest'];
-    updateTime = json['updateTime'];
+  factory ListApprovalResponse.fromJson(Map<String, dynamic> json) {
+    return ListApprovalResponse(
+      id: json['id'],
+      tenYeuCau: json['tenYeuCau'],
+      noiDung: json['noiDung'],
+      cntrno: json['cntrno'],
+      sizeType: json['sizeType'],
+      nguoiGui: json['nguoiGui'],
+      trangThaiYc: json['trangThaiYc'],
+      noteHangTau: json['noteHangTau'],
+      userXuly: json['userXuly'],
+      updateTimeCheckRequest: json['updateTimeCheckRequest'],
+      updateTime: json['updateTime'],
+      imageName: json['imageName'],
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -62,23 +62,22 @@ class ListRequestResponse {
     data['userXuly'] = this.userXuly;
     data['updateTimeCheckRequest'] = this.updateTimeCheckRequest;
     data['updateTime'] = this.updateTime;
+    data['imageName'] = this.imageName;
     return data;
   }
 
-  Future<List<ListRequestResponse>> fetchListRequest() async {
-    var url = '$SERVER/Requests/GetRequestByUser?user=$tokenLogin';
+  Future<List<ListApprovalResponse>> fetchListApproval() async {
+    var url = '$SERVER/Requests';
     final response = await http.get(Uri.parse(url), headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+      "Content-Type": "application/json",
       "Authorization": "Bearer $tokenAuthorize",
     });
-    print(tokenAuthorize);
     if (response.statusCode == 200) {
       var body = response.body;
-      print('Data List Request');
-      List dataListRequest = json.decode(body);
-      return dataListRequest
-          .map((data) => ListRequestResponse.fromJson(data))
+      print('Data List Request Admin');
+      List dataListApproval = json.decode(body);
+      return dataListApproval
+          .map((data) => ListApprovalResponse.fromJson(data))
           .toList();
     } else {
       throw Exception('Error');

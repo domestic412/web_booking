@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/member/widgets/members_table.dart';
-import 'package:web_booking/screen/secure_storage/storage.dart';
 
 class MemberPage extends StatelessWidget {
   const MemberPage({super.key});
@@ -24,7 +24,7 @@ class MemberPage extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {
-                        print1();
+                        print(tokenLogin);
                       },
                       child: Text('Print'))
                 ],
@@ -40,8 +40,8 @@ class MemberPage extends StatelessWidget {
     );
   }
 
-  print1() async {
-    String abc = await SecureStorage().readData('tokenLogin');
-    print(abc);
-  }
+  // print1() async {
+  //   String abc = await SecureStorage().readData('tokenLogin');
+  //   print(abc);
+  // }
 }

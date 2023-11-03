@@ -1,14 +1,16 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
-import 'package:web_booking/screen/secure_storage/storage.dart';
+import 'package:web_booking/screen/Data_storage/dataStorage.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/widgets/appbar/appbar.dart';
@@ -124,6 +126,10 @@ class _SignInPageState extends State<SignInPage> {
         // Save tokenLogin
         await saveData();
         await getData();
+        // Storage().box.put('authorize', dataAuthorize!);
+        // Storage().box.put('tokenLogin', results[2]);
+        // Storage().box.put(user, results[3].substring(0, 5));
+        // Storage().box.put('code', results[4]);
 
         _user.clear();
         _password.clear();
@@ -139,18 +145,26 @@ class _SignInPageState extends State<SignInPage> {
   }
 }
 
-Future<void> saveData() async {
-  await SecureStorage().writeData('authorize', dataAuthorize!);
-  await SecureStorage().writeData('tokenLogin', results[2]);
-  await SecureStorage().writeData('user', results[3].substring(0, 5));
-  await SecureStorage().writeData('code', results[4]);
+saveData() async {
+  box = await Hive.openBox('myData');
+  box.put('authorize', dataAuthorize!);
+  box.put('tokenLogin', results[2]);
+  box.put('user', results[3].substring(0, 5));
+  box.put('code', results[4]);
 }
 
-Future<void> getData() async {
-  tokenLogin = await SecureStorage().readData('tokenLogin');
-  user = await SecureStorage().readData('user');
-  code = await SecureStorage().readData('code');
-  tokenAuthorize = await SecureStorage().readData('authorize');
+getData() async {
+  print('get Data 1');
+  try {
+    box = await Hive.openBox('myData');
+    tokenAuthorize = box.get('authorize');
+    tokenLogin = box.get('tokenLogin');
+    user = box.get('user');
+    code = box.get('code');
+  } catch (e) {
+    print('This error is: $e');
+  }
+  print('get Data 2');
 }
 
 Widget _buildAppbarImage() {

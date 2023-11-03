@@ -49,8 +49,7 @@ TextStyle style_text_Table_small_underline =
     TextStyle(fontSize: 14, color: black, decoration: TextDecoration.underline);
 
 // style list request detail
-TextStyle style_title_detail =
-    TextStyle(fontSize: 18, color: black, fontWeight: FontWeight.bold);
+TextStyle style_title_detail = TextStyle(fontSize: 20, color: black);
 TextStyle style_text_detail = TextStyle(fontSize: 16, color: black);
 TextStyle style_text_detail_bold =
     TextStyle(fontSize: 17, color: black, fontWeight: FontWeight.bold);
