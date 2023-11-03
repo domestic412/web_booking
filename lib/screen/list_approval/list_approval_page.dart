@@ -219,10 +219,10 @@ class _ListApprovalPageState extends State<ListApprovalPage> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       fetchApprovalDetail(
-                                          list_filter_approval[index]
-                                              .id
-                                              .toString());
+                                          list_filter_approval[index].id!);
                                       id_request_for_image =
+                                          list_filter_approval[index].id;
+                                      id_ApprovalDetail =
                                           list_filter_approval[index].id;
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -254,48 +254,44 @@ class _ListApprovalPageState extends State<ListApprovalPage> {
     );
   }
 
-  Future<void> fetchApprovalDetail(String id) async {
+  Future<void> fetchApprovalDetail(int id) async {
     var url = '$SERVER/Requests/$id';
-    if (id.isNotEmpty) {
-      final response = await http.get(Uri.parse(url), headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $tokenAuthorize",
-      });
-      if (response.statusCode == 200) {
-        var body = response.body;
-        print('Data list approval Detail');
-        final dataDetail = jsonDecode(body);
-        id_ApprovalDetail = dataDetail['id'];
-        tenYeuCau_ApprovalDetail = dataDetail['tenYeuCau'];
-        noiDung_ApprovalDetail = dataDetail['noiDung'];
-        cntrno_ApprovalDetail = dataDetail['cntrno'];
-        sizeType_ApprovalDetail = dataDetail['sizeType'];
-        trangThaiYc_ApprovalDetail = dataDetail['trangThaiYc'];
-        noteHangTau_ApprovalDetail = dataDetail['noteHangTau'];
-        updateTime_ApprovalDetail = dataDetail['updateTime'];
-        // if (dataDetail['imageName'] != null) {
-        //   String base64imageName = dataDetail['imageName'];
-        //   // print(base64imageName.length);
-        //   if (base64imageName.length % 4 > 0) {
-        //     base64imageName += '=' * (4 - base64imageName.length % 4);
-        //     setState(() {
-        //       decodedbytes = base64.decode(base64imageName);
-        //     });
-        //   } else {
-        //     setState(() {
-        //       decodedbytes = base64.decode(base64imageName);
-        //     });
-        //   }
-        // } else {
-        //   decodedbytes = null;
-        // }
-        // ignore: use_build_context_synchronously
-        PopUpApproval(context);
-      } else {
-        throw Exception('Error');
-      }
+    final response = await http.get(Uri.parse(url), headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer $tokenAuthorize",
+    });
+    if (response.statusCode == 200) {
+      var body = response.body;
+      print('Data list approval Detail');
+      final dataDetail = jsonDecode(body);
+      // id_ApprovalDetail = dataDetail['id'];      //declaration id_ApprovalDetail type int NOT string
+      tenYeuCau_ApprovalDetail = dataDetail['tenYeuCau'];
+      noiDung_ApprovalDetail = dataDetail['noiDung'];
+      cntrno_ApprovalDetail = dataDetail['cntrno'];
+      sizeType_ApprovalDetail = dataDetail['sizeType'];
+      trangThaiYc_ApprovalDetail = dataDetail['trangThaiYc'];
+      noteHangTau_ApprovalDetail = dataDetail['noteHangTau'];
+      updateTime_ApprovalDetail = dataDetail['updateTime'];
+      // if (dataDetail['imageName'] != null) {
+      //   String base64imageName = dataDetail['imageName'];
+      //   // print(base64imageName.length);
+      //   if (base64imageName.length % 4 > 0) {
+      //     base64imageName += '=' * (4 - base64imageName.length % 4);
+      //     setState(() {
+      //       decodedbytes = base64.decode(base64imageName);
+      //     });
+      //   } else {
+      //     setState(() {
+      //       decodedbytes = base64.decode(base64imageName);
+      //     });
+      //   }
+      // } else {
+      //   decodedbytes = null;
+      // }
+      // ignore: use_build_context_synchronously
+      PopUpApproval(context);
     } else {
-      throw Exception('Failed to load');
+      throw Exception('Error');
     }
   }
 }

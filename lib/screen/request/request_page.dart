@@ -56,7 +56,7 @@ class _RequestPageState extends State<RequestPage> {
         itemCount: numberImage,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            margin: EdgeInsets.only(right: 5),
+            margin: EdgeInsets.only(right: 5, top: 10),
             child: InkWell(
               onTap: () {
                 showDialog(

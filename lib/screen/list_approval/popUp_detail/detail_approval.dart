@@ -18,7 +18,9 @@ String _dt_approval = DateFormat("yyyy-MM-dd  hh:mm")
     .format(DateTime.parse(updateTime_ApprovalDetail!));
 
 Future<void> PopUpApproval(BuildContext context) {
-  _note.text = noteHangTau_ApprovalDetail!;
+  noteHangTau_ApprovalDetail != null
+      ? _note.text = noteHangTau_ApprovalDetail!
+      : null;
   return showDialog<void>(
       context: context,
       useSafeArea: false,
@@ -277,7 +279,12 @@ class _RadioStatusState extends State<RadioStatus> {
     // print(data);
     var body = json.encode(data);
     final response = await http.post(Uri.parse(url),
-        headers: {"Content-Type": "application/json"}, body: body);
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $tokenAuthorize",
+        },
+        body: body);
+    Navigator.pop(context);
     if (response.statusCode == 200) {
       setState(() {});
     } else {

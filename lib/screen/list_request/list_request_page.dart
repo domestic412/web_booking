@@ -284,7 +284,7 @@ class _ListRequestPageState extends State<ListRequestPage> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       fetchListRequestDetail(
-                                          _list_filter[index].id.toString());
+                                          _list_filter[index].id!);
                                       id_request_for_image =
                                           _list_filter[index].id;
                                     },
@@ -318,33 +318,30 @@ class _ListRequestPageState extends State<ListRequestPage> {
     );
   }
 
-  Future<void> fetchListRequestDetail(String id) async {
+  Future<void> fetchListRequestDetail(int id) async {
     var url = '$SERVER/Requests/$id';
-    if (id.isNotEmpty) {
-      final response = await http.get(Uri.parse(url), headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $tokenAuthorize",
-      });
-      if (response.statusCode == 200) {
-        // EasyLoading.dismiss();
-        var body = response.body;
-        print('Data List Request Detail');
-        final dataDetail = jsonDecode(body);
-        // id_request_for_image = dataDetail['id'];
-        tenYeuCau_ListRequestDetail = dataDetail['tenYeuCau'];
-        noiDung_ListRequestDetail = dataDetail['noiDung'];
-        cntrno_ListRequestDetail = dataDetail['cntrno'];
-        sizeType_ListRequestDetail = dataDetail['sizeType'];
-        trangThaiYc_ListRequestDetail = dataDetail['trangThaiYc'];
-        noteHangTau_ListRequestDetail = dataDetail['noteHangTau'];
-        updateTime_ListRequestDetail = dataDetail['updateTime'];
-        PopUpListRequest(context);
-      } else {
-        // EasyLoading.dismiss();
-        throw Exception('Cannot connect to server');
-      }
+
+    final response = await http.get(Uri.parse(url), headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer $tokenAuthorize",
+    });
+    if (response.statusCode == 200) {
+      // EasyLoading.dismiss();
+      var body = response.body;
+      print('Data List Request Detail');
+      final dataDetail = jsonDecode(body);
+      // id_request_for_image = dataDetail['id'];
+      tenYeuCau_ListRequestDetail = dataDetail['tenYeuCau'];
+      noiDung_ListRequestDetail = dataDetail['noiDung'];
+      cntrno_ListRequestDetail = dataDetail['cntrno'];
+      sizeType_ListRequestDetail = dataDetail['sizeType'];
+      trangThaiYc_ListRequestDetail = dataDetail['trangThaiYc'];
+      noteHangTau_ListRequestDetail = dataDetail['noteHangTau'];
+      updateTime_ListRequestDetail = dataDetail['updateTime'];
+      PopUpListRequest(context);
     } else {
-      throw Exception('Failed to load because no have ID');
+      // EasyLoading.dismiss();
+      throw Exception('Cannot connect to server');
     }
   }
 }

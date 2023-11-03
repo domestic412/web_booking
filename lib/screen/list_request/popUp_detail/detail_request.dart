@@ -226,7 +226,8 @@ class button_detailRequest extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(8)))),
             onPressed: () {
               savecntr = cntrno_ListRequestDetail!;
-              sideBarController.index.value = 2;
+              sideBarController.index.value = 3;
+              Navigator.pop(context);
             },
             child: Container(
               padding: EdgeInsets.all(10),

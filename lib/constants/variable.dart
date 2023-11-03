@@ -47,7 +47,7 @@ String tokenLogin = '';
 String code = '';
 
 //id_ApprovalDetail = dataDetail['id'];
-String? id_ApprovalDetail;
+int? id_ApprovalDetail;
 String? tenYeuCau_ApprovalDetail;
 String? noiDung_ApprovalDetail;
 String? cntrno_ApprovalDetail;
