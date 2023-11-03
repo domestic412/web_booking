@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_image_request_detail.dart';
-import 'package:web_booking/widgets/horizontal_scroll.dart';
 
 class ImageRequest extends StatefulWidget {
   const ImageRequest({Key? key}) : super(key: key);
@@ -21,9 +19,9 @@ class _ImageRequestState extends State<ImageRequest> {
     );
   }
 
-  FutureBuilder<List<imageRequestDetailResponse>> ImageResponse() {
-    return FutureBuilder<List<imageRequestDetailResponse>>(
-        future: imageRequestDetailResponse().fetchImageRequestDetail(),
+  FutureBuilder<List<imageResponse>> ImageResponse() {
+    return FutureBuilder<List<imageResponse>>(
+        future: imageResponse().fetchImage(id_request_for_image!),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

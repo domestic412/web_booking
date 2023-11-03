@@ -12,8 +12,6 @@ class ContainerDetails1 extends StatefulWidget {
 }
 
 class _ContainerDetails1State extends State<ContainerDetails1> {
-  // String? _dt;
-
   @override
   Widget build(BuildContext context) {
     return Column(

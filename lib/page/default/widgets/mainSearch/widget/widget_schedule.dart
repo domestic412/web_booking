@@ -158,16 +158,23 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                 Container(
                   width: deviceWidth(context),
                   margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
-                  padding: const EdgeInsets.only(left: 15),
                   decoration: BoxDecoration(
                     color: Colors.white60,
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: DropdownMenu<Ports>(
+                    inputDecorationTheme: InputDecorationTheme(
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white60)),
+                        border: OutlineInputBorder()),
                     menuHeight: 500,
+                    width: 360,
                     controller: port_select1,
                     enableFilter: true,
-                    label: Text('departure'.tr()),
+                    label: Text(
+                      'departure'.tr(),
+                      style: TextStyle(fontSize: 16),
+                    ),
                     dropdownMenuEntries: _portEntries,
                     onSelected: (Ports? id) {
                       setState(() {
@@ -180,17 +187,23 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                 Container(
                   width: deviceWidth(context),
                   margin: const EdgeInsets.only(left: 20, right: 20),
-                  padding: const EdgeInsets.only(left: 15),
                   decoration: BoxDecoration(
                     color: Colors.white60,
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: DropdownMenu<Ports>(
-                    // width: deviceWidth(context),
+                    inputDecorationTheme: InputDecorationTheme(
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white60)),
+                        border: OutlineInputBorder()),
+                    width: 360,
                     menuHeight: 500,
                     controller: port_select2,
                     enableFilter: true,
-                    label: Text('arrival'.tr()),
+                    label: Text(
+                      'arrival'.tr(),
+                      style: TextStyle(fontSize: 16),
+                    ),
                     dropdownMenuEntries: _portEntries,
                     onSelected: (Ports? id) {
                       setState(() {

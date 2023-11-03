@@ -39,11 +39,22 @@ String dropdownValue = 'EN';
 
 // Login
 List results = [];
+var box;
 String? dataAuthorize;
 String tokenAuthorize = '';
 String user = '';
 String tokenLogin = '';
 String code = '';
+
+//id_ApprovalDetail = dataDetail['id'];
+String? id_ApprovalDetail;
+String? tenYeuCau_ApprovalDetail;
+String? noiDung_ApprovalDetail;
+String? cntrno_ApprovalDetail;
+String? sizeType_ApprovalDetail;
+String? trangThaiYc_ApprovalDetail;
+String? noteHangTau_ApprovalDetail;
+String? updateTime_ApprovalDetail;
 
 // List Request
 int? id_ListRequest;
@@ -51,8 +62,9 @@ String? cntrno_ListRequest;
 String? trangThaiYc_ListRequest;
 
 // List Request Detail
-String? id_request;
+int? id_request_for_image;
 String savecntr = '';
+// String? id_ListRequestDetail;
 String? tenYeuCau_ListRequestDetail;
 String? noiDung_ListRequestDetail;
 String? cntrno_ListRequestDetail;

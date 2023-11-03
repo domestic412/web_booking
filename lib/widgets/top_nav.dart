@@ -3,47 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/screen/secure_storage/storage.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 
-// getTokenLogin() async {
-//   try {
-//     tokenLogin = await SecureStorage().readData('tokenLogin');
-//   } catch (error) {
-//     print(error);
-//     print('testsadgasgash');
-//   }
-// }
-
-// class Textuser extends StatefulWidget {
-//   const Textuser({super.key});
-
-//   @override
-//   State<Textuser> createState() => _TextuserState();
-// }
-
-// class _TextuserState extends State<Textuser> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     getTokenLogin();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 50,
-//       height: 50,
-//       child: Text(
-//         tokenLogin!,
-//         style: style_text_detail,
-//       ),
-//     );
-//   }
-// }
-
-AppBar topNavigationBar(
+topNavigationBar(
   BuildContext context,
 ) =>
     AppBar(
@@ -91,9 +54,7 @@ AppBar topNavigationBar(
           const SizedBox(
             width: 12,
           ),
-          // Textuser(),
           Text(
-            // 'test',
             tokenLogin,
             style: style_text_detail,
           ),

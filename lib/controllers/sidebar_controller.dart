@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:web_booking/screen/list_approval/list_approval_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
 import 'package:web_booking/screen/checkcontainer/check_container_page.dart';
 import 'package:web_booking/screen/list_request/list_request_page.dart';
@@ -10,6 +11,7 @@ class SideBarController extends GetxController {
 
   var pages = [
     MemberPage(),
+    ListApprovalPage(),
     ListRequestPage(),
     RequestPage(),
     CheckContainerPage(),

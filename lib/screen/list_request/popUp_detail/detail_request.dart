@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
-import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/list_request/popUp_detail/detail_image_list_request.dart';
 import 'package:intl/intl.dart';
-import 'package:web_booking/screen/widgets/list_item.dart';
 
-final keytext = GlobalKey();
-String _dt = DateFormat("yyyy-MM-dd  hh:mm")
+// final keytext = GlobalKey();
+String _dt_request = DateFormat("yyyy-MM-dd  hh:mm")
     .format(DateTime.parse(updateTime_ListRequestDetail!));
 
 Future<void> PopUpListRequest(BuildContext context) {
@@ -35,122 +33,122 @@ Future<void> PopUpListRequest(BuildContext context) {
                   )
                 ],
               ),
-              content: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Yêu cầu',
-                    style: style_text_detail_bold,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    '$tenYeuCau_ListRequestDetail',
-                    style: style_text_detail,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Nội dung',
-                    style: style_text_detail_bold,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text('$noiDung_ListRequestDetail',
-                      textAlign: TextAlign.left,
-                      style: style_text_detail,
-                      key: keytext),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Container / Size',
-                    style: style_text_detail_bold,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  RichText(
-                      text: TextSpan(children: <TextSpan>[
-                    TextSpan(
-                        text: '$cntrno_ListRequestDetail ',
-                        style: style_text_cntr_detail),
-                    TextSpan(
-                        text: '/ $sizeType_ListRequestDetail',
-                        style: style_text_detail)
-                  ])),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Ảnh thực tế',
-                        style: style_text_detail_bold,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const ImageRequest(),
-                    ],
-                  ),
-                  Text(
-                    'Trạng thái xử lý',
-                    style: style_text_detail_bold,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  if (trangThaiYc_ListRequestDetail == 'A')
-                    setup1()
-                  else if (trangThaiYc_ListRequestDetail == 'C')
-                    setup2()
-                  else
-                    setup3(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Ghi chú hãng tàu',
-                    style: style_text_detail_bold,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  if (noteHangTau_ListRequestDetail == null)
-                    const Text('')
-                  else
+              content: Container(
+                width: 630,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      '$noteHangTau_ListRequestDetail',
+                      'Yêu cầu',
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      '$tenYeuCau_ListRequestDetail',
                       style: style_text_detail,
                     ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Ngày cập nhật',
-                    style: style_text_detail_bold,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    _dt,
-                    style: style_text_detail,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  if (trangThaiYc_ListRequestDetail == 'R')
-                    const button_detailRequest()
-                  else
-                    const Text(''),
-                ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Nội dung',
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      '$noiDung_ListRequestDetail',
+                      textAlign: TextAlign.left,
+                      style: style_text_detail,
+                      // key: keytext
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Container / Size',
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    RichText(
+                        text: TextSpan(children: <TextSpan>[
+                      TextSpan(
+                          text: '$cntrno_ListRequestDetail ',
+                          style: style_text_cntr_detail),
+                      TextSpan(
+                          text: '/ $sizeType_ListRequestDetail',
+                          style: style_text_detail)
+                    ])),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Ảnh thực tế',
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    const ImageRequest(),
+                    Text(
+                      'Trạng thái xử lý',
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    if (trangThaiYc_ListRequestDetail == 'A')
+                      setup1()
+                    else if (trangThaiYc_ListRequestDetail == 'C')
+                      setup2()
+                    else
+                      setup3(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Ghi chú hãng tàu',
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    if (noteHangTau_ListRequestDetail == null)
+                      const Text('')
+                    else
+                      Text(
+                        '$noteHangTau_ListRequestDetail',
+                        style: style_text_detail,
+                      ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Ngày cập nhật',
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      _dt_request,
+                      style: style_text_detail,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    if (trangThaiYc_ListRequestDetail == 'R')
+                      const button_detailRequest()
+                    else
+                      const Text(''),
+                  ],
+                ),
               ),
               actions: [
                 Container(
