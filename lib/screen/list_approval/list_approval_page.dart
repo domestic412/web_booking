@@ -41,6 +41,9 @@ class _ListApprovalPageState extends State<ListApprovalPage> {
     return FutureBuilder<List<ListApprovalResponse>>(
       future: listApproval,
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
         if (snapshot.hasData) {
           print('show List request Admin');
           if (_search_text.text.isEmpty) {

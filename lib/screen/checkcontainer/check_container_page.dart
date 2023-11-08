@@ -1,10 +1,14 @@
+// import 'package:excel/excel.dart';
+import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/CheckContainer/model_check_container.dart';
+import 'package:web_booking/model/check_container/model_check_container.dart';
 import 'package:web_booking/screen/checkcontainer/Popup/detail_check_container.dart';
+import 'package:web_booking/screen/checkcontainer/import_excel/import_excel.dart';
 import 'package:web_booking/screen/widgets/format_input_container.dart';
 
 class CheckContainerPage extends StatefulWidget {
@@ -18,6 +22,9 @@ final CntrNo = TextEditingController();
 List countCont = [];
 Future<List<ContainerResponse>>? checkContainers;
 Color? _color;
+
+String list_input = '';
+int i = 0;
 
 class _CheckContainerPageState extends State<CheckContainerPage> {
   @override
@@ -47,7 +54,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
             Container(
               decoration: BoxDecoration(
                 color: white,
-                border: Border.all(color: blue.withOpacity(.4), width: .5),
+                // border: Border.all(color: blue.withOpacity(.4), width: .5),          // error excel
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(0, 6),
@@ -60,8 +67,9 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
               margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.black45)),
+                  borderRadius: BorderRadius.circular(5),
+                  // border: Border.all(color: Colors.black45)            // error excel
+                ),
                 child: ListTile(
                   leading: Icon(Icons.calendar_view_week_rounded),
                   title: TextField(
@@ -95,6 +103,92 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                 ),
               ),
             ),
+            Container(
+              // alignment: Alignment.centerRight,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.all(10),
+              color: haian,
+              child: TextButton(
+                  onPressed: () async {
+                    await Import().ImportExcel();
+                    if (pickedFile != null) {
+                      var bytes = pickedFile?.files.single.bytes;
+                      var excel = Excel.decodeBytes(bytes!);
+                      // choose sheet1 in file excel
+                      String table = 'Sheet1';
+                      // for (var table in excel.tables.keys) {         // take data all sheet in file excel
+                      print(table); //sheet Name
+                      // print max number column
+                      print(excel.tables[table]!.maxColumns);
+                      print(
+                          // print max number row
+                          excel.tables[table]!.maxRows);
+                      // take all data, style, cell... each row
+                      for (var row in excel.tables[table]!.rows) {
+                        List list_cont = row.map((e) => e?.value).toList();
+                        print(list_cont[0]);
+                        if (i > 4) {
+                          list_input =
+                              list_input + list_cont[0].toString() + ' - ';
+                        }
+                        i++;
+                      }
+                      print(list_input);
+                      setState(() {
+                        CntrNo.text = list_input;
+                        list_input = '';
+                        i = 0;
+                      });
+                      // }
+                    } else {
+                      print('no data');
+                    }
+                  },
+                  child: Text(
+                    'Import file excel',
+                    style: TextStyle(color: white, fontSize: 15),
+                  )),
+            ),
+            // Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            //   padding: EdgeInsets.all(10),
+            //   color: haian,
+            //   child: TextButton(
+            //       onPressed: () {
+            //         if (pickedFile != null) {
+            //           var bytes = pickedFile?.files.single.bytes;
+            //           var excel = Excel.decodeBytes(bytes!);
+            //           // choose sheet1 in file excel
+            //           String table = 'Sheet1';
+            //           // for (var table in excel.tables.keys) {         // take data all sheet in file excel
+            //           print(table); //sheet Name
+            //           // print max number column
+            //           print(excel.tables[table]!.maxColumns);
+            //           print(
+            //               // print max number row
+            //               excel.tables[table]!.maxRows);
+            //           // take all data, style, cell... each row
+            //           for (var row in excel.tables[table]!.rows) {
+            //             List list_cont = row.map((e) => e?.value).toList();
+            //             print(list_cont[0]);
+            //             list_input =
+            //                 list_input + list_cont[0].toString() + ' - ';
+            //           }
+            //           print(list_input);
+            //           setState(() {
+            //             CntrNo.text = list_input;
+            //             list_input = '';
+            //           });
+            //           // }
+            //         } else {
+            //           print('no data');
+            //         }
+            //       },
+            //       child: Text(
+            //         'print data file excel',
+            //         style: TextStyle(color: white, fontSize: 15),
+            //       )),
+            // ),
             Container(child: fetchDataListContainer()),
           ],
         ),
@@ -125,7 +219,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                       alignment: Alignment.center,
                       child: Text(
                         'Kiểm tra lại số Container do có số Container không tìm thấy',
-                        style: TextStyle(fontSize: 15, color: red),
+                        style: TextStyle(fontSize: 16, color: red),
                       ))
                   : Container(),
               Container(
@@ -139,7 +233,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                 width: deviceWidth(context),
                 decoration: BoxDecoration(
                   color: white,
-                  border: Border.all(color: blue.withOpacity(.4), width: .5),
+                  // border: Border.all(color: blue.withOpacity(.4), width: .5),                            // error excel
                   boxShadow: [
                     BoxShadow(
                         offset: const Offset(0, 6),
@@ -173,7 +267,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
         border: const TableBorder(
             verticalInside: BorderSide(color: Colors.black12)),
         sortColumnIndex: 0,
-        dataRowMaxHeight: 70,
+        dataRowMaxHeight: 50,
         columnSpacing: 16,
         columns: [
           DataColumn(
@@ -245,49 +339,49 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
               Center(
                 child: Text(
                   (index + 1).toString(),
-                  style: style_text_Table_small,
+                  style: style_text_table_small_tracking,
                 ),
               ),
             ),
             DataCell(Center(
               child: Text(
                 snapshot.data![index].cntrno.toString(),
-                style: style_text_Table_small,
+                style: style_text_table_small_tracking,
                 textAlign: TextAlign.center,
               ),
             )),
             DataCell(Center(
               child: Text(
                 snapshot.data![index].sizeType.toString(),
-                style: style_text_Table_small,
+                style: style_text_table_small_tracking,
                 textAlign: TextAlign.center,
               ),
             )),
             DataCell(Center(
               child: Text(
                 snapshot.data![index].soLanKetHop.toString(),
-                style: style_text_Table_small,
+                style: style_text_table_small_tracking,
                 textAlign: TextAlign.center,
               ),
             )),
             DataCell(Center(
               child: Text(
                 snapshot.data![index].quanlity.toString(),
-                style: style_text_Table_small,
+                style: style_text_table_small_tracking,
                 textAlign: TextAlign.center,
               ),
             )),
             DataCell(Center(
               child: Text(
                 snapshot.data![index].status.toString(),
-                style: style_text_Table_small,
+                style: style_text_table_small_tracking,
                 textAlign: TextAlign.center,
               ),
             )),
             DataCell(Center(
               child: Text(
                 snapshot.data![index].shipper.toString(),
-                style: style_text_Table_small,
+                style: style_text_table_small_tracking,
                 textAlign: TextAlign.center,
               ),
             )),

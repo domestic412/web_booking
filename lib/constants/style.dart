@@ -71,6 +71,8 @@ TextStyle style_text_box_button = TextStyle(
 
 // style tracking page
 
+TextStyle style_text_table_small_tracking =
+    TextStyle(fontSize: 15, color: black);
 TextStyle style_text_Table_small_bold_container =
-    TextStyle(fontSize: 14, color: normalColor, fontWeight: FontWeight.bold);
-TextStyle style_textfield = TextStyle(fontSize: 15, color: black);
+    TextStyle(fontSize: 15, color: normalColor, fontWeight: FontWeight.bold);
+TextStyle style_textfield = TextStyle(fontSize: 16, color: black);

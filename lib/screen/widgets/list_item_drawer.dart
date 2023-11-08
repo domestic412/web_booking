@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:web_booking/screen/Data_storage/dataStorage.dart';
 
 // SideBarController sideBarController = Get.put(SideBarController());
 
@@ -19,18 +17,18 @@ Widget buiderMenuItems(BuildContext context) {
         () => Wrap(
           runSpacing: 10,
           children: [
-            user == 'admin'
-                ? ListTile(
-                    leading: const Icon(
-                      (Icons.supervised_user_circle_outlined),
-                      color: Colors.white,
-                    ),
-                    title: const Text('User Management',
-                        style: TextStyle(color: Colors.white)),
-                    onTap: () => sideBarController.index.value = 0,
-                    selected: sideBarController.index.value == 0,
-                  )
-                : const SizedBox(),
+            // user == 'admin'
+            //     ? ListTile(
+            //         leading: const Icon(
+            //           (Icons.supervised_user_circle_outlined),
+            //           color: Colors.white,
+            //         ),
+            //         title: const Text('User Management',
+            //             style: TextStyle(color: Colors.white)),
+            //         onTap: () => sideBarController.index.value = 0,
+            //         selected: sideBarController.index.value == 0,
+            //       )
+            //     : const SizedBox(),
             user == 'admin'
                 ? ListTile(
                     leading: const Icon(
@@ -83,6 +81,36 @@ Widget buiderMenuItems(BuildContext context) {
               onTap: () => sideBarController.index.value = 5,
               selected: sideBarController.index.value == 5,
             ),
+            ListTile(
+              leading: const Icon(
+                (Icons.supervised_user_circle_outlined),
+                color: Colors.white,
+              ),
+              title: const Text('Quality List',
+                  style: TextStyle(color: Colors.white)),
+              onTap: () => sideBarController.index.value = 6,
+              selected: sideBarController.index.value == 6,
+            ),
+            ListTile(
+              leading: const Icon(
+                (Icons.supervised_user_circle_outlined),
+                color: Colors.white,
+              ),
+              title: const Text('Special Policy List',
+                  style: TextStyle(color: Colors.white)),
+              onTap: () => sideBarController.index.value = 9,
+              selected: sideBarController.index.value == 9,
+            ),
+            // ListTile(
+            //   leading: const Icon(
+            //     (Icons.supervised_user_circle_outlined),
+            //     color: Colors.white,
+            //   ),
+            //   title: const Text('Special Policy',
+            //       style: TextStyle(color: Colors.white)),
+            //   onTap: () => sideBarController.index.value = 7,
+            //   selected: sideBarController.index.value == 7,
+            // ),
             // const Divider(
             //   color: Colors.black54,
             // ),

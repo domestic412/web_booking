@@ -113,7 +113,7 @@ class _ListContainer1State extends State<ListContainer1> {
         border: const TableBorder(
             verticalInside: BorderSide(color: Colors.black12)),
         sortColumnIndex: 0,
-        dataRowMaxHeight: 70,
+        dataRowMaxHeight: 50,
         columnSpacing: 16,
         columns: [
           DataColumn(

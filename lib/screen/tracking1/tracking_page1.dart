@@ -5,7 +5,6 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:web_booking/screen/tracking1/widgets/container_details1.dart';
 import 'package:web_booking/screen/tracking1/widgets/list_container1.dart';
 
 class Tracking1Page extends StatefulWidget {

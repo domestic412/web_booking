@@ -7,6 +7,7 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:intl/intl.dart';
+import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/list_request/popUp_detail/detail_image_list_request.dart';
 
 // final DateTime now = DateTime.now();
@@ -14,9 +15,11 @@ List Status = ['A', 'R'];
 // String? valueStatus;
 TextEditingController _note = TextEditingController();
 
+// ignore: non_constant_identifier_names
 String _dt_approval = DateFormat("yyyy-MM-dd  hh:mm")
     .format(DateTime.parse(updateTime_ApprovalDetail!));
 
+// ignore: non_constant_identifier_names
 Future<void> PopUpApproval(BuildContext context) {
   noteHangTau_ApprovalDetail != null
       ? _note.text = noteHangTau_ApprovalDetail!
@@ -29,7 +32,7 @@ Future<void> PopUpApproval(BuildContext context) {
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: AlertDialog(
-              backgroundColor: Color(0xFFEFEFF4),
+              backgroundColor: const Color(0xFFEFEFF4),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               title: Column(
@@ -44,7 +47,7 @@ Future<void> PopUpApproval(BuildContext context) {
                   )
                 ],
               ),
-              content: Container(
+              content: SizedBox(
                 width: 630,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -84,7 +87,8 @@ Future<void> PopUpApproval(BuildContext context) {
                         text: TextSpan(children: <TextSpan>[
                       TextSpan(
                           text: '$cntrno_ApprovalDetail ',
-                          style: TextStyle(color: Colors.red, fontSize: 16)),
+                          style:
+                              const TextStyle(color: Colors.red, fontSize: 16)),
                       TextSpan(
                           text: '/ $sizeType_ApprovalDetail',
                           style: style_text_detail)
@@ -131,12 +135,12 @@ Future<void> PopUpApproval(BuildContext context) {
                       keyboardType: TextInputType.multiline,
                       style:
                           const TextStyle(fontSize: 16, color: Colors.black87),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: 'Ghi chú hãng tàu',
-                        border: const OutlineInputBorder(),
+                        border: OutlineInputBorder(),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -146,7 +150,7 @@ Future<void> PopUpApproval(BuildContext context) {
                           onTap: () {
                             _note.clear();
                           },
-                          child: Text(
+                          child: const Text(
                             'Xóa ghi chú',
                             style: TextStyle(fontSize: 13, color: Colors.blue),
                           ),
@@ -160,7 +164,7 @@ Future<void> PopUpApproval(BuildContext context) {
                       'Trạng thái duyệt',
                       style: style_text_detail_bold,
                     ),
-                    RadioStatus(),
+                    const RadioStatus(),
                   ],
                 ),
               ),
@@ -241,7 +245,7 @@ class _RadioStatusState extends State<RadioStatus> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
             InkWell(
@@ -284,7 +288,9 @@ class _RadioStatusState extends State<RadioStatus> {
           "Authorization": "Bearer $tokenAuthorize",
         },
         body: body);
+    // ignore: use_build_context_synchronously
     Navigator.pop(context);
+    // sideBarController.index.value = 1;
     if (response.statusCode == 200) {
       setState(() {});
     } else {

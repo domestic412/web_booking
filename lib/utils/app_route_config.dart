@@ -16,7 +16,7 @@ class AppRoutes {
   static const TestRoute = "/Test";
   static const BookingRoute = "/Booking";
   static const HomeRoute = "/Home";
-  static const MemberRoute = "/MemberDashboard";
+  // static const MemberRoute = "/MemberDashboard";
 
   static final GoRouter router = GoRouter(routes: <GoRoute>[
     GoRoute(
@@ -43,9 +43,9 @@ class AppRoutes {
       path: HomeRoute,
       builder: (BuildContext context, state) => HomePage(),
     ),
-    GoRoute(
-      path: MemberRoute,
-      builder: (BuildContext context, state) => MemberPage(),
-    ),
+    // GoRoute(
+    //   path: MemberRoute,
+    //   builder: (BuildContext context, state) => MemberPage(),
+    // ),
   ]);
 }
