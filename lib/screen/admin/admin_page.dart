@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/widgets/header.dart';
-import 'package:web_booking/screen/widgets/list_item.dart';
+import 'package:web_booking/screen/widgets/list_item_drawer.dart';
 import 'package:web_booking/widgets/top_nav.dart';
 
 class AdminPage extends StatelessWidget {

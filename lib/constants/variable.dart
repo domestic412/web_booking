@@ -103,6 +103,16 @@ String cntr_no_tracking = '';
 // Container Details page
 Color? color_time;
 
+// Update Quality
+String? maChatLuong_quality;
+String? tenChatLuong_quality;
+String? ghiChu_quality;
+
+// Update Policy
+String? code_policy;
+String? shipper_policy;
+String? times_policy;
+
 String? nameDepo;
 String? idDepo;
 int? soluongcontDepo;

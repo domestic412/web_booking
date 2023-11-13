@@ -28,7 +28,7 @@ class appbar extends StatelessWidget {
               onTap: () => context.go(AppRoutes.defaultRoute),
               child: Container(
                 padding: EdgeInsets.only(left: 50),
-                width: 1296,
+                width: 1196,
                 child: Text(
                   'welcome'.tr(),
                   style: style14_white,

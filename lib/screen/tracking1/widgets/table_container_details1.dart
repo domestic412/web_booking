@@ -78,29 +78,29 @@ class TableContainerDetails1 extends StatelessWidget {
             DataCell(Center(
                 child: SelectableText(
               (index + 1).toString(),
-              style: style_text_Table_small,
+              style: style_text_table_small_tracking,
             ))),
             DataCell(Center(
                 child: SelectableText(
               list_filter![index].container.toString(),
-              style: style_text_Table_small,
+              style: style_text_table_small_tracking,
             ))),
             DataCell(Center(
               child: SelectableText(
                 list_filter![index].status.toString(),
-                style: TextStyle(fontSize: 16),
+                style: style_text_table_small_tracking,
               ),
             )),
             DataCell(Center(
                 child: SelectableText(
               list_filter![index].location.toString(),
-              style: style_text_Table_small,
+              style: style_text_table_small_tracking,
             ))),
             DataCell(Center(
                 child: SelectableText(
               '$_dt',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 15,
                 color: color_time,
               ),
             )))
