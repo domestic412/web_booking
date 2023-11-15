@@ -98,19 +98,29 @@ Widget buiderMenuItems(BuildContext context) {
               ),
               title: const Text('Special Policy List',
                   style: TextStyle(color: Colors.white)),
-              onTap: () => sideBarController.index.value = 9,
-              selected: sideBarController.index.value == 9,
+              onTap: () => sideBarController.index.value = 8,
+              selected: sideBarController.index.value == 8,
             ),
-            // ListTile(
-            //   leading: const Icon(
-            //     (Icons.supervised_user_circle_outlined),
-            //     color: Colors.white,
-            //   ),
-            //   title: const Text('Special Policy',
-            //       style: TextStyle(color: Colors.white)),
-            //   onTap: () => sideBarController.index.value = 7,
-            //   selected: sideBarController.index.value == 7,
-            // ),
+            ListTile(
+              leading: const Icon(
+                (Icons.supervised_user_circle_outlined),
+                color: Colors.white,
+              ),
+              title: const Text('History List',
+                  style: TextStyle(color: Colors.white)),
+              onTap: () => sideBarController.index.value = 10,
+              selected: sideBarController.index.value == 10,
+            ),
+            ListTile(
+              leading: const Icon(
+                (Icons.supervised_user_circle_outlined),
+                color: Colors.white,
+              ),
+              title: const Text('Container Stock',
+                  style: TextStyle(color: Colors.white)),
+              onTap: () => sideBarController.index.value = 11,
+              selected: sideBarController.index.value == 11,
+            ),
             // const Divider(
             //   color: Colors.black54,
             // ),

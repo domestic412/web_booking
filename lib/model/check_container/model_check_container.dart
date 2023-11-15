@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/screen/Data_storage/dataStorage.dart';
 
-class ContainerResponse {
+class CheckContainer {
   int? id;
   String? cntrno;
   String? sizeType;
@@ -33,7 +32,7 @@ class ContainerResponse {
   String? updateUser;
   String? updateTime;
 
-  ContainerResponse(
+  CheckContainer(
       {this.id,
       this.cntrno,
       this.sizeType,
@@ -61,7 +60,7 @@ class ContainerResponse {
       this.updateUser,
       this.updateTime});
 
-  ContainerResponse.fromJson(Map<String, dynamic> json) {
+  CheckContainer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     cntrno = json['cntrno'];
     sizeType = json['sizeType'];
@@ -121,8 +120,7 @@ class ContainerResponse {
     return data;
   }
 
-  static Future<List<ContainerResponse>> fetchContainerResponses(
-      String cntr) async {
+  Future<List<CheckContainer>> fetchCheckContainers(String cntr) async {
     var url = '$SERVER/CheckContainer?container=$cntr&code=$code';
     if (cntr.isNotEmpty) {
       final response = await http.post(Uri.parse(url), headers: {
@@ -133,7 +131,7 @@ class ContainerResponse {
         var body = response.body;
         List dataCheckCntr = jsonDecode(body);
         return dataCheckCntr
-            .map((data) => ContainerResponse.fromJson(data))
+            .map((data) => CheckContainer.fromJson(data))
             .toList();
       } else {
         throw Exception('Error');

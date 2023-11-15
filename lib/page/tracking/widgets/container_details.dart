@@ -1,8 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/constants/style.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/tracking/widgets/table_container_details.dart';
 
 class ContainerDetails extends StatefulWidget {
@@ -13,8 +10,6 @@ class ContainerDetails extends StatefulWidget {
 }
 
 class _ContainerDetailsState extends State<ContainerDetails> {
-  String? _dt;
-
   @override
   Widget build(BuildContext context) {
     return Container(

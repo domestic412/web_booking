@@ -8,10 +8,25 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/screen/home/homepage_screen.dart';
 
-class CreateQualityPage extends StatelessWidget {
-  TextEditingController _input_maChatLuong = TextEditingController();
-  TextEditingController _input_tenChatLuong = TextEditingController();
-  TextEditingController _input_ghiChu = TextEditingController();
+class CUD_SpecialPolicyPage extends StatefulWidget {
+  @override
+  State<CUD_SpecialPolicyPage> createState() => _CUD_SpecialPolicyPageState();
+}
+
+class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
+  TextEditingController _input_code = TextEditingController();
+
+  TextEditingController _input_shipper = TextEditingController();
+
+  TextEditingController _input_times = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _input_code.text = code_policy!;
+    _input_shipper.text = shipper_policy!;
+    _input_times.text = times_policy!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +43,7 @@ class CreateQualityPage extends StatelessWidget {
               alignment: Alignment.center,
               margin: EdgeInsets.only(top: 32),
               child: Text(
-                "Create Quality Container",
+                title_special_policy!,
                 style: style_title_page,
               ),
             ),
@@ -45,7 +60,7 @@ class CreateQualityPage extends StatelessWidget {
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)))),
                   onPressed: () {
-                    sideBarController.index.value = 6;
+                    sideBarController.index.value = 8;
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -73,42 +88,42 @@ class CreateQualityPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Mã chất lượng', style: style_text_detail),
+                  Text('Mã Shipper', style: style_text_detail),
                   const SizedBox(
                     height: 10,
                   ),
                   TextField(
-                    controller: _input_maChatLuong,
+                    controller: _input_code,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Mã chất lượng'),
+                        border: OutlineInputBorder(), hintText: 'Mã Shipper'),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Text('Tên chất lượng', style: style_text_detail),
+                  Text('Shipper (Chủ hàng)', style: style_text_detail),
                   const SizedBox(
                     height: 10,
                   ),
                   TextField(
-                    controller: _input_tenChatLuong,
+                    controller: _input_shipper,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Tên chất lượng'),
+                        hintText: 'Shipper (Chủ hàng)'),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Text('Ghi chú', style: style_text_detail),
+                  Text('Times (Số lần)', style: style_text_detail),
                   const SizedBox(
                     height: 10,
                   ),
                   TextField(
-                    controller: _input_ghiChu,
+                    controller: _input_times,
                     minLines: 1,
                     maxLines: 15,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'Ghi chú'),
+                        border: OutlineInputBorder(),
+                        hintText: 'Times (Số lần)'),
                   ),
                   const SizedBox(
                     height: 50,
@@ -116,18 +131,19 @@ class CreateQualityPage extends StatelessWidget {
                   Center(
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: haian,
+                              backgroundColor: color_button_CUD,
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)))),
                           onPressed: () {
-                            PostCreateQuality(_input_maChatLuong.text,
-                                _input_tenChatLuong.text, _input_ghiChu.text);
+                            PostCUDSpecialPolicy(_input_code.text,
+                                _input_shipper.text, _input_times.text);
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 10),
-                            child: Text('Lưu', style: style_text_box_button),
+                            child: Text(text_button_CUD!,
+                                style: style_text_box_button),
                           ))),
                   const SizedBox(height: 20)
                 ],
@@ -139,28 +155,46 @@ class CreateQualityPage extends StatelessWidget {
     );
   }
 
-  Future<void> PostCreateQuality(String mCL, String tCL, String ghichu) async {
-    final url = '$SERVER/QualityList/Create';
+  Future<void> PostCUDSpecialPolicy(
+      String code, String shipper, String times) async {
+    // final url = '$SERVER/SpecialPolicy/Create';
     var data = {
-      'maChatLuong': mCL,
-      'tenChatLuong': tCL,
-      'ghichu': ghichu,
+      'id': id_policy,
+      'code': code,
+      'shipper': shipper,
+      'times': times,
       'updateUser': tokenLogin
     };
     var body = json.encode(data);
-
-    final response = await http.post(Uri.parse(url),
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST", //use fot http, not use https
-          "Authorization": "Bearer $tokenAuthorize",
-        },
-        body: body);
-    if (response.statusCode == 200) {
-      sideBarController.index.value = 6;
+    if (CUD == 1) {
+      final response = await http.post(Uri.parse(URL_SPECIAL_POLICY!),
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer $tokenAuthorize",
+          },
+          body: body);
+      if (response.statusCode == 200) {
+        sideBarController.index.value = 8;
+      } else {
+        print('Error');
+        throw Exception('Error to Create');
+      }
+    } else if (CUD == 2) {
+      final response =
+          await http.delete(Uri.parse(URL_SPECIAL_POLICY!), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": "Bearer $tokenAuthorize",
+      });
+      if (response.statusCode == 200) {
+        sideBarController.index.value = 8;
+      } else {
+        print('Error');
+        throw Exception('Error to Delete');
+      }
     } else {
       print('Error');
-      throw Exception('Error to Create');
+      throw Exception('Error to CUD');
     }
   }
 }

@@ -1,14 +1,12 @@
-// import 'package:excel/excel.dart';
 import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/check_container/model_check_container.dart';
-import 'package:web_booking/screen/checkcontainer/Popup/detail_check_container.dart';
-import 'package:web_booking/screen/checkcontainer/import_excel/import_excel.dart';
+import 'package:web_booking/screen/check_container/Popup/detail_check_container.dart';
+import 'package:web_booking/screen/check_container/import_excel/import_excel.dart';
 import 'package:web_booking/screen/widgets/format_input_container.dart';
 
 class CheckContainerPage extends StatefulWidget {
@@ -18,20 +16,14 @@ class CheckContainerPage extends StatefulWidget {
   State<CheckContainerPage> createState() => _CheckContainerPageState();
 }
 
-final CntrNo = TextEditingController();
-List countCont = [];
-Future<List<ContainerResponse>>? checkContainers;
-Color? _color;
-
-String list_input = '';
-int i = 0;
-
 class _CheckContainerPageState extends State<CheckContainerPage> {
-  @override
-  void initState() {
-    super.initState();
-    CntrNo.clear();
-  }
+  final _CntrNo = TextEditingController();
+  List _countCont = [];
+  Future<List<CheckContainer>>? _checkContainers;
+  Color? _color;
+
+  String _list_input = '';
+  int i = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +68,11 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                       inputFormatters: [InputContainerFormatter()],
                       onSubmitted: (value) {
                         setState(() {
-                          checkContainers =
-                              ContainerResponse.fetchContainerResponses(
-                                  CntrNo.text.trim());
+                          _checkContainers = CheckContainer()
+                              .fetchCheckContainers(_CntrNo.text.trim());
                         });
                       },
-                      controller: CntrNo,
+                      controller: _CntrNo,
                       textCapitalization: TextCapitalization.characters,
                       style:
                           const TextStyle(fontSize: 16, color: Colors.black87),
@@ -92,9 +83,9 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                             onPressed: () {
                               setState(
                                 () {
-                                  checkContainers =
-                                      ContainerResponse.fetchContainerResponses(
-                                          CntrNo.text.trim());
+                                  _checkContainers = CheckContainer()
+                                      .fetchCheckContainers(
+                                          _CntrNo.text.trim());
                                 },
                               );
                             },
@@ -103,40 +94,47 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                 ),
               ),
             ),
+            // ImportFile(),
             Container(
               // alignment: Alignment.centerRight,
               margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.all(10),
-              color: haian,
+              decoration: BoxDecoration(
+                  color: haian, borderRadius: BorderRadius.circular(10)),
               child: TextButton(
                   onPressed: () async {
                     await Import().ImportExcel();
-                    if (pickedFile != null) {
-                      var bytes = pickedFile?.files.single.bytes;
+                    if (resultPickedFile != null) {
+                      var bytes = resultPickedFile?.files.single.bytes;
                       var excel = Excel.decodeBytes(bytes!);
                       // choose sheet1 in file excel
                       String table = 'Sheet1';
                       // for (var table in excel.tables.keys) {         // take data all sheet in file excel
-                      print(table); //sheet Name
-                      // print max number column
-                      print(excel.tables[table]!.maxColumns);
-                      print(
-                          // print max number row
-                          excel.tables[table]!.maxRows);
+                      // print(table);                                  // sheet Name
+                      // print(excel.tables[table]!.maxColumns);        // max number column
+                      // print(excel.tables[table]!.maxRows);               // print max number row
                       // take all data, style, cell... each row
                       for (var row in excel.tables[table]!.rows) {
-                        List list_cont = row.map((e) => e?.value).toList();
-                        print(list_cont[0]);
-                        if (i > 4) {
-                          list_input =
-                              list_input + list_cont[0].toString() + ' - ';
+                        List list_cont = row
+                            .map((e) => e?.value)
+                            .toList(); //add data to list_cont with container is list_cont[0]
+                        // print(list_cont[0]);
+                        if (i < excel.tables[table]!.maxRows) {
+                          if (i == (excel.tables[table]!.maxRows - 1)) {
+                            //take last cont number
+                            _list_input = _list_input + list_cont[0].toString();
+                          } else if (i > 4) {
+                            //take cont number from 5
+                            _list_input =
+                                _list_input + list_cont[0].toString() + ' - ';
+                          }
+                          i++;
                         }
-                        i++;
                       }
-                      print(list_input);
+                      // print(_list_input);
                       setState(() {
-                        CntrNo.text = list_input;
-                        list_input = '';
+                        _CntrNo.text = _list_input;
+                        _list_input = '';
                         i = 0;
                       });
                       // }
@@ -149,46 +147,6 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                     style: TextStyle(color: white, fontSize: 15),
                   )),
             ),
-            // Container(
-            //   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            //   padding: EdgeInsets.all(10),
-            //   color: haian,
-            //   child: TextButton(
-            //       onPressed: () {
-            //         if (pickedFile != null) {
-            //           var bytes = pickedFile?.files.single.bytes;
-            //           var excel = Excel.decodeBytes(bytes!);
-            //           // choose sheet1 in file excel
-            //           String table = 'Sheet1';
-            //           // for (var table in excel.tables.keys) {         // take data all sheet in file excel
-            //           print(table); //sheet Name
-            //           // print max number column
-            //           print(excel.tables[table]!.maxColumns);
-            //           print(
-            //               // print max number row
-            //               excel.tables[table]!.maxRows);
-            //           // take all data, style, cell... each row
-            //           for (var row in excel.tables[table]!.rows) {
-            //             List list_cont = row.map((e) => e?.value).toList();
-            //             print(list_cont[0]);
-            //             list_input =
-            //                 list_input + list_cont[0].toString() + ' - ';
-            //           }
-            //           print(list_input);
-            //           setState(() {
-            //             CntrNo.text = list_input;
-            //             list_input = '';
-            //           });
-            //           // }
-            //         } else {
-            //           print('no data');
-            //         }
-            //       },
-            //       child: Text(
-            //         'print data file excel',
-            //         style: TextStyle(color: white, fontSize: 15),
-            //       )),
-            // ),
             Container(child: fetchDataListContainer()),
           ],
         ),
@@ -196,22 +154,22 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
     );
   }
 
-  FutureBuilder<List<ContainerResponse>> fetchDataListContainer() {
-    return FutureBuilder<List<ContainerResponse>>(
-      future: checkContainers,
+  FutureBuilder<List<CheckContainer>> fetchDataListContainer() {
+    return FutureBuilder<List<CheckContainer>>(
+      future: _checkContainers,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasData) {
-          countCont = CntrNo.text
+          _countCont = _CntrNo.text
               .trim()
               .split('-'); // list space to count the number of containers
           // print('show data check container');
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              snapshot.data!.length < countCont.length
+              snapshot.data!.length < _countCont.length
                   ? Container(
                       padding: const EdgeInsets.only(
                           left: 32, right: 32, bottom: 16),
@@ -262,7 +220,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
   }
 
   DataTable DataCheckContainer(
-      AsyncSnapshot<List<ContainerResponse>> snapshot, BuildContext context) {
+      AsyncSnapshot<List<CheckContainer>> snapshot, BuildContext context) {
     return DataTable(
         border: const TableBorder(
             verticalInside: BorderSide(color: Colors.black12)),
@@ -295,6 +253,20 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
               child: Center(
                 child:
                     Text('Số lần kết hợp', style: style_text_Table_small_bold),
+              ),
+            ),
+          ),
+          DataColumn(
+            label: Expanded(
+              child: Center(
+                child: Text('Số lần', style: style_text_Table_small_bold),
+              ),
+            ),
+          ),
+          DataColumn(
+            label: Expanded(
+              child: Center(
+                child: Text('Số lần CP', style: style_text_Table_small_bold),
               ),
             ),
           ),
@@ -366,6 +338,20 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
             )),
             DataCell(Center(
               child: Text(
+                snapshot.data![index].soLanKetHopNum.toString(),
+                style: style_text_table_small_tracking,
+                textAlign: TextAlign.center,
+              ),
+            )),
+            DataCell(Center(
+              child: Text(
+                '0',
+                style: style_text_table_small_tracking,
+                textAlign: TextAlign.center,
+              ),
+            )),
+            DataCell(Center(
+              child: Text(
                 snapshot.data![index].quanlity.toString(),
                 style: style_text_table_small_tracking,
                 textAlign: TextAlign.center,
@@ -397,19 +383,19 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
                   child: InkWell(
                     onTap: () {
-                      cntrno_CheckCntr = snapshot.data![index].cntrno;
-                      sizeType_CheckCntr = snapshot.data![index].sizeType;
-                      shipper_CheckCntr = snapshot.data![index].shipper;
-                      remark_CheckCntr = snapshot.data![index].remark;
-                      ghiChuTinhTrang_CheckCntr =
-                          snapshot.data![index].ghiChuTinhTrang;
-                      luuYSuDung_CheckCntr = snapshot.data![index].luuYSuDung;
-                      // soLanKetHop_CheckCntr = snapshot.data!.soLanKetHop?? '';
-                      soLanKetHop_CheckCntr = snapshot.data![index].soLanKetHop;
-                      ketQua_CheckCntr = snapshot.data![index].ketQua;
-                      updateTime_CheckCntr = snapshot.data![index].updateTime;
-                      approval_CheckCntr = snapshot.data![index].approval;
-                      PopUpCheckContainer(context);
+                      // cntrno_CheckCntr = snapshot.data![index].cntrno;
+                      // sizeType_CheckCntr = snapshot.data![index].sizeType;
+                      // shipper_CheckCntr = snapshot.data![index].shipper;
+                      // remark_CheckCntr = snapshot.data![index].remark;
+                      // ghiChuTinhTrang_CheckCntr =
+                      //     snapshot.data![index].ghiChuTinhTrang;
+                      // luuYSuDung_CheckCntr = snapshot.data![index].luuYSuDung;
+                      // // soLanKetHop_CheckCntr = snapshot.data!.soLanKetHop?? '';
+                      // soLanKetHop_CheckCntr = snapshot.data![index].soLanKetHop;
+                      // ketQua_CheckCntr = snapshot.data![index].ketQua;
+                      // updateTime_CheckCntr = snapshot.data![index].updateTime;
+                      // approval_CheckCntr = snapshot.data![index].approval;
+                      // PopUpCheckContainer(context);
                     },
                     child: Text(
                       snapshot.data![index].approval.toString(),

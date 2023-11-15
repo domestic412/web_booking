@@ -8,12 +8,12 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/screen/home/homepage_screen.dart';
 
-class UpdateQualityPage extends StatefulWidget {
+class CUD_QualityPage extends StatefulWidget {
   @override
-  State<UpdateQualityPage> createState() => _UpdateQualityPageState();
+  State<CUD_QualityPage> createState() => _CUD_QualityPageState();
 }
 
-class _UpdateQualityPageState extends State<UpdateQualityPage> {
+class _CUD_QualityPageState extends State<CUD_QualityPage> {
   TextEditingController _input_maChatLuong = TextEditingController();
 
   TextEditingController _input_tenChatLuong = TextEditingController();
@@ -43,7 +43,7 @@ class _UpdateQualityPageState extends State<UpdateQualityPage> {
               alignment: Alignment.center,
               margin: EdgeInsets.only(top: 32),
               child: Text(
-                "Update Quality Container",
+                title_quality!,
                 style: style_title_page,
               ),
             ),
@@ -131,15 +131,19 @@ class _UpdateQualityPageState extends State<UpdateQualityPage> {
                   Center(
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: haian,
+                              backgroundColor: color_button_CUD,
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)))),
-                          onPressed: () {},
+                          onPressed: () {
+                            PostCUDQuality(_input_maChatLuong.text,
+                                _input_tenChatLuong.text, _input_ghiChu.text);
+                          },
                           child: Container(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 10),
-                            child: Text('Lưu', style: style_text_box_button),
+                            child: Text(text_button_CUD!,
+                                style: style_text_box_button),
                           ))),
                   const SizedBox(height: 20)
                 ],
@@ -151,9 +155,10 @@ class _UpdateQualityPageState extends State<UpdateQualityPage> {
     );
   }
 
-  Future<void> PostUpdateQuality(String mCL, String tCL, String ghichu) async {
-    final url = '$SERVER/QualityList/Update';
+  Future<void> PostCUDQuality(String mCL, String tCL, String ghichu) async {
+    // final url = '$SERVER/QualityList/Create';
     var data = {
+      'id': id_quality,
       'maChatLuong': mCL,
       'tenChatLuong': tCL,
       'ghichu': ghichu,
@@ -161,18 +166,34 @@ class _UpdateQualityPageState extends State<UpdateQualityPage> {
     };
     var body = json.encode(data);
 
-    final response = await http.post(Uri.parse(url),
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST", //use fot http, not use https
-          "Authorization": "Bearer $tokenAuthorize",
-        },
-        body: body);
-    if (response.statusCode == 200) {
-      sideBarController.index.value = 6;
+    if (CUD == 1) {
+      final response = await http.post(Uri.parse(URL_QUALITY!),
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer $tokenAuthorize",
+          },
+          body: body);
+      if (response.statusCode == 200) {
+        sideBarController.index.value = 6;
+      } else {
+        print('Error');
+        throw Exception('Error to Create');
+      }
+    } else if (CUD == 2) {
+      final response = await http.delete(Uri.parse(URL_QUALITY!), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": "Bearer $tokenAuthorize",
+      });
+      if (response.statusCode == 200) {
+        sideBarController.index.value = 6;
+      } else {
+        print('Error');
+        throw Exception('Error to Delete');
+      }
     } else {
       print('Error');
-      throw Exception('Error to Update');
+      throw Exception('Error to CUD');
     }
   }
 }

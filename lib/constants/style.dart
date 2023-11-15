@@ -68,6 +68,10 @@ TextStyle style_text_box_button = TextStyle(
   fontSize: 18,
   color: light,
 );
+TextStyle style_text_box_button_small = TextStyle(
+  fontSize: 15,
+  color: light,
+);
 
 // style tracking page
 

@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/model/special_policy/model_special_policy.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
@@ -70,7 +68,17 @@ class _ListSpecialPolicyPageState extends State<ListSpecialPolicyPage> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)))),
                             onPressed: () {
-                              sideBarController.index.value = 7;
+                              code_policy = '';
+                              shipper_policy = '';
+                              times_policy = '';
+                              id_policy = 0;
+                              title_special_policy = 'Create Special Policy';
+                              text_button_CUD = 'Lưu';
+                              URL_SPECIAL_POLICY =
+                                  '$SERVER/SpecialPolicy/Create';
+                              color_button_CUD = haian;
+                              CUD = 1;
+                              sideBarController.index.value = 9;
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
@@ -169,7 +177,7 @@ class _ListSpecialPolicyPageState extends State<ListSpecialPolicyPage> {
                             String _dt = DateFormat("yyyy-MM-dd   hh:mm")
                                 .format(DateTime.parse(data.updateTime!));
                             return DataRow(
-                                color: MaterialStateProperty.all(red),
+                                // color: MaterialStateProperty.all(red),
                                 cells: [
                                   DataCell(Center(
                                     child: Text(
@@ -199,9 +207,18 @@ class _ListSpecialPolicyPageState extends State<ListSpecialPolicyPage> {
                                           style: style_text_Table_small))),
                                   DataCell(Center(
                                       child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       InkWell(
                                         onTap: () {
+                                          title_special_policy =
+                                              'Update Special Policy';
+                                          text_button_CUD = 'Cập nhật';
+                                          URL_SPECIAL_POLICY =
+                                              '$SERVER/SpecialPolicy/Update';
+                                          color_button_CUD = haian;
+                                          CUD = 1;
+                                          id_policy = snapshot.data![index].id;
                                           code_policy =
                                               snapshot.data![index].code;
                                           shipper_policy =
@@ -224,7 +241,21 @@ class _ListSpecialPolicyPageState extends State<ListSpecialPolicyPage> {
                                       ),
                                       InkWell(
                                         onTap: () {
-                                          // sideBarController.index.value = 8;
+                                          title_special_policy =
+                                              'Delete Special Policy';
+                                          text_button_CUD = 'Xóa';
+                                          URL_SPECIAL_POLICY =
+                                              '$SERVER/SpecialPolicy/Delete?id=${snapshot.data![index].id}';
+                                          color_button_CUD = red;
+                                          CUD = 2;
+                                          // id_policy = snapshot.data![index].id;
+                                          code_policy =
+                                              snapshot.data![index].code;
+                                          shipper_policy =
+                                              snapshot.data![index].shipper;
+                                          times_policy =
+                                              snapshot.data![index].times;
+                                          sideBarController.index.value = 9;
                                         },
                                         child: const Tooltip(
                                           message: 'Xóa',

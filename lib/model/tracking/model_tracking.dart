@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
 import 'package:http/http.dart' as http;
 
@@ -60,7 +59,7 @@ class ContainerTracking {
     selectedValue == 'bk' ? url = url_bk_en : url = url_cntr_en;
 
     final response = await http.get(
-      Uri.parse(url!),
+      Uri.parse(url),
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET", //use fot http, not use https
