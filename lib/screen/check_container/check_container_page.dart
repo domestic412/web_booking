@@ -123,8 +123,8 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                           if (i == (excel.tables[table]!.maxRows - 1)) {
                             //take last cont number
                             _list_input = _list_input + list_cont[0].toString();
-                          } else if (i > 4) {
-                            //take cont number from 5
+                          } else if (i > 0) {
+                            //take cont number from 2
                             _list_input =
                                 _list_input + list_cont[0].toString() + ' - ';
                           }
@@ -146,6 +146,9 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                     'Import file excel',
                     style: TextStyle(color: white, fontSize: 15),
                   )),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Container(child: fetchDataListContainer()),
           ],

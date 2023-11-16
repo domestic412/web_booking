@@ -8,8 +8,8 @@ import 'package:web_booking/screen/home/homepage_screen.dart';
 class SendApproval {
   Future<void> fetchSendApproval(String status) async {
     var url = '$SERVER/Requests/Process?Trangthai=$status';
-    var data = {
-      'id': id_DetailApproval.toString(),
+    Map<String, dynamic> data = {
+      'id': id_DetailApproval,
       'noteHangTau': note_detail_approval.text,
       'userXuly': user,
     };

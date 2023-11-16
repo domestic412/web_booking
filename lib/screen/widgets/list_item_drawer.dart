@@ -81,46 +81,54 @@ Widget buiderMenuItems(BuildContext context) {
               onTap: () => sideBarController.index.value = 5,
               selected: sideBarController.index.value == 5,
             ),
-            ListTile(
-              leading: const Icon(
-                (Icons.supervised_user_circle_outlined),
-                color: Colors.white,
-              ),
-              title: const Text('Quality List',
-                  style: TextStyle(color: Colors.white)),
-              onTap: () => sideBarController.index.value = 6,
-              selected: sideBarController.index.value == 6,
-            ),
-            ListTile(
-              leading: const Icon(
-                (Icons.supervised_user_circle_outlined),
-                color: Colors.white,
-              ),
-              title: const Text('Special Policy List',
-                  style: TextStyle(color: Colors.white)),
-              onTap: () => sideBarController.index.value = 8,
-              selected: sideBarController.index.value == 8,
-            ),
-            ListTile(
-              leading: const Icon(
-                (Icons.supervised_user_circle_outlined),
-                color: Colors.white,
-              ),
-              title: const Text('History List',
-                  style: TextStyle(color: Colors.white)),
-              onTap: () => sideBarController.index.value = 10,
-              selected: sideBarController.index.value == 10,
-            ),
-            ListTile(
-              leading: const Icon(
-                (Icons.supervised_user_circle_outlined),
-                color: Colors.white,
-              ),
-              title: const Text('Container Stock',
-                  style: TextStyle(color: Colors.white)),
-              onTap: () => sideBarController.index.value = 11,
-              selected: sideBarController.index.value == 11,
-            ),
+            user == 'admin'
+                ? ListTile(
+                    leading: const Icon(
+                      (Icons.supervised_user_circle_outlined),
+                      color: Colors.white,
+                    ),
+                    title: const Text('Quality List',
+                        style: TextStyle(color: Colors.white)),
+                    onTap: () => sideBarController.index.value = 6,
+                    selected: sideBarController.index.value == 6,
+                  )
+                : SizedBox(),
+            user == 'admin'
+                ? ListTile(
+                    leading: const Icon(
+                      (Icons.supervised_user_circle_outlined),
+                      color: Colors.white,
+                    ),
+                    title: const Text('Special Policy List',
+                        style: TextStyle(color: Colors.white)),
+                    onTap: () => sideBarController.index.value = 8,
+                    selected: sideBarController.index.value == 8,
+                  )
+                : SizedBox(),
+            user == 'admin'
+                ? ListTile(
+                    leading: const Icon(
+                      (Icons.supervised_user_circle_outlined),
+                      color: Colors.white,
+                    ),
+                    title: const Text('History List',
+                        style: TextStyle(color: Colors.white)),
+                    onTap: () => sideBarController.index.value = 10,
+                    selected: sideBarController.index.value == 10,
+                  )
+                : SizedBox(),
+            user == 'admin'
+                ? ListTile(
+                    leading: const Icon(
+                      (Icons.supervised_user_circle_outlined),
+                      color: Colors.white,
+                    ),
+                    title: const Text('Container Stock',
+                        style: TextStyle(color: Colors.white)),
+                    onTap: () => sideBarController.index.value = 11,
+                    selected: sideBarController.index.value == 11,
+                  )
+                : SizedBox(),
             // const Divider(
             //   color: Colors.black54,
             // ),

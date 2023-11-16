@@ -25,7 +25,7 @@ class SideBarController extends GetxController {
     MemberPage(), // 0
     ListApprovalPage(), // 1
     ListRequestPage(), // 2
-    RequestPage(), // 3
+    SendRequestPage(), // 3
     CheckContainerPage(), // 4
     Tracking1Page(), // 5
     ListQualityPage(), // 6
@@ -34,7 +34,7 @@ class SideBarController extends GetxController {
     CUD_SpecialPolicyPage(), //9
     ListHistoryPage(), //10
     ContainerStockPage(), //11
-    ImportFileStock(), //12
+    ImportStockPage(), //12
     DetailApprovalPage(), //13
     DetailRequestPage(), //14
   ];

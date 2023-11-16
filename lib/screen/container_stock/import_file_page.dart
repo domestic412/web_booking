@@ -5,14 +5,14 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/import_stock/model_import_stock.dart';
 
-class ImportFileStock extends StatefulWidget {
-  const ImportFileStock({super.key});
+class ImportStockPage extends StatefulWidget {
+  const ImportStockPage({super.key});
 
   @override
-  State<ImportFileStock> createState() => _ImportFileStockState();
+  State<ImportStockPage> createState() => _ImportStockPageState();
 }
 
-class _ImportFileStockState extends State<ImportFileStock> {
+class _ImportStockPageState extends State<ImportStockPage> {
   ImportStock stockImport = ImportStock();
   FilePickerResult? resultPickedFileStock;
   PlatformFile? pickedFiles;
