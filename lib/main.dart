@@ -60,6 +60,8 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        routerConfig: AppRoutes.router);
+        routerConfig: AppRoutes.router //use MaterialApp.router
+        // getPages: GetRoutes.router,
+        );
   }
 }
