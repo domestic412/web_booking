@@ -75,8 +75,8 @@ class DetailApproval {
       print('Data list approval Detail');
       List dataDetail = jsonDecode(body);
       try {
-        // id_DetailApproval = dataDetail[
-        //     'id']; //declaration id_DetailApproval type int NOT string
+        id_DetailApproval = dataDetail[0]
+            ['id']; //declaration id_DetailApproval type int NOT string
         tenYeuCau_DetailApproval = dataDetail[0]['tenYeuCau'];
         noiDung_DetailApproval = dataDetail[0]['noiDung'];
         cntrno_DetailApproval = dataDetail[0]['cntrno'];

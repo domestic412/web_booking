@@ -10,12 +10,12 @@ import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/request/popUpAlert/alert.dart';
 import 'dart:html' as html;
 
-class RequestPage extends StatefulWidget {
+class SendRequestPage extends StatefulWidget {
   @override
-  State<RequestPage> createState() => _RequestPageState();
+  State<SendRequestPage> createState() => _SendRequestPageState();
 }
 
-class _RequestPageState extends State<RequestPage> {
+class _SendRequestPageState extends State<SendRequestPage> {
   TextEditingController CntrNo_Request = TextEditingController();
 
   List<XFile>? _listImage;
