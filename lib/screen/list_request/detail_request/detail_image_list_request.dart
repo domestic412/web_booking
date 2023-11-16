@@ -30,8 +30,10 @@ class _ImageRequestState extends State<ImageRequest> {
             var dataImage = snapshot.data!;
             return Container(
               padding: EdgeInsets.only(bottom: 10),
-              height: 150,
-              width: 630,
+              // height: 150,
+              // width: 630,
+              height: 200,
+              width: deviceWidth(context),
               child: ListView.builder(
                   itemCount: dataImage.length,
                   scrollDirection: Axis.horizontal,

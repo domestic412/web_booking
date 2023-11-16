@@ -2,50 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/list_approval/model_list_approval.dart';
-import 'package:web_booking/screen/list_approval/data/data_list_approval.dart';
+import 'package:web_booking/model/list_history/model_list_history.dart';
+import 'package:web_booking/screen/list_history/data/data_list_history.dart';
 
 // ignore: must_be_immutable
-class ListApprovalPage extends StatefulWidget {
+class ListHistoryPage extends StatefulWidget {
   @override
-  State<ListApprovalPage> createState() => _ListApprovalPageState();
+  State<ListHistoryPage> createState() => _ListHistoryPageState();
 }
 
-class _ListApprovalPageState extends State<ListApprovalPage> {
-  DataTableApproval _dataApproval = DataTableApproval(data: []);
-  DataTableApproval _list_filter = DataTableApproval(data: []);
+class _ListHistoryPageState extends State<ListHistoryPage> {
+  DataTableHistory _dataHistoty = DataTableHistory(data: []);
+  DataTableHistory _list_filter = DataTableHistory(data: []);
 
-  TextEditingController _search_text = TextEditingController();
-
-  // Color? _color;
-  // String _trangthai = '';
+  TextEditingController _search_history = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    try {
-      ListApproval().fetchListApproval().then((data) {
-        setState(() {
-          _dataApproval = DataTableApproval(data: data);
-          _list_filter = _dataApproval;
-          print('initial data approval');
-        });
+    History().fetchListHistory().then((data) {
+      setState(() {
+        _dataHistoty = DataTableHistory(data: data);
+        _list_filter = _dataHistoty;
+        print('initial data history');
       });
-    } catch (e) {
-      print('Error call data ListApproval: $e');
-    }
+    });
   }
 
-  void _filterApproval() {
-    try {
-      setState(() {
-        final filterData = _dataApproval.list_filter(_search_text.text);
-        _list_filter = DataTableApproval(data: filterData);
-        print('filter data approval');
-      });
-    } catch (e) {
-      print('Error call filter data ListApproval: $e');
-    }
+  void _filterHistory() {
+    setState(() {
+      final filterData = _dataHistoty.list_filter(_search_history.text);
+      _list_filter = DataTableHistory(data: filterData);
+      print('filter data history');
+    });
   }
 
   @override
@@ -54,7 +43,9 @@ class _ListApprovalPageState extends State<ListApprovalPage> {
       // use sizedbox to content always start on top
       height: deviceHeight(context),
       child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
@@ -62,7 +53,7 @@ class _ListApprovalPageState extends State<ListApprovalPage> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.only(top: 32),
                 child: Text(
-                  "List Approval",
+                  "List History",
                   style: style_title_page,
                 ),
               ),
@@ -88,20 +79,18 @@ class _ListApprovalPageState extends State<ListApprovalPage> {
                   child: ListTile(
                     leading: const Icon(Icons.search),
                     title: TextField(
-                      controller: _search_text,
+                      controller: _search_history,
                       decoration: const InputDecoration(
                           hintText: 'Search', border: InputBorder.none),
                       onChanged: (value) {
-                        _filterApproval();
+                        _filterHistory();
                       },
                     ),
                     trailing: IconButton(
                       icon: const Icon(Icons.cancel),
                       onPressed: () {
-                        setState(() {
-                          _search_text.clear();
-                          _filterApproval();
-                        });
+                        _search_history.clear();
+                        _filterHistory();
                       },
                     ),
                   ),
@@ -123,51 +112,79 @@ class _ListApprovalPageState extends State<ListApprovalPage> {
                 margin: const EdgeInsets.only(bottom: 16, left: 32, right: 32),
                 child: PaginatedDataTable(
                   sortColumnIndex: 0,
+                  // sortAscending: true,
+                  dataRowMaxHeight: 50,
                   columnSpacing: 16,
                   columns: [
                     DataColumn(
-                      label: Expanded(
-                          child: Center(
-                              child: Text("STT",
-                                  style: style_text_Table_small_bold))),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: Center(
-                        child: Text('Số Container',
-                            style: style_text_Table_small_bold),
-                      )),
-                    ),
-                    DataColumn(
-                        label: Expanded(
-                            child: Center(
-                      child:
-                          Text('Người gửi', style: style_text_Table_small_bold),
-                    ))),
-                    DataColumn(
-                      label: Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              _list_filter = DataTableApproval(
-                                  data: _dataApproval.filter_trangthaiYC('C'));
-                              // print(list_filter_Admin);
-                              _search_text.text = 'Chờ duyệt';
-                            });
-                          },
-                          child: Center(
-                            child: Text('Duyệt yêu cầu',
-                                style: style_text_Table_small_bold),
-                          ),
-                        ),
+                      label: Text(
+                        'STT',
+                        style: style_text_Table_small_bold,
                       ),
                     ),
                     DataColumn(
-                        label: Expanded(
-                            child: Center(
-                      child: Text('Ngày cập nhật',
-                          style: style_text_Table_small_bold),
-                    ))),
+                      label: Text(
+                        'Số Container',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text('Size', style: style_text_Table_small_bold),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Số lần kết hợp',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Lần KH',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Lần CP',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Chất lượng',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Trạng thái',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Shipper',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label: Expanded(
+                          child: Center(
+                              child: Text(
+                        'Kết quả',
+                        style: style_text_Table_small_bold,
+                      ))),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Checker',
+                        style: style_text_Table_small_bold,
+                      ),
+                    ),
+                    DataColumn(
+                      label:
+                          Text('Thời gian', style: style_text_Table_small_bold),
+                    ),
                   ],
                   source: _list_filter,
                 ),

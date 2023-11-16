@@ -6,7 +6,6 @@ import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
 import 'package:web_booking/page/tracking/tracking_page.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:web_booking/screen/member/member_screen.dart';
 
 class AppRoutes {
   static const defaultRoute = "/";

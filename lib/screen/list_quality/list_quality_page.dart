@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/model_list_quality.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
@@ -70,6 +68,15 @@ class _ListQualityPageState extends State<ListQualityPage> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)))),
                             onPressed: () {
+                              maChatLuong_quality = '';
+                              tenChatLuong_quality = '';
+                              ghiChu_quality = '';
+                              id_quality = 0;
+                              title_quality = 'Create Quality Container';
+                              text_button_CUD = 'Lưu';
+                              URL_QUALITY = '$SERVER/QualityList/Create';
+                              color_button_CUD = haian;
+                              CUD = 1;
                               sideBarController.index.value = 7;
                             },
                             child: Container(
@@ -206,13 +213,21 @@ class _ListQualityPageState extends State<ListQualityPage> {
                                 children: [
                                   InkWell(
                                     onTap: () {
+                                      title_quality =
+                                          'Update Quality Container';
+                                      text_button_CUD = 'Cập nhật';
+                                      URL_QUALITY =
+                                          '$SERVER/QualityList/Update';
+                                      color_button_CUD = haian;
+                                      CUD = 1;
+                                      id_quality = snapshot.data![index].id;
                                       maChatLuong_quality =
                                           snapshot.data![index].maChatLuong;
                                       tenChatLuong_quality =
                                           snapshot.data![index].tenChatLuong;
                                       ghiChu_quality =
                                           snapshot.data![index].ghiChu;
-                                      sideBarController.index.value = 8;
+                                      sideBarController.index.value = 7;
                                     },
                                     child: const Tooltip(
                                       message: 'Sửa',
@@ -227,7 +242,21 @@ class _ListQualityPageState extends State<ListQualityPage> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      // sideBarController.index.value = 8;
+                                      title_quality =
+                                          'Delete Quality Container';
+                                      text_button_CUD = 'Xóa';
+                                      URL_QUALITY =
+                                          '$SERVER/QualityList/Delete?id=${snapshot.data![index].id}';
+                                      color_button_CUD = red;
+                                      CUD = 2;
+                                      // id_quality = snapshot.data![index].id;
+                                      maChatLuong_quality =
+                                          snapshot.data![index].maChatLuong;
+                                      tenChatLuong_quality =
+                                          snapshot.data![index].tenChatLuong;
+                                      ghiChu_quality =
+                                          snapshot.data![index].ghiChu;
+                                      sideBarController.index.value = 7;
                                     },
                                     child: const Tooltip(
                                       message: 'Xóa',

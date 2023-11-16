@@ -7,8 +7,6 @@ import 'package:web_booking/model/schedule/model_voyage.dart';
 
 // ignore: must_be_immutable
 
-TextEditingController soluongcntr = TextEditingController();
-
 Future<void> ListDepo(BuildContext context) {
   return showDialog<void>(
       context: context,

@@ -15,14 +15,6 @@ class BookingPage extends StatefulWidget {
 }
 
 class _BookingPageState extends State<BookingPage> {
-  // TextEditingController date_select = TextEditingController();
-  // TextEditingController port_select1 = TextEditingController();
-  // TextEditingController port_select2 = TextEditingController();
-  // String? dateSelect;
-  // AlertSelectPort alertSelectPort = AlertSelectPort();
-
-  // bool isVisible = false;
-
   @override
   void initState() {
     super.initState();

@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'color.dart';
-
 // Appbar
 String Dashboard_Appbar = '      HẢI AN CONTAINER';
 String ListRequest_Appbar = 'Yêu cầu đã gửi';
@@ -12,12 +8,12 @@ String ListApproval_Appbar = 'Duyệt yêu cầu';
 String HistoryCheck_Appbar = 'Lịch sử kiểm tra';
 
 // Dashboard
-String ListRequest = 'Yêu cầu\nđã gửi';
-String Request = 'Xin kết hợp\nthêm vòng';
-String CheckContainer = 'Kiểm tra\nkết hợp';
-String Tracking = 'Tra cứu\nvị trí';
-String ListApproval = 'Duyệt yêu cầu\n';
-String HistoryCheck = 'Lịch sử\nkiểm tra';
+String ListRequest_db = 'Yêu cầu\nđã gửi';
+String Request_db = 'Xin kết hợp\nthêm vòng';
+String CheckContainer_db = 'Kiểm tra\nkết hợp';
+String Tracking_db = 'Tra cứu\nvị trí';
+String ListApproval_db = 'Duyệt yêu cầu\n';
+String HistoryCheck_db = 'Lịch sử\nkiểm tra';
 
 //
 String NameRequest = 'Xin kết hợp thêm vòng';

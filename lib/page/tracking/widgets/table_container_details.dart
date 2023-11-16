@@ -4,6 +4,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 
+// ignore: must_be_immutable
 class TableContainerDetails extends StatelessWidget {
   TableContainerDetails({super.key});
 

@@ -3,38 +3,78 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:web_booking/screen/list_request/popUp_detail/detail_image_list_request.dart';
+import 'package:web_booking/screen/list_request/detail_request/button_detailRequest.dart';
+import 'package:web_booking/screen/list_request/detail_request/detail_image_list_request.dart';
 import 'package:intl/intl.dart';
 
-// final keytext = GlobalKey();
-String _dt_request = DateFormat("yyyy-MM-dd  hh:mm")
-    .format(DateTime.parse(updateTime_ListRequestDetail!));
+// ignore: must_be_immutable
+class DetailRequestPage extends StatelessWidget {
+  DetailRequestPage({super.key});
+  String? _dt;
 
-Future<void> PopUpListRequest(BuildContext context) {
-  return showDialog<void>(
-      context: context,
-      useSafeArea: false,
-      builder: (BuildContext context) {
-        return Center(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: AlertDialog(
-              backgroundColor: Color(0xFFEFEFF4),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              title: Column(
+  @override
+  Widget build(BuildContext context) {
+    updateTime_DetailRequest == null
+        ? _dt = ''
+        : _dt = DateFormat("dd-MM-yyyy  hh:mm a")
+            .format(DateTime.parse(updateTime_DetailRequest!));
+    return SizedBox(
+      height: deviceHeight(context),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: EdgeInsets.all(32),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  Text(
-                    "Thông tin chi tiết",
-                    style: style_title_detail,
+                  InkWell(
+                    onTap: () {
+                      sideBarController.index.value = 2;
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: grey,
+                      ),
+                      child: Text(
+                        'Quay lại',
+                        style: style_text_button_detail,
+                      ),
+                    ),
                   ),
-                  const Divider(
-                    color: Colors.black,
+                  Expanded(
+                    child: Text(
+                      "Thông tin chi tiết",
+                      style: style_title_page,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 100,
                   )
                 ],
               ),
-              content: Container(
-                width: 630,
+              Container(
+                width: deviceWidth(context),
+                decoration: BoxDecoration(
+                  color: white,
+                  border: Border.all(color: blue.withOpacity(.4), width: .5),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0, 6),
+                        color: blue.withOpacity(.1),
+                        blurRadius: 12)
+                  ],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.all(32),
+                margin: const EdgeInsets.symmetric(vertical: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +87,7 @@ Future<void> PopUpListRequest(BuildContext context) {
                       height: 5,
                     ),
                     Text(
-                      '$tenYeuCau_ListRequestDetail',
+                      '$tenYeuCau_DetailRequest',
                       style: style_text_detail,
                     ),
                     const SizedBox(
@@ -61,7 +101,7 @@ Future<void> PopUpListRequest(BuildContext context) {
                       height: 5,
                     ),
                     Text(
-                      '$noiDung_ListRequestDetail',
+                      '$noiDung_DetailRequest',
                       textAlign: TextAlign.left,
                       style: style_text_detail,
                       // key: keytext
@@ -79,10 +119,10 @@ Future<void> PopUpListRequest(BuildContext context) {
                     RichText(
                         text: TextSpan(children: <TextSpan>[
                       TextSpan(
-                          text: '$cntrno_ListRequestDetail ',
+                          text: '$cntrno_DetailRequest ',
                           style: style_text_cntr_detail),
                       TextSpan(
-                          text: '/ $sizeType_ListRequestDetail',
+                          text: '/ $sizeType_DetailRequest',
                           style: style_text_detail)
                     ])),
                     const SizedBox(
@@ -103,9 +143,9 @@ Future<void> PopUpListRequest(BuildContext context) {
                     const SizedBox(
                       height: 5,
                     ),
-                    if (trangThaiYc_ListRequestDetail == 'A')
+                    if (trangThaiYc_DetailRequest == 'A')
                       setup1()
-                    else if (trangThaiYc_ListRequestDetail == 'C')
+                    else if (trangThaiYc_DetailRequest == 'C')
                       setup2()
                     else
                       setup3(),
@@ -119,13 +159,10 @@ Future<void> PopUpListRequest(BuildContext context) {
                     const SizedBox(
                       height: 5,
                     ),
-                    if (noteHangTau_ListRequestDetail == null)
-                      const Text('')
-                    else
-                      Text(
-                        '$noteHangTau_ListRequestDetail',
-                        style: style_text_detail,
-                      ),
+                    noteHangTau_DetailRequest == null
+                        ? Text('')
+                        : Text('$noteHangTau_DetailRequest',
+                            style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -137,37 +174,27 @@ Future<void> PopUpListRequest(BuildContext context) {
                       height: 5,
                     ),
                     Text(
-                      _dt_request,
+                      _dt!,
                       style: style_text_detail,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    if (trangThaiYc_ListRequestDetail == 'R')
-                      const button_detailRequest()
-                    else
-                      const Text(''),
+                    trangThaiYc_DetailRequest == 'R'
+                        ? button_detailRequest()
+                        : SizedBox(),
+                    SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
-              ),
-              actions: [
-                Container(
-                  margin: EdgeInsets.only(right: 10, bottom: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5), color: haian),
-                  child: TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text(
-                      'OK',
-                      style: style_text_button_detail,
-                    ),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-        );
-      });
+        ),
+      ),
+    );
+  }
 }
 
 setup1() => Container(
@@ -210,29 +237,3 @@ setup3() => Container(
             fontSize: 16,
             // fontWeight: FontWeight.bold,
             color: Colors.white)));
-
-class button_detailRequest extends StatelessWidget {
-  const button_detailRequest({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF09227e),
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)))),
-            onPressed: () {
-              savecntr = cntrno_ListRequestDetail!;
-              sideBarController.index.value = 3;
-              Navigator.pop(context);
-            },
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Text('Gửi lại yêu cầu kết hợp',
-                  style: style_text_button_detail),
-            )));
-  }
-}
