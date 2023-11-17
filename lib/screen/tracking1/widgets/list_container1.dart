@@ -49,8 +49,7 @@ class _ListContainer1State extends State<ListContainer1> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    padding:
-                        const EdgeInsets.only(left: 32, right: 32, bottom: 16),
+                    padding: const EdgeInsets.only(bottom: 16),
                     child: const Text(
                       'Kết quả',
                       style:
@@ -74,8 +73,6 @@ class _ListContainer1State extends State<ListContainer1> {
                       ],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    margin:
-                        const EdgeInsets.only(bottom: 16, left: 32, right: 32),
                     child: DataListCont1(
                         data_bk, data_cntr_en, data_cntr_vn, context),
                   ),

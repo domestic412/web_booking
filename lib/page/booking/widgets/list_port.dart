@@ -28,11 +28,11 @@ class _ListPortState extends State<ListPort> {
             List listports = snapshot.data!;
             final List<DropdownMenuEntry<Ports>> portEntries =
                 <DropdownMenuEntry<Ports>>[];
-            for (final portId in listports) {
+            for (final port in listports) {
               portEntries.add(
                 DropdownMenuEntry<Ports>(
-                  value: portId,
-                  label: portId.portName,
+                  value: port,
+                  label: port.portName,
                 ),
               );
             }
@@ -45,9 +45,9 @@ class _ListPortState extends State<ListPort> {
                   enableFilter: true,
                   label: const Text('Cảng đi '),
                   dropdownMenuEntries: portEntries,
-                  onSelected: (Ports? id) {
+                  onSelected: (Ports? port) {
                     setState(() {
-                      selectPort1 = id;
+                      selectPort1 = port;
                       idPort1 = selectPort1?.portId;
                     });
                   },
@@ -65,9 +65,9 @@ class _ListPortState extends State<ListPort> {
                   enableFilter: true,
                   label: const Text('Cảng đến '),
                   dropdownMenuEntries: portEntries,
-                  onSelected: (Ports? id) {
+                  onSelected: (Ports? port) {
                     setState(() {
-                      selectPort2 = id;
+                      selectPort2 = port;
                       idPort2 = selectPort2?.portId;
                     });
                   },

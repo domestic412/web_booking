@@ -76,7 +76,7 @@ class DetailRequest {
       var body = response.body;
       print('Data List Request Detail');
       List dataDetail = jsonDecode(body);
-      // id_request_for_image = dataDetail['id'];
+      id_request_for_image = dataDetail[0]['id'];
       tenYeuCau_DetailRequest = dataDetail[0]['tenYeuCau'];
       noiDung_DetailRequest = dataDetail[0]['noiDung'];
       cntrno_DetailRequest = dataDetail[0]['cntrno'];

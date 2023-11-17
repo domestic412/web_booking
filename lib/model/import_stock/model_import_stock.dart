@@ -8,7 +8,7 @@ import 'package:web_booking/screen/home/homepage_screen.dart';
 class ImportStock {
   Future<void> UploadFileImport(
       String tudong, String dendong, PlatformFile file) async {
-    if (tudong.isNotEmpty & dendong.isNotEmpty) {
+    if (tudong.isNotEmpty && dendong.isNotEmpty) {
       var url =
           '$SERVER/ContainerStock/ImportTour?tuDong=$tudong&denDong=$dendong';
       var request = MultipartRequest('POST', Uri.parse(url));

@@ -11,7 +11,7 @@ class SendApproval {
     Map<String, dynamic> data = {
       'id': id_DetailApproval,
       'noteHangTau': note_detail_approval.text,
-      'userXuly': user,
+      'userXuly': maNV,
     };
     // print(data);
     var body = json.encode(data);

@@ -29,80 +29,82 @@ class _Tracking1PageState extends State<Tracking1Page> {
       height: deviceHeight(context),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              width: deviceWidth(context),
-              alignment: Alignment.center,
-              padding: const EdgeInsets.only(top: 32),
-              child: Text(
-                "Tracking Container",
-                style: style_title_page,
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: deviceWidth(context),
+                alignment: Alignment.center,
+                child: Text(
+                  "Tracking Container",
+                  style: style_title_page,
+                ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: white,
-                border: Border.all(color: blue.withOpacity(.4), width: .5),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 6),
-                      color: blue.withOpacity(.1),
-                      blurRadius: 12)
-                ],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              child: Row(
-                children: [
-                  DropdownButtonSearch(),
-                  Expanded(
-                    child: Container(
-                      height: 50,
-                      width: 500,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: TextField(
-                          controller: inputTracking1,
-                          onSubmitted: (value) {
-                            setState(() {
-                              containerTracking = ContainerTracking()
-                                  .fetchContainerTracking(
-                                      inputTracking1.text.toUpperCase());
-                            });
-                          },
-                          style: style_textfield,
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder())),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        containerTracking = ContainerTracking()
-                            .fetchContainerTracking(
-                                inputTracking1.text.toUpperCase());
-                      });
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 50,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: normalColor),
-                      child: Text(
-                        'search'.tr(),
-                        style: style_text_button_detail,
+              Container(
+                decoration: BoxDecoration(
+                  color: white,
+                  border: Border.all(color: blue.withOpacity(.4), width: .5),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0, 6),
+                        color: blue.withOpacity(.1),
+                        blurRadius: 12)
+                  ],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.symmetric(vertical: 16),
+                child: Row(
+                  children: [
+                    DropdownButtonSearch(),
+                    Expanded(
+                      child: Container(
+                        height: 50,
+                        width: 500,
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        child: TextField(
+                            controller: inputTracking1,
+                            onSubmitted: (value) {
+                              setState(() {
+                                containerTracking = ContainerTracking()
+                                    .fetchContainerTracking(
+                                        inputTracking1.text.toUpperCase());
+                              });
+                            },
+                            style: style_textfield,
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder())),
                       ),
                     ),
-                  )
-                ],
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          containerTracking = ContainerTracking()
+                              .fetchContainerTracking(
+                                  inputTracking1.text.toUpperCase());
+                        });
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: 80,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: normalColor),
+                        child: Text(
+                          'search'.tr(),
+                          style: style_text_button_detail,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            ListContainer1(),
-          ],
+              ListContainer1(),
+            ],
+          ),
         ),
       ),
     );

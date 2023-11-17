@@ -4,7 +4,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:web_booking/screen/list_approval/widget/radio_button.dart';
+import 'package:web_booking/screen/approval_list/widget/radio_button.dart';
 import 'package:web_booking/screen/list_request/detail_request/detail_image_list_request.dart';
 
 class DetailApprovalPage extends StatefulWidget {
@@ -40,42 +40,36 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      note_detail_approval.clear();
-                      sideBarController.index.value = 1;
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 35,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: grey,
-                      ),
-                      child: Text(
-                        'Quay lại',
-                        style: style_text_button_detail,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Duyệt Yêu Cầu",
-                      textAlign: TextAlign.center,
-                      style: style_title_page,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 100,
-                  )
-                ],
+              Container(
+                width: deviceWidth(context),
+                child: Text(
+                  "Duyệt Yêu Cầu",
+                  textAlign: TextAlign.center,
+                  style: style_title_page,
+                ),
               ),
-              // const Divider(
-              //   color: Colors.black,
-              // ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: InkWell(
+                  onTap: () {
+                    note_detail_approval.clear();
+                    sideBarController.index.value = 1;
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 35,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: grey,
+                    ),
+                    child: Text(
+                      'Quay lại',
+                      style: style_text_button_detail,
+                    ),
+                  ),
+                ),
+              ),
               Container(
                 width: deviceWidth(context),
                 decoration: BoxDecoration(
@@ -89,8 +83,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                   ],
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: const EdgeInsets.all(32),
-                margin: const EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

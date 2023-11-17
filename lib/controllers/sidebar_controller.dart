@@ -2,14 +2,17 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/screen/container_stock/container_stock_page.dart';
 import 'package:web_booking/screen/container_stock/import_file_page.dart';
-import 'package:web_booking/screen/list_approval/list_approval_page.dart';
-import 'package:web_booking/screen/list_approval/detail_approval/detail_approval_page.dart';
-import 'package:web_booking/screen/list_history/list_history_page.dart';
+import 'package:web_booking/screen/approval_list/list_approval_page.dart';
+import 'package:web_booking/screen/approval_list/detail_approval/detail_approval_page.dart';
+import 'package:web_booking/screen/history_list/list_history_page.dart';
 import 'package:web_booking/screen/list_quality/CUD_quality/CUD_quality_page.dart';
 import 'package:web_booking/screen/list_quality/list_quality_page.dart';
-import 'package:web_booking/screen/list_request/detail_request/detail_request.dart';
+import 'package:web_booking/screen/list_request/detail_request/detail_request_page.dart';
 import 'package:web_booking/screen/list_special_policy/CUD_special_policy/CUD_special_policy.dart';
 import 'package:web_booking/screen/list_special_policy/list_special_policy_page.dart';
+import 'package:web_booking/screen/list_user/CUD_user/CUD_user_page.dart';
+import 'package:web_booking/screen/list_user/CUD_user/change_pw/change_pw.page.dart';
+import 'package:web_booking/screen/list_user/list_user_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
 import 'package:web_booking/screen/check_container/check_container_page.dart';
 import 'package:web_booking/screen/list_request/list_request_page.dart';
@@ -37,5 +40,8 @@ class SideBarController extends GetxController {
     ImportStockPage(), //12
     DetailApprovalPage(), //13
     DetailRequestPage(), //14
+    ListUserPage(), //15
+    CUD_UserPage(), //16
+    ChangePassword_UserPage(), //17
   ];
 }

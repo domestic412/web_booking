@@ -147,7 +147,7 @@ saveData() async {
   box = await Hive.openBox('myData');
   box.put('authorize', dataAuthorize!);
   box.put('tokenLogin', results[2]);
-  box.put('user', results[3].substring(0, 5));
+  box.put('maNV', results[3].substring(0, 5));
   box.put('code', results[4]);
 }
 
@@ -157,7 +157,7 @@ getData() async {
     box = await Hive.openBox('myData');
     tokenAuthorize = box.get('authorize');
     tokenLogin = box.get('tokenLogin');
-    user = box.get('user');
+    maNV = box.get('maNV');
     code = box.get('code');
   } catch (e) {
     print('This error is: $e');

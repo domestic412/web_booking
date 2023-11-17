@@ -47,7 +47,6 @@ class ListSpecialPolicy {
       "Access-Control-Allow-Methods": "GET", //use fot http, not use https
       "Authorization": "Bearer $tokenAuthorize",
     });
-    // print(tokenAuthorize);
     if (response.statusCode == 200) {
       var body = response.body;
       print('Data List Quality');
