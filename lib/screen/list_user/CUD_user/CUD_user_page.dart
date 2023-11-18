@@ -33,6 +33,8 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
   Author? selectAuthor;
   bool duplicateError = false;
 
+  String? textError;
+
   @override
   void initState() {
     super.initState();
@@ -105,8 +107,14 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                         Container(
                             margin: EdgeInsets.only(right: 10),
                             width: 200,
-                            child: Text('Mã tài khoản (*)',
-                                style: style_text_detail)),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: 'Mã tài khoản ',
+                                  style: style_text_detail,
+                                  children: <TextSpan>[
+                                    TextSpan(text: '(*)', style: style_text_red)
+                                  ]),
+                            )),
                         CUD == 1
                             ? Expanded(
                                 child: TextField(
@@ -139,8 +147,14 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                         Container(
                             margin: EdgeInsets.only(right: 10),
                             width: 200,
-                            child: Text('Tên tài khoản (*)',
-                                style: style_text_detail)),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: 'Tên tài khoản ',
+                                  style: style_text_detail,
+                                  children: [
+                                    TextSpan(text: '(*)', style: style_text_red)
+                                  ]),
+                            )),
                         Expanded(
                           child: TextField(
                             controller: _input_tenNv,
@@ -157,11 +171,16 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                     Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 10),
-                          width: 200,
-                          child: Text('Mã code khách hàng (*)',
-                              style: style_text_detail),
-                        ),
+                            margin: EdgeInsets.only(right: 10),
+                            width: 200,
+                            child: RichText(
+                              text: TextSpan(
+                                  text: 'Mã code khách hàng ',
+                                  style: style_text_detail,
+                                  children: [
+                                    TextSpan(text: '(*)', style: style_text_red)
+                                  ]),
+                            )),
                         const ListCode()
                       ],
                     ),
@@ -177,10 +196,19 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                                 Container(
                                     margin: EdgeInsets.only(right: 10),
                                     width: 200,
-                                    child: Text('Mật khẩu (*)',
-                                        style: style_text_detail)),
+                                    child: RichText(
+                                      text: TextSpan(
+                                          text: 'Mật Khẩu ',
+                                          style: style_text_detail,
+                                          children: [
+                                            TextSpan(
+                                                text: '(*)',
+                                                style: style_text_red)
+                                          ]),
+                                    )),
                                 Expanded(
                                   child: TextField(
+                                    obscureText: true,
                                     controller: _input_matKhau,
                                     decoration: InputDecoration(
                                         border: OutlineInputBorder(),
@@ -265,8 +293,14 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                         Container(
                             margin: EdgeInsets.only(right: 10),
                             width: 200,
-                            child: Text('Quyền quản trị (*)',
-                                style: style_text_detail)),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: 'Quyền quản trị ',
+                                  style: style_text_detail,
+                                  children: [
+                                    TextSpan(text: '(*)', style: style_text_red)
+                                  ]),
+                            )),
                         DropdownMenu<Author>(
                             controller: _input_author,
                             label: Text('Quyền quản trị'),
@@ -294,7 +328,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                               )
                             : SizedBox(
                                 height: 50,
-                                child: Text('Mã tài khoản đã có trên hệ thống',
+                                child: Text(textError!,
                                     style: style_text_cntr_detail),
                               ),
                         ElevatedButton(
@@ -368,6 +402,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
           sideBarController.index.value = 15;
         } else if (response.statusCode == 400) {
           setState(() {
+            textError = 'Mã tài khoản đã có trên hệ thống';
             duplicateError = true;
           });
         } else {
@@ -401,7 +436,10 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
         print('Error CUD == null');
       }
     } else {
-      print('Null manv, tennv, code');
+      setState(() {
+        textError = 'Điền đầy đủ thông tin vào các ô có dấu (*)';
+        duplicateError = true;
+      });
     }
   }
 }
