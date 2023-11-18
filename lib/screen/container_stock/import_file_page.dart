@@ -25,121 +25,127 @@ class _ImportStockPageState extends State<ImportStockPage> {
   Widget build(BuildContext context) {
     return Container(
       height: deviceHeight(context),
-      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: deviceWidth(context),
-              alignment: Alignment.center,
-              padding: const EdgeInsets.only(bottom: 16),
-              child: Text(
-                'Import File Excel Container Stock',
-                style: style_title_page,
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: deviceWidth(context),
+                alignment: Alignment.center,
+                margin: const EdgeInsets.only(bottom: 16),
+                child: Text(
+                  'Import File Excel Container Stock',
+                  style: style_title_page,
+                ),
               ),
-            ),
-            Divider(),
-            Container(
-              height: 350,
-              width: 430,
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(bottom: 32, top: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Từ dòng',
-                              style: style_text_detail,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            SizedBox(
-                              height: 50,
-                              width: 200,
-                              child: TextField(
-                                controller: _input_tudong,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                ),
+              Divider(),
+              Container(
+                height: 350,
+                width: 430,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(bottom: 32, top: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Từ dòng',
+                                style: style_text_detail,
                               ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Đến dòng',
-                              style: style_text_detail,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            SizedBox(
-                              height: 50,
-                              width: 200,
-                              child: TextField(
-                                controller: _input_dendong,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
+                              Container(
+                                height: 50,
+                                width: 200,
+                                margin: EdgeInsets.only(top: 10),
+                                child: TextField(
+                                  controller: _input_tudong,
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
                                 ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Đến dòng',
+                                style: style_text_detail,
                               ),
-                            )
-                          ],
-                        ),
-                      ],
+                              Container(
+                                height: 50,
+                                width: 200,
+                                margin: EdgeInsets.only(top: 10),
+                                child: TextField(
+                                  controller: _input_dendong,
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  ImportFile(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Divider(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  pickedFiles == null
-                      ? const SizedBox()
-                      : InkWell(
-                          onTap: () {
-                            setState(() {
-                              stockImport.UploadFileImport(_input_tudong.text,
-                                  _input_dendong.text, pickedFiles!);
-                              showloading = true;
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                                color: haian,
-                                borderRadius: BorderRadius.circular(7)),
-                            child: Text(
-                              'Import Excel',
-                              style: style_text_button_detail,
+                    ImportFile(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Divider(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    pickedFiles == null
+                        ? const SizedBox()
+                        : InkWell(
+                            onTap: () {
+                              setState(() {
+                                if ((_input_tudong.text != '') &&
+                                    (_input_dendong.text != '')) {
+                                  stockImport.UploadFileImport(
+                                      _input_tudong.text,
+                                      _input_dendong.text,
+                                      pickedFiles!);
+                                  showloading = true;
+                                  print('not null');
+                                } else {
+                                  print('null');
+                                }
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: haian,
+                                  borderRadius: BorderRadius.circular(7)),
+                              child: Text(
+                                'Import Excel',
+                                style: style_text_button_detail,
+                              ),
                             ),
                           ),
-                        ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  showloading == true
-                      ? const CircularProgressIndicator()
-                      : const SizedBox(),
-                ],
+                    SizedBox(
+                      height: 30,
+                    ),
+                    showloading == true
+                        ? const CircularProgressIndicator()
+                        : const SizedBox(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

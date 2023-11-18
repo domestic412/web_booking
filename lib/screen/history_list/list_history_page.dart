@@ -1,78 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/container_stock/model_container_stock.dart';
-import 'package:web_booking/screen/container_stock/data/data_container_stock.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:web_booking/model/list_history/model_list_history.dart';
+import 'package:web_booking/screen/history_list/data/data_list_history.dart';
 
-class ContainerStockPage extends StatefulWidget {
-  const ContainerStockPage({super.key});
-
+// ignore: must_be_immutable
+class ListHistoryPage extends StatefulWidget {
   @override
-  State<ContainerStockPage> createState() => _ContainerStockPageState();
+  State<ListHistoryPage> createState() => _ListHistoryPageState();
 }
 
-class _ContainerStockPageState extends State<ContainerStockPage> {
-  late DataTableContainerStock _dataContainerStock =
-      DataTableContainerStock(data: []);
-  DataTableContainerStock _list_filter = DataTableContainerStock(data: []);
+class _ListHistoryPageState extends State<ListHistoryPage> {
+  DataTableHistory _dataHistoty = DataTableHistory(data: []);
+  DataTableHistory _list_filter = DataTableHistory(data: []);
 
-  TextEditingController _search_stock = TextEditingController();
+  TextEditingController _search_history = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    ContainerStock().fetchContainerStock().then((data) {
+    History().fetchListHistory().then((data) {
       setState(() {
-        _dataContainerStock = DataTableContainerStock(data: data);
-        _list_filter = _dataContainerStock;
-        print('inital data');
+        _dataHistoty = DataTableHistory(data: data);
+        _list_filter = _dataHistoty;
+        print('initial data history');
       });
     });
   }
 
-  void _filterContainerStock() {
+  void _filterHistory() {
     setState(() {
-      final filterData = _dataContainerStock.list_filter(_search_stock.text);
-      _list_filter = DataTableContainerStock(data: filterData);
-      print('filter data stock');
+      final filterData = _dataHistoty.list_filter(_search_history.text);
+      _list_filter = DataTableHistory(data: filterData);
+      print('filter data history');
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      // use sizedbox to content always start on top
       height: deviceHeight(context),
       child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
                 Container(
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    'Container Stock',
+                    "List History",
                     style: style_title_page,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    sideBarController.index.value = 12;
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                    decoration: BoxDecoration(
-                        color: haian, borderRadius: BorderRadius.circular(8)),
-                    child: Text(
-                      'Import File Excel',
-                      style: style_text_box_button_small,
-                    ),
                   ),
                 ),
                 Container(
@@ -88,7 +71,7 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   padding: const EdgeInsets.all(16),
-                  margin: EdgeInsets.symmetric(vertical: 16),
+                  margin: const EdgeInsets.symmetric(vertical: 16),
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -96,18 +79,18 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                     child: ListTile(
                       leading: const Icon(Icons.search),
                       title: TextField(
-                        controller: _search_stock,
+                        controller: _search_history,
                         decoration: const InputDecoration(
                             hintText: 'Search', border: InputBorder.none),
                         onChanged: (value) {
-                          _filterContainerStock();
+                          _filterHistory();
                         },
                       ),
                       trailing: IconButton(
                         icon: const Icon(Icons.cancel),
                         onPressed: () {
-                          _search_stock.clear();
-                          _filterContainerStock();
+                          _search_history.clear();
+                          _filterHistory();
                         },
                       ),
                     ),
@@ -140,7 +123,7 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                       ),
                       DataColumn(
                         label: Text(
-                          'Container',
+                          'Số Container',
                           style: style_text_Table_small_bold,
                         ),
                       ),
@@ -149,69 +132,57 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                       ),
                       DataColumn(
                         label: Text(
+                          'Số lần kết hợp',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Lần KH',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Lần CP',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Chất lượng',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Trạng thái',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
                           'Shipper',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
+                        label: Expanded(
+                            child: Center(
+                                child: Text(
+                          'Kết quả',
+                          style: style_text_Table_small_bold,
+                        ))),
+                      ),
+                      DataColumn(
                         label: Text(
-                          'Full out',
+                          'Checker',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
-                        label: Text(
-                          'Empty Out',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Full arrived',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Port/Depot',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Combinative Stuffing',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Ship Voy',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Status',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Quality',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Check',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          '##',
-                          style: style_text_Table_small_bold,
-                        ),
+                        label: Text('Thời gian',
+                            style: style_text_Table_small_bold),
                       ),
                     ],
                     source: _list_filter,

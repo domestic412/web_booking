@@ -29,7 +29,19 @@ Widget buiderMenuItems(BuildContext context) {
             //         selected: sideBarController.index.value == 0,
             //       )
             //     : const SizedBox(),
-            user == 'admin'
+            maNV == 'admin'
+                ? ListTile(
+                    leading: const Icon(
+                      (Icons.supervised_user_circle_outlined),
+                      color: Colors.white,
+                    ),
+                    title: const Text('List User',
+                        style: TextStyle(color: Colors.white)),
+                    onTap: () => sideBarController.index.value = 15,
+                    selected: sideBarController.index.value == 15,
+                  )
+                : const SizedBox(),
+            maNV == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -81,7 +93,7 @@ Widget buiderMenuItems(BuildContext context) {
               onTap: () => sideBarController.index.value = 5,
               selected: sideBarController.index.value == 5,
             ),
-            user == 'admin'
+            maNV == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -93,7 +105,7 @@ Widget buiderMenuItems(BuildContext context) {
                     selected: sideBarController.index.value == 6,
                   )
                 : SizedBox(),
-            user == 'admin'
+            maNV == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -105,7 +117,7 @@ Widget buiderMenuItems(BuildContext context) {
                     selected: sideBarController.index.value == 8,
                   )
                 : SizedBox(),
-            user == 'admin'
+            maNV == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -117,7 +129,7 @@ Widget buiderMenuItems(BuildContext context) {
                     selected: sideBarController.index.value == 10,
                   )
                 : SizedBox(),
-            user == 'admin'
+            maNV == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),

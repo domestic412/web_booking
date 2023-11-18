@@ -31,127 +31,129 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
       height: deviceHeight(context),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              width: deviceWidth(context),
-              alignment: Alignment.center,
-              padding: const EdgeInsets.only(top: 32),
-              child: Text(
-                "Check Container",
-                style: style_title_page,
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: deviceWidth(context),
+                alignment: Alignment.center,
+                child: Text(
+                  "Check Container",
+                  style: style_title_page,
+                ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: white,
-                // border: Border.all(color: blue.withOpacity(.4), width: .5),          // error excel
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 6),
-                      color: blue.withOpacity(.1),
-                      blurRadius: 12)
-                ],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              child: Container(
+              Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  // border: Border.all(color: Colors.black45)            // error excel
+                  color: white,
+                  // border: Border.all(color: blue.withOpacity(.4), width: .5),          // error excel
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0, 6),
+                        color: blue.withOpacity(.1),
+                        blurRadius: 12)
+                  ],
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: ListTile(
-                  leading: Icon(Icons.calendar_view_week_rounded),
-                  title: TextField(
-                      inputFormatters: [InputContainerFormatter()],
-                      onSubmitted: (value) {
-                        setState(() {
-                          _checkContainers = CheckContainer()
-                              .fetchCheckContainers(_CntrNo.text.trim());
-                        });
-                      },
-                      controller: _CntrNo,
-                      textCapitalization: TextCapitalization.characters,
-                      style:
-                          const TextStyle(fontSize: 16, color: Colors.black87),
-                      decoration: InputDecoration(
-                        hintText: 'Nhập số Container',
-                        border: InputBorder.none,
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(
-                                () {
-                                  _checkContainers = CheckContainer()
-                                      .fetchCheckContainers(
-                                          _CntrNo.text.trim());
-                                },
-                              );
-                            },
-                            icon: const Icon(Icons.search)),
-                      )),
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.symmetric(vertical: 16),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    // border: Border.all(color: Colors.black45)            // error excel
+                  ),
+                  child: ListTile(
+                    leading: Icon(Icons.calendar_view_week_rounded),
+                    title: TextField(
+                        inputFormatters: [InputContainerFormatter()],
+                        onSubmitted: (value) {
+                          setState(() {
+                            _checkContainers = CheckContainer()
+                                .fetchCheckContainers(_CntrNo.text.trim());
+                          });
+                        },
+                        controller: _CntrNo,
+                        textCapitalization: TextCapitalization.characters,
+                        style: const TextStyle(
+                            fontSize: 16, color: Colors.black87),
+                        decoration: InputDecoration(
+                          hintText: 'Nhập số Container',
+                          border: InputBorder.none,
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    _checkContainers = CheckContainer()
+                                        .fetchCheckContainers(
+                                            _CntrNo.text.trim());
+                                  },
+                                );
+                              },
+                              icon: const Icon(Icons.search)),
+                        )),
+                  ),
                 ),
               ),
-            ),
-            // ImportFile(),
-            Container(
-              // alignment: Alignment.centerRight,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: haian, borderRadius: BorderRadius.circular(10)),
-              child: TextButton(
-                  onPressed: () async {
-                    await Import().ImportExcel();
-                    if (resultPickedFile != null) {
-                      var bytes = resultPickedFile?.files.single.bytes;
-                      var excel = Excel.decodeBytes(bytes!);
-                      // choose sheet1 in file excel
-                      String table = 'Sheet1';
-                      // for (var table in excel.tables.keys) {         // take data all sheet in file excel
-                      // print(table);                                  // sheet Name
-                      // print(excel.tables[table]!.maxColumns);        // max number column
-                      // print(excel.tables[table]!.maxRows);               // print max number row
-                      // take all data, style, cell... each row
-                      for (var row in excel.tables[table]!.rows) {
-                        List list_cont = row
-                            .map((e) => e?.value)
-                            .toList(); //add data to list_cont with container is list_cont[0]
-                        // print(list_cont[0]);
-                        if (i < excel.tables[table]!.maxRows) {
-                          if (i == (excel.tables[table]!.maxRows - 1)) {
-                            //take last cont number
-                            _list_input = _list_input + list_cont[0].toString();
-                          } else if (i > 0) {
-                            //take cont number from 2
-                            _list_input =
-                                _list_input + list_cont[0].toString() + ' - ';
+              // ImportFile(),
+              Container(
+                // alignment: Alignment.centerRight,
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: haian, borderRadius: BorderRadius.circular(10)),
+                child: TextButton(
+                    onPressed: () async {
+                      await Import().ImportExcel();
+                      if (resultPickedFile != null) {
+                        var bytes = resultPickedFile?.files.single.bytes;
+                        var excel = Excel.decodeBytes(bytes!);
+                        // choose sheet1 in file excel
+                        String table = 'Sheet1';
+                        // for (var table in excel.tables.keys) {         // take data all sheet in file excel
+                        // print(table);                                  // sheet Name
+                        // print(excel.tables[table]!.maxColumns);        // max number column
+                        // print(excel.tables[table]!.maxRows);               // print max number row
+                        // take all data, style, cell... each row
+                        for (var row in excel.tables[table]!.rows) {
+                          List list_cont = row
+                              .map((e) => e?.value)
+                              .toList(); //add data to list_cont with container is list_cont[0]
+                          // print(list_cont[0]);
+                          if (i < excel.tables[table]!.maxRows) {
+                            if (i == (excel.tables[table]!.maxRows - 1)) {
+                              //take last cont number
+                              _list_input =
+                                  _list_input + list_cont[0].toString();
+                            } else if (i > 0) {
+                              //take cont number from 2
+                              _list_input =
+                                  _list_input + list_cont[0].toString() + ' - ';
+                            }
+                            i++;
                           }
-                          i++;
                         }
+                        // print(_list_input);
+                        setState(() {
+                          _CntrNo.text = _list_input;
+                          _list_input = '';
+                          i = 0;
+                        });
+                        // }
+                      } else {
+                        print('no data');
                       }
-                      // print(_list_input);
-                      setState(() {
-                        _CntrNo.text = _list_input;
-                        _list_input = '';
-                        i = 0;
-                      });
-                      // }
-                    } else {
-                      print('no data');
-                    }
-                  },
-                  child: Text(
-                    'Import file excel',
-                    style: TextStyle(color: white, fontSize: 15),
-                  )),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(child: fetchDataListContainer()),
-          ],
+                    },
+                    child: Text(
+                      'Import file excel',
+                      style: TextStyle(color: white, fontSize: 15),
+                    )),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(child: fetchDataListContainer()),
+            ],
+          ),
         ),
       ),
     );
@@ -174,8 +176,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
             children: [
               snapshot.data!.length < _countCont.length
                   ? Container(
-                      padding: const EdgeInsets.only(
-                          left: 32, right: 32, bottom: 16),
+                      padding: const EdgeInsets.only(bottom: 16),
                       width: deviceWidth(context),
                       alignment: Alignment.center,
                       child: Text(
@@ -184,7 +185,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                       ))
                   : Container(),
               Container(
-                padding: const EdgeInsets.only(left: 32, right: 32, bottom: 16),
+                padding: const EdgeInsets.only(bottom: 16),
                 child: const Text(
                   'Kết quả kết hợp trả về',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -203,7 +204,6 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                   ],
                   borderRadius: BorderRadius.circular(8),
                 ),
-                margin: const EdgeInsets.only(bottom: 16, left: 32, right: 32),
                 child: DataCheckContainer(snapshot, context),
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_booking/model/list_user/model_getcode.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 
@@ -15,7 +16,7 @@ List results = [];
 var box;
 String? dataAuthorize;
 String tokenAuthorize = '';
-String user = '';
+String maNV = '';
 String tokenLogin = '';
 String code = '';
 
@@ -132,10 +133,25 @@ String? code_policy;
 String? shipper_policy;
 String? times_policy;
 
-// CUD Quality-Policy
+// User
+String? title_user;
+int? id_user;
+String? maNV_user;
+String? tenNv_user;
+String? matKhau_user;
+String? dienthoai_user;
+String? email_user;
+String? author_user;
+
+// CUD Quality-Policy-User
 String? text_button_CUD;
 Color? color_button_CUD;
 int? CUD;
+String? tittle_change_pw;
+List dataCode = [];
+GetCode? selectCode;
+String? codeValue;
+String? AdminUserValue;
 
 String? nameDepo;
 String? idDepo;

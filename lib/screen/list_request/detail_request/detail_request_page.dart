@@ -28,37 +28,35 @@ class DetailRequestPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      sideBarController.index.value = 2;
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 35,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: grey,
-                      ),
-                      child: Text(
-                        'Quay lại',
-                        style: style_text_button_detail,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Thông tin chi tiết",
-                      style: style_title_page,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
+              Container(
+                width: deviceWidth(context),
+                alignment: Alignment.center,
+                child: Text(
+                  "Thông tin chi tiết",
+                  style: style_title_page,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 16),
+                child: InkWell(
+                  onTap: () {
+                    sideBarController.index.value = 2;
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 35,
                     width: 100,
-                  )
-                ],
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: grey,
+                    ),
+                    child: Text(
+                      'Quay lại',
+                      style: style_text_button_detail,
+                    ),
+                  ),
+                ),
               ),
               Container(
                 width: deviceWidth(context),
@@ -73,8 +71,7 @@ class DetailRequestPage extends StatelessWidget {
                   ],
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: const EdgeInsets.all(32),
-                margin: const EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
