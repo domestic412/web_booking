@@ -59,6 +59,8 @@ TextStyle style_text_button_detail = TextStyle(
   color: light,
 );
 
+TextStyle style_text_red = TextStyle(fontSize: 16, color: red);
+
 //style title page
 TextStyle style_title_page = TextStyle(fontSize: 30, color: haian);
 
