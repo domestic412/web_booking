@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_port.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ListPort extends StatefulWidget {
   const ListPort({super.key});
@@ -43,7 +44,7 @@ class _ListPortState extends State<ListPort> {
                   menuHeight: 500,
                   controller: port_select1,
                   enableFilter: true,
-                  label: const Text('Cảng đi '),
+                  label: Text('departure'.tr()),
                   dropdownMenuEntries: portEntries,
                   onSelected: (Ports? port) {
                     setState(() {
@@ -63,7 +64,7 @@ class _ListPortState extends State<ListPort> {
                   menuHeight: 500,
                   controller: port_select2,
                   enableFilter: true,
-                  label: const Text('Cảng đến '),
+                  label: Text('arrival'.tr()),
                   dropdownMenuEntries: portEntries,
                   onSelected: (Ports? port) {
                     setState(() {

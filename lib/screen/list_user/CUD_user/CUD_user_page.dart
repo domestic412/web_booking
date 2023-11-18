@@ -353,8 +353,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
         if (response.statusCode == 200) {
           sideBarController.index.value = 15;
         } else {
-          print('Error');
-          throw Exception('Error to Create');
+          print('Error StatusCode create: ${response.statusCode}');
         }
       } else if (CUD == 2) {
         var body = json.encode(data_update);
@@ -368,8 +367,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
         if (response.statusCode == 200) {
           sideBarController.index.value = 15;
         } else {
-          print('Error');
-          throw Exception('Error to Update');
+          print('Error StatusCode update: ${response.statusCode}');
         }
       } else if (CUD == 3) {
         final response = await http.delete(Uri.parse(URL_USER!), headers: {
@@ -379,15 +377,13 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
         if (response.statusCode == 200) {
           sideBarController.index.value = 15;
         } else {
-          print('Error');
-          throw Exception('Error to Delete');
+          print('Error StatusCode delete: ${response.statusCode}');
         }
       } else {
-        print('Error');
-        throw Exception('Error to CUD');
+        print('Error CUD == null');
       }
     } else {
-      throw Exception('Null manv, tennv, code');
+      print('Null manv, tennv, code');
     }
   }
 }

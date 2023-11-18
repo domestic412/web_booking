@@ -199,7 +199,7 @@ class _ListUserPageState extends State<ListUserPage> {
                                       onTap: () {
                                         title_user = 'Update User';
                                         text_button_CUD = 'Cập nhật';
-                                        URL_USER = '$SERVER/UserList/Update';
+                                        URL_USER = '$SERVER/User/Update';
                                         color_button_CUD = haian;
                                         CUD = 2;
                                         id_user = snapshot.data![index].id;
