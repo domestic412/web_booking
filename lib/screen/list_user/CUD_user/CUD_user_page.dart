@@ -31,6 +31,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
   TextEditingController _input_author = TextEditingController();
 
   Author? selectAuthor;
+  bool duplicateError = false;
 
   @override
   void initState() {
@@ -284,30 +285,43 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                             }).toList())
                       ],
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
                     Center(
-                        child: ElevatedButton(
+                        child: Column(
+                      children: [
+                        duplicateError == false
+                            ? SizedBox(
+                                height: 50,
+                              )
+                            : SizedBox(
+                                height: 50,
+                                child: Text('Mã tài khoản đã có trên hệ thống',
+                                    style: style_text_cntr_detail),
+                              ),
+                        ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: color_button_CUD,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)))),
                             onPressed: () {
-                              CUDUser(
-                                  id_user!,
-                                  _input_maNv.text,
-                                  _input_tenNv.text,
-                                  codeValue!,
-                                  _input_author.text);
+                              setState(() {
+                                duplicateError = false;
+                                CUDUser(
+                                    id_user!,
+                                    _input_maNv.text,
+                                    _input_tenNv.text,
+                                    codeValue!,
+                                    _input_author.text);
+                              });
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 10),
                               child: Text(text_button_CUD!,
                                   style: style_text_box_button),
-                            ))),
+                            )),
+                      ],
+                    )),
                     const SizedBox(height: 20)
                   ],
                 ),
@@ -352,6 +366,10 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             body: body);
         if (response.statusCode == 200) {
           sideBarController.index.value = 15;
+        } else if (response.statusCode == 400) {
+          setState(() {
+            duplicateError = true;
+          });
         } else {
           print('Error StatusCode create: ${response.statusCode}');
         }
