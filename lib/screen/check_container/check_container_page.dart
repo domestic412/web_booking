@@ -5,8 +5,9 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/check_container/model_check_container.dart';
-import 'package:web_booking/screen/check_container/Popup/detail_check_container.dart';
+import 'package:web_booking/screen/check_container/Widget/policy_check_container.dart';
 import 'package:web_booking/screen/check_container/import_excel/import_excel.dart';
+import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/widgets/format_input_container.dart';
 
 class CheckContainerPage extends StatefulWidget {
@@ -44,6 +45,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                   style: style_title_page,
                 ),
               ),
+              PolicyCheckContainer(),
               Container(
                 decoration: BoxDecoration(
                   color: white,
@@ -66,7 +68,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                   child: ListTile(
                     leading: Icon(Icons.calendar_view_week_rounded),
                     title: TextField(
-                        inputFormatters: [InputContainerFormatter()],
+                        // inputFormatters: [InputContainerFormatter()],
                         onSubmitted: (value) {
                           setState(() {
                             _checkContainers = CheckContainer()
@@ -76,7 +78,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                         controller: _CntrNo,
                         textCapitalization: TextCapitalization.characters,
                         style: const TextStyle(
-                            fontSize: 16, color: Colors.black87),
+                            fontSize: 18, color: Colors.black87),
                         decoration: InputDecoration(
                           hintText: 'Nhập số Container',
                           border: InputBorder.none,
@@ -127,7 +129,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                             } else if (i > 0) {
                               //take cont number from 2
                               _list_input =
-                                  _list_input + list_cont[0].toString() + ' - ';
+                                  _list_input + list_cont[0].toString() + ' ';
                             }
                             i++;
                           }
@@ -169,7 +171,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
         if (snapshot.hasData) {
           _countCont = _CntrNo.text
               .trim()
-              .split('-'); // list space to count the number of containers
+              .split(' '); // list space to count the number of containers
           // print('show data check container');
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -379,32 +381,20 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                 width: 150,
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_color == red) {
+                      savecntr = snapshot.data![index].cntrno!;
+                      sideBarController.index.value = 3;
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: _color,
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
-                  child: InkWell(
-                    onTap: () {
-                      // cntrno_CheckCntr = snapshot.data![index].cntrno;
-                      // sizeType_CheckCntr = snapshot.data![index].sizeType;
-                      // shipper_CheckCntr = snapshot.data![index].shipper;
-                      // remark_CheckCntr = snapshot.data![index].remark;
-                      // ghiChuTinhTrang_CheckCntr =
-                      //     snapshot.data![index].ghiChuTinhTrang;
-                      // luuYSuDung_CheckCntr = snapshot.data![index].luuYSuDung;
-                      // // soLanKetHop_CheckCntr = snapshot.data!.soLanKetHop?? '';
-                      // soLanKetHop_CheckCntr = snapshot.data![index].soLanKetHop;
-                      // ketQua_CheckCntr = snapshot.data![index].ketQua;
-                      // updateTime_CheckCntr = snapshot.data![index].updateTime;
-                      // approval_CheckCntr = snapshot.data![index].approval;
-                      // PopUpCheckContainer(context);
-                    },
-                    child: Text(
-                      snapshot.data![index].approval.toString(),
-                      style: text_style_status,
-                      textAlign: TextAlign.center,
-                    ),
+                  child: Text(
+                    snapshot.data![index].approval.toString(),
+                    style: text_style_status,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),

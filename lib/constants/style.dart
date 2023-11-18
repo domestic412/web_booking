@@ -59,6 +59,11 @@ TextStyle style_text_button_detail = TextStyle(
   color: light,
 );
 
+// style check container
+TextStyle style_text_small_12 = TextStyle(fontSize: 14, color: black);
+TextStyle style_text_small_12_red =
+    TextStyle(fontSize: 14, color: red, fontWeight: FontWeight.bold);
+
 TextStyle style_text_red = TextStyle(fontSize: 16, color: red);
 
 //style title page
