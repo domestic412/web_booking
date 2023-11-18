@@ -22,9 +22,9 @@ import 'package:web_booking/screen/request/request_page.dart';
 import 'package:web_booking/screen/tracking1/tracking_page1.dart';
 
 class AppRoutes {
-  static const defaultRoute = "/Default";
+  static const defaultRoute = "/";
   static const SignUpRoute = "/SignUp";
-  static const SignInRoute = "/";
+  static const SignInRoute = "/SignIn";
   static const TrackingRoute = "/Tracking";
   static const TestRoute = "/Test";
   static const BookingRoute = "/Booking";

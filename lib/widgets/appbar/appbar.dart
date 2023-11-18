@@ -54,14 +54,6 @@ class appbar extends StatelessWidget {
             const SizedBox(
               width: 30,
             ),
-            // InkWell(
-            //   onTap: () {
-            //     context.go(AppRoutes.TestRoute);
-            //   },
-            //   child: Container(
-            //     width: 70,
-            //     child: Text('Test', style: style14_white,)),
-            // )
           ],
         ),
       ),
