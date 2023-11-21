@@ -29,7 +29,7 @@ Widget buiderMenuItems(BuildContext context) {
             //         selected: sideBarController.index.value == 0,
             //       )
             //     : const SizedBox(),
-            maNV == 'admin'
+            author == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -41,7 +41,7 @@ Widget buiderMenuItems(BuildContext context) {
                     selected: sideBarController.index.value == 15,
                   )
                 : const SizedBox(),
-            maNV == 'admin'
+            author == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -93,7 +93,7 @@ Widget buiderMenuItems(BuildContext context) {
               onTap: () => sideBarController.index.value = 5,
               selected: sideBarController.index.value == 5,
             ),
-            maNV == 'admin'
+            author == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -105,7 +105,7 @@ Widget buiderMenuItems(BuildContext context) {
                     selected: sideBarController.index.value == 6,
                   )
                 : SizedBox(),
-            maNV == 'admin'
+            author == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -117,7 +117,7 @@ Widget buiderMenuItems(BuildContext context) {
                     selected: sideBarController.index.value == 8,
                   )
                 : SizedBox(),
-            maNV == 'admin'
+            author == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -129,7 +129,7 @@ Widget buiderMenuItems(BuildContext context) {
                     selected: sideBarController.index.value == 10,
                   )
                 : SizedBox(),
-            maNV == 'admin'
+            author == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),

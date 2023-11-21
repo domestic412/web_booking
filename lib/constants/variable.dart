@@ -19,6 +19,7 @@ String tokenAuthorize = '';
 String maNV = '';
 String tokenLogin = '';
 String code = '';
+String author = '';
 
 //id_ApprovalDetail = dataDetail['id'];
 TextEditingController note_detail_approval = TextEditingController();
