@@ -376,8 +376,8 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
         'tenNv': tennv,
         'code': code,
         'matKhau': _input_matKhau.text,
-        'dienThoai': dienthoai_user,
-        'email': email_user,
+        'dienThoai': _input_dienThoai.text,
+        'email': _input_email.text,
         'author': author,
       };
       Map<String, dynamic> data_update = {
@@ -385,8 +385,8 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
         'maNv': manv,
         'tenNv': tennv,
         'code': code,
-        'dienThoai': dienthoai_user,
-        'email': email_user,
+        'dienThoai': _input_dienThoai.text,
+        'email': _input_email.text,
         'author': author,
       };
       if (CUD == 1 && _input_matKhau.text != '') {

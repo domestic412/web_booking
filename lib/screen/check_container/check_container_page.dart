@@ -382,7 +382,7 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_color == red) {
+                    if (snapshot.data![index].approval == Reject) {
                       savecntr = snapshot.data![index].cntrno!;
                       sideBarController.index.value = 3;
                     }

@@ -92,13 +92,15 @@ class Depots {
   String? depotId;
   String? depotName;
   int? soluong;
+  String? size;
 
-  Depots({this.depotId, this.depotName, this.soluong});
+  Depots({this.depotId, this.depotName, this.soluong, this.size});
 
   Depots.fromJson(Map<String, dynamic> json) {
     depotId = json['depotId'];
     depotName = json['depotName'];
     soluong = json['soluong'];
+    size = json['size'];
   }
 
   Map<String, dynamic> toJson() {
@@ -106,6 +108,7 @@ class Depots {
     data['depotId'] = this.depotId;
     data['depotName'] = this.depotName;
     data['soluong'] = this.soluong;
+    data['size'] = this.size;
     return data;
   }
 }

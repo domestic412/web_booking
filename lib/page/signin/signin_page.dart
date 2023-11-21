@@ -117,17 +117,10 @@ class _SignInPageState extends State<SignInPage> {
         // // print(data['token']);
         Map<String, dynamic> decodedToken = JwtDecoder.decode(dataAuthorize!);
         results = decodedToken.values.toList();
-        // tokenLogin = results[2];
-        // user = results[3].substring(0, 5);
-        // code = results[4];     // use for model check container
 
         // Save tokenLogin
         await saveData();
         await getData();
-        // Storage().box.put('authorize', dataAuthorize!);
-        // Storage().box.put('tokenLogin', results[2]);
-        // Storage().box.put(user, results[3].substring(0, 5));
-        // Storage().box.put('code', results[4]);
 
         _user.clear();
         _password.clear();
@@ -147,7 +140,7 @@ saveData() async {
   box = await Hive.openBox('myData');
   box.put('authorize', dataAuthorize!);
   box.put('tokenLogin', results[2]);
-  box.put('maNV', results[3].substring(0, 5));
+  box.put('maNV', results[3].trim());
   box.put('code', results[4]);
 }
 
@@ -159,6 +152,7 @@ getData() async {
     tokenLogin = box.get('tokenLogin');
     maNV = box.get('maNV');
     code = box.get('code');
+    print(maNV);
   } catch (e) {
     print('This error is: $e');
   }

@@ -91,6 +91,7 @@ String? acc_history_Detail;
 // Booking page
 String? nameVoyage;
 String? dateVoyage;
+String? sizeVoyage;
 String? idVoyage;
 String? vesselName;
 String? polVoyage;
@@ -101,6 +102,12 @@ String? idPort1;
 String? idPort2;
 Future<Voyage>? fetchVoyage;
 TextEditingController soluongcntr = TextEditingController();
+
+// Select depo - size
+String? nameDepo;
+String? idDepo;
+int? soluongContDepo;
+String? sizeContDepo;
 
 // Port select in Booking page and Schedule
 String? dateSelect;
@@ -152,10 +159,6 @@ List dataCode = [];
 GetCode? selectCode;
 String? codeValue;
 String? AdminUserValue;
-
-String? nameDepo;
-String? idDepo;
-int? soluongcontDepo;
 
 String? cntr_no;
 

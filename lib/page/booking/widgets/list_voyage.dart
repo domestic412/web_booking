@@ -28,7 +28,7 @@ class _ListVoyageState extends State<ListVoyage> {
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
-            var dataVoyage1 = snapshot.data!.listBookingVoys;
+            var data = snapshot.data!;
             return Container(
               width: deviceWidth(context),
               decoration: BoxDecoration(
@@ -73,7 +73,7 @@ class _ListVoyageState extends State<ListVoyage> {
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("PORT",
+                        child: SelectableText("PORT TO LOADING",
                             style: style_text_Table_small_bold),
                       )),
                     ),
@@ -92,15 +92,14 @@ class _ListVoyageState extends State<ListVoyage> {
                       )),
                     ),
                   ],
-                  rows: List.generate(dataVoyage1!.length, (index) {
-                    var dataVoyage1 = snapshot.data!.listBookingVoys?[index];
+                  rows: List.generate(data.listBookingVoys!.length, (index) {
+                    var dataVoyage1 = data.listBookingVoys?[index];
                     nameVoyage = dataVoyage1?.vesselName;
                     dateVoyage = dataVoyage1?.etd;
                     String _dt = DateFormat("dd-MMM-yyyy  hh:mm")
                         .format(DateTime.parse(dateVoyage!));
                     idVoyage = dataVoyage1?.voyId;
                     polVoyage = dataVoyage1?.pol;
-
                     return DataRow(cells: [
                       DataCell(Center(
                           child: Text(

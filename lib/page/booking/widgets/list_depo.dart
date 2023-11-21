@@ -23,7 +23,8 @@ FutureBuilder<Voyage> buildDepo() {
       future: fetchVoyage,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          var data = snapshot.data!;
+          var data = snapshot.data!.depots;
+          // var name = data![0].depotName;
           return SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: DataTable(
@@ -53,13 +54,13 @@ FutureBuilder<Voyage> buildDepo() {
                           style: style_text_Table_small_bold),
                     )),
                   ),
-                  DataColumn(
-                    label: Expanded(
-                        child: Center(
-                      child: SelectableText("QUANTITY",
-                          style: style_text_Table_small_bold),
-                    )),
-                  ),
+                  // DataColumn(
+                  //   label: Expanded(
+                  //       child: Center(
+                  //     child: SelectableText("SIZE",
+                  //         style: style_text_Table_small_bold),
+                  //   )),
+                  // ),
                   DataColumn(
                     label: Expanded(
                         child: Center(
@@ -68,11 +69,12 @@ FutureBuilder<Voyage> buildDepo() {
                     )),
                   ),
                 ],
-                rows: List.generate(data.depots!.length, (index) {
-                  var dataDepo = data.depots![index];
+                rows: List.generate(data!.length, (index) {
+                  var dataDepo = data[index];
                   nameDepo = dataDepo.depotName;
                   idDepo = dataDepo.depotId;
-                  soluongcontDepo = dataDepo.soluong;
+                  soluongContDepo = dataDepo.soluong;
+                  sizeContDepo = dataDepo.size;
                   return DataRow(cells: [
                     DataCell(Center(
                         child: Text(
@@ -89,36 +91,49 @@ FutureBuilder<Voyage> buildDepo() {
                     ),
                     DataCell(
                       Center(
-                        child: Text(
-                          soluongcontDepo.toString(),
-                          style: style_text_Table_small,
-                        ),
+                        child: RichText(
+                            text: TextSpan(
+                                text: 'Size: $sizeContDepo \nSL:    ',
+                                style: style_text_Table_small,
+                                children: [
+                              TextSpan(
+                                  text: '$soluongContDepo',
+                                  style: style_text_small_14_red)
+                            ])),
                       ),
                     ),
-                    DataCell(
-                      Center(
-                        child: SizedBox(
-                          height: 40,
-                          width: 60,
-                          child: TextField(
-                            textAlignVertical: TextAlignVertical.top,
-                            // style: text_style4,
-                            controller: soluongcntr,
-                            keyboardType: TextInputType.number,
-                            textAlign: TextAlign.center,
-                            inputFormatters: <TextInputFormatter>[
-                              LengthLimitingTextInputFormatter(4),
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 5)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // DataCell(
+                    //   Center(
+                    //     child: Text(
+                    //       sizeContDepo.toString(),
+                    //       style: style_text_Table_small,
+                    //     ),
+                    //   ),
+                    // ),
+                    // DataCell(
+                    //   Center(
+                    //     child: SizedBox(
+                    //       height: 40,
+                    //       width: 60,
+                    //       child: TextField(
+                    //         textAlignVertical: TextAlignVertical.top,
+                    //         // style: text_style4,
+                    //         controller: soluongcntr,
+                    //         keyboardType: TextInputType.number,
+                    //         textAlign: TextAlign.center,
+                    //         inputFormatters: <TextInputFormatter>[
+                    //           LengthLimitingTextInputFormatter(4),
+                    //           FilteringTextInputFormatter.digitsOnly
+                    //         ],
+                    //         decoration: const InputDecoration(
+                    //           border: OutlineInputBorder(
+                    //               borderSide: BorderSide(
+                    //                   color: Colors.black, width: 5)),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     DataCell(
                       Center(
                         child: ElevatedButton(
