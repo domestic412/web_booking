@@ -39,7 +39,7 @@ class _BookingPageState extends State<BookingPage> {
               child: Column(
                 children: [
                   SelectableText(
-                    'Booking',
+                    'Depot',
                     style: style_title_page,
                   ),
                   const SizedBox(

@@ -44,6 +44,7 @@ class _ListPortState extends State<ListPort> {
                   menuHeight: 500,
                   controller: port_select1,
                   enableFilter: true,
+                  enableSearch: true,
                   label: Text('departure'.tr()),
                   dropdownMenuEntries: portEntries,
                   onSelected: (Ports? port) {
@@ -64,6 +65,7 @@ class _ListPortState extends State<ListPort> {
                   menuHeight: 500,
                   controller: port_select2,
                   enableFilter: true,
+                  enableSearch: true,
                   label: Text('arrival'.tr()),
                   dropdownMenuEntries: portEntries,
                   onSelected: (Ports? port) {

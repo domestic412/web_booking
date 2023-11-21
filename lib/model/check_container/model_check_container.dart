@@ -121,7 +121,7 @@ class CheckContainer {
   }
 
   Future<List<CheckContainer>> fetchCheckContainers(String cntr) async {
-    var url = '$SERVER/CheckContainer?container=$cntr&code=$code';
+    var url = '$SERVER/CheckContainer?container=$cntr&code=$maNV';
     if (cntr.isNotEmpty) {
       final response = await http.post(Uri.parse(url), headers: {
         "Content-Type": "application/json",

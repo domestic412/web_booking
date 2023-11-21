@@ -60,9 +60,10 @@ TextStyle style_text_button_detail = TextStyle(
 );
 
 // style check container
-TextStyle style_text_small_12 = TextStyle(fontSize: 14, color: black);
-TextStyle style_text_small_12_red =
+TextStyle style_text_small_14 = TextStyle(fontSize: 14, color: black);
+TextStyle style_text_small_14_red_bold =
     TextStyle(fontSize: 14, color: red, fontWeight: FontWeight.bold);
+TextStyle style_text_small_14_red = TextStyle(fontSize: 14, color: red);
 
 TextStyle style_text_red = TextStyle(fontSize: 16, color: red);
 
