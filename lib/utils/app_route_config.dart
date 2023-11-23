@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:web_booking/page/booking/booking_page.dart';
+import 'package:web_booking/page/booking/select_depo/list_depo.dart';
 import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const TrackingRoute = "/Tracking";
   static const TestRoute = "/Test";
   static const BookingRoute = "/Booking";
+  static const DepoRoute = "$BookingRoute/Depo";
   static const HomeRoute = "/Home";
   static const ListApproval = "$HomeRoute/ListApproval";
   static const DetailApproval = "$HomeRoute/$ListApproval/DetailApproval";
@@ -62,6 +64,10 @@ class AppRoutes {
     GoRoute(
       path: BookingRoute,
       builder: (BuildContext context, state) => BookingPage(),
+    ),
+    GoRoute(
+      path: DepoRoute,
+      builder: (BuildContext context, state) => DepoPage(),
     ),
     GoRoute(
       path: TrackingRoute,

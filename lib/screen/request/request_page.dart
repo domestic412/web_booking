@@ -16,18 +16,22 @@ class SendRequestPage extends StatefulWidget {
 }
 
 class _SendRequestPageState extends State<SendRequestPage> {
-  TextEditingController CntrNo_Request = TextEditingController();
+  TextEditingController _input_cntr = TextEditingController();
+  TextEditingController _input_camKet = TextEditingController();
 
   List<XFile>? _listImage;
 
   // String? base64image;
   final ImagePicker _picker = ImagePicker();
   int numberImage = 0;
-
+  bool _bool_error_cntr = false;
+  bool _bool_error_request_exist = false;
+  bool _bool_error_null_cntr = false;
   @override
   void initState() {
     super.initState();
-    CntrNo_Request.text = savecntr;
+    _input_cntr.text = savecntr;
+    _input_camKet.text = noiDung;
   }
 
   Future getImage(ImageSource media) async {
@@ -126,7 +130,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
                   child: ListTile(
                     leading: const Icon(Icons.calendar_view_week_rounded),
                     title: TextField(
-                      controller: CntrNo_Request,
+                      controller: _input_cntr,
                       decoration: const InputDecoration(
                           hintText: 'Số Container', border: InputBorder.none),
                     ),
@@ -214,17 +218,35 @@ class _SendRequestPageState extends State<SendRequestPage> {
                 height: 10,
               ),
               Container(
-                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color(0xFFe8e8ea),
-                  border: Border.all(color: Colors.black26),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Text(
-                  noiDung,
-                  style: style_text_box,
+                    border: Border.all(color: Colors.black26),
+                    borderRadius: BorderRadius.circular(5)),
+                child: TextField(
+                  controller: _input_camKet,
+                  style: style_textfield,
+                  textCapitalization: TextCapitalization.sentences,
+                  minLines: 1,
+                  maxLines: 10,
+                  keyboardType: TextInputType.multiline,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    // fillColor: Colors.white,
+                    // filled: true
+                  ),
                 ),
               ),
+              // Container(
+              //   padding: EdgeInsets.all(10),
+              //   decoration: BoxDecoration(
+              //     color: Color(0xFFe8e8ea),
+              //     border: Border.all(color: Colors.black26),
+              //     borderRadius: BorderRadius.circular(5),
+              //   ),
+              //   child: Text(
+              //     noiDung,
+              //     style: style_text_box,
+              //   ),
+              // ),
               const SizedBox(
                 height: 20,
               ),
@@ -255,7 +277,12 @@ class _SendRequestPageState extends State<SendRequestPage> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)))),
                       onPressed: () {
-                        PostRequest(CntrNo_Request.text);
+                        setState(() {
+                          _bool_error_request_exist = false;
+                          _bool_error_cntr = false;
+                          _bool_error_null_cntr = false;
+                          PostRequest(_input_cntr.text);
+                        });
                       },
                       child: Container(
                         padding:
@@ -263,7 +290,26 @@ class _SendRequestPageState extends State<SendRequestPage> {
                         child:
                             Text('Gửi yêu cầu', style: style_text_box_button),
                       ))),
-              const SizedBox(height: 20)
+              const SizedBox(height: 20),
+              _bool_error_cntr == false
+                  ? SizedBox()
+                  : Center(
+                      child: Text('Số Container không tồn tại.',
+                          style: style_text_red),
+                    ),
+              _bool_error_request_exist == false
+                  ? SizedBox()
+                  : Center(
+                      child: Text(
+                          'Kiểm tra lại số Container ở mục Check Container.',
+                          style: style_text_red),
+                    ),
+              _bool_error_null_cntr == false
+                  ? SizedBox()
+                  : Center(
+                      child: Text('Vui lòng nhập số Container.',
+                          style: style_text_red),
+                    ),
             ],
           ),
         ),
@@ -280,15 +326,17 @@ class _SendRequestPageState extends State<SendRequestPage> {
       // Create a FormData object to store your files
       final formData = html.FormData();
       // Assuming a list of XFile objects in _listImage
-      for (int i = 0; i < _listImage!.length; i++) {
-        final file = _listImage![i];
-        //Convert XFile to Blob
-        final blob = html.Blob([await file.readAsBytes()], file.mimeType);
-        // Add the Blob to the FormData object
-        formData.appendBlob('Files', blob, file.name);
+      if (_listImage != null) {
+        for (int i = 0; i < _listImage!.length; i++) {
+          final file = _listImage![i];
+          //Convert XFile to Blob
+          final blob = html.Blob([await file.readAsBytes()], file.mimeType);
+          // Add the Blob to the FormData object
+          formData.appendBlob('Files', blob, file.name);
+        }
       }
       formData.append('TenYeuCau', NameRequest);
-      formData.append('NoiDung', noiDung);
+      formData.append('NoiDung', _input_camKet.text);
       formData.append('Cntrno', cntr.toUpperCase());
       formData.append('NguoiGui', tokenLogin);
 
@@ -305,14 +353,25 @@ class _SendRequestPageState extends State<SendRequestPage> {
           numberImage = 0;
           savecntr = '';
           sideBarController.index.value = 1;
-        } else {
+        } else if (request.status == 409) {
+          //request exist or cntr accept
+          setState(() {
+            _bool_error_request_exist = true;
+          });
+        } else if (request.status == 404) {
           // EasyLoading.dismiss();
-          RequestContAlert(context);
+          setState(() {
+            _bool_error_cntr = true;
+          });
+        } else {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text("Invalid")));
         }
       });
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Invalid")));
+      setState(() {
+        _bool_error_null_cntr = true;
+      });
     }
   }
 }

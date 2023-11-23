@@ -50,31 +50,31 @@ String? noteHangTau_DetailRequest;
 String? updateTime_DetailRequest;
 
 // //Check container
-// String? cntrno_CheckCntr;
-// String? sizeType_CheckCntr;
-// String? soLanKetHop_CheckCntr;
+String? cntrno_CheckCntr;
+String? sizeType_CheckCntr;
+String? soLanKetHop_CheckCntr;
 // String? soLanKetHopNum_CheckCntr;
 // String? tinhTrang_CheckCntr;
-// String? ghiChuTinhTrang_CheckCntr;
+String? ghiChuTinhTrang_CheckCntr;
 // String? maChatLuong_CheckCntr;
 // String? ghiChuKetHop_CheckCntr;
-// String? luuYSuDung_CheckCntr;
-// String? ketQua_CheckCntr;
-// String? approval_CheckCntr;
-// String? shipper_CheckCntr;
+String? luuYSuDung_CheckCntr;
+String? ketQua_CheckCntr;
+String? approval_CheckCntr;
+String? shipper_CheckCntr;
 // String? dateFullOut_CheckCntr;
 // String? dateEmptyOut_CheckCntr;
 // String? dateFullArrived_CheckCntr;
 // String? combineStuffing_CheckCntr;
 // String? terminal_CheckCntr;
-// String? remark_CheckCntr;
+String? remark_CheckCntr;
 // String? shipVoy_CheckCntr;
 // String? status_CheckCntr;
 // String? quanlity_CheckCntr;
 // String? checkRemark_CheckCntr;
 // String? checkDetKh_CheckCntr;
 // String? updateUser_CheckCntr;
-// String? updateTime_CheckCntr;
+String? updateTime_CheckCntr;
 
 //List History
 String? id_history_Detail;
