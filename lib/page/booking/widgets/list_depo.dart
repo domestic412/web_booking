@@ -7,15 +7,23 @@ import 'package:web_booking/model/schedule/model_voyage.dart';
 
 // ignore: must_be_immutable
 
-Future<void> ListDepo(BuildContext context) {
-  return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Chọn Depot'),
-          content: buildDepo(),
-        );
-      });
+// Future<void> ListDepo(BuildContext context) {
+//   return showDialog<void>(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           title: const Text('Chọn Depot'),
+//           content: buildDepo(),
+//         );
+//       });
+// }
+class ShowListDepo extends StatelessWidget {
+  const ShowListDepo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return buildDepo();
+  }
 }
 
 FutureBuilder<Voyage> buildDepo() {
@@ -61,13 +69,13 @@ FutureBuilder<Voyage> buildDepo() {
                   //         style: style_text_Table_small_bold),
                   //   )),
                   // ),
-                  DataColumn(
-                    label: Expanded(
-                        child: Center(
-                      child: SelectableText("BOOKING",
-                          style: style_text_Table_small_bold),
-                    )),
-                  ),
+                  // DataColumn(
+                  //   label: Expanded(
+                  //       child: Center(
+                  //     child: SelectableText("BOOKING",
+                  //         style: style_text_Table_small_bold),
+                  //   )),
+                  // ),
                 ],
                 rows: List.generate(data!.length, (index) {
                   var dataDepo = data[index];
@@ -134,28 +142,28 @@ FutureBuilder<Voyage> buildDepo() {
                     //     ),
                     //   ),
                     // ),
-                    DataCell(
-                      Center(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // ListDepo(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: normalColor,
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)))),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'Send Request',
-                              style: style_text_button_detail,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // DataCell(
+                    //   Center(
+                    //     child: ElevatedButton(
+                    //       onPressed: () {
+                    //         // ListDepo(context);
+                    //       },
+                    //       style: ElevatedButton.styleFrom(
+                    //           backgroundColor: normalColor,
+                    //           shape: const RoundedRectangleBorder(
+                    //               borderRadius:
+                    //                   BorderRadius.all(Radius.circular(20)))),
+                    //       child: Container(
+                    //         padding: EdgeInsets.symmetric(horizontal: 20),
+                    //         child: Text(
+                    //           'Send Request',
+                    //           style: style_text_button_detail,
+                    //           textAlign: TextAlign.center,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ]);
                 })),
           );

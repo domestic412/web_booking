@@ -7,6 +7,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/check_container/model_check_container.dart';
 import 'package:web_booking/screen/check_container/Widget/policy_check_container.dart';
 import 'package:web_booking/screen/check_container/import_excel/import_excel.dart';
+import 'package:web_booking/screen/check_container/popUp_detail_container/popUp_detail_check_container.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/widgets/format_input_container.dart';
 
@@ -382,10 +383,22 @@ class _CheckContainerPageState extends State<CheckContainerPage> {
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
                   onPressed: () {
-                    if (snapshot.data![index].approval == Reject) {
-                      savecntr = snapshot.data![index].cntrno!;
-                      sideBarController.index.value = 3;
-                    }
+                    // if (snapshot.data![index].approval == Reject) {
+                    //   savecntr = snapshot.data![index].cntrno!;
+                    //   sideBarController.index.value = 3;
+                    // }
+                    cntrno_CheckCntr = snapshot.data![index].cntrno;
+                    sizeType_CheckCntr = snapshot.data![index].sizeType;
+                    shipper_CheckCntr = snapshot.data![index].shipper;
+                    remark_CheckCntr = snapshot.data?[index].remark ?? '';
+                    ghiChuTinhTrang_CheckCntr =
+                        snapshot.data?[index].ghiChuTinhTrang ?? '';
+                    luuYSuDung_CheckCntr = snapshot.data![index].luuYSuDung;
+                    soLanKetHop_CheckCntr = snapshot.data![index].soLanKetHop;
+                    ketQua_CheckCntr = snapshot.data![index].ketQua;
+                    // updateTime_CheckCntr = snapshot.data?[index].updateTime ?? '';
+                    approval_CheckCntr = snapshot.data![index].approval;
+                    PopUpCheckContainer(context);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: _color,
