@@ -4,7 +4,7 @@ import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
 
-class ListUser {
+class UserList {
   int? id;
   String? maNv;
   String? tenNv;
@@ -15,7 +15,7 @@ class ListUser {
   String? author;
   String? updatetime;
 
-  ListUser(
+  UserList(
       {this.id,
       this.maNv,
       this.tenNv,
@@ -26,7 +26,7 @@ class ListUser {
       this.author,
       this.updatetime});
 
-  ListUser.fromJson(Map<String, dynamic> json) {
+  UserList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     maNv = json['maNv'];
     tenNv = json['tenNv'];
@@ -52,7 +52,7 @@ class ListUser {
     return data;
   }
 
-  Future<List<ListUser>> fetchListUser() async {
+  Future<List<UserList>> fetchUserList() async {
     var url = '$SERVER/User/GetAllProfile';
     final response = await http.get(Uri.parse(url), headers: {
       "Access-Control-Allow-Origin": "*",
@@ -62,8 +62,8 @@ class ListUser {
     if (response.statusCode == 200) {
       var body = response.body;
       print('Data List User');
-      List dataListUser = json.decode(body);
-      return dataListUser.map((data) => ListUser.fromJson(data)).toList();
+      List dataUserList = json.decode(body);
+      return dataUserList.map((data) => UserList.fromJson(data)).toList();
     } else {
       throw Exception('Error');
     }

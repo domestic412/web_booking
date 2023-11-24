@@ -6,6 +6,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/container_stock/model_container_stock.dart';
 import 'package:web_booking/screen/container_stock/data/data_container_stock.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ContainerStockPage extends StatefulWidget {
   const ContainerStockPage({super.key});
@@ -56,7 +57,7 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    'Container Stock',
+                    'title container stock'.tr(),
                     style: style_title_page,
                     textAlign: TextAlign.center,
                   ),
@@ -155,7 +156,7 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                       ),
                       DataColumn(
                         label: Text(
-                          'Full out',
+                          'Full Out',
                           style: style_text_Table_small_bold,
                         ),
                       ),

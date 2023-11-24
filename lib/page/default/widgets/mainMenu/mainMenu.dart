@@ -22,7 +22,6 @@ class mainMenu extends StatefulWidget {
 
 // ignore: camel_case_types
 class _mainMenuState extends State<mainMenu> {
-
   // Color booking_color = Color.fromARGB(255, 21, 123, 206);
   // Color tracking_color = Color.fromARGB(255, 21, 123, 206);
 
@@ -51,69 +50,68 @@ class _mainMenuState extends State<mainMenu> {
         Container(
           // alignment: Alignment.center,
           height: 250,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                width: deviceWidth(context),
-                height: 100,
-                color: Colors.white70,
-              ),
-              Container(
-                alignment: Alignment.topCenter,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            height: 100,
-                            width: 200,
-                            padding: const EdgeInsets.all(15),
-                            child: Image.asset('assets/images/hats_logo.png')),
-                        const SizedBox(
-                          width: 70,
-                        ),
-                        const BookingMenu(),
-                        const TrackingMenu(),
-                        const CombineMenu(),
-                        const ScheduleMenu(),
-                        Container(
-                          alignment: Alignment.topRight,
-                          padding: EdgeInsets.only(top: 20),
-                          width: 250,
-                          child: MouseRegion(
-                            onEnter: handleMouseEnter_signUp,
-                            onExit: handleMouseExit_signUp,
-                            child: InkWell(
-                              onTap: () {
-                                context.go(AppRoutes.SignUpRoute);
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 50,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    color: signUp_color,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Text(
-                                  'signup'.tr(),
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: white),
-                                ),
+          child: Stack(children: <Widget>[
+            Container(
+              width: deviceWidth(context),
+              height: 100,
+              color: Colors.white70,
+            ),
+            Container(
+              alignment: Alignment.topCenter,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          height: 100,
+                          width: 200,
+                          padding: const EdgeInsets.all(15),
+                          child: Image.asset('assets/images/hats_logo.png')),
+                      const SizedBox(
+                        width: 70,
+                      ),
+                      BookingMenu(),
+                      TrackingMenu(),
+                      CombineMenu(),
+                      ScheduleMenu(),
+                      Container(
+                        alignment: Alignment.topRight,
+                        padding: EdgeInsets.only(top: 20),
+                        width: 250,
+                        child: MouseRegion(
+                          onEnter: handleMouseEnter_signUp,
+                          onExit: handleMouseExit_signUp,
+                          child: InkWell(
+                            onTap: () {
+                              context.go(AppRoutes.signUpRoute);
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 50,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  color: signUp_color,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: Text(
+                                'signup'.tr(),
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: white),
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ]),
+            ),
+          ]),
         ),
         Container(
           alignment: Alignment.centerRight,

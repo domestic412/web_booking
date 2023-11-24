@@ -6,7 +6,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 
 import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
-import 'package:web_booking/page/tracking/widgets/list_container.dart';
+import 'package:web_booking/page/tracking/widgets/container_list.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 import '../../widgets/footer.dart';
@@ -112,14 +112,14 @@ class _TrackingPageState extends State<TrackingPage> {
                       ),
                       Container(
                         child: SelectableText(
-                          'note'.tr(),
+                          'note_tracking'.tr(),
                           style: style_text_Table_small,
                         ),
                       ),
                       SizedBox(
                         height: 30,
                       ),
-                      ListContainer(),
+                      ContainerList(),
                     ],
                   ),
                 ),

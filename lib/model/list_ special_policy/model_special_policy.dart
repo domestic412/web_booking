@@ -4,7 +4,7 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 
-class ListSpecialPolicy {
+class SpecialPolicyList {
   int? id;
   String? code;
   String? shipper;
@@ -12,7 +12,7 @@ class ListSpecialPolicy {
   String? updateTime;
   String? updateUser;
 
-  ListSpecialPolicy(
+  SpecialPolicyList(
       {this.id,
       this.code,
       this.shipper,
@@ -20,7 +20,7 @@ class ListSpecialPolicy {
       this.updateTime,
       this.updateUser});
 
-  ListSpecialPolicy.fromJson(Map<String, dynamic> json) {
+  SpecialPolicyList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     code = json['code'];
     shipper = json['shipper'];
@@ -40,7 +40,7 @@ class ListSpecialPolicy {
     return data;
   }
 
-  Future<List<ListSpecialPolicy>> fetchListSpecialPolicy() async {
+  Future<List<SpecialPolicyList>> fetchSpecialPolicyList() async {
     var url = '$SERVER/SpecialPolicy/GetAll';
     final response = await http.get(Uri.parse(url), headers: {
       "Access-Control-Allow-Origin": "*",
@@ -50,9 +50,9 @@ class ListSpecialPolicy {
     if (response.statusCode == 200) {
       var body = response.body;
       print('Data List Quality');
-      List dataListSpecialPolicy = json.decode(body);
-      return dataListSpecialPolicy
-          .map((data) => ListSpecialPolicy.fromJson(data))
+      List dataSpecialPolicyList = json.decode(body);
+      return dataSpecialPolicyList
+          .map((data) => SpecialPolicyList.fromJson(data))
           .toList();
     } else {
       throw Exception('Error');

@@ -5,7 +5,8 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/approval_list/widget/radio_button.dart';
-import 'package:web_booking/screen/list_request/detail_request/detail_image_list_request.dart';
+import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class DetailApprovalPage extends StatefulWidget {
   const DetailApprovalPage({super.key});
@@ -43,7 +44,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
               Container(
                 width: deviceWidth(context),
                 child: Text(
-                  "Duyệt Yêu Cầu",
+                  "approve request".tr(),
                   textAlign: TextAlign.center,
                   style: style_title_page,
                 ),
@@ -64,7 +65,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       color: grey,
                     ),
                     child: Text(
-                      'Quay lại',
+                      'back'.tr(),
                       style: style_text_button_detail,
                     ),
                   ),
@@ -89,7 +90,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Yêu cầu',
+                      'request'.tr(),
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -100,7 +101,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 20,
                     ),
                     Text(
-                      'Nội dung',
+                      'content'.tr(),
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -112,7 +113,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 20,
                     ),
                     Text(
-                      'Container / Size',
+                      'container/size'.tr(),
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -132,7 +133,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 20,
                     ),
                     Text(
-                      'Ngày cập nhật',
+                      'update time'.tr(),
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -146,7 +147,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Ảnh thực tế',
+                          'picture'.tr(),
                           style: style_text_detail_bold,
                         ),
                         const SizedBox(
@@ -156,7 +157,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       ],
                     ),
                     Text(
-                      'Ghi chú hãng tàu',
+                      'note'.tr(),
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -170,8 +171,8 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       keyboardType: TextInputType.multiline,
                       style:
                           const TextStyle(fontSize: 16, color: Colors.black87),
-                      decoration: const InputDecoration(
-                        hintText: 'Ghi chú hãng tàu',
+                      decoration: InputDecoration(
+                        hintText: 'note'.tr(),
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -185,8 +186,8 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                           onTap: () {
                             note_detail_approval.clear();
                           },
-                          child: const Text(
-                            'Xóa ghi chú',
+                          child: Text(
+                            'delete note'.tr(),
                             style: TextStyle(fontSize: 13, color: Colors.blue),
                           ),
                         )
@@ -196,7 +197,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 20,
                     ),
                     Text(
-                      'Trạng thái duyệt',
+                      'status approve'.tr(),
                       style: style_text_detail_bold,
                     ),
                     const RadioButton(),

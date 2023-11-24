@@ -79,7 +79,7 @@ class _ContainerTrackingSearchState extends State<ContainerTrackingSearch> {
                   cntr_no_tracking = _input.text;
                   containerTracking = ContainerTracking()
                       .fetchContainerTracking(_input.text.toUpperCase());
-                  context.go(AppRoutes.TrackingRoute);
+                  context.go(AppRoutes.trackingRoute);
                 });
               },
               child: Container(

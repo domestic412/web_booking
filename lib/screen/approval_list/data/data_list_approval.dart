@@ -4,11 +4,11 @@ import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_approval/model_detail_approval.dart';
-import 'package:web_booking/model/list_approval/model_list_approval.dart';
+import 'package:web_booking/model/list_approval/model_approval_list.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class DataTableApproval extends DataTableSource {
-  List<ListApproval>? data;
+  List<ApprovalList>? data;
   String? _dt;
   Color? _color;
   String? _trangthai;
@@ -16,7 +16,7 @@ class DataTableApproval extends DataTableSource {
 
   DataTableApproval({this.data});
 
-  List<ListApproval> list_filter(String query) {
+  List<ApprovalList> list_filter(String query) {
     return data!
         .where((item) =>
             (item.cntrno?.contains(query.toUpperCase()) ?? false) ||
@@ -26,7 +26,7 @@ class DataTableApproval extends DataTableSource {
         .toList();
   }
 
-  List<ListApproval> filter_trangthaiYC(String query) {
+  List<ApprovalList> filter_trangthaiYC(String query) {
     return data!
         .where((item) =>
             (item.trangThaiYc?.contains(query.toUpperCase()) ?? false))

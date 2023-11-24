@@ -72,7 +72,7 @@ topNavigationBar(
               backgroundColor: normalColor,
               child: IconButton(
                 onPressed: () {
-                  context.go(AppRoutes.SignInRoute);
+                  context.go(AppRoutes.signInRoute);
                 },
                 icon: Icon(
                   Icons.logout,

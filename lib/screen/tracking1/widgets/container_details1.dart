@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/tracking1/widgets/table_container_details1.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ContainerDetails1 extends StatefulWidget {
   const ContainerDetails1({super.key});
@@ -18,8 +19,8 @@ class _ContainerDetails1State extends State<ContainerDetails1> {
       children: [
         Container(
           padding: const EdgeInsets.only(left: 32, right: 32, bottom: 16),
-          child: const Text(
-            'Kết quả',
+          child: Text(
+            'result'.tr(),
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),

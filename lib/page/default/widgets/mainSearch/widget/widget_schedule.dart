@@ -113,7 +113,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                   fetchVoyage = Voyage().fetchDataVoyage(
                       idPort1.toString(), idPort2.toString(), dateSelect!);
                 });
-                context.go(AppRoutes.BookingRoute);
+                context.go(AppRoutes.bookingRoute);
               },
               child: Container(
                 alignment: Alignment.center,

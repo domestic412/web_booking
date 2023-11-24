@@ -15,7 +15,7 @@ class AccountPage extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        margin: EdgeInsets.fromLTRB(30, 30, 0, 90),
+        margin: EdgeInsets.fromLTRB(30, 20, 0, 30),
         decoration: BoxDecoration(
             color: contentColor, borderRadius: BorderRadius.circular(10)),
         width: 780,

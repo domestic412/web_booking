@@ -50,8 +50,8 @@ class _ListContainer1State extends State<ListContainer1> {
                 children: <Widget>[
                   Container(
                     padding: const EdgeInsets.only(bottom: 16),
-                    child: const Text(
-                      'Kết quả',
+                    child: Text(
+                      'result'.tr(),
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -128,7 +128,7 @@ class _ListContainer1State extends State<ListContainer1> {
           DataColumn(
             label: Expanded(
                 child: Center(
-                    child: SelectableText('size_booking'.tr(),
+                    child: SelectableText('size'.tr(),
                         style: style_text_Table_small_bold))),
           ),
         ],

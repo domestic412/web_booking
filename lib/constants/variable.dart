@@ -128,14 +128,14 @@ String cntr_no_tracking = '';
 Color? color_time;
 
 // Quality
-String? title_special_policy;
+String? title_CUD_special_policy;
 int? id_quality;
 String? maChatLuong_quality;
 String? tenChatLuong_quality;
 String? ghiChu_quality;
 
 // Policy
-String? title_quality;
+String? title_CUD_quality;
 int? id_policy;
 String? code_policy;
 String? shipper_policy;

@@ -13,8 +13,7 @@ class BookingMenu extends StatefulWidget {
 }
 
 class _BookingMenuState extends State<BookingMenu> {
-
-    // handle mouse Booking
+  // handle mouse Booking
   bool isHovered_booking = false;
   bool isHovered_bookingRequest = false;
   Color booking_color = Colors.black54;
@@ -47,69 +46,65 @@ class _BookingMenuState extends State<BookingMenu> {
       bookingRequest_color = black;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-            onEnter: handleMouseEnter_booking,
-            onExit: handleMouseExit_booking,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 35),
-                  width: 200,
-                  child: Text(
-                    'booking'.tr(),
-                    style: TextStyle(
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                        color: booking_color),
-                  ),
-                ),
-                if (isHovered_booking)
-                  Container(
-                      margin: EdgeInsets.only(top: 20),
-                      height: 150,
-                      width: 180,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 7,
-                            width: 80,
-                            decoration: BoxDecoration(
-                                color: haian,
-                                borderRadius:
-                                    BorderRadius.circular(10)),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          MouseRegion(
-                            onEnter:
-                                handleMouseEnter_bookingRequest,
-                            onExit: 
-                                handleMouseExit_bookingRequest,
-                            child: InkWell(
-                              onTap: () {
-                                context.go(AppRoutes.BookingRoute);
-                              },
-                              child: Text(
-                                'Booking Request',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: bookingRequest_color),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )),
-              ],
+      onEnter: handleMouseEnter_booking,
+      onExit: handleMouseExit_booking,
+      child: Column(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 35),
+            width: 200,
+            child: Text(
+              'booking'.tr(),
+              style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                  color: booking_color),
             ),
-          );
+          ),
+          if (isHovered_booking)
+            Container(
+                margin: EdgeInsets.only(top: 20),
+                height: 150,
+                width: 180,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 7,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: haian,
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    MouseRegion(
+                      onEnter: handleMouseEnter_bookingRequest,
+                      onExit: handleMouseExit_bookingRequest,
+                      child: InkWell(
+                        onTap: () {
+                          context.go(AppRoutes.bookingRoute);
+                        },
+                        child: Text(
+                          'Booking Request',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16, color: bookingRequest_color),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+        ],
+      ),
+    );
   }
 }

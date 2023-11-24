@@ -1,50 +1,50 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:web_booking/page/booking/booking_page.dart';
-import 'package:web_booking/page/booking/select_depo/list_depo.dart';
+import 'package:web_booking/page/booking/select_depo/depo_list.dart';
 import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
 import 'package:web_booking/page/tracking/tracking_page.dart';
-import 'package:web_booking/screen/check_container/check_container_page.dart';
+import 'package:web_booking/screen/checking_combine/checking_combine_page.dart';
 import 'package:web_booking/screen/container_stock/container_stock_page.dart';
 import 'package:web_booking/screen/container_stock/import_file_page.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/approval_list/detail_approval/detail_approval_page.dart';
-import 'package:web_booking/screen/approval_list/list_approval_page.dart';
-import 'package:web_booking/screen/history_list/list_history_page.dart';
-import 'package:web_booking/screen/list_quality/CUD_quality/CUD_quality_page.dart';
-import 'package:web_booking/screen/list_quality/list_quality_page.dart';
-import 'package:web_booking/screen/list_request/detail_request/detail_request_page.dart';
-import 'package:web_booking/screen/list_request/list_request_page.dart';
-import 'package:web_booking/screen/list_special_policy/CUD_special_policy/CUD_special_policy.dart';
-import 'package:web_booking/screen/list_special_policy/list_special_policy_page.dart';
+import 'package:web_booking/screen/approval_list/approval_list_page.dart';
+import 'package:web_booking/screen/history_list/history_list_page.dart';
+import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality_page.dart';
+import 'package:web_booking/screen/quality_list/list_quality_page.dart';
+import 'package:web_booking/screen/request_list/detail_request/detail_request_page.dart';
+import 'package:web_booking/screen/request_list/request_list_page.dart';
+import 'package:web_booking/screen/special_policy_list/CUD_special_policy/CUD_special_policy.dart';
+import 'package:web_booking/screen/special_policy_list/special_policy_list_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
 import 'package:web_booking/screen/tracking1/tracking_page1.dart';
 
 class AppRoutes {
   static const defaultRoute = "/";
-  static const SignUpRoute = "/SignUp";
-  static const SignInRoute = "/SignIn";
-  static const TrackingRoute = "/Tracking";
-  static const TestRoute = "/Test";
-  static const BookingRoute = "/Booking";
-  static const DepoRoute = "$BookingRoute/Depo";
-  static const HomeRoute = "/Home";
-  static const ListApproval = "$HomeRoute/ListApproval";
-  static const DetailApproval = "$HomeRoute/$ListApproval/DetailApproval";
-  static const ListRequest = "$HomeRoute/ListRequest";
-  static const DetailRequest = "$HomeRoute/$ListRequest/DetailRequest";
-  static const SendRequest = "$HomeRoute/Request";
-  static const CheckContainer = "$HomeRoute/Check";
-  static const Tracking = "$HomeRoute/Tracking";
-  static const ListQuality = "$HomeRoute/Quality";
-  static const CUDQuality = "$HomeRoute/$ListQuality/DUC";
-  static const ListSpecialPolicy = "$HomeRoute/Policy";
-  static const CUDPolicy = "$HomeRoute/$ListSpecialPolicy/DUC";
-  static const ListHistory = "$HomeRoute/History";
-  static const ContainerStock = "$HomeRoute/Stock";
-  static const ImportStock = "$HomeRoute/$ContainerStock/Import";
+  static const signUpRoute = "/signUp";
+  static const signInRoute = "/signIn";
+  static const trackingRoute = "/tracking";
+  static const testRoute = "/est";
+  static const bookingRoute = "/booking";
+  static const depoRoute = "$bookingRoute/depo";
+  static const homeRoute = "/home";
+  static const approvalList = "$homeRoute/approvalList";
+  static const detailApproval = "$homeRoute/$approvalList/detailApproval";
+  static const requestList = "$homeRoute/requestList";
+  static const detailRequest = "$homeRoute/$requestList/detailRequest";
+  static const sendRequest = "$homeRoute/request";
+  static const checkingCombine = "$homeRoute/checkingCombine";
+  static const tracking = "$homeRoute/tracking";
+  static const qualityList = "$homeRoute/quality";
+  static const CUDQuality = "$homeRoute/$qualityList/CUD";
+  static const specialPolicyList = "$homeRoute/policy";
+  static const CUDPolicy = "$homeRoute/$specialPolicyList/CUD";
+  static const historyList = "$homeRoute/history";
+  static const containerStock = "$homeRoute/stock";
+  static const importStock = "$homeRoute/$containerStock/import";
 
   // static const MemberRoute = "/MemberDashboard";
 
@@ -54,83 +54,83 @@ class AppRoutes {
       builder: (BuildContext context, state) => DefaultPage(),
     ),
     GoRoute(
-      path: SignUpRoute,
+      path: signUpRoute,
       builder: (BuildContext context, state) => SignUpPage(),
     ),
     GoRoute(
-      path: SignInRoute,
+      path: signInRoute,
       builder: (BuildContext context, state) => SignInPage(),
     ),
     GoRoute(
-      path: BookingRoute,
+      path: bookingRoute,
       builder: (BuildContext context, state) => BookingPage(),
     ),
     GoRoute(
-      path: DepoRoute,
+      path: depoRoute,
       builder: (BuildContext context, state) => DepoPage(),
     ),
     GoRoute(
-      path: TrackingRoute,
+      path: trackingRoute,
       builder: (BuildContext context, state) => TrackingPage(),
     ),
     GoRoute(
-      path: HomeRoute,
+      path: homeRoute,
       builder: (BuildContext context, state) => HomePage(),
     ),
     GoRoute(
-      path: ListApproval,
-      builder: (BuildContext context, state) => ListApprovalPage(),
+      path: approvalList,
+      builder: (BuildContext context, state) => ApprovalListPage(),
     ),
     GoRoute(
-      path: DetailApproval,
+      path: detailApproval,
       builder: (BuildContext context, state) => DetailApprovalPage(),
     ),
     GoRoute(
-      path: ListRequest,
-      builder: (BuildContext context, state) => ListRequestPage(),
+      path: requestList,
+      builder: (BuildContext context, state) => RequestListPage(),
     ),
     GoRoute(
-      path: DetailRequest,
+      path: detailRequest,
       builder: (BuildContext context, state) => DetailRequestPage(),
     ),
     GoRoute(
-      path: SendRequest,
+      path: sendRequest,
       builder: (BuildContext context, state) => SendRequestPage(),
     ),
     GoRoute(
-      path: CheckContainer,
-      builder: (BuildContext context, state) => CheckContainerPage(),
+      path: checkingCombine,
+      builder: (BuildContext context, state) => CheckingCombinePage(),
     ),
     GoRoute(
-      path: Tracking,
+      path: tracking,
       builder: (BuildContext context, state) => Tracking1Page(),
     ),
     GoRoute(
-      path: ListQuality,
-      builder: (BuildContext context, state) => ListQualityPage(),
+      path: qualityList,
+      builder: (BuildContext context, state) => QualityListPage(),
     ),
     GoRoute(
       path: CUDQuality,
       builder: (BuildContext context, state) => CUD_QualityPage(),
     ),
     GoRoute(
-      path: ListSpecialPolicy,
-      builder: (BuildContext context, state) => ListSpecialPolicyPage(),
+      path: specialPolicyList,
+      builder: (BuildContext context, state) => SpecialPolicyListPage(),
     ),
     GoRoute(
       path: CUDPolicy,
       builder: (BuildContext context, state) => CUD_SpecialPolicyPage(),
     ),
     GoRoute(
-      path: ListHistory,
-      builder: (BuildContext context, state) => ListHistoryPage(),
+      path: historyList,
+      builder: (BuildContext context, state) => HistoryListPage(),
     ),
     GoRoute(
-      path: ContainerStock,
+      path: containerStock,
       builder: (BuildContext context, state) => ContainerStockPage(),
     ),
     GoRoute(
-      path: ImportStock,
+      path: importStock,
       builder: (BuildContext context, state) => ImportStockPage(),
     ),
     // GoRoute(
