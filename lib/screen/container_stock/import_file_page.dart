@@ -4,6 +4,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/import_stock/model_import_stock.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ImportStockPage extends StatefulWidget {
   const ImportStockPage({super.key});

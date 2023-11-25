@@ -8,10 +8,10 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
-import 'package:web_booking/screen/Data_storage/dataStorage.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/widgets/appbar/appbar.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -63,7 +63,7 @@ class _SignInPageState extends State<SignInPage> {
                       signin(_user.text.toString(), _password.text.toString());
                     },
                     child: Text(
-                      'SIGN IN',
+                      'sign in'.tr(),
                       style:
                           TextStyle(color: button, fontWeight: FontWeight.w900),
                     ),
@@ -73,7 +73,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      context.go(AppRoutes.SignUpRoute);
+                      context.go(AppRoutes.signUpRoute);
                     },
                     child: Container(
                         decoration: BoxDecoration(
@@ -81,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
                             borderRadius: BorderRadius.circular(5)),
                         padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                         child: Text(
-                          'Create Account',
+                          'create_account'.tr(),
                           style: TextStyle(
                               fontSize: 14,
                               color: haian,
@@ -125,7 +125,7 @@ class _SignInPageState extends State<SignInPage> {
         _user.clear();
         _password.clear();
 
-        context.go(AppRoutes.HomeRoute);
+        context.go(AppRoutes.homeRoute);
       } else {
         LoginAlert(context);
       }
@@ -175,7 +175,7 @@ Widget _buildAppbarName() {
   return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Text(
-        'Welcome to HAI AN',
+        'welcome to HAI AN'.tr(),
         style: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue[900]),
       ));
@@ -198,9 +198,9 @@ Widget _buildInputUser() {
             child: TextField(
               controller: _user,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
-              decoration: const InputDecoration(
-                  hintText: "User Name",
-                  hintStyle: TextStyle(fontSize: 16, color: Colors.grey),
+              decoration: InputDecoration(
+                  hintText: "user name".tr(),
+                  hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
                   border: InputBorder.none),
             ),
           ),
@@ -212,9 +212,9 @@ Widget _buildInputUser() {
               obscureText: true,
               controller: _password,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
-              decoration: const InputDecoration(
-                  hintText: "Password",
-                  hintStyle: TextStyle(fontSize: 16, color: Colors.grey),
+              decoration: InputDecoration(
+                  hintText: "password".tr(),
+                  hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
                   border: InputBorder.none),
             ),
           )

@@ -9,6 +9,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/request/popUpAlert/alert.dart';
 import 'dart:html' as html;
+import 'package:easy_localization/easy_localization.dart';
 
 class SendRequestPage extends StatefulWidget {
   @override
@@ -101,11 +102,11 @@ class _SendRequestPageState extends State<SendRequestPage> {
                 alignment: Alignment.bottomCenter,
                 margin: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  "Send Request",
+                  "send request combine".tr(),
                   style: style_title_page,
                 ),
               ),
-              Text('Số Container', style: style_text_detail),
+              Text('container'.tr(), style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -131,8 +132,8 @@ class _SendRequestPageState extends State<SendRequestPage> {
                     leading: const Icon(Icons.calendar_view_week_rounded),
                     title: TextField(
                       controller: _input_cntr,
-                      decoration: const InputDecoration(
-                          hintText: 'Số Container', border: InputBorder.none),
+                      decoration: InputDecoration(
+                          hintText: 'container'.tr(), border: InputBorder.none),
                     ),
                   ),
                 ),
@@ -140,7 +141,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
               const SizedBox(
                 height: 20,
               ),
-              Text('Ảnh đính kèm', style: style_text_detail),
+              Text('attach picture'.tr(), style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -164,7 +165,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
                             width: 10,
                           ),
                           Text(
-                            'Tải ảnh lên',
+                            'upload picture'.tr(),
                             style: TextStyle(color: light),
                           ),
                         ],
@@ -194,7 +195,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
               const SizedBox(
                 height: 20,
               ),
-              Text('Ý kiến khách hàng', style: style_text_detail),
+              Text('customer requests'.tr(), style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -213,7 +214,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
               const SizedBox(
                 height: 20,
               ),
-              Text('Cam kết khách hàng', style: style_text_detail),
+              Text('customer commitments'.tr(), style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -230,27 +231,13 @@ class _SendRequestPageState extends State<SendRequestPage> {
                   keyboardType: TextInputType.multiline,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    // fillColor: Colors.white,
-                    // filled: true
                   ),
                 ),
               ),
-              // Container(
-              //   padding: EdgeInsets.all(10),
-              //   decoration: BoxDecoration(
-              //     color: Color(0xFFe8e8ea),
-              //     border: Border.all(color: Colors.black26),
-              //     borderRadius: BorderRadius.circular(5),
-              //   ),
-              //   child: Text(
-              //     noiDung,
-              //     style: style_text_box,
-              //   ),
-              // ),
               const SizedBox(
                 height: 20,
               ),
-              Text('Trạng thái gửi', style: style_text_detail),
+              Text('status request'.tr(), style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -287,28 +274,27 @@ class _SendRequestPageState extends State<SendRequestPage> {
                       child: Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child:
-                            Text('Gửi yêu cầu', style: style_text_box_button),
+                        child: Text('send request'.tr(),
+                            style: style_text_box_button),
                       ))),
               const SizedBox(height: 20),
               _bool_error_cntr == false
                   ? SizedBox()
                   : Center(
-                      child: Text('Số Container không tồn tại.',
+                      child: Text('cont number not exist'.tr(),
                           style: style_text_red),
                     ),
               _bool_error_request_exist == false
                   ? SizedBox()
                   : Center(
-                      child: Text(
-                          'Kiểm tra lại số Container ở mục Check Container.',
+                      child: Text('cont number duplicate'.tr(),
                           style: style_text_red),
                     ),
               _bool_error_null_cntr == false
                   ? SizedBox()
                   : Center(
-                      child: Text('Vui lòng nhập số Container.',
-                          style: style_text_red),
+                      child:
+                          Text('cont number null'.tr(), style: style_text_red),
                     ),
             ],
           ),
@@ -352,7 +338,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
           // EasyLoading.dismiss();
           numberImage = 0;
           savecntr = '';
-          sideBarController.index.value = 1;
+          sideBarController.index.value = 2;
         } else if (request.status == 409) {
           //request exist or cntr accept
           setState(() {

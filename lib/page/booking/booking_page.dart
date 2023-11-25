@@ -5,8 +5,8 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
-import 'package:web_booking/page/booking/widgets/select_%20list_port.dart';
-import 'package:web_booking/page/booking/widgets/list_voyage.dart';
+import 'package:web_booking/page/booking/widgets/select_port_list.dart';
+import 'package:web_booking/page/booking/widgets/voyage_list.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 class BookingPage extends StatefulWidget {
@@ -57,7 +57,7 @@ class _BookingPageState extends State<BookingPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ListPort(),
+                        PortList(),
                         const SizedBox(width: 20),
                         SizedBox(
                           height: 50,
@@ -128,7 +128,7 @@ class _BookingPageState extends State<BookingPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ListVoyage(),
+                  VoyageList(),
                 ],
               ),
             )

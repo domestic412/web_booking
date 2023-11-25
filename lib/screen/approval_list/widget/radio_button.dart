@@ -3,6 +3,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_approval/model_send_approval.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RadioButton extends StatefulWidget {
   const RadioButton({
@@ -31,7 +32,7 @@ class _RadioButtonState extends State<RadioButton> {
     return Column(
       children: <Widget>[
         RadioListTile(
-            title: Text('Đồng ý kết hợp', style: style_text_detail),
+            title: Text('agree combine'.tr(), style: style_text_detail),
             value: 'A',
             groupValue: _status,
             onChanged: (value) {
@@ -42,7 +43,7 @@ class _RadioButtonState extends State<RadioButton> {
             }),
         RadioListTile(
             title: Text(
-              'Từ chối kết hợp',
+              'reject combine'.tr(),
               style: TextStyle(fontSize: 16, color: red),
             ),
             value: 'R',
@@ -76,7 +77,7 @@ class _RadioButtonState extends State<RadioButton> {
                   color: _color,
                 ),
                 child: Text(
-                  'Lưu',
+                  'save'.tr(),
                   style: style_text_button_detail,
                 ),
               ),

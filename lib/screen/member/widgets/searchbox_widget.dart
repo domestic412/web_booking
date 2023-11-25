@@ -69,7 +69,7 @@ class SearchWigdet extends StatelessWidget {
                 ElevatedButton.icon(
                     icon: Icon(Icons.add),
                     onPressed: () {
-                      context.go(AppRoutes.SignInRoute);
+                      context.go(AppRoutes.signInRoute);
                     },
                     label: Text('ADD USER'),
                     style: ElevatedButton.styleFrom(

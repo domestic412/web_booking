@@ -53,8 +53,6 @@ class ContainerTracking {
   Future<ContainerTracking> fetchContainerTracking(String inputt) async {
     final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
     final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
-    // final url_bk = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=&BookingNo=$inputt';
-    // final url_cntr = 'http://222.252.166.214:2602/TrackingContainer?CntrNo=$inputt&BookingNo=';
     String? url;
     selectedValue == 'bk' ? url = url_bk_en : url = url_cntr_en;
 
@@ -80,12 +78,6 @@ class ContainerTracking {
       throw Exception('Error');
     }
   }
-
-  // void updateDataContainer() {
-  //   setState(() {
-  //   bool_data_container = true;
-  //   });
-  // }
 }
 
 class TrackingContainers {
