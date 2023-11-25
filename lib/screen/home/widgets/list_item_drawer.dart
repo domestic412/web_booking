@@ -10,7 +10,7 @@ import 'package:web_booking/screen/home/homepage_screen.dart';
 //   return _user;
 // }
 
-Widget buiderMenuItems(BuildContext context) {
+Widget buiderDrawItems(BuildContext context) {
   return Container(
       padding: EdgeInsets.all(20),
       child: Obx(
@@ -78,7 +78,7 @@ Widget buiderMenuItems(BuildContext context) {
                 (Icons.supervised_user_circle_outlined),
                 color: Colors.white,
               ),
-              title: const Text('Check Container',
+              title: const Text('Checking Combine',
                   style: TextStyle(color: Colors.white)),
               onTap: () => sideBarController.index.value = 4,
               selected: sideBarController.index.value == 4,

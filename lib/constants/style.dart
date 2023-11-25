@@ -65,7 +65,10 @@ TextStyle style_text_small_14_red_bold =
     TextStyle(fontSize: 14, color: red, fontWeight: FontWeight.bold);
 TextStyle style_text_small_14_red = TextStyle(fontSize: 14, color: red);
 
+TextStyle style_text_black = TextStyle(fontSize: 16, color: black);
+TextStyle style_text_grey = TextStyle(fontSize: 16, color: grey);
 TextStyle style_text_red = TextStyle(fontSize: 16, color: red);
+TextStyle style_text_green = TextStyle(fontSize: 16, color: green);
 
 //style title page
 TextStyle style_title_page = TextStyle(fontSize: 30, color: haian);

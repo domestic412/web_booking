@@ -69,6 +69,9 @@
     "fill info ": "Điền đầy đủ thông tin vào các ô có dấu (*)",
     "code": "Mã",
 
+    "title dashboard": "Dashboard",
+    
+
     "_comment_approvalList_page": "Approval List Page",
     "approval list": "Danh sách duyệt yêu cầu",
     "sender": "Người gửi",
