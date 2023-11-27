@@ -14,7 +14,7 @@ import 'package:web_booking/screen/approval_list/detail_approval/detail_approval
 import 'package:web_booking/screen/approval_list/approval_list_page.dart';
 import 'package:web_booking/screen/history_list/history_list_page.dart';
 import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality_page.dart';
-import 'package:web_booking/screen/quality_list/list_quality_page.dart';
+import 'package:web_booking/screen/quality_list/quality_list_page.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_request_page.dart';
 import 'package:web_booking/screen/request_list/request_list_page.dart';
 import 'package:web_booking/screen/special_policy_list/CUD_special_policy/CUD_special_policy.dart';

@@ -38,7 +38,7 @@ class _Tracking1PageState extends State<Tracking1Page> {
                 width: deviceWidth(context),
                 alignment: Alignment.center,
                 child: Text(
-                  "Tracking Container",
+                  "title tracking container".tr(),
                   style: style_title_page,
                 ),
               ),

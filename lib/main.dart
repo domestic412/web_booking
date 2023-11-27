@@ -25,11 +25,11 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   runApp(EasyLocalization(
-    // startLocale: Locale('vi','VN'),
-    startLocale: Locale('en', 'EN'),
+    startLocale: Locale('vi', 'VN'),
+    // startLocale: Locale('en', 'EN'),
     supportedLocales: const [
-      Locale('en', 'EN'),
       Locale('vi', 'VN'),
+      Locale('en', 'EN'),
     ],
     saveLocale: false,
     path: "lib/resources/langs",

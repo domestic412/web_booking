@@ -60,11 +60,14 @@ class DataTableApproval extends DataTableSource {
     }
 
     return DataRow(cells: [
-      DataCell(Center(
-          child: SelectableText(
-        (index + 1).toString(),
-        style: style_text_Table_small,
-      ))),
+      DataCell(SizedBox(
+        width: 40,
+        child: Center(
+            child: SelectableText(
+          (index + 1).toString(),
+          style: style_text_Table_small,
+        )),
+      )),
       DataCell(Center(
           child: SelectableText(
         rowData.cntrno!,

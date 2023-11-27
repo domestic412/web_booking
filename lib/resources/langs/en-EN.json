@@ -14,6 +14,7 @@
     "inquiry": "Inquiry",
 
     "_comment_tracking_page": "Tracking Page",
+    "title tracking container": "Tracking Container",
     "search":   "Search",
     "note_tracking":     "Our system does not accept House BL numbers assigned by NVOCC or Freight Forwarder.",
     "title_booking":    "Booking Detail",
@@ -70,6 +71,12 @@
     "error duplicate user": "Error duplicate User Code",
     "fill info ": "Fill in all information in box marked (*)",
     "code": "Code",
+
+    "title dashboard": "Dashboard",
+    "all request": "All requirements: ",
+    "request wait": "Unprocessed request: ",
+    "request approval": "Request approval: ",
+    "request reject": "Request reject: ",
 
     "_comment_approvalList_page": "Approval List Page",
     "approval list": "Approval List",

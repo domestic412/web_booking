@@ -13,7 +13,7 @@ class UserList {
   String? email;
   String? code;
   String? author;
-  String? updatetime;
+  String? updateTime;
 
   UserList(
       {this.id,
@@ -24,7 +24,7 @@ class UserList {
       this.email,
       this.code,
       this.author,
-      this.updatetime});
+      this.updateTime});
 
   UserList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -35,7 +35,7 @@ class UserList {
     email = json['email'];
     code = json['code'];
     author = json['author'];
-    updatetime = json['updatetime'];
+    updateTime = json['updatetime'];
   }
 
   Map<String, dynamic> toJson() {
@@ -48,7 +48,7 @@ class UserList {
     data['email'] = this.email;
     data['code'] = this.code;
     data['author'] = this.author;
-    data['updatetime'] = this.updatetime;
+    data['updatetime'] = this.updateTime;
     return data;
   }
 

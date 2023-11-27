@@ -121,17 +121,21 @@ class _RequestListPageState extends State<RequestListPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
+                    headingRowColor:
+                        MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
                     // sortAscending: true,
                     dataRowMaxHeight: 60,
                     columnSpacing: 16,
                     columns: [
                       DataColumn(
-                        label: Container(
-                          width: 35,
-                          child: Text(
-                            'seq'.tr(),
-                            style: style_text_Table_small_bold,
+                        label: SizedBox(
+                          width: 40,
+                          child: Center(
+                            child: Text(
+                              'seq'.tr(),
+                              style: style_text_Table_small_bold,
+                            ),
                           ),
                         ),
                       ),
