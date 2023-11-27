@@ -34,17 +34,17 @@ class _ListContainer1State extends State<ListContainer1> {
           var data_cntr_en = snapshot.data!.trackingZimsEN;
           var data_cntr_vn = snapshot.data!.trackingZimsVN;
           if (data_bk.toString() != [].toString()) {
-            if (data_cntr_en.toString() != [].toString() && cntr_no != null) {
-              if (bool_lang == false) {
-                list_filter = data_cntr_en!
-                    .where((item) => item.container!.contains(cntr_no!))
-                    .toList();
-              } else {
-                list_filter = data_cntr_vn!
-                    .where((item) => item.container!.contains(cntr_no!))
-                    .toList();
-              }
-            }
+            // if (data_cntr_en.toString() != [].toString() && cntr_no != null) {
+            //   if (bool_lang == false) {
+            //     list_filter = data_cntr_en!
+            //         .where((item) => item.container!.contains(cntr_no!))
+            //         .toList();
+            //   } else {
+            //     list_filter = data_cntr_vn!
+            //         .where((item) => item.container!.contains(cntr_no!))
+            //         .toList();
+            //   }
+            // }
             return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -92,7 +92,9 @@ class _ListContainer1State extends State<ListContainer1> {
               // print(list_filter);
               return ContainerDetails1();
             } else {
-              return const SizedBox();
+              return const Center(
+                child: Text('Not found data!'),
+              );
             }
           }
         }
@@ -107,6 +109,8 @@ class _ListContainer1State extends State<ListContainer1> {
       List<TrackingZimsVN>? data_cntr_vn,
       BuildContext context) {
     return DataTable(
+        headingRowColor:
+            MaterialStateProperty.resolveWith((states) => lightGrey),
         border: const TableBorder(
             verticalInside: BorderSide(color: Colors.black12)),
         sortColumnIndex: 0,
@@ -142,7 +146,6 @@ class _ListContainer1State extends State<ListContainer1> {
             DataCell(Center(
               child: InkWell(
                   onTap: () {
-                    // print(bool_lang);
                     cntr_no = data_bk[index].container.toString();
                     if (bool_lang == false) {
                       list_filter = data_cntr_en!
@@ -154,7 +157,6 @@ class _ListContainer1State extends State<ListContainer1> {
                           .toList();
                     }
                     PopUpContainerDetail1(context);
-                    // print('$list_filter');
                   },
                   child: Container(
                       padding: EdgeInsets.only(bottom: 2),

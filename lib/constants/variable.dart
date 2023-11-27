@@ -8,9 +8,6 @@ import '../model/schedule/model_port.dart';
 double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
-// Appbar Leaguage
-String dropdownValue = 'EN';
-
 // Login
 List results = [];
 var box;

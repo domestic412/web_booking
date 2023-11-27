@@ -227,6 +227,8 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
   DataTable DataCheckContainer(
       AsyncSnapshot<List<CheckContainer>> snapshot, BuildContext context) {
     return DataTable(
+        headingRowColor:
+            MaterialStateProperty.resolveWith((states) => lightGrey),
         border: const TableBorder(
             verticalInside: BorderSide(color: Colors.black12)),
         sortColumnIndex: 0,

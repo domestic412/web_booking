@@ -4,7 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 
-const List<String> list = <String>['EN', 'VN'];
+const List<String> list = <String>['VN', 'EN'];
+String dropdownValue = 'VN';
 
 class DropdownLeaguage extends StatefulWidget {
   const DropdownLeaguage({super.key});

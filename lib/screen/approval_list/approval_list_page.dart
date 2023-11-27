@@ -122,14 +122,18 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
+                    headingRowColor:
+                        MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
                     columnSpacing: 16,
                     columns: [
                       DataColumn(
-                        label: Expanded(
-                            child: Center(
-                                child: Text("seq".tr(),
-                                    style: style_text_Table_small_bold))),
+                        label: SizedBox(
+                          width: 40,
+                          child: Center(
+                              child: Text("seq".tr(),
+                                  style: style_text_Table_small_bold)),
+                        ),
                       ),
                       DataColumn(
                         label: Expanded(

@@ -71,9 +71,14 @@ class DataTableRequest extends DataTableSource {
     }
 
     return DataRow(cells: [
-      DataCell(SelectableText(
-        (index + 1).toString(),
-        style: style_text_Table_small,
+      DataCell(SizedBox(
+        width: 40,
+        child: Center(
+          child: SelectableText(
+            (index + 1).toString(),
+            style: style_text_Table_small,
+          ),
+        ),
       )),
       DataCell(SelectableText(
         rowData.tenYeuCau!,

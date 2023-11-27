@@ -128,15 +128,22 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
+                    headingRowColor:
+                        MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
                     // sortAscending: true,
                     dataRowMaxHeight: 50,
                     columnSpacing: 16,
                     columns: [
                       DataColumn(
-                        label: Text(
-                          'STT',
-                          style: style_text_Table_small_bold,
+                        label: SizedBox(
+                          width: 40,
+                          child: Center(
+                            child: Text(
+                              'STT',
+                              style: style_text_Table_small_bold,
+                            ),
+                          ),
                         ),
                       ),
                       DataColumn(

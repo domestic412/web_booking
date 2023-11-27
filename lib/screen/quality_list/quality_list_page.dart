@@ -3,27 +3,27 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/list_user/model_user.dart';
+import 'package:web_booking/model/list_quality/model_quality_list.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:web_booking/screen/user_list/data/data_user_list.dart';
+import 'package:web_booking/screen/quality_list/data/data_quality_list.dart';
 
 // ignore: must_be_immutable
-class UserListPage extends StatefulWidget {
+class QualityListPage extends StatefulWidget {
   @override
-  State<UserListPage> createState() => _UserListPageState();
+  State<QualityListPage> createState() => _QualityListPageState();
 }
 
-class _UserListPageState extends State<UserListPage> {
-  DataTableUser _dataUser = DataTableUser(data: []);
+class _QualityListPageState extends State<QualityListPage> {
+  DataTableQuality _dataQuality = DataTableQuality(data: []);
 
   @override
   void initState() {
     super.initState();
-    UserList().fetchUserList().then((data) {
+    QualityList().fetchQualityList().then((data) {
       setState(() {
-        _dataUser = DataTableUser(data: data);
-        print('initial data user');
+        _dataQuality = DataTableQuality(data: data);
+        print('initial data quality');
       });
     });
   }
@@ -45,36 +45,37 @@ class _UserListPageState extends State<UserListPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    "title user list".tr(),
+                    "title quality list".tr(),
                     style: style_title_page,
                   ),
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: haian,
-                        shape: const RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10)))),
-                    onPressed: () {
-                      id_user = 0;
-                      maNV_user = '';
-                      tenNv_user = '';
-                      dienthoai_user = '';
-                      email_user = '';
-                      author_user = '';
-                      codeValue = '';
-                      title_user = 'create user'.tr();
-                      text_button_CUD = 'save'.tr();
-                      URL_USER = '$SERVER/User/Create';
-                      color_button_CUD = haian;
-                      CUD = 1;
-                      sideBarController.index.value = 16;
-                    },
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: Text('create'.tr(), style: style_text_box_button),
-                    )),
+                Container(
+                    margin: EdgeInsets.only(bottom: 16),
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: haian,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)))),
+                        onPressed: () {
+                          maChatLuong_quality = '';
+                          tenChatLuong_quality = '';
+                          ghiChu_quality = '';
+                          id_quality = 0;
+                          title_CUD_quality =
+                              'title create quality container'.tr();
+                          text_button_CUD = 'save'.tr();
+                          URL_QUALITY = '$SERVER/QualityList/Create';
+                          color_button_CUD = haian;
+                          CUD = 1;
+                          sideBarController.index.value = 7;
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
+                          child:
+                              Text('create'.tr(), style: style_text_box_button),
+                        ))),
                 Container(
                   width: deviceWidth(context),
                   decoration: BoxDecoration(
@@ -88,64 +89,52 @@ class _UserListPageState extends State<UserListPage> {
                     ],
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  margin: const EdgeInsets.symmetric(vertical: 16),
                   child: PaginatedDataTable(
                       headingRowColor:
                           MaterialStateColor.resolveWith((states) => lightGrey),
                       sortColumnIndex: 0,
                       // sortAscending: true,
+                      dataRowMaxHeight: 90,
                       columnSpacing: 20,
                       columns: [
                         DataColumn(
-                          label: SizedBox(
+                          label: Container(
                             width: 40,
+                            child: Center(
+                              child: Text(
+                                'seq'.tr(),
+                                style: style_text_Table_small_bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Container(
+                            width: 100,
                             child: Text(
-                              'seq'.tr(),
-                              textAlign: TextAlign.center,
+                              'quality code'.tr(),
                               style: style_text_Table_small_bold,
                             ),
                           ),
                         ),
                         DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              'user code'.tr(),
-                              style: style_text_Table_small_bold,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Expanded(
-                            child: Text('user name'.tr(),
+                          label: Container(
+                            width: 120,
+                            child: Text('quality name'.tr(),
                                 style: style_text_Table_small_bold),
                           ),
                         ),
                         DataColumn(
                           label: Expanded(
-                            child: Text(
-                              'customer code'.tr(),
-                              style: style_text_Table_small_bold,
-                            ),
-                          ),
+                              child: Center(
+                                  child: Text(
+                            'note'.tr(),
+                            style: style_text_Table_small_bold,
+                          ))),
                         ),
                         DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              'email'.tr(),
-                              style: style_text_Table_small_bold,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Expanded(
-                            child: Text(
-                              'tel no'.tr(),
-                              style: style_text_Table_small_bold,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Expanded(
+                          label: Container(
+                            width: 80,
                             child: Text(
                               'update time'.tr(),
                               style: style_text_Table_small_bold,
@@ -153,7 +142,17 @@ class _UserListPageState extends State<UserListPage> {
                           ),
                         ),
                         DataColumn(
-                          label: Expanded(
+                          label: Container(
+                            width: 100,
+                            child: Text(
+                              'updater'.tr(),
+                              style: style_text_Table_small_bold,
+                            ),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Container(
+                            width: 60,
                             child: Center(
                               child: Center(
                                   child: Text('###',
@@ -162,7 +161,7 @@ class _UserListPageState extends State<UserListPage> {
                           ),
                         ),
                       ],
-                      source: _dataUser),
+                      source: _dataQuality),
                 ),
               ]),
         ),
