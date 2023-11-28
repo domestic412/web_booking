@@ -2,10 +2,13 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:web_booking/widgets/horizontal_scroll.dart';
+
+import 'utils/getx_route.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -42,26 +45,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-        title: 'HAI AN Service',
-        // theme: ThemeData(
-        // textTheme:
-        //     GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-        // textButtonTheme: TextButtonThemeData(
-        //     style: TextButton.styleFrom(primary: Colors.blueGrey)),
-        // elevatedButtonTheme: ElevatedButtonThemeData(
-        //     style: ButtonStyle(
-        //         backgroundColor:
-        //             MaterialStateProperty.all<Color>(Color(0xFF3D45EE)))),
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        // ),
-        debugShowCheckedModeBanner: false,
-        scrollBehavior: CustomHorizontalScroll(),
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        routerConfig: AppRoutes.router //use MaterialApp.router
-        // getPages: GetRoutes.router,
-        );
+    return GetMaterialApp(
+      title: 'HAI AN Service',
+      // theme: ThemeData(
+      // textTheme:
+      //     GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+      // textButtonTheme: TextButtonThemeData(
+      //     style: TextButton.styleFrom(primary: Colors.blueGrey)),
+      // elevatedButtonTheme: ElevatedButtonThemeData(
+      //     style: ButtonStyle(
+      //         backgroundColor:
+      //             MaterialStateProperty.all<Color>(Color(0xFF3D45EE)))),
+      // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+      // ),
+      debugShowCheckedModeBanner: false,
+      scrollBehavior: CustomHorizontalScroll(),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      // routerConfig: AppRoutes.router //use MaterialApp.router
+      getPages: GetRoutes.router,
+      // initialRoute: ,
+    );
   }
 }

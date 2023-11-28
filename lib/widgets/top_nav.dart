@@ -25,32 +25,6 @@ topNavigationBar(
             style: TextStyle(color: haian),
           ),
           Expanded(child: Container()),
-          // Spacer(),
-          // Container(
-          //   // height: 25,
-          //   width: 250,
-          //   padding: const EdgeInsets.symmetric(horizontal: 16),
-          //   decoration: BoxDecoration(
-          //     borderRadius: const BorderRadius.all(
-          //       Radius.circular(10),
-          //     ),
-          //     color: Colors.white54,
-          //     border: Border.all(width: 2, color: Color(0xFFE5E5E5)),
-          //   ),
-          //   child: TextFormField(
-          //     textAlignVertical: TextAlignVertical.top,
-          //     style: const TextStyle(color: Colors.grey, fontSize: 12),
-          //     decoration: const InputDecoration(
-          //         hintText: 'Search...',
-          //         hintStyle: TextStyle(color: Colors.grey),
-          //         disabledBorder: InputBorder.none,
-          //         enabledBorder: InputBorder.none,
-          //         icon: Icon(
-          //           Icons.search,
-          //           color: Color(0xFFE5E5E5),
-          //         )),
-          //   ),
-          // ),
           const SizedBox(
             width: 12,
           ),
@@ -83,7 +57,6 @@ topNavigationBar(
           ),
         ],
       ),
-      // iconTheme: IconThemeData(color: black),
       elevation: 5,
       backgroundColor: white,
     );

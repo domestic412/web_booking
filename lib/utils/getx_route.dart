@@ -1,136 +1,140 @@
-// import 'package:flutter/widgets.dart';
-// import 'package:get/get.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:web_booking/page/booking/booking_page.dart';
-// import 'package:web_booking/page/default/default_page.dart';
-// import 'package:web_booking/page/signin/signin_page.dart';
-// import 'package:web_booking/page/signup/signup_page.dart';
-// import 'package:web_booking/page/tracking/tracking_page.dart';
-// import 'package:web_booking/screen/check_container/check_container_page.dart';
-// import 'package:web_booking/screen/container_stock/container_stock_page.dart';
-// import 'package:web_booking/screen/container_stock/import_file_page.dart';
-// import 'package:web_booking/screen/home/homepage_screen.dart';
-// import 'package:web_booking/screen/list_approval/detail_approval/detail_approval_page.dart';
-// import 'package:web_booking/screen/list_approval/list_approval_page.dart';
-// import 'package:web_booking/screen/list_history/list_history_page.dart';
-// import 'package:web_booking/screen/list_quality/CUD_quality/CUD_quality_page.dart';
-// import 'package:web_booking/screen/list_quality/list_quality_page.dart';
-// import 'package:web_booking/screen/list_request/detail_request/detail_request.dart';
-// import 'package:web_booking/screen/list_request/list_request_page.dart';
-// import 'package:web_booking/screen/list_special_policy/CUD_special_policy/CUD_special_policy.dart';
-// import 'package:web_booking/screen/list_special_policy/list_special_policy_page.dart';
-// import 'package:web_booking/screen/request/request_page.dart';
-// import 'package:web_booking/screen/tracking1/tracking_page1.dart';
+import 'package:get/get.dart';
+import 'package:web_booking/page/booking/booking_page.dart';
+import 'package:web_booking/page/default/default_page.dart';
+import 'package:web_booking/page/signin/signin_page.dart';
+import 'package:web_booking/page/signup/signup_page.dart';
+import 'package:web_booking/page/tracking/tracking_page.dart';
+import 'package:web_booking/screen/approval_list/approval_list_page.dart';
+import 'package:web_booking/screen/approval_list/detail_approval/detail_approval_page.dart';
+import 'package:web_booking/screen/checking_combine/checking_combine_page.dart';
+import 'package:web_booking/screen/container_stock/container_stock_page.dart';
+import 'package:web_booking/screen/container_stock/import_file_page.dart';
+import 'package:web_booking/screen/history_list/history_list_page.dart';
+import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality_page.dart';
+import 'package:web_booking/screen/quality_list/quality_list_page.dart';
+import 'package:web_booking/screen/request/request_page.dart';
+import 'package:web_booking/screen/request_list/detail_request/detail_request_page.dart';
+import 'package:web_booking/screen/request_list/request_list_page.dart';
+import 'package:web_booking/screen/special_policy_list/CUD_special_policy/CUD_special_policy.dart';
+import 'package:web_booking/screen/special_policy_list/special_policy_list_page.dart';
+import 'package:web_booking/screen/tracking1/tracking_page1.dart';
+import 'package:web_booking/screen/user_list/user_list_page.dart';
 
-// class GetRoutes {
-//   static const defaultRoute = "/";
-//   static const SignUpRoute = "/SignUp";
-//   static const SignInRoute = "/SignIn";
-//   static const TrackingRoute = "/Tracking";
-//   static const TestRoute = "/Test";
-//   static const BookingRoute = "/Booking";
-//   static const HomeRoute = "/Home";
-//   static const ListApproval = "$HomeRoute/ListApproval";
-//   static const DetailApproval = "$HomeRoute/$ListApproval/DetailApproval";
-//   static const ListRequest = "$HomeRoute/ListRequest";
-//   static const DetailRequest = "$HomeRoute/$ListRequest/DetailRequest";
-//   static const SendRequest = "$HomeRoute/Request";
-//   static const CheckContainer = "$HomeRoute/Check";
-//   static const Tracking = "$HomeRoute/Tracking";
-//   static const ListQuality = "$HomeRoute/Quality";
-//   static const CUDQuality = "$HomeRoute/$ListQuality/DUC";
-//   static const ListSpecialPolicy = "$HomeRoute/Policy";
-//   static const CUDPolicy = "$HomeRoute/$ListSpecialPolicy/DUC";
-//   static const ListHistory = "$HomeRoute/History";
-//   static const ContainerStock = "$HomeRoute/Stock";
-//   static const ImportStock = "$HomeRoute/$ContainerStock/Import";
+class GetRoutes {
+  static const defaultRoute = "/";
+  static const SignUp = "/SignUp";
+  static const SignIn = "/SignIn";
+  static const Tracking = "/Tracking";
+  static const Test = "/Test";
+  static const Booking = "/Booking";
+  static const Home = "/Home";
+  static const UserList = "$Home/UserList";
+  static const ApprovalList = "$Home/ApprovalList";
+  static const DetailApproval = "$Home/$ApprovalList/DetailApproval";
+  static const RequestList = "$Home/RequesList";
+  static const DetailRequest = "$Home/$RequestList/DetailRequest";
+  static const SendRequest = "$Home/Request";
+  static const CheckingCombine = "$Home/CheckingCombine";
+  static const Tracking1 = "$Home/Tracking";
+  static const QualityList = "$Home/QualityList";
+  static const CUDQuality = "$Home/$QualityList/CUD";
+  static const SpecialPolicyList = "$Home/PolicyList";
+  static const CUDPolicy = "$Home/$SpecialPolicyList/CUD";
+  static const HistoryList = "$Home/HistoryList";
+  static const ContainerStock = "$Home/Stock";
+  static const ImportStock = "$Home/$ContainerStock/Import";
 
-//   // static const MemberRoute = "/MemberDashboard";
+  // static const MemberRoute = "/MemberDashboard";
 
-//   static final List<GetPage> router = <GetPage>[
-//     GetPage(
-//       name: defaultRoute,
-//       page: () => DefaultPage(),
-//     ),
-//     GetPage(
-//       name: SignUpRoute,
-//       page: () => SignUpPage(),
-//     ),
-//     GetPage(
-//       name: SignInRoute,
-//       page: () => SignInPage(),
-//     ),
-//     GetPage(
-//       name: BookingRoute,
-//       page: () => BookingPage(),
-//     ),
-//     GetPage(
-//       name: TrackingRoute,
-//       page: () => TrackingPage(),
-//     ),
-//     GetPage(
-//       name: HomeRoute,
-//       page: () => HomePage(),
-//     ),
-//     GetPage(
-//       name: ListApproval,
-//       page: () => ListApprovalPage(),
-//     ),
-//     GetPage(
-//       name: DetailApproval,
-//       page: () => DetailApprovalPage(),
-//     ),
-//     GetPage(
-//       name: ListRequest,
-//       page: () => ListRequestPage(),
-//     ),
-//     GetPage(
-//       name: DetailRequest,
-//       page: () => DetailRequestPage(),
-//     ),
-//     GetPage(
-//       name: SendRequest,
-//       page: () => SendRequestPage(),
-//     ),
-//     GetPage(
-//       name: CheckContainer,
-//       page: () => CheckContainerPage(),
-//     ),
-//     GetPage(
-//       name: Tracking,
-//       page: () => Tracking1Page(),
-//     ),
-//     GetPage(
-//       name: ListQuality,
-//       page: () => ListQualityPage(),
-//     ),
-//     GetPage(
-//       name: CUDQuality,
-//       page: () => CUD_QualityPage(),
-//     ),
-//     GetPage(
-//       name: ListSpecialPolicy,
-//       page: () => ListSpecialPolicyPage(),
-//     ),
-//     GetPage(
-//       name: CUDPolicy,
-//       page: () => CUD_SpecialPolicyPage(),
-//     ),
-//     GetPage(
-//       name: ListHistory,
-//       page: () => ListHistoryPage(),
-//     ),
-//     GetPage(
-//       name: ContainerStock,
-//       page: () => ContainerStockPage(),
-//     ),
-//     GetPage(
-//       name: ImportStock,
-//       page: () => ImportStockPage(),
-//     ),
-//     // GetPage(
-//     //   name: MemberRoute,
-//     //   page: () => MemberPage(),
-//     // ),
-//   ];
-// }
+  static final List<GetPage> router = <GetPage>[
+    GetPage(
+      name: defaultRoute,
+      page: () => DefaultPage(),
+    ),
+    GetPage(
+      name: SignUp,
+      page: () => SignUpPage(),
+    ),
+    GetPage(
+      name: SignIn,
+      page: () => SignInPage(),
+    ),
+    GetPage(
+      name: Booking,
+      page: () => BookingPage(),
+    ),
+    GetPage(
+      name: Tracking,
+      page: () => TrackingPage(),
+    ),
+    GetPage(
+      name: Home,
+      page: () => HomePage(),
+    ),
+    GetPage(
+      name: UserList,
+      page: () => UserListPage(),
+    ),
+    GetPage(
+      name: ApprovalList,
+      page: () => ApprovalListPage(),
+    ),
+    GetPage(
+      name: DetailApproval,
+      page: () => DetailApprovalPage(),
+    ),
+    GetPage(
+      name: RequestList,
+      page: () => RequestListPage(),
+    ),
+    GetPage(
+      name: DetailRequest,
+      page: () => DetailRequestPage(),
+    ),
+    GetPage(
+      name: SendRequest,
+      page: () => SendRequestPage(),
+    ),
+    GetPage(
+      name: CheckingCombine,
+      page: () => CheckingCombinePage(),
+    ),
+    GetPage(
+      name: Tracking1,
+      page: () => Tracking1Page(),
+    ),
+    GetPage(
+      name: QualityList,
+      page: () => QualityListPage(),
+    ),
+    GetPage(
+      name: CUDQuality,
+      page: () => CUD_QualityPage(),
+    ),
+    GetPage(
+      name: SpecialPolicyList,
+      page: () => SpecialPolicyListPage(),
+    ),
+    GetPage(
+      name: CUDPolicy,
+      page: () => CUD_SpecialPolicyPage(),
+    ),
+    GetPage(
+      name: HistoryList,
+      page: () => HistoryListPage(),
+    ),
+    GetPage(
+      name: ContainerStock,
+      page: () => ContainerStockPage(),
+    ),
+    GetPage(
+      name: ImportStock,
+      page: () => ImportStockPage(),
+    ),
+    // GetPage(
+    //   name: MemberRoute,
+    //   page: () => MemberPage(),
+    // ),
+  ];
+}

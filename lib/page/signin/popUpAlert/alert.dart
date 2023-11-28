@@ -21,17 +21,3 @@ Future<void> LoginAlert(BuildContext context) {
         );
       });
 }
-
-Future<void> LoadingAlert(BuildContext context) {
-  return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          child: Container(
-            width: 100,
-            height: 100,
-            child: CircularProgressIndicator(),
-          ),
-        );
-      });
-}

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/default/default_page.dart';
+import 'package:web_booking/page/signin/signin_page.dart';
+import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:web_booking/utils/app_route_config.dart';
 
 class appbar extends StatelessWidget {
   const appbar({
@@ -28,9 +30,12 @@ class appbar extends StatelessWidget {
               padding: EdgeInsets.only(left: 50),
               width: 1196,
               child: InkWell(
-                onTap: () => context.go(AppRoutes.defaultRoute),
+                onTap: () {
+                  Get.to(() => DefaultPage());
+                },
                 child: Text(
-                  'welcome'.tr(),
+                  // 'welcome'.tr(),
+                  'Welcome',
                   style: style14_white,
                   textAlign: TextAlign.left,
                 ),
@@ -42,12 +47,14 @@ class appbar extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context.go(AppRoutes.signInRoute);
+                // context.go(AppRoutes.signInRoute);
+                Get.toNamed(GetRoutes.SignIn);
               },
               child: Container(
                   width: 70,
                   child: Text(
-                    'signin'.tr(),
+                    // 'signin'.tr(),
+                    'Sign In',
                     style: style14_white,
                   )),
             ),
