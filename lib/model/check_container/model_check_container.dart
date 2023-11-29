@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 class CheckContainer {
   int? id;
@@ -121,23 +122,29 @@ class CheckContainer {
   }
 
   Future<List<CheckContainer>> fetchCheckContainers(String cntr) async {
-    var url = '$SERVER/CheckContainer?container=$cntr&code=$maNV';
-    if (cntr.isNotEmpty) {
-      final response = await http.post(Uri.parse(url), headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $tokenAuthorize",
-      });
-      if (response.statusCode == 200) {
-        var body = response.body;
-        List dataCheckCntr = jsonDecode(body);
-        return dataCheckCntr
-            .map((data) => CheckContainer.fromJson(data))
-            .toList();
+    try {
+      var url =
+          '$SERVER/CheckContainer?container=$cntr&code=${informationController.maNV.value}';
+      if (cntr.isNotEmpty) {
+        final response = await http.post(Uri.parse(url), headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer ${informationController.authorize.value}",
+        });
+        switch (response.statusCode) {
+          case 200:
+            var body = response.body;
+            List dataCheckCntr = jsonDecode(body);
+            return dataCheckCntr
+                .map((data) => CheckContainer.fromJson(data))
+                .toList();
+          default:
+            throw Exception(response.reasonPhrase);
+        }
       } else {
-        throw Exception('Error');
+        throw Exception('Container null');
       }
-    } else {
-      throw Exception('Failed to load');
+    } on Exception catch (e) {
+      return throw Exception(e);
     }
   }
 }

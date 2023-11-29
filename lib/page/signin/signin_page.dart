@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:web_booking/utils/app_route_config.dart';
@@ -24,9 +23,6 @@ TextEditingController _user = TextEditingController();
 TextEditingController _password = TextEditingController();
 
 class _SignInPageState extends State<SignInPage> {
-  final inforController = Get.put(InformationSignInController());
-  // final InformationSignInController informationController =
-  //     Get.put(InformationSignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,54 +102,63 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Future<void> signin(String username, String password) async {
-    var url = URL_LOGIN;
-    Map data = {
-      'username': username,
-      'password': '123@ha'.toString() + password + 'haian'.toString(),
-    };
-    var body = json.encode(data);
-    if (username.isNotEmpty && password.isNotEmpty) {
-      CircularProgressIndicator();
-      final response = await http.post(Uri.parse(url),
-          headers: {"Content-Type": "application/json"}, body: body);
+    try {
+      var url = URL_LOGIN;
+      Map data = {
+        'username': username,
+        'password': '123@ha'.toString() + password + 'haian'.toString(),
+      };
+      var body = json.encode(data);
+      if (username.isNotEmpty && password.isNotEmpty) {
+        CircularProgressIndicator();
+        final response = await http.post(Uri.parse(url),
+            headers: {"Content-Type": "application/json"}, body: body);
+        switch (response.statusCode) {
+          case 200:
+            CircularProgressIndicator(
+              value: 0.0,
+            );
+            var body = response.body;
+            String dataAuthorize = jsonDecode(body.toString())['token'];
 
-      if (response.statusCode == 200) {
-        CircularProgressIndicator(
-          value: 0.0,
-        );
-        var body = response.body;
-        dataAuthorize = jsonDecode(body.toString())['token'];
+            // // print(data['token']);
+            Map<String, dynamic> decodedToken =
+                JwtDecoder.decode(dataAuthorize);
+            // results = decodedToken.values.toList();
+            String manv = decodedToken['MaNV'];
+            String tenv = decodedToken['TenNV'];
+            String author = decodedToken['Author'].trim();
+            String code = decodedToken['Code'];
 
-        // // print(data['token']);
-        Map<String, dynamic> decodedToken = JwtDecoder.decode(dataAuthorize);
-        results = decodedToken.values.toList();
+            // Save tokenLogin
+            // await saveData();
+            // await getData();
+            inforController.updateInfomationSignIn(
+              authorize: dataAuthorize.obs,
+              maNV: manv.obs,
+              tenNV: tenv.obs,
+              author: author.obs,
+              code: code.obs,
+            );
 
-        // Save tokenLogin
-        // await saveData();
-        // await getData();
-        inforController.updateInfomationSignIn(
-          authorize: dataAuthorize.obs,
-          maNV: {results[1]}.obs,
-          tenNV: {results[2]}.obs,
-          author: {results[3].trim()}.obs,
-          code: {results[4]}.obs,
-        );
-        // print(informationController.authorize.value);
+            _user.clear();
+            _password.clear();
 
-        _user.clear();
-        _password.clear();
-
-        // context.go(AppRoutes.homeRoute);
-        Get.toNamed(GetRoutes.Home);
+            // context.go(AppRoutes.homeRoute);
+            // Get.back();
+            Get.toNamed(GetRoutes.Home);
+          default:
+            CircularProgressIndicator(
+              value: 0.0,
+            );
+            LoginAlert(context);
+        }
       } else {
-        CircularProgressIndicator(
-          value: 0.0,
-        );
-        LoginAlert(context);
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text("Invalid")));
       }
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Invalid")));
+    } on Exception catch (e) {
+      throw Exception('Error SignIn - $e');
     }
   }
 }

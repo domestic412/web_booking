@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 class DetailRequest {
   int? id;
@@ -65,29 +66,34 @@ class DetailRequest {
   }
 
   Future<void> fetchDetailRequest(int id) async {
-    var url = '$SERVER/Requests/$id';
-
-    final response = await http.get(Uri.parse(url), headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer $tokenAuthorize",
-    });
-    if (response.statusCode == 200) {
-      // EasyLoading.dismiss();
-      var body = response.body;
-      print('Data List Request Detail');
-      List dataDetail = jsonDecode(body);
-      id_request_for_image = dataDetail[0]['id'];
-      tenYeuCau_DetailRequest = dataDetail[0]['tenYeuCau'];
-      noiDung_DetailRequest = dataDetail[0]['noiDung'];
-      cntrno_DetailRequest = dataDetail[0]['cntrno'];
-      sizeType_DetailRequest = dataDetail[0]['sizeType'];
-      trangThaiYc_DetailRequest = dataDetail[0]['trangThaiYc'];
-      noteHangTau_DetailRequest = dataDetail[0]['noteHangTau'];
-      updateTime_DetailRequest = dataDetail[0]['updateTime'];
-      // PopUpListRequest(context);
-    } else {
-      // EasyLoading.dismiss();
-      throw Exception('Cannot connect to server');
+    try {
+      var url = '$SERVER/Requests/$id';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List Request Detail');
+          List dataDetail = jsonDecode(body);
+          try {
+            id_request_for_image = dataDetail[0]['id'];
+            tenYeuCau_DetailRequest = dataDetail[0]['tenYeuCau'];
+            noiDung_DetailRequest = dataDetail[0]['noiDung'];
+            cntrno_DetailRequest = dataDetail[0]['cntrno'];
+            sizeType_DetailRequest = dataDetail[0]['sizeType'];
+            trangThaiYc_DetailRequest = dataDetail[0]['trangThaiYc'];
+            noteHangTau_DetailRequest = dataDetail[0]['noteHangTau'];
+            updateTime_DetailRequest = dataDetail[0]['updateTime'];
+          } catch (e) {
+            print('Error data fetch Detail Request have null - $e');
+          }
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Detail Request - $e');
     }
   }
 }

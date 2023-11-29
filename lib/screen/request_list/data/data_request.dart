@@ -3,6 +3,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_request/model_detail_request.dart';
 import 'package:web_booking/model/list_request/model_request_list.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
@@ -115,7 +116,8 @@ class DataTableRequest extends DataTableSource {
           onPressed: () async {
             await _detailRequest.fetchDetailRequest(data![index].id!);
             id_request_for_image = data![index].id;
-            sideBarController.index.value = 14;
+            // sideBarController.index.value = 14;
+            controller.changePage(SideBarController.detailRequest);
           },
           style: ElevatedButton.styleFrom(
               backgroundColor: _color,

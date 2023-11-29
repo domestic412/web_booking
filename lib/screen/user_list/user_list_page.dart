@@ -3,6 +3,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_user/model_user.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -68,7 +69,8 @@ class _UserListPageState extends State<UserListPage> {
                       URL_USER = '$SERVER/User/Create';
                       color_button_CUD = haian;
                       CUD = 1;
-                      sideBarController.index.value = 16;
+                      // sideBarController.index.value = 16;
+                      controller.changePage(SideBarController.cudUser);
                     },
                     child: Container(
                       padding:

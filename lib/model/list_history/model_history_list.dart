@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 class History {
   int? id;
@@ -65,18 +67,23 @@ class History {
   }
 
   Future<List<History>> fetchHistoryList() async {
-    var url = URL_HISTORY;
-    final response = await http.get(Uri.parse(url), headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Authorization": "Bearer $tokenAuthorize",
-    });
-    if (response.statusCode == 200) {
-      var body = response.body;
-      print('Data List History');
-      List dataHistoryList = json.decode(body);
-      return dataHistoryList.map((data) => History.fromJson(data)).toList();
-    } else {
-      throw Exception('Error');
+    try {
+      var url = URL_HISTORY;
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List History');
+          List dataHistoryList = json.decode(body);
+          return dataHistoryList.map((data) => History.fromJson(data)).toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch History - $e');
     }
   }
 }

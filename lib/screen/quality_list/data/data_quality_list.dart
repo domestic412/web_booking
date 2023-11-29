@@ -4,6 +4,7 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/model_quality_list.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
@@ -91,7 +92,8 @@ class DataTableQuality extends DataTableSource {
                   maChatLuong_quality = data![index].maChatLuong;
                   tenChatLuong_quality = data![index].tenChatLuong;
                   ghiChu_quality = data![index].ghiChu;
-                  sideBarController.index.value = 7;
+                  // sideBarController.index.value = 7;
+                  controller.changePage(SideBarController.cudQuality);
                 },
                 child: Tooltip(
                   message: 'adjust'.tr(),
@@ -116,7 +118,8 @@ class DataTableQuality extends DataTableSource {
                   maChatLuong_quality = data![index].maChatLuong;
                   tenChatLuong_quality = data![index].tenChatLuong;
                   ghiChu_quality = data![index].ghiChu;
-                  sideBarController.index.value = 7;
+                  // sideBarController.index.value = 7;
+                  controller.changePage(SideBarController.cudQuality);
                 },
                 child: Tooltip(
                   message: 'delete'.tr(),

@@ -3,6 +3,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/model_quality_list.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -68,7 +69,8 @@ class _QualityListPageState extends State<QualityListPage> {
                           URL_QUALITY = '$SERVER/QualityList/Create';
                           color_button_CUD = haian;
                           CUD = 1;
-                          sideBarController.index.value = 7;
+                          // sideBarController.index.value = 7;
+                          controller.changePage(SideBarController.cudQuality);
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(

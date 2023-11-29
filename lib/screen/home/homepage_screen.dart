@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-SideBarController sideBarController = Get.put(SideBarController());
+// SideBarController sideBarController = Get.put(SideBarController());
 
 class _HomePageState extends State<HomePage> {
   // Future<String> _delay =
@@ -60,8 +60,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Expanded(
-                child: Obx(() =>
-                    sideBarController.pages[sideBarController.index.value]))
+                child: Obx(() => controller.changePage(controller.selectPage)))
           ],
         ));
   }

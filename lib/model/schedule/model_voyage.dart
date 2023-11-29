@@ -37,24 +37,30 @@ class Voyage {
   }
 
   Future<Voyage> fetchDataVoyage(String pol, String pod, String etd) async {
-    var url = '$SERVER/Booking?POLId=$pol&PODId=$pod&ETD=$etd';
-    var data = {'POLId': pol, 'PODId': pod, 'ETD': etd};
-    var body = json.encode(data);
-    if (pol.isNotEmpty & pod.isNotEmpty & etd.isNotEmpty) {
-      final response = await http.post(Uri.parse(url),
-          headers: {"Content-Type": "application/json"}, body: body);
-      if (response.statusCode == 200) {
-        var body = response.body;
-        print('Data Voyage');
-        // // convert json to list and return function
-        // List dataVoyage = json.decode(body);
-        // return dataVoyage.map((data) => Voyage.fromJson(data)).toList();
-        final dataVoyage = json.decode(body);
-        return Voyage.fromJson(dataVoyage);
-      } else
+    try {
+      var url = '$SERVER/Booking?POLId=$pol&PODId=$pod&ETD=$etd';
+      var data = {'POLId': pol, 'PODId': pod, 'ETD': etd};
+      var body = json.encode(data);
+      if (pol.isNotEmpty & pod.isNotEmpty & etd.isNotEmpty) {
+        final response = await http.post(Uri.parse(url),
+            headers: {"Content-Type": "application/json"}, body: body);
+        switch (response.statusCode) {
+          case 200:
+            var body = response.body;
+            print('Data Voyage');
+            // // convert json to list and return function
+            // List dataVoyage = json.decode(body);
+            // return dataVoyage.map((data) => Voyage.fromJson(data)).toList();
+            final dataVoyage = json.decode(body);
+            return Voyage.fromJson(dataVoyage);
+          default:
+            throw Exception(response.reasonPhrase);
+        }
+      } else {
         throw Exception('Error');
-    } else {
-      throw Exception('Error');
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Data Voyage - $e');
     }
   }
 }

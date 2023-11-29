@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/request_list/detail_request/button_detailRequest.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
@@ -42,7 +43,8 @@ class DetailRequestPage extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 16),
                 child: InkWell(
                   onTap: () {
-                    sideBarController.index.value = 2;
+                    // sideBarController.index.value = 2;
+                    controller.changePage(SideBarController.requestList);
                   },
                   child: Container(
                     alignment: Alignment.center,

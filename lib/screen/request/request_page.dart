@@ -6,6 +6,8 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/request/popUpAlert/alert.dart';
 import 'dart:html' as html;
@@ -324,7 +326,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
       formData.append('TenYeuCau', NameRequest);
       formData.append('NoiDung', _input_camKet.text);
       formData.append('Cntrno', cntr.toUpperCase());
-      formData.append('NguoiGui', tokenLogin);
+      formData.append('NguoiGui', informationController.tenNV.value);
 
       final request = html.HttpRequest();
       request.open(
@@ -338,7 +340,8 @@ class _SendRequestPageState extends State<SendRequestPage> {
           // EasyLoading.dismiss();
           numberImage = 0;
           savecntr = '';
-          sideBarController.index.value = 2;
+          // sideBarController.index.value = 2;
+          controller.changePage(SideBarController.requestList);
         } else if (request.status == 409) {
           //request exist or cntr accept
           setState(() {

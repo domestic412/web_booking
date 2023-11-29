@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 class GetCode {
   String? code;
@@ -20,18 +22,23 @@ class GetCode {
   }
 
   Future<List<GetCode>> fetchCode() async {
-    var url = ServerCode;
-    final response = await http.get(Uri.parse(url), headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-      "Authorization": "Bearer $tokenAuthorize",
-    });
-    if (response.statusCode == 200) {
-      var body = response.body;
-      dataCode = json.decode(body);
-      return dataCode.map((data) => GetCode.fromJson(data)).toList();
-    } else {
-      throw Exception('Error to fetch data Code');
+    try {
+      var url = ServerCode;
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+        "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          dataCode = json.decode(body);
+          return dataCode.map((data) => GetCode.fromJson(data)).toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Code - $e');
     }
   }
 }
