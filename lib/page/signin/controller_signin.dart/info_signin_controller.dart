@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-final inforController = Get.put(InformationSignInController());
+// final inforController = Get.put(InformationSignInController());
 final InformationSignInController informationController =
     Get.put(InformationSignInController());
 

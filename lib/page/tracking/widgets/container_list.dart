@@ -1,5 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
@@ -56,7 +57,7 @@ class _ContainerListState extends State<ContainerList> {
                       child: Row(
                         children: [
                           Icon(Icons.arrow_right),
-                          SelectableText('title_booking'.tr())
+                          SelectableText('title_booking'.tr)
                         ],
                       ),
                     ),
@@ -103,7 +104,7 @@ class _ContainerListState extends State<ContainerList> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SelectableText('seq'.tr(), style: style_text_Table_small_bold),
+                SelectableText('seq'.tr, style: style_text_Table_small_bold),
               ],
             )),
           ),
@@ -112,7 +113,7 @@ class _ContainerListState extends State<ContainerList> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SelectableText('container'.tr(),
+                SelectableText('container'.tr,
                     style: style_text_Table_small_bold),
               ],
             )),
@@ -122,7 +123,7 @@ class _ContainerListState extends State<ContainerList> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SelectableText('size_booking'.tr(),
+                SelectableText('size_booking'.tr,
                     style: style_text_Table_small_bold),
               ],
             )),

@@ -1,6 +1,7 @@
 // ignore: depend_on_referenced_packages
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/page/tracking/widgets/table_container_details.dart';
 
@@ -23,7 +24,7 @@ Future<void> PopUpContainerDetail(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Icon(Icons.arrow_right),
-                    SelectableText('title_container'.tr(),
+                    SelectableText('title_container'.tr,
                         style: const TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),

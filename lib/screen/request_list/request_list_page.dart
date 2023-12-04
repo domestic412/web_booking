@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_request_list.dart';
 import 'package:web_booking/screen/request_list/data/data_request.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
 class RequestListPage extends StatefulWidget {
@@ -61,7 +62,7 @@ class _RequestListPageState extends State<RequestListPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    "request list".tr(),
+                    "request list".tr,
                     style: style_title_page,
                   ),
                 ),
@@ -88,7 +89,7 @@ class _RequestListPageState extends State<RequestListPage> {
                       title: TextField(
                         controller: _search_text,
                         decoration: InputDecoration(
-                            hintText: 'search'.tr(), border: InputBorder.none),
+                            hintText: 'search'.tr, border: InputBorder.none),
                         onChanged: (value) {
                           setState(() {
                             _filterRequest();
@@ -133,7 +134,7 @@ class _RequestListPageState extends State<RequestListPage> {
                           width: 40,
                           child: Center(
                             child: Text(
-                              'seq'.tr(),
+                              'seq'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -143,7 +144,7 @@ class _RequestListPageState extends State<RequestListPage> {
                         label: Container(
                           width: 150,
                           child: Text(
-                            'request name'.tr(),
+                            'request name'.tr,
                             style: style_text_Table_small_bold,
                           ),
                         ),
@@ -151,7 +152,7 @@ class _RequestListPageState extends State<RequestListPage> {
                       DataColumn(
                         label: Container(
                           width: 110,
-                          child: Text('container'.tr(),
+                          child: Text('container'.tr,
                               style: style_text_Table_small_bold),
                         ),
                       ),
@@ -159,7 +160,7 @@ class _RequestListPageState extends State<RequestListPage> {
                         label: Container(
                           width: 60,
                           child: Text(
-                            'size'.tr(),
+                            'size'.tr,
                             style: style_text_Table_small_bold,
                           ),
                         ),
@@ -168,7 +169,7 @@ class _RequestListPageState extends State<RequestListPage> {
                         label: SizedBox(
                           width: 300,
                           child: Text(
-                            'content commitment'.tr(),
+                            'content commitment'.tr,
                             style: style_text_Table_small_bold,
                           ),
                         ),
@@ -178,7 +179,7 @@ class _RequestListPageState extends State<RequestListPage> {
                           width: 400,
                           child: Center(
                             child: Text(
-                              'note'.tr(),
+                              'note'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -198,7 +199,7 @@ class _RequestListPageState extends State<RequestListPage> {
                                     _search_text.text = 'Chờ duyệt';
                                   });
                                 },
-                                child: Text('status'.tr(),
+                                child: Text('status'.tr,
                                     style: style_text_Table_small_bold),
                               ),
                             ),
@@ -209,7 +210,7 @@ class _RequestListPageState extends State<RequestListPage> {
                         label: Container(
                           width: 130,
                           child: Text(
-                            'update time'.tr(),
+                            'update time'.tr,
                             style: style_text_Table_small_bold,
                           ),
                         ),

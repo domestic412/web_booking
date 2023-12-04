@@ -6,7 +6,6 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_approval/model_detail_approval.dart';
 import 'package:web_booking/model/list_approval/model_approval_list.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class DataTableApproval extends DataTableSource {
   List<ApprovalList>? data;
@@ -88,7 +87,8 @@ class DataTableApproval extends DataTableSource {
               await _detailApproval.fetchDetailApproval(data![index].id!);
               id_request_for_image = data![index].id;
               // sideBarController.index.value = 13;
-              controller.changePage(SideBarController.detailApproval);
+              // controller.changeWidget(detailApproval);
+              controller.selectWidget.value = detailApproval;
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: _color,

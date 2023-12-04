@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/resources/localization_service.dart';
 import 'package:web_booking/widgets/horizontal_scroll.dart';
 
 import 'utils/getx_route.dart';
@@ -25,19 +25,12 @@ void main() async {
   await Hive.initFlutter();
 
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
+  // await EasyLocalization.ensureInitialized();
+  await GetStorage.init();
 
-  runApp(EasyLocalization(
-    startLocale: Locale('vi', 'VN'),
-    // startLocale: Locale('en', 'EN'),
-    supportedLocales: const [
-      Locale('vi', 'VN'),
-      Locale('en', 'EN'),
-    ],
-    saveLocale: false,
-    path: "lib/resources/langs",
-    child: MyApp(),
-  ));
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -60,10 +53,12 @@ class MyApp extends StatelessWidget {
       // ),
       debugShowCheckedModeBanner: false,
       scrollBehavior: CustomHorizontalScroll(),
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      // routerConfig: AppRoutes.router //use MaterialApp.router
+      // localizationsDelegates: context.localizationDelegates,
+      // supportedLocales: context.supportedLocales,
+      // locale: context.locale,
+      translations: Languages(),
+      locale: Locale('vi', 'VN'),
+      fallbackLocale: Locale('en', 'US'),
       getPages: GetRoutes.router,
       // initialRoute: ,
     );

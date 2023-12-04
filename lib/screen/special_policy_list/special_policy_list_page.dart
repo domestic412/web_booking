@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_%20special_policy/model_special_policy.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/screen/special_policy_list/data/data_special_policy_list.dart';
 
 // ignore: must_be_immutable
@@ -46,7 +45,7 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    'title special policy list'.tr(),
+                    'title special policy list'.tr,
                     style: style_title_page,
                   ),
                 ),
@@ -64,19 +63,20 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
                           times_policy = '';
                           id_policy = 0;
                           title_CUD_special_policy =
-                              'title create policy container'.tr();
-                          text_button_CUD = 'save'.tr();
+                              'title create policy container'.tr;
+                          text_button_CUD = 'save'.tr;
                           URL_SPECIAL_POLICY = '$SERVER/SpecialPolicy/Create';
                           color_button_CUD = haian;
                           CUD = 1;
                           // sideBarController.index.value = 9;
-                          controller.changePage(SideBarController.cudPolicy);
+                          // controller.changeWidget(SideBarController.cudPolicy);
+                          controller.selectWidget.value = cudPolicy;
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 10),
                           child:
-                              Text('create'.tr(), style: style_text_box_button),
+                              Text('create'.tr, style: style_text_box_button),
                         ))),
                 Container(
                   width: deviceWidth(context),
@@ -104,7 +104,7 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
                             width: 40,
                             child: Center(
                               child: Text(
-                                'seq'.tr(),
+                                'seq'.tr,
                                 style: style_text_Table_small_bold,
                               ),
                             ),
@@ -113,21 +113,21 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
                         DataColumn(
                           label: Expanded(
                             child: SelectableText(
-                              'code'.tr(),
+                              'code'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
                         ),
                         DataColumn(
                           label: Expanded(
-                            child: SelectableText('shipper'.tr(),
+                            child: SelectableText('shipper'.tr,
                                 style: style_text_Table_small_bold),
                           ),
                         ),
                         DataColumn(
                           label: Expanded(
                             child: SelectableText(
-                              'times'.tr(),
+                              'times'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -135,7 +135,7 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
                         DataColumn(
                           label: Expanded(
                             child: SelectableText(
-                              'update time'.tr(),
+                              'update time'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -143,7 +143,7 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
                         DataColumn(
                           label: Expanded(
                             child: SelectableText(
-                              'updater'.tr(),
+                              'updater'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),

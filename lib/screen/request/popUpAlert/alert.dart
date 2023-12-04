@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 // Future<void> RequestContAlert(BuildContext context) {
 //   return showDialog<void>(
@@ -26,8 +27,8 @@ Future<void> OverloadImageAlert(BuildContext context) {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("error".tr()),
-          content: Text("error maximum 5 picture".tr()),
+          title: Text("error".tr),
+          content: Text("error maximum 5 picture".tr),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, 'OK'),

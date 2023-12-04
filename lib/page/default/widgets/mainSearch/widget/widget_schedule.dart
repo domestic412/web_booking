@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_port.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
-import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class ScheduleSearch extends StatefulWidget {
   const ScheduleSearch({super.key});
@@ -53,52 +53,13 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
           ),
           const SizedBox(height: 20),
           Text(
-            'schedule'.tr(),
+            'schedule'.tr,
             style: TextStyle(fontSize: 25, color: haian),
           ),
           const SizedBox(
             height: 10,
           ),
           buildPort_schedule_mainSearch(),
-          // Container(
-          //   margin: const EdgeInsets.only(left: 20, right: 20),
-          //   padding: const EdgeInsets.only(left: 15),
-          //   decoration: BoxDecoration(
-          //     color: Colors.white60,
-          //     borderRadius: BorderRadius.circular(5),
-          //   ),
-          //   child: TextField(
-          //     controller: port_select1,
-          //     decoration: InputDecoration(
-          //         icon: const Icon(
-          //           Icons.location_on,
-          //           size: 30,
-          //         ),
-          //         hintText: 'departure'.tr(),
-          //         border: InputBorder.none),
-          //   ),
-          // ),
-          // const SizedBox(
-          //   height: 10,
-          // ),
-          // Container(
-          //   margin: const EdgeInsets.only(left: 20, right: 20),
-          //   padding: const EdgeInsets.only(left: 15),
-          //   decoration: BoxDecoration(
-          //     color: Colors.white60,
-          //     borderRadius: BorderRadius.circular(5),
-          //   ),
-          //   child: TextField(
-          //     controller: port_select2,
-          //     decoration: InputDecoration(
-          //         icon: const Icon(
-          //           Icons.location_on,
-          //           size: 30,
-          //         ),
-          //         hintText: 'arrival'.tr(),
-          //         border: InputBorder.none),
-          //   ),
-          // ),
           const SizedBox(
             height: 5,
           ),
@@ -113,7 +74,8 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                   fetchVoyage = Voyage().fetchDataVoyage(
                       idPort1.toString(), idPort2.toString(), dateSelect!);
                 });
-                context.go(AppRoutes.bookingRoute);
+                // context.go(AppRoutes.bookingRoute);
+                Get.toNamed(GetRoutes.Booking);
               },
               child: Container(
                 alignment: Alignment.center,
@@ -122,7 +84,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5), color: haian),
                 child: Text(
-                  'inquiry'.tr(),
+                  'inquiry'.tr,
                   style: TextStyle(fontSize: 20, color: white),
                 ),
               ),
@@ -172,7 +134,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                     controller: port_select1,
                     enableFilter: true,
                     label: Text(
-                      'departure'.tr(),
+                      'departure'.tr,
                       style: TextStyle(fontSize: 16),
                     ),
                     dropdownMenuEntries: _portEntries,
@@ -201,7 +163,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                     controller: port_select2,
                     enableFilter: true,
                     label: Text(
-                      'arrival'.tr(),
+                      'arrival'.tr,
                       style: TextStyle(fontSize: 16),
                     ),
                     dropdownMenuEntries: _portEntries,

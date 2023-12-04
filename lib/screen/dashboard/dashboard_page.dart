@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_request_list.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
 class DashboardPage extends StatefulWidget {
@@ -56,7 +57,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         width: deviceWidth(context),
                         alignment: Alignment.center,
                         child: Text(
-                          'title dashboard'.tr(),
+                          'title dashboard'.tr,
                           style: style_title_page,
                         ),
                       ),
@@ -83,25 +84,25 @@ class _DashboardPageState extends State<DashboardPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'all request'.tr() + '$tong',
+                                  'all request'.tr + '$tong',
                                   style: style_text_black,
                                 ),
                                 const SizedBox(
                                   height: 20,
                                 ),
                                 Text(
-                                  'request wait'.tr() + '$dang_xu_ly',
+                                  'request wait'.tr + '$dang_xu_ly',
                                   style: style_text_grey,
                                 ),
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Text('request approval'.tr() + '$dong_y',
+                                Text('request approval'.tr + '$dong_y',
                                     style: style_text_green),
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Text('request reject'.tr() + '$tu_choi',
+                                Text('request reject'.tr + '$tu_choi',
                                     style: style_text_red),
                                 const SizedBox(
                                   height: 20,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
@@ -6,8 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/model_quality_list.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class DataTableQuality extends DataTableSource {
   List<QualityList>? data;
@@ -83,8 +82,8 @@ class DataTableQuality extends DataTableSource {
             children: [
               InkWell(
                 onTap: () {
-                  title_CUD_quality = 'title adjust quality container'.tr();
-                  text_button_CUD = 'adjust'.tr();
+                  title_CUD_quality = 'title adjust quality container'.tr;
+                  text_button_CUD = 'adjust'.tr;
                   URL_QUALITY = '$SERVER/QualityList/Update';
                   color_button_CUD = haian;
                   CUD = 2;
@@ -93,10 +92,11 @@ class DataTableQuality extends DataTableSource {
                   tenChatLuong_quality = data![index].tenChatLuong;
                   ghiChu_quality = data![index].ghiChu;
                   // sideBarController.index.value = 7;
-                  controller.changePage(SideBarController.cudQuality);
+                  // controller.changeWidget(SideBarController.cudQuality);
+                  controller.selectWidget.value = cudQuality;
                 },
                 child: Tooltip(
-                  message: 'adjust'.tr(),
+                  message: 'adjust'.tr,
                   child: const Icon(
                     Icons.drive_file_rename_outline_sharp,
                     size: 20,
@@ -108,8 +108,8 @@ class DataTableQuality extends DataTableSource {
               ),
               InkWell(
                 onTap: () {
-                  title_CUD_quality = 'title delete quality container'.tr();
-                  text_button_CUD = 'delete'.tr();
+                  title_CUD_quality = 'title delete quality container'.tr;
+                  text_button_CUD = 'delete'.tr;
                   URL_QUALITY =
                       '$SERVER/QualityList/Delete?id=${data![index].id}';
                   color_button_CUD = red;
@@ -119,10 +119,11 @@ class DataTableQuality extends DataTableSource {
                   tenChatLuong_quality = data![index].tenChatLuong;
                   ghiChu_quality = data![index].ghiChu;
                   // sideBarController.index.value = 7;
-                  controller.changePage(SideBarController.cudQuality);
+                  // controller.changeWidget(SideBarController.cudQuality);
+                  controller.selectWidget.value = cudQuality;
                 },
                 child: Tooltip(
-                  message: 'delete'.tr(),
+                  message: 'delete'.tr,
                   child: const Icon(
                     Icons.delete,
                     size: 20,

@@ -1,15 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+// import 'package:web_booking/screen/home/homepage_screen.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class ChangePassword_UserPage extends StatefulWidget {
   @override
@@ -41,9 +42,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
               ),
               InkWell(
                 onTap: () {
-                  note_detail_approval.clear();
-                  // sideBarController.index.value = 16;
-                  controller.changePage(SideBarController.cudUser);
+                  controller.selectWidget.value = userList;
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -54,7 +53,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
                     color: grey,
                   ),
                   child: Text(
-                    'back'.tr(),
+                    'back'.tr,
                     style: style_text_button_detail,
                   ),
                 ),
@@ -79,7 +78,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
                   children: [
                     RichText(
                       text: TextSpan(
-                          text: 'user code'.tr(),
+                          text: 'user code'.tr,
                           style: style_text_detail,
                           children: <TextSpan>[
                             TextSpan(text: ' (*)', style: style_text_red)
@@ -104,7 +103,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
                       children: [
                         RichText(
                           text: TextSpan(
-                              text: 'password'.tr(),
+                              text: 'password'.tr,
                               style: style_text_detail,
                               children: [
                                 TextSpan(text: ' (*)', style: style_text_red)
@@ -117,7 +116,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
                           controller: _input_matKhau,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              hintText: 'password'.tr()),
+                              hintText: 'password'.tr),
                         ),
                         const SizedBox(
                           height: 20,
@@ -143,7 +142,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
                             child: Container(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 10),
-                              child: Text('update'.tr(),
+                              child: Text('update'.tr,
                                   style: style_text_box_button),
                             ))),
                     const SizedBox(height: 20)
@@ -173,7 +172,8 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
           body: body);
       if (response.statusCode == 200) {
         // sideBarController.index.value = 15;
-        controller.changePage(SideBarController.userList);
+        // controller.changeWidget(SideBarController.userList);
+        controller.selectWidget.value = userList;
       } else {
         print('Error');
         throw Exception('Error to Create');

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/page/signup/Wigdet/combobox.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class CompanyInforWidget extends StatelessWidget {
   const CompanyInforWidget({
@@ -19,7 +20,7 @@ class CompanyInforWidget extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              'company information'.tr(),
+              'company information'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -47,7 +48,7 @@ class CompanyInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldBusinessNumber.trim(),
-                      'business number'.tr(),
+                      'business number'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -88,7 +89,7 @@ class CompanyInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldCompanyName.trim(),
-                      'company name'.tr(),
+                      'company name'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -102,7 +103,7 @@ class CompanyInforWidget extends StatelessWidget {
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'company name'.tr(),
+                        hintText: 'company name'.tr,
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -129,7 +130,7 @@ class CompanyInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldAddress.trim(),
-                      'address'.tr(),
+                      'address'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -143,7 +144,7 @@ class CompanyInforWidget extends StatelessWidget {
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'address'.tr(),
+                        hintText: 'address'.tr,
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -171,7 +172,7 @@ class CompanyInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldOfficeInCharge.trim(),
-                      'office in charge'.tr(),
+                      'office in charge'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),

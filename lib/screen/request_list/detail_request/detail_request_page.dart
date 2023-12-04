@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/request_list/detail_request/button_detailRequest.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
 import 'package:intl/intl.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
 class DetailRequestPage extends StatelessWidget {
@@ -34,7 +33,7 @@ class DetailRequestPage extends StatelessWidget {
                 width: deviceWidth(context),
                 alignment: Alignment.center,
                 child: Text(
-                  "details".tr(),
+                  "details".tr,
                   style: style_title_page,
                   textAlign: TextAlign.center,
                 ),
@@ -44,7 +43,8 @@ class DetailRequestPage extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     // sideBarController.index.value = 2;
-                    controller.changePage(SideBarController.requestList);
+                    // controller.changeWidget(SideBarController.requestList);
+                    controller.selectWidget.value = requestList;
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -55,7 +55,7 @@ class DetailRequestPage extends StatelessWidget {
                       color: grey,
                     ),
                     child: Text(
-                      'back'.tr(),
+                      'back'.tr,
                       style: style_text_button_detail,
                     ),
                   ),
@@ -80,7 +80,7 @@ class DetailRequestPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'request'.tr(),
+                      'request'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -94,7 +94,7 @@ class DetailRequestPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'content'.tr(),
+                      'content'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -110,7 +110,7 @@ class DetailRequestPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'container/size'.tr(),
+                      'container/size'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -129,7 +129,7 @@ class DetailRequestPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'picture'.tr(),
+                      'picture'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -137,7 +137,7 @@ class DetailRequestPage extends StatelessWidget {
                     ),
                     const ImageRequest(),
                     Text(
-                      'status approve'.tr(),
+                      'status approve'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -153,7 +153,7 @@ class DetailRequestPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'note'.tr(),
+                      'note'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -167,7 +167,7 @@ class DetailRequestPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'update time'.tr(),
+                      'update time'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(

@@ -1,8 +1,9 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 class ContainerStock {
   int? id;

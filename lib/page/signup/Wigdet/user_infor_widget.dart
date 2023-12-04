@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:web_booking/page/signup/signup_page.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class UserInforWidget extends StatelessWidget {
   const UserInforWidget({
@@ -24,7 +25,7 @@ class UserInforWidget extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Text(
               textAlign: TextAlign.center,
-              'create account'.tr(),
+              'create account'.tr,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 36,
@@ -36,7 +37,7 @@ class UserInforWidget extends StatelessWidget {
           ),
           Container(
             child: Text(
-              'user information'.tr(),
+              'user information'.tr,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -64,7 +65,7 @@ class UserInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldUserId.trim(),
-                      'user id'.tr(),
+                      'user id'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -78,7 +79,7 @@ class UserInforWidget extends StatelessWidget {
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'user id'.tr(),
+                        hintText: 'user id'.tr,
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -106,7 +107,7 @@ class UserInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldPassword.trim(),
-                      'password'.tr(),
+                      'password'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -123,7 +124,7 @@ class UserInforWidget extends StatelessWidget {
                           controller: inputPassword,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            hintText: 'password'.tr(),
+                            hintText: 'password'.tr,
                             errorText: _validate
                                 ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                                 : null,
@@ -142,7 +143,7 @@ class UserInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldPasswordConfirm.trim(),
-                      're password'.tr(),
+                      're password'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -153,7 +154,7 @@ class UserInforWidget extends StatelessWidget {
                       controller: inputPassword,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 're password'.tr(),
+                        hintText: 're password'.tr,
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -181,7 +182,7 @@ class UserInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldName.trim(),
-                      'full name'.tr(),
+                      'full name'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -198,7 +199,7 @@ class UserInforWidget extends StatelessWidget {
                           controller: inputPassword,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            hintText: 'full name'.tr(),
+                            hintText: 'full name'.tr,
                             errorText: _validate
                                 ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                                 : null,
@@ -217,7 +218,7 @@ class UserInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldTelNo.trim(),
-                      'tel no'.tr(),
+                      'tel no'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -228,7 +229,7 @@ class UserInforWidget extends StatelessWidget {
                       controller: inputPassword,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'tel no'.tr(),
+                        hintText: 'tel no'.tr,
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,
@@ -256,7 +257,7 @@ class UserInforWidget extends StatelessWidget {
                     ),
                     child: Text(
                       // textFieldEmail.trim(),
-                      'email'.tr(),
+                      'email'.tr,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -270,7 +271,7 @@ class UserInforWidget extends StatelessWidget {
                       controller: inputUserID,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'email'.tr(),
+                        hintText: 'email'.tr,
                         errorText: _validate
                             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
                             : null,

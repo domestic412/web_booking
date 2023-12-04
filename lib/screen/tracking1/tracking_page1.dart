@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/screen/tracking1/widgets/list_container1.dart';
 
 class Tracking1Page extends StatefulWidget {
-  const Tracking1Page({super.key});
-
   @override
   State<Tracking1Page> createState() => _Tracking1PageState();
 }
@@ -38,7 +37,7 @@ class _Tracking1PageState extends State<Tracking1Page> {
                 width: deviceWidth(context),
                 alignment: Alignment.center,
                 child: Text(
-                  "title tracking container".tr(),
+                  "title tracking container".tr,
                   style: style_title_page,
                 ),
               ),
@@ -94,7 +93,7 @@ class _Tracking1PageState extends State<Tracking1Page> {
                             borderRadius: BorderRadius.circular(5),
                             color: normalColor),
                         child: Text(
-                          'search'.tr(),
+                          'search'.tr,
                           style: style_text_button_detail,
                         ),
                       ),

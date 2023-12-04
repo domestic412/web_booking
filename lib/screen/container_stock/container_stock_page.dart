@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/container_stock/model_container_stock.dart';
 import 'package:web_booking/screen/container_stock/data/data_container_stock.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class ContainerStockPage extends StatefulWidget {
-  const ContainerStockPage({super.key});
-
   @override
   State<ContainerStockPage> createState() => _ContainerStockPageState();
 }
@@ -58,7 +55,7 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    'title container stock'.tr(),
+                    'title container stock'.tr,
                     style: style_title_page,
                     textAlign: TextAlign.center,
                   ),
@@ -66,7 +63,8 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                 InkWell(
                   onTap: () {
                     // sideBarController.index.value = 12;
-                    controller.changePage(SideBarController.importStock);
+                    // controller.changeWidget('importStock');
+                    controller.selectWidget.value = importStock;
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),

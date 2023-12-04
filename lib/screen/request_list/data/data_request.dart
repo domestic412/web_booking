@@ -6,7 +6,6 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_request/model_detail_request.dart';
 import 'package:web_booking/model/list_request/model_request_list.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class DataTableRequest extends DataTableSource {
   DetailRequest _detailRequest = DetailRequest();
@@ -117,7 +116,8 @@ class DataTableRequest extends DataTableSource {
             await _detailRequest.fetchDetailRequest(data![index].id!);
             id_request_for_image = data![index].id;
             // sideBarController.index.value = 14;
-            controller.changePage(SideBarController.detailRequest);
+            // controller.changeWidget(SideBarController.detailRequest);
+            controller.selectWidget.value = detailRequest;
           },
           style: ElevatedButton.styleFrom(
               backgroundColor: _color,

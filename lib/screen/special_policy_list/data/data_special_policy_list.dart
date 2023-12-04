@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
@@ -6,8 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_%20special_policy/model_special_policy.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class DataTablePolicy extends DataTableSource {
   List<SpecialPolicyList>? data;
@@ -66,8 +65,8 @@ class DataTablePolicy extends DataTableSource {
         children: [
           InkWell(
             onTap: () {
-              title_CUD_special_policy = 'title adjust policy container'.tr();
-              text_button_CUD = 'adjust'.tr();
+              title_CUD_special_policy = 'title adjust policy container'.tr;
+              text_button_CUD = 'adjust'.tr;
               URL_SPECIAL_POLICY = '$SERVER/SpecialPolicy/Update';
               color_button_CUD = haian;
               CUD = 2;
@@ -76,10 +75,11 @@ class DataTablePolicy extends DataTableSource {
               shipper_policy = data![index].shipper;
               times_policy = data![index].times;
               // sideBarController.index.value = 9;
-              controller.changePage(SideBarController.cudPolicy);
+              // controller.changeWidget(SideBarController.cudPolicy);
+              controller.selectWidget.value = cudPolicy;
             },
             child: Tooltip(
-              message: 'adjust'.tr(),
+              message: 'adjust'.tr,
               child: const Icon(
                 Icons.drive_file_rename_outline_sharp,
                 size: 20,
@@ -91,8 +91,8 @@ class DataTablePolicy extends DataTableSource {
           ),
           InkWell(
             onTap: () {
-              title_CUD_special_policy = 'title delete policy container'.tr();
-              text_button_CUD = 'delete'.tr();
+              title_CUD_special_policy = 'title delete policy container'.tr;
+              text_button_CUD = 'delete'.tr;
               URL_SPECIAL_POLICY =
                   '$SERVER/SpecialPolicy/Delete?id=${data![index].id}';
               color_button_CUD = red;
@@ -101,10 +101,11 @@ class DataTablePolicy extends DataTableSource {
               shipper_policy = data![index].shipper;
               times_policy = data![index].times;
               // sideBarController.index.value = 9;
-              controller.changePage(SideBarController.cudPolicy);
+              // controller.changeWidget(SideBarController.cudPolicy);
+              controller.selectWidget.value = cudPolicy;
             },
             child: Tooltip(
-              message: 'delete'.tr(),
+              message: 'delete'.tr,
               child: Icon(
                 Icons.delete,
                 size: 20,

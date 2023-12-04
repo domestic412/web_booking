@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class ButtonConfirm extends StatelessWidget {
   const ButtonConfirm({super.key});
@@ -20,7 +21,7 @@ class ButtonConfirm extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8), color: Colors.brown),
               child: Text(
-                'cancle'.tr(),
+                'cancle'.tr,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
@@ -35,7 +36,7 @@ class ButtonConfirm extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8), color: Colors.black),
             child: Text(
-              'create account'.tr(),
+              'create account'.tr,
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),

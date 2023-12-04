@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 
@@ -35,10 +35,14 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
               dropdownValue = value!;
               if (dropdownValue == 'EN') {
                 bool_lang = false;
-                setLeaguageEN(context);
+                // setLeaguageEN(context);
+                var locale = Locale('en', 'US');
+                Get.updateLocale(locale);
               } else {
                 bool_lang = true;
-                setLeaguageVN(context);
+                // setLeaguageVN(context);
+                var locale = Locale('vi', 'VN');
+                Get.updateLocale(locale);
               }
             });
           },
@@ -54,8 +58,8 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
     );
   }
 
-  Future<void> setLeaguageEN(BuildContext context) =>
-      context.setLocale(const Locale('en', 'EN'));
-  Future<void> setLeaguageVN(BuildContext context) =>
-      context.setLocale(const Locale('vi', 'VN'));
+  // Future<void> setLeaguageEN(BuildContext context) =>
+  //     context.setLocale(const Locale('en', 'EN'));
+  // Future<void> setLeaguageVN(BuildContext context) =>
+  //     context.setLocale(const Locale('vi', 'VN'));
 }

@@ -1,22 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 
-// ignore: must_be_immutable
-
-// Future<void> DepoList(BuildContext context) {
-//   return showDialog<void>(
-//       context: context,
-//       builder: (BuildContext context) {
-//         return AlertDialog(
-//           title: const Text('Chọn Depot'),
-//           content: buildDepo(),
-//         );
-//       });
-// }
 class ShowDepoList extends StatelessWidget {
   const ShowDepoList({super.key});
 

@@ -1,16 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/user_list/CUD_user/widget/code_list.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class CUD_UserPage extends StatefulWidget {
   @override
@@ -69,9 +68,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
               ),
               InkWell(
                 onTap: () {
-                  note_detail_approval.clear();
-                  // sideBarController.index.value = 15;
-                  controller.changePage(SideBarController.userList);
+                  controller.selectWidget.value = userList;
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -82,7 +79,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                     color: grey,
                   ),
                   child: Text(
-                    'back'.tr(),
+                    'back'.tr,
                     style: style_text_button_detail,
                   ),
                 ),
@@ -113,7 +110,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                             width: 200,
                             child: RichText(
                               text: TextSpan(
-                                  text: 'user code'.tr(),
+                                  text: 'user code'.tr,
                                   style: style_text_detail,
                                   children: <TextSpan>[
                                     TextSpan(
@@ -126,7 +123,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                                   controller: _input_maNv,
                                   decoration: InputDecoration(
                                       border: OutlineInputBorder(),
-                                      hintText: 'user code'.tr()),
+                                      hintText: 'user code'.tr),
                                 ),
                               )
                             : Container(
@@ -154,7 +151,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                             width: 200,
                             child: RichText(
                               text: TextSpan(
-                                  text: 'user name'.tr(),
+                                  text: 'user name'.tr,
                                   style: style_text_detail,
                                   children: [
                                     TextSpan(
@@ -166,7 +163,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                             controller: _input_tenNv,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
-                                hintText: 'user name'.tr()),
+                                hintText: 'user name'.tr),
                           ),
                         ),
                       ],
@@ -181,7 +178,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                             width: 200,
                             child: RichText(
                               text: TextSpan(
-                                  text: 'customer code'.tr(),
+                                  text: 'customer code'.tr,
                                   style: style_text_detail,
                                   children: [
                                     TextSpan(text: '(*)', style: style_text_red)
@@ -204,7 +201,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                                     width: 200,
                                     child: RichText(
                                       text: TextSpan(
-                                          text: 'password'.tr(),
+                                          text: 'password'.tr,
                                           style: style_text_detail,
                                           children: [
                                             TextSpan(
@@ -218,7 +215,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                                     controller: _input_matKhau,
                                     decoration: InputDecoration(
                                         border: OutlineInputBorder(),
-                                        hintText: 'password'.tr()),
+                                        hintText: 'password'.tr),
                                   ),
                                 ),
                               ],
@@ -234,22 +231,23 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                                 Container(
                                     margin: EdgeInsets.only(right: 10),
                                     width: 200,
-                                    child: Text('password'.tr(),
+                                    child: Text('password'.tr,
                                         style: style_text_detail)),
                                 InkWell(
                                   onTap: () {
                                     URL_USER = '$SERVER/User/UpdatePassword';
-                                    tittle_change_pw = 'change password'.tr();
+                                    tittle_change_pw = 'change password'.tr;
                                     // sideBarController.index.value = 17;
-                                    controller.changePage(
-                                        SideBarController.changePass);
+                                    // controller.changeWidget(
+                                    //     SideBarController.changePass);
+                                    controller.selectWidget.value = changePass;
                                   },
                                   child: Container(
                                     padding: EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
                                         color: Colors.amber[800]),
-                                    child: Text('change password'.tr(),
+                                    child: Text('change password'.tr,
                                         style: style_text_button_detail),
                                   ),
                                 ),
@@ -262,14 +260,13 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                         Container(
                             margin: EdgeInsets.only(right: 10),
                             width: 200,
-                            child:
-                                Text('tel no'.tr(), style: style_text_detail)),
+                            child: Text('tel no'.tr, style: style_text_detail)),
                         Expanded(
                           child: TextField(
                             controller: _input_dienThoai,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
-                                hintText: 'tel no'.tr()),
+                                hintText: 'tel no'.tr),
                           ),
                         ),
                       ],
@@ -282,14 +279,13 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                         Container(
                             margin: EdgeInsets.only(right: 10),
                             width: 200,
-                            child:
-                                Text('email'.tr(), style: style_text_detail)),
+                            child: Text('email'.tr, style: style_text_detail)),
                         Expanded(
                           child: TextField(
                             controller: _input_email,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
-                                hintText: 'email'.tr()),
+                                hintText: 'email'.tr),
                           ),
                         ),
                       ],
@@ -304,7 +300,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                             width: 200,
                             child: RichText(
                               text: TextSpan(
-                                  text: 'permissions'.tr(),
+                                  text: 'permissions'.tr,
                                   style: style_text_detail,
                                   children: [
                                     TextSpan(
@@ -313,7 +309,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                             )),
                         DropdownMenu<Author>(
                             controller: _input_author,
-                            label: Text('permissions'.tr()),
+                            label: Text('permissions'.tr),
                             onSelected: (Author? author) {
                               setState(() {
                                 selectAuthor = author;
@@ -411,10 +407,11 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             body: body);
         if (response.statusCode == 200) {
           // sideBarController.index.value = 15;
-          controller.changePage(SideBarController.userList);
+          // controller.changeWidget(SideBarController.userList);
+          controller.selectWidget.value = userList;
         } else if (response.statusCode == 400) {
           setState(() {
-            textError = 'error duplicate user'.tr();
+            textError = 'error duplicate user'.tr;
             duplicateError = true;
           });
         } else {
@@ -432,7 +429,8 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             body: body);
         if (response.statusCode == 200) {
           // sideBarController.index.value = 15;
-          controller.changePage(SideBarController.userList);
+          // controller.changeWidget(SideBarController.userList);
+          controller.selectWidget.value = userList;
         } else {
           print('Error StatusCode update: ${response.statusCode}');
         }
@@ -443,7 +441,8 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
         });
         if (response.statusCode == 200) {
           // sideBarController.index.value = 15;
-          controller.changePage(SideBarController.userList);
+          // controller.changeWidget(SideBarController.userList);
+          controller.selectWidget.value = userList;
         } else {
           print('Error StatusCode delete: ${response.statusCode}');
         }
@@ -452,7 +451,7 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
       }
     } else {
       setState(() {
-        textError = 'fill info'.tr();
+        textError = 'fill info'.tr;
         duplicateError = true;
       });
     }

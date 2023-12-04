@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 Future<void> PopUpCheckContainer(BuildContext context) {
   return showDialog<void>(
@@ -23,7 +22,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                 title: Column(
                   children: [
                     Text(
-                      "details".tr(),
+                      "details".tr,
                       style: style_title_detail,
                     ),
                     const Divider(
@@ -36,7 +35,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'container'.tr(),
+                        'container'.tr,
                         style: style_text_detail_bold,
                       ),
                       const SizedBox(
@@ -50,7 +49,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 10,
                       ),
                       Text(
-                        'size'.tr(),
+                        'size'.tr,
                         style: style_text_detail_bold,
                       ),
                       const SizedBox(
@@ -64,7 +63,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 10,
                       ),
                       Text(
-                        'shipper'.tr(),
+                        'shipper'.tr,
                         style: style_text_detail_bold,
                       ),
                       const SizedBox(
@@ -78,7 +77,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 10,
                       ),
                       Text(
-                        'remark'.tr(),
+                        'remark'.tr,
                         style: style_text_detail_bold,
                       ),
                       const SizedBox(
@@ -93,7 +92,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 10,
                       ),
                       Text(
-                        'damage warning'.tr(),
+                        'damage warning'.tr,
                         style: style_text_detail_bold,
                       ),
                       const SizedBox(
@@ -116,7 +115,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 10,
                       ),
                       Text(
-                        'note for use: item is packaged'.tr(),
+                        'note for use: item is packaged'.tr,
                         style: style_text_detail_bold,
                       ),
                       const SizedBox(
@@ -185,7 +184,8 @@ class _buttonState extends State<button> {
             onPressed: () {
               savecntr = cntrno_CheckCntr!;
               // sideBarController.index.value = 3;
-              controller.changePage(SideBarController.sendRequest);
+              // controller.changeWidget('sendRequest');
+              controller.selectWidget.value = sendRequest;
               Navigator.of(context).pop();
             },
             child: Container(

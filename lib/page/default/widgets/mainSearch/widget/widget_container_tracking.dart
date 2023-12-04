@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
-import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class ContainerTrackingSearch extends StatefulWidget {
   const ContainerTrackingSearch({super.key});
@@ -47,7 +46,7 @@ class _ContainerTrackingSearchState extends State<ContainerTrackingSearch> {
           ),
           Container(
               alignment: Alignment.center,
-              child: Text('container tracking'.tr(),
+              child: Text('container tracking'.tr,
                   style: TextStyle(fontSize: 25, color: haian))),
           const SizedBox(
             height: 10,
@@ -62,7 +61,7 @@ class _ContainerTrackingSearchState extends State<ContainerTrackingSearch> {
             child: TextField(
               controller: _input,
               decoration: InputDecoration(
-                  hintText: 'searchNumber'.tr(), border: InputBorder.none),
+                  hintText: 'searchNumber'.tr, border: InputBorder.none),
             ),
           ),
           const SizedBox(
@@ -79,7 +78,8 @@ class _ContainerTrackingSearchState extends State<ContainerTrackingSearch> {
                   cntr_no_tracking = _input.text;
                   containerTracking = ContainerTracking()
                       .fetchContainerTracking(_input.text.toUpperCase());
-                  context.go(AppRoutes.trackingRoute);
+                  // context.go(AppRoutes.trackingRoute);
+                  Get.toNamed(GetRoutes.Tracking);
                 });
               },
               child: Container(
@@ -89,7 +89,7 @@ class _ContainerTrackingSearchState extends State<ContainerTrackingSearch> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5), color: haian),
                 child: Text(
-                  'inquiry'.tr(),
+                  'inquiry'.tr,
                   style: TextStyle(fontSize: 20, color: white),
                 ),
               ),

@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class CombineMenu extends StatefulWidget {
   const CombineMenu({super.key});
@@ -12,7 +12,6 @@ class CombineMenu extends StatefulWidget {
 }
 
 class _CombineMenuState extends State<CombineMenu> {
-
   // handle mouse Combine
   bool isHovered_combine = false;
   bool isHovered_checkContainerCombine = false;
@@ -62,86 +61,83 @@ class _CombineMenuState extends State<CombineMenu> {
       requestCombine_color = black;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-            onEnter: handleMouseEnter_combine,
-            onExit: handleMouseExit_combine,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 35),
-                  width: 200,
-                  child: Text(
-                    'combine'.tr(),
-                    style: TextStyle(
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                        color: combine_color),
-                  ),
-                ),
-                if (isHovered_combine)
-                  Container(
-                      margin: EdgeInsets.only(top: 20),
-                      height: 150,
-                      width: 180,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 7,
-                            width: 80,
-                            decoration: BoxDecoration(
-                                color: haian,
-                                borderRadius:
-                                    BorderRadius.circular(10)),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          MouseRegion(
-                            onEnter: handleMouseEnter_checkContainerCombine,
-                            onExit: handleMouseExit_checkContainerCombine,
-                            child: InkWell(
-                              onTap: () {
-                                // context.go(AppRoutes.BookingRoute);
-                              },
-                              child: Text(
-                                'Check Container',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: checkContainerCombine_color),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          MouseRegion(
-                            onEnter: handleMouseEnter_requestCombine,
-                            onExit: handleMouseExit_requestCombine,
-                            child: InkWell(
-                              onTap: () {
-                                // context.go(AppRoutes.BookingRoute);
-                              },
-                              child: Text(
-                                'Request Combine',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: requestCombine_color),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )),
-              ],
+      onEnter: handleMouseEnter_combine,
+      onExit: handleMouseExit_combine,
+      child: Column(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 35),
+            width: 200,
+            child: Text(
+              'combine'.tr,
+              style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                  color: combine_color),
             ),
-          );
+          ),
+          if (isHovered_combine)
+            Container(
+                margin: EdgeInsets.only(top: 20),
+                height: 150,
+                width: 180,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 7,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: haian,
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    MouseRegion(
+                      onEnter: handleMouseEnter_checkContainerCombine,
+                      onExit: handleMouseExit_checkContainerCombine,
+                      child: InkWell(
+                        onTap: () {
+                          // context.go(AppRoutes.BookingRoute);
+                        },
+                        child: Text(
+                          'Check Container',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16, color: checkContainerCombine_color),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    MouseRegion(
+                      onEnter: handleMouseEnter_requestCombine,
+                      onExit: handleMouseExit_requestCombine,
+                      child: InkWell(
+                        onTap: () {
+                          // context.go(AppRoutes.BookingRoute);
+                        },
+                        child: Text(
+                          'Request Combine',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16, color: requestCombine_color),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+        ],
+      ),
+    );
   }
 }

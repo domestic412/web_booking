@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/screen/approval_list/controller_detail_approval/data_detail_approval_controller.dart';
 
 class DetailApproval {
   int? id;
@@ -78,14 +79,23 @@ class DetailApproval {
           print('Data list approval Detail');
           List dataDetail = jsonDecode(body);
           try {
-            id_DetailApproval = dataDetail[0]['id'];
-            tenYeuCau_DetailApproval = dataDetail[0]['tenYeuCau'];
-            noiDung_DetailApproval = dataDetail[0]['noiDung'];
-            cntrno_DetailApproval = dataDetail[0]['cntrno'];
-            sizeType_DetailApproval = dataDetail[0]['sizeType'];
-            trangThaiYc_DetailApproval = dataDetail[0]['trangThaiYc'];
-            noteHangTau_DetailApproval = dataDetail[0]['noteHangTau'];
-            updateTime_DetailApproval = dataDetail[0]['updateTime'];
+            int id = dataDetail[0]['id'];
+            String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
+            String noiDung = dataDetail[0]['noiDung'] ?? '';
+            String cntrno = dataDetail[0]['cntrno'] ?? '';
+            String sizeType = dataDetail[0]['sizeType'] ?? '';
+            String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
+            String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
+            String updateTime = dataDetail[0]['updateTime'] ?? '';
+            dataDetailApprovalController.updateDataDetailApproval(
+                id: id.obs,
+                tenYeuCau: tenYeuCau.obs,
+                noiDung: noiDung.obs,
+                cntrno: cntrno.obs,
+                sizeType: sizeType.obs,
+                trangThaiYc: trangThaiYc.obs,
+                noteHangTau: noteHangTau.obs,
+                updateTime: updateTime.obs);
           } catch (e) {
             print('data fetch Detail Approval have null - $e');
           }

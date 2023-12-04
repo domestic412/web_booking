@@ -1,5 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
@@ -54,7 +55,7 @@ class _TrackingPageState extends State<TrackingPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SelectableText(
-                        'container tracking'.tr(),
+                        'container tracking'.tr,
                         style: style_title_page,
                       ),
                       const SizedBox(
@@ -102,7 +103,7 @@ class _TrackingPageState extends State<TrackingPage> {
                                     borderRadius: BorderRadius.circular(5),
                                     color: normalColor),
                                 child: Text(
-                                  'search'.tr(),
+                                  'search'.tr,
                                   style: style_text_button_detail,
                                 ),
                               ),
@@ -112,7 +113,7 @@ class _TrackingPageState extends State<TrackingPage> {
                       ),
                       Container(
                         child: SelectableText(
-                          'note_tracking'.tr(),
+                          'note_tracking'.tr,
                           style: style_text_Table_small,
                         ),
                       ),

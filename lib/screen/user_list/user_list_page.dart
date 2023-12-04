@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_user/model_user.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/screen/user_list/data/data_user_list.dart';
 
 // ignore: must_be_immutable
@@ -46,7 +45,7 @@ class _UserListPageState extends State<UserListPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    "title user list".tr(),
+                    "title user list".tr,
                     style: style_title_page,
                   ),
                 ),
@@ -64,18 +63,19 @@ class _UserListPageState extends State<UserListPage> {
                       email_user = '';
                       author_user = '';
                       codeValue = '';
-                      title_user = 'create user'.tr();
-                      text_button_CUD = 'save'.tr();
+                      title_user = 'create user'.tr;
+                      text_button_CUD = 'save'.tr;
                       URL_USER = '$SERVER/User/Create';
                       color_button_CUD = haian;
                       CUD = 1;
                       // sideBarController.index.value = 16;
-                      controller.changePage(SideBarController.cudUser);
+                      // controller.changeWidget(SideBarController.cudUser);
+                      controller.selectWidget.value = cudUser;
                     },
                     child: Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      child: Text('create'.tr(), style: style_text_box_button),
+                      child: Text('create'.tr, style: style_text_box_button),
                     )),
                 Container(
                   width: deviceWidth(context),
@@ -102,7 +102,7 @@ class _UserListPageState extends State<UserListPage> {
                           label: SizedBox(
                             width: 40,
                             child: Text(
-                              'seq'.tr(),
+                              'seq'.tr,
                               textAlign: TextAlign.center,
                               style: style_text_Table_small_bold,
                             ),
@@ -111,21 +111,21 @@ class _UserListPageState extends State<UserListPage> {
                         DataColumn(
                           label: Expanded(
                             child: Text(
-                              'user code'.tr(),
+                              'user code'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
                         ),
                         DataColumn(
                           label: Expanded(
-                            child: Text('user name'.tr(),
+                            child: Text('user name'.tr,
                                 style: style_text_Table_small_bold),
                           ),
                         ),
                         DataColumn(
                           label: Expanded(
                             child: Text(
-                              'customer code'.tr(),
+                              'customer code'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -133,7 +133,7 @@ class _UserListPageState extends State<UserListPage> {
                         DataColumn(
                           label: Expanded(
                             child: Text(
-                              'email'.tr(),
+                              'email'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -141,7 +141,7 @@ class _UserListPageState extends State<UserListPage> {
                         DataColumn(
                           label: Expanded(
                             child: Text(
-                              'tel no'.tr(),
+                              'tel no'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -149,7 +149,7 @@ class _UserListPageState extends State<UserListPage> {
                         DataColumn(
                           label: Expanded(
                             child: Text(
-                              'update time'.tr(),
+                              'update time'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),

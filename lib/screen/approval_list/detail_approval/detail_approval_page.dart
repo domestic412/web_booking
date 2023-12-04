@@ -1,37 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:web_booking/screen/approval_list/controller_detail_approval/data_detail_approval_controller.dart';
 import 'package:web_booking/screen/approval_list/widget/radio_button.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class DetailApprovalPage extends StatefulWidget {
-  const DetailApprovalPage({super.key});
-
   @override
   State<DetailApprovalPage> createState() => _DetailApprovalPageState();
 }
 
 class _DetailApprovalPageState extends State<DetailApprovalPage> {
   String? _dt;
+  // TextEditingController note_detail_approval = TextEditingController();
 
   void initState() {
     super.initState();
-    noteHangTau_DetailApproval != null
-        ? note_detail_approval.text = noteHangTau_DetailApproval!
-        : null;
+    dataDetailApprovalController.note_controller.text =
+        dataDetailApprovalController.noteHangTau.value;
   }
 
   @override
   Widget build(BuildContext context) {
-    updateTime_DetailApproval == null
+    dataDetailApprovalController.updateTime.value == ''
         ? _dt = ''
-        : _dt = DateFormat("dd-MM-yyyy  hh:mm a")
-            .format(DateTime.parse(updateTime_DetailApproval!));
+        : _dt = DateFormat("dd-MM-yyyy  hh:mm a").format(
+            DateTime.parse(dataDetailApprovalController.updateTime.value));
     return SizedBox(
       height: deviceHeight(context),
       child: SingleChildScrollView(
@@ -45,7 +43,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
               Container(
                 width: deviceWidth(context),
                 child: Text(
-                  "approve request".tr(),
+                  "approve request".tr,
                   textAlign: TextAlign.center,
                   style: style_title_page,
                 ),
@@ -54,9 +52,8 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                 margin: EdgeInsets.only(bottom: 16),
                 child: InkWell(
                   onTap: () {
-                    note_detail_approval.clear();
-                    // sideBarController.index.value = 1;
-                    controller.changePage(SideBarController.approvalList);
+                    // note_detail_approval.clear();
+                    controller.selectWidget.value = approvalList;
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -67,7 +64,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       color: grey,
                     ),
                     child: Text(
-                      'back'.tr(),
+                      'back'.tr,
                       style: style_text_button_detail,
                     ),
                   ),
@@ -92,30 +89,31 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'request'.tr(),
+                      'request'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Text('$tenYeuCau_DetailApproval', style: style_text_detail),
+                    Text(dataDetailApprovalController.tenYeuCau.value,
+                        style: style_text_detail),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
-                      'content'.tr(),
+                      'content'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Text('$noiDung_DetailApproval',
+                    Text(dataDetailApprovalController.noiDung.value,
                         textAlign: TextAlign.left, style: style_text_detail),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
-                      'container/size'.tr(),
+                      'container/size'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -124,18 +122,19 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                     RichText(
                         text: TextSpan(children: <TextSpan>[
                       TextSpan(
-                          text: '$cntrno_DetailApproval ',
+                          text: dataDetailApprovalController.cntrno.value,
                           style:
                               const TextStyle(color: Colors.red, fontSize: 16)),
                       TextSpan(
-                          text: '/ $sizeType_DetailApproval',
+                          text:
+                              '/ ${dataDetailApprovalController.sizeType.value}',
                           style: style_text_detail)
                     ])),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
-                      'update time'.tr(),
+                      'update time'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -149,7 +148,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'picture'.tr(),
+                          'picture'.tr,
                           style: style_text_detail_bold,
                         ),
                         const SizedBox(
@@ -159,14 +158,14 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       ],
                     ),
                     Text(
-                      'note'.tr(),
+                      'note'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     TextField(
-                      controller: note_detail_approval,
+                      controller: dataDetailApprovalController.note_controller,
                       textCapitalization: TextCapitalization.sentences,
                       minLines: 1,
                       maxLines: 10,
@@ -174,7 +173,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       style:
                           const TextStyle(fontSize: 16, color: Colors.black87),
                       decoration: InputDecoration(
-                        hintText: 'note'.tr(),
+                        hintText: 'note'.tr,
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -189,7 +188,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                             note_detail_approval.clear();
                           },
                           child: Text(
-                            'delete note'.tr(),
+                            'delete note'.tr,
                             style: TextStyle(fontSize: 13, color: Colors.blue),
                           ),
                         )
@@ -199,7 +198,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 20,
                     ),
                     Text(
-                      'status approve'.tr(),
+                      'status approve'.tr,
                       style: style_text_detail_bold,
                     ),
                     const RadioButton(),

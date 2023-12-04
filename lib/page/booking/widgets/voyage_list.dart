@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:intl/intl.dart';
-import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class VoyageList extends StatefulWidget {
   const VoyageList({super.key});
@@ -143,7 +143,7 @@ class _VoyageListState extends State<VoyageList> {
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              context.go(AppRoutes.depoRoute);
+                              Get.toNamed(GetRoutes.Depo);
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: normalColor,
