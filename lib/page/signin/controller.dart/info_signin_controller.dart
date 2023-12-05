@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+final inforController = Get.put(InformationSignInController());
+final InformationSignInController informationController =
+    Get.put(InformationSignInController());
+
 class InformationSignInController extends GetxController {
   var authorize = ''.obs;
   var maNV = ''.obs;

@@ -3,6 +3,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -183,7 +184,8 @@ class _buttonState extends State<button> {
                     borderRadius: BorderRadius.all(Radius.circular(10)))),
             onPressed: () {
               savecntr = cntrno_CheckCntr!;
-              sideBarController.index.value = 3;
+              // sideBarController.index.value = 3;
+              controller.changePage(SideBarController.sendRequest);
               Navigator.of(context).pop();
             },
             child: Container(

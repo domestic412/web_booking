@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 List<imageResponse> postFromJson(String str) => List<imageResponse>.from(
     json.decode(str).map((x) => imageResponse.fromJson(x)));
@@ -44,21 +45,26 @@ class imageResponse {
   }
 
   Future<List<imageResponse>> fetchImage(int id) async {
-    var url = '$SERVER/Requests/GetDBMultiImage?id=$id';
-    final response = await http.get(Uri.parse(url), headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-      "Authorization": "Bearer $tokenAuthorize",
-    });
-    if (response.statusCode == 200) {
-      // EasyLoading.dismiss();
-      var body = response.body;
-      print('Data Image Request Detail');
-      List dataDetail = jsonDecode(body);
-      return dataDetail.map((data) => imageResponse.fromJson(data)).toList();
-    } else {
-      // EasyLoading.dismiss();
-      throw Exception('Cannot connect to Server or no have Image');
+    try {
+      var url = '$SERVER/Requests/GetDBMultiImage?id=$id';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+        "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data Image Request Detail');
+          List dataDetail = jsonDecode(body);
+          return dataDetail
+              .map((data) => imageResponse.fromJson(data))
+              .toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Image - $e');
     }
   }
 }

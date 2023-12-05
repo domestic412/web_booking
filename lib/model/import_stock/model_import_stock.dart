@@ -2,7 +2,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class ImportStock {
@@ -14,7 +15,7 @@ class ImportStock {
       var request = MultipartRequest('POST', Uri.parse(url));
       Map<String, String> headers = {
         "Content-Type": "multipart/form-data",
-        "Authorization": "Bearer $tokenAuthorize",
+        "Authorization": "Bearer ${informationController.authorize.value}",
       };
       //Add file
       if (file.bytes == null || file.bytes!.isEmpty) {
@@ -35,11 +36,12 @@ class ImportStock {
 
       try {
         var response = await request.send();
-        if (response.statusCode == 200) {
-          // print('File uploaded success');
-          sideBarController.index.value = 11;
-        } else {
-          print('Failed ti updaload file. Status code: ${response.statusCode}');
+        switch (response.statusCode) {
+          case 200:
+            // sideBarController.index.value = 11;
+            controller.changePage(SideBarController.dashboard);
+          default:
+            print(response.reasonPhrase);
         }
       } catch (e) {
         print('Error upload file: $e');

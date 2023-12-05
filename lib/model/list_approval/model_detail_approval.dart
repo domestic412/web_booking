@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 class DetailApproval {
   int? id;
@@ -65,30 +66,37 @@ class DetailApproval {
   }
 
   Future<List<DetailApproval>> fetchDetailApproval(int id) async {
-    var url = '$SERVER/Requests/$id';
-    final response = await http.get(Uri.parse(url), headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer $tokenAuthorize",
-    });
-    if (response.statusCode == 200) {
-      var body = response.body;
-      print('Data list approval Detail');
-      List dataDetail = jsonDecode(body);
-      try {
-        id_DetailApproval = dataDetail[0]['id'];
-        tenYeuCau_DetailApproval = dataDetail[0]['tenYeuCau'];
-        noiDung_DetailApproval = dataDetail[0]['noiDung'];
-        cntrno_DetailApproval = dataDetail[0]['cntrno'];
-        sizeType_DetailApproval = dataDetail[0]['sizeType'];
-        trangThaiYc_DetailApproval = dataDetail[0]['trangThaiYc'];
-        noteHangTau_DetailApproval = dataDetail[0]['noteHangTau'];
-        updateTime_DetailApproval = dataDetail[0]['updateTime'];
-      } catch (e) {
-        print(e);
+    try {
+      var url = '$SERVER/Requests/$id';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data list approval Detail');
+          List dataDetail = jsonDecode(body);
+          try {
+            id_DetailApproval = dataDetail[0]['id'];
+            tenYeuCau_DetailApproval = dataDetail[0]['tenYeuCau'];
+            noiDung_DetailApproval = dataDetail[0]['noiDung'];
+            cntrno_DetailApproval = dataDetail[0]['cntrno'];
+            sizeType_DetailApproval = dataDetail[0]['sizeType'];
+            trangThaiYc_DetailApproval = dataDetail[0]['trangThaiYc'];
+            noteHangTau_DetailApproval = dataDetail[0]['noteHangTau'];
+            updateTime_DetailApproval = dataDetail[0]['updateTime'];
+          } catch (e) {
+            print('data fetch Detail Approval have null - $e');
+          }
+          return dataDetail
+              .map((data) => DetailApproval.fromJson(data))
+              .toList();
+        default:
+          throw Exception(response.reasonPhrase);
       }
-      return dataDetail.map((data) => DetailApproval.fromJson(data)).toList();
-    } else {
-      throw Exception('Error');
+    } on Exception catch (e) {
+      throw Exception('Error fetch Detail Approval - $e');
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/container_stock/model_container_stock.dart';
 import 'package:web_booking/screen/container_stock/data/data_container_stock.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
@@ -64,7 +65,8 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    sideBarController.index.value = 12;
+                    // sideBarController.index.value = 12;
+                    controller.changePage(SideBarController.importStock);
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),

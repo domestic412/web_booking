@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 // List<RequestListResponse> postFromJson(String str) =>
 //     List<RequestListResponse>.from(json.decode(str).map((x) => RequestListResponse.fromJson(x)));
@@ -76,19 +76,27 @@ class RequestList {
   }
 
   Future<List<RequestList>> fetchRequestList() async {
-    var url = '$SERVER/Requests/GetRequestByUser?user=$tokenLogin';
-    final response = await http.get(Uri.parse(url), headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-      "Authorization": "Bearer $tokenAuthorize",
-    });
-    if (response.statusCode == 200) {
-      var body = response.body;
-      print('Data List Request');
-      List dataRequestList = json.decode(body);
-      return dataRequestList.map((data) => RequestList.fromJson(data)).toList();
-    } else {
-      throw Exception('Error');
+    try {
+      var url =
+          '$SERVER/Requests/GetRequestByUser?user=${informationController.tenNV.value}';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+        "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List Request');
+          List dataRequestList = json.decode(body);
+          return dataRequestList
+              .map((data) => RequestList.fromJson(data))
+              .toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      return throw Exception(e);
     }
   }
 }

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 class ApprovalList {
   int? id;
@@ -65,20 +66,25 @@ class ApprovalList {
   }
 
   Future<List<ApprovalList>> fetchApprovalList() async {
-    var url = '$SERVER/Requests';
-    final response = await http.get(Uri.parse(url), headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer $tokenAuthorize",
-    });
-    if (response.statusCode == 200) {
-      var body = response.body;
-      print('Data List Request Admin');
-      List dataApprovalList = json.decode(body);
-      return dataApprovalList
-          .map((data) => ApprovalList.fromJson(data))
-          .toList();
-    } else {
-      throw Exception('Error');
+    try {
+      var url = '$SERVER/Requests';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List Request Admin');
+          List dataApprovalList = json.decode(body);
+          return dataApprovalList
+              .map((data) => ApprovalList.fromJson(data))
+              .toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Approval - $e');
     }
   }
 }

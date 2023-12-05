@@ -4,6 +4,7 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_%20special_policy/model_special_policy.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
@@ -74,7 +75,8 @@ class DataTablePolicy extends DataTableSource {
               code_policy = data![index].code;
               shipper_policy = data![index].shipper;
               times_policy = data![index].times;
-              sideBarController.index.value = 9;
+              // sideBarController.index.value = 9;
+              controller.changePage(SideBarController.cudPolicy);
             },
             child: Tooltip(
               message: 'adjust'.tr(),
@@ -98,7 +100,8 @@ class DataTablePolicy extends DataTableSource {
               code_policy = data![index].code;
               shipper_policy = data![index].shipper;
               times_policy = data![index].times;
-              sideBarController.index.value = 9;
+              // sideBarController.index.value = 9;
+              controller.changePage(SideBarController.cudPolicy);
             },
             child: Tooltip(
               message: 'delete'.tr(),

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/app_route_config.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 
@@ -29,7 +30,7 @@ topNavigationBar(
             width: 12,
           ),
           Text(
-            tokenLogin,
+            informationController.tenNV.value,
             style: style_text_detail,
           ),
           const SizedBox(

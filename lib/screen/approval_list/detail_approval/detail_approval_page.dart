@@ -3,6 +3,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:intl/intl.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/approval_list/widget/radio_button.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
@@ -54,7 +55,8 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                 child: InkWell(
                   onTap: () {
                     note_detail_approval.clear();
-                    sideBarController.index.value = 1;
+                    // sideBarController.index.value = 1;
+                    controller.changePage(SideBarController.approvalList);
                   },
                   child: Container(
                     alignment: Alignment.center,

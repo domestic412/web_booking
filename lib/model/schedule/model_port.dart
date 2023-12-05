@@ -23,15 +23,20 @@ class Ports {
   }
 
   Future<List<Ports>> fetchPorts() async {
-    var url = ServerPorts;
-    final response = await http
-        .get(Uri.parse(url), headers: {"Content-Type": "application/json"});
-    if (response.statusCode == 200) {
-      var body = response.body;
-      dataPorts = json.decode(body);
-      return dataPorts.map((data) => Ports.fromJson(data)).toList();
-    } else {
-      throw Exception('Error ');
+    try {
+      var url = ServerPorts;
+      final response = await http
+          .get(Uri.parse(url), headers: {"Content-Type": "application/json"});
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          dataPorts = json.decode(body);
+          return dataPorts.map((data) => Ports.fromJson(data)).toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Ports - $e');
     }
   }
 }

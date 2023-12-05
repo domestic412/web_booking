@@ -51,31 +51,31 @@ class ContainerTracking {
   }
 
   Future<ContainerTracking> fetchContainerTracking(String inputt) async {
-    final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
-    final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
-    String? url;
-    selectedValue == 'bk' ? url = url_bk_en : url = url_cntr_en;
-
-    final response = await http.get(
-      Uri.parse(url),
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-      },
-    );
-
-    print(response.statusCode);
-
-    if (response.statusCode == 200) {
-      var body = response.body;
-      if (body == '[]') {
-        return throw Exception();
+    try {
+      final url_bk_en = '$SERVER/Tracking?BookingNo=$inputt&CntrNo=';
+      final url_cntr_en = '$SERVER/Tracking?BookingNo=&CntrNo=$inputt';
+      String? url;
+      selectedValue == 'bk' ? url = url_bk_en : url = url_cntr_en;
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+        },
+      );
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          if (body == '[]') {
+            return throw Exception();
+          }
+          var dataCntrTracking = jsonDecode(body);
+          return ContainerTracking.fromJson(dataCntrTracking);
+        default:
+          throw Exception(response.reasonPhrase);
       }
-      var dataCntrTracking = jsonDecode(body);
-      return ContainerTracking.fromJson(dataCntrTracking);
-    } else {
-      print('Error');
-      throw Exception('Error');
+    } on Exception catch (e) {
+      throw Exception('Error fetch Tracking - $e');
     }
   }
 }

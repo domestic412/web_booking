@@ -9,14 +9,14 @@ double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
 // Login
-List results = [];
-var box;
-String dataAuthorize = '';
-String tokenAuthorize = '';
-String maNV = '';
-String tokenLogin = '';
-String code = '';
-String author = '';
+// List results = [];
+// var box;
+// String dataAuthorize = '';
+// String tokenAuthorize = '';
+// String maNV = '';
+// String tokenLogin = '';
+// String code = '';
+// String author = '';
 
 //id_ApprovalDetail = dataDetail['id'];
 TextEditingController note_detail_approval = TextEditingController();

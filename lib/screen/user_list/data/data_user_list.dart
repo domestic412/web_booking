@@ -5,6 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_user/model_user.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 
@@ -83,7 +84,8 @@ class DataTableUser extends DataTableSource {
               email_user = data?[index].email;
               dienthoai_user = data?[index].dienThoai;
               author_user = data![index].author;
-              sideBarController.index.value = 16;
+              // sideBarController.index.value = 16;
+              controller.changePage(SideBarController.cudUser);
             },
             child: Tooltip(
               message: 'adjust'.tr(),
@@ -110,7 +112,8 @@ class DataTableUser extends DataTableSource {
               email_user = data?[index].email;
               dienthoai_user = data?[index].dienThoai;
               author_user = data![index].author;
-              sideBarController.index.value = 16;
+              // sideBarController.index.value = 16;
+              controller.changePage(SideBarController.cudUser);
             },
             child: Tooltip(
               message: 'delete'.tr(),

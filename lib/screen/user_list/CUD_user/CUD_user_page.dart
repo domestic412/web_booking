@@ -6,6 +6,8 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 import 'package:web_booking/screen/user_list/CUD_user/widget/code_list.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -68,7 +70,8 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
               InkWell(
                 onTap: () {
                   note_detail_approval.clear();
-                  sideBarController.index.value = 15;
+                  // sideBarController.index.value = 15;
+                  controller.changePage(SideBarController.userList);
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -237,7 +240,9 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                                   onTap: () {
                                     URL_USER = '$SERVER/User/UpdatePassword';
                                     tittle_change_pw = 'change password'.tr();
-                                    sideBarController.index.value = 17;
+                                    // sideBarController.index.value = 17;
+                                    controller.changePage(
+                                        SideBarController.changePass);
                                   },
                                   child: Container(
                                     padding: EdgeInsets.all(8),
@@ -400,11 +405,13 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Content-Type": "application/json",
-              "Authorization": "Bearer $tokenAuthorize",
+              "Authorization":
+                  "Bearer ${informationController.authorize.value}",
             },
             body: body);
         if (response.statusCode == 200) {
-          sideBarController.index.value = 15;
+          // sideBarController.index.value = 15;
+          controller.changePage(SideBarController.userList);
         } else if (response.statusCode == 400) {
           setState(() {
             textError = 'error duplicate user'.tr();
@@ -419,21 +426,24 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Content-Type": "application/json",
-              "Authorization": "Bearer $tokenAuthorize",
+              "Authorization":
+                  "Bearer ${informationController.authorize.value}",
             },
             body: body);
         if (response.statusCode == 200) {
-          sideBarController.index.value = 15;
+          // sideBarController.index.value = 15;
+          controller.changePage(SideBarController.userList);
         } else {
           print('Error StatusCode update: ${response.statusCode}');
         }
       } else if (CUD == 3) {
         final response = await http.delete(Uri.parse(URL_USER!), headers: {
           "Access-Control-Allow-Origin": "*",
-          "Authorization": "Bearer $tokenAuthorize",
+          "Authorization": "Bearer ${informationController.authorize.value}",
         });
         if (response.statusCode == 200) {
-          sideBarController.index.value = 15;
+          // sideBarController.index.value = 15;
+          controller.changePage(SideBarController.userList);
         } else {
           print('Error StatusCode delete: ${response.statusCode}');
         }
