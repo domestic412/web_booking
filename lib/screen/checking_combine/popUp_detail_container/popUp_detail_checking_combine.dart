@@ -201,7 +201,7 @@ class _buttonState extends State<button> {
             },
             child: Container(
                 padding: EdgeInsets.all(10),
-                child: Text('requests more combine',
+                child: Text('requests more combine'.tr,
                     style: style_text_box_button))));
   }
 }
