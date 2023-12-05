@@ -74,7 +74,7 @@ class ApprovalList {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          print('Data List Request Admin');
+          print('Data List Approval');
           List dataApprovalList = json.decode(body);
           return dataApprovalList
               .map((data) => ApprovalList.fromJson(data))

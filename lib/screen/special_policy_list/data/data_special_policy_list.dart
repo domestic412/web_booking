@@ -73,10 +73,10 @@ class DataTablePolicy extends DataTableSource {
               CUD = 2;
 
               int id = data![index].id ?? 0;
-              var code = data![index].code ?? '';
-              var shipper = data![index].shipper ?? '';
-              var times = data![index].times ?? '';
-              var updateUser = data![index].updateUser ?? '';
+              String code = data![index].code ?? '';
+              String shipper = data![index].shipper ?? '';
+              String times = data![index].times ?? '';
+              String updateUser = data![index].updateUser ?? '';
               policyController.updatePolicyController(
                   id: id.obs,
                   shipper: shipper.obs,
@@ -107,10 +107,10 @@ class DataTablePolicy extends DataTableSource {
               CUD = 3;
 
               int id = data![index].id ?? 0;
-              var code = data![index].code ?? '';
-              var shipper = data![index].shipper ?? '';
-              var times = data![index].times ?? '';
-              var updateUser = data![index].updateUser ?? '';
+              String code = data![index].code ?? '';
+              String shipper = data![index].shipper ?? '';
+              String times = data![index].times ?? '';
+              String updateUser = data![index].updateUser ?? '';
               policyController.updatePolicyController(
                   id: id.obs,
                   shipper: shipper.obs,

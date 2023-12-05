@@ -78,12 +78,12 @@ class DataTableUser extends DataTableSource {
               color_button_CUD = haian;
               CUD = 2;
               int id = data![index].id ?? 0;
-              var maNv = data![index].maNv ?? '';
-              var tenNv = data![index].tenNv ?? '';
-              var code = data![index].code ?? '';
-              var email = data?[index].email ?? '';
-              var dienThoai = data?[index].dienThoai ?? '';
-              var author = data![index].author ?? '';
+              String maNv = data![index].maNv ?? '';
+              String tenNv = data![index].tenNv ?? '';
+              String code = data![index].code ?? '';
+              String email = data?[index].email ?? '';
+              String dienThoai = data?[index].dienThoai ?? '';
+              String author = data![index].author ?? '';
 
               userController.updateUserController(
                   id: id.obs,
@@ -117,12 +117,12 @@ class DataTableUser extends DataTableSource {
               CUD = 3;
 
               int id = data![index].id ?? 0;
-              var maNv = data![index].maNv ?? '';
-              var tenNv = data![index].tenNv ?? '';
-              var code = data![index].code ?? '';
-              var email = data?[index].email ?? '';
-              var dienThoai = data?[index].dienThoai ?? '';
-              var author = data![index].author ?? '';
+              String maNv = data![index].maNv ?? '';
+              String tenNv = data![index].tenNv ?? '';
+              String code = data![index].code ?? '';
+              String email = data?[index].email ?? '';
+              String dienThoai = data?[index].dienThoai ?? '';
+              String author = data![index].author ?? '';
 
               userController.updateUserController(
                   id: id.obs,

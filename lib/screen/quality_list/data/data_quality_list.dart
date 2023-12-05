@@ -89,10 +89,10 @@ class DataTableQuality extends DataTableSource {
                   color_button_CUD = haian;
                   CUD = 2;
                   int id = data![index].id ?? 0;
-                  var maChatLuong = data![index].maChatLuong ?? '';
-                  var tenChatLuong = data![index].tenChatLuong ?? '';
-                  var ghiChu = data![index].ghiChu ?? '';
-                  var updateUser = data![index].updateUser ?? '';
+                  String maChatLuong = data![index].maChatLuong ?? '';
+                  String tenChatLuong = data![index].tenChatLuong ?? '';
+                  String ghiChu = data![index].ghiChu ?? '';
+                  String updateUser = data![index].updateUser ?? '';
                   qualityController.updateQualityController(
                       id: id.obs,
                       maChatLuong: maChatLuong.obs,
