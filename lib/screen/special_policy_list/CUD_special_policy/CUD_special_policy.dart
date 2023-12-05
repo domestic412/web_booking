@@ -1,15 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 class CUD_SpecialPolicyPage extends StatefulWidget {
   @override
@@ -55,9 +54,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
                 margin: EdgeInsets.only(bottom: 16),
                 child: InkWell(
                   onTap: () {
-                    note_detail_approval.clear();
-                    // sideBarController.index.value = 8;
-                    controller.changePage(SideBarController.specialPolicyList);
+                    controller.selectWidget.value = specialPolicyList;
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -68,7 +65,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
                       color: grey,
                     ),
                     child: Text(
-                      'back'.tr(),
+                      'back'.tr,
                       style: style_text_button_detail,
                     ),
                   ),
@@ -91,7 +88,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('shipper code'.tr(), style: style_text_detail),
+                    Text('shipper code'.tr, style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -99,12 +96,12 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
                       controller: _input_code,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'shipper code'.tr()),
+                          hintText: 'shipper code'.tr),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Text('shipper (owner)'.tr(), style: style_text_detail),
+                    Text('shipper (owner)'.tr, style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -112,12 +109,12 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
                       controller: _input_shipper,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'shipper (owner)'.tr()),
+                          hintText: 'shipper (owner)'.tr),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Text('times'.tr(), style: style_text_detail),
+                    Text('times'.tr, style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -126,7 +123,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
                       minLines: 1,
                       maxLines: 15,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'times'.tr()),
+                          border: OutlineInputBorder(), hintText: 'times'.tr),
                     ),
                     const SizedBox(
                       height: 50,
@@ -180,7 +177,8 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
           body: body);
       if (response.statusCode == 200) {
         // sideBarController.index.value = 8;
-        controller.changePage(SideBarController.specialPolicyList);
+        // controller.changeWidget(SideBarController.specialPolicyList);
+        controller.selectWidget.value = specialPolicyList;
       } else {
         print('Error');
         throw Exception('Error to Create');
@@ -195,7 +193,8 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
           body: body);
       if (response.statusCode == 200) {
         // sideBarController.index.value = 8;
-        controller.changePage(SideBarController.specialPolicyList);
+        // controller.changeWidget(SideBarController.specialPolicyList);
+        controller.selectWidget.value = specialPolicyList;
       } else {
         print('Error');
         throw Exception('Error to Update');
@@ -208,7 +207,8 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
       });
       if (response.statusCode == 200) {
         // sideBarController.index.value = 8;
-        controller.changePage(SideBarController.specialPolicyList);
+        // controller.changeWidget(SideBarController.specialPolicyList);
+        controller.selectWidget.value = specialPolicyList;
       } else {
         print('Error');
         throw Exception('Error to Delete');

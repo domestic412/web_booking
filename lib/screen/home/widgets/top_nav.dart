@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
-import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
-import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 
-topNavigationBar(
-  BuildContext context,
-) =>
-    AppBar(
+// topNavigationBar(
+//   BuildContext context,
+// ) =>
+//     AppbarWidget();
+
+class AppbarWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
       leading: Container(
         padding: EdgeInsets.only(
           left: 16,
@@ -47,7 +51,7 @@ topNavigationBar(
               backgroundColor: normalColor,
               child: IconButton(
                 onPressed: () {
-                  context.go(AppRoutes.signInRoute);
+                  Get.toNamed(GetRoutes.SignIn);
                 },
                 icon: Icon(
                   Icons.logout,
@@ -61,3 +65,5 @@ topNavigationBar(
       elevation: 5,
       backgroundColor: white,
     );
+  }
+}

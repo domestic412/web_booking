@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 //
 import 'package:image_picker/image_picker.dart';
 import 'package:web_booking/constants/color.dart';
@@ -7,11 +8,10 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/request/popUpAlert/alert.dart';
 import 'dart:html' as html;
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class SendRequestPage extends StatefulWidget {
   @override
@@ -104,11 +104,11 @@ class _SendRequestPageState extends State<SendRequestPage> {
                 alignment: Alignment.bottomCenter,
                 margin: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  "send request combine".tr(),
+                  "send request combine".tr,
                   style: style_title_page,
                 ),
               ),
-              Text('container'.tr(), style: style_text_detail),
+              Text('container'.tr, style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -135,7 +135,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
                     title: TextField(
                       controller: _input_cntr,
                       decoration: InputDecoration(
-                          hintText: 'container'.tr(), border: InputBorder.none),
+                          hintText: 'container'.tr, border: InputBorder.none),
                     ),
                   ),
                 ),
@@ -143,7 +143,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
               const SizedBox(
                 height: 20,
               ),
-              Text('attach picture'.tr(), style: style_text_detail),
+              Text('attach picture'.tr, style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -167,7 +167,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
                             width: 10,
                           ),
                           Text(
-                            'upload picture'.tr(),
+                            'upload picture'.tr,
                             style: TextStyle(color: light),
                           ),
                         ],
@@ -197,7 +197,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
               const SizedBox(
                 height: 20,
               ),
-              Text('customer requests'.tr(), style: style_text_detail),
+              Text('customer requests'.tr, style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -216,7 +216,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
               const SizedBox(
                 height: 20,
               ),
-              Text('customer commitments'.tr(), style: style_text_detail),
+              Text('customer commitments'.tr, style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -239,7 +239,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
               const SizedBox(
                 height: 20,
               ),
-              Text('status request'.tr(), style: style_text_detail),
+              Text('status request'.tr, style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -276,27 +276,26 @@ class _SendRequestPageState extends State<SendRequestPage> {
                       child: Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: Text('send request'.tr(),
+                        child: Text('send request'.tr,
                             style: style_text_box_button),
                       ))),
               const SizedBox(height: 20),
               _bool_error_cntr == false
                   ? SizedBox()
                   : Center(
-                      child: Text('cont number not exist'.tr(),
+                      child: Text('cont number not exist'.tr,
                           style: style_text_red),
                     ),
               _bool_error_request_exist == false
                   ? SizedBox()
                   : Center(
-                      child: Text('cont number duplicate'.tr(),
+                      child: Text('cont number duplicate'.tr,
                           style: style_text_red),
                     ),
               _bool_error_null_cntr == false
                   ? SizedBox()
                   : Center(
-                      child:
-                          Text('cont number null'.tr(), style: style_text_red),
+                      child: Text('cont number null'.tr, style: style_text_red),
                     ),
             ],
           ),
@@ -341,7 +340,8 @@ class _SendRequestPageState extends State<SendRequestPage> {
           numberImage = 0;
           savecntr = '';
           // sideBarController.index.value = 2;
-          controller.changePage(SideBarController.requestList);
+          // controller.changeWidget(SideBarController.requestList);
+          controller.selectWidget.value = requestList;
         } else if (request.status == 409) {
           //request exist or cntr accept
           setState(() {

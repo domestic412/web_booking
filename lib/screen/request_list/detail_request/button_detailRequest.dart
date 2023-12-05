@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class button_detailRequest extends StatelessWidget {
   const button_detailRequest({
@@ -21,12 +20,12 @@ class button_detailRequest extends StatelessWidget {
             onPressed: () {
               savecntr = cntrno_DetailRequest!;
               // sideBarController.index.value = 3;
-              controller.changePage(SideBarController.sendRequest);
+              // controller.changeWidget(SideBarController.sendRequest);
+              controller.selectWidget.value = sendRequest;
             },
             child: Container(
               padding: EdgeInsets.all(10),
-              child:
-                  Text('resend request'.tr(), style: style_text_button_detail),
+              child: Text('resend request'.tr, style: style_text_button_detail),
             )));
   }
 }

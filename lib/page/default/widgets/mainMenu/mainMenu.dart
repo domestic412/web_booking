@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_booking.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_combine.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_schedule.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_tracking.dart';
-import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 // ignore: camel_case_types
 class mainMenu extends StatefulWidget {
@@ -86,7 +85,8 @@ class _mainMenuState extends State<mainMenu> {
                           onExit: handleMouseExit_signUp,
                           child: InkWell(
                             onTap: () {
-                              context.go(AppRoutes.signUpRoute);
+                              // context.go(AppRoutes.signUpRoute);
+                              Get.toNamed(GetRoutes.SignIn);
                             },
                             child: Container(
                               alignment: Alignment.center,
@@ -96,7 +96,7 @@ class _mainMenuState extends State<mainMenu> {
                                   color: signUp_color,
                                   borderRadius: BorderRadius.circular(15)),
                               child: Text(
-                                'signup'.tr(),
+                                'signup'.tr,
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,

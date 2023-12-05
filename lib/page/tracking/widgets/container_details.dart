@@ -1,5 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/page/tracking/widgets/table_container_details.dart';
 
 class ContainerDetails extends StatefulWidget {
@@ -21,7 +22,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Icon(Icons.arrow_right),
-              SelectableText('title_container'.tr()),
+              SelectableText('title_container'.tr),
             ],
           ),
         ),

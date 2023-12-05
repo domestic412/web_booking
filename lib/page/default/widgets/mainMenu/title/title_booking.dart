@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/utils/app_route_config.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/utils/getx_route.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class BookingMenu extends StatefulWidget {
   const BookingMenu({super.key});
@@ -59,7 +61,7 @@ class _BookingMenuState extends State<BookingMenu> {
             margin: EdgeInsets.only(top: 35),
             width: 200,
             child: Text(
-              'booking'.tr(),
+              'booking'.tr,
               style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.bold,
@@ -91,7 +93,8 @@ class _BookingMenuState extends State<BookingMenu> {
                       onExit: handleMouseExit_bookingRequest,
                       child: InkWell(
                         onTap: () {
-                          context.go(AppRoutes.bookingRoute);
+                          // context.go(AppRoutes.bookingRoute);
+                          Get.toNamed(GetRoutes.Booking);
                         },
                         child: Text(
                           'Booking Request',

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_history/model_history_list.dart';
 import 'package:web_booking/screen/history_list/data/data_history_list.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
 class HistoryListPage extends StatefulWidget {
@@ -55,7 +56,7 @@ class _HistoryListPageState extends State<HistoryListPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    "title history list".tr(),
+                    "title history list".tr,
                     style: style_title_page,
                   ),
                 ),

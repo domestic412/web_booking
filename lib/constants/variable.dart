@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:web_booking/model/list_user/model_getcode.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
@@ -9,25 +10,23 @@ double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
 // Login
-// List results = [];
-// var box;
-// String dataAuthorize = '';
-// String tokenAuthorize = '';
-// String maNV = '';
-// String tokenLogin = '';
-// String code = '';
-// String author = '';
+var box = GetStorage();
+String authorize = 'authorize';
+String maNV = 'maNV';
+String tenNV = 'tenNV';
+String author = 'author';
+String code = 'code';
 
 //id_ApprovalDetail = dataDetail['id'];
 TextEditingController note_detail_approval = TextEditingController();
-int? id_DetailApproval;
-String? tenYeuCau_DetailApproval;
-String? noiDung_DetailApproval;
-String? cntrno_DetailApproval;
-String? sizeType_DetailApproval;
-String? trangThaiYc_DetailApproval;
-String? noteHangTau_DetailApproval;
-String? updateTime_DetailApproval;
+// int? id_DetailApproval;
+// String? tenYeuCau_DetailApproval;
+// String? noiDung_DetailApproval;
+// String? cntrno_DetailApproval;
+// String? sizeType_DetailApproval;
+// String? trangThaiYc_DetailApproval;
+// String? noteHangTau_DetailApproval;
+// String? updateTime_DetailApproval;
 
 // List Request
 int? id_ListRequest;

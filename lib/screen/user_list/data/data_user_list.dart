@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_user/model_user.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class DataTableUser extends DataTableSource {
   List<UserList>? data;
   String? _dt;
-  Color? _color_row;
+  // Color? _color_row;
 
   DataTableUser({this.data});
 
@@ -72,8 +71,8 @@ class DataTableUser extends DataTableSource {
         children: [
           InkWell(
             onTap: () {
-              title_user = 'update user'.tr();
-              text_button_CUD = 'update'.tr();
+              title_user = 'update user'.tr;
+              text_button_CUD = 'update'.tr;
               URL_USER = '$SERVER/User/Update';
               color_button_CUD = haian;
               CUD = 2;
@@ -85,10 +84,11 @@ class DataTableUser extends DataTableSource {
               dienthoai_user = data?[index].dienThoai;
               author_user = data![index].author;
               // sideBarController.index.value = 16;
-              controller.changePage(SideBarController.cudUser);
+              // controller.changeWidget(SideBarController.cudUser);
+              controller.selectWidget.value = cudUser;
             },
             child: Tooltip(
-              message: 'adjust'.tr(),
+              message: 'adjust'.tr,
               child: const Icon(
                 Icons.drive_file_rename_outline_sharp,
                 size: 20,
@@ -100,8 +100,8 @@ class DataTableUser extends DataTableSource {
           ),
           InkWell(
             onTap: () {
-              title_user = 'delete user'.tr();
-              text_button_CUD = 'delete'.tr();
+              title_user = 'delete user'.tr;
+              text_button_CUD = 'delete'.tr;
               URL_USER = '$SERVER/User/Delete?id=${data![index].id}';
               color_button_CUD = red;
               CUD = 3;
@@ -113,10 +113,11 @@ class DataTableUser extends DataTableSource {
               dienthoai_user = data?[index].dienThoai;
               author_user = data![index].author;
               // sideBarController.index.value = 16;
-              controller.changePage(SideBarController.cudUser);
+              // controller.changeWidget(SideBarController.cudUser);
+              controller.selectWidget.value = cudUser;
             },
             child: Tooltip(
-              message: 'delete'.tr(),
+              message: 'delete'.tr,
               child: const Icon(
                 Icons.delete,
                 size: 20,

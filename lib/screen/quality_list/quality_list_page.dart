@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/model_quality_list.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/screen/quality_list/data/data_quality_list.dart';
 
 // ignore: must_be_immutable
@@ -46,7 +45,7 @@ class _QualityListPageState extends State<QualityListPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    "title quality list".tr(),
+                    "title quality list".tr,
                     style: style_title_page,
                   ),
                 ),
@@ -64,19 +63,20 @@ class _QualityListPageState extends State<QualityListPage> {
                           ghiChu_quality = '';
                           id_quality = 0;
                           title_CUD_quality =
-                              'title create quality container'.tr();
-                          text_button_CUD = 'save'.tr();
+                              'title create quality container'.tr;
+                          text_button_CUD = 'save'.tr;
                           URL_QUALITY = '$SERVER/QualityList/Create';
                           color_button_CUD = haian;
                           CUD = 1;
                           // sideBarController.index.value = 7;
-                          controller.changePage(SideBarController.cudQuality);
+                          // controller.changeWidget(SideBarController.cudQuality);
+                          controller.selectWidget.value = cudQuality;
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 10),
                           child:
-                              Text('create'.tr(), style: style_text_box_button),
+                              Text('create'.tr, style: style_text_box_button),
                         ))),
                 Container(
                   width: deviceWidth(context),
@@ -104,7 +104,7 @@ class _QualityListPageState extends State<QualityListPage> {
                             width: 40,
                             child: Center(
                               child: Text(
-                                'seq'.tr(),
+                                'seq'.tr,
                                 style: style_text_Table_small_bold,
                               ),
                             ),
@@ -114,7 +114,7 @@ class _QualityListPageState extends State<QualityListPage> {
                           label: Container(
                             width: 100,
                             child: Text(
-                              'quality code'.tr(),
+                              'quality code'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -122,7 +122,7 @@ class _QualityListPageState extends State<QualityListPage> {
                         DataColumn(
                           label: Container(
                             width: 120,
-                            child: Text('quality name'.tr(),
+                            child: Text('quality name'.tr,
                                 style: style_text_Table_small_bold),
                           ),
                         ),
@@ -130,7 +130,7 @@ class _QualityListPageState extends State<QualityListPage> {
                           label: Expanded(
                               child: Center(
                                   child: Text(
-                            'note'.tr(),
+                            'note'.tr,
                             style: style_text_Table_small_bold,
                           ))),
                         ),
@@ -138,7 +138,7 @@ class _QualityListPageState extends State<QualityListPage> {
                           label: Container(
                             width: 80,
                             child: Text(
-                              'update time'.tr(),
+                              'update time'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -147,7 +147,7 @@ class _QualityListPageState extends State<QualityListPage> {
                           label: Container(
                             width: 100,
                             child: Text(
-                              'updater'.tr(),
+                              'updater'.tr,
                               style: style_text_Table_small_bold,
                             ),
                           ),

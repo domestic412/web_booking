@@ -3,8 +3,7 @@ import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
+// import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 
 class ImportStock {
   Future<void> UploadFileImport(
@@ -15,7 +14,7 @@ class ImportStock {
       var request = MultipartRequest('POST', Uri.parse(url));
       Map<String, String> headers = {
         "Content-Type": "multipart/form-data",
-        "Authorization": "Bearer ${informationController.authorize.value}",
+        // "Authorization": "Bearer ${informationController.authorize.value}",
       };
       //Add file
       if (file.bytes == null || file.bytes!.isEmpty) {
@@ -38,8 +37,7 @@ class ImportStock {
         var response = await request.send();
         switch (response.statusCode) {
           case 200:
-            // sideBarController.index.value = 11;
-            controller.changePage(SideBarController.dashboard);
+            controller.selectWidget.value = dashboard;
           default:
             print(response.reasonPhrase);
         }

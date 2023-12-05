@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_user/model_getcode.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class CodeList extends StatefulWidget {
   const CodeList({super.key});
@@ -49,7 +50,7 @@ class _CodeListState extends State<CodeList> {
                   menuHeight: 500,
                   controller: _code_select,
                   enableFilter: true,
-                  label: Text('code'.tr()),
+                  label: Text('code'.tr),
                   dropdownMenuEntries: ListEntries,
                   onSelected: (GetCode? Code) {
                     setState(() {

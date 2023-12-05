@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/member/widgets/members_table.dart';
 
 class MemberPage extends StatelessWidget {

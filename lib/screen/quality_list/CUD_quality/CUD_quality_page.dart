@@ -1,15 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/home/homepage_screen.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 class CUD_QualityPage extends StatefulWidget {
   @override
@@ -54,9 +53,7 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                 margin: EdgeInsets.only(bottom: 16),
                 child: InkWell(
                   onTap: () {
-                    note_detail_approval.clear();
-                    // sideBarController.index.value = 6;
-                    controller.changePage(SideBarController.qualityList);
+                    controller.selectWidget.value = qualityList;
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -67,7 +64,7 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                       color: grey,
                     ),
                     child: Text(
-                      'back'.tr(),
+                      'back'.tr,
                       style: style_text_button_detail,
                     ),
                   ),
@@ -90,7 +87,7 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('quality code'.tr(), style: style_text_detail),
+                    Text('quality code'.tr, style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -98,12 +95,12 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                       controller: _input_maChatLuong,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'quality code'.tr()),
+                          hintText: 'quality code'.tr),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Text('quality name'.tr(), style: style_text_detail),
+                    Text('quality name'.tr, style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -111,12 +108,12 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                       controller: _input_tenChatLuong,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'quality name'.tr()),
+                          hintText: 'quality name'.tr),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Text('note'.tr(), style: style_text_detail),
+                    Text('note'.tr, style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -125,7 +122,7 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                       minLines: 1,
                       maxLines: 15,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(), hintText: 'note'.tr()),
+                          border: OutlineInputBorder(), hintText: 'note'.tr),
                     ),
                     const SizedBox(
                       height: 50,
@@ -179,7 +176,8 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
           body: body);
       if (response.statusCode == 200) {
         // sideBarController.index.value = 6;
-        controller.changePage(SideBarController.qualityList);
+        // controller.changeWidget('qualityList');
+        controller.selectWidget.value = qualityList;
       } else {
         print('Error');
         throw Exception('Error to Create');
@@ -194,7 +192,8 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
           body: body);
       if (response.statusCode == 200) {
         // sideBarController.index.value = 6;
-        controller.changePage(SideBarController.qualityList);
+        // controller.changeWidget('qualityList');
+        controller.selectWidget.value = qualityList;
       } else {
         print('Error');
         throw Exception('Error to Update');
@@ -206,7 +205,8 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
       });
       if (response.statusCode == 200) {
         // sideBarController.index.value = 6;
-        controller.changePage(SideBarController.qualityList);
+        // controller.changeWidget('qualityList');
+        controller.selectWidget.value = qualityList;
       } else {
         print('Error');
         throw Exception('Error to Delete');

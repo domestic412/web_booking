@@ -1,5 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
@@ -51,7 +52,7 @@ class _ListContainer1State extends State<ListContainer1> {
                   Container(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: Text(
-                      'result'.tr(),
+                      'result'.tr,
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -120,19 +121,19 @@ class _ListContainer1State extends State<ListContainer1> {
           DataColumn(
             label: Expanded(
                 child: Center(
-                    child: SelectableText('seq'.tr(),
+                    child: SelectableText('seq'.tr,
                         style: style_text_Table_small_bold))),
           ),
           DataColumn(
             label: Expanded(
                 child: Center(
-                    child: SelectableText('container'.tr(),
+                    child: SelectableText('container'.tr,
                         style: style_text_Table_small_bold))),
           ),
           DataColumn(
             label: Expanded(
                 child: Center(
-                    child: SelectableText('size'.tr(),
+                    child: SelectableText('size'.tr,
                         style: style_text_Table_small_bold))),
           ),
         ],

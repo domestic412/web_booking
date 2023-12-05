@@ -1,5 +1,6 @@
 import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
@@ -8,11 +9,9 @@ import 'package:web_booking/model/check_container/model_check_container.dart';
 import 'package:web_booking/screen/checking_combine/Widget/policy_checking_combine.dart';
 import 'package:web_booking/screen/checking_combine/import_excel/import_excel.dart';
 import 'package:web_booking/screen/checking_combine/popUp_detail_container/popUp_detail_checking_combine.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class CheckingCombinePage extends StatefulWidget {
-  const CheckingCombinePage({super.key});
-
   @override
   State<CheckingCombinePage> createState() => _CheckingCombinePageState();
 }
@@ -41,7 +40,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                 width: deviceWidth(context),
                 alignment: Alignment.center,
                 child: Text(
-                  "checking combine".tr(),
+                  "checking combine".tr,
                   style: style_title_page,
                 ),
               ),
@@ -80,7 +79,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                         style: const TextStyle(
                             fontSize: 18, color: Colors.black87),
                         decoration: InputDecoration(
-                          hintText: 'enter container number'.tr(),
+                          hintText: 'enter container number'.tr,
                           border: InputBorder.none,
                           suffixIcon: IconButton(
                               onPressed: () {
@@ -146,7 +145,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                       }
                     },
                     child: Text(
-                      'import excel'.tr(),
+                      'import excel'.tr,
                       style: TextStyle(color: white, fontSize: 15),
                     )),
               ),
@@ -182,14 +181,14 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                       width: deviceWidth(context),
                       alignment: Alignment.center,
                       child: Text(
-                        'not found container number'.tr(),
+                        'not found container number'.tr,
                         style: TextStyle(fontSize: 16, color: red),
                       ))
                   : Container(),
               Container(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  'result combine'.tr(),
+                  'result combine'.tr,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -214,7 +213,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
           return Container(
             padding: const EdgeInsets.only(left: 32, right: 32),
             child: Text(
-              'cont number null'.tr(),
+              'cont number null'.tr,
               style: TextStyle(fontSize: 16, color: red),
             ),
           );
@@ -238,28 +237,27 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
           DataColumn(
             label: Expanded(
               child: Center(
-                  child: Text('seq'.tr(), style: style_text_Table_small_bold)),
+                  child: Text('seq'.tr, style: style_text_Table_small_bold)),
             ),
           ),
           DataColumn(
             label: Expanded(
               child: Center(
-                child:
-                    Text('container'.tr(), style: style_text_Table_small_bold),
+                child: Text('container'.tr, style: style_text_Table_small_bold),
               ),
             ),
           ),
           DataColumn(
             label: Expanded(
               child: Center(
-                child: Text('size'.tr(), style: style_text_Table_small_bold),
+                child: Text('size'.tr, style: style_text_Table_small_bold),
               ),
             ),
           ),
           DataColumn(
             label: Expanded(
               child: Center(
-                child: Text('number of times combine'.tr(),
+                child: Text('number of times combine'.tr,
                     style: style_text_Table_small_bold),
               ),
             ),
@@ -281,7 +279,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
           DataColumn(
             label: Expanded(
               child: Center(
-                child: Text('container quality'.tr(),
+                child: Text('container quality'.tr,
                     style: style_text_Table_small_bold),
               ),
             ),
@@ -289,21 +287,21 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
           DataColumn(
             label: Expanded(
               child: Center(
-                child: Text('status'.tr(), style: style_text_Table_small_bold),
+                child: Text('status'.tr, style: style_text_Table_small_bold),
               ),
             ),
           ),
           DataColumn(
             label: Expanded(
               child: Center(
-                child: Text('shipper'.tr(), style: style_text_Table_small_bold),
+                child: Text('shipper'.tr, style: style_text_Table_small_bold),
               ),
             ),
           ),
           DataColumn(
             label: Expanded(
               child: Center(
-                child: Text('result'.tr(), style: style_text_Table_small_bold),
+                child: Text('result'.tr, style: style_text_Table_small_bold),
               ),
             ),
           ),

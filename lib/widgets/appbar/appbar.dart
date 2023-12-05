@@ -4,10 +4,8 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/default/default_page.dart';
-import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class appbar extends StatelessWidget {
   const appbar({
@@ -34,8 +32,7 @@ class appbar extends StatelessWidget {
                   Get.to(() => DefaultPage());
                 },
                 child: Text(
-                  // 'welcome'.tr(),
-                  'Welcome',
+                  'welcome'.tr,
                   style: style14_white,
                   textAlign: TextAlign.left,
                 ),
@@ -53,8 +50,7 @@ class appbar extends StatelessWidget {
               child: Container(
                   width: 70,
                   child: Text(
-                    // 'signin'.tr(),
-                    'Sign In',
+                    'signin'.tr,
                     style: style14_white,
                   )),
             ),

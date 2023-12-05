@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class ConditionTermWidget extends StatelessWidget {
   const ConditionTermWidget({
@@ -15,7 +16,7 @@ class ConditionTermWidget extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              'agree to terms'.tr(),
+              'agree to terms'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -44,7 +45,7 @@ class ConditionTermWidget extends StatelessWidget {
                 ),
                 Text(
                   // textFieldAgreeToTermsAndConditions,
-                  'i agree to terms'.tr(),
+                  'i agree to terms'.tr,
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 16,

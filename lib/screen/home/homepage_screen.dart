@@ -1,50 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:web_booking/constants/variable.dart';
 
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/page/signin/signin_page.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/home/widgets/header.dart';
 import 'package:web_booking/screen/home/widgets/list_item_drawer.dart';
-import 'package:web_booking/widgets/top_nav.dart';
+import 'package:web_booking/screen/home/widgets/top_nav.dart';
 
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-// SideBarController sideBarController = Get.put(SideBarController());
-
 class _HomePageState extends State<HomePage> {
-  // Future<String> _delay =
-  //     Future.delayed(Duration(milliseconds: 500), () => 'Wait data');
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getData();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    informationController.updateInfomationSignIn(
+        authorize: box.read(authorize).toString().obs,
+        maNV: box.read(maNV).toString().obs,
+        tenNV: box.read(tenNV).toString().obs,
+        author: box.read(author).toString().obs,
+        code: box.read(code).toString().obs);
+  }
 
   @override
   Widget build(BuildContext context) {
-    // final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-    // double height = MediaQuery.of(context).size.height;
     return bodyHome(context);
-    // FutureBuilder(
-    //     future: _delay,
-    //     builder: (context, snapshot) {
-    //       if (snapshot.connectionState == ConnectionState.waiting) {
-    //         return Center(child: CircularProgressIndicator());
-    //       } else if (snapshot.hasData) {
-    //         return bodyHome(context);
-    //       } else {
-    //         return Container();
-    //       }
-    //     });
   }
 
   Scaffold bodyHome(BuildContext context) {
     return Scaffold(
-        appBar: topNavigationBar(context),
+        appBar: PreferredSize(
+          child: AppbarWidget(),
+          preferredSize: const Size.fromHeight(50),
+        ),
         body: Row(
           children: [
             Drawer(
@@ -60,7 +51,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Expanded(
-                child: Obx(() => controller.changePage(controller.selectPage)))
+                child: Obx(() =>
+                    controller.changeWidget(controller.selectWidget.value)))
           ],
         ));
   }

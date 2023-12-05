@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/utils/app_route_config.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class SearchWigdet extends StatelessWidget {
   const SearchWigdet({
@@ -69,7 +69,8 @@ class SearchWigdet extends StatelessWidget {
                 ElevatedButton.icon(
                     icon: Icon(Icons.add),
                     onPressed: () {
-                      context.go(AppRoutes.signInRoute);
+                      // context.go(AppRoutes.signInRoute);
+                      Get.toNamed(GetRoutes.SignIn);
                     },
                     label: Text('ADD USER'),
                     style: ElevatedButton.styleFrom(

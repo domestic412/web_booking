@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
+// import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class TableContainerDetails1 extends StatelessWidget {
@@ -25,7 +27,7 @@ class TableContainerDetails1 extends StatelessWidget {
               label: Expanded(
                   child: Center(
             child: SelectableText(
-              'seq'.tr(),
+              'seq'.tr,
               style: style_text_Table_small_bold,
             ),
           ))),
@@ -33,7 +35,7 @@ class TableContainerDetails1 extends StatelessWidget {
               label: Expanded(
                   child: Center(
             child: SelectableText(
-              'container'.tr(),
+              'container'.tr,
               style: style_text_Table_small_bold,
             ),
           ))),
@@ -41,7 +43,7 @@ class TableContainerDetails1 extends StatelessWidget {
               label: Expanded(
                   child: Center(
             child: SelectableText(
-              'status_container'.tr(),
+              'status_container'.tr,
               style: style_text_Table_small_bold,
             ),
           ))),
@@ -49,7 +51,7 @@ class TableContainerDetails1 extends StatelessWidget {
               label: Expanded(
                   child: Center(
             child: SelectableText(
-              'location_container'.tr(),
+              'location_container'.tr,
               style: style_text_Table_small_bold,
             ),
           ))),
@@ -57,7 +59,7 @@ class TableContainerDetails1 extends StatelessWidget {
               label: Expanded(
                   child: Center(
             child: SelectableText(
-              'eventDate_container'.tr(),
+              'eventDate_container'.tr,
               style: style_text_Table_small_bold,
             ),
           )))

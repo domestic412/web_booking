@@ -2,17 +2,15 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
-import 'package:web_booking/utils/app_route_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
-import 'package:easy_localization/easy_localization.dart';
+
+import '../../constants/variable.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -64,7 +62,7 @@ class _SignInPageState extends State<SignInPage> {
                       signin(_user.text.toString(), _password.text.toString());
                     },
                     child: Text(
-                      // 'sign in'.tr(),
+                      // 'sign in'.tr,
                       'Sign in',
                       style:
                           TextStyle(color: button, fontWeight: FontWeight.w900),
@@ -76,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
                   InkWell(
                     onTap: () {
                       // context.go(AppRoutes.signUpRoute);
-                      Get.toNamed(AppRoutes.signUpRoute);
+                      Get.toNamed(GetRoutes.SignUp);
                     },
                     child: Container(
                         decoration: BoxDecoration(
@@ -84,7 +82,7 @@ class _SignInPageState extends State<SignInPage> {
                             borderRadius: BorderRadius.circular(5)),
                         padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                         child: Text(
-                          // 'create_account'.tr(),
+                          // 'create_account'.tr,
                           'Create account',
                           style: TextStyle(
                               fontSize: 14,
@@ -126,26 +124,20 @@ class _SignInPageState extends State<SignInPage> {
                 JwtDecoder.decode(dataAuthorize);
             // results = decodedToken.values.toList();
             String manv = decodedToken['MaNV'];
-            String tenv = decodedToken['TenNV'];
-            String author = decodedToken['Author'].trim();
-            String code = decodedToken['Code'];
+            String tennv = decodedToken['TenNV'];
+            String authorr = decodedToken['Author'].trim();
+            String codee = decodedToken['Code'];
 
-            // Save tokenLogin
-            // await saveData();
-            // await getData();
-            inforController.updateInfomationSignIn(
-              authorize: dataAuthorize.obs,
-              maNV: manv.obs,
-              tenNV: tenv.obs,
-              author: author.obs,
-              code: code.obs,
-            );
+            //add data signIn to box GetStorage
+            box.write(authorize, dataAuthorize);
+            box.write(maNV, manv);
+            box.write(tenNV, tennv);
+            box.write(author, authorr);
+            box.write(code, codee);
 
             _user.clear();
             _password.clear();
 
-            // context.go(AppRoutes.homeRoute);
-            // Get.back();
             Get.toNamed(GetRoutes.Home);
           default:
             CircularProgressIndicator(
@@ -163,30 +155,6 @@ class _SignInPageState extends State<SignInPage> {
   }
 }
 
-// saveData() async {
-//   box = await Hive.openBox('myData');
-//   box.put('authorize', dataAuthorize!);
-//   box.put('tokenLogin', results[2]);
-//   box.put('maNV', results[1]);
-//   box.put('code', results[4]);
-//   box.put('author', results[3].trim());
-// }
-
-// getData() async {
-//   print('get Data 1');
-//   try {
-//     box = await Hive.openBox('myData');
-//     tokenAuthorize = box.get('authorize');
-//     tokenLogin = box.get('tokenLogin');
-//     maNV = box.get('maNV');
-//     code = box.get('code');
-//     author = box.get('author');
-//   } catch (e) {
-//     print('This error is: $e');
-//   }
-//   print('get Data 2');
-// }
-
 Widget _buildAppbarImage() {
   return Padding(
     padding: const EdgeInsets.only(top: 30),
@@ -202,8 +170,8 @@ Widget _buildAppbarName() {
   return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Text(
-        // 'welcome to HAI AN'.tr(),
-        'Welcome to HAI AN',
+        'welcome to HAI AN'.tr,
+        // 'Welcome to HAI AN',
         style: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue[900]),
       ));
@@ -227,9 +195,8 @@ Widget _buildInputUser() {
               controller: _user,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
-                  hintText:
-                      // "user name".tr(),
-                      'User Name',
+                  hintText: "user name".tr,
+                  // 'User Name',
                   hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
                   border: InputBorder.none),
             ),
@@ -243,9 +210,8 @@ Widget _buildInputUser() {
               controller: _password,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
-                  hintText:
-                      // "password".tr(),
-                      'Password',
+                  hintText: "password".tr,
+                  // 'Password',
                   hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
                   border: InputBorder.none),
             ),

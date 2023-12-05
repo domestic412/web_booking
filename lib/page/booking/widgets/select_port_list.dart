@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_port.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 class PortList extends StatefulWidget {
   const PortList({super.key});
@@ -45,7 +46,7 @@ class _PortListState extends State<PortList> {
                   controller: port_select1,
                   enableFilter: true,
                   enableSearch: true,
-                  label: Text('departure'.tr()),
+                  label: Text('departure'.tr),
                   dropdownMenuEntries: portEntries,
                   onSelected: (Ports? port) {
                     setState(() {
@@ -66,7 +67,7 @@ class _PortListState extends State<PortList> {
                   controller: port_select2,
                   enableFilter: true,
                   enableSearch: true,
-                  label: Text('arrival'.tr()),
+                  label: Text('arrival'.tr),
                   dropdownMenuEntries: portEntries,
                   onSelected: (Ports? port) {
                     setState(() {

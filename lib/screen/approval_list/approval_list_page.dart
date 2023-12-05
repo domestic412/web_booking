@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_approval/model_approval_list.dart';
 import 'package:web_booking/screen/approval_list/data/data_list_approval.dart';
-import 'package:easy_localization/easy_localization.dart';
+// import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
 class ApprovalListPage extends StatefulWidget {
@@ -64,7 +65,7 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                   width: deviceWidth(context),
                   alignment: Alignment.center,
                   child: Text(
-                    "approval list".tr(),
+                    "approval list".tr,
                     style: style_title_page,
                   ),
                 ),
@@ -91,7 +92,7 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                       title: TextField(
                         controller: _search_text,
                         decoration: InputDecoration(
-                            hintText: 'search'.tr(), border: InputBorder.none),
+                            hintText: 'search'.tr, border: InputBorder.none),
                         onChanged: (value) {
                           _filterApproval();
                         },
@@ -131,21 +132,21 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                         label: SizedBox(
                           width: 40,
                           child: Center(
-                              child: Text("seq".tr(),
+                              child: Text("seq".tr,
                                   style: style_text_Table_small_bold)),
                         ),
                       ),
                       DataColumn(
                         label: Expanded(
                             child: Center(
-                          child: Text('container'.tr(),
+                          child: Text('container'.tr,
                               style: style_text_Table_small_bold),
                         )),
                       ),
                       DataColumn(
                           label: Expanded(
                               child: Center(
-                        child: Text('sender'.tr(),
+                        child: Text('sender'.tr,
                             style: style_text_Table_small_bold),
                       ))),
                       DataColumn(
@@ -161,7 +162,7 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                               });
                             },
                             child: Center(
-                              child: Text('approve request'.tr(),
+                              child: Text('approve request'.tr,
                                   style: style_text_Table_small_bold),
                             ),
                           ),
@@ -170,7 +171,7 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                       DataColumn(
                           label: Expanded(
                               child: Center(
-                        child: Text('update time'.tr(),
+                        child: Text('update time'.tr,
                             style: style_text_Table_small_bold),
                       ))),
                     ],
