@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/model_quality_list.dart';
+import 'package:web_booking/model/list_quality/storage_controller/quality_controller.dart';
 
 class DataTableQuality extends DataTableSource {
   List<QualityList>? data;
@@ -87,10 +88,17 @@ class DataTableQuality extends DataTableSource {
                   URL_QUALITY = '$SERVER/QualityList/Update';
                   color_button_CUD = haian;
                   CUD = 2;
-                  id_quality = data![index].id;
-                  maChatLuong_quality = data![index].maChatLuong;
-                  tenChatLuong_quality = data![index].tenChatLuong;
-                  ghiChu_quality = data![index].ghiChu;
+                  int id = data![index].id ?? 0;
+                  var maChatLuong = data![index].maChatLuong ?? '';
+                  var tenChatLuong = data![index].tenChatLuong ?? '';
+                  var ghiChu = data![index].ghiChu ?? '';
+                  var updateUser = data![index].updateUser ?? '';
+                  qualityController.updateQualityController(
+                      id: id.obs,
+                      maChatLuong: maChatLuong.obs,
+                      tenChatLuong: tenChatLuong.obs,
+                      ghiChu: ghiChu.obs,
+                      updateUser: updateUser.obs);
                   // sideBarController.index.value = 7;
                   // controller.changeWidget(SideBarController.cudQuality);
                   controller.selectWidget.value = cudQuality;
@@ -115,11 +123,18 @@ class DataTableQuality extends DataTableSource {
                   color_button_CUD = red;
                   CUD = 3;
                   // id_quality = snapshot.data![index].id;
-                  maChatLuong_quality = data![index].maChatLuong;
-                  tenChatLuong_quality = data![index].tenChatLuong;
-                  ghiChu_quality = data![index].ghiChu;
-                  // sideBarController.index.value = 7;
-                  // controller.changeWidget(SideBarController.cudQuality);
+                  int id = data![index].id ?? 0;
+                  var maChatLuong = data![index].maChatLuong ?? '';
+                  var tenChatLuong = data![index].tenChatLuong ?? '';
+                  var ghiChu = data![index].ghiChu ?? '';
+                  var updateUser = data![index].updateUser ?? '';
+                  qualityController.updateQualityController(
+                      id: id.obs,
+                      maChatLuong: maChatLuong.obs,
+                      tenChatLuong: tenChatLuong.obs,
+                      ghiChu: ghiChu.obs,
+                      updateUser: updateUser.obs);
+
                   controller.selectWidget.value = cudQuality;
                 },
                 child: Tooltip(

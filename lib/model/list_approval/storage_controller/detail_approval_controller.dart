@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-final DataDetailApprovalController dataDetailApprovalController =
-    Get.put(DataDetailApprovalController());
+final DetailApprovalController detailApprovalController =
+    Get.put(DetailApprovalController());
 
-class DataDetailApprovalController extends GetxController {
+class DetailApprovalController extends GetxController {
   var note_controller = TextEditingController();
   RxInt id = 0.obs;
   var tenYeuCau = ''.obs;
@@ -15,7 +15,7 @@ class DataDetailApprovalController extends GetxController {
   var noteHangTau = ''.obs;
   var updateTime = ''.obs;
 
-  updateDataDetailApproval({
+  updateDetailApproval({
     @required id,
     @required tenYeuCau,
     @required noiDung,

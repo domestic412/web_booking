@@ -5,7 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/screen/approval_list/controller_detail_approval/data_detail_approval_controller.dart';
+import 'package:web_booking/model/list_approval/storage_controller/detail_approval_controller.dart';
 import 'package:web_booking/screen/approval_list/widget/radio_button.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
 
@@ -20,16 +20,16 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
 
   void initState() {
     super.initState();
-    dataDetailApprovalController.note_controller.text =
-        dataDetailApprovalController.noteHangTau.value;
+    detailApprovalController.note_controller.text =
+        detailApprovalController.noteHangTau.value;
   }
 
   @override
   Widget build(BuildContext context) {
-    dataDetailApprovalController.updateTime.value == ''
+    detailApprovalController.updateTime.value == ''
         ? _dt = ''
-        : _dt = DateFormat("dd-MM-yyyy  hh:mm a").format(
-            DateTime.parse(dataDetailApprovalController.updateTime.value));
+        : _dt = DateFormat("dd-MM-yyyy  hh:mm a")
+            .format(DateTime.parse(detailApprovalController.updateTime.value));
     return SizedBox(
       height: deviceHeight(context),
       child: SingleChildScrollView(
@@ -95,7 +95,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(dataDetailApprovalController.tenYeuCau.value,
+                    Text(detailApprovalController.tenYeuCau.value,
                         style: style_text_detail),
                     const SizedBox(
                       height: 20,
@@ -107,7 +107,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(dataDetailApprovalController.noiDung.value,
+                    Text(detailApprovalController.noiDung.value,
                         textAlign: TextAlign.left, style: style_text_detail),
                     const SizedBox(
                       height: 20,
@@ -122,12 +122,11 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                     RichText(
                         text: TextSpan(children: <TextSpan>[
                       TextSpan(
-                          text: dataDetailApprovalController.cntrno.value,
+                          text: detailApprovalController.cntrno.value,
                           style:
                               const TextStyle(color: Colors.red, fontSize: 16)),
                       TextSpan(
-                          text:
-                              '/ ${dataDetailApprovalController.sizeType.value}',
+                          text: '/ ${detailApprovalController.sizeType.value}',
                           style: style_text_detail)
                     ])),
                     const SizedBox(
@@ -165,7 +164,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 10,
                     ),
                     TextField(
-                      controller: dataDetailApprovalController.note_controller,
+                      controller: detailApprovalController.note_controller,
                       textCapitalization: TextCapitalization.sentences,
                       minLines: 1,
                       maxLines: 10,
@@ -185,7 +184,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       children: [
                         InkWell(
                           onTap: () {
-                            note_detail_approval.clear();
+                            detailApprovalController.note_controller.clear();
                           },
                           child: Text(
                             'delete note'.tr,

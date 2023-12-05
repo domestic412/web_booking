@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/list_request/storage_controller/detail_request_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/storage_controller.dart/controller_image.dart';
 
 class DetailRequest {
   int? id;
@@ -79,14 +81,36 @@ class DetailRequest {
           print('Data List Request Detail');
           List dataDetail = jsonDecode(body);
           try {
-            id_request_for_image = dataDetail[0]['id'];
-            tenYeuCau_DetailRequest = dataDetail[0]['tenYeuCau'];
-            noiDung_DetailRequest = dataDetail[0]['noiDung'];
-            cntrno_DetailRequest = dataDetail[0]['cntrno'];
-            sizeType_DetailRequest = dataDetail[0]['sizeType'];
-            trangThaiYc_DetailRequest = dataDetail[0]['trangThaiYc'];
-            noteHangTau_DetailRequest = dataDetail[0]['noteHangTau'];
-            updateTime_DetailRequest = dataDetail[0]['updateTime'];
+            // id_request_for_image = dataDetail[0]['id'];
+            // tenYeuCau_DetailRequest = dataDetail[0]['tenYeuCau'];
+            // noiDung_DetailRequest = dataDetail[0]['noiDung'];
+            // cntrno_DetailRequest = dataDetail[0]['cntrno'];
+            // sizeType_DetailRequest = dataDetail[0]['sizeType'];
+            // trangThaiYc_DetailRequest = dataDetail[0]['trangThaiYc'];
+            // noteHangTau_DetailRequest = dataDetail[0]['noteHangTau'];
+            // updateTime_DetailRequest = dataDetail[0]['updateTime'];
+
+            int id = dataDetail[0]['id'];
+            var tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
+            var noiDung = dataDetail[0]['noiDung'] ?? '';
+            var cntrno = dataDetail[0]['cntrno'] ?? '';
+            var sizeType = dataDetail[0]['sizeType'] ?? '';
+            var trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
+            var noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
+            var updateTime = dataDetail[0]['updateTime'] ?? '';
+
+            // add id request for image in request
+            imageController.updateIdImageController(id: id.obs);
+            // add storage DetailRequest
+            dataDetailRequestController.updateDetailRequestController(
+                id: id.obs,
+                tenYeuCau: tenYeuCau.obs,
+                noiDung: noiDung.obs,
+                cntrno: cntrno.obs,
+                sizeType: sizeType.obs,
+                trangThaiYc: trangThaiYc.obs,
+                noteHangTau: noteHangTau.obs,
+                updateTime: updateTime.obs);
           } catch (e) {
             print('Error data fetch Detail Request have null - $e');
           }

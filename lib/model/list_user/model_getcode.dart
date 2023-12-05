@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 class GetCode {
@@ -32,7 +30,7 @@ class GetCode {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          dataCode = json.decode(body);
+          List dataCode = json.decode(body);
           return dataCode.map((data) => GetCode.fromJson(data)).toList();
         default:
           throw Exception(response.reasonPhrase);

@@ -5,7 +5,8 @@ import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/model/list_%20special_policy/model_special_policy.dart';
+import 'package:web_booking/model/list_special_policy/model_special_policy.dart';
+import 'package:web_booking/model/list_special_policy/storage_controller/policy_controller.dart';
 import 'package:web_booking/screen/special_policy_list/data/data_special_policy_list.dart';
 
 // ignore: must_be_immutable
@@ -58,16 +59,22 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)))),
                         onPressed: () {
-                          code_policy = '';
-                          shipper_policy = '';
-                          times_policy = '';
-                          id_policy = 0;
+                          // code_policy = '';
+                          // shipper_policy = '';
+                          // times_policy = '';
+                          // id_policy = 0;
                           title_CUD_special_policy =
                               'title create policy container'.tr;
                           text_button_CUD = 'save'.tr;
                           URL_SPECIAL_POLICY = '$SERVER/SpecialPolicy/Create';
                           color_button_CUD = haian;
                           CUD = 1;
+                          policyController.updatePolicyController(
+                              id: 0.obs,
+                              shipper: ''.obs,
+                              code: ''.obs,
+                              times: ''.obs,
+                              updateUser: ''.obs);
                           // sideBarController.index.value = 9;
                           // controller.changeWidget(SideBarController.cudPolicy);
                           controller.selectWidget.value = cudPolicy;

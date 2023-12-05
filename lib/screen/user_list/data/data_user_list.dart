@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_user/model_user.dart';
+import 'package:web_booking/model/list_user/storage_controller/user_controller.dart';
 
 class DataTableUser extends DataTableSource {
   List<UserList>? data;
@@ -76,13 +77,22 @@ class DataTableUser extends DataTableSource {
               URL_USER = '$SERVER/User/Update';
               color_button_CUD = haian;
               CUD = 2;
-              id_user = data![index].id;
-              maNV_user = data![index].maNv;
-              tenNv_user = data![index].tenNv;
-              codeValue = data![index].code;
-              email_user = data?[index].email;
-              dienthoai_user = data?[index].dienThoai;
-              author_user = data![index].author;
+              int id = data![index].id ?? 0;
+              var maNv = data![index].maNv ?? '';
+              var tenNv = data![index].tenNv ?? '';
+              var code = data![index].code ?? '';
+              var email = data?[index].email ?? '';
+              var dienThoai = data?[index].dienThoai ?? '';
+              var author = data![index].author ?? '';
+
+              userController.updateUserController(
+                  id: id.obs,
+                  maNv: maNv.obs,
+                  tenNv: tenNv.obs,
+                  dienThoai: dienThoai.obs,
+                  email: email.obs,
+                  code: code.obs,
+                  author: author.obs);
               // sideBarController.index.value = 16;
               // controller.changeWidget(SideBarController.cudUser);
               controller.selectWidget.value = cudUser;
@@ -105,13 +115,23 @@ class DataTableUser extends DataTableSource {
               URL_USER = '$SERVER/User/Delete?id=${data![index].id}';
               color_button_CUD = red;
               CUD = 3;
-              // id_User = data![index].id;
-              maNV_user = data![index].maNv;
-              tenNv_user = data![index].tenNv;
-              codeValue = data![index].code;
-              email_user = data?[index].email;
-              dienthoai_user = data?[index].dienThoai;
-              author_user = data![index].author;
+
+              int id = data![index].id ?? 0;
+              var maNv = data![index].maNv ?? '';
+              var tenNv = data![index].tenNv ?? '';
+              var code = data![index].code ?? '';
+              var email = data?[index].email ?? '';
+              var dienThoai = data?[index].dienThoai ?? '';
+              var author = data![index].author ?? '';
+
+              userController.updateUserController(
+                  id: id.obs,
+                  maNv: maNv.obs,
+                  tenNv: tenNv.obs,
+                  dienThoai: dienThoai.obs,
+                  email: email.obs,
+                  code: code.obs,
+                  author: author.obs);
               // sideBarController.index.value = 16;
               // controller.changeWidget(SideBarController.cudUser);
               controller.selectWidget.value = cudUser;

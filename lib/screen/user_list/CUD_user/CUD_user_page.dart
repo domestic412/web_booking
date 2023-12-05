@@ -8,6 +8,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/list_user/storage_controller/user_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/user_list/CUD_user/widget/code_list.dart';
 
@@ -40,11 +41,11 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
   @override
   void initState() {
     super.initState();
-    _input_maNv.text = maNV_user ?? '';
-    _input_tenNv.text = tenNv_user ?? '';
-    _input_dienThoai.text = dienthoai_user ?? '';
-    _input_email.text = email_user ?? '';
-    _input_author.text = author_user!;
+    _input_maNv.text = userController.maNv.value;
+    _input_tenNv.text = userController.tenNv.value;
+    _input_dienThoai.text = userController.dienThoai.value;
+    _input_email.text = userController.email.value;
+    _input_author.text = userController.author.value;
   }
 
   @override
@@ -237,9 +238,6 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                                   onTap: () {
                                     URL_USER = '$SERVER/User/UpdatePassword';
                                     tittle_change_pw = 'change password'.tr;
-                                    // sideBarController.index.value = 17;
-                                    // controller.changeWidget(
-                                    //     SideBarController.changePass);
                                     controller.selectWidget.value = changePass;
                                   },
                                   child: Container(
@@ -347,10 +345,10 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
                               setState(() {
                                 duplicateError = false;
                                 CUDUser(
-                                    id_user!,
+                                    userController.id.value,
                                     _input_maNv.text,
                                     _input_tenNv.text,
-                                    codeValue!,
+                                    userController.code.value,
                                     _input_author.text);
                               });
                             },
@@ -406,8 +404,6 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             },
             body: body);
         if (response.statusCode == 200) {
-          // sideBarController.index.value = 15;
-          // controller.changeWidget(SideBarController.userList);
           controller.selectWidget.value = userList;
         } else if (response.statusCode == 400) {
           setState(() {
@@ -428,8 +424,6 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             },
             body: body);
         if (response.statusCode == 200) {
-          // sideBarController.index.value = 15;
-          // controller.changeWidget(SideBarController.userList);
           controller.selectWidget.value = userList;
         } else {
           print('Error StatusCode update: ${response.statusCode}');
@@ -440,8 +434,6 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
           "Authorization": "Bearer ${informationController.authorize.value}",
         });
         if (response.statusCode == 200) {
-          // sideBarController.index.value = 15;
-          // controller.changeWidget(SideBarController.userList);
           controller.selectWidget.value = userList;
         } else {
           print('Error StatusCode delete: ${response.statusCode}');

@@ -6,7 +6,8 @@ import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/model/list_%20special_policy/model_special_policy.dart';
+import 'package:web_booking/model/list_special_policy/model_special_policy.dart';
+import 'package:web_booking/model/list_special_policy/storage_controller/policy_controller.dart';
 
 class DataTablePolicy extends DataTableSource {
   List<SpecialPolicyList>? data;
@@ -70,12 +71,19 @@ class DataTablePolicy extends DataTableSource {
               URL_SPECIAL_POLICY = '$SERVER/SpecialPolicy/Update';
               color_button_CUD = haian;
               CUD = 2;
-              id_policy = data![index].id;
-              code_policy = data![index].code;
-              shipper_policy = data![index].shipper;
-              times_policy = data![index].times;
-              // sideBarController.index.value = 9;
-              // controller.changeWidget(SideBarController.cudPolicy);
+
+              int id = data![index].id ?? 0;
+              var code = data![index].code ?? '';
+              var shipper = data![index].shipper ?? '';
+              var times = data![index].times ?? '';
+              var updateUser = data![index].updateUser ?? '';
+              policyController.updatePolicyController(
+                  id: id.obs,
+                  shipper: shipper.obs,
+                  code: code.obs,
+                  times: times.obs,
+                  updateUser: updateUser.obs);
+
               controller.selectWidget.value = cudPolicy;
             },
             child: Tooltip(
@@ -97,11 +105,19 @@ class DataTablePolicy extends DataTableSource {
                   '$SERVER/SpecialPolicy/Delete?id=${data![index].id}';
               color_button_CUD = red;
               CUD = 3;
-              code_policy = data![index].code;
-              shipper_policy = data![index].shipper;
-              times_policy = data![index].times;
-              // sideBarController.index.value = 9;
-              // controller.changeWidget(SideBarController.cudPolicy);
+
+              int id = data![index].id ?? 0;
+              var code = data![index].code ?? '';
+              var shipper = data![index].shipper ?? '';
+              var times = data![index].times ?? '';
+              var updateUser = data![index].updateUser ?? '';
+              policyController.updatePolicyController(
+                  id: id.obs,
+                  shipper: shipper.obs,
+                  code: code.obs,
+                  times: times.obs,
+                  updateUser: updateUser.obs);
+
               controller.selectWidget.value = cudPolicy;
             },
             child: Tooltip(

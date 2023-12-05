@@ -8,6 +8,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/list_special_policy/storage_controller/policy_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 class CUD_SpecialPolicyPage extends StatefulWidget {
@@ -25,9 +26,12 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
   @override
   void initState() {
     super.initState();
-    _input_code.text = code_policy!;
-    _input_shipper.text = shipper_policy!;
-    _input_times.text = times_policy!;
+    _input_code.text = policyController.code.value;
+    // code_policy!;
+    _input_shipper.text = policyController.shipper.value;
+    // shipper_policy!;
+    _input_times.text = policyController.times.value;
+    // times_policy!;
   }
 
   @override
@@ -159,8 +163,8 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
   Future<void> PostCUDSpecialPolicy(
       String code, String shipper, String times) async {
     // final url = '$SERVER/SpecialPolicy/Create';
-    var data = {
-      'id': id_policy,
+    Map<String, dynamic> data = {
+      'id': policyController.id.value,
       'code': code,
       'shipper': shipper,
       'times': times,
@@ -176,8 +180,6 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
           },
           body: body);
       if (response.statusCode == 200) {
-        // sideBarController.index.value = 8;
-        // controller.changeWidget(SideBarController.specialPolicyList);
         controller.selectWidget.value = specialPolicyList;
       } else {
         print('Error');
@@ -192,8 +194,6 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
           },
           body: body);
       if (response.statusCode == 200) {
-        // sideBarController.index.value = 8;
-        // controller.changeWidget(SideBarController.specialPolicyList);
         controller.selectWidget.value = specialPolicyList;
       } else {
         print('Error');
@@ -206,8 +206,6 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
         "Authorization": "Bearer ${informationController.authorize.value}",
       });
       if (response.statusCode == 200) {
-        // sideBarController.index.value = 8;
-        // controller.changeWidget(SideBarController.specialPolicyList);
         controller.selectWidget.value = specialPolicyList;
       } else {
         print('Error');

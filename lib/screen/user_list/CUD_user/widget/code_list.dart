@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_user/model_getcode.dart';
-// import 'package:easy_localization/easy_localization.dart';
+import 'package:web_booking/model/list_user/storage_controller/user_controller.dart';
 
 class CodeList extends StatefulWidget {
   const CodeList({super.key});
@@ -13,6 +13,7 @@ class CodeList extends StatefulWidget {
 
 class _CodeListState extends State<CodeList> {
   TextEditingController _code_select = TextEditingController();
+  GetCode? selectCode;
   @override
   Widget build(BuildContext context) {
     return buildCode();
@@ -21,7 +22,7 @@ class _CodeListState extends State<CodeList> {
   @override
   void initState() {
     super.initState();
-    _code_select.text = codeValue ?? '';
+    _code_select.text = userController.code.value;
   }
 
   FutureBuilder<List<GetCode>> buildCode() {
@@ -55,7 +56,9 @@ class _CodeListState extends State<CodeList> {
                   onSelected: (GetCode? Code) {
                     setState(() {
                       selectCode = Code;
-                      codeValue = selectCode?.code;
+                      String codeValue = selectCode?.code ?? '';
+                      userController.updateCodeUserController(
+                          code: codeValue.obs);
                     });
                   },
                 ),

@@ -5,7 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_approval/model_send_approval.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/approval_list/controller_detail_approval/data_detail_approval_controller.dart';
+import 'package:web_booking/model/list_approval/storage_controller/detail_approval_controller.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
 class RadioButton extends StatefulWidget {
@@ -20,7 +20,7 @@ class RadioButton extends StatefulWidget {
 class _RadioButtonState extends State<RadioButton> {
   SendApproval _sendApproval = SendApproval();
   Color? _color;
-  String _status = dataDetailApprovalController.trangThaiYc.value;
+  String _status = detailApprovalController.trangThaiYc.value;
   bool _showloading = false;
 
   @override
@@ -66,13 +66,13 @@ class _RadioButtonState extends State<RadioButton> {
             InkWell(
               onTap: () {
                 setState(() {
-                  print(dataDetailApprovalController.id.value);
-                  print(dataDetailApprovalController.note_controller.text);
+                  print(detailApprovalController.id.value);
+                  print(detailApprovalController.note_controller.text);
                   print(informationController.authorize.value);
                   _sendApproval.fetchSendApproval(
                       _status,
-                      dataDetailApprovalController.id.value,
-                      dataDetailApprovalController.note_controller.text);
+                      detailApprovalController.id.value,
+                      detailApprovalController.note_controller.text);
                   // note_detail_approval.clear();
                   _showloading = true;
                 });

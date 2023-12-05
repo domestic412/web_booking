@@ -4,6 +4,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/list_request/storage_controller/detail_request_controller.dart';
 import 'package:web_booking/screen/request_list/detail_request/button_detailRequest.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
 import 'package:intl/intl.dart';
@@ -15,10 +16,11 @@ class DetailRequestPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    updateTime_DetailRequest == null
+    dataDetailRequestController.updateTime.value == ''
+        // updateTime_DetailRequest == null
         ? _dt = ''
-        : _dt = DateFormat("dd-MM-yyyy  hh:mm a")
-            .format(DateTime.parse(updateTime_DetailRequest!));
+        : _dt = DateFormat("dd-MM-yyyy  hh:mm a").format(
+            DateTime.parse(dataDetailRequestController.updateTime.value));
     return SizedBox(
       height: deviceHeight(context),
       child: SingleChildScrollView(
@@ -87,7 +89,8 @@ class DetailRequestPage extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      '$tenYeuCau_DetailRequest',
+                      dataDetailRequestController.tenYeuCau.value,
+                      // '$tenYeuCau_DetailRequest',
                       style: style_text_detail,
                     ),
                     const SizedBox(
@@ -101,7 +104,8 @@ class DetailRequestPage extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      '$noiDung_DetailRequest',
+                      dataDetailRequestController.noiDung.value,
+                      // '$noiDung_DetailRequest',
                       textAlign: TextAlign.left,
                       style: style_text_detail,
                       // key: keytext
@@ -119,10 +123,12 @@ class DetailRequestPage extends StatelessWidget {
                     RichText(
                         text: TextSpan(children: <TextSpan>[
                       TextSpan(
-                          text: '$cntrno_DetailRequest ',
+                          text: dataDetailRequestController.cntrno.value,
+                          // '$cntrno_DetailRequest ',
                           style: style_text_cntr_detail),
                       TextSpan(
-                          text: '/ $sizeType_DetailRequest',
+                          text:
+                              '/ ${dataDetailRequestController.sizeType.value}',
                           style: style_text_detail)
                     ])),
                     const SizedBox(
@@ -143,9 +149,10 @@ class DetailRequestPage extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    if (trangThaiYc_DetailRequest == 'A')
+                    if (dataDetailRequestController.trangThaiYc.value == 'A')
                       setup1()
-                    else if (trangThaiYc_DetailRequest == 'C')
+                    else if (dataDetailRequestController.trangThaiYc.value ==
+                        'C')
                       setup2()
                     else
                       setup3(),
@@ -159,10 +166,8 @@ class DetailRequestPage extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    noteHangTau_DetailRequest == null
-                        ? Text('')
-                        : Text('$noteHangTau_DetailRequest',
-                            style: style_text_detail),
+                    Text(dataDetailRequestController.noteHangTau.value,
+                        style: style_text_detail),
                     const SizedBox(
                       height: 10,
                     ),
@@ -180,7 +185,7 @@ class DetailRequestPage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    trangThaiYc_DetailRequest == 'R'
+                    dataDetailRequestController.trangThaiYc.value == 'R'
                         ? button_detailRequest()
                         : SizedBox(),
                     SizedBox(

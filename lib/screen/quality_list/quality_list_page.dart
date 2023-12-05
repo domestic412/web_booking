@@ -6,6 +6,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/model_quality_list.dart';
+import 'package:web_booking/model/list_quality/storage_controller/quality_controller.dart';
 import 'package:web_booking/screen/quality_list/data/data_quality_list.dart';
 
 // ignore: must_be_immutable
@@ -58,16 +59,22 @@ class _QualityListPageState extends State<QualityListPage> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)))),
                         onPressed: () {
-                          maChatLuong_quality = '';
-                          tenChatLuong_quality = '';
-                          ghiChu_quality = '';
-                          id_quality = 0;
+                          // maChatLuong_quality = '';
+                          // tenChatLuong_quality = '';
+                          // ghiChu_quality = '';
+                          // id_quality = 0;
                           title_CUD_quality =
                               'title create quality container'.tr;
                           text_button_CUD = 'save'.tr;
                           URL_QUALITY = '$SERVER/QualityList/Create';
                           color_button_CUD = haian;
                           CUD = 1;
+                          qualityController.updateQualityController(
+                              id: 0.obs,
+                              maChatLuong: ''.obs,
+                              tenChatLuong: ''.obs,
+                              ghiChu: ''.obs,
+                              updateUser: ''.obs);
                           // sideBarController.index.value = 7;
                           // controller.changeWidget(SideBarController.cudQuality);
                           controller.selectWidget.value = cudQuality;
