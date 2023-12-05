@@ -15,7 +15,7 @@ class GetRoutes {
   static const Test = "/Test";
   static const Booking = "/Booking";
   static const Home = "/Home";
-  static const Depo = "/$Booking/Depo";
+  static const Depo = "$Booking/Depo";
   // static const Dashboard = "/$Home/Dashboard";
   // static const UserList = "$Home/UserList";
   // static const CUDUser = "$UserList/CUD";

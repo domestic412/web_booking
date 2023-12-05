@@ -81,23 +81,14 @@ class DetailRequest {
           print('Data List Request Detail');
           List dataDetail = jsonDecode(body);
           try {
-            // id_request_for_image = dataDetail[0]['id'];
-            // tenYeuCau_DetailRequest = dataDetail[0]['tenYeuCau'];
-            // noiDung_DetailRequest = dataDetail[0]['noiDung'];
-            // cntrno_DetailRequest = dataDetail[0]['cntrno'];
-            // sizeType_DetailRequest = dataDetail[0]['sizeType'];
-            // trangThaiYc_DetailRequest = dataDetail[0]['trangThaiYc'];
-            // noteHangTau_DetailRequest = dataDetail[0]['noteHangTau'];
-            // updateTime_DetailRequest = dataDetail[0]['updateTime'];
-
-            int id = dataDetail[0]['id'];
-            var tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
-            var noiDung = dataDetail[0]['noiDung'] ?? '';
-            var cntrno = dataDetail[0]['cntrno'] ?? '';
-            var sizeType = dataDetail[0]['sizeType'] ?? '';
-            var trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
-            var noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
-            var updateTime = dataDetail[0]['updateTime'] ?? '';
+            int id = dataDetail[0]['id'] ?? 0;
+            String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
+            String noiDung = dataDetail[0]['noiDung'] ?? '';
+            String cntrno = dataDetail[0]['cntrno'] ?? '';
+            String sizeType = dataDetail[0]['sizeType'] ?? '';
+            String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
+            String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
+            String updateTime = dataDetail[0]['updateTime'] ?? '';
 
             // add id request for image in request
             imageController.updateIdImageController(id: id.obs);

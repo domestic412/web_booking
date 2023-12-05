@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_request/model_detail_request.dart';
 import 'package:web_booking/model/list_request/model_request_list.dart';
@@ -105,9 +104,11 @@ class DataTableRequest extends DataTableSource {
       DataCell(Container(
         width: 400,
         padding: EdgeInsets.symmetric(vertical: 5),
-        child: SelectableText(
-          rowData.noteHangTau!,
-          style: style_text_Table_small,
+        child: Center(
+          child: SelectableText(
+            rowData.noteHangTau!,
+            style: style_text_Table_small,
+          ),
         ),
       )),
       DataCell(Container(
