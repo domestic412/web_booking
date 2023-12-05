@@ -8,6 +8,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/list_quality/storage_controller/quality_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 class CUD_QualityPage extends StatefulWidget {
@@ -25,9 +26,12 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
   @override
   void initState() {
     super.initState();
-    _input_maChatLuong.text = maChatLuong_quality!;
-    _input_tenChatLuong.text = tenChatLuong_quality!;
-    _input_ghiChu.text = ghiChu_quality!;
+    _input_maChatLuong.text = qualityController.maChatLuong.value;
+    // maChatLuong_quality!;
+    _input_tenChatLuong.text = qualityController.tenChatLuong.value;
+    // tenChatLuong_quality!;
+    _input_ghiChu.text = qualityController.ghiChu.value;
+    // ghiChu_quality!;
   }
 
   @override
@@ -157,8 +161,8 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
 
   Future<void> PostCUDQuality(String mCL, String tCL, String ghichu) async {
     // final url = '$SERVER/QualityList/Create';
-    var data = {
-      'id': id_quality,
+    Map<String, dynamic> data = {
+      'id': qualityController.id.value,
       'maChatLuong': mCL,
       'tenChatLuong': tCL,
       'ghichu': ghichu,
@@ -175,8 +179,6 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
           },
           body: body);
       if (response.statusCode == 200) {
-        // sideBarController.index.value = 6;
-        // controller.changeWidget('qualityList');
         controller.selectWidget.value = qualityList;
       } else {
         print('Error');
@@ -191,8 +193,6 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
           },
           body: body);
       if (response.statusCode == 200) {
-        // sideBarController.index.value = 6;
-        // controller.changeWidget('qualityList');
         controller.selectWidget.value = qualityList;
       } else {
         print('Error');
@@ -204,8 +204,6 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
         "Authorization": "Bearer ${informationController.authorize.value}",
       });
       if (response.statusCode == 200) {
-        // sideBarController.index.value = 6;
-        // controller.changeWidget('qualityList');
         controller.selectWidget.value = qualityList;
       } else {
         print('Error');

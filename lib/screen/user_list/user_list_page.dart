@@ -6,6 +6,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_user/model_user.dart';
+import 'package:web_booking/model/list_user/storage_controller/user_controller.dart';
 import 'package:web_booking/screen/user_list/data/data_user_list.dart';
 
 // ignore: must_be_immutable
@@ -56,13 +57,22 @@ class _UserListPageState extends State<UserListPage> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
                     onPressed: () {
-                      id_user = 0;
-                      maNV_user = '';
-                      tenNv_user = '';
-                      dienthoai_user = '';
-                      email_user = '';
-                      author_user = '';
-                      codeValue = '';
+                      // id_user = 0;
+                      // maNV_user = '';
+                      // tenNv_user = '';
+                      // dienthoai_user = '';
+                      // email_user = '';
+                      // author_user = '';
+                      // codeValue = '';
+                      userController.updateUserController(
+                          id: 0.obs,
+                          maNv: ''.obs,
+                          tenNv: ''.obs,
+                          dienThoai: ''.obs,
+                          email: ''.obs,
+                          code: ''.obs,
+                          author: ''.obs);
+
                       title_user = 'create user'.tr;
                       text_button_CUD = 'save'.tr;
                       URL_USER = '$SERVER/User/Create';

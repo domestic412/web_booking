@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/list_request/storage_controller/detail_request_controller.dart';
 
 class button_detailRequest extends StatelessWidget {
   const button_detailRequest({
@@ -18,7 +19,8 @@ class button_detailRequest extends StatelessWidget {
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8)))),
             onPressed: () {
-              savecntr = cntrno_DetailRequest!;
+              savecntr = dataDetailRequestController.cntrno.value;
+              // cntrno_DetailRequest!;
               // sideBarController.index.value = 3;
               // controller.changeWidget(SideBarController.sendRequest);
               controller.selectWidget.value = sendRequest;

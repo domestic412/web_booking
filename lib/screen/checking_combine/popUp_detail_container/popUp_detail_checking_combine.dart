@@ -5,6 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/check_container/storage_controller/check_container_controller.dart';
 
 Future<void> PopUpCheckContainer(BuildContext context) {
   return showDialog<void>(
@@ -42,7 +43,8 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 5,
                       ),
                       Text(
-                        cntrno_CheckCntr.toString(),
+                        checkContainerController.cntrno.value,
+                        // cntrno_CheckCntr.toString(),
                         style: style_text_detail,
                       ),
                       const SizedBox(
@@ -56,7 +58,8 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 5,
                       ),
                       Text(
-                        sizeType_CheckCntr.toString(),
+                        checkContainerController.sizeType.value,
+                        // sizeType_CheckCntr.toString(),
                         style: style_text_detail,
                       ),
                       const SizedBox(
@@ -70,7 +73,8 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 5,
                       ),
                       Text(
-                        shipper_CheckCntr.toString(),
+                        checkContainerController.shipper.value,
+                        // shipper_CheckCntr.toString(),
                         style: style_text_detail,
                       ),
                       const SizedBox(
@@ -84,7 +88,8 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 5,
                       ),
                       Text(
-                        remark_CheckCntr.toString(),
+                        checkContainerController.remark.value,
+                        // remark_CheckCntr.toString(),
                         textAlign: TextAlign.left,
                         style: style_text_detail,
                       ),
@@ -107,7 +112,8 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 6),
                         child: Text(
-                          ghiChuTinhTrang_CheckCntr.toString(),
+                          checkContainerController.ghiChuTinhTrang.value,
+                          // ghiChuTinhTrang_CheckCntr.toString(),
                           style: style_text_button_detail,
                         ),
                       ),
@@ -122,7 +128,8 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 5,
                       ),
                       Text(
-                        luuYSuDung_CheckCntr.toString(),
+                        checkContainerController.luuYSuDung.value,
+                        // luuYSuDung_CheckCntr.toString(),
                         textAlign: TextAlign.left,
                         style: style_text_detail,
                       ),
@@ -130,21 +137,24 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         height: 10,
                       ),
                       Text(
-                        'number of times (combine)',
+                        'number of times (combine)'.tr,
                         style: style_text_detail_bold,
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
-                        soLanKetHop_CheckCntr.toString(),
+                        checkContainerController.soLanKetHop.value,
+                        // soLanKetHop_CheckCntr.toString(),
                         textAlign: TextAlign.left,
                         style: style_text_detail,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      approval_CheckCntr != Accept ? button() : SizedBox(),
+                      checkContainerController.approval.value != Accept
+                          ? button()
+                          : SizedBox(),
                     ]),
                 actions: [
                   Container(
@@ -182,11 +192,12 @@ class _buttonState extends State<button> {
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)))),
             onPressed: () {
-              savecntr = cntrno_CheckCntr!;
+              savecntr = checkContainerController.cntrno.value;
               // sideBarController.index.value = 3;
               // controller.changeWidget('sendRequest');
               controller.selectWidget.value = sendRequest;
-              Navigator.of(context).pop();
+              // Navigator.of(context).pop();
+              Get.back();
             },
             child: Container(
                 padding: EdgeInsets.all(10),

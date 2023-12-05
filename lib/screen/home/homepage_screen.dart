@@ -18,11 +18,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     informationController.updateInfomationSignIn(
-        authorize: box.read(authorize).toString().obs,
-        maNV: box.read(maNV).toString().obs,
-        tenNV: box.read(tenNV).toString().obs,
-        author: box.read(author).toString().obs,
-        code: box.read(code).toString().obs);
+        authorize: box.read(authorize_signin).toString().obs,
+        maNV: box.read(maNV_signin).toString().obs,
+        tenNV: box.read(tenNV_signin).toString().obs,
+        author: box.read(author_signin).toString().obs,
+        code: box.read(code_signin).toString().obs);
   }
 
   @override

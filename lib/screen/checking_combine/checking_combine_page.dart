@@ -6,6 +6,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/check_container/model_check_container.dart';
+import 'package:web_booking/model/check_container/storage_controller/check_container_controller.dart';
 import 'package:web_booking/screen/checking_combine/Widget/policy_checking_combine.dart';
 import 'package:web_booking/screen/checking_combine/import_excel/import_excel.dart';
 import 'package:web_booking/screen/checking_combine/popUp_detail_container/popUp_detail_checking_combine.dart';
@@ -383,21 +384,41 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
                   onPressed: () {
-                    // if (snapshot.data![index].approval == Reject) {
-                    //   savecntr = snapshot.data![index].cntrno!;
-                    //   sideBarController.index.value = 3;
-                    // }
-                    cntrno_CheckCntr = snapshot.data![index].cntrno;
-                    sizeType_CheckCntr = snapshot.data![index].sizeType;
-                    shipper_CheckCntr = snapshot.data![index].shipper;
-                    remark_CheckCntr = snapshot.data?[index].remark ?? '';
-                    ghiChuTinhTrang_CheckCntr =
-                        snapshot.data?[index].ghiChuTinhTrang ?? '';
-                    luuYSuDung_CheckCntr = snapshot.data![index].luuYSuDung;
-                    soLanKetHop_CheckCntr = snapshot.data![index].soLanKetHop;
-                    ketQua_CheckCntr = snapshot.data![index].ketQua;
-                    // updateTime_CheckCntr = snapshot.data?[index].updateTime ?? '';
-                    approval_CheckCntr = snapshot.data![index].approval;
+                    // cntrno_CheckCntr = snapshot.data![index].cntrno;
+                    // sizeType_CheckCntr = snapshot.data![index].sizeType;
+                    // shipper_CheckCntr = snapshot.data![index].shipper;
+                    // remark_CheckCntr = snapshot.data?[index].remark ?? '';
+                    // ghiChuTinhTrang_CheckCntr =
+                    //     snapshot.data?[index].ghiChuTinhTrang ?? '';
+                    // luuYSuDung_CheckCntr = snapshot.data![index].luuYSuDung;
+                    // soLanKetHop_CheckCntr = snapshot.data![index].soLanKetHop;
+                    // ketQua_CheckCntr = snapshot.data![index].ketQua;
+                    // // updateTime_CheckCntr = snapshot.data?[index].updateTime ?? '';
+                    // approval_CheckCntr = snapshot.data![index].approval;
+
+                    String cntrno = snapshot.data![index].cntrno ?? '';
+                    String sizeType = snapshot.data![index].sizeType ?? '';
+                    String shipper = snapshot.data![index].shipper ?? '';
+                    String remark = snapshot.data![index].remark ?? '';
+                    String ghiChuTinhTrang =
+                        snapshot.data![index].ghiChuTinhTrang ?? '';
+                    String luuYSuDung = snapshot.data![index].luuYSuDung ?? '';
+                    String soLanKetHop =
+                        snapshot.data![index].soLanKetHop ?? '';
+                    String ketQua = snapshot.data![index].ketQua ?? '';
+                    String approval = snapshot.data![index].approval ?? '';
+                    String updateTime = snapshot.data![index].updateTime ?? '';
+                    checkContainerController.updateCheckContainerController(
+                        cntrno: cntrno.obs,
+                        sizeType: sizeType.obs,
+                        soLanKetHop: soLanKetHop.obs,
+                        ghiChuTinhTrang: ghiChuTinhTrang.obs,
+                        luuYSuDung: luuYSuDung.obs,
+                        ketQua: ketQua.obs,
+                        approval: approval.obs,
+                        shipper: shipper.obs,
+                        remark: remark.obs,
+                        updateTime: updateTime.obs);
                     PopUpCheckContainer(context);
                   },
                   style: ElevatedButton.styleFrom(

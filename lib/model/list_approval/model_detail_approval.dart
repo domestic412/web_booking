@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/approval_list/controller_detail_approval/data_detail_approval_controller.dart';
+import 'package:web_booking/model/list_approval/storage_controller/detail_approval_controller.dart';
 
 class DetailApproval {
   int? id;
@@ -87,7 +87,7 @@ class DetailApproval {
             String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
             String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
             String updateTime = dataDetail[0]['updateTime'] ?? '';
-            dataDetailApprovalController.updateDataDetailApproval(
+            detailApprovalController.updateDetailApproval(
                 id: id.obs,
                 tenYeuCau: tenYeuCau.obs,
                 noiDung: noiDung.obs,

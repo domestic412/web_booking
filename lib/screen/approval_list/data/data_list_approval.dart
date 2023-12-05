@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:intl/intl.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_approval/model_detail_approval.dart';
 import 'package:web_booking/model/list_approval/model_approval_list.dart';
+import 'package:web_booking/storage_controller.dart/controller_image.dart';
 
 class DataTableApproval extends DataTableSource {
   List<ApprovalList>? data;
@@ -85,9 +86,11 @@ class DataTableApproval extends DataTableSource {
           child: ElevatedButton(
             onPressed: () async {
               await _detailApproval.fetchDetailApproval(data![index].id!);
-              id_request_for_image = data![index].id;
-              // sideBarController.index.value = 13;
-              // controller.changeWidget(detailApproval);
+              // add id request for image request
+              // id_request_for_image = data![index].id;
+              int? id = data![index].id!;
+              imageController.updateIdImageController(id: id.obs);
+              // navigator widget detailApproval
               controller.selectWidget.value = detailApproval;
             },
             style: ElevatedButton.styleFrom(

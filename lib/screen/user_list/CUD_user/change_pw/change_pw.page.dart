@@ -2,12 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/list_user/storage_controller/user_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 // import 'package:web_booking/screen/home/homepage_screen.dart';
 // import 'package:easy_localization/easy_localization.dart';
@@ -93,7 +95,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
-                        maNV_user!,
+                        userController.maNv.value,
                         style: style_text_box,
                       ),
                     ),
@@ -135,7 +137,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
                                         BorderRadius.all(Radius.circular(10)))),
                             onPressed: () {
                               ChangePasswordUser(
-                                id_user!,
+                                userController.id.value,
                                 _input_matKhau.text,
                               );
                             },
@@ -171,8 +173,6 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
           },
           body: body);
       if (response.statusCode == 200) {
-        // sideBarController.index.value = 15;
-        // controller.changeWidget(SideBarController.userList);
         controller.selectWidget.value = userList;
       } else {
         print('Error');

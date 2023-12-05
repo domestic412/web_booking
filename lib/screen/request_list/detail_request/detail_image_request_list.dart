@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/model_image_request_detail.dart';
+import 'package:web_booking/storage_controller.dart/controller_image.dart';
 
 class ImageRequest extends StatefulWidget {
   const ImageRequest({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _ImageRequestState extends State<ImageRequest> {
 
   FutureBuilder<List<imageResponse>> ImageResponse() {
     return FutureBuilder<List<imageResponse>>(
-        future: imageResponse().fetchImage(id_request_for_image!),
+        future: imageResponse().fetchImage(imageController.id.value),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

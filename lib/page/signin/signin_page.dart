@@ -125,15 +125,15 @@ class _SignInPageState extends State<SignInPage> {
             // results = decodedToken.values.toList();
             String manv = decodedToken['MaNV'];
             String tennv = decodedToken['TenNV'];
-            String authorr = decodedToken['Author'].trim();
-            String codee = decodedToken['Code'];
+            String author = decodedToken['Author'].trim();
+            String code = decodedToken['Code'];
 
             //add data signIn to box GetStorage
-            box.write(authorize, dataAuthorize);
-            box.write(maNV, manv);
-            box.write(tenNV, tennv);
-            box.write(author, authorr);
-            box.write(code, codee);
+            box.write(authorize_signin, dataAuthorize);
+            box.write(maNV_signin, manv);
+            box.write(tenNV_signin, tennv);
+            box.write(author_signin, author);
+            box.write(code_signin, code);
 
             _user.clear();
             _password.clear();
