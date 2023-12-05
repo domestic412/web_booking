@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/page/signin/controller.dart/info_signin_controller.dart';
+import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
+import 'package:web_booking/screen/user_list/user_list_page.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 // SideBarController sideBarController = Get.put(SideBarController());
 
@@ -11,6 +15,8 @@ import 'package:web_booking/screen/home/homepage_screen.dart';
 // }
 
 Widget buiderDrawItems(BuildContext context) {
+  final InformationSignInController informationController =
+      Get.put(InformationSignInController());
   return Container(
       padding: EdgeInsets.all(20),
       child: Obx(
@@ -29,7 +35,7 @@ Widget buiderDrawItems(BuildContext context) {
             //         selected: sideBarController.index.value == 0,
             //       )
             //     : const SizedBox(),
-            author == 'admin'
+            informationController.author.value == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -37,11 +43,15 @@ Widget buiderDrawItems(BuildContext context) {
                     ),
                     title: const Text('User List',
                         style: TextStyle(color: Colors.white)),
-                    onTap: () => sideBarController.index.value = 15,
-                    selected: sideBarController.index.value == 15,
-                  )
+                    onTap: () => {
+                          Get.back(),
+                          Get.toNamed(GetRoutes.UserList),
+                        }
+                    // sideBarController.index.value = 15,
+                    // selected: sideBarController.index.value == 15,
+                    )
                 : const SizedBox(),
-            author == 'admin'
+            informationController.author.value == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -93,7 +103,7 @@ Widget buiderDrawItems(BuildContext context) {
               onTap: () => sideBarController.index.value = 5,
               selected: sideBarController.index.value == 5,
             ),
-            author == 'admin'
+            informationController.author.value == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -105,7 +115,7 @@ Widget buiderDrawItems(BuildContext context) {
                     selected: sideBarController.index.value == 6,
                   )
                 : SizedBox(),
-            author == 'admin'
+            informationController.author.value == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -117,7 +127,7 @@ Widget buiderDrawItems(BuildContext context) {
                     selected: sideBarController.index.value == 8,
                   )
                 : SizedBox(),
-            author == 'admin'
+            informationController.author.value == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),
@@ -129,7 +139,7 @@ Widget buiderDrawItems(BuildContext context) {
                     selected: sideBarController.index.value == 10,
                   )
                 : SizedBox(),
-            author == 'admin'
+            informationController.author.value == 'admin'
                 ? ListTile(
                     leading: const Icon(
                       (Icons.supervised_user_circle_outlined),

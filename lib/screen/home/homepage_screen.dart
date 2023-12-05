@@ -15,33 +15,34 @@ class HomePage extends StatefulWidget {
 SideBarController sideBarController = Get.put(SideBarController());
 
 class _HomePageState extends State<HomePage> {
-  Future<String> _delay =
-      Future.delayed(Duration(milliseconds: 500), () => 'Wait data');
+  // Future<String> _delay =
+  //     Future.delayed(Duration(milliseconds: 500), () => 'Wait data');
 
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getData();
+  // }
 
   @override
   Widget build(BuildContext context) {
     // final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     // double height = MediaQuery.of(context).size.height;
-    return FutureBuilder(
-        future: _delay,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasData) {
-            return bodyHome1(context);
-          } else {
-            return Container();
-          }
-        });
+    return bodyHome(context);
+    // FutureBuilder(
+    //     future: _delay,
+    //     builder: (context, snapshot) {
+    //       if (snapshot.connectionState == ConnectionState.waiting) {
+    //         return Center(child: CircularProgressIndicator());
+    //       } else if (snapshot.hasData) {
+    //         return bodyHome(context);
+    //       } else {
+    //         return Container();
+    //       }
+    //     });
   }
 
-  Scaffold bodyHome1(BuildContext context) {
+  Scaffold bodyHome(BuildContext context) {
     return Scaffold(
         appBar: topNavigationBar(context),
         body: Row(

@@ -11,7 +11,7 @@ double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 // Login
 List results = [];
 var box;
-String? dataAuthorize;
+String dataAuthorize = '';
 String tokenAuthorize = '';
 String maNV = '';
 String tokenLogin = '';
