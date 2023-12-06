@@ -45,7 +45,7 @@ class appbar extends StatelessWidget {
             InkWell(
               onTap: () {
                 // context.go(AppRoutes.signInRoute);
-                Get.toNamed(GetRoutes.SignIn);
+                Get.toNamed(GetRoutes.SignIn, preventDuplicates: false);
               },
               child: Container(
                   width: 70,
