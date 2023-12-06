@@ -193,15 +193,13 @@ class _buttonState extends State<button> {
                     borderRadius: BorderRadius.all(Radius.circular(10)))),
             onPressed: () {
               savecntr = checkContainerController.cntrno.value;
-              // sideBarController.index.value = 3;
-              // controller.changeWidget('sendRequest');
               controller.selectWidget.value = sendRequest;
               // Navigator.of(context).pop();
               Get.back();
             },
             child: Container(
                 padding: EdgeInsets.all(10),
-                child: Text('requests more combine',
+                child: Text('requests more combine'.tr,
                     style: style_text_box_button))));
   }
 }

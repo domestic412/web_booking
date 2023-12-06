@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     buiderHeader(context),
-                    buiderDrawItems(context),
+                    DrawItems(),
                   ],
                 ),
               ),
