@@ -80,10 +80,21 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                         style: const TextStyle(
                             fontSize: 18, color: Colors.black87),
                         decoration: InputDecoration(
-                          hintText: 'enter container number'.tr,
-                          border: InputBorder.none,
-                          suffixIcon: IconButton(
-                              onPressed: () {
+                            hintText: 'enter container number'.tr,
+                            border: InputBorder.none,
+                            // suffixIcon: IconButton(
+                            //     onPressed: () {
+                            //       setState(
+                            //         () {
+                            //           _checkContainers = CheckContainer()
+                            //               .fetchCheckContainers(
+                            //                   _CntrNo.text.trim());
+                            //         },
+                            //       );
+                            //     },
+                            //     icon: const Icon(Icons.search)),
+                            suffix: InkWell(
+                              onTap: () {
                                 setState(
                                   () {
                                     _checkContainers = CheckContainer()
@@ -92,8 +103,11 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                                   },
                                 );
                               },
-                              icon: const Icon(Icons.search)),
-                        )),
+                              child: Text(
+                                'Search',
+                                style: TextStyle(color: blue),
+                              ),
+                            ))),
                   ),
                 ),
               ),
