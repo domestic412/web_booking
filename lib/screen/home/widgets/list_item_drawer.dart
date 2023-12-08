@@ -29,6 +29,7 @@ class _DrawItemsState extends State<DrawItems> {
                         (Icons.supervised_user_circle_sharp),
                         color: white,
                       ),
+                      initiallyExpanded: true,
                       trailing: Icon(
                         _bool_dropdown_management
                             ? Icons.arrow_drop_up
@@ -101,6 +102,10 @@ class _DrawItemsState extends State<DrawItems> {
                         : Icons.arrow_drop_down,
                     color: _bool_dropdown_services ? blue : white,
                   ),
+                  initiallyExpanded:
+                      informationController.author.value == 'admin'
+                          ? false
+                          : true,
                   onExpansionChanged: (bool expanded) {
                     setState(() {
                       _bool_dropdown_services = expanded;
