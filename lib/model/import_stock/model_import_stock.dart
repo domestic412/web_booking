@@ -38,7 +38,7 @@ class ImportStock {
         var response = await request.send();
         switch (response.statusCode) {
           case 200:
-            controller.selectWidget.value = dashboard;
+            controller.selectWidget.value = containerStock;
           default:
             print(response.reasonPhrase);
         }
