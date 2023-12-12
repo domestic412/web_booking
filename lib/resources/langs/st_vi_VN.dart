@@ -109,7 +109,11 @@ Map<String, String> vi = {
   "checking combine": "Kiểm tra kết hợp",
   "enter container number": "Nhập số Container",
   "import excel": "Nhập file excel",
+  "domestic": "Tuyến nội",
+  "overseas": "Tuyến ngoại",
   "not found container number": "Không tìm thấy số Container",
+  "only cont types a0 & a1 are combined":
+      "Chỉ có container loại A0 và A1 được kết hợp tuyến ngoại !",
   "result combine": "Kết quả kết hợp trả về",
   "number of times combine": "Số lần kết hợp",
   "container quality": "Chất lượng Container",

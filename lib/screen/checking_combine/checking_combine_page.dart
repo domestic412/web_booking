@@ -8,6 +8,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/check_container/model_check_container.dart';
 import 'package:web_booking/model/check_container/storage_controller/check_container_controller.dart';
 import 'package:web_booking/screen/checking_combine/Widget/policy_checking_combine.dart';
+import 'package:web_booking/screen/checking_combine/Widget/radio_button_route.dart';
 import 'package:web_booking/screen/checking_combine/import_excel/import_excel.dart';
 import 'package:web_booking/screen/checking_combine/popUp_detail_container/popUp_detail_checking_combine.dart';
 // import 'package:easy_localization/easy_localization.dart';
@@ -25,6 +26,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
 
   String _list_input = '';
   int i = 0;
+  int route = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,8 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                         onSubmitted: (value) {
                           setState(() {
                             _checkContainers = CheckContainer()
-                                .fetchCheckContainers(_CntrNo.text.trim());
+                                .fetchCheckContainers(
+                                    _CntrNo.text.trim(), currentOptionsRoute);
                           });
                         },
                         controller: _CntrNo,
@@ -99,7 +102,8 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                                   () {
                                     _checkContainers = CheckContainer()
                                         .fetchCheckContainers(
-                                            _CntrNo.text.trim());
+                                            _CntrNo.text.trim(),
+                                            currentOptionsRoute);
                                   },
                                 );
                               },
@@ -111,58 +115,73 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                   ),
                 ),
               ),
-              // ImportFile(),
-              Container(
-                // alignment: Alignment.centerRight,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: haian, borderRadius: BorderRadius.circular(10)),
-                child: TextButton(
-                    onPressed: () async {
-                      await Import().ImportExcel();
-                      if (resultPickedFile != null) {
-                        var bytes = resultPickedFile?.files.single.bytes;
-                        var excel = Excel.decodeBytes(bytes!);
-                        // choose sheet1 in file excel
-                        String table = 'Sheet1';
-                        // for (var table in excel.tables.keys) {         // take data all sheet in file excel
-                        // print(table);                                  // sheet Name
-                        // print(excel.tables[table]!.maxColumns);        // max number column
-                        // print(excel.tables[table]!.maxRows);               // print max number row
-                        // take all data, style, cell... each row
-                        for (var row in excel.tables[table]!.rows) {
-                          List list_cont = row
-                              .map((e) => e?.value)
-                              .toList(); //add data to list_cont with container is list_cont[0]
-                          // print(list_cont[0]);
-                          if (i < excel.tables[table]!.maxRows) {
-                            if (i == (excel.tables[table]!.maxRows - 1)) {
-                              //take last cont number
-                              _list_input =
-                                  _list_input + list_cont[0].toString();
-                            } else if (i > 0) {
-                              //take cont number from 2
-                              _list_input =
-                                  _list_input + list_cont[0].toString() + ' ';
-                            }
-                            i++;
-                          }
-                        }
-                        // print(_list_input);
-                        setState(() {
-                          _CntrNo.text = _list_input;
-                          _list_input = '';
-                          i = 0;
-                        });
-                        // }
-                      } else {
-                        print('no data');
-                      }
-                    },
-                    child: Text(
-                      'import excel'.tr,
-                      style: TextStyle(color: white, fontSize: 15),
-                    )),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Row(
+                      children: [
+                        Container(
+                          // width: 135,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: haian,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: TextButton(
+                              onPressed: () async {
+                                await Import().ImportExcel();
+                                if (resultPickedFile != null) {
+                                  var bytes =
+                                      resultPickedFile?.files.single.bytes;
+                                  var excel = Excel.decodeBytes(bytes!);
+                                  // choose sheet1 in file excel
+                                  String table = 'Sheet1';
+                                  // for (var table in excel.tables.keys) {         // take data all sheet in file excel
+                                  // print(table);                                  // sheet Name
+                                  // print(excel.tables[table]!.maxColumns);        // max number column
+                                  // print(excel.tables[table]!.maxRows);               // print max number row
+                                  // take all data, style, cell... each row
+                                  for (var row in excel.tables[table]!.rows) {
+                                    List list_cont = row
+                                        .map((e) => e?.value)
+                                        .toList(); //add data to list_cont with container is list_cont[0]
+                                    // print(list_cont[0]);
+                                    if (i < excel.tables[table]!.maxRows) {
+                                      if (i ==
+                                          (excel.tables[table]!.maxRows - 1)) {
+                                        //take last cont number
+                                        _list_input = _list_input +
+                                            list_cont[0].toString();
+                                      } else if (i > 0) {
+                                        //take cont number from 2
+                                        _list_input = _list_input +
+                                            list_cont[0].toString() +
+                                            ' ';
+                                      }
+                                      i++;
+                                    }
+                                  }
+                                  // print(_list_input);
+                                  setState(() {
+                                    _CntrNo.text = _list_input;
+                                    _list_input = '';
+                                    i = 0;
+                                  });
+                                  // }
+                                } else {
+                                  print('no data');
+                                }
+                              },
+                              child: Text(
+                                'import excel'.tr,
+                                style: TextStyle(color: white, fontSize: 15),
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(flex: 2, child: RadioButtonRoute()),
+                ],
               ),
               SizedBox(
                 height: 20,
@@ -224,11 +243,19 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               ),
             ],
           );
-        } else if (snapshot.hasError) {
+        } else if (snapshot.hasError && _CntrNo.text == '') {
           return Container(
             padding: const EdgeInsets.only(left: 32, right: 32),
             child: Text(
               'cont number null'.tr,
+              style: TextStyle(fontSize: 16, color: red),
+            ),
+          );
+        } else if (snapshot.hasError && _CntrNo.text != '') {
+          return Container(
+            padding: const EdgeInsets.only(left: 32, right: 32),
+            child: Text(
+              'only cont types a0 & a1 are combined'.tr,
               style: TextStyle(fontSize: 16, color: red),
             ),
           );
@@ -277,20 +304,6 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               ),
             ),
           ),
-          // DataColumn(
-          //   label: Expanded(
-          //     child: Center(
-          //       child: Text('Số lần', style: style_text_Table_small_bold),
-          //     ),
-          //   ),
-          // ),
-          // DataColumn(
-          //   label: Expanded(
-          //     child: Center(
-          //       child: Text('Số lần CP', style: style_text_Table_small_bold),
-          //     ),
-          //   ),
-          // ),
           DataColumn(
             label: Expanded(
               child: Center(
@@ -398,18 +411,6 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
                   onPressed: () {
-                    // cntrno_CheckCntr = snapshot.data![index].cntrno;
-                    // sizeType_CheckCntr = snapshot.data![index].sizeType;
-                    // shipper_CheckCntr = snapshot.data![index].shipper;
-                    // remark_CheckCntr = snapshot.data?[index].remark ?? '';
-                    // ghiChuTinhTrang_CheckCntr =
-                    //     snapshot.data?[index].ghiChuTinhTrang ?? '';
-                    // luuYSuDung_CheckCntr = snapshot.data![index].luuYSuDung;
-                    // soLanKetHop_CheckCntr = snapshot.data![index].soLanKetHop;
-                    // ketQua_CheckCntr = snapshot.data![index].ketQua;
-                    // // updateTime_CheckCntr = snapshot.data?[index].updateTime ?? '';
-                    // approval_CheckCntr = snapshot.data![index].approval;
-
                     String cntrno = snapshot.data![index].cntrno ?? '';
                     String sizeType = snapshot.data![index].sizeType ?? '';
                     String shipper = snapshot.data![index].shipper ?? '';

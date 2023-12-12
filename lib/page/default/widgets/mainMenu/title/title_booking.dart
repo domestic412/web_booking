@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/utils/app_route_config.dart';
 import 'package:web_booking/utils/getx_route.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
