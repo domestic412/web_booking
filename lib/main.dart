@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:web_booking/resources/localization_service.dart';
 import 'package:web_booking/widgets/horizontal_scroll.dart';
 
@@ -21,8 +19,6 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
-
-  await Hive.initFlutter();
 
   WidgetsFlutterBinding.ensureInitialized();
   // await EasyLocalization.ensureInitialized();
