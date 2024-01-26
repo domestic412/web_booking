@@ -49,13 +49,12 @@ class MyApp extends StatelessWidget {
       // ),
       debugShowCheckedModeBanner: false,
       scrollBehavior: CustomHorizontalScroll(),
-      // localizationsDelegates: context.localizationDelegates,
-      // supportedLocales: context.supportedLocales,
-      // locale: context.locale,
       translations: Languages(),
-      locale: Locale('vi', 'VN'),
+      locale: Locale('en', 'US'),
       fallbackLocale: Locale('en', 'US'),
       getPages: GetRoutes.router,
+      defaultTransition: Transition.noTransition,
+      // transitionDuration: Duration(seconds: 0),
       // initialRoute: ,
     );
   }

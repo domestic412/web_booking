@@ -88,7 +88,7 @@ class DataTableHistory extends DataTableSource {
         style: style_text_Table_small,
       )),
       DataCell(Container(
-        // width: 180,
+        width: 180,
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: SelectableText(
           rowData.shipper!,

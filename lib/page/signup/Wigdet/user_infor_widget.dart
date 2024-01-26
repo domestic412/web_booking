@@ -4,13 +4,17 @@ import 'package:get/get.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
-class UserInforWidget extends StatelessWidget {
-  const UserInforWidget({
+class UserInforWidget extends StatefulWidget {
+  UserInforWidget({
     super.key,
-    required bool validate,
-  }) : _validate = validate;
+  });
 
-  final bool _validate;
+  @override
+  State<UserInforWidget> createState() => _UserInforWidgetState();
+}
+
+class _UserInforWidgetState extends State<UserInforWidget> {
+  bool _validate = false;
 
   @override
   Widget build(BuildContext context) {

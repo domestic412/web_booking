@@ -5,7 +5,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 
 const List<String> list = <String>['VN', 'EN'];
-String dropdownValue = 'VN';
+String dropdownValue = 'EN';
 
 class DropdownLeaguage extends StatefulWidget {
   const DropdownLeaguage({super.key});

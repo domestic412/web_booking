@@ -8,8 +8,6 @@ import 'package:web_booking/page/signup/Wigdet/user_infor_widget.dart';
 // ignore: must_be_immutable
 class AccountPage extends StatelessWidget {
   final ScrollController horizontalScroll = ScrollController();
-  double width_20 = 20;
-  bool _validate = false;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -22,11 +20,11 @@ class AccountPage extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(30, 30, 30, 60),
         child: Column(
           children: [
-            UserInforWidget(validate: _validate),
+            UserInforWidget(),
             SizedBox(
               height: 30,
             ),
-            CompanyInforWidget(validate: _validate),
+            CompanyInforWidget(),
             SizedBox(
               height: 30,
             ),

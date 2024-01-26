@@ -79,7 +79,9 @@ List dataPorts = [];
 Ports? selectPort1;
 Ports? selectPort2;
 String? idPort1;
+String? namePort1;
 String? idPort2;
+String? namePort2;
 Future<Voyage>? fetchVoyage;
 TextEditingController soluongcntr = TextEditingController();
 

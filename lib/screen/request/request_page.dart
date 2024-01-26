@@ -11,7 +11,6 @@ import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/request/popUpAlert/alert.dart';
 import 'dart:html' as html;
-// import 'package:easy_localization/easy_localization.dart';
 
 class SendRequestPage extends StatefulWidget {
   @override

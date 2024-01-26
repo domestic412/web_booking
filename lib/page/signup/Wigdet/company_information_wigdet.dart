@@ -4,12 +4,17 @@ import 'package:web_booking/page/signup/Wigdet/combobox.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
-class CompanyInforWidget extends StatelessWidget {
-  const CompanyInforWidget({
+class CompanyInforWidget extends StatefulWidget {
+  CompanyInforWidget({
     super.key,
-    required bool validate,
-  }) : _validate = validate;
-  final bool _validate;
+  });
+
+  @override
+  State<CompanyInforWidget> createState() => _CompanyInforWidgetState();
+}
+
+class _CompanyInforWidgetState extends State<CompanyInforWidget> {
+  bool _validate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -180,32 +185,32 @@ class CompanyInforWidget extends StatelessWidget {
                 const SizedBox(
                   width: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 150,
-                      child: const DropdownButton1(),
-                    ),
-                    // Container(
-                    //   width: 150,
-                    //   child: TextFormField(
-                    //       controller: inputPassword,
-                    //       decoration: InputDecoration(
-                    //         border: OutlineInputBorder(),
-                    //         hintText: 'Name',
-                    //         errorText: _validate
-                    //             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
-                    //             : null,
-                    //       )),
-                    // ),
-                  ],
-                ),
-                const SizedBox(width: 20),
-                Container(
-                  width: 350,
-                  child: const DropdownButton1(),
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     Container(
+                //       width: 150,
+                //       child: const DropdownButton1(),
+                //     ),
+                //     // Container(
+                //     //   width: 150,
+                //     //   child: TextFormField(
+                //     //       controller: inputPassword,
+                //     //       decoration: InputDecoration(
+                //     //         border: OutlineInputBorder(),
+                //     //         hintText: 'Name',
+                //     //         errorText: _validate
+                //     //             ? 'ID MUST BE AT\'t LEAST 5 DIGITS!'
+                //     //             : null,
+                //     //       )),
+                //     // ),
+                //   ],
+                // ),
+                // const SizedBox(width: 20),
+                // Container(
+                //   width: 350,
+                //   child: const DropdownButton1(),
+                // ),
               ],
             ),
           ),

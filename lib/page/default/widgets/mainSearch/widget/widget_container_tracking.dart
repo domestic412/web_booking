@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
+import 'package:web_booking/page/tracking/widgets/dropdownbox.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class ContainerTrackingSearch extends StatefulWidget {
@@ -76,6 +77,7 @@ class _ContainerTrackingSearchState extends State<ContainerTrackingSearch> {
               onTap: () {
                 setState(() {
                   cntr_no_tracking = _input.text;
+                  selectedValue = 'bk';
                   containerTracking = ContainerTracking()
                       .fetchContainerTracking(_input.text.toUpperCase());
                   // context.go(AppRoutes.trackingRoute);

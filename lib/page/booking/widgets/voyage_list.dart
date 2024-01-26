@@ -5,6 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:intl/intl.dart';
+import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class VoyageList extends StatefulWidget {
@@ -144,6 +145,17 @@ class _VoyageListState extends State<VoyageList> {
                           child: ElevatedButton(
                             onPressed: () {
                               Get.toNamed(GetRoutes.Depo);
+                              // Get.toNamed(GetRoutes.CreateBooking);
+                              routeController.updateRouteController(
+                                  vessel:
+                                      data.listBookingVoys?[index].vesselName,
+                                  voy: data.listBookingVoys?[index].voyId,
+                                  date: DateFormat("dd-MMM-yyyy").format(
+                                      DateTime.parse(
+                                          (data.listBookingVoys?[index])!
+                                              .etd!)),
+                                  pol: namePort1,
+                                  pod: namePort2);
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: normalColor,

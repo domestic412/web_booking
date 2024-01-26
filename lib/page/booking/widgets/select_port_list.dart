@@ -52,6 +52,7 @@ class _PortListState extends State<PortList> {
                     setState(() {
                       selectPort1 = port;
                       idPort1 = selectPort1?.portId;
+                      namePort1 = selectPort1?.portName;
                     });
                   },
                 ),
@@ -73,6 +74,7 @@ class _PortListState extends State<PortList> {
                     setState(() {
                       selectPort2 = port;
                       idPort2 = selectPort2?.portId;
+                      namePort2 = selectPort2?.portName;
                     });
                   },
                 )
