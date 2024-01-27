@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/page/booking/create_info_booking/create_booking_page.dart';
 import 'package:web_booking/page/booking/create_info_booking/variabl_add_cont.dart';
@@ -345,25 +346,27 @@ class _CargoInformationState extends State<CargoInformation> {
                             });
                           } else {
                             setState(() {
-                              bool_add_cont = true;
-                              bool_error = false;
-                              test_no = '1';
-                              test_commodity = input_commodity.text;
-                              test_size = currentSizeContainer;
-                              test_type = currentTypeContainer;
-                              test_status = currentStatusContainer;
-                              test_quality = currentQualityContainer;
-                              test_volume = input_volume.text;
-                              test_weight = input_weight.text;
-                              bool_type_container == true
-                                  ? test_temp = input_temp.text
-                                  : test_temp = '';
-                              bool_cont_dangerous == true
-                                  ? test_dangerous = 'Yes'
-                                  : test_dangerous = 'No';
-                              bool_cont_dangerous == true
-                                  ? test_rem = input_rem.text
-                                  : test_rem = '';
+                              // bool_add_cont = true;
+                              // bool_error = false;
+                              // test_no = '1';
+                              // test_commodity = input_commodity.text;
+                              // test_size = currentSizeContainer;
+                              // test_type = currentTypeContainer;
+                              // test_status = currentStatusContainer;
+                              // test_quality = currentQualityContainer;
+                              // test_volume = input_volume.text;
+                              // test_weight = input_weight.text;
+                              // bool_type_container == true
+                              //     ? test_temp = input_temp.text
+                              //     : test_temp = '';
+                              // bool_cont_dangerous == true
+                              //     ? test_dangerous = 'Yes'
+                              //     : test_dangerous = 'No';
+                              // bool_cont_dangerous == true
+                              //     ? test_rem = input_rem.text
+                              //     : test_rem = '';
+                              createBookingController.listInfoContainer!.value.add('abc', );
+                              Volumes abc = Volumes(commodityConts: 'abc', typeConts: )
                             });
                           }
                         },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:web_booking/model/booking/model_create_booking.dart';
 
 final CreateBookingController createBookingController =
     Get.put(CreateBookingController());
@@ -42,7 +43,7 @@ class CreateBookingController extends GetxController {
   var boolError = false.obs;
 
   var countRowContainer = 0.obs;
-  var listInfoContainer = [].obs;
+  RxList<Volumes>? listInfoContainer;
 
   // void updateCreateBookingController({
   //   @required cntrno,
