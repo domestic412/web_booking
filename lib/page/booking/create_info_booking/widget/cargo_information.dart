@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
-import 'package:web_booking/page/booking/create_info_booking/create_booking_page.dart';
-import 'package:web_booking/page/booking/create_info_booking/variabl_add_cont.dart';
 
 class CargoInformation extends StatefulWidget {
   const CargoInformation({
@@ -16,6 +14,7 @@ class CargoInformation extends StatefulWidget {
 }
 
 class _CargoInformationState extends State<CargoInformation> {
+  // String? contDangerous;
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -30,7 +29,6 @@ class _CargoInformationState extends State<CargoInformation> {
                   child: Text('Commodity')),
               // SizedBox(width: 20),
               Container(
-                // height: 50,
                 width: 800,
                 child: TextField(
                   controller: createBookingController.inputCommodity.value,
@@ -128,29 +126,6 @@ class _CargoInformationState extends State<CargoInformation> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // Container(
-              //     width: 300,
-              //     child: Row(
-              //       children: [
-              //         Container(
-              //             margin: EdgeInsets.only(left: 50),
-              //             width: 90,
-              //             child: Text('Quality')),
-              //         DropdownMenu<String>(
-              //           width: 120,
-              //           initialSelection: currentQualityContainer,
-              //           onSelected: (String? value) {
-              //             currentQualityContainer = value!;
-              //             // This is called when the user selects an item.
-              //           },
-              //           dropdownMenuEntries: listQuality
-              //               .map<DropdownMenuEntry<String>>((String value) {
-              //             return DropdownMenuEntry<String>(
-              //                 value: value, label: value);
-              //           }).toList(),
-              //         ),
-              //       ],
-              //     )),
               Container(
                   width: 300,
                   child: Row(
@@ -205,9 +180,9 @@ class _CargoInformationState extends State<CargoInformation> {
                                 width: 200,
                                 child: Row(
                                   children: [
-                                    Text('Temp.'),
+                                    Container(width: 60, child: Text('Temp.')),
                                     Container(
-                                      width: 110,
+                                      width: 120,
                                       child: TextField(
                                         controller: createBookingController
                                             .inputTemp.value,
@@ -234,25 +209,22 @@ class _CargoInformationState extends State<CargoInformation> {
                   children: [
                     Container(
                       margin: EdgeInsets.only(left: 50),
-                      child: Text(
+                      child: const Text(
                         'Dangerous',
                         style: TextStyle(color: Colors.red),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    const SizedBox(width: 10),
                     SizedBox(
                       height: 50,
                       width: 50,
                       child: Checkbox(
                         value: createBookingController.boolContDangerous.value,
                         onChanged: (newValue) {
-                          setState(() {
-                            createBookingController.boolContDangerous.value =
-                                !createBookingController
-                                    .boolContDangerous.value;
-                          });
+                          // setState(() {
+                          createBookingController.boolContDangerous.value =
+                              !createBookingController.boolContDangerous.value;
+                          // });
                         },
                       ),
                     ),
@@ -341,33 +313,45 @@ class _CargoInformationState extends State<CargoInformation> {
                               (createBookingController.inputCommodity.value.text
                                       .trim() ==
                                   '')) {
-                            setState(() {
-                              bool_error = true;
-                            });
+                            createBookingController.boolError.value = true;
                           } else {
-                            setState(() {
-                              // bool_add_cont = true;
-                              // bool_error = false;
-                              // test_no = '1';
-                              // test_commodity = input_commodity.text;
-                              // test_size = currentSizeContainer;
-                              // test_type = currentTypeContainer;
-                              // test_status = currentStatusContainer;
-                              // test_quality = currentQualityContainer;
-                              // test_volume = input_volume.text;
-                              // test_weight = input_weight.text;
-                              // bool_type_container == true
-                              //     ? test_temp = input_temp.text
-                              //     : test_temp = '';
-                              // bool_cont_dangerous == true
-                              //     ? test_dangerous = 'Yes'
-                              //     : test_dangerous = 'No';
-                              // bool_cont_dangerous == true
-                              //     ? test_rem = input_rem.text
-                              //     : test_rem = '';
-                              createBookingController.listInfoContainer!.value.add('abc', );
-                              Volumes abc = Volumes(commodityConts: 'abc', typeConts: )
-                            });
+                            createBookingController.boolError.value = false;
+                            createBookingController.countRowContainer.value = 1;
+                            if (createBookingController
+                                    .currentStatusContainer.value ==
+                                'E') {
+                              createBookingController.inputWeight.value.clear();
+                              createBookingController.inputTemp.value.clear();
+                            }
+                            if (createBookingController
+                                    .boolContDangerous.value ==
+                                false) {
+                              createBookingController.inputDGunNo.value.clear();
+                              createBookingController.inputDGClass.value
+                                  .clear();
+                            }
+                            createBookingController.listInfoContainer.value = Volumes(
+                                commodityConts: createBookingController
+                                    .inputCommodity.value.text,
+                                typeConts: createBookingController
+                                    .currentTypeContainer.value,
+                                sizeConts: createBookingController
+                                    .currentSizeContainer.value,
+                                statusConts: createBookingController
+                                    .currentStatusContainer.value,
+                                volumeConts: createBookingController
+                                    .inputVolume.value.text,
+                                weightConts: createBookingController
+                                    .inputWeight.value.text,
+                                temperatureConts: createBookingController
+                                    .inputTemp.value.text,
+                                dg: createBookingController
+                                    .boolContDangerous.value
+                                    .toString(),
+                                dgUnNo: createBookingController
+                                    .inputDGunNo.value.text,
+                                dgClass: createBookingController
+                                    .inputDGClass.value.text);
                           }
                         },
                         child: Text('ADD CONTAINER')),

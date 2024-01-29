@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
-
-// topNavigationBar(
-//   BuildContext context,
-// ) =>
-//     AppbarWidget();
 
 class AppbarWidget extends StatelessWidget {
   @override
@@ -52,7 +48,10 @@ class AppbarWidget extends StatelessWidget {
               backgroundColor: normalColor,
               child: IconButton(
                 onPressed: () {
-                  Get.toNamed(GetRoutes.SignIn);
+                  box.write(authorize_signin, 'authorize');
+                  currentRouteController.route.value = 'default';
+                  informationController.resetInfomationSignInController();
+                  Get.toNamed(GetRoutes.defaultRoute);
                   controller.selectWidget.value = dashboard;
                 },
                 icon: Icon(

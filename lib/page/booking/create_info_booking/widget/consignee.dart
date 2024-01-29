@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
-import 'package:web_booking/page/booking/create_info_booking/create_booking_page.dart';
 
 class ConsigneeWidget extends StatefulWidget {
   const ConsigneeWidget({super.key});

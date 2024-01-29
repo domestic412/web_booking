@@ -6,6 +6,7 @@ const URL_LOGIN = '$SERVER/auth/login';
 const URL_REQUEST = '$SERVER/Requests/SendRequest1';
 const URL_HISTORY = '$SERVER/History/GetHistory';
 const URL_CONTAINER_STOCK = '$SERVER/ContainerStock/GetAll';
+const URL_NEW_BOOKING = '$SERVER/NewBooking/Create';
 
 String? URL_QUALITY;
 String? URL_SPECIAL_POLICY;

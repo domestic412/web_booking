@@ -24,6 +24,14 @@ class InformationSignInController extends GetxController {
     this.author = author;
     this.code = code;
   }
+
+  void resetInfomationSignInController() {
+    authorize = ''.obs;
+    maNV = ''.obs;
+    tenNV = ''.obs;
+    author = ''.obs;
+    code = ''.obs;
+  }
 }
 
 class InfoAccountSignInController extends GetxController {

@@ -5,72 +5,17 @@ import 'package:web_booking/page/booking/create_info_booking/widget/service.dart
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 import 'widget/add_information_cont.dart';
+import 'widget/button_booking_request.dart';
 import 'widget/cargo_information.dart';
 import 'widget/consignee.dart';
 import 'widget/route_information.dart';
 
-List<String> listConsginee = ['Consignee 1', 'Consignee 2', 'Consignee 3'];
-String dropdownValue = listConsginee[0];
-bool bool_new_consignee = false;
-TextEditingController input_consignee = TextEditingController();
-
-const List<String> listServiceTerm = <String>[
-  'CY/CY',
-  'CY/DR',
-  'CY/FO',
-  'DR/CY',
-  'DR/DR',
-  'FI/CY',
-  'FI/FO'
-];
-String dropdownValueTerm = listServiceTerm.first;
-const List<String> listPaymentTerm = <String>[
-  'PREPAID',
-  'COLLECT',
-];
-String dropdownPayment = listPaymentTerm.first;
-
-List<int> optionsRoute = [0, 1];
-int currentOptionsRoute = optionsRoute[0];
-
-TextEditingController input_commodity = TextEditingController();
-
-const List<String> listSizeContainer = <String>['20', '40', '45', '53'];
-String currentSizeContainer = listSizeContainer[0];
-const List<String> listType = <String>['DRY', 'REEFER'];
-String currentTypeContainer = listType[0];
-bool bool_type_container = false;
-const List<String> listStatus = <String>['F', 'E'];
-String currentStatusContainer = listStatus[0];
-
-const List<String> listQuality = <String>[
-  'A+',
-  'A',
-  'A-',
-  'B+',
-  'B',
-  'B-',
-  'C',
-  'C-',
-];
-String currentQualityContainer = listQuality[0];
-
-TextEditingController input_volume = TextEditingController();
-TextEditingController input_weight = TextEditingController();
-TextEditingController input_temp = TextEditingController();
-
-bool bool_cont_dangerous = false;
-TextEditingController input_rem = TextEditingController();
-
-bool bool_add_cont = false;
-bool bool_error = false;
-
-class DepoPageTest extends StatefulWidget {
+class BookingRequestPage extends StatefulWidget {
   @override
-  State<DepoPageTest> createState() => _DepoPageTestState();
+  State<BookingRequestPage> createState() => _BookingRequestPageState();
 }
 
-class _DepoPageTestState extends State<DepoPageTest> {
+class _BookingRequestPageState extends State<BookingRequestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +33,7 @@ class _DepoPageTestState extends State<DepoPageTest> {
               child: Column(
                 children: [
                   SelectableText(
-                    'Create Booking',
+                    'Booking Request',
                     style: style_title_page,
                   ),
                   const SizedBox(
@@ -109,6 +54,8 @@ class _DepoPageTestState extends State<DepoPageTest> {
                   const SizedBox(height: 50),
                   CargoInformation(),
                   TableInformationContainer(),
+                  const SizedBox(height: 10),
+                  ButtonBookingRequest(),
                 ],
               ),
             )

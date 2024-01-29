@@ -6,6 +6,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class VoyageList extends StatefulWidget {
@@ -144,8 +145,10 @@ class _VoyageListState extends State<VoyageList> {
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              Get.toNamed(GetRoutes.Depo);
-                              // Get.toNamed(GetRoutes.CreateBooking);
+                              informationController.tenNV.value == ''
+                                  ? Get.toNamed(GetRoutes.SignIn)
+                                  : Get.toNamed(GetRoutes.BookingRequest);
+                              currentRouteController.route.value = 'booking';
                               routeController.updateRouteController(
                                   vessel:
                                       data.listBookingVoys?[index].vesselName,

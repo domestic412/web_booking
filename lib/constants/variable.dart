@@ -16,57 +16,7 @@ String tenNV_signin = 'tenNV';
 String author_signin = 'author';
 String code_signin = 'code';
 
-//id_ApprovalDetail = dataDetail['id'];
-// TextEditingController note_detail_approval = TextEditingController();
-// int? id_DetailApproval;
-// String? tenYeuCau_DetailApproval;
-// String? noiDung_DetailApproval;
-// String? cntrno_DetailApproval;
-// String? sizeType_DetailApproval;
-// String? trangThaiYc_DetailApproval;
-// String? noteHangTau_DetailApproval;
-// String? updateTime_DetailApproval;
-
-// List Request                         // miss
-// int? id_ListRequest;
-// String? cntrno_ListRequest;
-// String? trangThaiYc_ListRequest;
-
-// List Request Detail
-// int? id_request_for_image;
 String savecntr = '';
-// String? tenYeuCau_DetailRequest;
-// String? noiDung_DetailRequest;
-// String? cntrno_DetailRequest;
-// String? sizeType_DetailRequest;
-// String? trangThaiYc_DetailRequest;
-// String? noteHangTau_DetailRequest;
-// String? updateTime_DetailRequest;
-
-// //Check container
-// String? cntrno_CheckCntr;
-// String? sizeType_CheckCntr;
-// String? soLanKetHop_CheckCntr;
-// String? ghiChuTinhTrang_CheckCntr;
-// String? luuYSuDung_CheckCntr;
-// String? ketQua_CheckCntr;
-// String? approval_CheckCntr;
-// String? shipper_CheckCntr;
-// String? remark_CheckCntr;
-// String? updateTime_CheckCntr;
-
-//List History
-// String? id_history_Detail;
-// String? cntrno_history_Detail;
-// String? size_history_Detail;
-// String? shipper_history_Detail;
-// String? soLanKetHop_history_Detail;
-// String? numKH_history_Detail;
-// String? numCP_history_Detail;
-// String? chatLuong_history_Detail;
-// String? ketQua_history_Detail;
-// String? updateTime_history_Detail;
-// String? acc_history_Detail;
 
 // Booking page
 String? nameVoyage;

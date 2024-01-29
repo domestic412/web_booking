@@ -85,17 +85,6 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                         decoration: InputDecoration(
                             hintText: 'enter container number'.tr,
                             border: InputBorder.none,
-                            // suffixIcon: IconButton(
-                            //     onPressed: () {
-                            //       setState(
-                            //         () {
-                            //           _checkContainers = CheckContainer()
-                            //               .fetchCheckContainers(
-                            //                   _CntrNo.text.trim());
-                            //         },
-                            //       );
-                            //     },
-                            //     icon: const Icon(Icons.search)),
                             suffix: InkWell(
                               onTap: () {
                                 setState(
@@ -370,20 +359,6 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                 textAlign: TextAlign.center,
               ),
             )),
-            // DataCell(Center(
-            //   child: Text(
-            //     snapshot.data![index].soLanKetHopNum.toString(),
-            //     style: style_text_table_small_tracking,
-            //     textAlign: TextAlign.center,
-            //   ),
-            // )),
-            // DataCell(Center(
-            //   child: Text(
-            //     '0',
-            //     style: style_text_table_small_tracking,
-            //     textAlign: TextAlign.center,
-            //   ),
-            // )),
             DataCell(Center(
               child: Text(
                 snapshot.data![index].quanlity.toString(),

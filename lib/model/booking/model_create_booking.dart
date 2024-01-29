@@ -1,4 +1,9 @@
-class CreateBooking {
+import 'dart:convert';
+
+import 'package:web_booking/constants/global.dart';
+import 'package:http/http.dart' as http;
+
+class BookingRequest {
   String? date;
   String? vessel;
   String? voyage;
@@ -9,7 +14,7 @@ class CreateBooking {
   String? paymentTerm;
   List<Volumes>? volumes;
 
-  CreateBooking(
+  BookingRequest(
       {this.date,
       this.vessel,
       this.voyage,
@@ -20,7 +25,7 @@ class CreateBooking {
       this.paymentTerm,
       this.volumes});
 
-  CreateBooking.fromJson(Map<String, dynamic> json) {
+  BookingRequest.fromJson(Map<String, dynamic> json) {
     date = json['date'];
     vessel = json['vessel'];
     voyage = json['voyage'];
@@ -51,6 +56,56 @@ class CreateBooking {
       data['volumes'] = this.volumes!.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  Future<void> PostBookingRequest() async {
+    Map<String, dynamic> data = {
+      'date': 'abc',
+      'vessel': 'abc',
+      'voyage': 'abc',
+      'payer': 'abc',
+      'consignee': 'abc',
+      'serviceTerm': 'abc',
+      'term': 'abc',
+      'paymentTerm': 'abc',
+      'statusBooking': 'abc',
+      'volumes': [
+        {
+          'commodityConts': 'abc',
+          'typeConts': 'abc',
+          'sizeConts': 'abc',
+          'statusConts': 'abc',
+          'volumeConts': 'abc',
+          'weightConts': 'abc',
+          'temperatureConts': 'abc',
+          'dg': 'abc',
+          'dgUnNo': 'abc',
+          'dgClass': 'abc',
+        }
+      ],
+      'depots': [
+        {
+          'depotId': 'abc',
+          'depotName': 'abc',
+          'sizeConts': 'abc',
+          'volumeConts': 'abc'
+        }
+      ]
+    };
+    var body = json.encode(data);
+    final response = await http.post(Uri.parse(URL_NEW_BOOKING),
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+          // "Authorization": "Bearer ${informationController.authorize.value}",
+        },
+        body: body);
+    if (response.statusCode == 200) {
+      print('Success post booking');
+    } else {
+      print('Error');
+      throw Exception('Error to Create');
+    }
   }
 }
 

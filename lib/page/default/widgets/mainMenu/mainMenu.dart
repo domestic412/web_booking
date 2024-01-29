@@ -7,6 +7,7 @@ import 'package:web_booking/page/default/widgets/mainMenu/title/title_booking.da
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_combine.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_schedule.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_tracking.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 // ignore: camel_case_types
@@ -86,7 +87,11 @@ class _mainMenuState extends State<mainMenu> {
                           child: InkWell(
                             onTap: () {
                               // context.go(AppRoutes.signUpRoute);
-                              Get.toNamed(GetRoutes.SignIn);
+                              // Get.toNamed(GetRoutes.SignIn);
+                              informationController.tenNV.value == ''
+                                  ? Get.toNamed(GetRoutes.SignIn)
+                                  : Get.toNamed(GetRoutes.Home);
+                              currentRouteController.route.value = 'service';
                             },
                             child: Container(
                               alignment: Alignment.center,
@@ -96,10 +101,10 @@ class _mainMenuState extends State<mainMenu> {
                                   color: signUp_color,
                                   borderRadius: BorderRadius.circular(15)),
                               child: Text(
-                                'signup'.tr,
+                                'Service'.tr,
                                 style: TextStyle(
                                     fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    // fontWeight: FontWeight.bold,
                                     color: white),
                               ),
                             ),

@@ -11,6 +11,7 @@ import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 import '../../constants/variable.dart';
+import 'controller_signin.dart/info_signin_controller.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -118,7 +119,6 @@ class _SignInPageState extends State<SignInPage> {
             );
             var body = response.body;
             String dataAuthorize = jsonDecode(body.toString())['token'];
-
             // // print(data['token']);
             Map<String, dynamic> decodedToken =
                 JwtDecoder.decode(dataAuthorize);
@@ -138,7 +138,26 @@ class _SignInPageState extends State<SignInPage> {
             _user.clear();
             _password.clear();
 
-            Get.toNamed(GetRoutes.Home);
+            informationController.updateInfomationSignIn(
+                authorize: box.read(authorize_signin).toString().obs,
+                maNV: box.read(maNV_signin).toString().obs,
+                tenNV: box.read(tenNV_signin).toString().obs,
+                author: box.read(author_signin).toString().obs,
+                code: box.read(code_signin).toString().obs);
+
+            switch (currentRouteController.route.value) {
+              case 'default':
+                Get.toNamed(GetRoutes.defaultRoute);
+                break;
+              case 'booking':
+                Get.toNamed(GetRoutes.BookingRequest);
+                break;
+              case 'service':
+                Get.toNamed(GetRoutes.Home);
+                break;
+              default:
+                Get.toNamed(GetRoutes.defaultRoute);
+            }
           default:
             CircularProgressIndicator(
               value: 0.0,

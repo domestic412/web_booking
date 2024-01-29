@@ -43,29 +43,16 @@ class CreateBookingController extends GetxController {
   var boolError = false.obs;
 
   var countRowContainer = 0.obs;
-  RxList<Volumes>? listInfoContainer;
-
-  // void updateCreateBookingController({
-  //   @required cntrno,
-  //   @required sizeType,
-  //   @required soLanKetHop,
-  //   @required ghiChuTinhTrang,
-  //   @required luuYSuDung,
-  //   @required ketQua,
-  //   @required approval,
-  //   @required shipper,
-  //   @required remark,
-  //   @required updateTime,
-  // }) {
-  //   // this.cntrno = cntrno;
-  //   // this.sizeType = sizeType;
-  //   // this.soLanKetHop = soLanKetHop;
-  //   // this.ghiChuTinhTrang = ghiChuTinhTrang;
-  //   this.luuYSuDung = luuYSuDung;
-  //   this.ketQua = ketQua;
-  //   this.approval = approval;
-  //   this.shipper = shipper;
-  //   this.remark = remark;
-  //   this.updateTime = updateTime;
-  // }
+  Rx<Volumes> listInfoContainer = Volumes(
+          commodityConts: '',
+          typeConts: '',
+          sizeConts: '',
+          statusConts: '',
+          volumeConts: '',
+          weightConts: '',
+          temperatureConts: '',
+          dg: '',
+          dgUnNo: '',
+          dgClass: '')
+      .obs;
 }
