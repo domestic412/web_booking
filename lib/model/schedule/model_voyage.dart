@@ -52,6 +52,7 @@ class Voyage {
             // List dataVoyage = json.decode(body);
             // return dataVoyage.map((data) => Voyage.fromJson(data)).toList();
             final dataVoyage = json.decode(body);
+            print(dataVoyage);
             return Voyage.fromJson(dataVoyage);
           default:
             throw Exception(response.reasonPhrase);

@@ -41,6 +41,8 @@ String? idDepo;
 int? soluongContDepo;
 String? sizeContDepo;
 
+List<Depots> listPickDepo = <Depots>[];
+
 // Port select in Booking page and Schedule
 String? dateSelect;
 String port1 = '';

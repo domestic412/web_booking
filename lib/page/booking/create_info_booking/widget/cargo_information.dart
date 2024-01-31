@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
+import 'package:web_booking/page/default/widgets/mainMenu/mainMenu.dart';
 
 class CargoInformation extends StatefulWidget {
   const CargoInformation({
@@ -267,6 +268,24 @@ class _CargoInformationState extends State<CargoInformation> {
                     ),
             ],
           ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                  margin: EdgeInsets.only(left: 50),
+                  width: 90,
+                  child: Text('Note Request')),
+              // SizedBox(width: 20),
+              Container(
+                width: 800,
+                child: TextField(
+                  controller: createBookingController.inputNoteRequest.value,
+                  decoration: InputDecoration(border: OutlineInputBorder()),
+                ),
+              )
+            ],
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -274,7 +293,7 @@ class _CargoInformationState extends State<CargoInformation> {
                 margin: EdgeInsets.only(top: 10, right: 50),
                 child: Row(
                   children: [
-                    createBookingController.boolError.value == true
+                    createBookingController.boolErrorAdd.value == true
                         ? Text(
                             'Please fill in the information in the empty box',
                             style: TextStyle(color: Colors.red),
@@ -313,14 +332,28 @@ class _CargoInformationState extends State<CargoInformation> {
                               (createBookingController.inputCommodity.value.text
                                       .trim() ==
                                   '')) {
-                            createBookingController.boolError.value = true;
+                            //miss field input
+                            createBookingController.boolErrorAdd.value = true;
                           } else {
-                            createBookingController.boolError.value = false;
-                            createBookingController.countRowContainer.value = 1;
+                            //accept add cont
+                            createBookingController.boolErrorAdd.value = false;
+                            //accept send request
+                            createBookingController
+                                .boolErrorBookingRequest.value = false;
+                            //count row cont
+                            createBookingController.countRowContainer.value =
+                                createBookingController
+                                        .countRowContainer.value +
+                                    1;
                             if (createBookingController
                                     .currentStatusContainer.value ==
                                 'E') {
                               createBookingController.inputWeight.value.clear();
+                              createBookingController.inputTemp.value.clear();
+                            }
+                            if (createBookingController
+                                    .currentTypeContainer.value ==
+                                'DRY') {
                               createBookingController.inputTemp.value.clear();
                             }
                             if (createBookingController
@@ -330,13 +363,41 @@ class _CargoInformationState extends State<CargoInformation> {
                               createBookingController.inputDGClass.value
                                   .clear();
                             }
-                            createBookingController.listInfoContainer.value = Volumes(
+                            switch (
+                                '${createBookingController.currentSizeContainer.value}-${createBookingController.currentTypeContainer.value}') {
+                              case '20-DRY':
+                                createBookingController
+                                    .realSizeContainer.value = '20DC';
+                              case '40-DRY':
+                                createBookingController
+                                    .realSizeContainer.value = '40HC';
+                              case '45-DRY':
+                                createBookingController
+                                    .realSizeContainer.value = '45HC';
+                              case '53-DRY':
+                                createBookingController
+                                    .realSizeContainer.value = '53HC';
+                              case '20-REEFER':
+                                createBookingController
+                                    .realSizeContainer.value = '20RF';
+                              case '40-REEFER':
+                                createBookingController
+                                    .realSizeContainer.value = '40RF';
+                              case '45-REEFER':
+                                createBookingController
+                                    .realSizeContainer.value = '45RF';
+                              case '53-REEFER':
+                                createBookingController
+                                    .realSizeContainer.value = '53RF';
+                              default:
+                                createBookingController
+                                    .realSizeContainer.value = 'unknown';
+                            }
+                            Volumes _listInfoContainer = Volumes(
                                 commodityConts: createBookingController
                                     .inputCommodity.value.text,
-                                typeConts: createBookingController
-                                    .currentTypeContainer.value,
                                 sizeConts: createBookingController
-                                    .currentSizeContainer.value,
+                                    .realSizeContainer.value,
                                 statusConts: createBookingController
                                     .currentStatusContainer.value,
                                 volumeConts: createBookingController
@@ -352,6 +413,9 @@ class _CargoInformationState extends State<CargoInformation> {
                                     .inputDGunNo.value.text,
                                 dgClass: createBookingController
                                     .inputDGClass.value.text);
+                            // add info cont to list
+                            createBookingController.listInfoContainer
+                                .add(_listInfoContainer);
                           }
                         },
                         child: Text('ADD CONTAINER')),

@@ -1,9 +1,13 @@
 import 'dart:convert';
 
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:http/http.dart' as http;
 
+import 'storage_controller/detail_booking_request_controller.dart';
+
 class BookingRequest {
+  int? id;
   String? date;
   String? vessel;
   String? voyage;
@@ -12,10 +16,16 @@ class BookingRequest {
   String? serviceTerm;
   String? term;
   String? paymentTerm;
+  String? statusBooking;
+  String? processUser;
+  String? updateTime;
+  String? noteRequestByUser;
   List<Volumes>? volumes;
+  List<Depots>? depots;
 
   BookingRequest(
-      {this.date,
+      {this.id,
+      this.date,
       this.vessel,
       this.voyage,
       this.payer,
@@ -23,9 +33,15 @@ class BookingRequest {
       this.serviceTerm,
       this.term,
       this.paymentTerm,
-      this.volumes});
+      this.statusBooking,
+      this.processUser,
+      this.updateTime,
+      this.noteRequestByUser,
+      this.volumes,
+      this.depots});
 
   BookingRequest.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     date = json['date'];
     vessel = json['vessel'];
     voyage = json['voyage'];
@@ -34,16 +50,27 @@ class BookingRequest {
     serviceTerm = json['serviceTerm'];
     term = json['term'];
     paymentTerm = json['paymentTerm'];
+    statusBooking = json['statusBooking'];
+    processUser = json['processUser'];
+    updateTime = json['updateTime'];
+    noteRequestByUser = json['noteRequestByUser'];
     if (json['volumes'] != null) {
       volumes = <Volumes>[];
       json['volumes'].forEach((v) {
         volumes!.add(new Volumes.fromJson(v));
       });
     }
+    if (json['depots'] != null) {
+      depots = <Depots>[];
+      json['depots'].forEach((v) {
+        depots!.add(new Depots.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     data['date'] = this.date;
     data['vessel'] = this.vessel;
     data['voyage'] = this.voyage;
@@ -52,66 +79,71 @@ class BookingRequest {
     data['serviceTerm'] = this.serviceTerm;
     data['term'] = this.term;
     data['paymentTerm'] = this.paymentTerm;
+    data['statusBooking'] = this.statusBooking;
+    data['processUser'] = this.processUser;
+    data['updateTime'] = this.updateTime;
+    data['noteRequestByUser'] = this.noteRequestByUser;
     if (this.volumes != null) {
       data['volumes'] = this.volumes!.map((v) => v.toJson()).toList();
+    }
+    if (this.depots != null) {
+      data['depots'] = this.depots!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 
-  Future<void> PostBookingRequest() async {
-    Map<String, dynamic> data = {
-      'date': 'abc',
-      'vessel': 'abc',
-      'voyage': 'abc',
-      'payer': 'abc',
-      'consignee': 'abc',
-      'serviceTerm': 'abc',
-      'term': 'abc',
-      'paymentTerm': 'abc',
-      'statusBooking': 'abc',
-      'volumes': [
-        {
-          'commodityConts': 'abc',
-          'typeConts': 'abc',
-          'sizeConts': 'abc',
-          'statusConts': 'abc',
-          'volumeConts': 'abc',
-          'weightConts': 'abc',
-          'temperatureConts': 'abc',
-          'dg': 'abc',
-          'dgUnNo': 'abc',
-          'dgClass': 'abc',
-        }
-      ],
-      'depots': [
-        {
-          'depotId': 'abc',
-          'depotName': 'abc',
-          'sizeConts': 'abc',
-          'volumeConts': 'abc'
-        }
-      ]
-    };
-    var body = json.encode(data);
-    final response = await http.post(Uri.parse(URL_NEW_BOOKING),
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-          // "Authorization": "Bearer ${informationController.authorize.value}",
-        },
-        body: body);
-    if (response.statusCode == 200) {
-      print('Success post booking');
-    } else {
-      print('Error');
-      throw Exception('Error to Create');
+  Future<List<BookingRequest>> fetchBookingRequestList() async {
+    try {
+      var url =
+          '$SERVER/NewBooking/GetByUser?user=${informationController.tenNV.value}';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+        // "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List Request');
+          List dataBookingRequestList = json.decode(body);
+          return dataBookingRequestList
+              .map((data) => BookingRequest.fromJson(data))
+              .toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      return throw Exception(e);
+    }
+  }
+
+  Future<List<BookingRequest>> fetchBookingRequestListAll() async {
+    try {
+      var url = '$SERVER/NewBooking/GetAll';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+        // "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List Request');
+          List dataBookingRequestList = json.decode(body);
+          return dataBookingRequestList
+              .map((data) => BookingRequest.fromJson(data))
+              .toList();
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      return throw Exception(e);
     }
   }
 }
 
 class Volumes {
   String? commodityConts;
-  String? typeConts;
   String? sizeConts;
   String? statusConts;
   String? volumeConts;
@@ -123,7 +155,6 @@ class Volumes {
 
   Volumes(
       {this.commodityConts,
-      this.typeConts,
       this.sizeConts,
       this.statusConts,
       this.volumeConts,
@@ -135,7 +166,6 @@ class Volumes {
 
   Volumes.fromJson(Map<String, dynamic> json) {
     commodityConts = json['commodityConts'];
-    typeConts = json['typeConts'];
     sizeConts = json['sizeConts'];
     statusConts = json['statusConts'];
     volumeConts = json['volumeConts'];
@@ -149,7 +179,6 @@ class Volumes {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['commodityConts'] = this.commodityConts;
-    data['typeConts'] = this.typeConts;
     data['sizeConts'] = this.sizeConts;
     data['statusConts'] = this.statusConts;
     data['volumeConts'] = this.volumeConts;
@@ -159,5 +188,82 @@ class Volumes {
     data['dgUnNo'] = this.dgUnNo;
     data['dgClass'] = this.dgClass;
     return data;
+  }
+
+  Future<void> fetchDetailBookingVolume(int bk) async {
+    try {
+      var url = '$SERVER/NewBooking/GetVolumeById?id=$bk';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        // "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List Request Detail');
+          List dataDetail = jsonDecode(body);
+          try {
+            dataDetailBookingRequestController.detailListInfoContainer.value =
+                dataDetail;
+          } catch (e) {
+            print('Error data fetch Detail Request have null - $e');
+          }
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Detail Request - $e');
+    }
+  }
+}
+
+class Depots {
+  String? depotId;
+  String? depotName;
+  String? sizeConts;
+  String? volumeConts;
+
+  Depots({this.depotId, this.depotName, this.sizeConts, this.volumeConts});
+
+  Depots.fromJson(Map<String, dynamic> json) {
+    depotId = json['depotId'];
+    depotName = json['depotName'];
+    sizeConts = json['sizeConts'];
+    volumeConts = json['volumeConts'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['depotId'] = this.depotId;
+    data['depotName'] = this.depotName;
+    data['sizeConts'] = this.sizeConts;
+    data['volumeConts'] = this.volumeConts;
+    return data;
+  }
+
+  Future<void> fetchDetailBookingDepots(int bk) async {
+    try {
+      var url = '$SERVER/NewBooking/GetDepotById?id=$bk';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        // "Authorization": "Bearer ${informationController.authorize.value}",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data List Request Detail');
+          List dataDetail = jsonDecode(body);
+          try {
+            dataDetailBookingRequestController.detailListDepots.value =
+                dataDetail;
+          } catch (e) {
+            print('Error data fetch Detail Request have null - $e');
+          }
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch Detail Request - $e');
+    }
   }
 }

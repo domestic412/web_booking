@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:web_booking/screen/approval_list/approval_list_page.dart';
 import 'package:web_booking/screen/approval_list/detail_approval/detail_approval_page.dart';
+import 'package:web_booking/screen/booking_list/booking_list_page.dart';
+import 'package:web_booking/screen/booking_list/detail_booking/detail_booking_request_page.dart';
 import 'package:web_booking/screen/checking_combine/checking_combine_page.dart';
 import 'package:web_booking/screen/container_stock/container_stock_page.dart';
 import 'package:web_booking/screen/container_stock/import_file_page.dart';
@@ -8,6 +10,8 @@ import 'package:web_booking/screen/dashboard/dashboard_page.dart';
 import 'package:web_booking/screen/history_list/history_list_page.dart';
 import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality_page.dart';
 import 'package:web_booking/screen/quality_list/quality_list_page.dart';
+import 'package:web_booking/screen/release_booking_list/detail_release_booking/detail_release_booking_request_page.dart';
+import 'package:web_booking/screen/release_booking_list/release_booking_list_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_request_page.dart';
 import 'package:web_booking/screen/request_list/request_list_page.dart';
@@ -23,8 +27,12 @@ const dashboard = 'dashboard';
 const userList = 'userlist';
 const cudUser = 'cudUser';
 const changePass = 'changePass';
+const releaseBookingList = 'releaseBookingList';
+const detailReleaseBookingList = 'detailReleaseBookingList';
 const approvalList = 'approvalList';
 const detailApproval = 'detailApproval';
+const bookingRequestList = 'bookingRequestList';
+const detailBookingRequest = 'detailBookingRequest';
 const requestList = 'requestList';
 const detailRequest = 'detailRequest';
 const sendRequest = 'sendRequest';
@@ -51,11 +59,21 @@ class SideBarController extends GetxController {
         return CUD_UserPage();
       case changePass:
         return ChangePassword_UserPage();
+      case releaseBookingList:
+        return ReleaseBookingListPage();
+      case detailReleaseBookingList:
+        return DetailReleaseBookingRequestPage();
       case approvalList:
         return ApprovalListPage();
       case detailApproval:
         // Get.toNamed(GetRoutes.DetailApproval);
         return DetailApprovalPage();
+      case bookingRequestList:
+        // Get.toNamed(GetRoutes.RequestList);
+        return BookingListPage();
+      case detailBookingRequest:
+        // Get.toNamed(GetRoutes.RequestList);
+        return DetailBookingRequestPage();
       case requestList:
         // Get.toNamed(GetRoutes.RequestList);
         return RequestListPage();

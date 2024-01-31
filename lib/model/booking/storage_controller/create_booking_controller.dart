@@ -29,6 +29,8 @@ class CreateBookingController extends GetxController {
   var listTypeContainer = ['DRY', 'REEFER'].obs;
   var currentTypeContainer = 'DRY'.obs;
 
+  var realSizeContainer = '20DC'.obs;
+
   var listStatusContainer = ['F', 'E'].obs;
   var currentStatusContainer = 'F'.obs;
 
@@ -39,20 +41,22 @@ class CreateBookingController extends GetxController {
   var boolContDangerous = false.obs;
   var inputDGunNo = TextEditingController().obs;
   var inputDGClass = TextEditingController().obs;
+  var inputNoteRequest = TextEditingController().obs;
 
-  var boolError = false.obs;
+  var boolErrorAdd = false.obs;
+  var boolErrorBookingRequest = true.obs;
 
+  var statusBookingRequest = 'N'.obs;
   var countRowContainer = 0.obs;
-  Rx<Volumes> listInfoContainer = Volumes(
-          commodityConts: '',
-          typeConts: '',
-          sizeConts: '',
-          statusConts: '',
-          volumeConts: '',
-          weightConts: '',
-          temperatureConts: '',
-          dg: '',
-          dgUnNo: '',
-          dgClass: '')
-      .obs;
+
+  RxList<Volumes> listInfoContainer = <Volumes>[].obs;
+
+  RxList<Depots> listInfoDepo = <Depots>[
+    Depots(
+      depotId: '',
+      depotName: '',
+      sizeConts: '',
+      volumeConts: '',
+    )
+  ].obs;
 }

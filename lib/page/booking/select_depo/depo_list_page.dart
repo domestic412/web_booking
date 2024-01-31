@@ -89,20 +89,7 @@ class List_depo extends StatelessWidget {
                     minimumSize: const Size(180, 45),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)))),
-                onPressed: () {
-                  // if (idPort1 == idPort2) {
-                  //   // alertSelectPort.showAlertSamePort(context);
-                  // } else if (idPort1 == null || idPort2 == null) {
-                  //   // alertSelectPort.showAlertPort(context);
-                  // } else {
-                  //   setState(() {
-                  //     fetchVoyage = Voyage().fetchDataVoyage(
-                  //         idPort1.toString(),
-                  //         idPort2.toString(),
-                  //         dateSelect!);
-                  //   });
-                  // }
-                },
+                onPressed: () {},
                 child: Text(
                   'Send Request',
                   style: style_text_button_detail,

@@ -37,21 +37,62 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                     style: style_title_page,
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Schedule',
+                          style: TextStyle(fontSize: 25, color: haian)),
+                    ],
                   ),
                   Divider(
                     color: normalColor,
                     height: 1,
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 10),
                   RouteInformationWidget(),
                   const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Person in charge',
+                          style: TextStyle(fontSize: 25, color: haian)),
+                    ],
+                  ),
+                  Divider(
+                    color: normalColor,
+                    height: 1,
+                  ),
+                  const SizedBox(height: 10),
                   ConsigneeWidget(),
                   const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Term',
+                          style: TextStyle(fontSize: 25, color: haian)),
+                    ],
+                  ),
+                  Divider(
+                    color: normalColor,
+                    height: 1,
+                  ),
+                  const SizedBox(height: 10),
                   ServiceWidget(),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Information Cargo',
+                          style: TextStyle(fontSize: 25, color: haian)),
+                    ],
+                  ),
+                  Divider(
+                    color: normalColor,
+                    height: 1,
+                  ),
+                  const SizedBox(height: 20),
                   CargoInformation(),
                   TableInformationContainer(),
                   const SizedBox(height: 10),

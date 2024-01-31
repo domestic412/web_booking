@@ -45,6 +45,14 @@ class _DrawItemsState extends State<DrawItems> {
                               controller.selectWidget.value = userList;
                             }),
                         ListTile(
+                            title: Text('Release Booking List',
+                                style: TextStyle(color: white)),
+                            onTap: () {
+                              // Get.toNamed(GetRoutes.ApprovalList);
+                              controller.selectWidget.value =
+                                  releaseBookingList;
+                            }),
+                        ListTile(
                             title: Text('Approval List',
                                 style: TextStyle(color: white)),
                             onTap: () {
@@ -112,6 +120,13 @@ class _DrawItemsState extends State<DrawItems> {
                     });
                   },
                   children: [
+                    ListTile(
+                        title: Text('Booking Request List',
+                            style: TextStyle(color: white)),
+                        onTap: () {
+                          // Get.toNamed(GetRoutes.RequestList);
+                          controller.selectWidget.value = bookingRequestList;
+                        }),
                     ListTile(
                         title: Text('Request List',
                             style: TextStyle(color: white)),

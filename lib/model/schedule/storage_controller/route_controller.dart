@@ -8,7 +8,9 @@ class RouteController extends GetxController {
   var voy = ''.obs;
   var date = ''.obs;
   var pol = ''.obs;
+  var polID = ''.obs;
   var pod = ''.obs;
+  var podID = ''.obs;
 
   void updateRouteController({
     @required vessel,

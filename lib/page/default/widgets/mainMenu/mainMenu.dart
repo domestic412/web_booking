@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_booking.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_combine.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/title/title_schedule.dart';
@@ -92,6 +93,7 @@ class _mainMenuState extends State<mainMenu> {
                                   ? Get.toNamed(GetRoutes.SignIn)
                                   : Get.toNamed(GetRoutes.Home);
                               currentRouteController.route.value = 'service';
+                              controller.selectWidget.value = dashboard;
                             },
                             child: Container(
                               alignment: Alignment.center,

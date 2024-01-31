@@ -5,6 +5,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
+import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/page/booking/widgets/select_port_list.dart';
 import 'package:web_booking/page/booking/widgets/voyage_list.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
@@ -115,6 +116,10 @@ class _BookingPageState extends State<BookingPage> {
                               // alertSelectPort.showAlertPort(context);
                             } else {
                               setState(() {
+                                routeController.polID.value =
+                                    idPort1.toString();
+                                routeController.podID.value =
+                                    idPort2.toString();
                                 fetchVoyage = Voyage().fetchDataVoyage(
                                     idPort1.toString(),
                                     idPort2.toString(),

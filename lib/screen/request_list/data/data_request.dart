@@ -31,7 +31,8 @@ class DataTableRequest extends DataTableSource {
   List<RequestList> filter_trangthaiYC(String query) {
     return data!
         .where((item) =>
-            (item.trangThaiYc?.contains(query.toUpperCase()) ?? false))
+            (item.trangThaiYc?.toUpperCase().contains(query.toUpperCase()) ??
+                false))
         .toList();
   }
 

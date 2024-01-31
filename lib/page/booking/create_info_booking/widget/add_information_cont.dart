@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 
 class TableInformationContainer extends StatefulWidget {
@@ -15,6 +14,7 @@ class TableInformationContainer extends StatefulWidget {
 class _TableInformationContainerState extends State<TableInformationContainer> {
   @override
   Widget build(BuildContext context) {
+    print(createBookingController.listInfoContainer);
     return Obx(
       () => Container(
         width: 904,
@@ -55,14 +55,6 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                 label: Expanded(
                   child: Text(
                     'Size',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
-                ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Type',
                     style: TextStyle(fontStyle: FontStyle.italic),
                   ),
                 ),
@@ -117,51 +109,50 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
               ),
             ],
             rows: <DataRow>[
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text(createBookingController.countRowContainer.value
-                      .toString())),
-                  DataCell(Text(createBookingController
-                      .listInfoContainer.value.commodityConts!)),
-                  DataCell(Text(createBookingController
-                      .listInfoContainer.value.sizeConts!)),
-                  DataCell(Text(createBookingController
-                      .listInfoContainer.value.typeConts!)),
-                  DataCell(Text(createBookingController
-                      .listInfoContainer.value.statusConts!)),
-                  DataCell(Text(createBookingController
-                      .listInfoContainer.value.volumeConts!)),
-                  DataCell(Text(createBookingController
-                      .listInfoContainer.value.weightConts!)),
-                  DataCell(Text(createBookingController
-                      .listInfoContainer.value.temperatureConts!)),
-                  DataCell(Text(
-                      createBookingController.listInfoContainer.value.dg!)),
-                  DataCell(createBookingController.countRowContainer.value != 0
-                      ? InkWell(
-                          onTap: () {
-                            createBookingController.countRowContainer.value =
-                                createBookingController
-                                        .countRowContainer.value -
-                                    1;
-                            createBookingController.listInfoContainer.value =
-                                Volumes(
-                                    commodityConts: '',
-                                    typeConts: '',
-                                    sizeConts: '',
-                                    statusConts: '',
-                                    volumeConts: '',
-                                    weightConts: '',
-                                    temperatureConts: '',
-                                    dg: '',
-                                    dgUnNo: '',
-                                    dgClass: '');
-                          },
-                          child: Icon(Icons.delete),
-                        )
-                      : Text('')),
-                ],
-              ),
+              for (int i = 0;
+                  i < createBookingController.countRowContainer.value;
+                  i++)
+                DataRow(
+                  cells: <DataCell>[
+                    DataCell(Text((i + 1).toString())),
+                    DataCell(Text(createBookingController
+                        .listInfoContainer[i].commodityConts!)),
+                    DataCell(Text(createBookingController
+                        .listInfoContainer[i].sizeConts!)),
+                    DataCell(Text(createBookingController
+                        .listInfoContainer[i].statusConts!)),
+                    DataCell(Text(createBookingController
+                        .listInfoContainer[i].volumeConts!)),
+                    DataCell(Text(createBookingController
+                        .listInfoContainer[i].weightConts!)),
+                    DataCell(Text(createBookingController
+                        .listInfoContainer[i].temperatureConts!)),
+                    DataCell(
+                        Text(createBookingController.listInfoContainer[i].dg!)),
+                    DataCell(createBookingController.countRowContainer.value !=
+                            0
+                        ? InkWell(
+                            onTap: () {
+                              //remove infoContainer in listInfoContainer
+                              createBookingController.listInfoContainer
+                                  .removeAt(i);
+                              // subtract countRowContianer
+                              createBookingController.countRowContainer.value =
+                                  createBookingController
+                                          .countRowContainer.value -
+                                      1;
+                              // if countRowContianer = 0 then Error Send Eequest
+                              createBookingController.countRowContainer.value ==
+                                      0
+                                  ? createBookingController
+                                      .boolErrorBookingRequest.value = true
+                                  : null;
+                            },
+                            child: Icon(Icons.delete),
+                          )
+                        : Text('')),
+                  ],
+                ),
             ],
           ),
         ),

@@ -22,9 +22,14 @@ class AppbarWidget extends StatelessWidget {
       ),
       title: Row(
         children: [
-          Text(
-            'Hai An Container',
-            style: TextStyle(color: haian),
+          InkWell(
+            onTap: () {
+              Get.toNamed(GetRoutes.defaultRoute);
+            },
+            child: Text(
+              'Hai An Container',
+              style: TextStyle(color: haian),
+            ),
           ),
           Expanded(child: Container()),
           const SizedBox(
