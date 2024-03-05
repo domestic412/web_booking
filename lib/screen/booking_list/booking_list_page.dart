@@ -30,7 +30,7 @@ class _BookingListPageState extends State<BookingListPage> {
               _list_filter = _dataBookingRequest;
             })
           });
-      print('initial Request List');
+      print('initial Booking Request List');
     } catch (e) {
       print('Error call data RequestList: $e');
     }
@@ -233,15 +233,15 @@ class _BookingListPageState extends State<BookingListPage> {
                           ),
                         ),
                       ),
-                      DataColumn(
-                        label: SizedBox(
-                          // width: 400,
-                          child: Text(
-                            'Process User'.tr,
-                            style: style_text_Table_small_bold,
-                          ),
-                        ),
-                      ),
+                      // DataColumn(
+                      //   label: SizedBox(
+                      //     // width: 400,
+                      //     child: Text(
+                      //       'Process User'.tr,
+                      //       style: style_text_Table_small_bold,
+                      //     ),
+                      //   ),
+                      // ),
                       DataColumn(
                         label: Container(
                           width: 130,

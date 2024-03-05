@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/model/booking/storage_controller/detail_booking_request_controller.dart';
-import 'package:web_booking/page/default/widgets/mainMenu/mainMenu.dart';
 
 class DetailListInfoContainer_BookingRequest extends StatelessWidget {
   @override
@@ -15,6 +14,7 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -24,7 +24,8 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
                         child: Text(
                           dataDetailBookingRequestController
@@ -45,9 +46,9 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
-                        // width: 100,
                         child: Text(
                           dataDetailBookingRequestController
                               .detailListInfoContainer[index]['sizeConts'],
@@ -63,9 +64,9 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
-                        // width: 100,
                         child: Text(
                           dataDetailBookingRequestController
                               .detailListInfoContainer[index]['statusConts'],
@@ -81,9 +82,9 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
-                        // width: 100,
                         child: Text(
                           dataDetailBookingRequestController
                               .detailListInfoContainer[index]['volumeConts'],
@@ -105,9 +106,9 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
-                                  // width: 100,
                                   child: Text(
                                     dataDetailBookingRequestController
                                             .detailListInfoContainer[index]
@@ -134,9 +135,9 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
-                                  // width: 100,
                                   child: Text(
                                     dataDetailBookingRequestController
                                             .detailListInfoContainer[index]
@@ -160,9 +161,9 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
-                                  // width: 100,
                                   child: Text(
                                     dataDetailBookingRequestController
                                             .detailListInfoContainer[index]
@@ -179,9 +180,9 @@ class DetailListInfoContainer_BookingRequest extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
-                                  // width: 100,
                                   child: Text(
                                     dataDetailBookingRequestController
                                             .detailListInfoContainer[index]

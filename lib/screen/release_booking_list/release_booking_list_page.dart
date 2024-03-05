@@ -4,7 +4,6 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
-import 'package:web_booking/screen/booking_list/data/data_booking.dart';
 
 import 'data/data_release_booking.dart';
 // import 'package:easy_localization/easy_localization.dart';
@@ -237,15 +236,14 @@ class _ReleaseBookingListPageState extends State<ReleaseBookingListPage> {
                           ),
                         ),
                       ),
-                      DataColumn(
-                        label: SizedBox(
-                          // width: 400,
-                          child: Text(
-                            'Process User'.tr,
-                            style: style_text_Table_small_bold,
-                          ),
-                        ),
-                      ),
+                      // DataColumn(
+                      //   label: SizedBox(
+                      //     child: Text(
+                      //       'Process User'.tr,
+                      //       style: style_text_Table_small_bold,
+                      //     ),
+                      //   ),
+                      // ),
                       DataColumn(
                         label: Container(
                           width: 130,

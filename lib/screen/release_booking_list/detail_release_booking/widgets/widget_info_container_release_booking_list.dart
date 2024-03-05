@@ -30,7 +30,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
                         child: Text(
                           dataDetailBookingRequestController
@@ -51,7 +52,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
@@ -69,7 +71,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
@@ -87,7 +90,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[500]),
+                            // color: Colors.grey[500]
+                            border: Border.all()),
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
@@ -111,7 +115,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
                                   // width: 100,
                                   child: Text(
@@ -140,7 +145,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
                                   child: Text(
                                     dataDetailBookingRequestController
@@ -165,7 +171,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
                                   // width: 100,
                                   child: Text(
@@ -184,7 +191,8 @@ class _DetailListInfoContainer_ReleaseBookingState
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[500]),
+                                      // color: Colors.grey[500]
+                                      border: Border.all()),
                                   alignment: Alignment.center,
                                   // width: 100,
                                   child: Text(

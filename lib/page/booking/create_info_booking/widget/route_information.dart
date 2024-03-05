@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 
@@ -16,8 +15,8 @@ class RouteInformationWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 70),
-                    width: 70,
+                    margin: EdgeInsets.only(left: 50),
+                    width: 90,
                     child: Text(
                       'Vessel',
                       style: style_text_Table_small,
@@ -109,15 +108,12 @@ class RouteInformationWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 70),
+                    margin: EdgeInsets.only(left: 50),
                     width: 100,
                     child: Text(
                       'Port to loading',
                       style: style_text_Table_small,
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10,
                   ),
                   Container(
                       padding: EdgeInsets.all(10),

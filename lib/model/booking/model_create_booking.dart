@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/utils/getx_route.dart';
 
 import 'storage_controller/detail_booking_request_controller.dart';
 
@@ -109,6 +111,9 @@ class BookingRequest {
           return dataBookingRequestList
               .map((data) => BookingRequest.fromJson(data))
               .toList();
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
         default:
           throw Exception(response.reasonPhrase);
       }
@@ -133,6 +138,9 @@ class BookingRequest {
           return dataBookingRequestList
               .map((data) => BookingRequest.fromJson(data))
               .toList();
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
         default:
           throw Exception(response.reasonPhrase);
       }
@@ -208,6 +216,9 @@ class Volumes {
           } catch (e) {
             print('Error data fetch Detail Request have null - $e');
           }
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
         default:
           throw Exception(response.reasonPhrase);
       }
@@ -259,6 +270,9 @@ class Depots {
           } catch (e) {
             print('Error data fetch Detail Request have null - $e');
           }
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
         default:
           throw Exception(response.reasonPhrase);
       }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/page/booking/create_info_booking/widget/service.dart';
@@ -29,7 +30,7 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
               decoration: BoxDecoration(
                   color: contentColor, borderRadius: BorderRadius.circular(10)),
               width: 1004,
-              padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: Column(
                 children: [
                   SelectableText(
@@ -37,55 +38,82 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                     style: style_title_page,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text('Schedule',
-                          style: TextStyle(fontSize: 25, color: haian)),
+                          style: TextStyle(fontSize: 20, color: haian)),
+                      Container(
+                          height: 20,
+                          margin:
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          child: VerticalDivider(
+                            color: grey,
+                            width: 1,
+                          )),
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Row(
+                          children: [
+                            Text(
+                              'Change Shedule',
+                              style: TextStyle(color: haian),
+                            ),
+                            SizedBox(width: 5),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 15,
+                              color: haian,
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                   Divider(
                     color: normalColor,
                     height: 1,
                   ),
-                  const SizedBox(height: 10),
-                  RouteInformationWidget(),
                   const SizedBox(height: 20),
+                  RouteInformationWidget(),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text('Person in charge',
-                          style: TextStyle(fontSize: 25, color: haian)),
+                          style: TextStyle(fontSize: 20, color: haian)),
                     ],
                   ),
                   Divider(
                     color: normalColor,
                     height: 1,
                   ),
-                  const SizedBox(height: 10),
-                  ConsigneeWidget(),
                   const SizedBox(height: 20),
+                  ConsigneeWidget(),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text('Term',
-                          style: TextStyle(fontSize: 25, color: haian)),
+                          style: TextStyle(fontSize: 20, color: haian)),
                     ],
                   ),
                   Divider(
                     color: normalColor,
                     height: 1,
                   ),
-                  const SizedBox(height: 10),
-                  ServiceWidget(),
                   const SizedBox(height: 20),
+                  ServiceWidget(),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text('Information Cargo',
-                          style: TextStyle(fontSize: 25, color: haian)),
+                          style: TextStyle(fontSize: 20, color: haian)),
                     ],
                   ),
                   Divider(
@@ -95,7 +123,7 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                   const SizedBox(height: 20),
                   CargoInformation(),
                   TableInformationContainer(),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
                   ButtonBookingRequest(),
                 ],
               ),

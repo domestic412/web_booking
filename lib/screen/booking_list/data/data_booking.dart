@@ -74,7 +74,7 @@ class DataTableBookingRequest extends DataTableSource {
     rowData.processUser ??= '';
     rowData.noteRequestByUser ??= '';
     rowData.updateTime != null
-        ? _dt = DateFormat("dd-MM-yyyy  hh:mm")
+        ? _dt = DateFormat("dd-MM-yyyy  hh:mm a")
             .format(DateTime.parse(rowData.updateTime!))
         : _dt = '';
     if (rowData.statusBooking == 'A') {
@@ -173,10 +173,10 @@ class DataTableBookingRequest extends DataTableSource {
           ),
         ),
       )),
-      DataCell(SelectableText(
-        rowData.processUser!,
-        style: style_text_Table_small,
-      )),
+      // DataCell(SelectableText(
+      //   rowData.processUser!,
+      //   style: style_text_Table_small,
+      // )),
       DataCell(SelectableText(
         _dt!,
         style: style_text_Table_small,

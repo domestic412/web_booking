@@ -5,23 +5,24 @@ import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/model/new_login/model_newlogin.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 import '../../constants/variable.dart';
-import 'controller_signin.dart/info_signin_controller.dart';
 
-class SignInPage extends StatefulWidget {
+class NewSignInPage extends StatefulWidget {
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<NewSignInPage> createState() => _NewSignInPageState();
 }
 
 TextEditingController _user = TextEditingController();
 TextEditingController _password = TextEditingController();
 
-class _SignInPageState extends State<SignInPage> {
+class _NewSignInPageState extends State<NewSignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,72 +101,24 @@ class _SignInPageState extends State<SignInPage> {
     ));
   }
 
-  Future<void> signin(String username, String password) async {
+  Future<ModelNewLogin> newSignIn(String username, String password) async {
     try {
-      var url = URL_LOGIN;
+      final url = URL_NEWLOGIN;
       Map data = {
         'username': username,
-        'password': '123@ha'.toString() + password + 'haian'.toString(),
+        'password': password,
       };
       var body = json.encode(data);
-      if (username.isNotEmpty && password.isNotEmpty) {
-        final response = await http.post(Uri.parse(url),
-            headers: {"Content-Type": "application/json"}, body: body);
-        switch (response.statusCode) {
-          case 200:
-            var body = response.body;
-            String dataAuthorize = jsonDecode(body.toString())['token'];
-            // // print(data['token']);
-            Map<String, dynamic> decodedToken =
-                JwtDecoder.decode(dataAuthorize);
-            // results = decodedToken.values.toList();
-            String manv = decodedToken['MaNV'];
-            String tennv = decodedToken['TenNV'];
-            String author = decodedToken['Author'].trim();
-            String code = decodedToken['Code'];
-
-            //add data signIn to box GetStorage
-            box.write(authorize_signin, dataAuthorize);
-            box.write(maNV_signin, manv);
-            box.write(tenNV_signin, tennv);
-            box.write(author_signin, author);
-            box.write(code_signin, code);
-
-            _user.clear();
-            _password.clear();
-
-            informationController.updateInfomationSignIn(
-                authorize: box.read(authorize_signin).toString().obs,
-                maNV: box.read(maNV_signin).toString().obs,
-                tenNV: box.read(tenNV_signin).toString().obs,
-                author: box.read(author_signin).toString().obs,
-                code: box.read(code_signin).toString().obs);
-
-            switch (currentRouteController.route.value) {
-              case 'default':
-                Get.toNamed(GetRoutes.defaultRoute);
-                break;
-              case 'booking':
-                Get.toNamed(GetRoutes.BookingRequest);
-                break;
-              case 'service':
-                Get.toNamed(GetRoutes.Home);
-                break;
-              default:
-                Get.toNamed(GetRoutes.defaultRoute);
-            }
-          default:
-            CircularProgressIndicator(
-              value: 0.0,
-            );
-            LoginAlert(context);
-        }
-      } else {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text("Invalid")));
+      final response = await http.post(Uri.parse(url),
+          headers: {"Content-Type": "application/json"}, body: body);
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          var dataNewLogIn = jsonDecode(body);
+          return ModelNewLogin.fromJson(dataNewLogIn);
       }
     } on Exception catch (e) {
-      throw Exception('Error SignIn - $e');
+      throw Exception('Error fetch Login - $e');
     }
   }
 }
@@ -185,8 +138,7 @@ Widget _buildAppbarName() {
   return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Text(
-        'welcome to HAI AN'.tr,
-        // 'Welcome to HAI AN',
+        'LOGIN'.tr,
         style: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue[900]),
       ));

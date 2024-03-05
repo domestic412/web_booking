@@ -39,6 +39,7 @@ class ImportStock {
         switch (response.statusCode) {
           case 200:
             controller.selectWidget.value = containerStock;
+
           default:
             print(response.reasonPhrase);
         }

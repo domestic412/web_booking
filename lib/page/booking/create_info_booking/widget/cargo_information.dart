@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
-import 'package:web_booking/page/default/widgets/mainMenu/mainMenu.dart';
 
 class CargoInformation extends StatefulWidget {
   const CargoInformation({
@@ -30,7 +29,7 @@ class _CargoInformationState extends State<CargoInformation> {
                   child: Text('Commodity')),
               // SizedBox(width: 20),
               Container(
-                width: 800,
+                width: 760,
                 child: TextField(
                   controller: createBookingController.inputCommodity.value,
                   decoration: InputDecoration(border: OutlineInputBorder()),
@@ -278,7 +277,7 @@ class _CargoInformationState extends State<CargoInformation> {
                   child: Text('Note Request')),
               // SizedBox(width: 20),
               Container(
-                width: 800,
+                width: 760,
                 child: TextField(
                   controller: createBookingController.inputNoteRequest.value,
                   decoration: InputDecoration(border: OutlineInputBorder()),

@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class Ports {
   String? portId;
@@ -32,6 +34,9 @@ class Ports {
           var body = response.body;
           dataPorts = json.decode(body);
           return dataPorts.map((data) => Ports.fromJson(data)).toList();
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
         default:
           throw Exception(response.reasonPhrase);
       }

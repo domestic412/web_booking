@@ -59,4 +59,35 @@ class CreateBookingController extends GetxController {
       volumeConts: '',
     )
   ].obs;
+
+  void clearDataCreateBooking() {
+    this.currentConsignee = 'Consignee 1'.obs;
+    this.boolNewConsignee = false.obs;
+    this.currentServiceTerm = 'CY/CY'.obs;
+    this.currentOptionsContainer = 'COC'.obs;
+    this.currentPaymentTerm = 'PREPAID'.obs;
+    this.inputCommodity.value.clear();
+    this.currentSizeContainer = '20'.obs;
+    this.currentTypeContainer = 'DRY'.obs;
+    this.currentStatusContainer = 'F'.obs;
+    this.inputVolume.value.clear();
+    this.inputWeight.value.clear();
+    this.inputTemp.value.clear();
+    this.boolContDangerous = false.obs;
+    this.inputDGunNo.value.clear();
+    this.inputDGClass.value.clear();
+    this.inputNoteRequest.value.clear();
+    this.boolErrorAdd = false.obs;
+    this.boolErrorBookingRequest = true.obs;
+    this.countRowContainer = 0.obs;
+    this.listInfoContainer = <Volumes>[].obs;
+    this.listInfoDepo = <Depots>[
+      Depots(
+        depotId: '',
+        depotName: '',
+        sizeConts: '',
+        volumeConts: '',
+      )
+    ].obs;
+  }
 }

@@ -17,8 +17,8 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-              margin: EdgeInsets.only(left: 70),
-              width: 70,
+              margin: EdgeInsets.only(left: 50),
+              width: 90,
               child: Text('Consignee')),
           const SizedBox(width: 10),
           createBookingController.boolNewConsignee.value == false

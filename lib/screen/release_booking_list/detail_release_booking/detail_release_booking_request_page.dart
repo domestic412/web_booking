@@ -20,7 +20,7 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
   DetailReleaseBookingRequestPage({super.key});
   String? _dt;
   double heightInfoConts = 200;
-  double heightInfoDepo = 50;
+  // double heightInfoDepo = 50;
   @override
   Widget build(BuildContext context) {
     dataDetailBookingRequestController.updateTime.value == ''
@@ -29,40 +29,40 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
             dataDetailBookingRequestController.updateTime.value));
     switch (dataDetailBookingRequestController.detailListInfoContainer.length) {
       case 1:
-        heightInfoConts = 100;
+        heightInfoConts = 110;
         break;
       case 2:
-        heightInfoConts = 200;
+        heightInfoConts = 220;
         break;
       case 3:
-        heightInfoConts = 300;
+        heightInfoConts = 330;
         break;
       case 4:
-        heightInfoConts = 400;
+        heightInfoConts = 440;
         break;
       case 5:
-        heightInfoConts = 500;
+        heightInfoConts = 550;
         break;
       default:
         heightInfoConts = 1000;
     }
-    switch (dataDetailBookingRequestController.detailListDepots.length) {
-      case 1:
-        heightInfoDepo = 50;
-        break;
-      case 2:
-        heightInfoDepo = 100;
-        break;
-      case 3:
-        heightInfoDepo = 150;
-        break;
-      case 4:
-        heightInfoDepo = 200;
-        break;
-      default:
-        heightInfoDepo = 500;
-        break;
-    }
+    // switch (dataDetailBookingRequestController.detailListDepots.length) {
+    //   case 1:
+    //     heightInfoDepo = 50;
+    //     break;
+    //   case 2:
+    //     heightInfoDepo = 100;
+    //     break;
+    //   case 3:
+    //     heightInfoDepo = 150;
+    //     break;
+    //   case 4:
+    //     heightInfoDepo = 200;
+    //     break;
+    //   default:
+    //     heightInfoDepo = 500;
+    //     break;
+    // }
     return Obx(
       () => SizedBox(
         height: deviceHeight(context),
@@ -133,7 +133,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -153,7 +154,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -172,7 +174,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -191,7 +194,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -210,7 +214,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -227,7 +232,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -252,7 +258,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -270,7 +277,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -287,8 +295,10 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               margin: EdgeInsets.only(left: 10),
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                borderRadius: BorderRadius.circular(5),
+                                // color: Colors.grey[500]
+                                //
+                              ),
                               alignment: Alignment.center,
                               // width: 100,
                               child: Text(
@@ -297,16 +307,25 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               )),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
+                      Divider(
+                        color: haian,
+                        thickness: 1,
+                      ),
                       Container(
                           height: heightInfoConts,
                           width: 1500,
                           child: DetailListInfoContainer_ReleaseBooking()),
                       const SizedBox(height: 10),
-                      Container(
-                          height: heightInfoDepo,
-                          width: 1500,
-                          child: DetailListDepots_ReleaseBooking()),
+                      // Container(
+                      //     height: heightInfoDepo,
+                      //     width: 1500,
+                      //     child: DetailListDepots_ReleaseBooking()),
+                      Divider(
+                        color: haian,
+                        thickness: 1,
+                      ),
+                      const SizedBox(height: 20),
                       Row(
                         children: [
                           Text(
@@ -318,7 +337,9 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               child: Text(
                                 dataDetailBookingRequestController
@@ -366,7 +387,8 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               child: Text(
                                 _dt!,
@@ -392,7 +414,7 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                                 height: 40,
                                 child: Text(
                                   'Accept Booking',
-                                  style: TextStyle(color: white),
+                                  style: style_text_button_detail,
                                 ),
                               )),
                           SizedBox(width: 20),
@@ -410,7 +432,7 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                                 height: 40,
                                 child: Text(
                                   'Reject Booking',
-                                  style: TextStyle(color: white),
+                                  style: style_text_button_detail,
                                 ),
                               )),
                         ],

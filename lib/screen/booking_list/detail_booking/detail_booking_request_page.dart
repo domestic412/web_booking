@@ -20,7 +20,7 @@ class DetailBookingRequestPage extends StatelessWidget {
   DetailBookingRequestPage({super.key});
   String? _dt;
   double heightInfoConts = 200;
-  double heightInfoDepo = 50;
+  // double heightInfoDepo = 50;
   @override
   Widget build(BuildContext context) {
     dataDetailBookingRequestController.updateTime.value == ''
@@ -29,44 +29,44 @@ class DetailBookingRequestPage extends StatelessWidget {
             dataDetailBookingRequestController.updateTime.value));
     switch (dataDetailBookingRequestController.detailListInfoContainer.length) {
       case 1:
-        heightInfoConts = 100;
+        heightInfoConts = 110;
         break;
       case 2:
-        heightInfoConts = 200;
+        heightInfoConts = 220;
         break;
       case 3:
-        heightInfoConts = 300;
+        heightInfoConts = 330;
         break;
       case 4:
-        heightInfoConts = 400;
+        heightInfoConts = 440;
         break;
       case 5:
-        heightInfoConts = 500;
+        heightInfoConts = 550;
         break;
       default:
         heightInfoConts = 1000;
     }
 
-    switch (dataDetailBookingRequestController.detailListDepots.length) {
-      case 0:
-        heightInfoDepo = 0;
-        break;
-      case 1:
-        heightInfoDepo = 50;
-        break;
-      case 2:
-        heightInfoDepo = 100;
-        break;
-      case 3:
-        heightInfoDepo = 150;
-        break;
-      case 4:
-        heightInfoDepo = 200;
-        break;
-      default:
-        heightInfoDepo = 500;
-        break;
-    }
+    // switch (dataDetailBookingRequestController.detailListDepots.length) {
+    //   case 0:
+    //     heightInfoDepo = 0;
+    //     break;
+    //   case 1:
+    //     heightInfoDepo = 50;
+    //     break;
+    //   case 2:
+    //     heightInfoDepo = 100;
+    //     break;
+    //   case 3:
+    //     heightInfoDepo = 150;
+    //     break;
+    //   case 4:
+    //     heightInfoDepo = 200;
+    //     break;
+    //   default:
+    //     heightInfoDepo = 500;
+    //     break;
+    // }
     return Obx(
       () => SizedBox(
         height: deviceHeight(context),
@@ -137,9 +137,10 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  border: Border.all()
+                                  // color: Colors.grey[500]
+                                  ),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController.id.value
                                     .toString(),
@@ -157,9 +158,10 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  border: Border.all()
+                                  // color: Colors.grey[500]
+                                  ),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController.vessel.value,
                                 style: style_text_Table_small,
@@ -176,9 +178,10 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  border: Border.all()
+                                  // color: Colors.grey[500]
+                                  ),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController.voyage.value,
                                 style: style_text_Table_small,
@@ -195,9 +198,10 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  border: Border.all()
+                                  // color: Colors.grey[500]
+                                  ),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController.date.value,
                                 style: style_text_Table_small,
@@ -214,9 +218,9 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController.payer.value,
                                 style: style_text_Table_small,
@@ -231,9 +235,9 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController
                                     .consignee.value,
@@ -256,9 +260,9 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController
                                     .serviceTerm.value,
@@ -274,9 +278,9 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController
                                     .paymentTerm.value,
@@ -292,25 +296,34 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
-                              // width: 100,
                               child: Text(
                                 dataDetailBookingRequestController.term.value,
                                 style: style_text_Table_small,
                               )),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
+                      Divider(
+                        color: haian,
+                        thickness: 1,
+                      ),
                       Container(
                           height: heightInfoConts,
                           width: 1500,
                           child: DetailListInfoContainer_BookingRequest()),
-                      const SizedBox(height: 10),
-                      Container(
-                          height: heightInfoDepo,
-                          width: 1500,
-                          child: DetailListDepots_BookingRequest()),
+                      // const SizedBox(height: 10),
+                      // Container(
+                      //     height: heightInfoDepo,
+                      //     width: 1500,
+                      //     child: DetailListDepots_BookingRequest()),
+                      Divider(
+                        color: haian,
+                        thickness: 1,
+                      ),
+                      const SizedBox(height: 20),
                       Row(
                         children: [
                           Text(
@@ -322,7 +335,8 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               child: Text(
                                 dataDetailBookingRequestController
@@ -370,7 +384,8 @@ class DetailBookingRequestPage extends StatelessWidget {
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[500]),
+                                  // color: Colors.grey[500]
+                                  border: Border.all()),
                               alignment: Alignment.center,
                               child: Text(
                                 _dt!,
@@ -388,7 +403,7 @@ class DetailBookingRequestPage extends StatelessWidget {
                                       fetchCreateBooking(
                                           'C',
                                           dataDetailBookingRequestController
-                                              .bookingId.value,
+                                              .id.value,
                                           informationController.tenNV.value);
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -398,6 +413,7 @@ class DetailBookingRequestPage extends StatelessWidget {
                                       height: 40,
                                       child: Text(
                                         'Confirmation Request',
+                                        style: style_text_button_detail,
                                       ),
                                     ))
                               ],

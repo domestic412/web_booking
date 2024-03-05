@@ -7,6 +7,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_request/storage_controller/detail_request_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/storage_controller.dart/controller_image.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class DetailRequest {
   int? id;
@@ -105,6 +106,9 @@ class DetailRequest {
           } catch (e) {
             print('Error data fetch Detail Request have null - $e');
           }
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
         default:
           throw Exception(response.reasonPhrase);
       }

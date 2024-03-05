@@ -34,7 +34,10 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                       routeController.vessel.value,
                       routeController.voy.value,
                       informationController.tenNV.value,
-                      createBookingController.currentConsignee.value,
+                      createBookingController.boolNewConsignee.value == false
+                          ? createBookingController.currentConsignee.value
+                          : createBookingController
+                              .inputNewConsignee.value.text,
                       createBookingController.currentServiceTerm.value,
                       createBookingController.currentOptionsContainer.value,
                       createBookingController.currentPaymentTerm.value,
@@ -63,7 +66,10 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                       routeController.vessel.value,
                       routeController.voy.value,
                       informationController.tenNV.value,
-                      createBookingController.currentConsignee.value,
+                      createBookingController.boolNewConsignee.value == false
+                          ? createBookingController.currentConsignee.value
+                          : createBookingController
+                              .inputNewConsignee.value.text,
                       createBookingController.currentServiceTerm.value,
                       createBookingController.currentOptionsContainer.value,
                       createBookingController.currentPaymentTerm.value,
@@ -127,6 +133,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
         case 200:
           Get.toNamed(GetRoutes.Home);
           controller.selectWidget.value = bookingRequestList;
+          createBookingController.clearDataCreateBooking();
         default:
           print('Error ${response.statusCode}');
       }

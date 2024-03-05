@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class UserList {
   int? id;
@@ -67,6 +68,9 @@ class UserList {
           print('Data List User');
           List dataUserList = json.decode(body);
           return dataUserList.map((data) => UserList.fromJson(data)).toList();
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
         default:
           throw Exception(response.reasonPhrase);
       }
