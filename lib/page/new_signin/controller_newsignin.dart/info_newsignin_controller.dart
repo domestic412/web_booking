@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 //     Get.put(InformationSignInController());
 
 class InformationNewSignInController extends GetxController {
+  var username = TextEditingController().obs;
+  var password = TextEditingController().obs;
   var authorize = ''.obs;
   var maNV = ''.obs;
   var tenNV = ''.obs;

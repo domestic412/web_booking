@@ -75,7 +75,7 @@ class _SignInPageState extends State<SignInPage> {
                   InkWell(
                     onTap: () {
                       // context.go(AppRoutes.signUpRoute);
-                      Get.toNamed(GetRoutes.SignUp);
+                      Get.toNamed(GetRoutes.NewSignIn);
                     },
                     child: Container(
                         decoration: BoxDecoration(

@@ -13,16 +13,19 @@ import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 import '../../constants/variable.dart';
+import 'controller_newsignin.dart/info_newsignin_controller.dart';
 
 class NewSignInPage extends StatefulWidget {
   @override
   State<NewSignInPage> createState() => _NewSignInPageState();
 }
 
-TextEditingController _user = TextEditingController();
-TextEditingController _password = TextEditingController();
+// TextEditingController _user = TextEditingController();
+// TextEditingController _password = TextEditingController();
 
 class _NewSignInPageState extends State<NewSignInPage> {
+  InformationNewSignInController infoSignInController =
+      Get.put(InformationNewSignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +64,9 @@ class _NewSignInPageState extends State<NewSignInPage> {
                   CupertinoButton(
                     color: Colors.white70,
                     onPressed: () {
-                      signin(_user.text.toString(), _password.text.toString());
+                      newSignIn(
+                          infoSignInController.username.value.text.toString(),
+                          infoSignInController.password.value.text.toString());
                     },
                     child: Text(
                       // 'sign in'.tr,
@@ -70,28 +75,6 @@ class _NewSignInPageState extends State<NewSignInPage> {
                           TextStyle(color: button, fontWeight: FontWeight.w900),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      // context.go(AppRoutes.signUpRoute);
-                      Get.toNamed(GetRoutes.SignUp);
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white70,
-                            borderRadius: BorderRadius.circular(5)),
-                        padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                        child: Text(
-                          // 'create_account'.tr,
-                          'New Login',
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: haian,
-                              fontWeight: FontWeight.w500),
-                        )),
-                  )
                 ],
               ),
             )
@@ -109,13 +92,27 @@ class _NewSignInPageState extends State<NewSignInPage> {
         'password': password,
       };
       var body = json.encode(data);
-      final response = await http.post(Uri.parse(url),
-          headers: {"Content-Type": "application/json"}, body: body);
-      switch (response.statusCode) {
-        case 200:
-          var body = response.body;
-          var dataNewLogIn = jsonDecode(body);
-          return ModelNewLogin.fromJson(dataNewLogIn);
+      if (username.isNotEmpty && password.isNotEmpty) {
+        final response = await http.post(Uri.parse(url),
+            headers: {"Content-Type": "application/json"}, body: body);
+        switch (response.statusCode) {
+          case 200:
+            {
+              var body = response.body;
+              var dataNewLogIn = jsonDecode(body);
+              var test = dataNewLogIn['dataTable2s'][1]['shipperName'];
+              print(test);
+              print('Login Success');
+              return ModelNewLogin.fromJson(dataNewLogIn);
+            }
+          default:
+            LoginAlert(context);
+            throw Exception('Error - ${response.reasonPhrase}');
+        }
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text("Invalid")));
+        throw Exception('Error fetch Tracking');
       }
     } on Exception catch (e) {
       throw Exception('Error fetch Login - $e');
@@ -145,6 +142,8 @@ Widget _buildAppbarName() {
 }
 
 Widget _buildInputUser() {
+  InformationNewSignInController infoSignInController =
+      Get.put(InformationNewSignInController());
   return Column(children: <Widget>[
     Container(
       margin: const EdgeInsets.only(left: 30, right: 30),
@@ -159,7 +158,7 @@ Widget _buildInputUser() {
             margin: const EdgeInsets.only(left: 10, right: 10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-              controller: _user,
+              controller: infoSignInController.username.value,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
                   hintText: "user name".tr,
@@ -174,7 +173,7 @@ Widget _buildInputUser() {
             padding: const EdgeInsets.all(10),
             child: TextField(
               obscureText: true,
-              controller: _password,
+              controller: infoSignInController.password.value,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
                   hintText: "password".tr,

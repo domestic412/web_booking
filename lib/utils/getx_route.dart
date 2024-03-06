@@ -4,6 +4,7 @@ import 'package:web_booking/page/booking/booking_page.dart';
 import 'package:web_booking/page/booking/create_info_booking/create_booking_page.dart';
 import 'package:web_booking/page/booking/select_depo/depo_list_page.dart';
 import 'package:web_booking/page/default/default_page.dart';
+import 'package:web_booking/page/new_signin/newsignin_page.dart';
 import 'package:web_booking/page/signin/signin_page.dart';
 import 'package:web_booking/page/signup/signup_page.dart';
 import 'package:web_booking/page/tracking/tracking_page.dart';
@@ -11,7 +12,7 @@ import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class GetRoutes {
   static const defaultRoute = "/";
-  static const SignUp = "/SignUp";
+  static const NewSignIn = "/NewSignIn";
   static const SignIn = "/SignIn";
   static const Tracking = "/Tracking";
   static const Test = "/Test";
@@ -46,8 +47,8 @@ class GetRoutes {
       page: () => DefaultPage(),
     ),
     GetPage(
-      name: SignUp,
-      page: () => SignUpPage(),
+      name: NewSignIn,
+      page: () => NewSignInPage(),
     ),
     GetPage(
       name: SignIn,
