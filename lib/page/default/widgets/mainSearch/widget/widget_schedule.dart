@@ -5,16 +5,19 @@ import 'package:intl/intl.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_port.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
+import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class ScheduleSearch extends StatefulWidget {
-  const ScheduleSearch({super.key});
+  // const ScheduleSearch({super.key});
 
   @override
   State<ScheduleSearch> createState() => _ScheduleSearchState();
 }
 
 class _ScheduleSearchState extends State<ScheduleSearch> {
+  Ports? selectPort1;
+  Ports? selectPort2;
   // String? dateSelect;
 
   // List<DropdownMenuEntry<Ports>> _portEntries = <DropdownMenuEntry<Ports>>[];
@@ -23,7 +26,8 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
 
   void initState() {
     super.initState();
-    dateSelect = DateFormat('MM/dd/yyyy').format(DateTime.now());
+    routeController.dateSelect.value =
+        DateFormat('MM/dd/yyyy').format(DateTime.now());
   }
 
   @override
@@ -72,7 +76,10 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
               onTap: () {
                 setState(() {
                   fetchVoyage = Voyage().fetchDataVoyage(
-                      idPort1.toString(), idPort2.toString(), dateSelect!);
+                      // idPort1.toString(), idPort2.toString(), dateSelect!
+                      routeController.polID.value,
+                      routeController.podID.value,
+                      routeController.dateSelect.value);
                 });
                 // context.go(AppRoutes.bookingRoute);
                 Get.toNamed(GetRoutes.Booking);
@@ -131,7 +138,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                         border: OutlineInputBorder()),
                     menuHeight: 500,
                     width: 360,
-                    controller: port_select1,
+                    controller: routeController.port_select1.value,
                     enableFilter: true,
                     label: Text(
                       'departure'.tr,
@@ -141,7 +148,8 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                     onSelected: (Ports? id) {
                       setState(() {
                         selectPort1 = id;
-                        idPort1 = selectPort1?.portId;
+                        // idPort1 = selectPort1?.portId;
+                        routeController.polID.value = selectPort1?.portId ?? '';
                       });
                     },
                   ),
@@ -160,7 +168,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                         border: OutlineInputBorder()),
                     width: 360,
                     menuHeight: 500,
-                    controller: port_select2,
+                    controller: routeController.port_select2.value,
                     enableFilter: true,
                     label: Text(
                       'arrival'.tr,
@@ -170,7 +178,8 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                     onSelected: (Ports? id) {
                       setState(() {
                         selectPort2 = id;
-                        idPort2 = selectPort2?.portId;
+                        // idPort2 = selectPort2?.portId;
+                        routeController.podID.value = selectPort2?.portId ?? '';
                       });
                     },
                   ),

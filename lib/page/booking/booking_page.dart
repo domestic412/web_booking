@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/booking/storage_controller/port_date_controller.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/page/booking/widgets/select_port_list.dart';
@@ -19,8 +20,10 @@ class _BookingPageState extends State<BookingPage> {
   @override
   void initState() {
     super.initState();
-    date_select.text = DateFormat('dd/MM/yyyy').format(DateTime.now());
-    dateSelect = DateFormat('MM/dd/yyyy').format(DateTime.now());
+    routeController.date_select.value.text =
+        DateFormat('dd/MM/yyyy').format(DateTime.now());
+    routeController.dateSelect.value =
+        DateFormat('MM/dd/yyyy').format(DateTime.now());
   }
 
   @override
@@ -66,7 +69,7 @@ class _BookingPageState extends State<BookingPage> {
                             height: 50,
                             width: 250,
                             child: TextField(
-                              controller: date_select,
+                              controller: routeController.date_select.value,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 label: Text(
@@ -83,10 +86,12 @@ class _BookingPageState extends State<BookingPage> {
                                     lastDate: DateTime(2123));
                                 if (pickeddate != null) {
                                   setState(() {
-                                    date_select.text = DateFormat('dd/MM/yyyy')
-                                        .format(pickeddate);
-                                    dateSelect = DateFormat('MM/dd/yyyy')
-                                        .format(pickeddate);
+                                    routeController.date_select.value.text =
+                                        DateFormat('dd/MM/yyyy')
+                                            .format(pickeddate);
+                                    routeController.dateSelect.value =
+                                        DateFormat('MM/dd/yyyy')
+                                            .format(pickeddate);
                                     // print(dateSelect);
                                   });
                                 }
@@ -110,20 +115,40 @@ class _BookingPageState extends State<BookingPage> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)))),
                           onPressed: () {
-                            if (idPort1 == idPort2) {
+                            // if (idPort1 == idPort2) {
+                            //   // alertSelectPort.showAlertSamePort(context);
+                            // } else if (idPort1 == null || idPort2 == null) {
+                            //   // alertSelectPort.showAlertPort(context);
+                            // } else {
+                            //   setState(() {
+                            //     routeController.polID.value =
+                            //         idPort1.toString();
+                            //     routeController.podID.value =
+                            //         idPort2.toString();
+                            //     fetchVoyage = Voyage().fetchDataVoyage(
+                            //         idPort1.toString(),
+                            //         idPort2.toString(),
+                            //         initialPortController.dateSelect.value);
+                            //   });
+                            // }
+                            if (routeController.polID.value ==
+                                routeController.podID.value) {
                               // alertSelectPort.showAlertSamePort(context);
-                            } else if (idPort1 == null || idPort2 == null) {
+                            } else if (routeController.polID.value == '' ||
+                                routeController.podID.value == '') {
                               // alertSelectPort.showAlertPort(context);
                             } else {
                               setState(() {
-                                routeController.polID.value =
-                                    idPort1.toString();
-                                routeController.podID.value =
-                                    idPort2.toString();
+                                // routeController.polID.value =
+                                //     idPort1.toString();
+                                // routeController.podID.value =
+                                //     idPort2.toString();
                                 fetchVoyage = Voyage().fetchDataVoyage(
-                                    idPort1.toString(),
-                                    idPort2.toString(),
-                                    dateSelect!);
+                                    // idPort1.toString(),
+                                    // idPort2.toString(),
+                                    routeController.polID.value,
+                                    routeController.podID.value,
+                                    routeController.dateSelect.value);
                               });
                             }
                           },

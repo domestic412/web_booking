@@ -29,7 +29,7 @@ class RouteInformationWidget extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[500]),
+                          color: Colors.grey[300]),
                       alignment: Alignment.center,
                       // width: 100,
                       child: Text(
@@ -58,7 +58,7 @@ class RouteInformationWidget extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[500]),
+                          color: Colors.grey[300]),
                       alignment: Alignment.center,
                       width: 100,
                       child: Text(
@@ -87,7 +87,7 @@ class RouteInformationWidget extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[500]),
+                          color: Colors.grey[300]),
                       alignment: Alignment.center,
                       // width: 100,
                       child: Text(
@@ -119,7 +119,7 @@ class RouteInformationWidget extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[500]),
+                          color: Colors.grey[300]),
                       alignment: Alignment.center,
                       // width: 100,
                       child: Text(
@@ -151,7 +151,7 @@ class RouteInformationWidget extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[500]),
+                          color: Colors.grey[300]),
                       alignment: Alignment.center,
                       // width: 100,
                       child: Text(

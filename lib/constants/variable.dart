@@ -19,19 +19,19 @@ String code_signin = 'code';
 String savecntr = '';
 
 // Booking page
-String? nameVoyage;
-String? dateVoyage;
-String? sizeVoyage;
-String? idVoyage;
-String? vesselName;
-String? polVoyage;
-List dataPorts = [];
-Ports? selectPort1;
-Ports? selectPort2;
-String? idPort1;
-String? namePort1;
-String? idPort2;
-String? namePort2;
+// String? nameVoyage;
+// String? dateVoyage;
+// String? sizeVoyage;
+// String? idVoyage;
+// String? vesselName;
+// String? polVoyage;
+// List dataPorts = [];
+// Ports? selectPort1;
+// Ports? selectPort2;
+// String? idPort1;
+// String? namePort1;
+// String? idPort2;
+// String? namePort2;
 Future<Voyage>? fetchVoyage;
 TextEditingController soluongcntr = TextEditingController();
 
@@ -44,12 +44,12 @@ String? sizeContDepo;
 List<Depots> listPickDepo = <Depots>[];
 
 // Port select in Booking page and Schedule
-String? dateSelect;
-String port1 = '';
-String port2 = '';
-TextEditingController port_select1 = TextEditingController();
-TextEditingController port_select2 = TextEditingController();
-TextEditingController date_select = TextEditingController();
+// String? dateSelect;
+// String port1 = '';
+// String port2 = '';
+// TextEditingController port_select1 = TextEditingController();
+// TextEditingController port_select2 = TextEditingController();
+// TextEditingController date_select = TextEditingController();
 // final List<DropdownMenuEntry<Ports>> portEntries = <DropdownMenuEntry<Ports>>[];
 
 // Tracking page

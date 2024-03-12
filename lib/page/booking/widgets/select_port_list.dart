@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_port.dart';
+import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
 class PortList extends StatefulWidget {
@@ -12,8 +13,12 @@ class PortList extends StatefulWidget {
 }
 
 class _PortListState extends State<PortList> {
-  // TextEditingController port_select1 = TextEditingController();
-  // TextEditingController port_select2 = TextEditingController();
+  Ports? selectPort1;
+  Ports? selectPort2;
+  // String? idPort1;
+  // String? namePort1;
+  // String? idPort2;
+  // String? namePort2;
   @override
   Widget build(BuildContext context) {
     return buildPort();
@@ -43,7 +48,7 @@ class _PortListState extends State<PortList> {
               children: [
                 DropdownMenu<Ports>(
                   menuHeight: 500,
-                  controller: port_select1,
+                  controller: routeController.port_select1.value,
                   enableFilter: true,
                   enableSearch: true,
                   label: Text('departure'.tr),
@@ -51,8 +56,10 @@ class _PortListState extends State<PortList> {
                   onSelected: (Ports? port) {
                     setState(() {
                       selectPort1 = port;
-                      idPort1 = selectPort1?.portId;
-                      namePort1 = selectPort1?.portName;
+                      // idPort1 = selectPort1?.portId;
+                      // namePort1 = selectPort1?.portName;
+                      routeController.polID.value = selectPort1?.portId ?? '';
+                      routeController.pol.value = selectPort1?.portName ?? '';
                     });
                   },
                 ),
@@ -65,7 +72,7 @@ class _PortListState extends State<PortList> {
                 ),
                 DropdownMenu<Ports>(
                   menuHeight: 500,
-                  controller: port_select2,
+                  controller: routeController.port_select2.value,
                   enableFilter: true,
                   enableSearch: true,
                   label: Text('arrival'.tr),
@@ -73,8 +80,8 @@ class _PortListState extends State<PortList> {
                   onSelected: (Ports? port) {
                     setState(() {
                       selectPort2 = port;
-                      idPort2 = selectPort2?.portId;
-                      namePort2 = selectPort2?.portName;
+                      routeController.podID.value = selectPort2?.portId ?? '';
+                      routeController.pod.value = selectPort2?.portName ?? '';
                     });
                   },
                 )

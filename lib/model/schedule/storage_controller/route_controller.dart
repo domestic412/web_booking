@@ -4,6 +4,13 @@ import 'package:get/get.dart';
 final RouteController routeController = Get.put(RouteController());
 
 class RouteController extends GetxController {
+  var dateSelect = ''.obs;
+  var port1 = ''.obs;
+  var port2 = ''.obs;
+  var port_select1 = TextEditingController().obs;
+  var port_select2 = TextEditingController().obs;
+  var date_select = TextEditingController().obs;
+
   var vessel = ''.obs;
   var voy = ''.obs;
   var date = ''.obs;

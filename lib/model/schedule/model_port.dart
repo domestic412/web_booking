@@ -32,7 +32,7 @@ class Ports {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          dataPorts = json.decode(body);
+          List dataPorts = json.decode(body);
           return dataPorts.map((data) => Ports.fromJson(data)).toList();
         case 401:
           Get.toNamed(GetRoutes.SignIn);

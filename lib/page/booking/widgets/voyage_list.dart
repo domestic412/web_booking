@@ -17,6 +17,10 @@ class VoyageList extends StatefulWidget {
 }
 
 class _VoyageListState extends State<VoyageList> {
+  String? polVoyage;
+  String? idVoyage;
+  String? nameVoyage;
+  String? dateVoyage;
   @override
   Widget build(BuildContext context) {
     return buildVoyage();
@@ -150,15 +154,14 @@ class _VoyageListState extends State<VoyageList> {
                                   : Get.toNamed(GetRoutes.BookingRequest);
                               currentRouteController.route.value = 'booking';
                               routeController.updateRouteController(
-                                  vessel:
-                                      data.listBookingVoys?[index].vesselName,
-                                  voy: data.listBookingVoys?[index].voyId,
-                                  date: DateFormat("dd-MMM-yyyy").format(
-                                      DateTime.parse(
-                                          (data.listBookingVoys?[index])!
-                                              .etd!)),
-                                  pol: namePort1,
-                                  pod: namePort2);
+                                vessel: data.listBookingVoys?[index].vesselName,
+                                voy: data.listBookingVoys?[index].voyId,
+                                date: DateFormat("dd-MMM-yyyy").format(
+                                    DateTime.parse(
+                                        (data.listBookingVoys?[index])!.etd!)),
+                                // pol: namePort1,
+                                // pod: namePort2
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: normalColor,

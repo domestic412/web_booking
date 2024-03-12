@@ -17,7 +17,7 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
     print(createBookingController.listInfoContainer);
     return Obx(
       () => Container(
-        width: 904,
+        width: 1004,
         decoration: BoxDecoration(
           color: white,
           border: Border.all(color: blue.withOpacity(.4), width: .5),
