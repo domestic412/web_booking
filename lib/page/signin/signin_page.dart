@@ -18,8 +18,8 @@ class SignInPage extends StatefulWidget {
   State<SignInPage> createState() => _SignInPageState();
 }
 
-TextEditingController _user = TextEditingController();
-TextEditingController _password = TextEditingController();
+// TextEditingController _user = TextEditingController();
+// TextEditingController _password = TextEditingController();
 
 class _SignInPageState extends State<SignInPage> {
   @override
@@ -60,7 +60,8 @@ class _SignInPageState extends State<SignInPage> {
                   CupertinoButton(
                     color: Colors.white70,
                     onPressed: () {
-                      signin(_user.text.toString(), _password.text.toString());
+                      signin(inforUserController.user.value.text,
+                          inforUserController.pass.value.text);
                     },
                     child: Text(
                       // 'sign in'.tr,
@@ -131,10 +132,7 @@ class _SignInPageState extends State<SignInPage> {
             box.write(author_signin, author);
             box.write(code_signin, code);
 
-            _user.clear();
-            _password.clear();
-
-            informationController.updateInfomationSignIn(
+            inforUserController.updateInforSignInController(
                 authorize: box.read(authorize_signin).toString().obs,
                 maNV: box.read(maNV_signin).toString().obs,
                 tenNV: box.read(tenNV_signin).toString().obs,
@@ -207,7 +205,7 @@ Widget _buildInputUser() {
             margin: const EdgeInsets.only(left: 10, right: 10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-              controller: _user,
+              controller: inforUserController.user.value,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
                   hintText: "user name".tr,
@@ -222,7 +220,7 @@ Widget _buildInputUser() {
             padding: const EdgeInsets.all(10),
             child: TextField(
               obscureText: true,
-              controller: _password,
+              controller: inforUserController.pass.value,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
                   hintText: "password".tr,

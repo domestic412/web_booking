@@ -324,7 +324,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
       formData.append('TenYeuCau', NameRequest);
       formData.append('NoiDung', _input_camKet.text);
       formData.append('Cntrno', cntr.toUpperCase());
-      formData.append('NguoiGui', informationController.tenNV.value);
+      formData.append('NguoiGui', inforUserController.tenNV.value);
 
       final request = html.HttpRequest();
       request.open(

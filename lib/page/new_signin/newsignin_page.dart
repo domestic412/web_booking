@@ -24,8 +24,8 @@ class NewSignInPage extends StatefulWidget {
 // TextEditingController _password = TextEditingController();
 
 class _NewSignInPageState extends State<NewSignInPage> {
-  InformationNewSignInController infoSignInController =
-      Get.put(InformationNewSignInController());
+  // InformationNewSignInController infoSignInController =
+  //     Get.put(InformationNewSignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,8 +65,8 @@ class _NewSignInPageState extends State<NewSignInPage> {
                     color: Colors.white70,
                     onPressed: () {
                       newSignIn(
-                          infoSignInController.username.value.text.toString(),
-                          infoSignInController.password.value.text.toString());
+                          inforUserController.username.value.text.toString(),
+                          inforUserController.password.value.text.toString());
                     },
                     child: Text(
                       // 'sign in'.tr,
@@ -142,8 +142,8 @@ Widget _buildAppbarName() {
 }
 
 Widget _buildInputUser() {
-  InformationNewSignInController infoSignInController =
-      Get.put(InformationNewSignInController());
+  // InformationNewSignInController infoSignInController =
+  //     Get.put(InformationNewSignInController());
   return Column(children: <Widget>[
     Container(
       margin: const EdgeInsets.only(left: 30, right: 30),
@@ -158,7 +158,7 @@ Widget _buildInputUser() {
             margin: const EdgeInsets.only(left: 10, right: 10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-              controller: infoSignInController.username.value,
+              controller: inforUserController.username.value,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
                   hintText: "user name".tr,
@@ -173,7 +173,7 @@ Widget _buildInputUser() {
             padding: const EdgeInsets.all(10),
             child: TextField(
               obscureText: true,
-              controller: infoSignInController.password.value,
+              controller: inforUserController.password.value,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
               decoration: InputDecoration(
                   hintText: "password".tr,

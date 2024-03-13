@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    informationController.updateInfomationSignIn(
+    inforUserController.updateInforSignInController(
         authorize: box.read(authorize_signin).toString().obs,
         maNV: box.read(maNV_signin).toString().obs,
         tenNV: box.read(tenNV_signin).toString().obs,

@@ -23,13 +23,13 @@ class RouteController extends GetxController {
     @required vessel,
     @required voy,
     @required date,
-    @required pol,
-    @required pod,
+    // @required pol,
+    // @required pod,
   }) {
     this.vessel.value = vessel;
     this.voy.value = voy;
     this.date.value = date;
-    this.pol.value = pol;
-    this.pod.value = pod;
+    // this.pol.value = pol;
+    // this.pod.value = pod;
   }
 }

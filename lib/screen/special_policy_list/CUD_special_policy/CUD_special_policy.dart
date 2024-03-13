@@ -168,7 +168,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
       'code': code,
       'shipper': shipper,
       'times': times,
-      'updateUser': informationController.tenNV.value
+      'updateUser': inforUserController.tenNV.value
     };
     var body = json.encode(data);
     if (CUD == 1) {
@@ -176,7 +176,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
-            "Authorization": "Bearer ${informationController.authorize.value}",
+            "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       if (response.statusCode == 200) {
@@ -190,7 +190,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
-            "Authorization": "Bearer ${informationController.authorize.value}",
+            "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       if (response.statusCode == 200) {
@@ -203,7 +203,7 @@ class _CUD_SpecialPolicyPageState extends State<CUD_SpecialPolicyPage> {
       final response =
           await http.delete(Uri.parse(URL_SPECIAL_POLICY!), headers: {
         "Access-Control-Allow-Origin": "*",
-        "Authorization": "Bearer ${informationController.authorize.value}",
+        "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       if (response.statusCode == 200) {
         controller.selectWidget.value = specialPolicyList;

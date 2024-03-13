@@ -110,10 +110,10 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            List _listports = snapshot.data!;
+            List listports = snapshot.data!;
             List<DropdownMenuEntry<Ports>> _portEntries =
                 <DropdownMenuEntry<Ports>>[];
-            for (final portId in _listports) {
+            for (final portId in listports) {
               _portEntries.add(
                 DropdownMenuEntry<Ports>(
                   value: portId,
@@ -150,6 +150,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                         selectPort1 = id;
                         // idPort1 = selectPort1?.portId;
                         routeController.polID.value = selectPort1?.portId ?? '';
+                        routeController.pol.value = selectPort1?.portName ?? '';
                       });
                     },
                   ),
@@ -180,6 +181,7 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                         selectPort2 = id;
                         // idPort2 = selectPort2?.portId;
                         routeController.podID.value = selectPort2?.portId ?? '';
+                        routeController.pod.value = selectPort2?.portName ?? '';
                       });
                     },
                   ),

@@ -36,7 +36,7 @@ class AppbarWidget extends StatelessWidget {
             width: 12,
           ),
           Text(
-            informationController.tenNV.value,
+            inforUserController.tenNV.value,
             style: style_text_detail,
           ),
           const SizedBox(
@@ -55,7 +55,7 @@ class AppbarWidget extends StatelessWidget {
                 onPressed: () {
                   box.write(authorize_signin, 'authorize');
                   currentRouteController.route.value = 'default';
-                  informationController.resetInfomationSignInController();
+                  inforUserController.resetInforSignInController();
                   Get.toNamed(GetRoutes.defaultRoute);
                   controller.selectWidget.value = dashboard;
                 },

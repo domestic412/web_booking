@@ -149,7 +149,7 @@ class _VoyageListState extends State<VoyageList> {
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              informationController.tenNV.value == ''
+                              inforUserController.tenNV.value == ''
                                   ? Get.toNamed(GetRoutes.SignIn)
                                   : Get.toNamed(GetRoutes.BookingRequest);
                               currentRouteController.route.value = 'booking';

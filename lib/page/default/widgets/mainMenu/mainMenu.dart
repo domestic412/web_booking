@@ -89,7 +89,7 @@ class _mainMenuState extends State<mainMenu> {
                             onTap: () {
                               // context.go(AppRoutes.signUpRoute);
                               // Get.toNamed(GetRoutes.SignIn);
-                              informationController.tenNV.value == ''
+                              inforUserController.tenNV.value == ''
                                   ? Get.toNamed(GetRoutes.SignIn)
                                   : Get.toNamed(GetRoutes.Home);
                               currentRouteController.route.value = 'service';

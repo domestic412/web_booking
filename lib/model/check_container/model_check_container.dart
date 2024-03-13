@@ -126,11 +126,11 @@ class CheckContainer {
       String cntr, int tuyenngoai) async {
     try {
       var url =
-          '$SERVER/CheckContainer?container=$cntr&code=${informationController.maNV.value}&tuyenngoai=$tuyenngoai';
+          '$SERVER/CheckContainer?container=$cntr&code=${inforUserController.maNV.value}&tuyenngoai=$tuyenngoai';
       if (cntr.isNotEmpty) {
         final response = await http.post(Uri.parse(url), headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer ${informationController.authorize.value}",
+          "Authorization": "Bearer ${inforUserController.authorize.value}",
         });
         switch (response.statusCode) {
           case 200:

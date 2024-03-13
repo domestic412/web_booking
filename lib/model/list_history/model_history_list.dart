@@ -70,7 +70,7 @@ class History {
       var url = URL_HISTORY;
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
-        "Authorization": "Bearer ${informationController.authorize.value}",
+        "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:

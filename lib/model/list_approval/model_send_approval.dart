@@ -14,14 +14,14 @@ class SendApproval {
       Map<String, dynamic> data = {
         'id': id,
         'noteHangTau': noteHangTau,
-        'userXuly': informationController.maNV.value,
+        'userXuly': inforUserController.maNV.value,
       };
       // print(data);
       var body = json.encode(data);
       final response = await http.post(Uri.parse(url),
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer ${informationController.authorize.value}",
+            "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       switch (response.statusCode) {

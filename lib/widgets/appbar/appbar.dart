@@ -19,8 +19,8 @@ class _appbarState extends State<appbar> {
   Widget build(BuildContext context) {
     if ((box.read(authorize_signin) != 'authorize' &&
         box.read(authorize_signin) != null &&
-        informationController.authorize.value == '')) {
-      informationController.updateInfomationSignIn(
+        inforUserController.authorize.value == '')) {
+      inforUserController.updateInforSignInController(
           authorize: box.read(authorize_signin).toString().obs,
           maNV: box.read(maNV_signin).toString().obs,
           tenNV: box.read(tenNV_signin).toString().obs,
@@ -56,13 +56,13 @@ class _appbarState extends State<appbar> {
               const SizedBox(
                 width: 30,
               ),
-              informationController.tenNV.value != ''
+              inforUserController.tenNV.value != ''
                   ? Row(
                       children: [
                         Container(
                           width: 70,
                           child: Text(
-                            informationController.tenNV.value,
+                            inforUserController.tenNV.value,
                             style: TextStyle(color: white),
                           ),
                         ),
@@ -72,8 +72,7 @@ class _appbarState extends State<appbar> {
                         IconButton(
                           onPressed: () {
                             box.write(authorize_signin, 'authorize');
-                            informationController
-                                .resetInfomationSignInController();
+                            inforUserController.resetInforSignInController();
                             Get.toNamed(GetRoutes.defaultRoute);
                             currentRouteController.route.value = 'default';
                             controller.selectWidget.value = dashboard;

@@ -47,7 +47,7 @@ class QualityList {
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-        "Authorization": "Bearer ${informationController.authorize.value}",
+        "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       if (response.statusCode == 200) {
         var body = response.body;

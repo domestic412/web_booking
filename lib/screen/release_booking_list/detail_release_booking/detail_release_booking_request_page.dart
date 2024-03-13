@@ -405,7 +405,7 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                                 fetchReleaseBooking(
                                     'A',
                                     dataDetailBookingRequestController.id.value,
-                                    informationController.tenNV.value);
+                                    inforUserController.tenNV.value);
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: green),
@@ -423,7 +423,7 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
                                 fetchReleaseBooking(
                                     'R',
                                     dataDetailBookingRequestController.id.value,
-                                    informationController.tenNV.value);
+                                    inforUserController.tenNV.value);
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: red),
@@ -461,7 +461,7 @@ class DetailReleaseBookingRequestPage extends StatelessWidget {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json", //use fot http, not use https
-            // "Authorization": "Bearer ${informationController.authorize.value}",
+            // "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       switch (response.statusCode) {

@@ -33,7 +33,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                       dateSelect,
                       routeController.vessel.value,
                       routeController.voy.value,
-                      informationController.tenNV.value,
+                      inforUserController.tenNV.value,
                       createBookingController.boolNewConsignee.value == false
                           ? createBookingController.currentConsignee.value
                           : createBookingController
@@ -65,7 +65,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                       dateSelect,
                       routeController.vessel.value,
                       routeController.voy.value,
-                      informationController.tenNV.value,
+                      inforUserController.tenNV.value,
                       createBookingController.boolNewConsignee.value == false
                           ? createBookingController.currentConsignee.value
                           : createBookingController
@@ -126,7 +126,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
-            // "Authorization": "Bearer ${informationController.authorize.value}",
+            // "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       switch (response.statusCode) {

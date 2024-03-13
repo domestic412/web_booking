@@ -97,11 +97,11 @@ class BookingRequest {
   Future<List<BookingRequest>> fetchBookingRequestList() async {
     try {
       var url =
-          '$SERVER/NewBooking/GetByUser?user=${informationController.tenNV.value}';
+          '$SERVER/NewBooking/GetByUser?user=${inforUserController.tenNV.value}';
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-        // "Authorization": "Bearer ${informationController.authorize.value}",
+        // "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:
@@ -128,7 +128,7 @@ class BookingRequest {
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-        // "Authorization": "Bearer ${informationController.authorize.value}",
+        // "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:
@@ -203,7 +203,7 @@ class Volumes {
       var url = '$SERVER/NewBooking/GetVolumeById?id=$bk';
       final response = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",
-        // "Authorization": "Bearer ${informationController.authorize.value}",
+        // "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:
@@ -257,7 +257,7 @@ class Depots {
       var url = '$SERVER/NewBooking/GetDepotById?id=$bk';
       final response = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",
-        // "Authorization": "Bearer ${informationController.authorize.value}",
+        // "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:

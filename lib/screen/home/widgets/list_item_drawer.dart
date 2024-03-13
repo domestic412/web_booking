@@ -22,7 +22,7 @@ class _DrawItemsState extends State<DrawItems> {
           () => Wrap(
             runSpacing: 10,
             children: [
-              informationController.author.value == 'admin'
+              inforUserController.author.value == 'admin'
                   ? ExpansionTile(
                       title: Text('Management', style: TextStyle(color: white)),
                       leading: Icon(
@@ -110,10 +110,9 @@ class _DrawItemsState extends State<DrawItems> {
                         : Icons.arrow_drop_down,
                     color: _bool_dropdown_services ? blue : white,
                   ),
-                  initiallyExpanded:
-                      informationController.author.value == 'admin'
-                          ? false
-                          : true,
+                  initiallyExpanded: inforUserController.author.value == 'admin'
+                      ? false
+                      : true,
                   onExpansionChanged: (bool expanded) {
                     setState(() {
                       _bool_dropdown_services = expanded;

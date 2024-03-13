@@ -95,7 +95,7 @@ class ContainerStock {
       var url = URL_CONTAINER_STOCK;
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
-        "Authorization": "Bearer ${informationController.authorize.value}",
+        "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:

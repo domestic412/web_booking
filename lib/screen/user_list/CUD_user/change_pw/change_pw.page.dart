@@ -169,7 +169,7 @@ class _ChangePassword_UserPageState extends State<ChangePassword_UserPage> {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
-            "Authorization": "Bearer ${informationController.authorize.value}",
+            "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       if (response.statusCode == 200) {

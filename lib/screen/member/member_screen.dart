@@ -25,7 +25,7 @@ class MemberPage extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {
-                        print({informationController.authorize.value});
+                        print({inforUserController.authorize.value});
                       },
                       child: Text('Print'))
                 ],
