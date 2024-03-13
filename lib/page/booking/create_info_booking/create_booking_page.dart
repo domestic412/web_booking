@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/page/booking/create_info_booking/widget/service.dart';
+import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 import 'widget/add_information_cont.dart';
@@ -73,7 +74,7 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                                 )),
                             InkWell(
                               onTap: () {
-                                Get.back();
+                                Get.toNamed(GetRoutes.Booking);
                               },
                               child: Row(
                                 children: [

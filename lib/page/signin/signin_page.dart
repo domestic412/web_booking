@@ -133,11 +133,12 @@ class _SignInPageState extends State<SignInPage> {
             box.write(code_signin, code);
 
             inforUserController.updateInforSignInController(
-                authorize: box.read(authorize_signin).toString().obs,
-                maNV: box.read(maNV_signin).toString().obs,
-                tenNV: box.read(tenNV_signin).toString().obs,
-                author: box.read(author_signin).toString().obs,
-                code: box.read(code_signin).toString().obs);
+                OLD_NEW: 0,
+                authorize: box.read(authorize_signin).toString(),
+                maNV: box.read(maNV_signin).toString(),
+                tenNV: box.read(tenNV_signin).toString(),
+                author: box.read(author_signin).toString(),
+                code: box.read(code_signin).toString());
 
             switch (currentRouteController.route.value) {
               case 'default':

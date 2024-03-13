@@ -102,8 +102,8 @@ class _UserListPageState extends State<UserListPage> {
                   ),
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child: PaginatedDataTable(
-                      headingRowColor:
-                          MaterialStateColor.resolveWith((states) => lightGrey),
+                      // headingRowColor:
+                      //     MaterialStateColor.resolveWith((states) => lightGrey),
                       sortColumnIndex: 0,
                       // sortAscending: true,
                       columnSpacing: 20,

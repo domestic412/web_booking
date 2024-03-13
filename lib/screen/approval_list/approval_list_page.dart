@@ -123,8 +123,8 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
-                    headingRowColor:
-                        MaterialStateColor.resolveWith((states) => lightGrey),
+                    // headingRowColor:
+                    //     MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
                     columnSpacing: 16,
                     columns: [

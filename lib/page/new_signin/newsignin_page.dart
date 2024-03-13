@@ -2,18 +2,14 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/new_login/model_newlogin.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
-
-import '../../constants/variable.dart';
-import 'controller_newsignin.dart/info_newsignin_controller.dart';
 
 class NewSignInPage extends StatefulWidget {
   @override
@@ -100,8 +96,31 @@ class _NewSignInPageState extends State<NewSignInPage> {
             {
               var body = response.body;
               var dataNewLogIn = jsonDecode(body);
-              var test = dataNewLogIn['dataTable2s'][1]['shipperName'];
-              print(test);
+              print(dataNewLogIn);
+              // String shipperId = dataNewLogIn['dataTable2s'][1]['shipperName'];
+
+              //update infoUser
+              List infoUser = dataNewLogIn['dataTable1s'];
+              String shipperId = infoUser[0]['shipperId'];
+              String shipperName = infoUser[0]['shipperName'];
+              String managingOfficeId = infoUser[0]['managingOfficeId'];
+
+              //update consignee
+              List consigneeList = dataNewLogIn['dataTable2s'];
+              List termList = dataNewLogIn['dataTable4s'];
+
+              box.write(shipperId_signin, shipperId);
+              box.write(shipperName_signin, shipperName);
+              box.write(managingOfficeId_signin, managingOfficeId);
+
+              inforUserController.updateNewInfoUserController(
+                OLD_NEW: 1, 
+                shipperId: shipperId, 
+                shipperName: shipperName, 
+                managingOfficeId: managingOfficeId, 
+                consigneeList: consigneeList, 
+                termList: termList,);
+
               print('Login Success');
               return ModelNewLogin.fromJson(dataNewLogIn);
             }

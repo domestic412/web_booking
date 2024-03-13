@@ -126,8 +126,8 @@ class _ReleaseBookingListPageState extends State<ReleaseBookingListPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
-                    headingRowColor:
-                        MaterialStateColor.resolveWith((states) => lightGrey),
+                    // headingRowColor:
+                    //     MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
                     // sortAscending: true,
                     // dataRowMaxHeight: 60,

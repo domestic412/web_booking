@@ -16,6 +16,12 @@ String tenNV_signin = 'tenNV';
 String author_signin = 'author';
 String code_signin = 'code';
 
+String shipperId_signin = 'shipperid';
+String shipperName_signin = 'shippername';
+String managingOfficeId_signin = 'managingOfficeId';
+
+
+
 String savecntr = '';
 
 // Booking page
