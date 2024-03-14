@@ -15,25 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  void initState() {
-    super.initState();
-    switch (inforUserController.OLD_NEW.value) {
-      case 0:
-        inforUserController.updateInforSignInController(
-        OLD_NEW: 0,
-        authorize: box.read(authorize_signin).toString(),
-        maNV: box.read(maNV_signin).toString(),
-        tenNV: box.read(tenNV_signin).toString(),
-        author: box.read(author_signin).toString(),
-        code: box.read(code_signin).toString());
-        break;
-      case 1:
-        inforUserController.updateNewInfoUserController(OLD_NEW: 1, shipperId: shipperId, shipperName: shipperName, managingOfficeId: managingOfficeId, consigneeList: consigneeList, termList: termList)
-    }
-    
-  }
-
-  @override
   Widget build(BuildContext context) {
     return bodyHome(context);
   }

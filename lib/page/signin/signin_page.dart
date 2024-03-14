@@ -120,30 +120,21 @@ class _SignInPageState extends State<SignInPage> {
             Map<String, dynamic> decodedToken =
                 JwtDecoder.decode(dataAuthorize);
             // results = decodedToken.values.toList();
-            String manv = decodedToken['MaNV'];
-            String tennv = decodedToken['TenNV'];
+            String manv = decodedToken['MaNV'].trim();
+            String tennv = decodedToken['TenNV'].trim();
             String author = decodedToken['Author'].trim();
-            String code = decodedToken['Code'];
+            String code = decodedToken['Code'].trim();
 
             //add data signIn to box GetStorage
+            // box.write(login, 1);
+            box.write(old_new_signin, 0);
             box.write(authorize_signin, dataAuthorize);
             box.write(maNV_signin, manv);
-            box.write(tenNV_signin, tennv);
+            box.write(shipperName_signin, tennv);
             box.write(author_signin, author);
             box.write(code_signin, code);
 
-            inforUserController.updateInforSignInController(
-                OLD_NEW: 0,
-                authorize: box.read(authorize_signin).toString(),
-                maNV: box.read(maNV_signin).toString(),
-                tenNV: box.read(tenNV_signin).toString(),
-                author: box.read(author_signin).toString(),
-                code: box.read(code_signin).toString());
-
             switch (currentRouteController.route.value) {
-              case 'default':
-                Get.toNamed(GetRoutes.defaultRoute);
-                break;
               case 'booking':
                 Get.toNamed(GetRoutes.BookingRequest);
                 break;
@@ -152,7 +143,9 @@ class _SignInPageState extends State<SignInPage> {
                 break;
               default:
                 Get.toNamed(GetRoutes.defaultRoute);
+                break;
             }
+            print('login success');
           default:
             CircularProgressIndicator(
               value: 0.0,

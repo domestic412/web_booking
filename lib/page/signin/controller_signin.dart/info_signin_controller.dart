@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:web_booking/page/booking/create_info_booking/widget/consignee.dart';
 
 // final inforController = Get.put(InformationSignInController());
 final InformationSignInController inforUserController =
@@ -80,12 +79,3 @@ class InformationSignInController extends GetxController {
     termList = [].obs;
   }
 }
-
-// class InfoAccountSignInController extends GetxController {
-//   var user = ''.obs;
-//   var password = ''.obs;
-//   updateAccountSignIn({@required user, @required password}) {
-//     this.user = user;
-//     this.password = password;
-//   }
-// }

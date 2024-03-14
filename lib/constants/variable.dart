@@ -3,24 +3,24 @@ import 'package:get_storage/get_storage.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 
-import '../model/schedule/model_port.dart';
-
 double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
 // Login
 var box = GetStorage();
+String login = 'signIn';
+String old_new_signin = 'oldNew';
 String authorize_signin = 'authorize';
 String maNV_signin = 'maNV';
-String tenNV_signin = 'tenNV';
+// String tenNV_signin = 'tenNV';
 String author_signin = 'author';
 String code_signin = 'code';
 
 String shipperId_signin = 'shipperid';
 String shipperName_signin = 'shippername';
 String managingOfficeId_signin = 'managingOfficeId';
-
-
+String consigneeList_signin = 'consigneeList';
+String termList_signin = 'termList';
 
 String savecntr = '';
 

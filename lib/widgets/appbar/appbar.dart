@@ -9,6 +9,8 @@ import 'package:web_booking/page/signin/controller_signin.dart/info_signin_contr
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 
+import 'checkInfoUser/infoUser_appbar.dart';
+
 class appbar extends StatefulWidget {
   @override
   State<appbar> createState() => _appbarState();
@@ -17,87 +19,77 @@ class appbar extends StatefulWidget {
 class _appbarState extends State<appbar> {
   @override
   Widget build(BuildContext context) {
-    if ((box.read(authorize_signin) != 'authorize' &&
-        box.read(authorize_signin) != null &&
-        inforUserController.authorize.value == '')) {
-      inforUserController.updateInforSignInController(
-          authorize: box.read(authorize_signin).toString(),
-          maNV: box.read(maNV_signin).toString(),
-          tenNV: box.read(tenNV_signin).toString(),
-          author: box.read(author_signin).toString(),
-          code: box.read(code_signin).toString());
-    }
-    print(box.read(authorize_signin).toString());
-    return Obx(
-      () => Container(
-        width: deviceWidth(context),
-        height: 40,
-        alignment: Alignment.center,
-        color: haian,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 50),
-                width: 1196,
-                child: InkWell(
-                  onTap: () {
-                    Get.to(() => DefaultPage());
-                  },
-                  child: Text(
-                    'welcome'.tr,
-                    style: style14_white,
-                    textAlign: TextAlign.left,
-                  ),
+    checkInfoUser();
+    return Container(
+      width: deviceWidth(context),
+      height: 40,
+      alignment: Alignment.center,
+      color: haian,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 50),
+              width: 1196,
+              child: InkWell(
+                onTap: () {
+                  Get.to(() => DefaultPage());
+                },
+                child: Text(
+                  'welcome'.tr,
+                  style: style14_white,
+                  textAlign: TextAlign.left,
                 ),
               ),
-              const DropdownLeaguage(),
-              const SizedBox(
-                width: 30,
-              ),
-              inforUserController.tenNV.value != ''
-                  ? Row(
-                      children: [
-                        Container(
-                          width: 70,
-                          child: Text(
-                            inforUserController.tenNV.value,
-                            style: TextStyle(color: white),
-                          ),
+            ),
+            const DropdownLeaguage(),
+            const SizedBox(
+              width: 30,
+            ),
+            inforUserController.tenNV.value != ''
+                ? Row(
+                    children: [
+                      Container(
+                        width: 70,
+                        child: Text(
+                          inforUserController.tenNV.value,
+                          style: TextStyle(color: white),
                         ),
-                        const SizedBox(
-                          width: 30,
+                      ),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          box.remove(shipperName_signin);
+                          inforUserController.resetInforSignInController();
+                          inforUserController.resetNewInforUserController();
+                          Get.toNamed(GetRoutes.defaultRoute);
+                          currentRouteController.route.value = 'default';
+                          // controller.selectWidget.value = dashboard;
+                          setState(() {});
+                        },
+                        icon: Icon(
+                          Icons.logout,
+                          color: white,
                         ),
-                        IconButton(
-                          onPressed: () {
-                            box.write(authorize_signin, 'authorize');
-                            inforUserController.resetInforSignInController();
-                            Get.toNamed(GetRoutes.defaultRoute);
-                            currentRouteController.route.value = 'default';
-                            controller.selectWidget.value = dashboard;
-                          },
-                          icon: Icon(
-                            Icons.logout,
-                            color: white,
-                          ),
-                        )
-                      ],
-                    )
-                  : InkWell(
-                      onTap: () {
-                        // context.go(AppRoutes.signInRoute);
-                        Get.toNamed(GetRoutes.SignIn);
-                      },
-                      child: Container(
-                          width: 70,
-                          child: Text(
-                            'signin'.tr,
-                            style: style14_white,
-                          )),
-                    ),
-            ],
-          ),
+                      )
+                    ],
+                  )
+                : InkWell(
+                    onTap: () {
+                      // context.go(AppRoutes.signInRoute);
+                      Get.toNamed(GetRoutes.SignIn);
+                    },
+                    child: Container(
+                        width: 70,
+                        child: Text(
+                          'signin'.tr,
+                          style: style14_white,
+                        )),
+                  ),
+          ],
         ),
       ),
     );

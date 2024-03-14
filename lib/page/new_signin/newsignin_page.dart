@@ -109,17 +109,22 @@ class _NewSignInPageState extends State<NewSignInPage> {
               List consigneeList = dataNewLogIn['dataTable2s'];
               List termList = dataNewLogIn['dataTable4s'];
 
+              // box.write(login, 1);
+              box.write(old_new_signin, 1);
               box.write(shipperId_signin, shipperId);
               box.write(shipperName_signin, shipperName);
               box.write(managingOfficeId_signin, managingOfficeId);
+              box.write(consigneeList_signin, consigneeList);
+              box.write(termList_signin, termList);
 
-              inforUserController.updateNewInfoUserController(
-                OLD_NEW: 1, 
-                shipperId: shipperId, 
-                shipperName: shipperName, 
-                managingOfficeId: managingOfficeId, 
-                consigneeList: consigneeList, 
-                termList: termList,);
+              // inforUserController.updateNewInfoUserController(
+              //   OLD_NEW: 1,
+              //   shipperId: shipperId,
+              //   shipperName: shipperName,
+              //   managingOfficeId: managingOfficeId,
+              //   consigneeList: consigneeList,
+              //   termList: termList,
+              // );
 
               print('Login Success');
               return ModelNewLogin.fromJson(dataNewLogIn);
