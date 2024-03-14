@@ -17,7 +17,7 @@ class VoyageList extends StatefulWidget {
 }
 
 class _VoyageListState extends State<VoyageList> {
-  String? polVoyage;
+  String? pol_final;
   String? idVoyage;
   String? nameVoyage;
   String? dateVoyage;
@@ -106,7 +106,7 @@ class _VoyageListState extends State<VoyageList> {
                     String _dt = DateFormat("dd-MMM-yyyy  hh:mm")
                         .format(DateTime.parse(dateVoyage!));
                     idVoyage = dataVoyage1?.voyId;
-                    polVoyage = dataVoyage1?.pol;
+                    pol_final = dataVoyage1?.pol;
                     return DataRow(cells: [
                       DataCell(Center(
                           child: Text(
@@ -132,7 +132,7 @@ class _VoyageListState extends State<VoyageList> {
                       DataCell(
                         Center(
                           child: Text(
-                            polVoyage.toString(),
+                            pol_final.toString(),
                             style: style_text_Table_small,
                           ),
                         ),
@@ -159,8 +159,9 @@ class _VoyageListState extends State<VoyageList> {
                                 date: DateFormat("dd-MMM-yyyy").format(
                                     DateTime.parse(
                                         (data.listBookingVoys?[index])!.etd!)),
-                                // pol: namePort1,
-                                // pod: namePort2
+                                pol_final: data.listBookingVoys?[index].pol,
+                                polId_final: data.listBookingVoys?[index].polId,
+                                podId_final: data.listBookingVoys?[index].podId
                               );
                             },
                             style: ElevatedButton.styleFrom(

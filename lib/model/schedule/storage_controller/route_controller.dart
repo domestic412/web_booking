@@ -14,22 +14,32 @@ class RouteController extends GetxController {
   var vessel = ''.obs;
   var voy = ''.obs;
   var date = ''.obs;
+
+  //data location
   var pol = ''.obs;
   var polID = ''.obs;
   var pod = ''.obs;
   var podID = ''.obs;
 
+  //data pol pod
+  var pol_final = ''.obs;
+  var polId_final = ''.obs;
+  // var pod_final = ''.obs;
+  var podId_final = ''.obs;
+
   void updateRouteController({
     @required vessel,
     @required voy,
     @required date,
-    // @required pol,
-    // @required pod,
+    @required pol_final,
+    @required polId_final,
+    @required podId_final,
   }) {
     this.vessel.value = vessel;
     this.voy.value = voy;
     this.date.value = date;
-    // this.pol.value = pol;
-    // this.pod.value = pod;
+    this.pol_final.value = pol_final;
+    this.polId_final.value = polId_final;
+    this.podId_final.value = podId_final;
   }
 }

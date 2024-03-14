@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
+import 'package:web_booking/model/new_login/model_newlogin.dart';
 
 class ServiceWidget extends StatefulWidget {
   const ServiceWidget({super.key});
@@ -11,10 +13,14 @@ class ServiceWidget extends StatefulWidget {
 }
 
 class _ServiceWidgetState extends State<ServiceWidget> {
+  DataTable4s? selectTerm;
+
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Row(
+    return 
+    Obx(
+      () => 
+      Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
@@ -24,22 +30,36 @@ class _ServiceWidgetState extends State<ServiceWidget> {
               Container(
                   margin: EdgeInsets.only(left: 50),
                   width: 90,
-                  child: Text('Service Term')),
+                  child: Text('Term')),
               const SizedBox(
                 width: 10,
               ),
-              DropdownMenu<String>(
-                width: 120,
-                initialSelection:
-                    createBookingController.currentServiceTerm.value,
-                onSelected: (String? value) {
-                  createBookingController.currentServiceTerm.value = value!;
-                },
-                dropdownMenuEntries: createBookingController.listServiceTerm
-                    .map<DropdownMenuEntry<String>>((String value) {
-                  return DropdownMenuEntry<String>(value: value, label: value);
-                }).toList(),
-              ),
+              // DropdownMenu<String>(
+              //   width: 120,
+              //   initialSelection:
+              //       createBookingController.currentServiceTerm.value,
+              //   onSelected: (String? value) {
+              //     createBookingController.currentServiceTerm.value = value!;
+              //   },
+              //   dropdownMenuEntries: createBookingController.listServiceTerm
+              //       .map<DropdownMenuEntry<String>>((String value) {
+              //     return DropdownMenuEntry<String>(value: value, label: value);
+              //   }).toList(),
+              // ),
+              DropdownMenu<DataTable4s>(
+                  width: 120,
+                  controller: createBookingController.term_controller.value,
+                  enableFilter: true,
+                  enableSearch: true,
+                  label: Text('Term'.tr),
+                  dropdownMenuEntries: box.read(termList_signin),
+                  onSelected: (DataTable4s? term) {
+                    setState(() {
+                      selectTerm = term;
+                      createBookingController.term.value = selectTerm?.term ?? '';
+                    });
+                  },
+                ),
             ],
           )),
           SizedBox(
@@ -56,9 +76,9 @@ class _ServiceWidgetState extends State<ServiceWidget> {
               DropdownMenu<String>(
                 width: 120,
                 initialSelection:
-                    createBookingController.currentPaymentTerm.value,
+                    createBookingController.paymentTerm.value,
                 onSelected: (String? value) {
-                  createBookingController.currentPaymentTerm.value = value!;
+                  createBookingController.paymentTerm.value = value!;
                 },
                 dropdownMenuEntries: createBookingController.listPaymentTerm
                     .map<DropdownMenuEntry<String>>((String value) {
@@ -77,13 +97,13 @@ class _ServiceWidgetState extends State<ServiceWidget> {
               leading: Radio(
                 value: createBookingController.optionsContainer[0],
                 groupValue:
-                    createBookingController.currentOptionsContainer.value,
+                    createBookingController.coc.value,
                 activeColor: normalColor,
-                onChanged: (String? value) {
-                  setState(() {
-                    createBookingController.currentOptionsContainer.value =
+                onChanged: (bool? value) {
+                  // setState(() {
+                    createBookingController.coc.value =
                         value!;
-                  });
+                  // });
                 },
               ),
             ),
@@ -92,16 +112,16 @@ class _ServiceWidgetState extends State<ServiceWidget> {
             width: 120,
             child: ListTile(
               title: const Text('SOC'),
-              leading: Radio<String>(
+              leading: Radio(
                 value: createBookingController.optionsContainer[1],
                 groupValue:
-                    createBookingController.currentOptionsContainer.value,
+                    createBookingController.coc.value,
                 activeColor: normalColor,
-                onChanged: (String? value) {
-                  setState(() {
-                    createBookingController.currentOptionsContainer.value =
+                onChanged: (bool? value) {
+                  // setState(() {
+                    createBookingController.coc.value =
                         value!;
-                  });
+                  // });
                 },
               ),
             ),

@@ -149,6 +149,10 @@ class _BookingPageState extends State<BookingPage> {
                                     routeController.polID.value,
                                     routeController.podID.value,
                                     routeController.dateSelect.value);
+
+                                    print(routeController.polID.value);
+                                    print(routeController.podID.value);
+
                               });
                             }
                           },

@@ -72,9 +72,11 @@ class ListBookingVoys {
   String? voyId;
   String? vesselName;
   String? pol;
+  String? polId;
+  String? podId;
 
   ListBookingVoys(
-      {this.voyDetail, this.etd, this.voyId, this.vesselName, this.pol});
+      {this.voyDetail, this.etd, this.voyId, this.vesselName, this.pol, this.polId, this.podId});
 
   ListBookingVoys.fromJson(Map<String, dynamic> json) {
     voyDetail = json['voyDetail'];
@@ -82,6 +84,8 @@ class ListBookingVoys {
     voyId = json['voyId'];
     vesselName = json['vesselName'];
     pol = json['pol'];
+    polId = json['polId'];
+    podId = json['podId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -91,6 +95,8 @@ class ListBookingVoys {
     data['voyId'] = this.voyId;
     data['vesselName'] = this.vesselName;
     data['pol'] = this.pol;
+    data['polId'] = this.polId;
+    data['podId'] = this.podId;
     return data;
   }
 }

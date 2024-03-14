@@ -123,7 +123,7 @@ class RouteInformationWidget extends StatelessWidget {
                       alignment: Alignment.center,
                       // width: 100,
                       child: Text(
-                        routeController.pol.value,
+                        routeController.pol_final.value,
                         style: style_text_Table_small,
                       ))
                 ],

@@ -62,6 +62,14 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
               DataColumn(
                 label: Expanded(
                   child: Text(
+                    'Type',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                ),
+              ),
+              DataColumn(
+                label: Expanded(
+                  child: Text(
                     'Status',
                     style: TextStyle(fontStyle: FontStyle.italic),
                   ),
@@ -83,22 +91,22 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                   ),
                 ),
               ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Temp.',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
-                ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Dangerous',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
-                ),
-              ),
+              // DataColumn(
+              //   label: Expanded(
+              //     child: Text(
+              //       'Temp.',
+              //       style: TextStyle(fontStyle: FontStyle.italic),
+              //     ),
+              //   ),
+              // ),
+              // DataColumn(
+              //   label: Expanded(
+              //     child: Text(
+              //       'Dangerous',
+              //       style: TextStyle(fontStyle: FontStyle.italic),
+              //     ),
+              //   ),
+              // ),
               DataColumn(
                 label: Expanded(
                   child: Text(
@@ -116,19 +124,19 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                   cells: <DataCell>[
                     DataCell(Text((i + 1).toString())),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].commodityConts!)),
+                        .listInfoContainer[i].commodityId!)),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].sizeConts!)),
+                        .listInfoContainer[i].sizeId!)),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].statusConts!)),
+                        .listInfoContainer[i].type!)),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].volumeConts!)),
+                        .listInfoContainer[i].status!)),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].weightConts!)),
+                        .listInfoContainer[i].volume!.toString())),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].temperatureConts!)),
-                    DataCell(
-                        Text(createBookingController.listInfoContainer[i].dg!)),
+                        .listInfoContainer[i].weight!.toString())),
+                    // DataCell(
+                    //     Text(createBookingController.listInfoContainer[i].dg!)),
                     DataCell(createBookingController.countRowContainer.value !=
                             0
                         ? InkWell(

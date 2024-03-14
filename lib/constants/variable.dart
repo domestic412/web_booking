@@ -21,6 +21,7 @@ String shipperName_signin = 'shippername';
 String managingOfficeId_signin = 'managingOfficeId';
 String consigneeList_signin = 'consigneeList';
 String termList_signin = 'termList';
+String commodityList_signin = 'commodityList';
 
 String savecntr = '';
 

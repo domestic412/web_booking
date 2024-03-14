@@ -9,6 +9,7 @@ import 'package:web_booking/model/new_login/model_newlogin.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 class NewSignInPage extends StatefulWidget {
@@ -108,6 +109,7 @@ class _NewSignInPageState extends State<NewSignInPage> {
               //update consignee
               List consigneeList = dataNewLogIn['dataTable2s'];
               List termList = dataNewLogIn['dataTable4s'];
+              List commodityList = dataNewLogIn['dataTable5s'];
 
               // box.write(login, 1);
               box.write(old_new_signin, 1);
@@ -116,6 +118,7 @@ class _NewSignInPageState extends State<NewSignInPage> {
               box.write(managingOfficeId_signin, managingOfficeId);
               box.write(consigneeList_signin, consigneeList);
               box.write(termList_signin, termList);
+              box.write(commodityList_signin, commodityList);
 
               // inforUserController.updateNewInfoUserController(
               //   OLD_NEW: 1,
@@ -126,6 +129,18 @@ class _NewSignInPageState extends State<NewSignInPage> {
               //   termList: termList,
               // );
 
+              switch (currentRouteController.route.value) {
+              case 'booking':
+                Get.toNamed(GetRoutes.BookingRequest);
+                break;
+              // case 'service':
+              //   Get.toNamed(GetRoutes.Home);
+              //   break;
+              default:
+                Get.toNamed(GetRoutes.defaultRoute);
+                break;
+            }
+            
               print('Login Success');
               return ModelNewLogin.fromJson(dataNewLogIn);
             }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
+import 'package:web_booking/model/new_login/model_newlogin.dart';
 
 class CargoInformation extends StatefulWidget {
   const CargoInformation({
@@ -14,7 +16,8 @@ class CargoInformation extends StatefulWidget {
 }
 
 class _CargoInformationState extends State<CargoInformation> {
-  // String? contDangerous;
+  DataTable5s? selectCommodity;
+
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -27,14 +30,28 @@ class _CargoInformationState extends State<CargoInformation> {
                   margin: EdgeInsets.only(left: 50),
                   width: 90,
                   child: Text('Commodity')),
-              // SizedBox(width: 20),
-              Container(
-                width: 760,
-                child: TextField(
-                  controller: createBookingController.inputCommodity.value,
-                  decoration: InputDecoration(border: OutlineInputBorder()),
+              SizedBox(width: 20),
+              // Container(
+              //   width: 760,
+              //   child: TextField(
+              //     controller: createBookingController.inputCommodity.value,
+              //     decoration: InputDecoration(border: OutlineInputBorder()),
+              //   ),
+              // )
+              DropdownMenu<DataTable5s>(
+                  menuHeight: 500,
+                  controller: createBookingController.commodity_controller.value,
+                  enableFilter: true,
+                  enableSearch: true,
+                  label: Text('commodity'.tr),
+                  dropdownMenuEntries: box.read(commodityList_signin),
+                  onSelected: (DataTable5s? commodity) {
+                    // setState(() {
+                      selectCommodity = commodity;
+                      createBookingController.commodityId.value = selectCommodity?.commodityId ?? '';
+                    // });
+                  },
                 ),
-              )
             ],
           ),
           SizedBox(
@@ -52,15 +69,30 @@ class _CargoInformationState extends State<CargoInformation> {
                           width: 90,
                           child: Text('Size')),
                       DropdownMenu<String>(
-                        width: 120,
+                        width: 60,
                         initialSelection:
-                            createBookingController.currentSizeContainer.value,
+                            createBookingController.sizeId.value,
                         onSelected: (String? value) {
-                          createBookingController.currentSizeContainer.value =
+                          createBookingController.sizeId.value =
                               value!;
                         },
                         dropdownMenuEntries: createBookingController
                             .listSizeContainer
+                            .map<DropdownMenuEntry<String>>((String value) {
+                          return DropdownMenuEntry<String>(
+                              value: value, label: value);
+                        }).toList(),
+                      ),
+                      DropdownMenu<String>(
+                        width: 60,
+                        initialSelection:
+                            createBookingController.type.value,
+                        onSelected: (String? value) {
+                          createBookingController.type.value =
+                              value!;
+                        },
+                        dropdownMenuEntries: createBookingController
+                            .listType
                             .map<DropdownMenuEntry<String>>((String value) {
                           return DropdownMenuEntry<String>(
                               value: value, label: value);
@@ -83,6 +115,16 @@ class _CargoInformationState extends State<CargoInformation> {
                         onSelected: (String? value) {
                           createBookingController.currentTypeContainer.value =
                               value!;
+                          switch (createBookingController.currentTypeContainer.value) {
+                            case 'DRY':
+                              createBookingController.reefer.value = false;
+                              break;
+                            case  'REEFER':
+                              createBookingController.reefer.value = true;
+                              break;
+                            default:
+                              break;
+                          }
                         },
                         dropdownMenuEntries: createBookingController
                             .listTypeContainer
@@ -104,9 +146,9 @@ class _CargoInformationState extends State<CargoInformation> {
                       DropdownMenu<String>(
                         width: 120,
                         initialSelection: createBookingController
-                            .currentStatusContainer.value,
+                            .status.value,
                         onSelected: (String? value) {
-                          createBookingController.currentStatusContainer.value =
+                          createBookingController.status.value =
                               value!;
                         },
                         dropdownMenuEntries: createBookingController
@@ -137,7 +179,7 @@ class _CargoInformationState extends State<CargoInformation> {
                       Container(
                         width: 120,
                         child: TextField(
-                          controller: createBookingController.inputVolume.value,
+                          controller: createBookingController.volume_controller.value,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
@@ -148,7 +190,7 @@ class _CargoInformationState extends State<CargoInformation> {
                       )
                     ],
                   )),
-              createBookingController.currentStatusContainer.value == 'F'
+              createBookingController.status.value == 'F'
                   ? Row(
                       children: [
                         Container(
@@ -163,7 +205,7 @@ class _CargoInformationState extends State<CargoInformation> {
                                   width: 120,
                                   child: TextField(
                                     controller: createBookingController
-                                        .inputWeight.value,
+                                        .weight_controller.value,
                                     inputFormatters: [
                                       FilteringTextInputFormatter.digitsOnly
                                     ],
@@ -174,8 +216,8 @@ class _CargoInformationState extends State<CargoInformation> {
                                 )
                               ],
                             )),
-                        createBookingController.currentTypeContainer.value ==
-                                'REEFER'
+                        createBookingController.reefer.value ==
+                                true
                             ? Container(
                                 width: 200,
                                 child: Row(
@@ -185,7 +227,7 @@ class _CargoInformationState extends State<CargoInformation> {
                                       width: 120,
                                       child: TextField(
                                         controller: createBookingController
-                                            .inputTemp.value,
+                                            .temp_controller.value,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
                                         ),
@@ -219,11 +261,11 @@ class _CargoInformationState extends State<CargoInformation> {
                       height: 50,
                       width: 50,
                       child: Checkbox(
-                        value: createBookingController.boolContDangerous.value,
-                        onChanged: (newValue) {
+                        value: createBookingController.dg.value,
+                        onChanged: (value) {
                           // setState(() {
-                          createBookingController.boolContDangerous.value =
-                              !createBookingController.boolContDangerous.value;
+                          createBookingController.dg.value =
+                              !createBookingController.dg.value;
                           // });
                         },
                       ),
@@ -231,38 +273,40 @@ class _CargoInformationState extends State<CargoInformation> {
                   ],
                 ),
               ),
-              createBookingController.boolContDangerous.value == false
+              createBookingController.dg.value == false
                   ? SizedBox.shrink()
                   : Row(
                       children: [
                         Container(
                             margin: EdgeInsets.only(left: 10),
                             width: 70,
-                            child: Text('UnNo')),
+                            // child: Text('UnNo')),
+                            child: Text('DG Remark')),
                         Container(
-                          width: 120,
+                          // width: 120,
+                          width: 300,
                           child: TextField(
                             controller:
-                                createBookingController.inputDGunNo.value,
+                                createBookingController.dgRemark_controller.value,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                             ),
                           ),
                         ),
-                        Container(
-                            margin: EdgeInsets.only(left: 30),
-                            width: 60,
-                            child: Text('Class')),
-                        Container(
-                          width: 120,
-                          child: TextField(
-                            controller:
-                                createBookingController.inputDGClass.value,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        ),
+                        // Container(
+                        //     margin: EdgeInsets.only(left: 30),
+                        //     width: 60,
+                        //     child: Text('Class')),
+                        // Container(
+                        //   width: 120,
+                        //   child: TextField(
+                        //     controller:
+                        //         createBookingController.inputDGClass.value,
+                        //     decoration: InputDecoration(
+                        //       border: OutlineInputBorder(),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
             ],
@@ -279,7 +323,7 @@ class _CargoInformationState extends State<CargoInformation> {
               Container(
                 width: 760,
                 child: TextField(
-                  controller: createBookingController.inputNoteRequest.value,
+                  controller: createBookingController.remark.value,
                   decoration: InputDecoration(border: OutlineInputBorder()),
                 ),
               )
@@ -301,34 +345,37 @@ class _CargoInformationState extends State<CargoInformation> {
                     ElevatedButton(
                         onPressed: () {
                           if ((createBookingController
-                                          .boolContDangerous.value ==
+                                          .dg.value ==
                                       true &&
-                                  createBookingController.inputDGunNo.value.text
+                                  // createBookingController.inputDGunNo.value.text
+                                  //         .trim() ==
+                                  //     '' 
+                                  //     &&
+                                  // createBookingController
+                                  //         .inputDGClass.value.text
+                                  //         .trim() ==
+                                  //     ''
+                                  createBookingController.dgRemark_controller.value.text
                                           .trim() ==
-                                      '' &&
-                                  createBookingController
-                                          .inputDGClass.value.text
+                                      '' 
+                                      ) 
+                                      ||
+                              (createBookingController
+                                          .status.value ==
+                                      'F' &&
+                                  createBookingController.weight_controller.value.text
                                           .trim() ==
                                       '') ||
                               (createBookingController
-                                          .currentStatusContainer.value ==
-                                      'F' &&
-                                  createBookingController.inputWeight.value.text
-                                          .trim() ==
-                                      '') ||
-                              (createBookingController
-                                          .currentStatusContainer.value ==
+                                          .status.value ==
                                       'F' &&
                                   createBookingController
-                                          .currentTypeContainer.value ==
-                                      'REEFER' &&
-                                  createBookingController.inputTemp.value.text
+                                          .reefer.value ==
+                                      true &&
+                                  createBookingController.temp_controller.value.text
                                           .trim() ==
                                       '') ||
-                              (createBookingController.inputCommodity.value.text
-                                      .trim() ==
-                                  '') ||
-                              (createBookingController.inputCommodity.value.text
+                              (createBookingController.commodity_controller.value.text
                                       .trim() ==
                                   '')) {
                             //miss field input
@@ -345,76 +392,41 @@ class _CargoInformationState extends State<CargoInformation> {
                                         .countRowContainer.value +
                                     1;
                             if (createBookingController
-                                    .currentStatusContainer.value ==
+                                    .status.value ==
                                 'E') {
-                              createBookingController.inputWeight.value.clear();
-                              createBookingController.inputTemp.value.clear();
+                              createBookingController.weight_controller.value.clear();
+                              createBookingController.temp_controller.value.clear();
                             }
                             if (createBookingController
-                                    .currentTypeContainer.value ==
-                                'DRY') {
-                              createBookingController.inputTemp.value.clear();
-                            }
-                            if (createBookingController
-                                    .boolContDangerous.value ==
+                                    .reefer.value ==
                                 false) {
-                              createBookingController.inputDGunNo.value.clear();
-                              createBookingController.inputDGClass.value
-                                  .clear();
+                              createBookingController.temp_controller.value.clear();
                             }
-                            switch (
-                                '${createBookingController.currentSizeContainer.value}-${createBookingController.currentTypeContainer.value}') {
-                              case '20-DRY':
-                                createBookingController
-                                    .realSizeContainer.value = '20DC';
-                              case '40-DRY':
-                                createBookingController
-                                    .realSizeContainer.value = '40HC';
-                              case '45-DRY':
-                                createBookingController
-                                    .realSizeContainer.value = '45HC';
-                              case '53-DRY':
-                                createBookingController
-                                    .realSizeContainer.value = '53HC';
-                              case '20-REEFER':
-                                createBookingController
-                                    .realSizeContainer.value = '20RF';
-                              case '40-REEFER':
-                                createBookingController
-                                    .realSizeContainer.value = '40RF';
-                              case '45-REEFER':
-                                createBookingController
-                                    .realSizeContainer.value = '45RF';
-                              case '53-REEFER':
-                                createBookingController
-                                    .realSizeContainer.value = '53RF';
-                              default:
-                                createBookingController
-                                    .realSizeContainer.value = 'unknown';
+                            if (createBookingController
+                                    .dg.value ==
+                                false) {
+                              // createBookingController.inputDGunNo.value.clear();
+                              // createBookingController.inputDGClass.value
+                              //     .clear();
+                              createBookingController.dgRemark_controller.value.clear();
                             }
-                            Volumes _listInfoContainer = Volumes(
-                                commodityConts: createBookingController
-                                    .inputCommodity.value.text,
-                                sizeConts: createBookingController
-                                    .realSizeContainer.value,
-                                statusConts: createBookingController
-                                    .currentStatusContainer.value,
-                                volumeConts: createBookingController
-                                    .inputVolume.value.text,
-                                weightConts: createBookingController
-                                    .inputWeight.value.text,
-                                temperatureConts: createBookingController
-                                    .inputTemp.value.text,
-                                dg: createBookingController
-                                    .boolContDangerous.value
-                                    .toString(),
-                                dgUnNo: createBookingController
-                                    .inputDGunNo.value.text,
-                                dgClass: createBookingController
-                                    .inputDGClass.value.text);
+                            BookingDetails _listBookingDetails = BookingDetails(
+                                commodityId: createBookingController
+                                    .commodity_controller.value.text,
+                                sizeId: createBookingController
+                                    .sizeId.value,
+                                type: createBookingController
+                                    .type.value,
+                                volume: int.parse(createBookingController
+                                    .volume_controller.value.text),
+                                status: createBookingController
+                                    .status.value,
+                                weight: int.parse(createBookingController
+                                    .weight_controller.value.text),
+                                edit: 'I',);
                             // add info cont to list
                             createBookingController.listInfoContainer
-                                .add(_listInfoContainer);
+                                .add(_listBookingDetails);
                           }
                         },
                         child: Text('ADD CONTAINER')),

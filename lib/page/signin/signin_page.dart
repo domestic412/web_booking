@@ -138,9 +138,9 @@ class _SignInPageState extends State<SignInPage> {
               case 'booking':
                 Get.toNamed(GetRoutes.BookingRequest);
                 break;
-              case 'service':
-                Get.toNamed(GetRoutes.Home);
-                break;
+              // case 'service':
+              //   Get.toNamed(GetRoutes.Home);
+              //   break;
               default:
                 Get.toNamed(GetRoutes.defaultRoute);
                 break;

@@ -27,17 +27,18 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
       children: [
         ElevatedButton(
             onPressed: () {
-              createBookingController.statusBookingRequest.value = 'N';
               createBookingController.boolErrorBookingRequest.value == false
                   ? PostBookingRequest(
                       dateSelect,
                       routeController.vessel.value,
                       routeController.voy.value,
                       inforUserController.tenNV.value,
-                      createBookingController.boolNewConsignee.value == false
-                          ? createBookingController.currentConsignee.value
-                          : createBookingController
-                              .inputNewConsignee.value.text,
+                      // createBookingController.boolNewConsignee.value == false
+                      //     ? 
+                          createBookingController.consigneeId.value
+                          // : createBookingController
+                          //     .inputNewConsignee.value.text,
+                          ,
                       createBookingController.currentServiceTerm.value,
                       createBookingController.currentOptionsContainer.value,
                       createBookingController.currentPaymentTerm.value,
@@ -66,10 +67,12 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                       routeController.vessel.value,
                       routeController.voy.value,
                       inforUserController.tenNV.value,
-                      createBookingController.boolNewConsignee.value == false
-                          ? createBookingController.currentConsignee.value
-                          : createBookingController
-                              .inputNewConsignee.value.text,
+                      // createBookingController.boolNewConsignee.value == false
+                          // ? 
+                          createBookingController.consigneeId.value
+                          // : createBookingController
+                          //     .inputNewConsignee.value.text,
+                          ,
                       createBookingController.currentServiceTerm.value,
                       createBookingController.currentOptionsContainer.value,
                       createBookingController.currentPaymentTerm.value,
@@ -93,34 +96,52 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
   }
 
   Future<void> PostBookingRequest(
-    String date,
-    String vessel,
-    String voyage,
-    String payer,
-    String consignee,
-    String serviceTerm,
-    String term,
+    String voyDetail,
+    String portLoadId,
+    String portDischargeId,
+    String refId,
+    String officeId,
     String paymentTerm,
-    String statusBooking,
-    String noteRequest,
-    List<Volumes> volume,
-    List<Depots> depots,
+    String term,
+    String specialRequest,
+    String payerId,
+    String shipperId,
+    String consigneeId,
+    String liftOnDepotId,
+    bool coc,
+    bool dg,
+    String dgRemark,
+    bool reefer,
+    String temperature,
+    String remark,
+    String userName,
+    String edit,
+    List<BookingDetails> bookingDetails,
   ) async {
     try {
       Map<String, dynamic> data = {
-        'date': date,
-        'vessel': vessel,
-        'voyage': voyage,
-        'payer': payer,
-        'consignee': consignee,
-        'serviceTerm': serviceTerm,
-        'term': term,
-        'paymentTerm': paymentTerm,
-        'statusBooking': statusBooking,
-        'noteRequestByUser': noteRequest,
-        'volumes': volume,
-        'depots': depots
-      };
+  "voyDetail": voyDetail,
+  "portLoadId": portLoadId,
+  "portDischargeId": portDischargeId,
+  "refId": refId,
+  "officeId": officeId,
+  "paymentTerm": paymentTerm,
+  "term": term,
+  "specialRequest": "",
+  "payerId": shipperId,
+  "shipperId": shipperId,
+  "consigneeId": consigneeId,
+  "liftOnDepotId": "00000000-0000-0000-0000-000000000000",
+  "coc": coc,
+  "dg": dg,
+  "dgRemark": dgRemark,
+  "reefer": reefer,
+  "temperature": temperature,
+  "remark": remark,
+  "userName": userName,
+  "edit": "I",
+"bookingDetails": bookingDetails
+};
       var body = json.encode(data);
       final response = await http.post(Uri.parse(URL_NEW_BOOKING),
           headers: {
@@ -131,8 +152,9 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
           body: body);
       switch (response.statusCode) {
         case 200:
-          Get.toNamed(GetRoutes.Home);
-          controller.selectWidget.value = bookingRequestList;
+          // Get.toNamed(GetRoutes.Home);
+          // controller.selectWidget.value = bookingRequestList;
+          Get.toNamed(GetRoutes.defaultRoute);
           createBookingController.clearDataCreateBooking();
         default:
           print('Error ${response.statusCode}');

@@ -2,8 +2,15 @@ class ModelNewLogin {
   List<DataTable1s>? dataTable1s;
   List<DataTable2s>? dataTable2s;
   List<DataTable3s>? dataTable3s;
+  List<DataTable4s>? dataTable4s;
+  List<DataTable5s>? dataTable5s;
 
-  ModelNewLogin({this.dataTable1s, this.dataTable2s, this.dataTable3s});
+  ModelNewLogin(
+      {this.dataTable1s,
+      this.dataTable2s,
+      this.dataTable3s,
+      this.dataTable4s,
+      this.dataTable5s});
 
   ModelNewLogin.fromJson(Map<String, dynamic> json) {
     if (json['dataTable1s'] != null) {
@@ -24,6 +31,18 @@ class ModelNewLogin {
         dataTable3s!.add(new DataTable3s.fromJson(v));
       });
     }
+    if (json['dataTable4s'] != null) {
+      dataTable4s = <DataTable4s>[];
+      json['dataTable4s'].forEach((v) {
+        dataTable4s!.add(new DataTable4s.fromJson(v));
+      });
+    }
+    if (json['dataTable5s'] != null) {
+      dataTable5s = <DataTable5s>[];
+      json['dataTable5s'].forEach((v) {
+        dataTable5s!.add(new DataTable5s.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -37,24 +56,33 @@ class ModelNewLogin {
     if (this.dataTable3s != null) {
       data['dataTable3s'] = this.dataTable3s!.map((v) => v.toJson()).toList();
     }
+    if (this.dataTable4s != null) {
+      data['dataTable4s'] = this.dataTable4s!.map((v) => v.toJson()).toList();
+    }
+    if (this.dataTable5s != null) {
+      data['dataTable5s'] = this.dataTable5s!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
 
 class DataTable1s {
-  String? column1;
+  String? shipperId;
+  String? shipperName;
   String? managingOfficeId;
 
-  DataTable1s({this.column1, this.managingOfficeId});
+  DataTable1s({this.shipperId, this.shipperName, this.managingOfficeId});
 
   DataTable1s.fromJson(Map<String, dynamic> json) {
-    column1 = json['column1'];
+    shipperId = json['shipperId'];
+    shipperName = json['shipperName'];
     managingOfficeId = json['managingOfficeId'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['column1'] = this.column1;
+    data['shipperId'] = this.shipperId;
+    data['shipperName'] = this.shipperName;
     data['managingOfficeId'] = this.managingOfficeId;
     return data;
   }
@@ -112,6 +140,41 @@ class DataTable3s {
     data['portDischargeId'] = this.portDischargeId;
     data['startDate'] = this.startDate;
     data['endDate'] = this.endDate;
+    return data;
+  }
+}
+
+class DataTable4s {
+  String? term;
+
+  DataTable4s({this.term});
+
+  DataTable4s.fromJson(Map<String, dynamic> json) {
+    term = json['term'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['term'] = this.term;
+    return data;
+  }
+}
+
+class DataTable5s {
+  String? commodityId;
+  String? commodityName;
+
+  DataTable5s({this.commodityId, this.commodityName});
+
+  DataTable5s.fromJson(Map<String, dynamic> json) {
+    commodityId = json['commodityId'];
+    commodityName = json['commodityName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['commodityId'] = this.commodityId;
+    data['commodityName'] = this.commodityName;
     return data;
   }
 }
