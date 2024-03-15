@@ -6,7 +6,6 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
@@ -29,23 +28,27 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
             onPressed: () {
               createBookingController.boolErrorBookingRequest.value == false
                   ? PostBookingRequest(
-                      dateSelect,
-                      routeController.vessel.value,
-                      routeController.voy.value,
+                      routeController.voyDetail.value,
+                      routeController.polId_final.value,
+                      routeController.podId_final.value,
+                      createBookingController.refId.value,
+                      inforUserController.managingOfficeId.value,
+                      createBookingController.paymentTerm.value,
+                      createBookingController.term.value,
+                      '',
+                      inforUserController.shipperId.value,
+                      inforUserController.shipperId.value,
+                      createBookingController.consigneeId.value,
+                      '00000000-0000-0000-0000-000000000000',
+                      createBookingController.coc.value,
+                      createBookingController.dg.value,
+                      createBookingController.dgRemark_controller.value.text,
+                      createBookingController.reefer.value,
+                      createBookingController.temp_controller.value.text,
+                      createBookingController.remark.value.text,
                       inforUserController.tenNV.value,
-                      // createBookingController.boolNewConsignee.value == false
-                      //     ? 
-                          createBookingController.consigneeId.value
-                          // : createBookingController
-                          //     .inputNewConsignee.value.text,
-                          ,
-                      createBookingController.currentServiceTerm.value,
-                      createBookingController.currentOptionsContainer.value,
-                      createBookingController.currentPaymentTerm.value,
-                      createBookingController.statusBookingRequest.value,
-                      createBookingController.inputNoteRequest.value.text,
-                      createBookingController.listInfoContainer,
-                      createBookingController.listInfoDepo)
+                      'I',
+                      createBookingController.listInfoContainer)
                   : null;
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
@@ -57,40 +60,47 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                 style: TextStyle(color: white),
               ),
             )),
-        SizedBox(width: 20),
-        ElevatedButton(
-            onPressed: () {
-              createBookingController.statusBookingRequest.value = 'C';
-              createBookingController.boolErrorBookingRequest.value == false
-                  ? PostBookingRequest(
-                      dateSelect,
-                      routeController.vessel.value,
-                      routeController.voy.value,
-                      inforUserController.tenNV.value,
-                      // createBookingController.boolNewConsignee.value == false
-                          // ? 
-                          createBookingController.consigneeId.value
-                          // : createBookingController
-                          //     .inputNewConsignee.value.text,
-                          ,
-                      createBookingController.currentServiceTerm.value,
-                      createBookingController.currentOptionsContainer.value,
-                      createBookingController.currentPaymentTerm.value,
-                      createBookingController.statusBookingRequest.value,
-                      createBookingController.inputNoteRequest.value.text,
-                      createBookingController.listInfoContainer,
-                      createBookingController.listInfoDepo)
-                  : null;
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: haian),
-            child: Container(
-              alignment: Alignment.center,
-              height: 40,
-              child: Text(
-                'Confirmation Request',
-                style: TextStyle(color: white),
-              ),
-            ))
+        // SizedBox(width: 20),
+        // ElevatedButton(
+        //     onPressed: () {
+        //       createBookingController.edit.value = 'I';
+        //       createBookingController.boolErrorBookingRequest.value == false
+        //           ? PostBookingRequest(
+        //               routeController.voyDetail.value,
+        //               routeController.polId_final.value,
+        //               routeController.podId_final.value,
+        //               '00000000-0000-0000-0000-000000000000',
+        //               inforUserController.managingOfficeId.value,
+
+        //               createBookingController.paymentTerm.value,
+        //               createBookingController.term.value,
+        //               '',
+        //               inforUserController.shipperId.value,
+        //               inforUserController.shipperId.value,
+
+        //               createBookingController.consigneeId.value,
+        //               '00000000-0000-0000-0000-000000000000',
+        //               createBookingController.coc.value,
+        //               createBookingController.dg.value,
+        //               createBookingController.dgRemark_controller.value.text,
+
+        //               createBookingController.reefer.value,
+        //               createBookingController.temp_controller.value.text,
+        //               createBookingController.remark.value.text,
+        //               inforUserController.tenNV.value,
+        //               'I',
+        //               createBookingController.listInfoContainer)
+        //           : null;
+        //     },
+        //     style: ElevatedButton.styleFrom(backgroundColor: haian),
+        //     child: Container(
+        //       alignment: Alignment.center,
+        //       height: 40,
+        //       child: Text(
+        //         'Confirmation Request',
+        //         style: TextStyle(color: white),
+        //       ),
+        //     ))
       ],
     );
   }
@@ -120,29 +130,30 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
   ) async {
     try {
       Map<String, dynamic> data = {
-  "voyDetail": voyDetail,
-  "portLoadId": portLoadId,
-  "portDischargeId": portDischargeId,
-  "refId": refId,
-  "officeId": officeId,
-  "paymentTerm": paymentTerm,
-  "term": term,
-  "specialRequest": "",
-  "payerId": shipperId,
-  "shipperId": shipperId,
-  "consigneeId": consigneeId,
-  "liftOnDepotId": "00000000-0000-0000-0000-000000000000",
-  "coc": coc,
-  "dg": dg,
-  "dgRemark": dgRemark,
-  "reefer": reefer,
-  "temperature": temperature,
-  "remark": remark,
-  "userName": userName,
-  "edit": "I",
-"bookingDetails": bookingDetails
-};
+        "voyDetail": voyDetail,
+        "portLoadId": portLoadId,
+        "portDischargeId": portDischargeId,
+        "refId": refId,
+        "officeId": officeId,
+        "paymentTerm": paymentTerm,
+        "term": term,
+        "specialRequest": "",
+        "payerId": shipperId,
+        "shipperId": shipperId,
+        "consigneeId": consigneeId,
+        "liftOnDepotId": "00000000-0000-0000-0000-000000000000",
+        "coc": coc,
+        "dg": dg,
+        "dgRemark": dgRemark,
+        "reefer": reefer,
+        "temperature": temperature,
+        "remark": remark,
+        "userName": userName,
+        "edit": "I",
+        "bookingDetails": bookingDetails
+      };
       var body = json.encode(data);
+      print(body);
       final response = await http.post(Uri.parse(URL_NEW_BOOKING),
           headers: {
             "Access-Control-Allow-Origin": "*",

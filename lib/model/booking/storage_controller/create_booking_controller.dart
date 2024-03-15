@@ -7,8 +7,13 @@ final CreateBookingController createBookingController =
 
 class CreateBookingController extends GetxController {
   // var listConsignee = ['Consignee 1', 'Consignee 2', 'Consignee 3'].obs;
+  // var voyDetails = ''.obs;
+
   var consignee_controller = TextEditingController().obs;
   var consigneeId = ''.obs;
+
+  var ref_controller = TextEditingController().obs;
+  var refId = ''.obs;
 
   var term_controller = TextEditingController().obs;
   var term = ''.obs;
@@ -34,7 +39,8 @@ class CreateBookingController extends GetxController {
   var listSizeContainer = ['20', '40', '45', '53'].obs;
   var sizeId = ''.obs;
 
-  var listType = ['DC', 'HC', 'RF', 'RH', ' HQ', 'GP', 'OT', 'OH', 'TK', 'FR'].obs;
+  var listType =
+      ['DC', 'HC', 'RF', 'RH', ' HQ', 'GP', 'OT', 'OH', 'TK', 'FR'].obs;
   var type = ''.obs;
 
   var listTypeContainer = ['DRY', 'REEFER'].obs;

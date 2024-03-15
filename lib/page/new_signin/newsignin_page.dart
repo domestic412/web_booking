@@ -107,9 +107,24 @@ class _NewSignInPageState extends State<NewSignInPage> {
               String managingOfficeId = infoUser[0]['managingOfficeId'];
 
               //update consignee
-              List consigneeList = dataNewLogIn['dataTable2s'];
-              List termList = dataNewLogIn['dataTable4s'];
-              List commodityList = dataNewLogIn['dataTable5s'];
+              var consigneeList_json = dataNewLogIn['dataTable2s'];
+              List consigneeList = consigneeList_json
+                  .map((e) => DataTable2s.fromJson(e))
+                  .toList();
+
+              var refList_json = dataNewLogIn['dataTable3s'];
+              List refList =
+                  refList_json.map((e) => DataTable3s.fromJson(e)).toList();
+
+              var termList_json = dataNewLogIn['dataTable4s'];
+              List termList =
+                  termList_json.map((e) => DataTable4s.fromJson(e)).toList();
+
+              var commodityList_json = dataNewLogIn['dataTable5s'];
+              List commodityList = commodityList_json
+                  .map((e) => DataTable5s.fromJson(e))
+                  .toList();
+              print(commodityList);
 
               // box.write(login, 1);
               box.write(old_new_signin, 1);
@@ -117,8 +132,13 @@ class _NewSignInPageState extends State<NewSignInPage> {
               box.write(shipperName_signin, shipperName);
               box.write(managingOfficeId_signin, managingOfficeId);
               box.write(consigneeList_signin, consigneeList);
+              box.write(refList_signin, refList);
               box.write(termList_signin, termList);
               box.write(commodityList_signin, commodityList);
+
+              // print(box
+              //     .read(consigneeList_signin)
+              //     .map((data) => DataTable2s.fromJson(data)));
 
               // inforUserController.updateNewInfoUserController(
               //   OLD_NEW: 1,
@@ -130,20 +150,21 @@ class _NewSignInPageState extends State<NewSignInPage> {
               // );
 
               switch (currentRouteController.route.value) {
-              case 'booking':
-                Get.toNamed(GetRoutes.BookingRequest);
-                break;
-              // case 'service':
-              //   Get.toNamed(GetRoutes.Home);
-              //   break;
-              default:
-                Get.toNamed(GetRoutes.defaultRoute);
-                break;
-            }
-            
+                case 'booking':
+                  Get.toNamed(GetRoutes.BookingRequest);
+                  break;
+                // case 'service':
+                //   Get.toNamed(GetRoutes.Home);
+                //   break;
+                default:
+                  Get.toNamed(GetRoutes.defaultRoute);
+                  break;
+              }
+
               print('Login Success');
               return ModelNewLogin.fromJson(dataNewLogIn);
             }
+
           default:
             LoginAlert(context);
             throw Exception('Error - ${response.reasonPhrase}');

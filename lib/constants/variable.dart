@@ -20,6 +20,7 @@ String shipperId_signin = 'shipperid';
 String shipperName_signin = 'shippername';
 String managingOfficeId_signin = 'managingOfficeId';
 String consigneeList_signin = 'consigneeList';
+String refList_signin = 'refList';
 String termList_signin = 'termList';
 String commodityList_signin = 'commodityList';
 

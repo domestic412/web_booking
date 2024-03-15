@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 
 class TableInformationContainer extends StatefulWidget {
@@ -91,28 +92,10 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                   ),
                 ),
               ),
-              // DataColumn(
-              //   label: Expanded(
-              //     child: Text(
-              //       'Temp.',
-              //       style: TextStyle(fontStyle: FontStyle.italic),
-              //     ),
-              //   ),
-              // ),
-              // DataColumn(
-              //   label: Expanded(
-              //     child: Text(
-              //       'Dangerous',
-              //       style: TextStyle(fontStyle: FontStyle.italic),
-              //     ),
-              //   ),
-              // ),
               DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Remove',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
+                label: Text(
+                  'Remove',
+                  style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
             ],
@@ -123,18 +106,21 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                 DataRow(
                   cells: <DataCell>[
                     DataCell(Text((i + 1).toString())),
+                    DataCell(Text(findCommodityName(createBookingController
+                            .listInfoContainer[i].commodityId!) ??
+                        '')),
+                    DataCell(Text(
+                        createBookingController.listInfoContainer[i].sizeId!)),
+                    DataCell(Text(
+                        createBookingController.listInfoContainer[i].type!)),
+                    DataCell(Text(
+                        createBookingController.listInfoContainer[i].status!)),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].commodityId!)),
+                        .listInfoContainer[i].volume!
+                        .toString())),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].sizeId!)),
-                    DataCell(Text(createBookingController
-                        .listInfoContainer[i].type!)),
-                    DataCell(Text(createBookingController
-                        .listInfoContainer[i].status!)),
-                    DataCell(Text(createBookingController
-                        .listInfoContainer[i].volume!.toString())),
-                    DataCell(Text(createBookingController
-                        .listInfoContainer[i].weight!.toString())),
+                        .listInfoContainer[i].weight!
+                        .toString())),
                     // DataCell(
                     //     Text(createBookingController.listInfoContainer[i].dg!)),
                     DataCell(createBookingController.countRowContainer.value !=
@@ -166,5 +152,13 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
         ),
       ),
     );
+  }
+}
+
+findCommodityName(String commodityId) {
+  for (final commodity in box.read(commodityList_signin)) {
+    if (commodity.commodityId == commodityId) {
+      return commodity.commodityName;
+    }
   }
 }

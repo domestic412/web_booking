@@ -139,20 +139,13 @@ class _BookingPageState extends State<BookingPage> {
                               // alertSelectPort.showAlertPort(context);
                             } else {
                               setState(() {
-                                // routeController.polID.value =
-                                //     idPort1.toString();
-                                // routeController.podID.value =
-                                //     idPort2.toString();
                                 fetchVoyage = Voyage().fetchDataVoyage(
-                                    // idPort1.toString(),
-                                    // idPort2.toString(),
                                     routeController.polID.value,
                                     routeController.podID.value,
                                     routeController.dateSelect.value);
 
-                                    print(routeController.polID.value);
-                                    print(routeController.podID.value);
-
+                                print(routeController.polID.value);
+                                print(routeController.podID.value);
                               });
                             }
                           },

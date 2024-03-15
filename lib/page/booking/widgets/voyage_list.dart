@@ -17,10 +17,10 @@ class VoyageList extends StatefulWidget {
 }
 
 class _VoyageListState extends State<VoyageList> {
-  String? pol_final;
-  String? idVoyage;
-  String? nameVoyage;
-  String? dateVoyage;
+  // String? pol_final;
+  // String? idVoyage;
+  // String? nameVoyage;
+  // String? dateVoyage;
   @override
   Widget build(BuildContext context) {
     return buildVoyage();
@@ -52,35 +52,46 @@ class _VoyageListState extends State<VoyageList> {
               margin: const EdgeInsets.only(bottom: 16, left: 32, right: 32),
               child: DataTable(
                   border: TableBorder.all(),
+                  horizontalMargin: 10,
                   sortColumnIndex: 0,
                   dataRowMaxHeight: 70,
-                  columnSpacing: 16,
+                  columnSpacing: 12,
                   columns: [
                     DataColumn(
                       label: Expanded(
+                          child: Container(
+                        width: 40,
+                        child: Center(
+                          child: SelectableText('Seq',
+                              style: style_text_Table_small_bold),
+                        ),
+                      )),
+                    ),
+                    DataColumn(
+                      label: Expanded(
                           child: Center(
-                        child: SelectableText('Seq',
+                        child: SelectableText("VESSEL",
                             style: style_text_Table_small_bold),
                       )),
                     ),
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("VESSEL'S NAME",
+                        child: SelectableText("VOY.NO",
                             style: style_text_Table_small_bold),
                       )),
                     ),
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("VOY. NO",
+                        child: SelectableText("PORT OF LOADING",
                             style: style_text_Table_small_bold),
                       )),
                     ),
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("PORT TO LOADING",
+                        child: SelectableText("PORT OF DISCHARGE",
                             style: style_text_Table_small_bold),
                       )),
                     ),
@@ -101,12 +112,13 @@ class _VoyageListState extends State<VoyageList> {
                   ],
                   rows: List.generate(data.listBookingVoys!.length, (index) {
                     var dataVoyage1 = data.listBookingVoys?[index];
-                    nameVoyage = dataVoyage1?.vesselName;
-                    dateVoyage = dataVoyage1?.etd;
-                    String _dt = DateFormat("dd-MMM-yyyy  hh:mm")
+                    String? nameVoyage = dataVoyage1?.vesselName;
+                    String? dateVoyage = dataVoyage1?.etd;
+                    String _dt = DateFormat("dd-MMM-yyyy\n    hh:mm")
                         .format(DateTime.parse(dateVoyage!));
-                    idVoyage = dataVoyage1?.voyId;
-                    pol_final = dataVoyage1?.pol;
+                    String? idVoyage = dataVoyage1?.voyId;
+                    String? pol_final = dataVoyage1?.pol;
+                    String? pod_final = dataVoyage1?.pod;
                     return DataRow(cells: [
                       DataCell(Center(
                           child: Text(
@@ -140,6 +152,14 @@ class _VoyageListState extends State<VoyageList> {
                       DataCell(
                         Center(
                           child: Text(
+                            pod_final.toString(),
+                            style: style_text_Table_small,
+                          ),
+                        ),
+                      ),
+                      DataCell(
+                        Center(
+                          child: Text(
                             _dt,
                             style: style_text_Table_small,
                           ),
@@ -154,15 +174,21 @@ class _VoyageListState extends State<VoyageList> {
                                   : Get.toNamed(GetRoutes.BookingRequest);
                               currentRouteController.route.value = 'booking';
                               routeController.updateRouteController(
-                                vessel: data.listBookingVoys?[index].vesselName,
-                                voy: data.listBookingVoys?[index].voyId,
-                                date: DateFormat("dd-MMM-yyyy").format(
-                                    DateTime.parse(
-                                        (data.listBookingVoys?[index])!.etd!)),
-                                pol_final: data.listBookingVoys?[index].pol,
-                                polId_final: data.listBookingVoys?[index].polId,
-                                podId_final: data.listBookingVoys?[index].podId
-                              );
+                                  voyDetail:
+                                      data.listBookingVoys?[index].voyDetail,
+                                  vessel:
+                                      data.listBookingVoys?[index].vesselName,
+                                  voy: data.listBookingVoys?[index].voyId,
+                                  date: DateFormat("dd-MMM-yyyy").format(
+                                      DateTime.parse(
+                                          (data.listBookingVoys?[index])!
+                                              .etd!)),
+                                  pol_final: data.listBookingVoys?[index].pol,
+                                  polId_final:
+                                      data.listBookingVoys?[index].polId,
+                                  pod_final: data.listBookingVoys?[index].pol,
+                                  podId_final:
+                                      data.listBookingVoys?[index].podId);
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: normalColor,

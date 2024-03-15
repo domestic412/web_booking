@@ -105,6 +105,11 @@ class DataTable2s {
     data['shipperName'] = this.shipperName;
     return data;
   }
+
+  @override
+  String toString() {
+    return 'consigneeId: $consigneeId, shipperName: $shipperName';
+  }
 }
 
 class DataTable3s {
@@ -142,6 +147,11 @@ class DataTable3s {
     data['endDate'] = this.endDate;
     return data;
   }
+
+  @override
+  String toString() {
+    return 'refId: $refId, refNo: $refNo, portLoadId: $portLoadId, portDischargeId: $portDischargeId, startDate: $startDate, endDate: $endDate';
+  }
 }
 
 class DataTable4s {
@@ -157,6 +167,11 @@ class DataTable4s {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['term'] = this.term;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'term: $term';
   }
 }
 
@@ -176,5 +191,10 @@ class DataTable5s {
     data['commodityId'] = this.commodityId;
     data['commodityName'] = this.commodityName;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'commodityId: $commodityId, commodityName: $commodityName';
   }
 }

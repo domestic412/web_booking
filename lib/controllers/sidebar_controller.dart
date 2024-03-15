@@ -59,18 +59,18 @@ class SideBarController extends GetxController {
         return CUD_UserPage();
       case changePass:
         return ChangePassword_UserPage();
-      case releaseBookingList:
-        return ReleaseBookingListPage();
-      case detailReleaseBookingList:
-        return DetailReleaseBookingRequestPage();
+      // case releaseBookingList:
+      //   return ReleaseBookingListPage();
+      // case detailReleaseBookingList:
+      //   return DetailReleaseBookingRequestPage();
       case approvalList:
         return ApprovalListPage();
       case detailApproval:
         // Get.toNamed(GetRoutes.DetailApproval);
         return DetailApprovalPage();
-      case bookingRequestList:
-        // Get.toNamed(GetRoutes.RequestList);
-        return BookingListPage();
+      // case bookingRequestList:
+      //   // Get.toNamed(GetRoutes.RequestList);
+      //   return BookingListPage();
       case detailBookingRequest:
         // Get.toNamed(GetRoutes.RequestList);
         return DetailBookingRequestPage();

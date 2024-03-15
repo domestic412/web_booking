@@ -12,72 +12,88 @@ class ConsigneeWidget extends StatefulWidget {
 }
 
 class _ConsigneeWidgetState extends State<ConsigneeWidget> {
-
   // var consignee_controller = TextEditingController();
   DataTable2s? selectConsignee;
+  DataTable3s? selectRef;
 
   @override
   Widget build(BuildContext context) {
-    return 
-    // Obx(() => 
-      Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-              margin: EdgeInsets.only(left: 50),
-              width: 90,
-              child: Text('Consignee')),
-          const SizedBox(width: 10),
-          // createBookingController.boolNewConsignee.value == false
-          //     ? DropdownMenu<String>(
-          //         initialSelection: createBookingController.listConsignee[0],
-          //         onSelected: (String? value) {
-          //           createBookingController.currentConsignee.value = value!;
-          //         },
-          //         dropdownMenuEntries: createBookingController.listConsignee
-          //             .map<DropdownMenuEntry<String>>((String value) {
-          //           return DropdownMenuEntry<String>(
-          //               value: value, label: value);
-          //         }).toList(),
-          //       )
-          //     : Container(
-          //         width: 400,
-          //         child: TextField(
-          //           controller: createBookingController.inputNewConsignee.value,
-          //           decoration: InputDecoration(
-          //               isDense: true,
-          //               border: OutlineInputBorder(),
-          //               contentPadding: EdgeInsets.all(10)),
-          //         ),
-          //       ),
-          DropdownMenu<DataTable2s>(
-                  controller: createBookingController.consignee_controller.value,
-                  enableFilter: true,
-                  enableSearch: true,
-                  label: Text('Consignee'.tr),
-                  dropdownMenuEntries: box.read(consigneeList_signin),
-                  onSelected: (DataTable2s? consignee) {
-                    setState(() {
-                      selectConsignee = consignee;
-                      createBookingController.consigneeId.value = selectConsignee?.consigneeId ?? '';
-                    });
-                  },
-                ),
-          // SizedBox(
-          //   height: 50,
-          //   width: 50,
-          //   child: Checkbox(
-          //     value: createBookingController.boolNewConsignee.value,
-          //     onChanged: (newValue) {
-          //       setState(() {
-          //         createBookingController.boolNewConsignee.value =
-          //             !createBookingController.boolNewConsignee.value;
-          //       });
-          //     },
-          //   ),
-          // ),
-          // Text('(New Consignee)')
-        ],
+    List<DropdownMenuEntry<DataTable2s>> consigneeEntries =
+        <DropdownMenuEntry<DataTable2s>>[];
+    List listConsignee = box.read(consigneeList_signin);
+    for (final consignee in listConsignee) {
+      consigneeEntries.add(DropdownMenuEntry<DataTable2s>(
+          value: consignee, label: consignee.shipperName));
+    }
+
+    List<DropdownMenuEntry<DataTable3s>> refEntries =
+        <DropdownMenuEntry<DataTable3s>>[];
+    List listRef = box.read(refList_signin);
+    for (final ref in listRef) {
+      refEntries
+          .add(DropdownMenuEntry<DataTable3s>(value: ref, label: ref.refNo));
+    }
+    return
+        // Obx(() =>
+        Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+            margin: EdgeInsets.only(left: 50),
+            width: 90,
+            child: Text('Consignee')),
+        const SizedBox(width: 10),
+        DropdownMenu<DataTable2s>(
+          controller: createBookingController.consignee_controller.value,
+          enableFilter: true,
+          enableSearch: true,
+          label: Text('Consignee'.tr),
+          dropdownMenuEntries: consigneeEntries,
+          onSelected: (DataTable2s? consignee) {
+            setState(() {
+              selectConsignee = consignee;
+              createBookingController.consigneeId.value =
+                  selectConsignee?.consigneeId ?? '';
+            });
+          },
+        ),
+        SizedBox(
+          width: 30,
+        ),
+        Container(
+            margin: EdgeInsets.only(left: 50),
+            width: 90,
+            child: Text('References')),
+        const SizedBox(width: 10),
+        DropdownMenu<DataTable3s>(
+          controller: createBookingController.ref_controller.value,
+          enableFilter: true,
+          enableSearch: true,
+          label: Text('References'.tr),
+          dropdownMenuEntries: refEntries,
+          onSelected: (DataTable3s? ref) {
+            setState(() {
+              selectRef = ref;
+              createBookingController.refId.value =
+                  selectConsignee?.consigneeId ?? '';
+            });
+          },
+        ),
+        // SizedBox(
+        //   height: 50,
+        //   width: 50,
+        //   child: Checkbox(
+        //     value: createBookingController.boolNewConsignee.value,
+        //     onChanged: (newValue) {
+        //       setState(() {
+        //         createBookingController.boolNewConsignee.value =
+        //             !createBookingController.boolNewConsignee.value;
+        //       });
+        //     },
+        //   ),
+        // ),
+        // Text('(New Consignee)')
+      ],
       // ),
     );
   }

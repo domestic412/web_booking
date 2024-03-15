@@ -20,6 +20,18 @@ class _CargoInformationState extends State<CargoInformation> {
 
   @override
   Widget build(BuildContext context) {
+    final List<DropdownMenuEntry<DataTable5s>> commodityEntries =
+        <DropdownMenuEntry<DataTable5s>>[];
+    List listCommodity = box.read(commodityList_signin);
+    print(listCommodity);
+    for (final commodity in listCommodity) {
+      commodityEntries.add(
+        DropdownMenuEntry<DataTable5s>(
+          value: commodity,
+          label: commodity.commodityName,
+        ),
+      );
+    }
     return Obx(
       () => Column(
         children: [
@@ -30,28 +42,21 @@ class _CargoInformationState extends State<CargoInformation> {
                   margin: EdgeInsets.only(left: 50),
                   width: 90,
                   child: Text('Commodity')),
-              SizedBox(width: 20),
-              // Container(
-              //   width: 760,
-              //   child: TextField(
-              //     controller: createBookingController.inputCommodity.value,
-              //     decoration: InputDecoration(border: OutlineInputBorder()),
-              //   ),
-              // )
               DropdownMenu<DataTable5s>(
-                  menuHeight: 500,
-                  controller: createBookingController.commodity_controller.value,
-                  enableFilter: true,
-                  enableSearch: true,
-                  label: Text('commodity'.tr),
-                  dropdownMenuEntries: box.read(commodityList_signin),
-                  onSelected: (DataTable5s? commodity) {
-                    // setState(() {
-                      selectCommodity = commodity;
-                      createBookingController.commodityId.value = selectCommodity?.commodityId ?? '';
-                    // });
-                  },
-                ),
+                width: 500,
+                controller: createBookingController.commodity_controller.value,
+                enableFilter: true,
+                enableSearch: true,
+                label: Text('Commodity'.tr),
+                dropdownMenuEntries: commodityEntries,
+                onSelected: (DataTable5s? commodity) {
+                  // setState(() {
+                  selectCommodity = commodity;
+                  createBookingController.commodityId.value =
+                      selectCommodity?.commodityId ?? '';
+                  // });
+                },
+              ),
             ],
           ),
           SizedBox(
@@ -61,7 +66,7 @@ class _CargoInformationState extends State<CargoInformation> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                  width: 300,
+                  width: 400,
                   child: Row(
                     children: [
                       Container(
@@ -69,12 +74,10 @@ class _CargoInformationState extends State<CargoInformation> {
                           width: 90,
                           child: Text('Size')),
                       DropdownMenu<String>(
-                        width: 60,
-                        initialSelection:
-                            createBookingController.sizeId.value,
+                        width: 110,
+                        initialSelection: createBookingController.sizeId.value,
                         onSelected: (String? value) {
-                          createBookingController.sizeId.value =
-                              value!;
+                          createBookingController.sizeId.value = value!;
                         },
                         dropdownMenuEntries: createBookingController
                             .listSizeContainer
@@ -84,15 +87,12 @@ class _CargoInformationState extends State<CargoInformation> {
                         }).toList(),
                       ),
                       DropdownMenu<String>(
-                        width: 60,
-                        initialSelection:
-                            createBookingController.type.value,
+                        width: 110,
+                        initialSelection: createBookingController.type.value,
                         onSelected: (String? value) {
-                          createBookingController.type.value =
-                              value!;
+                          createBookingController.type.value = value!;
                         },
-                        dropdownMenuEntries: createBookingController
-                            .listType
+                        dropdownMenuEntries: createBookingController.listType
                             .map<DropdownMenuEntry<String>>((String value) {
                           return DropdownMenuEntry<String>(
                               value: value, label: value);
@@ -110,16 +110,18 @@ class _CargoInformationState extends State<CargoInformation> {
                           child: Text('Type')),
                       DropdownMenu<String>(
                         width: 120,
+                        label: Text('Type'.tr),
                         initialSelection:
                             createBookingController.currentTypeContainer.value,
                         onSelected: (String? value) {
                           createBookingController.currentTypeContainer.value =
                               value!;
-                          switch (createBookingController.currentTypeContainer.value) {
+                          switch (createBookingController
+                              .currentTypeContainer.value) {
                             case 'DRY':
                               createBookingController.reefer.value = false;
                               break;
-                            case  'REEFER':
+                            case 'REEFER':
                               createBookingController.reefer.value = true;
                               break;
                             default:
@@ -145,11 +147,10 @@ class _CargoInformationState extends State<CargoInformation> {
                       ),
                       DropdownMenu<String>(
                         width: 120,
-                        initialSelection: createBookingController
-                            .status.value,
+                        label: Text('Status'.tr),
+                        initialSelection: createBookingController.status.value,
                         onSelected: (String? value) {
-                          createBookingController.status.value =
-                              value!;
+                          createBookingController.status.value = value!;
                         },
                         dropdownMenuEntries: createBookingController
                             .listStatusContainer
@@ -169,7 +170,7 @@ class _CargoInformationState extends State<CargoInformation> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                  width: 300,
+                  width: 400,
                   child: Row(
                     children: [
                       Container(
@@ -177,17 +178,20 @@ class _CargoInformationState extends State<CargoInformation> {
                           width: 90,
                           child: Text('Volume')),
                       Container(
-                        width: 120,
-                        child: TextField(
-                          controller: createBookingController.volume_controller.value,
+                        width: 220,
+                        child: TextFormField(
+                          controller:
+                              createBookingController.volume_controller.value,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
+                            labelText: 'Volume',
+                            labelStyle: TextStyle(fontSize: 14),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   )),
               createBookingController.status.value == 'F'
@@ -203,7 +207,7 @@ class _CargoInformationState extends State<CargoInformation> {
                                     child: Text('Weight')),
                                 Container(
                                   width: 120,
-                                  child: TextField(
+                                  child: TextFormField(
                                     controller: createBookingController
                                         .weight_controller.value,
                                     inputFormatters: [
@@ -211,13 +215,14 @@ class _CargoInformationState extends State<CargoInformation> {
                                     ],
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
+                                      labelText: 'Weight (KG)',
+                                      labelStyle: TextStyle(fontSize: 14),
                                     ),
                                   ),
                                 )
                               ],
                             )),
-                        createBookingController.reefer.value ==
-                                true
+                        createBookingController.reefer.value == true
                             ? Container(
                                 width: 200,
                                 child: Row(
@@ -225,11 +230,13 @@ class _CargoInformationState extends State<CargoInformation> {
                                     Container(width: 60, child: Text('Temp.')),
                                     Container(
                                       width: 120,
-                                      child: TextField(
+                                      child: TextFormField(
                                         controller: createBookingController
                                             .temp_controller.value,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
+                                          labelText: 'Temp.',
+                                          labelStyle: TextStyle(fontSize: 14),
                                         ),
                                       ),
                                     )
@@ -246,7 +253,7 @@ class _CargoInformationState extends State<CargoInformation> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                width: 300,
+                width: 200,
                 child: Row(
                   children: [
                     Container(
@@ -278,18 +285,22 @@ class _CargoInformationState extends State<CargoInformation> {
                   : Row(
                       children: [
                         Container(
-                            margin: EdgeInsets.only(left: 10),
                             width: 70,
                             // child: Text('UnNo')),
                             child: Text('DG Remark')),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Container(
                           // width: 120,
-                          width: 300,
-                          child: TextField(
-                            controller:
-                                createBookingController.dgRemark_controller.value,
+                          width: 560,
+                          child: TextFormField(
+                            controller: createBookingController
+                                .dgRemark_controller.value,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
+                              labelText: 'DG Remark',
+                              labelStyle: TextStyle(fontSize: 14),
                             ),
                           ),
                         ),
@@ -318,13 +329,17 @@ class _CargoInformationState extends State<CargoInformation> {
               Container(
                   margin: EdgeInsets.only(left: 50),
                   width: 90,
-                  child: Text('Note Request')),
+                  child: Text('Remark')),
               // SizedBox(width: 20),
               Container(
-                width: 760,
-                child: TextField(
+                width: 700,
+                child: TextFormField(
                   controller: createBookingController.remark.value,
-                  decoration: InputDecoration(border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Remark',
+                    labelStyle: TextStyle(fontSize: 14),
+                  ),
                 ),
               )
             ],
@@ -344,38 +359,33 @@ class _CargoInformationState extends State<CargoInformation> {
                         : SizedBox.shrink(),
                     ElevatedButton(
                         onPressed: () {
-                          if ((createBookingController
-                                          .dg.value ==
-                                      true &&
+                          if ((createBookingController.dg.value == true &&
                                   // createBookingController.inputDGunNo.value.text
                                   //         .trim() ==
-                                  //     '' 
+                                  //     ''
                                   //     &&
                                   // createBookingController
                                   //         .inputDGClass.value.text
                                   //         .trim() ==
                                   //     ''
-                                  createBookingController.dgRemark_controller.value.text
-                                          .trim() ==
-                                      '' 
-                                      ) 
-                                      ||
-                              (createBookingController
-                                          .status.value ==
-                                      'F' &&
-                                  createBookingController.weight_controller.value.text
-                                          .trim() ==
-                                      '') ||
-                              (createBookingController
-                                          .status.value ==
-                                      'F' &&
                                   createBookingController
-                                          .reefer.value ==
-                                      true &&
-                                  createBookingController.temp_controller.value.text
+                                          .dgRemark_controller.value.text
                                           .trim() ==
                                       '') ||
-                              (createBookingController.commodity_controller.value.text
+                              (createBookingController.status.value == 'F' &&
+                                  createBookingController
+                                          .weight_controller.value.text
+                                          .trim() ==
+                                      '') ||
+                              (createBookingController.status.value == 'F' &&
+                                  createBookingController.reefer.value ==
+                                      true &&
+                                  createBookingController
+                                          .temp_controller.value.text
+                                          .trim() ==
+                                      '') ||
+                              (createBookingController
+                                      .commodity_controller.value.text
                                       .trim() ==
                                   '')) {
                             //miss field input
@@ -391,39 +401,41 @@ class _CargoInformationState extends State<CargoInformation> {
                                 createBookingController
                                         .countRowContainer.value +
                                     1;
-                            if (createBookingController
-                                    .status.value ==
-                                'E') {
-                              createBookingController.weight_controller.value.clear();
-                              createBookingController.temp_controller.value.clear();
+                            if (createBookingController.status.value == 'E') {
+                              createBookingController.weight_controller.value
+                                  .clear();
+                              createBookingController.temp_controller.value
+                                  .clear();
                             }
-                            if (createBookingController
-                                    .reefer.value ==
-                                false) {
-                              createBookingController.temp_controller.value.clear();
+                            if (createBookingController.reefer.value == false) {
+                              createBookingController.temp_controller.value
+                                  .clear();
                             }
-                            if (createBookingController
-                                    .dg.value ==
-                                false) {
+                            if (createBookingController.dg.value == false) {
                               // createBookingController.inputDGunNo.value.clear();
                               // createBookingController.inputDGClass.value
                               //     .clear();
-                              createBookingController.dgRemark_controller.value.clear();
+                              createBookingController.dgRemark_controller.value
+                                  .clear();
+                            }
+                            if (createBookingController
+                                    .weight_controller.value.text ==
+                                '') {
+                              createBookingController
+                                  .weight_controller.value.text = '0';
                             }
                             BookingDetails _listBookingDetails = BookingDetails(
-                                commodityId: createBookingController
-                                    .commodity_controller.value.text,
-                                sizeId: createBookingController
-                                    .sizeId.value,
-                                type: createBookingController
-                                    .type.value,
-                                volume: int.parse(createBookingController
-                                    .volume_controller.value.text),
-                                status: createBookingController
-                                    .status.value,
-                                weight: int.parse(createBookingController
-                                    .weight_controller.value.text),
-                                edit: 'I',);
+                              commodityId:
+                                  createBookingController.commodityId.value,
+                              sizeId: createBookingController.sizeId.value,
+                              type: createBookingController.type.value,
+                              volume: int.parse(createBookingController
+                                  .volume_controller.value.text),
+                              status: createBookingController.status.value,
+                              weight: int.parse(createBookingController
+                                  .weight_controller.value.text),
+                              edit: 'I',
+                            );
                             // add info cont to list
                             createBookingController.listInfoContainer
                                 .add(_listBookingDetails);
