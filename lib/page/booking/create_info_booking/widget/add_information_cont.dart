@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
+import 'package:web_booking/model/new_login/model_newlogin.dart';
 
 class TableInformationContainer extends StatefulWidget {
   const TableInformationContainer({super.key});
@@ -19,6 +20,7 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
     return Obx(
       () => Container(
         width: 1004,
+        alignment: Alignment.topCenter,
         decoration: BoxDecoration(
           color: white,
           border: Border.all(color: blue.withOpacity(.4), width: .5),
@@ -156,7 +158,8 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
 }
 
 findCommodityName(String commodityId) {
-  for (final commodity in box.read(commodityList_signin)) {
+  for (final commodity in box.read(commodityList_signin).map((e) => DataTable5s.fromJson(e))
+                  .toList()) {
     if (commodity.commodityId == commodityId) {
       return commodity.commodityName;
     }

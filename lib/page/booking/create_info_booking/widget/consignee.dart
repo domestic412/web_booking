@@ -20,21 +20,22 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
   Widget build(BuildContext context) {
     List<DropdownMenuEntry<DataTable2s>> consigneeEntries =
         <DropdownMenuEntry<DataTable2s>>[];
-    List listConsignee = box.read(consigneeList_signin);
+    List listConsignee = box.read(consigneeList_signin).map((e) => DataTable2s.fromJson(e))
+                  .toList();
     for (final consignee in listConsignee) {
       consigneeEntries.add(DropdownMenuEntry<DataTable2s>(
-          value: consignee, label: consignee.shipperName));
+          value: consignee, label: consignee.shipperName.trim()));
     }
 
     List<DropdownMenuEntry<DataTable3s>> refEntries =
         <DropdownMenuEntry<DataTable3s>>[];
-    List listRef = box.read(refList_signin);
+    List listRef = box.read(refList_signin).map((e) => DataTable3s.fromJson(e)).toList();
     for (final ref in listRef) {
       refEntries
-          .add(DropdownMenuEntry<DataTable3s>(value: ref, label: ref.refNo));
+          .add(DropdownMenuEntry<DataTable3s>(value: ref, label: ref.refNo.trim()));
     }
     return
-        // Obx(() =>
+        Obx(() =>
         Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -45,8 +46,8 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
         const SizedBox(width: 10),
         DropdownMenu<DataTable2s>(
           controller: createBookingController.consignee_controller.value,
-          enableFilter: true,
-          enableSearch: true,
+          // enableFilter: true,
+          // enableSearch: true,
           label: Text('Consignee'.tr),
           dropdownMenuEntries: consigneeEntries,
           onSelected: (DataTable2s? consignee) {
@@ -67,34 +68,20 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
         const SizedBox(width: 10),
         DropdownMenu<DataTable3s>(
           controller: createBookingController.ref_controller.value,
-          enableFilter: true,
-          enableSearch: true,
-          label: Text('References'.tr),
+          // enableFilter: true,
+          // enableSearch: true,
+          label: Text('Ref'.tr),
           dropdownMenuEntries: refEntries,
           onSelected: (DataTable3s? ref) {
             setState(() {
               selectRef = ref;
               createBookingController.refId.value =
-                  selectConsignee?.consigneeId ?? '';
+                  selectRef?.refId ?? '';
             });
           },
         ),
-        // SizedBox(
-        //   height: 50,
-        //   width: 50,
-        //   child: Checkbox(
-        //     value: createBookingController.boolNewConsignee.value,
-        //     onChanged: (newValue) {
-        //       setState(() {
-        //         createBookingController.boolNewConsignee.value =
-        //             !createBookingController.boolNewConsignee.value;
-        //       });
-        //     },
-        //   ),
-        // ),
-        // Text('(New Consignee)')
       ],
-      // ),
+      ),
     );
   }
 }

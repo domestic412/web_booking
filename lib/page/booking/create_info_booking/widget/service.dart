@@ -19,10 +19,10 @@ class _ServiceWidgetState extends State<ServiceWidget> {
   Widget build(BuildContext context) {
     List<DropdownMenuEntry<DataTable4s>> termEntries =
         <DropdownMenuEntry<DataTable4s>>[];
-    List listTerm = box.read(termList_signin);
+    List listTerm = box.read(termList_signin).map((e) => DataTable4s.fromJson(e)).toList();;
     for (final term in listTerm) {
       termEntries
-          .add(DropdownMenuEntry<DataTable4s>(value: term, label: term.term));
+          .add(DropdownMenuEntry<DataTable4s>(value: term, label: term.term.trim()));
     }
     return Obx(
       () => Row(
@@ -39,8 +39,8 @@ class _ServiceWidgetState extends State<ServiceWidget> {
               DropdownMenu<DataTable4s>(
                 width: 120,
                 controller: createBookingController.term_controller.value,
-                enableFilter: true,
-                enableSearch: true,
+                // enableFilter: true,
+                // enableSearch: true,
                 label: Text('Term'.tr),
                 dropdownMenuEntries: termEntries,
                 onSelected: (DataTable4s? term) {

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/constants/variable.dart';
 
 // class Voyage {
 //   List<ListBookingVoys>? listBookingVoys;
@@ -175,6 +176,9 @@ class Voyage {
             // return dataVoyage.map((data) => Voyage.fromJson(data)).toList();
             final dataVoyage = json.decode(body);
             print(dataVoyage);
+
+            box.write(depotsList_booking, dataVoyage['depots']);
+
             return Voyage.fromJson(dataVoyage);
           default:
             throw Exception(response.reasonPhrase);

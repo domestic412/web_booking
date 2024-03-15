@@ -108,46 +108,33 @@ class _NewSignInPageState extends State<NewSignInPage> {
 
               //update consignee
               var consigneeList_json = dataNewLogIn['dataTable2s'];
-              List consigneeList = consigneeList_json
-                  .map((e) => DataTable2s.fromJson(e))
-                  .toList();
+              // List consigneeList = consigneeList_json
+              //     .map((e) => DataTable2s.fromJson(e))
+              //     .toList();
 
               var refList_json = dataNewLogIn['dataTable3s'];
-              List refList =
-                  refList_json.map((e) => DataTable3s.fromJson(e)).toList();
+              // List refList =
+              //     refList_json.map((e) => DataTable3s.fromJson(e)).toList();
 
               var termList_json = dataNewLogIn['dataTable4s'];
-              List termList =
-                  termList_json.map((e) => DataTable4s.fromJson(e)).toList();
+              // List termList =
+              //     termList_json.map((e) => DataTable4s.fromJson(e)).toList();
 
               var commodityList_json = dataNewLogIn['dataTable5s'];
-              List commodityList = commodityList_json
-                  .map((e) => DataTable5s.fromJson(e))
-                  .toList();
-              print(commodityList);
+              // List commodityList = commodityList_json
+              //     .map((e) => DataTable5s.fromJson(e))
+              //     .toList();
+              // print(commodityList);
 
-              // box.write(login, 1);
               box.write(old_new_signin, 1);
               box.write(shipperId_signin, shipperId);
               box.write(shipperName_signin, shipperName);
               box.write(managingOfficeId_signin, managingOfficeId);
-              box.write(consigneeList_signin, consigneeList);
-              box.write(refList_signin, refList);
-              box.write(termList_signin, termList);
-              box.write(commodityList_signin, commodityList);
+              box.write(consigneeList_signin, consigneeList_json);
+              box.write(refList_signin, refList_json);
+              box.write(termList_signin, termList_json);
+              box.write(commodityList_signin, commodityList_json);
 
-              // print(box
-              //     .read(consigneeList_signin)
-              //     .map((data) => DataTable2s.fromJson(data)));
-
-              // inforUserController.updateNewInfoUserController(
-              //   OLD_NEW: 1,
-              //   shipperId: shipperId,
-              //   shipperName: shipperName,
-              //   managingOfficeId: managingOfficeId,
-              //   consigneeList: consigneeList,
-              //   termList: termList,
-              // );
 
               switch (currentRouteController.route.value) {
                 case 'booking':

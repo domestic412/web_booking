@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
@@ -169,10 +170,10 @@ class _VoyageListState extends State<VoyageList> {
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              inforUserController.tenNV.value == ''
-                                  ? Get.toNamed(GetRoutes.SignIn)
-                                  : Get.toNamed(GetRoutes.BookingRequest);
                               currentRouteController.route.value = 'booking';
+                              //update countRow in indormationContainer
+                                createBookingController.countRowContainer.value = 0;
+                              //update RouteController
                               routeController.updateRouteController(
                                   voyDetail:
                                       data.listBookingVoys?[index].voyDetail,
@@ -189,6 +190,12 @@ class _VoyageListState extends State<VoyageList> {
                                   pod_final: data.listBookingVoys?[index].pol,
                                   podId_final:
                                       data.listBookingVoys?[index].podId);
+
+                                      //go to BookingRequestPage
+                              inforUserController.tenNV.value == ''
+                                  ? Get.toNamed(GetRoutes.SignIn)
+                                  : Get.toNamed(GetRoutes.BookingRequest);
+                              
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: normalColor,

@@ -6,6 +6,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
@@ -39,7 +40,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                       inforUserController.shipperId.value,
                       inforUserController.shipperId.value,
                       createBookingController.consigneeId.value,
-                      '00000000-0000-0000-0000-000000000000',
+                      routeController.depotId.value,
                       createBookingController.coc.value,
                       createBookingController.dg.value,
                       createBookingController.dgRemark_controller.value.text,
@@ -56,7 +57,8 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
               alignment: Alignment.center,
               height: 40,
               child: Text(
-                'Temporary Save',
+                // 'Temporary Save',
+                'Confirmation Request',
                 style: TextStyle(color: white),
               ),
             )),
@@ -141,7 +143,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
         "payerId": shipperId,
         "shipperId": shipperId,
         "consigneeId": consigneeId,
-        "liftOnDepotId": "00000000-0000-0000-0000-000000000000",
+        "liftOnDepotId": liftOnDepotId,
         "coc": coc,
         "dg": dg,
         "dgRemark": dgRemark,
@@ -149,7 +151,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
         "temperature": temperature,
         "remark": remark,
         "userName": userName,
-        "edit": "I",
+        "edit": edit,
         "bookingDetails": bookingDetails
       };
       var body = json.encode(data);
@@ -166,7 +168,8 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
           // Get.toNamed(GetRoutes.Home);
           // controller.selectWidget.value = bookingRequestList;
           Get.toNamed(GetRoutes.defaultRoute);
-          createBookingController.clearDataCreateBooking();
+          createBookingController.countRowContainer.value = 0;
+          clearDataCreateBooking();
         default:
           print('Error ${response.statusCode}');
       }
@@ -174,4 +177,26 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
       print('Error fetch Detail Approval - $e');
     }
   }
+}
+
+clearDataCreateBooking() {
+  createBookingController.consignee_controller.value.clear();
+  createBookingController.consigneeId.value;
+
+  createBookingController.ref_controller.value.clear();
+  createBookingController.refId.value;
+
+  createBookingController.term_controller.value.clear();
+  createBookingController.term.value;
+
+  createBookingController.commodity_controller.value.clear();
+  createBookingController.commodityId.value;
+
+  createBookingController.temp_controller.value.clear();
+  createBookingController.volume_controller.value.clear();
+  createBookingController.weight_controller.value.clear();
+  createBookingController.dgRemark_controller.value.clear();
+  createBookingController.remark.value.clear();
+  createBookingController.listInfoContainer.value = <BookingDetails>[];
+
 }

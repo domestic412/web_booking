@@ -29,6 +29,9 @@ class RouteController extends GetxController {
 
   var voyDetail = ''.obs;
 
+  var depot_controller = TextEditingController().obs;
+  var depotId= ''.obs;
+ 
   void updateRouteController({
     @required voyDetail,
     @required vessel,

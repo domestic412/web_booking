@@ -22,7 +22,8 @@ class _CargoInformationState extends State<CargoInformation> {
   Widget build(BuildContext context) {
     final List<DropdownMenuEntry<DataTable5s>> commodityEntries =
         <DropdownMenuEntry<DataTable5s>>[];
-    List listCommodity = box.read(commodityList_signin);
+    List listCommodity = box.read(commodityList_signin).map((e) => DataTable5s.fromJson(e))
+                  .toList();;
     print(listCommodity);
     for (final commodity in listCommodity) {
       commodityEntries.add(
@@ -45,8 +46,8 @@ class _CargoInformationState extends State<CargoInformation> {
               DropdownMenu<DataTable5s>(
                 width: 500,
                 controller: createBookingController.commodity_controller.value,
-                enableFilter: true,
-                enableSearch: true,
+                // enableFilter: true,
+                // enableSearch: true,
                 label: Text('Commodity'.tr),
                 dropdownMenuEntries: commodityEntries,
                 onSelected: (DataTable5s? commodity) {

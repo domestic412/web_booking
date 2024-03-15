@@ -23,6 +23,7 @@ String consigneeList_signin = 'consigneeList';
 String refList_signin = 'refList';
 String termList_signin = 'termList';
 String commodityList_signin = 'commodityList';
+String depotsList_booking = 'depoList';
 
 String savecntr = '';
 
