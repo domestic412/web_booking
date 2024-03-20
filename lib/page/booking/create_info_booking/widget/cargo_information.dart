@@ -205,6 +205,7 @@ class _CargoInformationState extends State<CargoInformation> {
                       children: [
                         Container(
                             width: 230,
+                            margin: EdgeInsets.only(left: 10),
                             child: Row(
                               children: [
                                 Container(

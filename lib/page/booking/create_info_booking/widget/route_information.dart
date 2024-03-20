@@ -108,7 +108,8 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
-                          routeController.date.value,
+                          // routeController.date.value,
+                          box.read(date_booking),
                           style: style_text_Table_small,
                         ))
                   ],
@@ -140,7 +141,8 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
-                          routeController.pol_final.value,
+                          // routeController.pol_final.value,
+                          box.read(pol_final_booking),
                           style: style_text_Table_small,
                         ))
                   ],
@@ -172,7 +174,8 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
-                          routeController.pod_final.value,
+                          // routeController.pod_final.value,
+                          box.read(pod_final_booking),
                           style: style_text_Table_small,
                         ))
                   ],

@@ -186,9 +186,12 @@ class _VoyageListState extends State<VoyageList> {
                                   pol_final: data.listBookingVoys?[index].pol,
                                   polId_final:
                                       data.listBookingVoys?[index].polId,
-                                  pod_final: data.listBookingVoys?[index].pol,
+                                  pod_final: data.listBookingVoys?[index].pod,
                                   podId_final:
                                       data.listBookingVoys?[index].podId);
+
+                                  box.write(pol_final_booking, routeController.pol_final.value);
+                                  box.write(pod_final_booking, routeController.pod_final.value);
 
                               //go to BookingRequestPage
                               inforUserController.tenNV.value == ''

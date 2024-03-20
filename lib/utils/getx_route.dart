@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 // import 'package:web_booking/page/booking/bookingNote/bookingNote_page.dart';
 import 'package:web_booking/page/booking/booking_page.dart';
 import 'package:web_booking/page/booking/create_info_booking/create_booking_page.dart';
-import 'package:web_booking/page/booking/select_depo/depo_list_page.dart';
 import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/new_signin/newsignin_page.dart';
 import 'package:web_booking/page/signin/signin_page.dart';
@@ -57,10 +56,6 @@ class GetRoutes {
     GetPage(
       name: Booking,
       page: () => BookingPage(),
-    ),
-    GetPage(
-      name: Depo,
-      page: () => DepoPage(),
     ),
     GetPage(
       name: BookingRequest,

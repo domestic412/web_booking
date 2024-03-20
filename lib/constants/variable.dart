@@ -24,6 +24,11 @@ String refList_signin = 'refList';
 String termList_signin = 'termList';
 String commodityList_signin = 'commodityList';
 String depotsList_booking = 'depoList';
+String polLocId_booking = 'polLocId';
+String pol_final_booking = 'pol_final';
+String podLocId_booking = 'podLocId';
+String pod_final_booking = 'pod_final';
+String date_booking = 'date';
 
 String savecntr = '';
 

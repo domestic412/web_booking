@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/booking/storage_controller/port_date_controller.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/page/booking/widgets/select_port_list.dart';
@@ -115,22 +114,6 @@ class _BookingPageState extends State<BookingPage> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)))),
                           onPressed: () {
-                            // if (idPort1 == idPort2) {
-                            //   // alertSelectPort.showAlertSamePort(context);
-                            // } else if (idPort1 == null || idPort2 == null) {
-                            //   // alertSelectPort.showAlertPort(context);
-                            // } else {
-                            //   setState(() {
-                            //     routeController.polID.value =
-                            //         idPort1.toString();
-                            //     routeController.podID.value =
-                            //         idPort2.toString();
-                            //     fetchVoyage = Voyage().fetchDataVoyage(
-                            //         idPort1.toString(),
-                            //         idPort2.toString(),
-                            //         initialPortController.dateSelect.value);
-                            //   });
-                            // }
                             if (routeController.pOLLocId.value ==
                                 routeController.pODLocId.value) {
                               // alertSelectPort.showAlertSamePort(context);
@@ -143,6 +126,10 @@ class _BookingPageState extends State<BookingPage> {
                                     routeController.pOLLocId.value,
                                     routeController.pODLocId.value,
                                     routeController.dateSelect.value);
+                                box.write(polLocId_booking, routeController.pOLLocId.value);
+                                box.write(podLocId_booking, routeController.pODLocId.value);
+                                box.write(date_booking, routeController.dateSelect.value);
+
 
                                 print(routeController.pOLLocId.value);
                                 print(routeController.pODLocId.value);
