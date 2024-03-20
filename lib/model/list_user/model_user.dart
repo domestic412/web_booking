@@ -60,7 +60,6 @@ class UserList {
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET", //use fot http, not use https
-        "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:

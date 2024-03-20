@@ -15,10 +15,7 @@ class PortList extends StatefulWidget {
 class _PortListState extends State<PortList> {
   Ports? selectPort1;
   Ports? selectPort2;
-  // String? idPort1;
-  // String? namePort1;
-  // String? idPort2;
-  // String? namePort2;
+
   @override
   Widget build(BuildContext context) {
     return buildPort();
@@ -58,8 +55,10 @@ class _PortListState extends State<PortList> {
                       selectPort1 = port;
                       // idPort1 = selectPort1?.portId;
                       // namePort1 = selectPort1?.portName;
-                      routeController.polID.value = selectPort1?.portId ?? '';
-                      routeController.pol.value = selectPort1?.portName ?? '';
+                      routeController.pOLLocId.value =
+                          selectPort1?.portId ?? '';
+                      routeController.pOLLoc.value =
+                          selectPort1?.portName ?? '';
                     });
                   },
                 ),
@@ -80,8 +79,10 @@ class _PortListState extends State<PortList> {
                   onSelected: (Ports? port) {
                     setState(() {
                       selectPort2 = port;
-                      routeController.podID.value = selectPort2?.portId ?? '';
-                      routeController.pod.value = selectPort2?.portName ?? '';
+                      routeController.pODLocId.value =
+                          selectPort2?.portId ?? '';
+                      routeController.pODLoc.value =
+                          selectPort2?.portName ?? '';
                     });
                   },
                 )

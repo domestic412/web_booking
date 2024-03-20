@@ -6,11 +6,13 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
+import 'package:web_booking/widgets/appbar/checkInfoUser/infoUser_appbar.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 
 class AppbarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    checkInfoUser();
     return AppBar(
       leading: Container(
         padding: EdgeInsets.only(
@@ -53,7 +55,8 @@ class AppbarWidget extends StatelessWidget {
               backgroundColor: normalColor,
               child: IconButton(
                 onPressed: () {
-                  box.write(authorize_signin, 'authorize');
+                  box.remove(shipperName_signin);
+                  // box.write(authorize_signin, 'authorize');
                   currentRouteController.route.value = 'default';
                   inforUserController.resetInforSignInController();
                   Get.toNamed(GetRoutes.defaultRoute);

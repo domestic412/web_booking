@@ -16,10 +16,10 @@ class RouteController extends GetxController {
   var date = ''.obs;
 
   //data location
-  var pol = ''.obs;
-  var polID = ''.obs;
-  var pod = ''.obs;
-  var podID = ''.obs;
+  var pOLLoc = ''.obs;
+  var pOLLocId = ''.obs;
+  var pODLoc = ''.obs;
+  var pODLocId = ''.obs;
 
   //data pol pod
   var pol_final = ''.obs;
@@ -30,8 +30,8 @@ class RouteController extends GetxController {
   var voyDetail = ''.obs;
 
   var depot_controller = TextEditingController().obs;
-  var depotId= ''.obs;
- 
+  var depotId = ''.obs;
+
   void updateRouteController({
     @required voyDetail,
     @required vessel,

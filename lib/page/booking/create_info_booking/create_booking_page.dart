@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/booking/model_get_ref.dart';
+import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/page/booking/create_info_booking/widget/service.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
@@ -13,13 +17,22 @@ import 'widget/consignee.dart';
 import 'widget/route_information.dart';
 
 class BookingRequestPage extends StatefulWidget {
+  const BookingRequestPage({super.key});
+
   @override
   State<BookingRequestPage> createState() => _BookingRequestPageState();
 }
 
 class _BookingRequestPageState extends State<BookingRequestPage> {
+  GetRef getRef = GetRef();
+
   @override
   Widget build(BuildContext context) {
+    getRef.fetchGetRef(
+        shipperId: box.read(shipperId_signin),
+        polLocId: routeController.pOLLocId.value,
+        podLocId: routeController.pODLocId.value,
+        date: routeController.dateSelect.value);
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SingleChildScrollView(

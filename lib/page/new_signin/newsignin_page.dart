@@ -5,7 +5,10 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/booking/model_get_ref.dart';
 import 'package:web_booking/model/new_login/model_newlogin.dart';
+import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:http/http.dart' as http;
@@ -23,6 +26,7 @@ class NewSignInPage extends StatefulWidget {
 class _NewSignInPageState extends State<NewSignInPage> {
   // InformationNewSignInController infoSignInController =
   //     Get.put(InformationNewSignInController());
+  GetRef getRef = GetRef();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,10 +116,6 @@ class _NewSignInPageState extends State<NewSignInPage> {
               //     .map((e) => DataTable2s.fromJson(e))
               //     .toList();
 
-              var refList_json = dataNewLogIn['dataTable3s'];
-              // List refList =
-              //     refList_json.map((e) => DataTable3s.fromJson(e)).toList();
-
               var termList_json = dataNewLogIn['dataTable4s'];
               // List termList =
               //     termList_json.map((e) => DataTable4s.fromJson(e)).toList();
@@ -131,18 +131,17 @@ class _NewSignInPageState extends State<NewSignInPage> {
               box.write(shipperName_signin, shipperName);
               box.write(managingOfficeId_signin, managingOfficeId);
               box.write(consigneeList_signin, consigneeList_json);
-              box.write(refList_signin, refList_json);
+              // box.write(refList_signin, refList_json);
               box.write(termList_signin, termList_json);
               box.write(commodityList_signin, commodityList_json);
 
-
               switch (currentRouteController.route.value) {
-                case 'booking':
+                case booking:
                   Get.toNamed(GetRoutes.BookingRequest);
                   break;
-                // case 'service':
-                //   Get.toNamed(GetRoutes.Home);
-                //   break;
+                case service:
+                  Get.toNamed(GetRoutes.Home);
+                  break;
                 default:
                   Get.toNamed(GetRoutes.defaultRoute);
                   break;

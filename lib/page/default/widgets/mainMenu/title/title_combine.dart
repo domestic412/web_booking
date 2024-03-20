@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/utils/getx_route.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
 class CombineMenu extends StatefulWidget {
@@ -107,6 +111,11 @@ class _CombineMenuState extends State<CombineMenu> {
                       child: InkWell(
                         onTap: () {
                           // context.go(AppRoutes.BookingRoute);
+                          currentRouteController.route.value = checkingCombine;
+                          controller.selectWidget.value = checkingCombine;
+                          inforUserController.tenNV.value == ''
+                              ? Get.toNamed(GetRoutes.SignIn)
+                              : Get.toNamed(GetRoutes.Home);
                         },
                         child: Text(
                           'Check Container',

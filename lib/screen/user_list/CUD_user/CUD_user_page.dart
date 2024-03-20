@@ -399,7 +399,6 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Content-Type": "application/json",
-              "Authorization": "Bearer ${inforUserController.authorize.value}",
             },
             body: body);
         if (response.statusCode == 200) {
@@ -418,7 +417,6 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Content-Type": "application/json",
-              "Authorization": "Bearer ${inforUserController.authorize.value}",
             },
             body: body);
         if (response.statusCode == 200) {
@@ -429,7 +427,6 @@ class _CUD_UserPageState extends State<CUD_UserPage> {
       } else if (CUD == 3) {
         final response = await http.delete(Uri.parse(URL_USER!), headers: {
           "Access-Control-Allow-Origin": "*",
-          "Authorization": "Bearer ${inforUserController.authorize.value}",
         });
         if (response.statusCode == 200) {
           controller.selectWidget.value = userList;

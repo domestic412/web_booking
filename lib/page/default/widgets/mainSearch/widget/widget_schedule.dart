@@ -77,8 +77,8 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                 setState(() {
                   fetchVoyage = Voyage().fetchDataVoyage(
                       // idPort1.toString(), idPort2.toString(), dateSelect!
-                      routeController.polID.value,
-                      routeController.podID.value,
+                      routeController.pOLLocId.value,
+                      routeController.pODLocId.value,
                       routeController.dateSelect.value);
                 });
                 // context.go(AppRoutes.bookingRoute);
@@ -149,8 +149,10 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                       setState(() {
                         selectPort1 = id;
                         // idPort1 = selectPort1?.portId;
-                        routeController.polID.value = selectPort1?.portId ?? '';
-                        routeController.pol.value = selectPort1?.portName ?? '';
+                        routeController.pOLLocId.value =
+                            selectPort1?.portId ?? '';
+                        routeController.pOLLoc.value =
+                            selectPort1?.portName ?? '';
                       });
                     },
                   ),
@@ -180,8 +182,10 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                       setState(() {
                         selectPort2 = id;
                         // idPort2 = selectPort2?.portId;
-                        routeController.podID.value = selectPort2?.portId ?? '';
-                        routeController.pod.value = selectPort2?.portName ?? '';
+                        routeController.pODLocId.value =
+                            selectPort2?.portId ?? '';
+                        routeController.pODLoc.value =
+                            selectPort2?.portName ?? '';
                       });
                     },
                   ),

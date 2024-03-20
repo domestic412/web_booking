@@ -15,18 +15,17 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     List<DropdownMenuEntry<Depots>> depotsEntries =
         <DropdownMenuEntry<Depots>>[];
-    List depotsList = box.read(depotsList_booking).map((e) => Depots.fromJson(e))
-                  .toList();
+    List depotsList =
+        box.read(depotsList_booking).map((e) => Depots.fromJson(e)).toList();
     for (final depots in depotsList) {
-      depotsEntries.add(DropdownMenuEntry<Depots>(
-          value: depots, label: depots.depotName));
+      depotsEntries.add(
+          DropdownMenuEntry<Depots>(value: depots, label: depots.depotName));
     }
 
-    return Obx(()=>
-    Column(
+    return Obx(
+      () => Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -173,7 +172,7 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
-                          routeController.pod.value,
+                          routeController.pod_final.value,
                           style: style_text_Table_small,
                         ))
                   ],
@@ -189,7 +188,7 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                   width: 100,
                   child: Text('Lift On Depot')),
               DropdownMenu<Depots>(
-                // width: 120,
+                width: 210,
                 controller: routeController.depot_controller.value,
                 // enableFilter: true,
                 // enableSearch: true,

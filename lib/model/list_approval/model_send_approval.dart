@@ -21,7 +21,6 @@ class SendApproval {
       final response = await http.post(Uri.parse(url),
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       switch (response.statusCode) {

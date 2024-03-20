@@ -22,8 +22,11 @@ class _CargoInformationState extends State<CargoInformation> {
   Widget build(BuildContext context) {
     final List<DropdownMenuEntry<DataTable5s>> commodityEntries =
         <DropdownMenuEntry<DataTable5s>>[];
-    List listCommodity = box.read(commodityList_signin).map((e) => DataTable5s.fromJson(e))
-                  .toList();;
+    List listCommodity = box
+        .read(commodityList_signin)
+        .map((e) => DataTable5s.fromJson(e))
+        .toList();
+    ;
     print(listCommodity);
     for (final commodity in listCommodity) {
       commodityEntries.add(
@@ -44,7 +47,7 @@ class _CargoInformationState extends State<CargoInformation> {
                   width: 90,
                   child: Text('Commodity')),
               DropdownMenu<DataTable5s>(
-                width: 500,
+                width: 700,
                 controller: createBookingController.commodity_controller.value,
                 // enableFilter: true,
                 // enableSearch: true,
@@ -103,6 +106,7 @@ class _CargoInformationState extends State<CargoInformation> {
                   )),
               Container(
                   width: 230,
+                  margin: EdgeInsets.only(left: 10),
                   child: Row(
                     children: [
                       Container(
@@ -140,6 +144,7 @@ class _CargoInformationState extends State<CargoInformation> {
                   )),
               Container(
                   width: 200,
+                  margin: EdgeInsets.only(left: 20),
                   child: Row(
                     children: [
                       Text('Status'),

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/utils/getx_route.dart';
@@ -128,19 +129,21 @@ class _SignInPageState extends State<SignInPage> {
             //add data signIn to box GetStorage
             // box.write(login, 1);
             box.write(old_new_signin, 0);
-            box.write(authorize_signin, dataAuthorize);
             box.write(maNV_signin, manv);
             box.write(shipperName_signin, tennv);
             box.write(author_signin, author);
             box.write(code_signin, code);
 
             switch (currentRouteController.route.value) {
-              case 'booking':
+              case booking:
                 Get.toNamed(GetRoutes.BookingRequest);
                 break;
-              // case 'service':
-              //   Get.toNamed(GetRoutes.Home);
-              //   break;
+              case service:
+                Get.toNamed(GetRoutes.Home);
+                break;
+              case checkingCombine:
+                controller.selectWidget.value = checkingCombine;
+                Get.toNamed(GetRoutes.Home);
               default:
                 Get.toNamed(GetRoutes.defaultRoute);
                 break;

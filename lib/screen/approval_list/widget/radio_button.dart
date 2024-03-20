@@ -68,7 +68,6 @@ class _RadioButtonState extends State<RadioButton> {
                 setState(() {
                   print(detailApprovalController.id.value);
                   print(detailApprovalController.note_controller.text);
-                  print(inforUserController.authorize.value);
                   _sendApproval.fetchSendApproval(
                       _status,
                       detailApprovalController.id.value,

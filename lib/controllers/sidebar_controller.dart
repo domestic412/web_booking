@@ -23,10 +23,12 @@ import 'package:web_booking/screen/user_list/CUD_user/change_pw/change_pw.page.d
 import 'package:web_booking/screen/user_list/user_list_page.dart';
 
 final SideBarController controller = SideBarController();
+const service = 'service';
 const dashboard = 'dashboard';
 const userList = 'userlist';
 const cudUser = 'cudUser';
 const changePass = 'changePass';
+const booking = 'booking';
 const releaseBookingList = 'releaseBookingList';
 const detailReleaseBookingList = 'detailReleaseBookingList';
 const approvalList = 'approvalList';

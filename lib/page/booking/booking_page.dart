@@ -131,21 +131,21 @@ class _BookingPageState extends State<BookingPage> {
                             //         initialPortController.dateSelect.value);
                             //   });
                             // }
-                            if (routeController.polID.value ==
-                                routeController.podID.value) {
+                            if (routeController.pOLLocId.value ==
+                                routeController.pODLocId.value) {
                               // alertSelectPort.showAlertSamePort(context);
-                            } else if (routeController.polID.value == '' ||
-                                routeController.podID.value == '') {
+                            } else if (routeController.pOLLocId.value == '' ||
+                                routeController.pODLocId.value == '') {
                               // alertSelectPort.showAlertPort(context);
                             } else {
                               setState(() {
                                 fetchVoyage = Voyage().fetchDataVoyage(
-                                    routeController.polID.value,
-                                    routeController.podID.value,
+                                    routeController.pOLLocId.value,
+                                    routeController.pODLocId.value,
                                     routeController.dateSelect.value);
-                                
-                                print(routeController.polID.value);
-                                print(routeController.podID.value);
+
+                                print(routeController.pOLLocId.value);
+                                print(routeController.pODLocId.value);
                               });
                             }
                           },

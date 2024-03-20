@@ -10,7 +10,6 @@ class InformationSignInController extends GetxController {
   //old
   var user = TextEditingController().obs;
   var pass = TextEditingController().obs;
-  var authorize = ''.obs;
   var maNV = ''.obs;
   // shipper name
   var tenNV = ''.obs;
@@ -30,13 +29,11 @@ class InformationSignInController extends GetxController {
 
   updateInforSignInController(
       {@required OLD_NEW,
-      @required authorize,
       @required maNV,
       @required tenNV,
       @required author,
       @required code}) {
     this.OLD_NEW.value = OLD_NEW;
-    this.authorize.value = authorize;
     this.maNV.value = maNV;
     this.tenNV.value = tenNV;
     this.author.value = author;
@@ -46,7 +43,6 @@ class InformationSignInController extends GetxController {
   resetInforSignInController() {
     user.value.clear();
     pass.value.clear();
-    authorize = ''.obs;
     maNV = ''.obs;
     tenNV = ''.obs;
     author = ''.obs;

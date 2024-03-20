@@ -72,7 +72,6 @@ class DetailApproval {
       var url = '$SERVER/Requests/$id';
       final response = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer ${inforUserController.authorize.value}",
       });
       switch (response.statusCode) {
         case 200:

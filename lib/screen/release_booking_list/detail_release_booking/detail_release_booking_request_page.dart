@@ -461,7 +461,6 @@
 //           headers: {
 //             "Access-Control-Allow-Origin": "*",
 //             "Content-Type": "application/json", //use fot http, not use https
-//             // "Authorization": "Bearer ${inforUserController.authorize.value}",
 //           },
 //           body: body);
 //       switch (response.statusCode) {

@@ -15,7 +15,7 @@ void checkInfoUser() {
                   {
                     inforUserController.updateInforSignInController(
                         OLD_NEW: 0,
-                        authorize: box.read(authorize_signin),
+                        // authorize: box.read(authorize_signin),
                         maNV: box.read(maNV_signin),
                         tenNV: box.read(shipperName_signin),
                         author: box.read(author_signin),

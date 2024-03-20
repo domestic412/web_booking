@@ -161,8 +161,8 @@ class Voyage {
 
   Future<Voyage> fetchDataVoyage(String pol, String pod, String etd) async {
     try {
-      var url = '$SERVER/Booking?POLId=$pol&PODId=$pod&ETD=$etd';
-      var data = {'POLId': pol, 'PODId': pod, 'ETD': etd};
+      var url = '$SERVER/Booking?pOLLocId=$pol&pODLocId=$pod&eTD=$etd';
+      var data = {'pOLLocId': pol, 'pODLocId': pod, 'eTD': etd};
       var body = json.encode(data);
       if (pol.isNotEmpty & pod.isNotEmpty & etd.isNotEmpty) {
         final response = await http.post(Uri.parse(url),

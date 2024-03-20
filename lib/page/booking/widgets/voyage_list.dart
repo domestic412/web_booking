@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/booking/model_get_ref.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:intl/intl.dart';
@@ -18,10 +20,6 @@ class VoyageList extends StatefulWidget {
 }
 
 class _VoyageListState extends State<VoyageList> {
-  // String? pol_final;
-  // String? idVoyage;
-  // String? nameVoyage;
-  // String? dateVoyage;
   @override
   Widget build(BuildContext context) {
     return buildVoyage();
@@ -170,9 +168,10 @@ class _VoyageListState extends State<VoyageList> {
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              currentRouteController.route.value = 'booking';
+                              currentRouteController.route.value = booking;
                               //update countRow in indormationContainer
-                                createBookingController.countRowContainer.value = 0;
+                              createBookingController.countRowContainer.value =
+                                  0;
                               //update RouteController
                               routeController.updateRouteController(
                                   voyDetail:
@@ -191,11 +190,10 @@ class _VoyageListState extends State<VoyageList> {
                                   podId_final:
                                       data.listBookingVoys?[index].podId);
 
-                                      //go to BookingRequestPage
+                              //go to BookingRequestPage
                               inforUserController.tenNV.value == ''
                                   ? Get.toNamed(GetRoutes.SignIn)
                                   : Get.toNamed(GetRoutes.BookingRequest);
-                              
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: normalColor,

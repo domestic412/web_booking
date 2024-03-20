@@ -1,16 +1,11 @@
 class ModelNewLogin {
   List<DataTable1s>? dataTable1s;
   List<DataTable2s>? dataTable2s;
-  List<DataTable3s>? dataTable3s;
   List<DataTable4s>? dataTable4s;
   List<DataTable5s>? dataTable5s;
 
   ModelNewLogin(
-      {this.dataTable1s,
-      this.dataTable2s,
-      this.dataTable3s,
-      this.dataTable4s,
-      this.dataTable5s});
+      {this.dataTable1s, this.dataTable2s, this.dataTable4s, this.dataTable5s});
 
   ModelNewLogin.fromJson(Map<String, dynamic> json) {
     if (json['dataTable1s'] != null) {
@@ -23,12 +18,6 @@ class ModelNewLogin {
       dataTable2s = <DataTable2s>[];
       json['dataTable2s'].forEach((v) {
         dataTable2s!.add(new DataTable2s.fromJson(v));
-      });
-    }
-    if (json['dataTable3s'] != null) {
-      dataTable3s = <DataTable3s>[];
-      json['dataTable3s'].forEach((v) {
-        dataTable3s!.add(new DataTable3s.fromJson(v));
       });
     }
     if (json['dataTable4s'] != null) {
@@ -52,9 +41,6 @@ class ModelNewLogin {
     }
     if (this.dataTable2s != null) {
       data['dataTable2s'] = this.dataTable2s!.map((v) => v.toJson()).toList();
-    }
-    if (this.dataTable3s != null) {
-      data['dataTable3s'] = this.dataTable3s!.map((v) => v.toJson()).toList();
     }
     if (this.dataTable4s != null) {
       data['dataTable4s'] = this.dataTable4s!.map((v) => v.toJson()).toList();
@@ -105,53 +91,6 @@ class DataTable2s {
     data['shipperName'] = this.shipperName;
     return data;
   }
-
-  @override
-  String toString() {
-    return 'consigneeId: $consigneeId, shipperName: $shipperName';
-  }
-}
-
-class DataTable3s {
-  String? refId;
-  String? refNo;
-  String? portLoadId;
-  String? portDischargeId;
-  String? startDate;
-  String? endDate;
-
-  DataTable3s(
-      {this.refId,
-      this.refNo,
-      this.portLoadId,
-      this.portDischargeId,
-      this.startDate,
-      this.endDate});
-
-  DataTable3s.fromJson(Map<String, dynamic> json) {
-    refId = json['refId'];
-    refNo = json['refNo'];
-    portLoadId = json['portLoadId'];
-    portDischargeId = json['portDischargeId'];
-    startDate = json['startDate'];
-    endDate = json['endDate'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['refId'] = this.refId;
-    data['refNo'] = this.refNo;
-    data['portLoadId'] = this.portLoadId;
-    data['portDischargeId'] = this.portDischargeId;
-    data['startDate'] = this.startDate;
-    data['endDate'] = this.endDate;
-    return data;
-  }
-
-  @override
-  String toString() {
-    return 'refId: $refId, refNo: $refNo, portLoadId: $portLoadId, portDischargeId: $portDischargeId, startDate: $startDate, endDate: $endDate';
-  }
 }
 
 class DataTable4s {
@@ -167,11 +106,6 @@ class DataTable4s {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['term'] = this.term;
     return data;
-  }
-
-  @override
-  String toString() {
-    return 'term: $term';
   }
 }
 
@@ -191,10 +125,5 @@ class DataTable5s {
     data['commodityId'] = this.commodityId;
     data['commodityName'] = this.commodityName;
     return data;
-  }
-
-  @override
-  String toString() {
-    return 'commodityId: $commodityId, commodityName: $commodityName';
   }
 }

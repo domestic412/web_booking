@@ -160,7 +160,6 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
-            // "Authorization": "Bearer ${inforUserController.authorize.value}",
           },
           body: body);
       switch (response.statusCode) {
@@ -198,5 +197,4 @@ clearDataCreateBooking() {
   createBookingController.dgRemark_controller.value.clear();
   createBookingController.remark.value.clear();
   createBookingController.listInfoContainer.value = <BookingDetails>[];
-
 }

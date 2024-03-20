@@ -15,7 +15,6 @@ class ImportStock {
       var request = MultipartRequest('POST', Uri.parse(url));
       Map<String, String> headers = {
         "Content-Type": "multipart/form-data",
-        "Authorization": "Bearer ${inforUserController.authorize.value}",
       };
       //Add file
       if (file.bytes == null || file.bytes!.isEmpty) {
