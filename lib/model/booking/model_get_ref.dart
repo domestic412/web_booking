@@ -12,6 +12,10 @@ class GetRef {
   String? portDischargeId;
   String? startDate;
   String? endDate;
+  String? size;
+  String? type;
+  String? status;
+  int? price;
 
   GetRef(
       {this.refId,
@@ -19,7 +23,11 @@ class GetRef {
       this.portLoadId,
       this.portDischargeId,
       this.startDate,
-      this.endDate});
+      this.endDate,
+      this.size,
+      this.type,
+      this.status,
+      this.price});
 
   GetRef.fromJson(Map<String, dynamic> json) {
     refId = json['refId'];
@@ -28,6 +36,10 @@ class GetRef {
     portDischargeId = json['portDischargeId'];
     startDate = json['startDate'];
     endDate = json['endDate'];
+    size = json['size'];
+    type = json['type'];
+    status = json['status'];
+    price = json['price'];
   }
 
   Map<String, dynamic> toJson() {
@@ -38,6 +50,10 @@ class GetRef {
     data['portDischargeId'] = this.portDischargeId;
     data['startDate'] = this.startDate;
     data['endDate'] = this.endDate;
+    data['size'] = this.size;
+    data['type'] = this.type;
+    data['status'] = this.status;
+    data['price'] = this.price;
     return data;
   }
 
@@ -66,7 +82,7 @@ class GetRef {
           var body = response.body;
           print('Data Ref Success');
           List dataRef = json.decode(body);
-          box.write(refList_signin, dataRef);
+          // box.write(refList_signin_json, dataRef);
           return dataRef.map((data) => GetRef.fromJson(data)).toList();
         default:
           throw Exception(response.reasonPhrase);

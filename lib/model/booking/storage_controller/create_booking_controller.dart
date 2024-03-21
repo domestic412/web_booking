@@ -6,6 +6,8 @@ final CreateBookingController createBookingController =
     Get.put(CreateBookingController());
 
 class CreateBookingController extends GetxController {
+  var vessel = ''.obs;
+  var route = ''.obs;
 
   var consignee_controller = TextEditingController().obs;
   var consigneeId = ''.obs;
@@ -26,11 +28,11 @@ class CreateBookingController extends GetxController {
   var commodityId = ''.obs;
 
   var listSizeContainer = ['20', '40', '45', '53'].obs;
-  var sizeId = ''.obs;
+  var size = '20'.obs;
 
   var listType =
-      ['DC', 'HC', 'RF', 'RH', ' HQ', 'GP', 'OT', 'OH', 'TK', 'FR'].obs;
-  var type = ''.obs;
+      ['DC', 'HC', 'RF', 'RH', 'HQ', 'GP', 'OT', 'OH', 'TK', 'FR'].obs;
+  var type = 'DC'.obs;
 
   var listTypeContainer = ['DRY', 'REEFER'].obs;
   var currentTypeContainer = ''.obs;
@@ -38,7 +40,9 @@ class CreateBookingController extends GetxController {
   var temp_controller = TextEditingController().obs;
 
   var listStatusContainer = ['F', 'E'].obs;
-  var status = ''.obs;
+  var status = 'F'.obs;
+
+  var checkPrice = 0.obs;
 
   var volume_controller = TextEditingController().obs;
   var weight_controller = TextEditingController().obs;

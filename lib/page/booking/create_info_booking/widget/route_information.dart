@@ -20,8 +20,20 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
     List depotsList =
         box.read(depotsList_booking).map((e) => Depots.fromJson(e)).toList();
     for (final depots in depotsList) {
-      depotsEntries.add(
-          DropdownMenuEntry<Depots>(value: depots, label: depots.depotName));
+      if (depotsEntries.length == 0) {
+        depotsEntries.add(
+            DropdownMenuEntry<Depots>(value: depots, label: depots.depotName));
+      } else {
+        List datadepots = depotsEntries
+            .where((element) => element.label.contains(depots.depotName))
+            .toList();
+        if (datadepots.length == 0) {
+          depotsEntries.add(DropdownMenuEntry<Depots>(
+              value: depots, label: depots.depotName));
+        } else {
+          break;
+        }
+      }
     }
 
     return Obx(
@@ -51,6 +63,7 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         // width: 100,
                         child: Text(
                           routeController.vessel.value,
+                          // box.read(vessel_booking),
                           style: style_text_Table_small,
                         ))
                   ],
@@ -80,6 +93,7 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         width: 100,
                         child: Text(
                           routeController.voy.value,
+                          // box.read(voy_booking),
                           style: style_text_Table_small,
                         ))
                   ],
@@ -108,8 +122,8 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
-                          // routeController.date.value,
-                          box.read(date_booking),
+                          routeController.date.value,
+                          // box.read(date_booking),
                           style: style_text_Table_small,
                         ))
                   ],
@@ -141,8 +155,8 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
-                          // routeController.pol_final.value,
-                          box.read(pol_final_booking),
+                          routeController.pol_final.value,
+                          // box.read(pol_final_booking),
                           style: style_text_Table_small,
                         ))
                   ],
@@ -174,8 +188,8 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                         alignment: Alignment.center,
                         // width: 100,
                         child: Text(
-                          // routeController.pod_final.value,
-                          box.read(pod_final_booking),
+                          routeController.pod_final.value,
+                          // box.read(pod_final_booking),
                           style: style_text_Table_small,
                         ))
                   ],

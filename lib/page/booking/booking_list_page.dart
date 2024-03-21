@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/booking/model_booking_list.dart';
+import 'package:web_booking/model/booking/storage_controller/booking_list_controller.dart';
+import 'package:web_booking/model/list_user/storage_controller/user_controller.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
-import 'package:web_booking/page/booking/widgets/select_port_list.dart';
 import 'package:web_booking/page/booking/widgets/voyage_list.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
-class BookingPage extends StatefulWidget {
+class BookingListPage extends StatefulWidget {
   @override
-  State<BookingPage> createState() => _BookingPageState();
+  State<BookingListPage> createState() => _BookingListPageState();
 }
 
-class _BookingPageState extends State<BookingPage> {
+class _BookingListPageState extends State<BookingListPage> {
   @override
   void initState() {
     super.initState();
@@ -27,6 +31,9 @@ class _BookingPageState extends State<BookingPage> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime? pickeddate1 = DateTime.now();
+    DateTime? pickeddate2 = DateTime.now();
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -44,7 +51,7 @@ class _BookingPageState extends State<BookingPage> {
                 child: Column(
                   children: [
                     SelectableText(
-                      'Booking',
+                      'Booking List',
                       style: style_title_page,
                     ),
                     const SizedBox(
@@ -62,35 +69,73 @@ class _BookingPageState extends State<BookingPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          PortList(),
-                          const SizedBox(width: 20),
                           SizedBox(
                             height: 50,
                             width: 250,
                             child: TextField(
-                              controller: routeController.date_select.value,
+                              controller:
+                                  bookingListController.fromDate_select.value,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 label: Text(
-                                  'Chọn ngày đi',
+                                  'Từ ngày',
                                   style: TextStyle(fontSize: 14),
                                 ),
                                 icon: Icon(Icons.calendar_month),
                               ),
                               onTap: () async {
-                                DateTime? pickeddate = await showDatePicker(
+                                pickeddate1 = await showDatePicker(
                                     context: context,
                                     initialDate: DateTime.now(),
-                                    firstDate: DateTime.now(),
-                                    lastDate: DateTime(2123));
-                                if (pickeddate != null) {
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime(2223));
+                                if (pickeddate1 != null) {
                                   setState(() {
-                                    routeController.date_select.value.text =
+                                    bookingListController
+                                            .fromDate_select.value.text =
                                         DateFormat('dd/MM/yyyy')
-                                            .format(pickeddate);
-                                    routeController.dateSelect.value =
+                                            .format(pickeddate1!);
+                                    bookingListController.fromDate.value =
                                         DateFormat('MM/dd/yyyy')
-                                            .format(pickeddate);
+                                            .format(pickeddate1!);
+                                    // print(dateSelect);
+                                  });
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            height: 50,
+                            width: 220,
+                            child: TextField(
+                              controller:
+                                  bookingListController.toDate_select.value,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                label: Text(
+                                  'Đến ngày',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                // icon: Icon(Icons.calendar_month),
+                              ),
+                              onTap: () async {
+                                pickeddate2 = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime(2223));
+                                if (pickeddate2 != null) {
+                                  setState(() {
+                                    bookingListController
+                                            .toDate_select.value.text =
+                                        DateFormat('dd/MM/yyyy')
+                                            .format(pickeddate2!);
+                                    bookingListController.toDate.value =
+                                        DateFormat('MM/dd/yyyy')
+                                            .format(pickeddate2!);
                                     // print(dateSelect);
                                   });
                                 }
@@ -114,31 +159,18 @@ class _BookingPageState extends State<BookingPage> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)))),
                           onPressed: () {
-                            if (routeController.pOLLocId.value ==
-                                routeController.pODLocId.value) {
-                              // alertSelectPort.showAlertSamePort(context);
-                            } else if (routeController.pOLLocId.value == '' ||
-                                routeController.pODLocId.value == '') {
-                              // alertSelectPort.showAlertPort(context);
+                            if (pickeddate1!.compareTo(pickeddate2!) > 0) {
                             } else {
-                              setState(() {
-                                fetchVoyage = Voyage().fetchDataVoyage(
-                                    routeController.pOLLocId.value,
-                                    routeController.pODLocId.value,
-                                    routeController.dateSelect.value);
-                                box.write(polLocId_booking,
-                                    routeController.pOLLocId.value);
-                                box.write(podLocId_booking,
-                                    routeController.pODLocId.value);
-                                // box.write(date_booking, routeController.dateSelect.value);
-
-                                print(routeController.pOLLocId.value);
-                                print(routeController.pODLocId.value);
-                              });
+                              BookingList().fetchBookingList(
+                                  shipperId:
+                                      inforUserController.shipperId.value,
+                                  fromDate:
+                                      bookingListController.fromDate.value,
+                                  toDate: bookingListController.toDate.value);
                             }
                           },
                           child: Text(
-                            'Tìm chuyến tàu',
+                            'Search',
                             style: style_text_button_detail,
                           )),
                     ),

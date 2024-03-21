@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/new_login/model_newlogin.dart';
+
+import 'checkPrice.dart';
 
 class CargoInformation extends StatefulWidget {
   const CargoInformation({
@@ -79,9 +82,11 @@ class _CargoInformationState extends State<CargoInformation> {
                           child: Text('Size')),
                       DropdownMenu<String>(
                         width: 110,
-                        initialSelection: createBookingController.sizeId.value,
+                        initialSelection: createBookingController.size.value,
                         onSelected: (String? value) {
-                          createBookingController.sizeId.value = value!;
+                          createBookingController.size.value = value!;
+                          createBookingController.checkPrice.value =
+                              checkPrice();
                         },
                         dropdownMenuEntries: createBookingController
                             .listSizeContainer
@@ -95,6 +100,8 @@ class _CargoInformationState extends State<CargoInformation> {
                         initialSelection: createBookingController.type.value,
                         onSelected: (String? value) {
                           createBookingController.type.value = value!;
+                          createBookingController.checkPrice.value =
+                              checkPrice();
                         },
                         dropdownMenuEntries: createBookingController.listType
                             .map<DropdownMenuEntry<String>>((String value) {
@@ -157,6 +164,8 @@ class _CargoInformationState extends State<CargoInformation> {
                         initialSelection: createBookingController.status.value,
                         onSelected: (String? value) {
                           createBookingController.status.value = value!;
+                          createBookingController.checkPrice.value =
+                              checkPrice();
                         },
                         dropdownMenuEntries: createBookingController
                             .listStatusContainer
@@ -169,9 +178,22 @@ class _CargoInformationState extends State<CargoInformation> {
                   )),
             ],
           ),
-          SizedBox(
-            height: 20,
-          ),
+          createBookingController.checkPrice.value != 0
+              ? Container(
+                  alignment: Alignment.bottomLeft,
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 160),
+                  child: Text(
+                    createBookingController.checkPrice.value.toString() +
+                        ' VND/Container',
+                    style: TextStyle(color: red),
+                  ),
+                )
+              : SizedBox(
+                  height: 20,
+                ),
+          // SizedBox(
+          //   height: 10,
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -434,7 +456,7 @@ class _CargoInformationState extends State<CargoInformation> {
                             BookingDetails _listBookingDetails = BookingDetails(
                               commodityId:
                                   createBookingController.commodityId.value,
-                              sizeId: createBookingController.sizeId.value,
+                              sizeId: createBookingController.size.value,
                               type: createBookingController.type.value,
                               volume: int.parse(createBookingController
                                   .volume_controller.value.text),

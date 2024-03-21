@@ -179,22 +179,33 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
 }
 
 clearDataCreateBooking() {
+  routeController.depot_controller.value.clear();
+  routeController.depotId.value = '';
+
   createBookingController.consignee_controller.value.clear();
-  createBookingController.consigneeId.value;
+  createBookingController.consigneeId.value = '';
 
   createBookingController.ref_controller.value.clear();
-  createBookingController.refId.value;
+  createBookingController.refId.value = '';
 
   createBookingController.term_controller.value.clear();
-  createBookingController.term.value;
+  createBookingController.term.value = '';
+  createBookingController.paymentTerm.value = '';
+  createBookingController.coc.value = true;
 
   createBookingController.commodity_controller.value.clear();
-  createBookingController.commodityId.value;
+  createBookingController.commodityId.value = '';
+
+  createBookingController.currentTypeContainer.value = '';
+  createBookingController.reefer.value = false;
+  createBookingController.volume_controller.value.clear();
 
   createBookingController.temp_controller.value.clear();
-  createBookingController.volume_controller.value.clear();
   createBookingController.weight_controller.value.clear();
   createBookingController.dgRemark_controller.value.clear();
   createBookingController.remark.value.clear();
+
+  createBookingController.checkPrice.value = 0;
+
   createBookingController.listInfoContainer.value = <BookingDetails>[];
 }

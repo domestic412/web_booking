@@ -15,9 +15,13 @@ class BookingMenu extends StatefulWidget {
 class _BookingMenuState extends State<BookingMenu> {
   // handle mouse Booking
   bool isHovered_booking = false;
-  bool isHovered_bookingRequest = false;
   Color booking_color = Colors.black54;
+
+  bool isHovered_bookingRequest = false;
   Color bookingRequest_color = black;
+
+  bool isHovered_bookingList = false;
+  Color bookingList_color = black;
 
   void handleMouseEnter_booking(PointerEnterEvent event) {
     setState(() {
@@ -44,6 +48,20 @@ class _BookingMenuState extends State<BookingMenu> {
     setState(() {
       isHovered_bookingRequest = false;
       bookingRequest_color = black;
+    });
+  }
+
+  void handleMouseEnter_bookingList(PointerEnterEvent event) {
+    setState(() {
+      isHovered_bookingList = true;
+      bookingList_color = haian;
+    });
+  }
+
+  void handleMouseExit_bookingList(PointerExitEvent event) {
+    setState(() {
+      isHovered_bookingList = false;
+      bookingList_color = black;
     });
   }
 
@@ -99,6 +117,25 @@ class _BookingMenuState extends State<BookingMenu> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 16, color: bookingRequest_color),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    MouseRegion(
+                      onEnter: handleMouseEnter_bookingList,
+                      onExit: handleMouseExit_bookingList,
+                      child: InkWell(
+                        onTap: () {
+                          // context.go(AppRoutes.bookingRoute);
+                          Get.toNamed(GetRoutes.BookingList);
+                        },
+                        child: Text(
+                          'Booking List',
+                          textAlign: TextAlign.center,
+                          style:
+                              TextStyle(fontSize: 16, color: bookingList_color),
                         ),
                       ),
                     ),

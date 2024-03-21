@@ -20,15 +20,25 @@ String shipperId_signin = 'shipperid';
 String shipperName_signin = 'shippername';
 String managingOfficeId_signin = 'managingOfficeId';
 String consigneeList_signin = 'consigneeList';
-String refList_signin = 'refList';
+String refList_signin_json = 'refList';
 String termList_signin = 'termList';
 String commodityList_signin = 'commodityList';
 String depotsList_booking = 'depoList';
+String vessel_booking = 'vessel';
+String voy_booking = 'voy';
+
+String voyDetailId_booking = 'voyDetailId';
+
 String polLocId_booking = 'polLocId';
+String polId_final_booking = 'polId_final';
 String pol_final_booking = 'pol_final';
+
 String podLocId_booking = 'podLocId';
+String podId_final_booking = 'podId_final';
 String pod_final_booking = 'pod_final';
+
 String date_booking = 'date';
+String ref_booking = 'ref';
 
 String savecntr = '';
 

@@ -5,6 +5,8 @@ import 'package:web_booking/model/booking/model_get_ref.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/new_login/model_newlogin.dart';
 
+import 'checkPrice.dart';
+
 class ConsigneeWidget extends StatefulWidget {
   const ConsigneeWidget({super.key});
 
@@ -32,11 +34,24 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
     }
 
     List<DropdownMenuEntry<GetRef>> refEntries = <DropdownMenuEntry<GetRef>>[];
-    List listRef =
-        box.read(refList_signin).map((e) => GetRef.fromJson(e)).toList();
+    // print(refEntries == <DropdownMenuEntry<GetRef>>[]);
+
+    List<GetRef> listRef = box.read(ref_booking);
     for (final ref in listRef) {
-      refEntries
-          .add(DropdownMenuEntry<GetRef>(value: ref, label: ref.refNo.trim()));
+      if (refEntries.length == 0) {
+        refEntries.add(
+            DropdownMenuEntry<GetRef>(value: ref, label: ref.refNo!.trim()));
+      } else {
+        List dataref = refEntries
+            .where((item) => item.label.contains(ref.refNo!.trim()))
+            .toList();
+        if (dataref.length == 0) {
+          refEntries.add(
+              DropdownMenuEntry<GetRef>(value: ref, label: ref.refNo!.trim()));
+        } else {
+          break;
+        }
+      }
     }
     return Obx(
       () => Row(
@@ -80,6 +95,7 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
               setState(() {
                 selectRef = ref;
                 createBookingController.refId.value = selectRef?.refId ?? '';
+                createBookingController.checkPrice.value = checkPrice();
               });
             },
           ),

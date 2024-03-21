@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:web_booking/page/booking/booking_list_page.dart';
 // import 'package:web_booking/page/booking/bookingNote/bookingNote_page.dart';
 import 'package:web_booking/page/booking/booking_page.dart';
 import 'package:web_booking/page/booking/create_info_booking/create_booking_page.dart';
@@ -16,6 +17,7 @@ class GetRoutes {
   static const Tracking = "/Tracking";
   static const Test = "/Test";
   static const Booking = "/Booking";
+  static const BookingList = "/BookingList";
   static const Home = "/Home";
   static const Depo = "$Booking/Depo";
   static const BookingRequest = "$Booking/Create";
@@ -60,6 +62,10 @@ class GetRoutes {
     GetPage(
       name: BookingRequest,
       page: () => BookingRequestPage(),
+    ),
+    GetPage(
+      name: BookingList,
+      page: () => BookingListPage(),
     ),
     GetPage(
       name: Tracking,
