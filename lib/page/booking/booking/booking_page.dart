@@ -6,8 +6,8 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
-import 'package:web_booking/page/booking/widgets/select_port_list.dart';
-import 'package:web_booking/page/booking/widgets/voyage_list.dart';
+import 'package:web_booking/page/booking/booking/widgets/select_port_list.dart';
+import 'package:web_booking/page/booking/booking/widgets/voyage_list.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
 class BookingPage extends StatefulWidget {
@@ -131,7 +131,7 @@ class _BookingPageState extends State<BookingPage> {
                                 box.write(podLocId_booking,
                                     routeController.pODLocId.value);
                                 // box.write(date_booking, routeController.dateSelect.value);
-
+                                
                                 print(routeController.pOLLocId.value);
                                 print(routeController.pODLocId.value);
                               });

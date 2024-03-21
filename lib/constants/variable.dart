@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:web_booking/model/booking/model_booking_list.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 
@@ -58,6 +59,8 @@ String savecntr = '';
 // String? namePort2;
 Future<Voyage>? fetchVoyage;
 TextEditingController soluongcntr = TextEditingController();
+
+Future<List<BookingList>>? fetchBookingList;
 
 // Select depo - size
 String? nameDepo;

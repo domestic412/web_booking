@@ -5,7 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_get_ref.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
-import 'package:web_booking/page/booking/create_info_booking/widget/service.dart';
+import 'package:web_booking/page/booking/booking/create_info_booking/widget/service.dart';
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 

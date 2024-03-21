@@ -134,7 +134,7 @@ class BookingList {
     return data;
   }
 
-  Future<List<BookingList>> fetchBookingList({
+  Future<List<BookingList>> fetchDataBookingList({
     required String shipperId,
     required String fromDate,
     required String toDate,
@@ -158,9 +158,7 @@ class BookingList {
           var body = response.body;
           print('Data Booking List');
           List dataBookingList = json.decode(body);
-          return dataBookingList
-              .map((data) => BookingList.fromJson(data))
-              .toList();
+          return dataBookingList.map((data) => BookingList.fromJson(data)).toList();
         default:
           throw Exception(response.reasonPhrase);
       }

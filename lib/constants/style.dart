@@ -58,6 +58,10 @@ TextStyle style_text_button_detail = TextStyle(
   fontSize: 16,
   color: light,
 );
+TextStyle style_text_button_detail_small = TextStyle(
+  fontSize: 14,
+  color: light,
+);
 
 // style check container
 TextStyle style_text_small_14 = TextStyle(fontSize: 14, color: black);

@@ -29,12 +29,12 @@ const userList = 'userlist';
 const cudUser = 'cudUser';
 const changePass = 'changePass';
 const booking = 'booking';
-const releaseBookingList = 'releaseBookingList';
-const detailReleaseBookingList = 'detailReleaseBookingList';
+// const releaseBookingList = 'releaseBookingList';
+// const detailReleaseBookingList = 'detailReleaseBookingList';
 const approvalList = 'approvalList';
 const detailApproval = 'detailApproval';
-const bookingRequestList = 'bookingRequestList';
-const detailBookingRequest = 'detailBookingRequest';
+// const bookingRequestList = 'bookingRequestList';
+// const detailBookingRequest = 'detailBookingRequest';
 const requestList = 'requestList';
 const detailRequest = 'detailRequest';
 const sendRequest = 'sendRequest';
@@ -73,9 +73,9 @@ class SideBarController extends GetxController {
       // case bookingRequestList:
       //   // Get.toNamed(GetRoutes.RequestList);
       //   return BookingListPage();
-      case detailBookingRequest:
-        // Get.toNamed(GetRoutes.RequestList);
-        return DetailBookingRequestPage();
+      // case detailBookingRequest:
+      //   // Get.toNamed(GetRoutes.RequestList);
+      //   return DetailBookingRequestPage();
       case requestList:
         // Get.toNamed(GetRoutes.RequestList);
         return RequestListPage();

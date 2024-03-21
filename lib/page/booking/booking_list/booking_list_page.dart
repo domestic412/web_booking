@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_booking_list.dart';
 import 'package:web_booking/model/booking/storage_controller/booking_list_controller.dart';
-import 'package:web_booking/model/list_user/storage_controller/user_controller.dart';
-import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
-import 'package:web_booking/page/booking/widgets/voyage_list.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
+
+import 'widgets/data_booking_list.dart';
 
 class BookingListPage extends StatefulWidget {
   @override
@@ -23,9 +21,9 @@ class _BookingListPageState extends State<BookingListPage> {
   @override
   void initState() {
     super.initState();
-    routeController.date_select.value.text =
+    bookingListController.toDate_select.value.text =
         DateFormat('dd/MM/yyyy').format(DateTime.now());
-    routeController.dateSelect.value =
+    bookingListController.toDate.value =
         DateFormat('MM/dd/yyyy').format(DateTime.now());
   }
 
@@ -142,31 +140,28 @@ class _BookingListPageState extends State<BookingListPage> {
                               },
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: 930,
-                      alignment: Alignment.bottomRight,
+                          SizedBox(width: 40,),
+                          Container(
+                      // width: 930,
+                      // alignment: Alignment.bottomRight,
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF09227e),
-                              minimumSize: const Size(180, 45),
+                              minimumSize: const Size(100, 50),
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)))),
                           onPressed: () {
                             if (pickeddate1!.compareTo(pickeddate2!) > 0) {
                             } else {
-                              BookingList().fetchBookingList(
+                              setState(() {
+                                fetchBookingList = BookingList().fetchDataBookingList(
                                   shipperId:
                                       inforUserController.shipperId.value,
                                   fromDate:
                                       bookingListController.fromDate.value,
                                   toDate: bookingListController.toDate.value);
+                              });
                             }
                           },
                           child: Text(
@@ -174,10 +169,13 @@ class _BookingListPageState extends State<BookingListPage> {
                             style: style_text_button_detail,
                           )),
                     ),
+                        ],
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
-                    VoyageList(),
+                    DataBookingList(),
                   ],
                 ),
               )
