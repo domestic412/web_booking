@@ -30,7 +30,6 @@ class _CargoInformationState extends State<CargoInformation> {
         .map((e) => DataTable5s.fromJson(e))
         .toList();
     ;
-    print(listCommodity);
     for (final commodity in listCommodity) {
       commodityEntries.add(
         DropdownMenuEntry<DataTable5s>(
@@ -181,9 +180,10 @@ class _CargoInformationState extends State<CargoInformation> {
           createBookingController.checkPrice.value != 0
               ? Container(
                   alignment: Alignment.bottomLeft,
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 160),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 140),
                   child: Text(
-                    createBookingController.checkPrice.value.toString() +
+                    'Ocean Freight: ' +
+                        createBookingController.checkPrice.value.toString() +
                         ' VND/Container',
                     style: TextStyle(color: red),
                   ),
@@ -356,17 +356,19 @@ class _CargoInformationState extends State<CargoInformation> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                  margin: EdgeInsets.only(left: 50),
-                  width: 90,
-                  child: Text('Remark')),
+                  margin: EdgeInsets.only(left: 30),
+                  width: 110,
+                  child: Text('Special Request')),
               // SizedBox(width: 20),
               Container(
                 width: 700,
                 child: TextFormField(
                   controller: createBookingController.remark.value,
+                  maxLines: 10,
+                  minLines: 1,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Remark',
+                    labelText: 'Special Request',
                     labelStyle: TextStyle(fontSize: 14),
                   ),
                 ),

@@ -24,7 +24,7 @@ class _QualityListPageState extends State<QualityListPage> {
     QualityList().fetchQualityList().then((data) {
       setState(() {
         _dataQuality = DataTableQuality(data: data);
-        print('initial data quality');
+        // print('initial data quality');
       });
     });
   }

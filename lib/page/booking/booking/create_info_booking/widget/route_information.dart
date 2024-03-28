@@ -30,9 +30,7 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
         if (datadepots.length == 0) {
           depotsEntries.add(DropdownMenuEntry<Depots>(
               value: depots, label: depots.depotName));
-        } else {
-          break;
-        }
+        } else {}
       }
     }
 
@@ -212,10 +210,10 @@ class _RouteInformationWidgetState extends State<RouteInformationWidget> {
                 label: Text('Depot'.tr),
                 dropdownMenuEntries: depotsEntries,
                 onSelected: (Depots? depots) {
-                  setState(() {
-                    selectDepots = depots;
-                    routeController.depotId.value = selectDepots?.depotId ?? '';
-                  });
+                  // setState(() {
+                  selectDepots = depots;
+                  routeController.depotId.value = selectDepots?.depotId ?? '';
+                  // });
                 },
               ),
             ],

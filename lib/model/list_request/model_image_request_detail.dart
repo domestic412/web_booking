@@ -55,7 +55,7 @@ class imageResponse {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          print('Data Image Request Detail');
+          // print('Data Image Request Detail');
           List dataDetail = jsonDecode(body);
           return dataDetail
               .map((data) => imageResponse.fromJson(data))

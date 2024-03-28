@@ -51,7 +51,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
   }
 
   Widget _previewImage() {
-    print('show Image request');
+    // print('show Image request');
     return Container(
       height: 150,
       child: ListView.builder(
@@ -334,7 +334,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
       request.send(formData);
       request.onLoad.listen((html.ProgressEvent event) {
         if (request.status == 200) {
-          print('Send request');
+          // print('Send request');
           // EasyLoading.dismiss();
           numberImage = 0;
           savecntr = '';

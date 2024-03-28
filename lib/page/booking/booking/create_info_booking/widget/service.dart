@@ -19,10 +19,12 @@ class _ServiceWidgetState extends State<ServiceWidget> {
   Widget build(BuildContext context) {
     List<DropdownMenuEntry<DataTable4s>> termEntries =
         <DropdownMenuEntry<DataTable4s>>[];
-    List listTerm = box.read(termList_signin).map((e) => DataTable4s.fromJson(e)).toList();;
+    List listTerm =
+        box.read(termList_signin).map((e) => DataTable4s.fromJson(e)).toList();
+    ;
     for (final term in listTerm) {
-      termEntries
-          .add(DropdownMenuEntry<DataTable4s>(value: term, label: term.term.trim()));
+      termEntries.add(
+          DropdownMenuEntry<DataTable4s>(value: term, label: term.term.trim()));
     }
     return Obx(
       () => Row(
@@ -44,10 +46,10 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                 label: Text('Term'.tr),
                 dropdownMenuEntries: termEntries,
                 onSelected: (DataTable4s? term) {
-                  setState(() {
-                    selectTerm = term;
-                    createBookingController.term.value = selectTerm?.term ?? '';
-                  });
+                  // setState(() {
+                  selectTerm = term;
+                  createBookingController.term.value = selectTerm?.term ?? '';
+                  // });
                 },
               ),
             ],

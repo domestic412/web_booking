@@ -169,7 +169,7 @@ Widget _buildAppbarImage() {
   return Padding(
     padding: const EdgeInsets.only(top: 30),
     child: Image.asset(
-      'assets/images/hats_logo.png',
+      'assets/images/hact_logo.png',
       height: 100,
       width: 200,
     ),

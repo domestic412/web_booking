@@ -27,7 +27,7 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
       setState(() {
         _dataContainerStock = DataTableContainerStock(data: data);
         _list_filter = _dataContainerStock;
-        print('inital data');
+        // print('inital data');
       });
     });
   }
@@ -36,7 +36,7 @@ class _ContainerStockPageState extends State<ContainerStockPage> {
     setState(() {
       final filterData = _dataContainerStock.list_filter(_search_stock.text);
       _list_filter = DataTableContainerStock(data: filterData);
-      print('filter data stock');
+      // print('filter data stock');
     });
   }
 

@@ -15,7 +15,7 @@ class AppAssets {
 
   static const String VesselHA1_jpg = 'assets/images/VesselHA1.jpg';
 
-  static const String hats_logo_png = 'assets/images/hats_logo.png';
+  static const String hact_logo_png = 'assets/images/hact_logo.png';
 
   static const String langs_en_EN_json = 'lib/resources/langs/en-EN.json';
 

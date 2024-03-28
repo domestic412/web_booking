@@ -155,7 +155,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
         "bookingDetails": bookingDetails
       };
       var body = json.encode(data);
-      print(body);
+      // print(body);
       final response = await http.post(Uri.parse(URL_NEW_BOOKING),
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -166,7 +166,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
         case 200:
           // Get.toNamed(GetRoutes.Home);
           // controller.selectWidget.value = bookingRequestList;
-          Get.toNamed(GetRoutes.defaultRoute);
+          Get.toNamed(GetRoutes.BookingList);
           createBookingController.countRowContainer.value = 0;
           clearDataCreateBooking();
         default:

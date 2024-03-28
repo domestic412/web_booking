@@ -30,7 +30,7 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
         setState(() {
           _dataApproval = DataTableApproval(data: data);
           _list_filter = _dataApproval;
-          print('initial data approval');
+          // print('initial data approval');
         });
       });
     } catch (e) {
@@ -43,7 +43,7 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
       setState(() {
         final filterData = _dataApproval.list_filter(_search_text.text);
         _list_filter = DataTableApproval(data: filterData);
-        print('filter data approval');
+        // print('filter data approval');
       });
     } catch (e) {
       print('Error call filter data ApprovalList: $e');

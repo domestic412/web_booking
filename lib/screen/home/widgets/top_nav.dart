@@ -19,7 +19,7 @@ class AppbarWidget extends StatelessWidget {
           left: 16,
         ),
         child: Image.asset(
-          'assets/images/hats_logo.png',
+          'assets/images/hact_logo.png',
         ),
       ),
       title: Row(

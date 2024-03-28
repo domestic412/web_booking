@@ -156,9 +156,11 @@ class BookingList {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          print('Data Booking List');
+          // print('Data Booking List');
           List dataBookingList = json.decode(body);
-          return dataBookingList.map((data) => BookingList.fromJson(data)).toList();
+          return dataBookingList
+              .map((data) => BookingList.fromJson(data))
+              .toList();
         default:
           throw Exception(response.reasonPhrase);
       }

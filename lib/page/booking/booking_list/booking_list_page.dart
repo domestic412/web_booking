@@ -21,10 +21,18 @@ class _BookingListPageState extends State<BookingListPage> {
   @override
   void initState() {
     super.initState();
+    bookingListController.fromDate_select.value.text = DateFormat('dd/MM/yyyy')
+        .format(DateTime.now().subtract(Duration(days: 7)));
+    bookingListController.fromDate.value = DateFormat('MM/dd/yyyy')
+        .format(DateTime.now().subtract(Duration(days: 7)));
     bookingListController.toDate_select.value.text =
-        DateFormat('dd/MM/yyyy').format(DateTime.now());
+        DateFormat('dd/MM/yyyy').format(DateTime.now().add(Duration(days: 1)));
     bookingListController.toDate.value =
-        DateFormat('MM/dd/yyyy').format(DateTime.now());
+        DateFormat('MM/dd/yyyy').format(DateTime.now().add(Duration(days: 1)));
+    fetchBookingList = BookingList().fetchDataBookingList(
+        shipperId: inforUserController.shipperId.value,
+        fromDate: bookingListController.fromDate.value,
+        toDate: bookingListController.toDate.value);
   }
 
   @override
@@ -140,35 +148,40 @@ class _BookingListPageState extends State<BookingListPage> {
                               },
                             ),
                           ),
-                          SizedBox(width: 40,),
+                          SizedBox(
+                            width: 40,
+                          ),
                           Container(
-                      // width: 930,
-                      // alignment: Alignment.bottomRight,
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF09227e),
-                              minimumSize: const Size(100, 50),
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5)))),
-                          onPressed: () {
-                            if (pickeddate1!.compareTo(pickeddate2!) > 0) {
-                            } else {
-                              setState(() {
-                                fetchBookingList = BookingList().fetchDataBookingList(
-                                  shipperId:
-                                      inforUserController.shipperId.value,
-                                  fromDate:
-                                      bookingListController.fromDate.value,
-                                  toDate: bookingListController.toDate.value);
-                              });
-                            }
-                          },
-                          child: Text(
-                            'Search',
-                            style: style_text_button_detail,
-                          )),
-                    ),
+                            // width: 930,
+                            // alignment: Alignment.bottomRight,
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFF09227e),
+                                    minimumSize: const Size(100, 50),
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)))),
+                                onPressed: () {
+                                  if (pickeddate1!.compareTo(pickeddate2!) >
+                                      0) {
+                                  } else {
+                                    setState(() {
+                                      fetchBookingList = BookingList()
+                                          .fetchDataBookingList(
+                                              shipperId: inforUserController
+                                                  .shipperId.value,
+                                              fromDate: bookingListController
+                                                  .fromDate.value,
+                                              toDate: bookingListController
+                                                  .toDate.value);
+                                    });
+                                  }
+                                },
+                                child: Text(
+                                  'Search',
+                                  style: style_text_button_detail,
+                                )),
+                          ),
                         ],
                       ),
                     ),

@@ -52,7 +52,7 @@ class SpecialPolicyList {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          print('Data List Quality');
+          // print('Data List Quality');
           List dataSpecialPolicyList = json.decode(body);
           return dataSpecialPolicyList
               .map((data) => SpecialPolicyList.fromJson(data))

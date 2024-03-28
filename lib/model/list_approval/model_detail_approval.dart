@@ -76,7 +76,7 @@ class DetailApproval {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          print('Data list approval Detail');
+          // print('Data list approval Detail');
           List dataDetail = jsonDecode(body);
           try {
             int id = dataDetail[0]['id'];

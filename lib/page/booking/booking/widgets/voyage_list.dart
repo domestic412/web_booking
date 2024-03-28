@@ -209,7 +209,7 @@ class _VoyageListState extends State<VoyageList> {
 
                               //go to BookingRequestPage
                               inforUserController.tenNV.value == ''
-                                  ? Get.toNamed(GetRoutes.SignIn)
+                                  ? Get.toNamed(GetRoutes.NewSignIn)
                                   : Get.toNamed(GetRoutes.BookingRequest);
                             },
                             style: ElevatedButton.styleFrom(

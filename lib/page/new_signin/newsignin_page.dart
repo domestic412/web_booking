@@ -101,7 +101,7 @@ class _NewSignInPageState extends State<NewSignInPage> {
             {
               var body = response.body;
               var dataNewLogIn = jsonDecode(body);
-              print(dataNewLogIn);
+              // print(dataNewLogIn);
               // String shipperId = dataNewLogIn['dataTable2s'][1]['shipperName'];
 
               //update infoUser
@@ -170,7 +170,7 @@ Widget _buildAppbarImage() {
   return Padding(
     padding: const EdgeInsets.only(top: 30),
     child: Image.asset(
-      'assets/images/hats_logo.png',
+      'assets/images/hact_logo.png',
       height: 100,
       width: 200,
     ),
@@ -181,7 +181,7 @@ Widget _buildAppbarName() {
   return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Text(
-        'LOGIN'.tr,
+        'welcome to HAI AN'.tr,
         style: TextStyle(
             fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue[900]),
       ));

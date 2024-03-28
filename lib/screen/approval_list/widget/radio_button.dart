@@ -66,8 +66,8 @@ class _RadioButtonState extends State<RadioButton> {
             InkWell(
               onTap: () {
                 setState(() {
-                  print(detailApprovalController.id.value);
-                  print(detailApprovalController.note_controller.text);
+                  // print(detailApprovalController.id.value);
+                  // print(detailApprovalController.note_controller.text);
                   _sendApproval.fetchSendApproval(
                       _status,
                       detailApprovalController.id.value,

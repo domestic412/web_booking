@@ -24,7 +24,7 @@ class _SpecialPolicyListPageState extends State<SpecialPolicyListPage> {
     SpecialPolicyList().fetchSpecialPolicyList().then((data) {
       setState(() {
         _dataPolicy = DataTablePolicy(data: data);
-        print('initial data policy');
+        // print('initial data policy');
       });
     });
   }

@@ -53,8 +53,6 @@ class _PortListState extends State<PortList> {
                   onSelected: (Ports? port) {
                     setState(() {
                       selectPort1 = port;
-                      // idPort1 = selectPort1?.portId;
-                      // namePort1 = selectPort1?.portName;
                       routeController.pOLLocId.value =
                           selectPort1?.portId ?? '';
                       routeController.pOLLoc.value =

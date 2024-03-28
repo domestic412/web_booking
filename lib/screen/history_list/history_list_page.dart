@@ -26,7 +26,7 @@ class _HistoryListPageState extends State<HistoryListPage> {
       setState(() {
         _dataHistoty = DataTableHistory(data: data);
         _list_filter = _dataHistoty;
-        print('initial data history');
+        // print('initial data history');
       });
     });
   }
@@ -35,7 +35,7 @@ class _HistoryListPageState extends State<HistoryListPage> {
     setState(() {
       final filterData = _dataHistoty.list_filter(_search_history.text);
       _list_filter = DataTableHistory(data: filterData);
-      print('filter data history');
+      // print('filter data history');
     });
   }
 

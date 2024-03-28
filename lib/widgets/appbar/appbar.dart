@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
@@ -30,8 +29,8 @@ class _appbarState extends State<appbar> {
         child: Row(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 50),
-              width: 1196,
+              padding: EdgeInsets.only(left: 20),
+              width: 460,
               child: InkWell(
                 onTap: () {
                   Get.to(() => DefaultPage());
@@ -43,52 +42,64 @@ class _appbarState extends State<appbar> {
                 ),
               ),
             ),
-            const DropdownLeaguage(),
-            const SizedBox(
-              width: 30,
+            Container(
+              width: 850,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  inforUserController.tenNV.value != ''
+                      ? Row(
+                          children: [
+                            Container(
+                              width: 250,
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                inforUserController.tenNV.value,
+                                style: TextStyle(color: white),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                box.remove(shipperName_signin);
+                                inforUserController
+                                    .resetInforSignInController();
+                                inforUserController
+                                    .resetNewInforUserController();
+                                Get.toNamed(GetRoutes.defaultRoute);
+                                currentRouteController.route.value = 'default';
+                                // controller.selectWidget.value = dashboard;
+                                setState(() {});
+                              },
+                              icon: Icon(
+                                Icons.logout,
+                                color: white,
+                              ),
+                            )
+                          ],
+                        )
+                      : InkWell(
+                          onTap: () {
+                            // context.go(AppRoutes.signInRoute);
+                            // Get.toNamed(GetRoutes.SignIn);
+                            Get.toNamed(GetRoutes.NewSignIn);
+                          },
+                          child: Container(
+                              width: 70,
+                              child: Text(
+                                'signin'.tr,
+                                style: style14_white,
+                              )),
+                        ),
+                  // const SizedBox(
+                  //   width: 30,
+                  // ),
+                  const DropdownLeaguage(),
+                ],
+              ),
             ),
-            inforUserController.tenNV.value != ''
-                ? Row(
-                    children: [
-                      Container(
-                        width: 70,
-                        child: Text(
-                          inforUserController.tenNV.value,
-                          style: TextStyle(color: white),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 30,
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          box.remove(shipperName_signin);
-                          inforUserController.resetInforSignInController();
-                          inforUserController.resetNewInforUserController();
-                          Get.toNamed(GetRoutes.defaultRoute);
-                          currentRouteController.route.value = 'default';
-                          // controller.selectWidget.value = dashboard;
-                          setState(() {});
-                        },
-                        icon: Icon(
-                          Icons.logout,
-                          color: white,
-                        ),
-                      )
-                    ],
-                  )
-                : InkWell(
-                    onTap: () {
-                      // context.go(AppRoutes.signInRoute);
-                      Get.toNamed(GetRoutes.SignIn);
-                    },
-                    child: Container(
-                        width: 70,
-                        child: Text(
-                          'signin'.tr,
-                          style: style14_white,
-                        )),
-                  ),
           ],
         ),
       ),

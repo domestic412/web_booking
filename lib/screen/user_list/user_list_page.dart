@@ -24,7 +24,7 @@ class _UserListPageState extends State<UserListPage> {
     UserList().fetchUserList().then((data) {
       setState(() {
         _dataUser = DataTableUser(data: data);
-        print('initial data user');
+        // print('initial data user');
       });
     });
   }

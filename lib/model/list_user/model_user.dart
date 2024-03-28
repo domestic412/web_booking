@@ -64,7 +64,7 @@ class UserList {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          print('Data List User');
+          // print('Data List User');
           List dataUserList = json.decode(body);
           return dataUserList.map((data) => UserList.fromJson(data)).toList();
         case 401:

@@ -32,7 +32,7 @@ class _RadioButtonRouteState extends State<RadioButtonRoute> {
                 onChanged: (value) {
                   setState(() {
                     currentOptionsRoute = value!;
-                    print(currentOptionsRoute);
+                    // print(currentOptionsRoute);
                   });
                 },
               ),
@@ -49,7 +49,7 @@ class _RadioButtonRouteState extends State<RadioButtonRoute> {
                 onChanged: (value) {
                   setState(() {
                     currentOptionsRoute = value!;
-                    print(currentOptionsRoute);
+                    // print(currentOptionsRoute);
                   });
                 },
               ),

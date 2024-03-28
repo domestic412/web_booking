@@ -16,7 +16,7 @@ class TableInformationContainer extends StatefulWidget {
 class _TableInformationContainerState extends State<TableInformationContainer> {
   @override
   Widget build(BuildContext context) {
-    print(createBookingController.listInfoContainer);
+    // print(createBookingController.listInfoContainer);
     return Obx(
       () => Container(
         width: 1004,
@@ -158,8 +158,10 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
 }
 
 findCommodityName(String commodityId) {
-  for (final commodity in box.read(commodityList_signin).map((e) => DataTable5s.fromJson(e))
-                  .toList()) {
+  for (final commodity in box
+      .read(commodityList_signin)
+      .map((e) => DataTable5s.fromJson(e))
+      .toList()) {
     if (commodity.commodityId == commodityId) {
       return commodity.commodityName;
     }

@@ -48,9 +48,7 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
         if (dataref.length == 0) {
           refEntries.add(
               DropdownMenuEntry<GetRef>(value: ref, label: ref.refNo!.trim()));
-        } else {
-          break;
-        }
+        } else {}
       }
     }
     return Obx(
@@ -70,11 +68,11 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
             label: Text('Consignee'.tr),
             dropdownMenuEntries: consigneeEntries,
             onSelected: (DataTable2s? consignee) {
-              setState(() {
-                selectConsignee = consignee;
-                createBookingController.consigneeId.value =
-                    selectConsignee?.consigneeId ?? '';
-              });
+              // setState(() {
+              selectConsignee = consignee;
+              createBookingController.consigneeId.value =
+                  selectConsignee?.consigneeId ?? '';
+              // });
             },
           ),
           SizedBox(
@@ -87,16 +85,14 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
           const SizedBox(width: 10),
           DropdownMenu<GetRef>(
             controller: createBookingController.ref_controller.value,
-            // enableFilter: true,
-            // enableSearch: true,
             label: Text('Ref'.tr),
             dropdownMenuEntries: refEntries,
             onSelected: (GetRef? ref) {
-              setState(() {
-                selectRef = ref;
-                createBookingController.refId.value = selectRef?.refId ?? '';
-                createBookingController.checkPrice.value = checkPrice();
-              });
+              // setState(() {
+              selectRef = ref;
+              createBookingController.refId.value = selectRef?.refId ?? '';
+              createBookingController.checkPrice.value = checkPrice();
+              // });
             },
           ),
         ],

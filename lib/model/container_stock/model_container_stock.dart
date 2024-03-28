@@ -99,7 +99,7 @@ class ContainerStock {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          print('Data Stock');
+          // print('Data Stock');
           List dataContainerStock = json.decode(body);
           return dataContainerStock
               .map((data) => ContainerStock.fromJson(data))

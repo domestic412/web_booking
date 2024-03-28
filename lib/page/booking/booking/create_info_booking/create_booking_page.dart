@@ -57,6 +57,7 @@ class BookingRequestPage extends StatelessWidget {
             // print(snapshot.data);
             box.write(ref_booking, snapshot.data);
             // print(box.read(ref_booking)[0].refNo);
+            // print(box.read(ref_booking));
             return bodyBookingRequest();
           }
           return Text('');

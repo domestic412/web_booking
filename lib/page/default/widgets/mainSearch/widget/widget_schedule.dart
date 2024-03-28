@@ -18,11 +18,6 @@ class ScheduleSearch extends StatefulWidget {
 class _ScheduleSearchState extends State<ScheduleSearch> {
   Ports? selectPort1;
   Ports? selectPort2;
-  // String? dateSelect;
-
-  // List<DropdownMenuEntry<Ports>> _portEntries = <DropdownMenuEntry<Ports>>[];
-  // TextEditingController _port_select1 = TextEditingController();
-  // TextEditingController _port_select2 = TextEditingController();
 
   void initState() {
     super.initState();
@@ -76,10 +71,11 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
               onTap: () {
                 setState(() {
                   fetchVoyage = Voyage().fetchDataVoyage(
-                      // idPort1.toString(), idPort2.toString(), dateSelect!
                       routeController.pOLLocId.value,
                       routeController.pODLocId.value,
                       routeController.dateSelect.value);
+                  box.write(polLocId_booking, routeController.pOLLocId.value);
+                  box.write(podLocId_booking, routeController.pODLocId.value);
                 });
                 // context.go(AppRoutes.bookingRoute);
                 Get.toNamed(GetRoutes.Booking);
@@ -148,7 +144,6 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                     onSelected: (Ports? id) {
                       setState(() {
                         selectPort1 = id;
-                        // idPort1 = selectPort1?.portId;
                         routeController.pOLLocId.value =
                             selectPort1?.portId ?? '';
                         routeController.pOLLoc.value =
@@ -181,7 +176,6 @@ class _ScheduleSearchState extends State<ScheduleSearch> {
                     onSelected: (Ports? id) {
                       setState(() {
                         selectPort2 = id;
-                        // idPort2 = selectPort2?.portId;
                         routeController.pODLocId.value =
                             selectPort2?.portId ?? '';
                         routeController.pODLoc.value =

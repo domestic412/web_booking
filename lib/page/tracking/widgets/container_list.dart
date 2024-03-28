@@ -79,7 +79,7 @@ class _ContainerListState extends State<ContainerList> {
                     .where((item) => item.container!.contains(cntr_no!))
                     .toList();
               }
-              print(list_filter);
+              // print(list_filter);
               return ContainerDetails();
             } else {
               return SizedBox();
@@ -144,7 +144,7 @@ class _ContainerListState extends State<ContainerList> {
                 Container(
                   child: InkWell(
                       onTap: () {
-                        print(bool_lang);
+                        // print(bool_lang);
                         cntr_no = data_bk[index].container.toString();
                         if (bool_lang == false) {
                           list_filter = data_cntr_en!

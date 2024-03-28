@@ -70,7 +70,7 @@ class _mainMenuState extends State<mainMenu> {
                           height: 100,
                           width: 200,
                           padding: const EdgeInsets.all(15),
-                          child: Image.asset('assets/images/hats_logo.png')),
+                          child: Image.asset('assets/images/hact_logo.png')),
                       const SizedBox(
                         width: 70,
                       ),
