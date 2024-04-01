@@ -47,7 +47,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
                       createBookingController.reefer.value,
                       createBookingController.temp_controller.value.text,
                       createBookingController.remark.value.text,
-                      inforUserController.tenNV.value,
+                      inforUserController.shipperName.value,
                       'I',
                       createBookingController.listInfoContainer)
                   : null;

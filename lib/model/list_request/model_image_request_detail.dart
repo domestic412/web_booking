@@ -45,7 +45,7 @@ class imageResponse {
     return data;
   }
 
-  Future<List<imageResponse>> fetchImage(int id) async {
+  Future<List<imageResponse>> fetchImage(String id) async {
     try {
       var url = '$SERVER/Requests/GetDBMultiImage?id=$id';
       final response = await http.get(Uri.parse(url), headers: {

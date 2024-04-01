@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
@@ -22,7 +23,8 @@ class _DrawItemsState extends State<DrawItems> {
           () => Wrap(
             runSpacing: 10,
             children: [
-              inforUserController.author.value == 'admin'
+              inforUserController.isStaff.value == 1
+                  // box.read(is_staff_signin) == 1
                   ? ExpansionTile(
                       title: Text('Management', style: TextStyle(color: white)),
                       leading: Icon(
@@ -37,13 +39,13 @@ class _DrawItemsState extends State<DrawItems> {
                         color: _bool_dropdown_management ? blue : white,
                       ),
                       children: [
-                        ListTile(
-                            title: Text('User List',
-                                style: TextStyle(color: white)),
-                            onTap: () {
-                              // Get.toNamed(GetRoutes.UserList);
-                              controller.selectWidget.value = userList;
-                            }),
+                        // ListTile(
+                        //     title: Text('User List',
+                        //         style: TextStyle(color: white)),
+                        //     onTap: () {
+                        //       // Get.toNamed(GetRoutes.UserList);
+                        //       controller.selectWidget.value = userList;
+                        //     }),
                         // ListTile(
                         //     title: Text('Release Booking List',
                         //         style: TextStyle(color: white)),
@@ -66,13 +68,13 @@ class _DrawItemsState extends State<DrawItems> {
                               // Get.toNamed(GetRoutes.QualityList);
                               controller.selectWidget.value = qualityList;
                             }),
-                        ListTile(
-                            title: Text('Special Policy List',
-                                style: TextStyle(color: white)),
-                            onTap: () {
-                              // Get.toNamed(GetRoutes.SpecialPolicyList);
-                              controller.selectWidget.value = specialPolicyList;
-                            }),
+                        // ListTile(
+                        //     title: Text('Special Policy List',
+                        //         style: TextStyle(color: white)),
+                        //     onTap: () {
+                        //       // Get.toNamed(GetRoutes.SpecialPolicyList);
+                        //       controller.selectWidget.value = specialPolicyList;
+                        // }),
                         ListTile(
                             title: Text('History List',
                                 style: TextStyle(color: white)),
@@ -110,7 +112,8 @@ class _DrawItemsState extends State<DrawItems> {
                         : Icons.arrow_drop_down,
                     color: _bool_dropdown_services ? blue : white,
                   ),
-                  initiallyExpanded: inforUserController.author.value == 'admin'
+                  initiallyExpanded: inforUserController.isStaff.value == 1
+                      // box.read(is_staff_signin) == 1
                       ? false
                       : true,
                   onExpansionChanged: (bool expanded) {

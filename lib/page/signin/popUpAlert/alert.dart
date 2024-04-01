@@ -21,3 +21,24 @@ Future<void> LoginAlert(BuildContext context) {
         );
       });
 }
+
+Future<void> LoginAlertDatabase(BuildContext context) {
+  return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            "Đăng nhập thất bại",
+            textAlign: TextAlign.center,
+          ),
+          content: const Text("Lỗi Data."),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text("OK"))
+          ],
+        );
+      });
+}

@@ -85,7 +85,7 @@ class _NewSignInPageState extends State<NewSignInPage> {
     ));
   }
 
-  Future<ModelNewLogin> newSignIn(String username, String password) async {
+  Future<void> newSignIn(String username, String password) async {
     try {
       final url = URL_NEWLOGIN;
       Map data = {
@@ -100,57 +100,98 @@ class _NewSignInPageState extends State<NewSignInPage> {
           case 200:
             {
               var body = response.body;
-              var dataNewLogIn = jsonDecode(body);
+              var dataLogIn = jsonDecode(body);
+              checkDataLogin(dataLogIn);
               // print(dataNewLogIn);
               // String shipperId = dataNewLogIn['dataTable2s'][1]['shipperName'];
 
-              //update infoUser
-              List infoUser = dataNewLogIn['dataTable1s'];
-              String shipperId = infoUser[0]['shipperId'];
-              String shipperName = infoUser[0]['shipperName'];
-              String managingOfficeId = infoUser[0]['managingOfficeId'];
+              switch (box.read(is_staff_signin)) {
+                case 0:
+                  {
+                    //update infoUser
+                    List infoUser = dataLogIn['dataTable1s'];
+                    String shipperId = infoUser[0]['shipperId'];
+                    String shipperName = infoUser[0]['shipperName'];
+                    String managingOfficeId = infoUser[0]['managingOfficeId'];
 
-              //update consignee
-              var consigneeList_json = dataNewLogIn['dataTable2s'];
-              // List consigneeList = consigneeList_json
-              //     .map((e) => DataTable2s.fromJson(e))
-              //     .toList();
+                    //update consignee
+                    var consigneeList_json = dataLogIn['dataTable2s'];
+                    // List consigneeList = consigneeList_json
+                    //     .map((e) => DataTable2s.fromJson(e))
+                    //     .toList();
 
-              var termList_json = dataNewLogIn['dataTable4s'];
-              // List termList =
-              //     termList_json.map((e) => DataTable4s.fromJson(e)).toList();
+                    var termList_json = dataLogIn['dataTable4s'];
+                    // List termList =
+                    //     termList_json.map((e) => DataTable4s.fromJson(e)).toList();
 
-              var commodityList_json = dataNewLogIn['dataTable5s'];
-              // List commodityList = commodityList_json
-              //     .map((e) => DataTable5s.fromJson(e))
-              //     .toList();
-              // print(commodityList);
+                    var commodityList_json = dataLogIn['dataTable5s'];
+                    // List commodityList = commodityList_json
+                    //     .map((e) => DataTable5s.fromJson(e))
+                    //     .toList();
+                    // print(commodityList);
+                    box.write(shipperId_signin, shipperId);
+                    box.write(shipperName_signin, shipperName);
+                    box.write(managingOfficeId_signin, managingOfficeId);
+                    box.write(consigneeList_signin, consigneeList_json);
+                    // box.write(refList_signin, refList_json);
+                    box.write(termList_signin, termList_json);
+                    box.write(commodityList_signin, commodityList_json);
 
-              box.write(old_new_signin, 1);
-              box.write(shipperId_signin, shipperId);
-              box.write(shipperName_signin, shipperName);
-              box.write(managingOfficeId_signin, managingOfficeId);
-              box.write(consigneeList_signin, consigneeList_json);
-              // box.write(refList_signin, refList_json);
-              box.write(termList_signin, termList_json);
-              box.write(commodityList_signin, commodityList_json);
+                    inforUserController.updateInfoShipperController(
+                      isStaff: 0,
+                      shipperId: box.read(shipperId_signin),
+                      shipperName: box.read(shipperName_signin),
+                      managingOfficeId: box.read(managingOfficeId_signin),
+                      consigneeList: box.read(consigneeList_signin),
+                      termList: box.read(termList_signin),
+                    );
 
-              switch (currentRouteController.route.value) {
-                case booking:
-                  Get.toNamed(GetRoutes.BookingRequest);
-                  break;
-                case service:
-                  Get.toNamed(GetRoutes.Home);
-                  break;
+                    switch (currentRouteController.route.value) {
+                      case booking:
+                        Get.toNamed(GetRoutes.BookingRequest);
+                        break;
+                      case service:
+                        Get.toNamed(GetRoutes.Home);
+                        break;
+                      default:
+                        Get.toNamed(GetRoutes.defaultRoute);
+                        break;
+                    }
+                    print('Login Success');
+                    // return ModelNewLogin.fromJson(dataNewLogIn);
+                  }
+                case 1:
+                  {
+                    String userId = dataLogIn[0]['userId'];
+                    String userName = dataLogIn[0]['userName'];
+                    String officeId = dataLogIn[0]['officeId'];
+                    box.write(shipperId_signin, userId);
+                    box.write(shipperName_signin, userName);
+                    box.write(managingOfficeId_signin, officeId);
+
+                    inforUserController.updateInfoStaffController(
+                      isStaff: 1,
+                      shipperId: box.read(shipperId_signin),
+                      shipperName: box.read(shipperName_signin),
+                      managingOfficeId: box.read(managingOfficeId_signin),
+                    );
+
+                    switch (currentRouteController.route.value) {
+                      // case booking:
+                      //   Get.toNamed(GetRoutes.BookingRequest);
+                      //   break;
+                      case service:
+                        Get.toNamed(GetRoutes.Home);
+                        break;
+                      default:
+                        Get.toNamed(GetRoutes.defaultRoute);
+                        break;
+                    }
+                  }
                 default:
-                  Get.toNamed(GetRoutes.defaultRoute);
-                  break;
+                  LoginAlertDatabase(context);
               }
-
-              print('Login Success');
-              return ModelNewLogin.fromJson(dataNewLogIn);
             }
-
           default:
             LoginAlert(context);
             throw Exception('Error - ${response.reasonPhrase}');
@@ -232,4 +273,16 @@ Widget _buildInputUser() {
       ),
     )
   ]);
+}
+
+void checkDataLogin(dataLogin) {
+  if (dataLogin is List) {
+    box.write(is_staff_signin, 1);
+    print('data type list');
+  } else if (dataLogin is Map<dynamic, dynamic>) {
+    box.write(is_staff_signin, 0);
+    print('data type Map');
+  } else {
+    print(dataLogin);
+  }
 }

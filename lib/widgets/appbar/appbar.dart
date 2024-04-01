@@ -35,10 +35,22 @@ class _appbarState extends State<appbar> {
                 onTap: () {
                   Get.to(() => DefaultPage());
                 },
-                child: Text(
-                  'welcome'.tr,
-                  style: style14_white,
-                  textAlign: TextAlign.left,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.home_sharp,
+                      size: 20,
+                      color: white,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'welcome'.tr,
+                      style: style14_white,
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -47,14 +59,14 @@ class _appbarState extends State<appbar> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  inforUserController.tenNV.value != ''
+                  inforUserController.shipperName.value != ''
                       ? Row(
                           children: [
                             Container(
                               width: 250,
                               alignment: Alignment.centerRight,
                               child: Text(
-                                inforUserController.tenNV.value,
+                                inforUserController.shipperName.value,
                                 style: TextStyle(color: white),
                               ),
                             ),
@@ -64,10 +76,7 @@ class _appbarState extends State<appbar> {
                             IconButton(
                               onPressed: () {
                                 box.remove(shipperName_signin);
-                                inforUserController
-                                    .resetInforSignInController();
-                                inforUserController
-                                    .resetNewInforUserController();
+                                inforUserController.resetInfoController();
                                 Get.toNamed(GetRoutes.defaultRoute);
                                 currentRouteController.route.value = 'default';
                                 // controller.selectWidget.value = dashboard;

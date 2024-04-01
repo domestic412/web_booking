@@ -3,12 +3,11 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/model/list_approval/storage_controller/detail_approval_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class DetailApproval {
-  int? id;
+  String? id;
   String? tenYeuCau;
   String? noiDung;
   String? cntrno;
@@ -67,9 +66,10 @@ class DetailApproval {
     return data;
   }
 
-  Future<List<DetailApproval>> fetchDetailApproval(int id) async {
+  Future<List<DetailApproval>> fetchDetailApproval(
+      String cntr, String id) async {
     try {
-      var url = '$SERVER/Requests/$id';
+      var url = '$SERVER/Requests/container?container=$cntr&id=$id';
       final response = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",
       });
@@ -78,8 +78,9 @@ class DetailApproval {
           var body = response.body;
           // print('Data list approval Detail');
           List dataDetail = jsonDecode(body);
+          // print(dataDetail);
           try {
-            int id = dataDetail[0]['id'];
+            String id = dataDetail[0]['requestCheckContsId'] ?? '';
             String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
             String noiDung = dataDetail[0]['noiDung'] ?? '';
             String cntrno = dataDetail[0]['cntrno'] ?? '';
@@ -87,15 +88,19 @@ class DetailApproval {
             String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
             String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
             String updateTime = dataDetail[0]['updateTime'] ?? '';
+            String combineStuffing = dataDetail[0]['combineStuffing'] ?? '';
+            String checkRemark = dataDetail[0]['checkRemark'] ?? '';
             detailApprovalController.updateDetailApproval(
                 id: id.obs,
                 tenYeuCau: tenYeuCau.obs,
                 noiDung: noiDung.obs,
                 cntrno: cntrno.obs,
                 sizeType: sizeType.obs,
+                combineStuffing: combineStuffing.obs,
                 trangThaiYc: trangThaiYc.obs,
                 noteHangTau: noteHangTau.obs,
-                updateTime: updateTime.obs);
+                updateTime: updateTime.obs,
+                checkRemark: checkRemark.obs);
           } catch (e) {
             print('data fetch Detail Approval have null - $e');
           }

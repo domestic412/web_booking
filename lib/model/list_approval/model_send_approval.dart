@@ -8,13 +8,13 @@ import 'package:web_booking/utils/getx_route.dart';
 
 class SendApproval {
   Future<void> fetchSendApproval(
-      String status, int id, String noteHangTau) async {
+      String status, String id, String noteHangTau) async {
     try {
       var url = '$SERVER/Requests/Process?Trangthai=$status';
       Map<String, dynamic> data = {
         'id': id,
         'noteHangTau': noteHangTau,
-        'userXuly': inforUserController.maNV.value,
+        'userId': inforUserController.shipperId.value,
       };
       // print(data);
       var body = json.encode(data);

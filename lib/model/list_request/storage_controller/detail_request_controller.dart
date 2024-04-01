@@ -6,7 +6,7 @@ final DataDetailRequestController dataDetailRequestController =
     Get.put(DataDetailRequestController());
 
 class DataDetailRequestController extends GetxController {
-  RxInt id = 0.obs;
+  var id = ''.obs;
   var tenYeuCau = ''.obs;
   var noiDung = ''.obs;
   var cntrno = ''.obs;

@@ -113,8 +113,8 @@ class _CombineMenuState extends State<CombineMenu> {
                           // context.go(AppRoutes.BookingRoute);
                           currentRouteController.route.value = checkingCombine;
                           controller.selectWidget.value = checkingCombine;
-                          inforUserController.tenNV.value == ''
-                              ? Get.toNamed(GetRoutes.SignIn)
+                          inforUserController.shipperName.value == ''
+                              ? Get.toNamed(GetRoutes.NewSignIn)
                               : Get.toNamed(GetRoutes.Home);
                         },
                         child: Text(

@@ -21,7 +21,7 @@ class DataTableApproval extends DataTableSource {
     return data!
         .where((item) =>
             (item.cntrno?.contains(query.toUpperCase()) ?? false) ||
-            (item.nguoiGui?.contains(query) ?? false) ||
+            (item.shipperName?.contains(query) ?? false) ||
             (item.trangThaiYc?.contains(query.toUpperCase()) ?? false) ||
             (item.updateTime?.contains(query.toUpperCase()) ?? false))
         .toList();
@@ -41,7 +41,8 @@ class DataTableApproval extends DataTableSource {
     }
     final rowData = data![index];
     rowData.cntrno ??= '';
-    rowData.nguoiGui ??= '';
+    rowData.shipperName ??= '';
+    rowData.updateUser ??= '';
     rowData.updateTime != null
         ? _dt = DateFormat("dd-MM-yyyy  hh:mm a")
             .format(DateTime.parse(rowData.updateTime!))
@@ -76,7 +77,7 @@ class DataTableApproval extends DataTableSource {
       ))),
       DataCell(Center(
           child: SelectableText(
-        rowData.nguoiGui!,
+        rowData.shipperName!,
         style: style_text_Table_small,
       ))),
       DataCell(Center(
@@ -85,10 +86,11 @@ class DataTableApproval extends DataTableSource {
           padding: EdgeInsets.only(top: 10, bottom: 10),
           child: ElevatedButton(
             onPressed: () async {
-              await _detailApproval.fetchDetailApproval(data![index].id!);
+              await _detailApproval.fetchDetailApproval(
+                  data![index].cntrno!, data![index].requestCheckContsId!);
               // add id request for image request
               // id_request_for_image = data![index].id;
-              int? id = data![index].id!;
+              String? id = data![index].requestCheckContsId!;
               imageController.updateIdImageController(id: id.obs);
               // navigator widget detailApproval
               controller.selectWidget.value = detailApproval;
@@ -105,6 +107,11 @@ class DataTableApproval extends DataTableSource {
           ),
         ),
       )),
+      DataCell(Center(
+          child: SelectableText(
+        rowData.updateUser!,
+        style: style_text_Table_small,
+      ))),
       DataCell(Center(
           child: SelectableText(
         _dt!,

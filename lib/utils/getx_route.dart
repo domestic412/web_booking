@@ -51,10 +51,10 @@ class GetRoutes {
       name: NewSignIn,
       page: () => NewSignInPage(),
     ),
-    GetPage(
-      name: SignIn,
-      page: () => SignInPage(),
-    ),
+    // GetPage(
+    //   name: SignIn,
+    //   page: () => SignInPage(),
+    // ),
     GetPage(
       name: Booking,
       page: () => BookingPage(),

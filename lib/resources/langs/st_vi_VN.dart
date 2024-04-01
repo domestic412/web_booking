@@ -1,6 +1,6 @@
 Map<String, String> vi = {
   "_comment_default_page": "Default Page",
-  "welcome": "Chào mừng bạn đến với Công Ty Vận Tải Và Xếp Dỡ Hải An",
+  "welcome": "Chào mừng bạn đến với Công Ty TNHH Vận Tải Container Hải An",
   "booking": "Đặt chỗ",
   "tracking": "Vị trí",
   "combine": "Kết hợp",
@@ -53,7 +53,7 @@ Map<String, String> vi = {
   "user code": "Mã tài khoản",
   "customer code": "Mã khách hàng",
   "update time": "Thời gian",
-  "update user": "Cập nhật tài khoản",
+  "update user": "Tài khoản cập nhật",
   "update": "Cập nhật",
   "adjust": "Điều chỉnh",
   "delete user": "Xóa tài khoản",

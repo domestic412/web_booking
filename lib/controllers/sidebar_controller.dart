@@ -25,9 +25,9 @@ import 'package:web_booking/screen/user_list/user_list_page.dart';
 final SideBarController controller = SideBarController();
 const service = 'service';
 const dashboard = 'dashboard';
-const userList = 'userlist';
-const cudUser = 'cudUser';
-const changePass = 'changePass';
+// const userList = 'userlist';
+// const cudUser = 'cudUser';
+// const changePass = 'changePass';
 const booking = 'booking';
 // const releaseBookingList = 'releaseBookingList';
 // const detailReleaseBookingList = 'detailReleaseBookingList';
@@ -42,8 +42,8 @@ const checkingCombine = 'checkingCombine';
 const tracking1 = 'tracking1';
 const qualityList = 'qualityList';
 const cudQuality = 'cudQuality';
-const specialPolicyList = 'specialPolicyList';
-const cudPolicy = 'cudPolicy';
+// const specialPolicyList = 'specialPolicyList';
+// const cudPolicy = 'cudPolicy';
 const historyList = 'historyList';
 const containerStock = 'containerStock';
 const importStock = 'importStock';
@@ -55,12 +55,12 @@ class SideBarController extends GetxController {
     switch (widget) {
       case dashboard:
         return DashboardPage();
-      case userList:
-        return UserListPage();
-      case cudUser:
-        return CUD_UserPage();
-      case changePass:
-        return ChangePassword_UserPage();
+      // case userList:
+      //   return UserListPage();
+      // case cudUser:
+      //   return CUD_UserPage();
+      // case changePass:
+      //   return ChangePassword_UserPage();
       // case releaseBookingList:
       //   return ReleaseBookingListPage();
       // case detailReleaseBookingList:
@@ -97,12 +97,12 @@ class SideBarController extends GetxController {
       case cudQuality:
         // Get.toNamed(GetRoutes.CUDQuality);
         return CUD_QualityPage();
-      case specialPolicyList:
-        // Get.toNamed(GetRoutes.SpecialPolicyList);
-        return SpecialPolicyListPage();
-      case cudPolicy:
-        // Get.toNamed(GetRoutes.CUDPolicy);
-        return CUD_SpecialPolicyPage();
+      // case specialPolicyList:
+      //   // Get.toNamed(GetRoutes.SpecialPolicyList);
+      //   return SpecialPolicyListPage();
+      // case cudPolicy:
+      //   // Get.toNamed(GetRoutes.CUDPolicy);
+      //   return CUD_SpecialPolicyPage();
       case historyList:
         // Get.toNamed(GetRoutes.HistoryList);
         return HistoryListPage();

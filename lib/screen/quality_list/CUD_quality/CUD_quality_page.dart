@@ -166,7 +166,7 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
       'maChatLuong': mCL,
       'tenChatLuong': tCL,
       'ghichu': ghichu,
-      'updateUser': inforUserController.tenNV.value,
+      'updateUser': inforUserController.shipperId.value,
     };
     var body = json.encode(data);
 

@@ -318,13 +318,14 @@ class _SendRequestPageState extends State<SendRequestPage> {
           //Convert XFile to Blob
           final blob = html.Blob([await file.readAsBytes()], file.mimeType);
           // Add the Blob to the FormData object
-          formData.appendBlob('Files', blob, file.name);
+          formData.appendBlob('files', blob, file.name);
         }
       }
-      formData.append('TenYeuCau', NameRequest);
-      formData.append('NoiDung', _input_camKet.text);
-      formData.append('Cntrno', cntr.toUpperCase());
-      formData.append('NguoiGui', inforUserController.tenNV.value);
+      formData.append('tenYeuCau', NameRequest);
+      formData.append('noiDung', _input_camKet.text);
+      formData.append('cntrno', cntr.toUpperCase());
+      formData.append('shipperId', inforUserController.shipperId.value);
+      formData.append('shipperName', inforUserController.shipperName.value);
 
       final request = html.HttpRequest();
       request.open(

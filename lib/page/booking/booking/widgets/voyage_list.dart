@@ -169,7 +169,7 @@ class _VoyageListState extends State<VoyageList> {
                           child: ElevatedButton(
                             onPressed: () {
                               currentRouteController.route.value = booking;
-                              //update countRow in indormationContainer
+                              //update countRow in informationContainer
                               createBookingController.countRowContainer.value =
                                   0;
                               //update RouteController
@@ -208,9 +208,24 @@ class _VoyageListState extends State<VoyageList> {
                                   routeController.podId_final.value);
 
                               //go to BookingRequestPage
-                              inforUserController.tenNV.value == ''
-                                  ? Get.toNamed(GetRoutes.NewSignIn)
-                                  : Get.toNamed(GetRoutes.BookingRequest);
+                              // inforUserController.shipperName.value == ''
+                              //     ? Get.toNamed(GetRoutes.NewSignIn)
+                              //     : Get.toNamed(GetRoutes.BookingRequest);
+                              switch (inforUserController.shipperName.value) {
+                                case '':
+                                  Get.toNamed(GetRoutes.NewSignIn);
+                                  break;
+                                default:
+                                  {
+                                    switch (inforUserController.isStaff.value) {
+                                      case 0:
+                                        Get.toNamed(GetRoutes.BookingRequest);
+                                        break;
+                                      default:
+                                        break;
+                                    }
+                                  }
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: normalColor,

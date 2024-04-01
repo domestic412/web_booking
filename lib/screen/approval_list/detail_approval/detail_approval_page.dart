@@ -143,6 +143,30 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                     const SizedBox(
                       height: 20,
                     ),
+                    Text(
+                      'CombineStuffing'.tr,
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(detailApprovalController.combineStuffing.value,
+                        style: style_text_detail),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'Check Remark'.tr,
+                      style: style_text_detail_bold,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(detailApprovalController.checkRemark.value,
+                        style: style_text_detail),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

@@ -10,7 +10,7 @@ double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 // Login
 var box = GetStorage();
 String login = 'signIn';
-String old_new_signin = 'oldNew';
+String is_staff_signin = 'IsStaff';
 // String authorize_signin = 'authorize';
 String maNV_signin = 'maNV';
 // String tenNV_signin = 'tenNV';

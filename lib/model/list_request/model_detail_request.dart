@@ -10,7 +10,7 @@ import 'package:web_booking/storage_controller.dart/controller_image.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class DetailRequest {
-  int? id;
+  String? id;
   String? tenYeuCau;
   String? noiDung;
   String? cntrno;
@@ -69,9 +69,9 @@ class DetailRequest {
     return data;
   }
 
-  Future<void> fetchDetailRequest(int id) async {
+  Future<void> fetchDetailRequest(String cntr, String id) async {
     try {
-      var url = '$SERVER/Requests/$id';
+      var url = '$SERVER/Requests/container?container=$cntr&id=$id';
       final response = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",
       });
@@ -81,7 +81,7 @@ class DetailRequest {
           // print('Data List Request Detail');
           List dataDetail = jsonDecode(body);
           try {
-            int id = dataDetail[0]['id'] ?? 0;
+            String id = dataDetail[0]['requestCheckContsId'] ?? '';
             String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
             String noiDung = dataDetail[0]['noiDung'] ?? '';
             String cntrno = dataDetail[0]['cntrno'] ?? '';

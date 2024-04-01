@@ -46,14 +46,12 @@ class DataTableRequest extends DataTableSource {
     rowData.sizeType ??= '';
     rowData.tenYeuCau ??= '';
     rowData.noiDung ??= '';
-    rowData.nguoiGui ??= '';
+    rowData.shipperId ??= '';
     rowData.trangThaiYc ??= '';
     rowData.noteHangTau ??= '';
-    rowData.userXuly ??= '';
+    rowData.userId ??= '';
     rowData.updateTimeCheckRequest ??= '';
     rowData.updateUser ??= '';
-    rowData.photos ??= '';
-    rowData.files ??= '';
     rowData.updateTime != null
         ? _dt = DateFormat("dd-MM-yyyy  hh:mm a")
             .format(DateTime.parse(rowData.updateTime!))
@@ -117,10 +115,11 @@ class DataTableRequest extends DataTableSource {
         padding: const EdgeInsets.only(top: 10, bottom: 10),
         child: ElevatedButton(
           onPressed: () async {
-            await _detailRequest.fetchDetailRequest(data![index].id!);
+            await _detailRequest.fetchDetailRequest(
+                data![index].cntrno!, data![index].requestCheckContsId!);
             // add id request for image request
             // id_request_for_image = data![index].id;
-            int? id = data![index].id!;
+            String? id = data![index].requestCheckContsId!;
             imageController.updateIdImageController(id: id.obs);
             // navigator widget detailRequest
             controller.selectWidget.value = detailRequest;

@@ -3,66 +3,77 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class ApprovalList {
-  int? id;
+  String? requestCheckContsId;
   String? tenYeuCau;
   String? noiDung;
   String? cntrno;
   String? sizeType;
-  String? nguoiGui;
+  String? shipperId;
+  String? shipperName;
   String? trangThaiYc;
   String? noteHangTau;
-  String? userXuly;
+  String? userId;
   String? updateTimeCheckRequest;
   String? updateTime;
-  String? imageName;
+  String? updateUser;
+  String? checkRemark;
+  String? combineStuffing;
 
   ApprovalList(
-      {this.id,
+      {this.requestCheckContsId,
       this.tenYeuCau,
       this.noiDung,
       this.cntrno,
       this.sizeType,
-      this.nguoiGui,
+      this.shipperId,
+      this.shipperName,
       this.trangThaiYc,
       this.noteHangTau,
-      this.userXuly,
+      this.userId,
       this.updateTimeCheckRequest,
       this.updateTime,
-      this.imageName});
+      this.updateUser,
+      this.checkRemark,
+      this.combineStuffing});
 
   ApprovalList.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    requestCheckContsId = json['requestCheckContsId'];
     tenYeuCau = json['tenYeuCau'];
     noiDung = json['noiDung'];
     cntrno = json['cntrno'];
     sizeType = json['sizeType'];
-    nguoiGui = json['nguoiGui'];
+    shipperId = json['shipperId'];
+    shipperName = json['shipperName'];
     trangThaiYc = json['trangThaiYc'];
     noteHangTau = json['noteHangTau'];
-    userXuly = json['userXuly'];
+    userId = json['userId'];
     updateTimeCheckRequest = json['updateTimeCheckRequest'];
     updateTime = json['updateTime'];
-    imageName = json['imageName'];
+    updateUser = json['updateUser'];
+    checkRemark = json['checkRemark'];
+    combineStuffing = json['combineStuffing'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['requestCheckContsId'] = this.requestCheckContsId;
     data['tenYeuCau'] = this.tenYeuCau;
     data['noiDung'] = this.noiDung;
     data['cntrno'] = this.cntrno;
     data['sizeType'] = this.sizeType;
-    data['nguoiGui'] = this.nguoiGui;
+    data['shipperId'] = this.shipperId;
+    data['shipperName'] = this.shipperName;
     data['trangThaiYc'] = this.trangThaiYc;
     data['noteHangTau'] = this.noteHangTau;
-    data['userXuly'] = this.userXuly;
+    data['userId'] = this.userId;
     data['updateTimeCheckRequest'] = this.updateTimeCheckRequest;
     data['updateTime'] = this.updateTime;
-    data['imageName'] = this.imageName;
+    data['updateUser'] = this.updateUser;
+    data['checkRemark'] = this.checkRemark;
+    data['combineStuffing'] = this.combineStuffing;
     return data;
   }
 
@@ -75,6 +86,7 @@ class ApprovalList {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
+          // print(body);
           // print('Data List Approval');
           List dataApprovalList = json.decode(body);
           return dataApprovalList

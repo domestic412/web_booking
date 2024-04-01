@@ -1,6 +1,6 @@
 Map<String, String> en = {
   "_comment_default_page": "Default Page",
-  "welcome": "Welcome to Hai An Transport And Stevedoring Joint Stock Company",
+  "welcome": "Welcome to Hai An Container Transport Company Limited",
   "booking": "Booking",
   "tracking": "Tracking",
   "combine": "Combine",
@@ -54,7 +54,7 @@ Map<String, String> en = {
   "user code": "User Code",
   "customer code": "Customer Code",
   "update time": "Update",
-  "update user": "Update User",
+  "update user": "User Update",
   "update": "Update",
   "adjust": "Adjust",
   "delete user": "Delete User",

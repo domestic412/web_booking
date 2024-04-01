@@ -89,8 +89,8 @@ class _mainMenuState extends State<mainMenu> {
                             onTap: () {
                               // context.go(AppRoutes.signUpRoute);
                               // Get.toNamed(GetRoutes.SignIn);
-                              inforUserController.tenNV.value == ''
-                                  ? Get.toNamed(GetRoutes.SignIn)
+                              inforUserController.shipperName.value == ''
+                                  ? Get.toNamed(GetRoutes.NewSignIn)
                                   : Get.toNamed(GetRoutes.Home);
                               currentRouteController.route.value = 'service';
                               controller.selectWidget.value = dashboard;

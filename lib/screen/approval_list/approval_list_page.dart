@@ -171,6 +171,12 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                       DataColumn(
                           label: Expanded(
                               child: Center(
+                        child: Text('update user'.tr,
+                            style: style_text_Table_small_bold),
+                      ))),
+                      DataColumn(
+                          label: Expanded(
+                              child: Center(
                         child: Text('update time'.tr,
                             style: style_text_Table_small_bold),
                       ))),

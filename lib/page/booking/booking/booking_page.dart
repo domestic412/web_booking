@@ -132,8 +132,8 @@ class _BookingPageState extends State<BookingPage> {
                                     routeController.pODLocId.value);
                                 // box.write(date_booking, routeController.dateSelect.value);
 
-                                print(routeController.pOLLocId.value);
-                                print(routeController.pODLocId.value);
+                                // print(routeController.pOLLocId.value);
+                                // print(routeController.pODLocId.value);
                               });
                             }
                           },
