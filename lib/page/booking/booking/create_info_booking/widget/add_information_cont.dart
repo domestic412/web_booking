@@ -95,6 +95,14 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                 ),
               ),
               DataColumn(
+                label: Expanded(
+                  child: Text(
+                    'DG',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                ),
+              ),
+              DataColumn(
                 label: Text(
                   'Remove',
                   style: TextStyle(fontStyle: FontStyle.italic),
@@ -122,6 +130,9 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                         .toString())),
                     DataCell(Text(createBookingController
                         .listInfoContainer[i].weight!
+                        .toString())),
+                    DataCell(Text(createBookingController
+                        .listInfoContainer[i].dg!
                         .toString())),
                     // DataCell(
                     //     Text(createBookingController.listInfoContainer[i].dg!)),

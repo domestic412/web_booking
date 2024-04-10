@@ -5,14 +5,14 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/new_login/model_newlogin.dart';
 
-class ServiceWidget extends StatefulWidget {
-  const ServiceWidget({super.key});
+class TermWidget extends StatefulWidget {
+  const TermWidget({super.key});
 
   @override
-  State<ServiceWidget> createState() => _ServiceWidgetState();
+  State<TermWidget> createState() => _TermWidgetState();
 }
 
-class _ServiceWidgetState extends State<ServiceWidget> {
+class _TermWidgetState extends State<TermWidget> {
   DataTable4s? selectTerm;
 
   @override
@@ -21,7 +21,6 @@ class _ServiceWidgetState extends State<ServiceWidget> {
         <DropdownMenuEntry<DataTable4s>>[];
     List listTerm =
         box.read(termList_signin).map((e) => DataTable4s.fromJson(e)).toList();
-    ;
     for (final term in listTerm) {
       termEntries.add(
           DropdownMenuEntry<DataTable4s>(value: term, label: term.term.trim()));
@@ -91,9 +90,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                 groupValue: createBookingController.coc.value,
                 activeColor: normalColor,
                 onChanged: (bool? value) {
-                  // setState(() {
-                  createBookingController.coc.value = value!;
-                  // });
+                  // createBookingController.coc.value = value!;
                 },
               ),
             ),
@@ -107,9 +104,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                 groupValue: createBookingController.coc.value,
                 activeColor: normalColor,
                 onChanged: (bool? value) {
-                  // setState(() {
-                  createBookingController.coc.value = value!;
-                  // });
+                  // createBookingController.coc.value = value!;
                 },
               ),
             ),

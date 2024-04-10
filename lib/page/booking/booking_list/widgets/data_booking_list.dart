@@ -165,7 +165,7 @@ class _DataBookingListState extends State<DataBookingList> {
                     )),
                     DataCell(
                       Container(
-                        width: 90,
+                        width: 100,
                         child: Center(
                           child: Text(
                             bookingNo,

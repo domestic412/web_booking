@@ -48,6 +48,8 @@ class CreateBookingController extends GetxController {
   var weight_controller = TextEditingController().obs;
 
   var dg = false.obs;
+  var unno = TextEditingController().obs;
+  var classDG = TextEditingController().obs;
   var dgRemark_controller = TextEditingController().obs;
 
   var remark = TextEditingController().obs;

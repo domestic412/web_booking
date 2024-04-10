@@ -110,6 +110,10 @@ class BookingDetails {
   int? volume;
   String? status;
   int? weight;
+  bool? dg;
+  String? unno;
+  String? classDG;
+  String? dgRemark;
   String? edit;
 
   BookingDetails(
@@ -119,6 +123,10 @@ class BookingDetails {
       this.volume,
       this.status,
       this.weight,
+      this.dg,
+      this.unno,
+      this.classDG,
+      this.dgRemark,
       this.edit});
 
   BookingDetails.fromJson(Map<String, dynamic> json) {
@@ -128,6 +136,10 @@ class BookingDetails {
     volume = json['volume'];
     status = json['status'];
     weight = json['weight'];
+    dg = json['dg'];
+    unno = json['unno'];
+    classDG = json['class'];
+    dgRemark = json['dgRemark'];
     edit = json['edit'];
   }
 
@@ -140,6 +152,10 @@ class BookingDetails {
     data['status'] = this.status;
     data['weight'] = this.weight;
     data['edit'] = this.edit;
+    data['dg'] = this.dg;
+    data['unno'] = this.unno;
+    data['class'] = this.classDG;
+    data['dgRemark'] = this.dgRemark;
     return data;
   }
 }

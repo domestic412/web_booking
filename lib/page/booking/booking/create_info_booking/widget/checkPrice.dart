@@ -21,9 +21,11 @@ int checkPrice() {
   }
   for (var ref in listRef) {
     if (createBookingController.refId.value == ref.refId!.trim() &&
+        createBookingController.coc.value == ref.coc! &&
         createBookingController.size.value == ref.size!.trim() &&
         type == ref.type!.trim() &&
-        createBookingController.status.value == ref.status!.trim()) {
+        createBookingController.status.value == ref.status!.trim() &&
+        createBookingController.dg.value == ref.dg!) {
       return ref.price ?? 0;
     }
   }

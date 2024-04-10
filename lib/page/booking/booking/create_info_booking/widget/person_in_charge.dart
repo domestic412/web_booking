@@ -7,14 +7,14 @@ import 'package:web_booking/model/new_login/model_newlogin.dart';
 
 import 'checkPrice.dart';
 
-class ConsigneeWidget extends StatefulWidget {
-  const ConsigneeWidget({super.key});
+class PersonInChangeWidget extends StatefulWidget {
+  const PersonInChangeWidget({super.key});
 
   @override
-  State<ConsigneeWidget> createState() => _ConsigneeWidgetState();
+  State<PersonInChangeWidget> createState() => _PersonInChangeWidgetState();
 }
 
-class _ConsigneeWidgetState extends State<ConsigneeWidget> {
+class _PersonInChangeWidgetState extends State<PersonInChangeWidget> {
   // var consignee_controller = TextEditingController();
   DataTable2s? selectConsignee;
   GetRef? selectRef;
@@ -91,6 +91,8 @@ class _ConsigneeWidgetState extends State<ConsigneeWidget> {
               // setState(() {
               selectRef = ref;
               createBookingController.refId.value = selectRef?.refId ?? '';
+              createBookingController.coc.value = selectRef?.coc ?? true;
+              // createBookingController.dg.value = selectRef?.dg ?? false;
               createBookingController.checkPrice.value = checkPrice();
               // });
             },

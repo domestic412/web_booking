@@ -102,7 +102,7 @@ class _NewSignInPageState extends State<NewSignInPage> {
               var body = response.body;
               var dataLogIn = jsonDecode(body);
               checkDataLogin(dataLogIn);
-              // print(dataNewLogIn);
+              print(dataLogIn);
               // String shipperId = dataNewLogIn['dataTable2s'][1]['shipperName'];
 
               switch (box.read(is_staff_signin)) {

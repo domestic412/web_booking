@@ -5,12 +5,13 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 
-class RouteInformationWidget extends StatefulWidget {
+class ScheduleInformationWidget extends StatefulWidget {
   @override
-  State<RouteInformationWidget> createState() => _RouteInformationWidgetState();
+  State<ScheduleInformationWidget> createState() =>
+      _ScheduleInformationWidgetState();
 }
 
-class _RouteInformationWidgetState extends State<RouteInformationWidget> {
+class _ScheduleInformationWidgetState extends State<ScheduleInformationWidget> {
   Depots? selectDepots;
 
   @override

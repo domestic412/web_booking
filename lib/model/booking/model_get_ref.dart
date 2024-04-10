@@ -1,9 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/constants/variable.dart';
 
 class GetRef {
   String? refId;
@@ -16,18 +14,23 @@ class GetRef {
   String? type;
   String? status;
   int? price;
+  bool? coc;
+  bool? dg;
 
-  GetRef(
-      {this.refId,
-      this.refNo,
-      this.portLoadId,
-      this.portDischargeId,
-      this.startDate,
-      this.endDate,
-      this.size,
-      this.type,
-      this.status,
-      this.price});
+  GetRef({
+    this.refId,
+    this.refNo,
+    this.portLoadId,
+    this.portDischargeId,
+    this.startDate,
+    this.endDate,
+    this.size,
+    this.type,
+    this.status,
+    this.price,
+    this.coc,
+    this.dg,
+  });
 
   GetRef.fromJson(Map<String, dynamic> json) {
     refId = json['refId'];
@@ -40,6 +43,8 @@ class GetRef {
     type = json['type'];
     status = json['status'];
     price = json['price'];
+    coc = json['coc'];
+    dg = json['dg'];
   }
 
   Map<String, dynamic> toJson() {
@@ -54,6 +59,8 @@ class GetRef {
     data['type'] = this.type;
     data['status'] = this.status;
     data['price'] = this.price;
+    data['coc'] = this.coc;
+    data['dg'] = this.dg;
     return data;
   }
 

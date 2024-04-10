@@ -279,10 +279,9 @@ class _CargoInformationState extends State<CargoInformation> {
           ),
           SizedBox(height: 20),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                width: 200,
+                width: 180,
                 child: Row(
                   children: [
                     Container(
@@ -302,6 +301,8 @@ class _CargoInformationState extends State<CargoInformation> {
                           // setState(() {
                           createBookingController.dg.value =
                               !createBookingController.dg.value;
+                          createBookingController.checkPrice.value =
+                              checkPrice();
                           // });
                         },
                       ),
@@ -314,15 +315,74 @@ class _CargoInformationState extends State<CargoInformation> {
                   : Row(
                       children: [
                         Container(
-                            width: 70,
-                            // child: Text('UnNo')),
-                            child: Text('DG Remark')),
-                        SizedBox(
-                          width: 10,
+                          width: 190,
+                          margin: EdgeInsets.only(left: 10),
+                          child: Row(
+                            children: [
+                              Text('UNNO'),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                width: 110,
+                                child: TextFormField(
+                                  controller:
+                                      createBookingController.unno.value,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'UNNO',
+                                    labelStyle: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         Container(
-                          // width: 120,
-                          width: 560,
+                          width: 230,
+                          margin: EdgeInsets.only(left: 30),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 70,
+                                margin: EdgeInsets.only(left: 10),
+                                child: Text('Class'),
+                              ),
+                              Container(
+                                width: 120,
+                                child: TextFormField(
+                                  controller:
+                                      createBookingController.classDG.value,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Class',
+                                    labelStyle: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+            ],
+          ),
+          createBookingController.dg.value == false
+              ? SizedBox.shrink()
+              : Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 90,
+                          margin: EdgeInsets.only(left: 50),
+                          child: Text('DG Remark'),
+                        ),
+                        Container(
+                          width: 700,
                           child: TextFormField(
                             controller: createBookingController
                                 .dgRemark_controller.value,
@@ -333,24 +393,10 @@ class _CargoInformationState extends State<CargoInformation> {
                             ),
                           ),
                         ),
-                        // Container(
-                        //     margin: EdgeInsets.only(left: 30),
-                        //     width: 60,
-                        //     child: Text('Class')),
-                        // Container(
-                        //   width: 120,
-                        //   child: TextField(
-                        //     controller:
-                        //         createBookingController.inputDGClass.value,
-                        //     decoration: InputDecoration(
-                        //       border: OutlineInputBorder(),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
-            ],
-          ),
+                  ],
+                ),
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -391,18 +437,18 @@ class _CargoInformationState extends State<CargoInformation> {
                     ElevatedButton(
                         onPressed: () {
                           if ((createBookingController.dg.value == true &&
-                                  // createBookingController.inputDGunNo.value.text
-                                  //         .trim() ==
-                                  //     ''
-                                  //     &&
-                                  // createBookingController
-                                  //         .inputDGClass.value.text
-                                  //         .trim() ==
-                                  //     ''
-                                  createBookingController
-                                          .dgRemark_controller.value.text
+                                  createBookingController.unno.value.text
                                           .trim() ==
-                                      '') ||
+                                      '' &&
+                                  createBookingController.classDG.value.text
+                                          .trim() ==
+                                      ''
+                              // &&
+                              // createBookingController
+                              //         .dgRemark_controller.value.text
+                              //         .trim() ==
+                              //     ''
+                              ) ||
                               (createBookingController.status.value == 'F' &&
                                   createBookingController
                                           .weight_controller.value.text
@@ -465,6 +511,12 @@ class _CargoInformationState extends State<CargoInformation> {
                               status: createBookingController.status.value,
                               weight: int.parse(createBookingController
                                   .weight_controller.value.text),
+                              dg: createBookingController.dg.value,
+                              unno: createBookingController.unno.value.text,
+                              classDG:
+                                  createBookingController.classDG.value.text,
+                              dgRemark: createBookingController
+                                  .dgRemark_controller.value.text,
                               edit: 'I',
                             );
                             // add info cont to list
