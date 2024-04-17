@@ -29,7 +29,6 @@ class _CargoInformationState extends State<CargoInformation> {
         .read(commodityList_signin)
         .map((e) => DataTable5s.fromJson(e))
         .toList();
-    ;
     for (final commodity in listCommodity) {
       commodityEntries.add(
         DropdownMenuEntry<DataTable5s>(
@@ -436,35 +435,33 @@ class _CargoInformationState extends State<CargoInformation> {
                         : SizedBox.shrink(),
                     ElevatedButton(
                         onPressed: () {
-                          if ((createBookingController.dg.value == true &&
-                                  createBookingController.unno.value.text
-                                          .trim() ==
-                                      '' &&
-                                  createBookingController.classDG.value.text
-                                          .trim() ==
-                                      ''
-                              // &&
-                              // createBookingController
-                              //         .dgRemark_controller.value.text
-                              //         .trim() ==
-                              //     ''
-                              ) ||
+                          if (
+                              // (
+                              // createBookingController.dg.value == true &&
+                              //       createBookingController.unno.value.text
+                              //               .trim() ==
+                              //           '' &&
+                              //       createBookingController.classDG.value.text
+                              //               .trim() ==
+                              //           ''
+                              //   ) ||
                               (createBookingController.status.value == 'F' &&
-                                  createBookingController
-                                          .weight_controller.value.text
+                                      createBookingController
+                                              .weight_controller.value.text
+                                              .trim() ==
+                                          '') ||
+                                  (createBookingController.status.value ==
+                                          'F' &&
+                                      createBookingController.reefer.value ==
+                                          true &&
+                                      createBookingController
+                                              .temp_controller.value.text
+                                              .trim() ==
+                                          '') ||
+                                  (createBookingController
+                                          .commodity_controller.value.text
                                           .trim() ==
-                                      '') ||
-                              (createBookingController.status.value == 'F' &&
-                                  createBookingController.reefer.value ==
-                                      true &&
-                                  createBookingController
-                                          .temp_controller.value.text
-                                          .trim() ==
-                                      '') ||
-                              (createBookingController
-                                      .commodity_controller.value.text
-                                      .trim() ==
-                                  '')) {
+                                      '')) {
                             //miss field input
                             createBookingController.boolErrorAdd.value = true;
                           } else {

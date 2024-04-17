@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
+import 'package:web_booking/model/booking_confirm/storage_controller/loading_booking_detail.dart';
+import 'package:web_booking/page/booking/booking_confirm/list_booking_confirm_page.dart';
+import 'package:web_booking/page/booking/booking_confirm/loading_booking_detail/loading_booking_detail_page.dart';
 import 'package:web_booking/page/booking/booking_list/booking_list_page.dart';
-// import 'package:web_booking/page/booking/bookingNote/bookingNote_page.dart';
 import 'package:web_booking/page/booking/booking/booking_page.dart';
 import 'package:web_booking/page/booking/booking/create_info_booking/create_booking_page.dart';
 import 'package:web_booking/page/default/default_page.dart';
 import 'package:web_booking/page/new_signin/newsignin_page.dart';
-import 'package:web_booking/page/signin/signin_page.dart';
-import 'package:web_booking/page/signup/signup_page.dart';
 import 'package:web_booking/page/tracking/tracking_page.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 
@@ -17,10 +17,13 @@ class GetRoutes {
   static const Tracking = "/Tracking";
   static const Test = "/Test";
   static const Booking = "/Booking";
+  static const BookingRequest = "$Booking/Create";
   static const BookingList = "/BookingList";
+  static const BookingConfirm = "/BookingConfirm";
+  static const LoadingBookingDetail = "/BookingConfirmDetail";
   static const Home = "/Home";
   static const Depo = "$Booking/Depo";
-  static const BookingRequest = "$Booking/Create";
+
   // static const Dashboard = "/$Home/Dashboard";
   // static const UserList = "$Home/UserList";
   // static const CUDUser = "$UserList/CUD";
@@ -68,6 +71,14 @@ class GetRoutes {
       page: () => BookingListPage(),
     ),
     GetPage(
+      name: BookingConfirm,
+      page: () => BookingConfirmList(),
+    ),
+    GetPage(
+      name: LoadingBookingDetail,
+      page: () => LoadingBookingDetailPage(),
+    ),
+    GetPage(
       name: Tracking,
       page: () => TrackingPage(),
     ),
@@ -75,11 +86,6 @@ class GetRoutes {
       name: Home,
       page: () => HomePage(),
     ),
-
-    // GetPage(
-    //   name: Dashboard,
-    //   page: () => HomePage(),
-    // ),
     // GetPage(
     //   name: UserList,
     //   page: () => HomePage(),

@@ -16,6 +16,7 @@ class DetailApprovalPage extends StatefulWidget {
 
 class _DetailApprovalPageState extends State<DetailApprovalPage> {
   String? _dt;
+
   // TextEditingController note_detail_approval = TextEditingController();
 
   void initState() {

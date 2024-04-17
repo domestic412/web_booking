@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
@@ -126,18 +127,31 @@ class _BookingMenuState extends State<BookingMenu> {
                     MouseRegion(
                       onEnter: handleMouseEnter_bookingList,
                       onExit: handleMouseExit_bookingList,
-                      child: InkWell(
-                        onTap: () {
-                          // context.go(AppRoutes.bookingRoute);
-                          Get.toNamed(GetRoutes.BookingList);
-                        },
-                        child: Text(
-                          'Booking List',
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(fontSize: 16, color: bookingList_color),
-                        ),
-                      ),
+                      child: inforUserController.isStaff.value == 0
+                          ? InkWell(
+                              onTap: () {
+                                // context.go(AppRoutes.bookingRoute);
+                                Get.toNamed(GetRoutes.BookingList);
+                              },
+                              child: Text(
+                                'Booking List',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16, color: bookingList_color),
+                              ),
+                            )
+                          : InkWell(
+                              onTap: () {
+                                // context.go(AppRoutes.bookingRoute);
+                                Get.toNamed(GetRoutes.BookingConfirm);
+                              },
+                              child: Text(
+                                'Booking Confirm',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16, color: bookingList_color),
+                              ),
+                            ),
                     ),
                   ],
                 )),

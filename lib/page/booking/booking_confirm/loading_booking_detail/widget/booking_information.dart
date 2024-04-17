@@ -1,0 +1,183 @@
+import 'package:flutter/material.dart';
+import 'package:web_booking/model/booking_confirm/model_loading_booking_detail.dart';
+import 'package:web_booking/model/booking_confirm/storage_controller/loading_booking_detail.dart';
+
+class BookingInfomation extends StatefulWidget {
+  const BookingInfomation({super.key});
+
+  @override
+  State<BookingInfomation> createState() => _BookingInfomationState();
+}
+
+class _BookingInfomationState extends State<BookingInfomation> {
+  @override
+  Widget build(BuildContext context) {
+    loadingBookingDetail.bkno_controller.value.text =
+        loadingBookingDetail.inforDetail[0].bookingNo!;
+
+    // List<DropdownMenuEntry<DepOnOfficeModel>> depotsEntries =
+    //     <DropdownMenuEntry<DepOnOfficeModel>>[];
+    // for (final depot in loadingBookingDetail.depOnOfficeModel) {
+    //   depotsEntries.add(DropdownMenuEntry<DepOnOfficeModel>(
+    //       value: depot, label: depot.depotName!));
+    // }
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('Booking: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].shipper! +
+                ' - ' +
+                loadingBookingDetail.inforDetail[0].bookingNo!),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('Booking Date: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].bookingDate!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('BKNo.'),
+            ),
+            Container(
+              width: 250,
+              child: TextFormField(
+                controller: loadingBookingDetail.bkno_controller.value,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Booking Number',
+                  labelStyle: TextStyle(fontSize: 14),
+                ),
+              ),
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('Vessel - Voyage: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].shipName! +
+                ' - ' +
+                loadingBookingDetail.inforDetail[0].voyId!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('ETD: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].etd!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('C/S: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].coc!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('POL: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].portLoad!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('POD: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].portDischarge!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('Shipper: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].shipName!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('Consignee: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].consignee!),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('Request Depot: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].depot!),
+          ],
+        ),
+        // Row(
+        //   children: [
+        //     Container(
+        //       margin: EdgeInsets.only(bottom: 20),
+        //       width: 200,
+        //       child: Text('Confirm Depot: '),
+        //     ),
+        //     DropdownMenu<DepOnOfficeModel>(
+        //       width: 700,
+        //       // controller: loadingBookingDetail.inforDetail.depot,
+        //       label: const Text('Depo'),
+        //       dropdownMenuEntries: depotsEntries,
+        //       onSelected: (DepOnOfficeModel? depot) {
+        //         loadingBookingDetail.confirmDepotId.value =
+        //             depot!.depotId ?? '';
+        //       },
+        //     ),
+        //   ],
+        // ),
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              width: 200,
+              child: Text('Special Request: '),
+            ),
+            Text(loadingBookingDetail.inforDetail[0].remark!),
+          ],
+        ),
+      ],
+    );
+  }
+}

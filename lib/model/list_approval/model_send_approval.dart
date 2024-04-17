@@ -16,7 +16,6 @@ class SendApproval {
         'noteHangTau': noteHangTau,
         'userId': inforUserController.shipperId.value,
       };
-      // print(data);
       var body = json.encode(data);
       final response = await http.post(Uri.parse(url),
           headers: {
