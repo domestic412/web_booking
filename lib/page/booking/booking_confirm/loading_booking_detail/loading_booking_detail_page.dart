@@ -36,7 +36,7 @@ class _LoadingBookingDetailPage extends State<LoadingBookingDetailPage> {
                       style: style_title_page,
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     DataLoadingBookingDetail(),
                   ],

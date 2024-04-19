@@ -90,8 +90,7 @@ class LoadBookingDetail {
           var body = response.body;
           print('Data List Booking Confirm');
           var dataLoadingBookingDetail = json.decode(body);
-          return dataLoadingBookingDetail
-              .map((data) => LoadBookingDetail.fromJson(data));
+          return LoadBookingDetail.fromJson(dataLoadingBookingDetail);
         default:
           throw Exception(response.reasonPhrase);
       }
