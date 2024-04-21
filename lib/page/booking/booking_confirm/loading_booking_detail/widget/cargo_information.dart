@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
+import 'package:http/http.dart' as http;
 import 'package:web_booking/model/booking_confirm/storage_controller/loading_booking_detail.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class CargoInformation extends StatefulWidget {
   const CargoInformation({super.key});
@@ -93,7 +98,7 @@ class _CargoInformationState extends State<CargoInformation> {
         Container(
           child: ElevatedButton(
               onPressed: () {
-                loadingBookingDetail.lstBKDetail.value = '';
+                loadingBookingDetail.lstBkDetail.value = '';
                 for (int i = 0;
                     i < loadingBookingDetail.commoditieDetail.length;
                     i++) {
@@ -101,8 +106,8 @@ class _CargoInformationState extends State<CargoInformation> {
                       quality_controller[i].text == '') {
                     break;
                   } else {
-                    loadingBookingDetail.lstBKDetail.value =
-                        loadingBookingDetail.lstBKDetail.value +
+                    loadingBookingDetail.lstBkDetail.value =
+                        loadingBookingDetail.lstBkDetail.value +
                             loadingBookingDetail
                                 .commoditieDetail[i].bookingDetailId! +
                             ':' +
@@ -112,15 +117,31 @@ class _CargoInformationState extends State<CargoInformation> {
                             ';';
                   }
                 }
-                if (loadingBookingDetail.lstBKDetail.value == '') {
+                if (loadingBookingDetail.lstBkDetail.value == '') {
                 } else {
-                  loadingBookingDetail.lstBKDetail.value =
-                      loadingBookingDetail.lstBKDetail.value.substring(
-                          0, loadingBookingDetail.lstBKDetail.value.length - 1);
-                  print(loadingBookingDetail.bookingId.value);
-                  print(loadingBookingDetail.confirmDepotId.value);
-                  print(loadingBookingDetail.lstBKDetail.value);
-                  print(loadingBookingDetail.bkno_controller.value.text);
+                  loadingBookingDetail.lstBkDetail.value =
+                      loadingBookingDetail.lstBkDetail.value.substring(
+                          0, loadingBookingDetail.lstBkDetail.value.length - 1);
+                          if (
+                            loadingBookingDetail.bkno_controller.value.text.substring(0, 2) != 'HAC' ||
+                            loadingBookingDetail.confirmDepotId.value == '' ||
+                            confirmVolume_controller == [] ||
+                            quality_controller == []
+                          ) {
+                            SendConfirmBooking(
+                            bookingId: loadingBookingDetail.bookingId.value, 
+                            confirmDepotId: loadingBookingDetail.confirmDepotId.value,
+                            lstBkDetail: loadingBookingDetail.lstBkDetail.value, 
+                            bookingNo: loadingBookingDetail.bkno_controller.value.text, 
+                            userId: inforUserController.shipperId.value);
+                          } else {
+                            print('Missing information Confirm');
+                          }
+                          
+                  // print(loadingBookingDetail.bookingId.value);
+                  // print(loadingBookingDetail.confirmDepotId.value);
+                  // print(loadingBookingDetail.lstBkDetail.value);
+                  // print(loadingBookingDetail.bkno_controller.value.text);
                 }
               },
               child: Text('Confirm')),
@@ -128,7 +149,35 @@ class _CargoInformationState extends State<CargoInformation> {
       ],
     );
   }
-  // Future<void> SendConfirmBooking(String bookingId, String confirmDepotId, String lstBkDetail, String bookingNo) async {
-  //     var url = URL_CONFIRM_BOOKING;
-  // }
+  Future<void> SendConfirmBooking({
+    required String bookingId,
+    required String confirmDepotId,
+    required String lstBkDetail,
+    required String bookingNo, 
+    required String userId,
+    }) async {
+      try{
+        var url = URL_CONFIRM_BOOKING;
+    Map<String, String> data = {
+      'bookingId': bookingId,
+      'confirmDepotId': confirmDepotId,
+      'lstBKDetail': lstBkDetail,
+      'bookingNo': bookingNo,
+      'userId': userId,
+    };
+  var body = json.encode(data);
+  final response = await http.post(Uri.parse(url), 
+  headers: {"Content-Type": "application/json"},body: body);
+  switch (response.statusCode) {
+    case 200:
+      Get.toNamed(GetRoutes.BookingConfirm);
+    default:
+    print(response.reasonPhrase);
+      break;
+  }
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+      
+  }
 }

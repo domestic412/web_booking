@@ -11,7 +11,7 @@ class LoadingBookingDetail extends GetxController {
   //data send
   var bkno_controller = TextEditingController().obs;
   var confirmDepotId = ''.obs;
-  var lstBKDetail = ''.obs;
+  var lstBkDetail = ''.obs;
 
 //load booking detail
   //infoDetail
