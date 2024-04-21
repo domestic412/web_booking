@@ -11,24 +11,11 @@ class LoadingBookingDetail extends GetxController {
   //data send
   var bkno_controller = TextEditingController().obs;
   var confirmDepotId = ''.obs;
+  var lstBKDetail = ''.obs;
 
 //load booking detail
   //infoDetail
   RxList<InforDetail> inforDetail = <InforDetail>[].obs;
-  // var shipper = ''.obs;
-  // var consignee = ''.obs;
-  // var notifyParty = ''.obs;
-  // var shipName = ''.obs;
-  // var voyId = ''.obs;
-  // var etd = ''.obs;
-  // var bookingDate = ''.obs;
-  // var bookingNo = ''.obs;
-  // var coc = ''.obs;
-  // var portLoad = ''.obs;
-  // var portDischarge = ''.obs;
-  // var depot = ''.obs;
-  // var requestDepotId = ''.obs;
-  // var remark = ''.obs;
 
   //commoditieDetail
   RxList<CommoditieDetail> commoditieDetail = <CommoditieDetail>[].obs;

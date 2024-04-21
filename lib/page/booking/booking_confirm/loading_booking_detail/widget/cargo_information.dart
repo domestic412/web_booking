@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/model/booking_confirm/storage_controller/loading_booking_detail.dart';
 
 class CargoInformation extends StatefulWidget {
@@ -11,8 +14,8 @@ class CargoInformation extends StatefulWidget {
 class _CargoInformationState extends State<CargoInformation> {
   @override
   Widget build(BuildContext context) {
-    var confirmVolume_controller$index = TextEditingController();
-    var quality_controller$index = TextEditingController();
+    List<TextEditingController> confirmVolume_controller = [];
+    List<TextEditingController> quality_controller = [];
     return Column(
       children: [
         DataTable(
@@ -34,7 +37,8 @@ class _CargoInformationState extends State<CargoInformation> {
             rows: List.generate(loadingBookingDetail.commoditieDetail.length,
                 (index) {
               var dataCommodity = loadingBookingDetail.commoditieDetail[index];
-
+              confirmVolume_controller.add(TextEditingController());
+              quality_controller.add(TextEditingController());
               return DataRow(cells: [
                 DataCell(Center(
                   child: Text('${index + 1}'),
@@ -61,12 +65,13 @@ class _CargoInformationState extends State<CargoInformation> {
                   child: Container(
                       width: 50,
                       child: TextField(
-                          controller: confirmVolume_controller$index)),
+                          keyboardType: TextInputType.number,
+                          controller: confirmVolume_controller[index])),
                 )),
                 DataCell(Center(
                   child: Container(
                       width: 50,
-                      child: TextField(controller: quality_controller$index)),
+                      child: TextField(controller: quality_controller[index])),
                 )),
                 DataCell(Center(
                   child: Text(dataCommodity.dg!.toString()),
@@ -88,20 +93,42 @@ class _CargoInformationState extends State<CargoInformation> {
         Container(
           child: ElevatedButton(
               onPressed: () {
+                loadingBookingDetail.lstBKDetail.value = '';
                 for (int i = 0;
                     i < loadingBookingDetail.commoditieDetail.length;
                     i++) {
-                  print(loadingBookingDetail
-                          .commoditieDetail[0].bookingDetailId! +
-                      ':' +
-                      confirmVolume_controller$index.text +
-                      ':' +
-                      quality_controller$index.text);
+                  if (confirmVolume_controller[i].text == '' ||
+                      quality_controller[i].text == '') {
+                    break;
+                  } else {
+                    loadingBookingDetail.lstBKDetail.value =
+                        loadingBookingDetail.lstBKDetail.value +
+                            loadingBookingDetail
+                                .commoditieDetail[i].bookingDetailId! +
+                            ':' +
+                            confirmVolume_controller[i].text +
+                            ':' +
+                            quality_controller[i].text +
+                            ';';
+                  }
+                }
+                if (loadingBookingDetail.lstBKDetail.value == '') {
+                } else {
+                  loadingBookingDetail.lstBKDetail.value =
+                      loadingBookingDetail.lstBKDetail.value.substring(
+                          0, loadingBookingDetail.lstBKDetail.value.length - 1);
+                  print(loadingBookingDetail.bookingId.value);
+                  print(loadingBookingDetail.confirmDepotId.value);
+                  print(loadingBookingDetail.lstBKDetail.value);
+                  print(loadingBookingDetail.bkno_controller.value.text);
                 }
               },
-              child: Text('Print')),
+              child: Text('Confirm')),
         )
       ],
     );
   }
+  // Future<void> SendConfirmBooking(String bookingId, String confirmDepotId, String lstBkDetail, String bookingNo) async {
+  //     var url = URL_CONFIRM_BOOKING;
+  // }
 }
