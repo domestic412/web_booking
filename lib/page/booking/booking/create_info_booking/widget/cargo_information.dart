@@ -37,6 +37,7 @@ class _CargoInformationState extends State<CargoInformation> {
         ),
       );
     }
+    createBookingController.weight_controller.value.text = '0';
     return Obx(
       () => Column(
         children: [
@@ -238,9 +239,18 @@ class _CargoInformationState extends State<CargoInformation> {
                                   child: TextFormField(
                                     controller: createBookingController
                                         .weight_controller.value,
-                                    inputFormatters: [
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
+                                    keyboardType: TextInputType.number,
+                                    // onTapOutside: (event) {
+                                    //   createBookingController.checkPrice.value =
+                                    //       checkPrice();
+                                    // },
+                                    onChanged: (value) {
+                                      if (value == '') {
+                                        value = '0';
+                                      }
+                                      createBookingController.checkPrice.value =
+                                          checkPrice();
+                                    },
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
                                       labelText: 'Weight (KG)',

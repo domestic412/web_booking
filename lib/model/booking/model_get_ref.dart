@@ -16,6 +16,7 @@ class GetRef {
   int? price;
   bool? coc;
   bool? dg;
+  String? weightCondition;
 
   GetRef({
     this.refId,
@@ -30,6 +31,7 @@ class GetRef {
     this.price,
     this.coc,
     this.dg,
+    this.weightCondition,
   });
 
   GetRef.fromJson(Map<String, dynamic> json) {
@@ -45,6 +47,7 @@ class GetRef {
     price = json['price'];
     coc = json['coc'];
     dg = json['dg'];
+    weightCondition = json['weightCondition'];
   }
 
   Map<String, dynamic> toJson() {
@@ -61,6 +64,7 @@ class GetRef {
     data['price'] = this.price;
     data['coc'] = this.coc;
     data['dg'] = this.dg;
+    data['weightCondition'] = this.weightCondition;
     return data;
   }
 
@@ -87,7 +91,7 @@ class GetRef {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          // print('Data Ref Success');
+          print('Data Ref Success');
           List dataRef = json.decode(body);
           // box.write(refList_signin_json, dataRef);
           return dataRef.map((data) => GetRef.fromJson(data)).toList();

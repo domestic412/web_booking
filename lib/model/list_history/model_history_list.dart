@@ -74,7 +74,7 @@ class History {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          // print('Data List History');
+          print('Data List History');
           List dataHistoryList = json.decode(body);
           return dataHistoryList.map((data) => History.fromJson(data)).toList();
         case 401:

@@ -15,7 +15,6 @@ class PersonInChangeWidget extends StatefulWidget {
 }
 
 class _PersonInChangeWidgetState extends State<PersonInChangeWidget> {
-  // var consignee_controller = TextEditingController();
   DataTable2s? selectConsignee;
   GetRef? selectRef;
 
@@ -34,8 +33,6 @@ class _PersonInChangeWidgetState extends State<PersonInChangeWidget> {
     }
 
     List<DropdownMenuEntry<GetRef>> refEntries = <DropdownMenuEntry<GetRef>>[];
-    // print(refEntries == <DropdownMenuEntry<GetRef>>[]);
-
     List<GetRef> listRef = box.read(ref_booking);
     for (final ref in listRef) {
       if (refEntries.length == 0) {

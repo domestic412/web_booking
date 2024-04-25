@@ -50,7 +50,7 @@ class QualityList {
       });
       if (response.statusCode == 200) {
         var body = response.body;
-        // print('Data List Quality');
+        print('Data List Quality');
         List dataQualityList = json.decode(body);
         return dataQualityList
             .map((data) => QualityList.fromJson(data))

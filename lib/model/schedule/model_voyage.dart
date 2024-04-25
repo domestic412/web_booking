@@ -53,7 +53,7 @@ class Voyage {
             // List dataVoyage = json.decode(body);
             // return dataVoyage.map((data) => Voyage.fromJson(data)).toList();
             final dataVoyage = json.decode(body);
-            print(dataVoyage);
+            // print(dataVoyage);
             box.write(depotsList_booking, dataVoyage['depots']);
 
             return Voyage.fromJson(dataVoyage);

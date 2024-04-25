@@ -20,7 +20,7 @@ class _LoadingBookingDetailPage extends State<LoadingBookingDetailPage> {
             children: [
               appbar(),
               Container(
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 40),
+                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 decoration: BoxDecoration(
                     color: backgroundColor
                     // contentColor

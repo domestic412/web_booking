@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/model/booking_confirm/model_loading_booking_detail.dart';
 import 'package:web_booking/model/booking_confirm/storage_controller/loading_booking_detail.dart';
+import 'package:intl/intl.dart';
 
 class BookingInfomation extends StatefulWidget {
   const BookingInfomation({super.key});
@@ -14,6 +15,10 @@ class _BookingInfomationState extends State<BookingInfomation> {
   Widget build(BuildContext context) {
     loadingBookingDetail.bkno_controller.value.text =
         loadingBookingDetail.inforDetail[0].bookingNo!;
+    // var bkDate = DateFormat('dd/MM/yyyy')
+    //     .parse(loadingBookingDetail.inforDetail[0].bookingDate!);
+    // print(bkDate);
+    // // var etd = loadingBookingDetail.inforDetail[0].etd ?? '';
 
     List<DropdownMenuEntry<DepOnOfficeModel>> depotsEntries =
         <DropdownMenuEntry<DepOnOfficeModel>>[];
@@ -26,7 +31,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('Booking: '),
             ),
@@ -42,11 +46,11 @@ class _BookingInfomationState extends State<BookingInfomation> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('Booking Date: '),
             ),
-            Text(loadingBookingDetail.inforDetail[0].bookingDate!),
+            Text(DateFormat('dd/MM/yyyy').format(DateTime.parse(
+                loadingBookingDetail.inforDetail[0].bookingDate!))),
           ],
         ),
         SizedBox(
@@ -55,7 +59,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('BKNo.'),
             ),
@@ -78,7 +81,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('Vessel - Voyage: '),
             ),
@@ -93,11 +95,11 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('ETD: '),
             ),
-            Text(loadingBookingDetail.inforDetail[0].etd!),
+            Text(DateFormat('dd/MM/yyyy').format(
+                DateTime.parse(loadingBookingDetail.inforDetail[0].etd!))),
           ],
         ),
         SizedBox(
@@ -106,7 +108,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('C/S: '),
             ),
@@ -119,7 +120,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('POL: '),
             ),
@@ -132,7 +132,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('POD: '),
             ),
@@ -145,7 +144,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('Shipper: '),
             ),
@@ -158,7 +156,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('Consignee: '),
             ),
@@ -171,7 +168,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('Request Depot: '),
             ),
@@ -205,7 +201,6 @@ class _BookingInfomationState extends State<BookingInfomation> {
         Row(
           children: [
             Container(
-              // margin: EdgeInsets.only(bottom: 20),
               width: 200,
               child: Text('Special Request: '),
             ),

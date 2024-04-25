@@ -78,7 +78,7 @@ class DetailRequest {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
-          // print('Data List Request Detail');
+          print('Data List Request Detail');
           List dataDetail = jsonDecode(body);
           try {
             String id = dataDetail[0]['requestCheckContsId'] ?? '';

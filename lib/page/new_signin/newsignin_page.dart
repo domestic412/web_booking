@@ -102,7 +102,7 @@ class _NewSignInPageState extends State<NewSignInPage> {
               var body = response.body;
               var dataLogIn = jsonDecode(body);
               checkDataLogin(dataLogIn);
-              print(dataLogIn);
+              // print(dataLogIn);
               // String shipperId = dataNewLogIn['dataTable2s'][1]['shipperName'];
 
               switch (box.read(is_staff_signin)) {
@@ -247,6 +247,7 @@ Widget _buildInputUser() {
             child: TextField(
               controller: inforUserController.username.value,
               style: const TextStyle(fontSize: 18, color: Colors.black87),
+              autofocus: true,
               decoration: InputDecoration(
                   hintText: "user name".tr,
                   // 'User Name',
@@ -278,11 +279,11 @@ Widget _buildInputUser() {
 void checkDataLogin(dataLogin) {
   if (dataLogin is List) {
     box.write(is_staff_signin, 1);
-    print('data type list');
+    // print('data type list');
   } else if (dataLogin is Map<dynamic, dynamic>) {
     box.write(is_staff_signin, 0);
-    print('data type Map');
+    // print('data type Map');
   } else {
-    print(dataLogin);
+    // print(dataLogin);
   }
 }

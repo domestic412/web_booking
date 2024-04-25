@@ -5,6 +5,8 @@ import 'package:web_booking/model/booking/storage_controller/create_booking_cont
 int checkPrice() {
   List<GetRef> listRef = box.read(ref_booking);
   String? type;
+  int? weight = int.parse(createBookingController.weight_controller.value.text);
+  String? weightCondition;
   switch (createBookingController.type.value) {
     case 'GP':
       type = 'DC';
@@ -19,12 +21,22 @@ int checkPrice() {
       type = createBookingController.type.value;
       break;
   }
+  if (weight == 0) {
+    weightCondition = 'STD';
+  } else if (weight <= 10000) {
+    weightCondition = '<=10';
+  } else if (weight <= 15000) {
+    weightCondition = '<=15';
+  } else {
+    weightCondition = 'STD';
+  }
   for (var ref in listRef) {
     if (createBookingController.refId.value == ref.refId!.trim() &&
         createBookingController.coc.value == ref.coc! &&
         createBookingController.size.value == ref.size!.trim() &&
         type == ref.type!.trim() &&
         createBookingController.status.value == ref.status!.trim() &&
+        weightCondition == ref.weightCondition!.trim() &&
         createBookingController.dg.value == ref.dg!) {
       return ref.price ?? 0;
     }
