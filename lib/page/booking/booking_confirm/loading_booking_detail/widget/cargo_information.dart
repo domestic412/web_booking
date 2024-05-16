@@ -23,75 +23,80 @@ class _CargoInformationState extends State<CargoInformation> {
     List<TextEditingController> quality_controller = [];
     return Column(
       children: [
-        DataTable(
-            columns: <DataColumn>[
-              DataColumn(label: Expanded(child: Text('Seq'))),
-              DataColumn(label: Expanded(child: Text('Commodity'))),
-              DataColumn(label: Expanded(child: Text('Size'))),
-              DataColumn(label: Expanded(child: Text('Type'))),
-              DataColumn(label: Expanded(child: Text('Status'))),
-              DataColumn(label: Expanded(child: Text('Weight'))),
-              DataColumn(label: Expanded(child: Text('R.Vol'))),
-              DataColumn(label: Expanded(child: Text('C.Vol'))),
-              DataColumn(label: Expanded(child: Text('Quality'))),
-              DataColumn(label: Expanded(child: Text('DG'))),
-              DataColumn(label: Expanded(child: Text('UNNO'))),
-              DataColumn(label: Expanded(child: Text('Class'))),
-              DataColumn(label: Expanded(child: Text('DG Remark'))),
-            ],
-            rows: List.generate(loadingBookingDetail.commoditieDetail.length,
-                (index) {
-              var dataCommodity = loadingBookingDetail.commoditieDetail[index];
-              confirmVolume_controller.add(TextEditingController());
-              quality_controller.add(TextEditingController());
-              return DataRow(cells: [
-                DataCell(Center(
-                  child: Text('${index + 1}'),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.commodityName!),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.sizeId!),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.type!),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.status!),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.weight!.toString()),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.requestVol!.toString()),
-                )),
-                DataCell(Center(
-                  child: Container(
-                      width: 50,
-                      child: TextField(
-                          keyboardType: TextInputType.number,
-                          controller: confirmVolume_controller[index])),
-                )),
-                DataCell(Center(
-                  child: Container(
-                      width: 50,
-                      child: TextField(controller: quality_controller[index])),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.dg!.toString()),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.unno!),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.Class!),
-                )),
-                DataCell(Center(
-                  child: Text(dataCommodity.dgRemark!),
-                )),
-              ]);
-            })),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+              columns: <DataColumn>[
+                DataColumn(label: Expanded(child: Text('Seq'))),
+                DataColumn(label: Expanded(child: Text('Commodity'))),
+                DataColumn(label: Expanded(child: Text('Size'))),
+                DataColumn(label: Expanded(child: Text('Type'))),
+                DataColumn(label: Expanded(child: Text('Status'))),
+                DataColumn(label: Expanded(child: Text('Weight'))),
+                DataColumn(label: Expanded(child: Text('R.Vol'))),
+                DataColumn(label: Expanded(child: Text('C.Vol'))),
+                DataColumn(label: Expanded(child: Text('Quality'))),
+                DataColumn(label: Expanded(child: Text('DG'))),
+                DataColumn(label: Expanded(child: Text('UNNO'))),
+                DataColumn(label: Expanded(child: Text('Class'))),
+                DataColumn(label: Expanded(child: Text('DG Remark'))),
+              ],
+              rows: List.generate(loadingBookingDetail.commoditieDetail.length,
+                  (index) {
+                var dataCommodity =
+                    loadingBookingDetail.commoditieDetail[index];
+                confirmVolume_controller.add(TextEditingController());
+                quality_controller.add(TextEditingController());
+                return DataRow(selected: true, cells: [
+                  DataCell(Center(
+                    child: Text('${index + 1}'),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.commodityName!),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.sizeId!),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.type!),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.status!),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.weight!.toString()),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.requestVol!.toString()),
+                  )),
+                  DataCell(Center(
+                    child: Container(
+                        width: 50,
+                        child: TextField(
+                            keyboardType: TextInputType.number,
+                            controller: confirmVolume_controller[index])),
+                  )),
+                  DataCell(Center(
+                    child: Container(
+                        width: 50,
+                        child:
+                            TextField(controller: quality_controller[index])),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.dg!.toString()),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.unno!),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.Class!),
+                  )),
+                  DataCell(Center(
+                    child: Text(dataCommodity.dgRemark!),
+                  )),
+                ]);
+              })),
+        ),
         SizedBox(
           height: 20,
         ),
@@ -122,22 +127,24 @@ class _CargoInformationState extends State<CargoInformation> {
                   loadingBookingDetail.lstBkDetail.value =
                       loadingBookingDetail.lstBkDetail.value.substring(
                           0, loadingBookingDetail.lstBkDetail.value.length - 1);
-                          if (
-                            loadingBookingDetail.bkno_controller.value.text.substring(0, 2) != 'HAC' ||
-                            loadingBookingDetail.confirmDepotId.value == '' ||
-                            confirmVolume_controller == [] ||
-                            quality_controller == []
-                          ) {
-                            SendConfirmBooking(
-                            bookingId: loadingBookingDetail.bookingId.value, 
-                            confirmDepotId: loadingBookingDetail.confirmDepotId.value,
-                            lstBkDetail: loadingBookingDetail.lstBkDetail.value, 
-                            bookingNo: loadingBookingDetail.bkno_controller.value.text, 
-                            userId: inforUserController.shipperId.value);
-                          } else {
-                            print('Missing information Confirm');
-                          }
-                          
+                  if (loadingBookingDetail.bkno_controller.value.text
+                              .substring(0, 2) !=
+                          'HAC' ||
+                      loadingBookingDetail.confirmDepotId.value == '' ||
+                      confirmVolume_controller == [] ||
+                      quality_controller == []) {
+                    SendConfirmBooking(
+                        bookingId: loadingBookingDetail.bookingId.value,
+                        confirmDepotId:
+                            loadingBookingDetail.confirmDepotId.value,
+                        lstBkDetail: loadingBookingDetail.lstBkDetail.value,
+                        bookingNo:
+                            loadingBookingDetail.bkno_controller.value.text,
+                        userId: inforUserController.shipperId.value);
+                  } else {
+                    print('Missing information Confirm');
+                  }
+
                   // print(loadingBookingDetail.bookingId.value);
                   // print(loadingBookingDetail.confirmDepotId.value);
                   // print(loadingBookingDetail.lstBkDetail.value);
@@ -149,35 +156,35 @@ class _CargoInformationState extends State<CargoInformation> {
       ],
     );
   }
+
   Future<void> SendConfirmBooking({
     required String bookingId,
     required String confirmDepotId,
     required String lstBkDetail,
-    required String bookingNo, 
+    required String bookingNo,
     required String userId,
-    }) async {
-      try{
-        var url = URL_CONFIRM_BOOKING;
-    Map<String, String> data = {
-      'bookingId': bookingId,
-      'confirmDepotId': confirmDepotId,
-      'lstBKDetail': lstBkDetail,
-      'bookingNo': bookingNo,
-      'userId': userId,
-    };
-  var body = json.encode(data);
-  final response = await http.post(Uri.parse(url), 
-  headers: {"Content-Type": "application/json"},body: body);
-  switch (response.statusCode) {
-    case 200:
-      Get.toNamed(GetRoutes.BookingConfirm);
-    default:
-    print(response.reasonPhrase);
-      break;
-  }
+  }) async {
+    try {
+      var url = URL_CONFIRM_BOOKING;
+      Map<String, String> data = {
+        'bookingId': bookingId,
+        'confirmDepotId': confirmDepotId,
+        'lstBKDetail': lstBkDetail,
+        'bookingNo': bookingNo,
+        'userId': userId,
+      };
+      var body = json.encode(data);
+      final response = await http.post(Uri.parse(url),
+          headers: {"Content-Type": "application/json"}, body: body);
+      switch (response.statusCode) {
+        case 200:
+          Get.toNamed(GetRoutes.BookingConfirm);
+        default:
+          print(response.reasonPhrase);
+          break;
+      }
     } on Exception catch (e) {
       throw Exception(e);
     }
-      
   }
 }

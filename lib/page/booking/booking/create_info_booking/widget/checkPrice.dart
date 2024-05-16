@@ -22,15 +22,22 @@ int checkPrice() {
       break;
   }
   if (weight == 0) {
-    weightCondition = 'STD';
+    // weightCondition = 'STD';
+    weightCondition == 'STD';
   } else if (weight <= 10000) {
     weightCondition = '<=10';
   } else if (weight <= 15000) {
     weightCondition = '<=15';
   } else {
+    // weightCondition = 'STD';
     weightCondition = 'STD';
   }
   for (var ref in listRef) {
+    switch (createBookingController.refId.value) {
+      case '00000000-0000-0000-0000-000000000000':
+        weightCondition = "MNG";
+      default:
+    }
     if (createBookingController.refId.value == ref.refId!.trim() &&
         createBookingController.coc.value == ref.coc! &&
         createBookingController.size.value == ref.size!.trim() &&

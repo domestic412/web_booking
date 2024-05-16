@@ -97,6 +97,7 @@ class _DataLoadingBookingDetailState extends State<DataLoadingBookingDetail> {
                 ),
               ),
               Container(
+                width: 1004,
                 padding: EdgeInsets.all(20),
                 margin: EdgeInsets.only(bottom: 20),
                 decoration: BoxDecoration(
