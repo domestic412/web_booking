@@ -471,7 +471,7 @@ class _CargoInformationState extends State<CargoInformation> {
                                   (createBookingController
                                           .commodity_controller.value.text
                                           .trim() ==
-                                      '')) {
+                                      '') || (createBookingController.volume_controller.value.text.trim() == '')) {
                             //miss field input
                             createBookingController.boolErrorAdd.value = true;
                           } else {
