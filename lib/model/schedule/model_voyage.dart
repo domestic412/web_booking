@@ -48,6 +48,7 @@ class Voyage {
         switch (response.statusCode) {
           case 200:
             var body = response.body;
+            // print(body);
             // print('Data Voyage');
             // // convert json to list and return function
             // List dataVoyage = json.decode(body);

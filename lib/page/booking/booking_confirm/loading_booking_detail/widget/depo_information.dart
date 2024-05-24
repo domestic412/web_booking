@@ -14,10 +14,10 @@ class _DepoInformationState extends State<DepoInformation> {
   Widget build(BuildContext context) {
     return DataTable(
         columns: <DataColumn>[
-          DataColumn(label: Expanded(child: Text('Depo Name'))),
-          DataColumn(label: Expanded(child: Text('Size'))),
-          DataColumn(label: Expanded(child: Text('Empty Av'))),
-          DataColumn(label: Expanded(child: Text('FOS Av')))
+          DataColumn(label: Expanded(child: Center(child: Text('Depo Name')))),
+          DataColumn(label: Expanded(child: Center(child: Text('Size')))),
+          DataColumn(label: Expanded(child: Center(child: Text('Empty Av')))),
+          DataColumn(label: Expanded(child: Center(child: Text('FOS Av'))))
         ],
         rows: List.generate(loadingBookingDetail.depAvaModel.length, (index) {
           var dataDepo = loadingBookingDetail.depAvaModel[index];

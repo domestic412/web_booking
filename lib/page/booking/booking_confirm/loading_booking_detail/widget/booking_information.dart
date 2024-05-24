@@ -49,7 +49,7 @@ class _BookingInfomationState extends State<BookingInfomation> {
               width: 200,
               child: Text('Booking Date: '),
             ),
-            Text(DateFormat('dd/MM/yyyy').format(DateTime.parse(
+            Text(DateFormat('dd-MM-yyyy').format(DateTime.parse(
                 loadingBookingDetail.inforDetail[0].bookingDate!))),
           ],
         ),

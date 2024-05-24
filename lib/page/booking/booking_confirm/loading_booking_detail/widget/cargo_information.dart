@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking_confirm/storage_controller/loading_booking_detail.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
@@ -64,7 +65,7 @@ class _CargoInformationState extends State<CargoInformation> {
                     child: Text(dataCommodity.status!),
                   )),
                   DataCell(Center(
-                    child: Text(dataCommodity.weight!.toString()),
+                    child: Text(formatCurrency.format(dataCommodity.weight!).toString()),
                   )),
                   DataCell(Center(
                     child: Text(dataCommodity.requestVol!.toString()),
@@ -83,7 +84,7 @@ class _CargoInformationState extends State<CargoInformation> {
                             TextField(controller: quality_controller[index])),
                   )),
                   DataCell(Center(
-                    child: Text(dataCommodity.dg!.toString()),
+                    child: Text(dataCommodity.dg! ? 'YES' : 'NO'),
                   )),
                   DataCell(Center(
                     child: Text(dataCommodity.unno!),
@@ -100,59 +101,47 @@ class _CargoInformationState extends State<CargoInformation> {
         SizedBox(
           height: 20,
         ),
-        Container(
-          child: ElevatedButton(
-              onPressed: () {
-                loadingBookingDetail.lstBkDetail.value = '';
-                for (int i = 0;
-                    i < loadingBookingDetail.commoditieDetail.length;
-                    i++) {
-                  if (confirmVolume_controller[i].text == '' ||
-                      quality_controller[i].text == '') {
-                    break;
-                  } else {
-                    loadingBookingDetail.lstBkDetail.value =
-                        loadingBookingDetail.lstBkDetail.value +
-                            loadingBookingDetail
-                                .commoditieDetail[i].bookingDetailId! +
-                            ':' +
-                            confirmVolume_controller[i].text +
-                            ':' +
-                            quality_controller[i].text +
-                            ';';
-                  }
-                }
-                if (loadingBookingDetail.lstBkDetail.value == '') {
+        ElevatedButton(
+            onPressed: () {
+              //remove data cargo
+              loadingBookingDetail.lstBkDetail.value = '';
+               for (int i = 0;
+                  i < loadingBookingDetail.commoditieDetail.length;
+                  i++) {
+                if (confirmVolume_controller[i].text == '' ||
+                    quality_controller[i].text == '') {
+                      //remove data cargo when error
+                  loadingBookingDetail.lstBkDetail.value = '';
+                  break;
                 } else {
                   loadingBookingDetail.lstBkDetail.value =
-                      loadingBookingDetail.lstBkDetail.value.substring(
-                          0, loadingBookingDetail.lstBkDetail.value.length - 1);
-                  if (loadingBookingDetail.bkno_controller.value.text
-                              .substring(0, 2) !=
-                          'HAC' ||
-                      loadingBookingDetail.confirmDepotId.value == '' ||
-                      confirmVolume_controller == [] ||
-                      quality_controller == []) {
-                    SendConfirmBooking(
-                        bookingId: loadingBookingDetail.bookingId.value,
-                        confirmDepotId:
-                            loadingBookingDetail.confirmDepotId.value,
-                        lstBkDetail: loadingBookingDetail.lstBkDetail.value,
-                        bookingNo:
-                            loadingBookingDetail.bkno_controller.value.text,
-                        userId: inforUserController.shipperId.value);
-                  } else {
-                    print('Missing information Confirm');
-                  }
-
-                  // print(loadingBookingDetail.bookingId.value);
-                  // print(loadingBookingDetail.confirmDepotId.value);
-                  // print(loadingBookingDetail.lstBkDetail.value);
-                  // print(loadingBookingDetail.bkno_controller.value.text);
+                      '${loadingBookingDetail.lstBkDetail.value}${loadingBookingDetail
+                              .commoditieDetail[i].bookingDetailId!}:${confirmVolume_controller[i].text}:${quality_controller[i].text};';
                 }
-              },
-              child: Text('Confirm')),
-        )
+              }
+              //check data cargo, booking No, depot
+              if ((loadingBookingDetail.lstBkDetail.value == '') || 
+              loadingBookingDetail.bkno_controller.value.text.substring(0, 3) !='HAC' ||
+                    loadingBookingDetail.confirmDepotId.value == '') {
+                      // print(loadingBookingDetail.lstBkDetail.value);
+                      // print(loadingBookingDetail.bkno_controller.value.text.substring(0, 3));
+                      // print(loadingBookingDetail.confirmDepotId.value);
+                      // print('Missing information Confirm');
+              } else {
+                loadingBookingDetail.lstBkDetail.value =
+                    loadingBookingDetail.lstBkDetail.value.substring(
+                        0, loadingBookingDetail.lstBkDetail.value.length - 1);
+                  SendConfirmBooking(
+                      bookingId: loadingBookingDetail.bookingId.value,
+                      confirmDepotId:
+                          loadingBookingDetail.confirmDepotId.value,
+                      lstBkDetail: loadingBookingDetail.lstBkDetail.value,
+                      bookingNo:
+                          loadingBookingDetail.bkno_controller.value.text,
+                      userId: inforUserController.shipperId.value);
+              }
+            },
+            child: Text('Confirm'))
       ],
     );
   }

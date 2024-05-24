@@ -62,14 +62,14 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                   ),
                 ),
               ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
-                    'Type',
-                    style: TextStyle(fontStyle: FontStyle.italic),
-                  ),
-                ),
-              ),
+              // DataColumn(
+              //   label: Expanded(
+              //     child: Text(
+              //       'Type',
+              //       style: TextStyle(fontStyle: FontStyle.italic),
+              //     ),
+              //   ),
+              // ),
               DataColumn(
                 label: Expanded(
                   child: Text(
@@ -120,20 +120,20 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                             .listInfoContainer[i].commodityId!) ??
                         '')),
                     DataCell(Text(
-                        createBookingController.listInfoContainer[i].sizeId!)),
-                    DataCell(Text(
-                        createBookingController.listInfoContainer[i].type!)),
+                        createBookingController.listInfoContainer[i].sizeId! + createBookingController.listInfoContainer[i].type!)),
+                    // DataCell(Text(
+                    //     createBookingController.listInfoContainer[i].type!)),
                     DataCell(Text(
                         createBookingController.listInfoContainer[i].status!)),
                     DataCell(Text(createBookingController
                         .listInfoContainer[i].volume!
                         .toString())),
-                    DataCell(Text(createBookingController
-                        .listInfoContainer[i].weight!
+                    DataCell(Text(formatCurrency.format(createBookingController
+                        .listInfoContainer[i].weight!)
                         .toString())),
                     DataCell(Text(createBookingController
-                        .listInfoContainer[i].dg!
-                        .toString())),
+                        .listInfoContainer[i].dg! ? 'YES' : 'NO'
+                        )),
                     // DataCell(
                     //     Text(createBookingController.listInfoContainer[i].dg!)),
                     DataCell(createBookingController.countRowContainer.value !=

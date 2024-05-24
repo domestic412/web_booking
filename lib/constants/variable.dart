@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:web_booking/model/booking/model_booking_list.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 
+
 double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
+
+//format currency
+final formatCurrency = NumberFormat('#,##0');
 
 // Login
 var box = GetStorage();

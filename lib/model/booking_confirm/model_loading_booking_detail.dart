@@ -88,6 +88,7 @@ class LoadBookingDetail {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
+          // print(body);
           print('Data List Booking Confirm');
           var dataLoadingBookingDetail = json.decode(body);
           return LoadBookingDetail.fromJson(dataLoadingBookingDetail);
@@ -259,7 +260,7 @@ class CommoditieDetail {
 }
 
 class RefDetails {
-  String? refNo;
+  String? commodity;
   String? chargeType;
   String? perCode;
   String? ccy;
@@ -272,7 +273,7 @@ class RefDetails {
   int? total;
 
   RefDetails(
-      {this.refNo,
+      {this.commodity,
       this.chargeType,
       this.perCode,
       this.ccy,
@@ -285,7 +286,7 @@ class RefDetails {
       this.total});
 
   RefDetails.fromJson(Map<String, dynamic> json) {
-    refNo = json['refNo'];
+    commodity = json['commodity'];
     chargeType = json['chargeType'];
     perCode = json['perCode'];
     ccy = json['ccy'];
@@ -300,7 +301,7 @@ class RefDetails {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['refNo'] = refNo;
+    data['commodity'] = commodity;
     data['chargeType'] = chargeType;
     data['perCode'] = perCode;
     data['ccy'] = ccy;

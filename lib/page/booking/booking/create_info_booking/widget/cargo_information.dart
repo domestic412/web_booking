@@ -446,15 +446,6 @@ class _CargoInformationState extends State<CargoInformation> {
                     ElevatedButton(
                         onPressed: () {
                           if (
-                              // (
-                              // createBookingController.dg.value == true &&
-                              //       createBookingController.unno.value.text
-                              //               .trim() ==
-                              //           '' &&
-                              //       createBookingController.classDG.value.text
-                              //               .trim() ==
-                              //           ''
-                              //   ) ||
                               (createBookingController.status.value == 'F' &&
                                       createBookingController
                                               .weight_controller.value.text
