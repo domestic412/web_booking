@@ -43,13 +43,13 @@ class _BookingInfomationState extends State<BookingInfomation> {
           height: 20,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          // mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
               width: 200,
               child: Text('Booking Date: '),
             ),
-            Text(DateFormat('dd-MM-yyyy').format(DateTime.parse(
+            Text(DateFormat('dd/MM/yyyy').format(DateTime.parse(
                 loadingBookingDetail.inforDetail[0].bookingDate!))),
           ],
         ),

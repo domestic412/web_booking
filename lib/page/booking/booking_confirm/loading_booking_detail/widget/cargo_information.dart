@@ -31,7 +31,6 @@ class _CargoInformationState extends State<CargoInformation> {
                 DataColumn(label: Expanded(child: Text('Seq'))),
                 DataColumn(label: Expanded(child: Text('Commodity'))),
                 DataColumn(label: Expanded(child: Text('Size'))),
-                DataColumn(label: Expanded(child: Text('Type'))),
                 DataColumn(label: Expanded(child: Text('Status'))),
                 DataColumn(label: Expanded(child: Text('Weight'))),
                 DataColumn(label: Expanded(child: Text('R.Vol'))),
@@ -56,11 +55,11 @@ class _CargoInformationState extends State<CargoInformation> {
                     child: Text(dataCommodity.commodityName!),
                   )),
                   DataCell(Center(
-                    child: Text(dataCommodity.sizeId!),
+                    child: Text(dataCommodity.sizeId! + dataCommodity.type!),
                   )),
-                  DataCell(Center(
-                    child: Text(dataCommodity.type!),
-                  )),
+                  // DataCell(Center(
+                  //   child: Text(dataCommodity.type!),
+                  // )),
                   DataCell(Center(
                     child: Text(dataCommodity.status!),
                   )),

@@ -38,6 +38,7 @@ class ListBookingConfirm {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
+          print(body);
           print('Data List Booking Confirm');
           List dataListBookingConfirm = json.decode(body);
           return dataListBookingConfirm

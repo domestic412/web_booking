@@ -16,7 +16,7 @@ class _FreightInformationState extends State<FreightInformation> {
         columns: <DataColumn>[
           DataColumn(label: Expanded(child: Text('Commodity'))),
           DataColumn(label: Expanded(child: Text('Freight'))),
-          DataColumn(label: Expanded(child: Text('Per'))),
+          DataColumn(label: Expanded(child: Text('Size'))),
           DataColumn(label: Expanded(child: Text('Volume'))),
           DataColumn(label: Expanded(child: Text('Price'))),
           // DataColumn(label: Expanded(child: Text('Term'))),
