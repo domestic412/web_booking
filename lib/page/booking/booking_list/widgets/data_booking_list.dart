@@ -88,6 +88,13 @@ class _DataBookingListState extends State<DataBookingList> {
                   DataColumn(
                     label: Expanded(
                         child: Center(
+                      child: SelectableText("Depot",
+                          style: style_text_Table_small_bold),
+                    )),
+                  ),
+                  DataColumn(
+                    label: Expanded(
+                        child: Center(
                       child: SelectableText("POL",
                           style: style_text_Table_small_bold),
                     )),
@@ -133,6 +140,7 @@ class _DataBookingListState extends State<DataBookingList> {
                   String bookingNo = dataBooking.bookingNo ?? '';
                   String vessel = dataBooking.shipName ?? '';
                   String voyId = dataBooking.voyId ?? '';
+                  String depotName = dataBooking.depotName ?? '';
                   String pol = dataBooking.portLoad ?? '';
                   String pod = dataBooking.finalDest ?? '';
                   String etd = dataBooking.fromDate ?? '';
@@ -189,6 +197,14 @@ class _DataBookingListState extends State<DataBookingList> {
                       Center(
                         child: Text(
                           voyId,
+                          style: style_text_Table_small,
+                        ),
+                      ),
+                    ),
+                    DataCell(
+                      Center(
+                        child: Text(
+                          depotName,
                           style: style_text_Table_small,
                         ),
                       ),
