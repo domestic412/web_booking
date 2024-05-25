@@ -21,6 +21,9 @@ class DetailBookingListController extends GetxController {
   var portLoad = ''.obs;
   var confirmed = false.obs;
   var blNo = ''.obs;
+  var shippingTerm = ''.obs;
+  var paymentTerm = ''.obs;
+  var depotName = ''.obs;
   var commodity = ''.obs;
   var cont20 = 0.obs;
   var cont40 = 0.obs;
@@ -43,6 +46,9 @@ class DetailBookingListController extends GetxController {
     required String portLoad,
     required bool confirmed,
     required String blNo,
+    required String shippingTerm,
+    required String paymentTerm,
+    required String depotName,
     required String commodity,
     required int cont20,
     required int cont40,
@@ -64,6 +70,9 @@ class DetailBookingListController extends GetxController {
     this.portLoad.value = portLoad;
     this.confirmed.value = confirmed;
     this.blNo.value = blNo;
+    this.shippingTerm.value = shippingTerm;
+    this.paymentTerm.value = paymentTerm;
+    this.depotName.value = depotName;
     this.commodity.value = commodity;
     this.cont20.value = cont20;
     this.cont40.value = cont40;

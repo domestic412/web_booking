@@ -6,7 +6,6 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_booking_list.dart';
 import 'package:web_booking/model/booking/storage_controller/booking_list_controller.dart';
-import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
 
@@ -52,7 +51,8 @@ class _BookingListPageState extends State<BookingListPage> {
                 decoration: BoxDecoration(
                     color: contentColor,
                     borderRadius: BorderRadius.circular(10)),
-                width: 1004,
+                // width: 1004,
+                width: 1160,
                 padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                 child: Column(
                   children: [

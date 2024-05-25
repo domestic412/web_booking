@@ -29,6 +29,8 @@ class BookingList {
   String? userName;
   bool? confirmed;
   String? blNo;
+  String? shippingTerm;
+  String? paymentTerm;
   String? depotName;
   String? commodity;
   int? cont20;
@@ -62,6 +64,8 @@ class BookingList {
       this.userName,
       this.confirmed,
       this.blNo,
+      this.shippingTerm,
+      this.paymentTerm,
       this.depotName,
       this.commodity,
       this.cont20,
@@ -95,6 +99,8 @@ class BookingList {
     userName = json['userName'];
     confirmed = json['confirmed'];
     blNo = json['blNo'];
+    shippingTerm = json['shippingTerm'];
+    paymentTerm = json['paymentTerm'];
     depotName = json['depotName'];
     commodity = json['commodity'];
     cont20 = json['cont20'];
@@ -130,6 +136,8 @@ class BookingList {
     data['userName'] = this.userName;
     data['confirmed'] = this.confirmed;
     data['blNo'] = this.blNo;
+    data['shippingTerm'] = this.shippingTerm;
+    data['paymentTerm'] = this.paymentTerm;
     data['depotName'] = this.depotName;
     data['commodity'] = this.commodity;
     data['cont20'] = this.cont20;
