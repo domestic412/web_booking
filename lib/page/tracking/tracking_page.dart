@@ -27,6 +27,7 @@ class _TrackingPageState extends State<TrackingPage> {
   @override
   void initState() {
     super.initState();
+    print(cntr_no_tracking);
     input.text = cntr_no_tracking;
   }
 

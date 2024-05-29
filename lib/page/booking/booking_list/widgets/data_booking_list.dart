@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_booking_list.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/model/booking/storage_controller/detail_booking_list_controller.dart';
+import 'package:web_booking/model/tracking/model_tracking.dart';
+import 'package:web_booking/screen/tracking1/tracking_page1.dart';
+import 'package:web_booking/utils/getx_route.dart';
 
 class DataBookingList extends StatefulWidget {
   const DataBookingList({super.key});
@@ -153,12 +157,19 @@ class _DataBookingListState extends State<DataBookingList> {
                         ),
                       )),
                       DataCell(
-                        Container(
-                          width: 100,
-                          child: Text(
-                            bookingNo,
-                            style: style_text_Table_small,
+                        GestureDetector(
+                          child: SizedBox(
+                            width: 100,
+                            child: Text(
+                              bookingNo,
+                              style: style_text_Table_small,
+                            ),
                           ),
+                          onTap: () {
+                            cntr_no_tracking = data[index].bookingNo!;
+                            // print(cntr_no_tracking);
+            Get.toNamed(GetRoutes.Tracking);
+                          },
                         ),
                       ),
                       DataCell(
