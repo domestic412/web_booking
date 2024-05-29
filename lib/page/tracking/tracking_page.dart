@@ -27,7 +27,6 @@ class _TrackingPageState extends State<TrackingPage> {
   @override
   void initState() {
     super.initState();
-    print(cntr_no_tracking);
     input.text = cntr_no_tracking;
   }
 
@@ -91,9 +90,9 @@ class _TrackingPageState extends State<TrackingPage> {
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                  containerTracking = ContainerTracking()
-                                      .fetchContainerTracking(
-                                          input.text.toUpperCase());
+                                  // containerTracking = ContainerTracking()
+                                  //     .fetchContainerTracking(
+                                  //         input.text.toUpperCase());
                                 });
                               },
                               child: Container(

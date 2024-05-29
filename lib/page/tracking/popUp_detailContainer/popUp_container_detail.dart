@@ -29,25 +29,30 @@ Future<void> PopUpContainerDetail(BuildContext context) {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
               Container(
                 // width: deviceWidth(context),
-                decoration: BoxDecoration(
-                  color: white,
-                  border: Border.all(color: blue.withOpacity(.4), width: .5),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: const Offset(0, 6),
-                        color: blue.withOpacity(.1),
-                        blurRadius: 12)
-                  ],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                margin: const EdgeInsets.only(bottom: 16, left: 32, right: 32),
+                // decoration: BoxDecoration(
+                //   color: white,
+                //   // border: Border.all(color: blue.withOpacity(.4), width: .5),
+                //   boxShadow: [
+                //     BoxShadow(
+                //         offset: const Offset(0, 6),
+                //         color: blue.withOpacity(.1),
+                //         blurRadius: 12)
+                //   ],
+                //   borderRadius: BorderRadius.circular(8),
+                // ),
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 child: TableContainerDetails(),
               ),
+              Center(
+                child: ElevatedButton(
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(normalColor)),
+                  onPressed: (){
+                  Get.back();
+                  }, 
+                child: Text('Back')),
+              )
             ]),
           ),
         ),

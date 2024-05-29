@@ -7,8 +7,6 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_booking_list.dart';
 import 'package:intl/intl.dart';
 import 'package:web_booking/model/booking/storage_controller/detail_booking_list_controller.dart';
-import 'package:web_booking/model/tracking/model_tracking.dart';
-import 'package:web_booking/screen/tracking1/tracking_page1.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class DataBookingList extends StatefulWidget {
@@ -27,6 +25,8 @@ class _DataBookingListState extends State<DataBookingList> {
   FutureBuilder<List<BookingList>> dataBookingList() {
     Color? color;
     String? status;
+    TextStyle? style_booking;
+    BoxDecoration? boxDecoration_booking;
 
     return FutureBuilder<List<BookingList>>(
       future: fetchBookingList,
@@ -70,7 +70,7 @@ class _DataBookingListState extends State<DataBookingList> {
                     ),
                     DataColumn(
                       label: Expanded(
-                          child: SelectableText("Booking.No",
+                          child: SelectableText("Booking",
                               style: style_text_Table_small_bold)),
                     ),
                     DataColumn(
@@ -131,7 +131,7 @@ class _DataBookingListState extends State<DataBookingList> {
                     // var dataVoyage1 = data.listBookingVoys?[index];
                     // String? nameVoyage = dataVoyage1?.vesselName;
                     // String? dateVoyage = dataVoyage1?.etd;
-                    String _dt = DateFormat("dd-MMM-yyyy\n    hh:mm")
+                    String _dt = DateFormat("dd/MM/yyyy\n    hh:mm")
                         .format(DateTime.parse(etd));
                     // String shippingTerm = dataBooking.shippingTerm ?? '';
                     // String paymentTerm = dataBooking.paymentTerm ?? '';
@@ -144,9 +144,18 @@ class _DataBookingListState extends State<DataBookingList> {
                       case true:
                         color = green;
                         status = 'Confirmed';
+                        style_booking = style_text_Table_small_bold_container;
+                        boxDecoration_booking = BoxDecoration(
+                              border: Border( 
+                                  bottom: BorderSide(
+                            color: normalColor,
+                            width: 1,
+                          )));
                       default:
                         color = grey;
                         status = 'Waitting';
+                        style_booking = style_text_Table_small;
+                        boxDecoration_booking = BoxDecoration(border: Border());
                     }
                     return DataRow(cells: [
                       DataCell(Container(
@@ -157,24 +166,28 @@ class _DataBookingListState extends State<DataBookingList> {
                         ),
                       )),
                       DataCell(
-                        GestureDetector(
-                          child: SizedBox(
-                            width: 100,
+                        InkWell(
+                          child: Container(
+                            decoration: boxDecoration_booking,
                             child: Text(
                               bookingNo,
-                              style: style_text_Table_small,
+                              style: style_booking,
                             ),
                           ),
                           onTap: () {
-                            cntr_no_tracking = data[index].bookingNo!;
-                            // print(cntr_no_tracking);
-            Get.toNamed(GetRoutes.Tracking);
+                            switch (confirmed) {
+                      case true:
+                        cntr_no_tracking = data[index].bookingNo!;
+                            Get.toNamed(GetRoutes.Tracking);;
+                      default:
+                        break;
+                    }
                           },
                         ),
                       ),
                       DataCell(
                         Container(
-                          width: 90,
+                          // width: 90,
                           child: Text(
                             vessel,
                             style: style_text_Table_small,

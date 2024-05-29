@@ -183,7 +183,7 @@ class _CargoInformationState extends State<CargoInformation> {
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 140),
                   child: Text(
                     'Ocean Freight: ' +
-                        createBookingController.checkPrice.value.toString() +
+                        formatCurrency.format(createBookingController.checkPrice.value).toString() +
                         ' VND/Container',
                     style: TextStyle(color: red),
                   ),
@@ -522,7 +522,8 @@ class _CargoInformationState extends State<CargoInformation> {
                                 .add(_listBookingDetails);
                           }
                         },
-                        child: Text('ADD CONTAINER')),
+                        style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => normalColor)),
+                        child: Text('ADD CARGO')),
                   ],
                 ),
               )

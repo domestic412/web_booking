@@ -25,7 +25,10 @@ class _ContainerListState extends State<ContainerList> {
 
   FutureBuilder<ContainerTracking> dataBooking() {
     return FutureBuilder<ContainerTracking>(
-      future: containerTracking,
+      // future: containerTracking, 
+      future: ContainerTracking()
+                                      .fetchContainerTracking(
+                                          input.text.toUpperCase()),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -163,7 +166,7 @@ class _ContainerListState extends State<ContainerList> {
                       child: Container(
                           padding: EdgeInsets.only(bottom: 2),
                           decoration: BoxDecoration(
-                              border: Border(
+                              border: Border( 
                                   bottom: BorderSide(
                             color: normalColor,
                             width: 1,

@@ -134,6 +134,11 @@ class _CombineMenuState extends State<CombineMenu> {
                       child: InkWell(
                         onTap: () {
                           // context.go(AppRoutes.BookingRoute);
+                          currentRouteController.route.value = sendRequest;
+                          controller.selectWidget.value = sendRequest;
+                          inforUserController.shipperName.value == ''
+                              ? Get.toNamed(GetRoutes.NewSignIn)
+                              : Get.toNamed(GetRoutes.Home);
                         },
                         child: Text(
                           'Request Combine',

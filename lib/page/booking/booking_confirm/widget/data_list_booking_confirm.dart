@@ -68,7 +68,7 @@ class _DataListBookingConfirmState extends State<DataListBookingConfirm> {
                   DataColumn(
                     label: Expanded(
                         child: Center(
-                      child: SelectableText("Booking.No",
+                      child: SelectableText("Booking",
                           style: style_text_Table_small_bold),
                     )),
                   ),

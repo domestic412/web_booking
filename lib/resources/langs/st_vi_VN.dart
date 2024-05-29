@@ -20,6 +20,7 @@ Map<String, String> vi = {
   "title_booking": "Thông tin Booking",
   "seq": "STT",
   "container": "Số Container",
+  "size_booking": "Kích thước",
   "title_container": "Thông tin vị trí Container",
   "status_container": "Trạng thái",
   "location_container": "Vị trí",

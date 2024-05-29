@@ -60,7 +60,7 @@ class _BookingInfomationState extends State<BookingInfomation> {
           children: [
             Container(
               width: 200,
-              child: Text('BKNo.'),
+              child: Text('Booking Number:'),
             ),
             Container(
               width: 250,
@@ -147,7 +147,7 @@ class _BookingInfomationState extends State<BookingInfomation> {
               width: 200,
               child: Text('Shipper: '),
             ),
-            Text(loadingBookingDetail.inforDetail[0].shipName!),
+            Text(loadingBookingDetail.inforDetail[0].shipper!),
           ],
         ),
         SizedBox(

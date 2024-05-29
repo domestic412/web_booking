@@ -50,7 +50,9 @@ class BookingRequestPage extends StatelessWidget {
         ),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return Center(child: SizedBox(
+              height: 100,
+              child: CircularProgressIndicator()));
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
