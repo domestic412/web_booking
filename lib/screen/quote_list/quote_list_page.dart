@@ -3,40 +3,41 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/list_history/model_history_list.dart';
-import 'package:web_booking/screen/history_list/data/data_history_list.dart';
+import 'package:web_booking/model/eqc_quote/model_quote_list.dart';
 
-import 'button_download.dart';
+import '../../controllers/sidebar_controller.dart';
+import 'data/data_quote_list.dart';
+
 // import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
-class HistoryListPage extends StatefulWidget {
+class QuoteListPage extends StatefulWidget {
   @override
-  State<HistoryListPage> createState() => _HistoryListPageState();
+  State<QuoteListPage> createState() => _QuoteListPageState();
 }
 
-class _HistoryListPageState extends State<HistoryListPage> {
-  DataTableHistory _dataHistoty = DataTableHistory(data: []);
-  DataTableHistory _list_filter = DataTableHistory(data: []);
+class _QuoteListPageState extends State<QuoteListPage> {
+  DataTableQuote _dataQuote = DataTableQuote(data: []);
+  DataTableQuote _list_filter = DataTableQuote(data: []);
 
-  TextEditingController _search_history = TextEditingController();
+  TextEditingController _search_quote = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    History().fetchHistoryList().then((data) {
+    EQCQuoteList().fetchQuoteList('06/01/2024', '06/27/2024').then((data) {
       setState(() {
-        _dataHistoty = DataTableHistory(data: data);
-        _list_filter = _dataHistoty;
+        _dataQuote = DataTableQuote(data: data);
+        _list_filter = _dataQuote;
         // print('initial data history');
       });
     });
   }
 
-  void _filterHistory() {
+  void _filterQuote() {
     setState(() {
-      final filterData = _dataHistoty.list_filter(_search_history.text);
-      _list_filter = DataTableHistory(data: filterData);
+      final filterData = _dataQuote.list_filter(_search_quote.text);
+      _list_filter = DataTableQuote(data: filterData);
       // print('filter data history');
     });
   }
@@ -56,10 +57,20 @@ class _HistoryListPageState extends State<HistoryListPage> {
               children: <Widget>[
                 Stack(
                   children: [
-                    DownloadButtonHistory(),
+                    // DownloadButtonHistory(),
+                    ElevatedButton(
+          onPressed: () {
+            // controller.selectWidget.value = quoteList;
+          },
+          style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll<Color>(Colors.orange),
+                          minimumSize: MaterialStateProperty.all(Size(100, 40))
+                        ),
+          child: Text('Add Quote'),
+        ),
                   Center(
                     child: Text(
-                      "title history list".tr,
+                      "title quote list".tr,
                       style: style_title_page,
                     ),
                   ),]
@@ -76,27 +87,30 @@ class _HistoryListPageState extends State<HistoryListPage> {
                     ],
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(8),
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(color: Colors.black45)),
                     child: ListTile(
+                      dense: true,
                       leading: const Icon(Icons.search),
                       title: TextField(
-                        controller: _search_history,
+                        controller: _search_quote,
                         decoration: const InputDecoration(
-                            hintText: 'Search', border: InputBorder.none),
+                            hintText: 'Search', border: InputBorder.none,
+                            isDense: true,
+                            contentPadding: EdgeInsets.all(0)),
                         onChanged: (value) {
-                          _filterHistory();
+                          _filterQuote();
                         },
                       ),
                       trailing: IconButton(
                         icon: const Icon(Icons.cancel),
                         onPressed: () {
-                          _search_history.clear();
-                          _filterHistory();
+                          _search_quote.clear();
+                          _filterQuote();
                         },
                       ),
                     ),
@@ -128,7 +142,7 @@ class _HistoryListPageState extends State<HistoryListPage> {
                           width: 40,
                           child: Center(
                             child: Text(
-                              'STT',
+                              'Seq',
                               style: style_text_Table_small_bold,
                             ),
                           ),
@@ -136,66 +150,60 @@ class _HistoryListPageState extends State<HistoryListPage> {
                       ),
                       DataColumn(
                         label: Text(
-                          'Số Container',
+                          'Port/Depot',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
-                        label: Text('Size', style: style_text_Table_small_bold),
+                        label: Text('Quote No.', style: style_text_Table_small_bold),
                       ),
                       DataColumn(
                         label: Text(
-                          'Số lần kết hợp',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Lần KH',
+                          'Date',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Lần CP',
+                          'Ccy',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Chất lượng',
+                          'ExRate',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Trạng thái',
+                          'Status',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Shipper',
+                          'User',
                           style: style_text_Table_small_bold,
                         ),
-                      ),
-                      DataColumn(
-                        label: Expanded(
-                            child: Center(
-                                child: Text(
-                          'Kết quả',
-                          style: style_text_Table_small_bold,
-                        ))),
                       ),
                       DataColumn(
                         label: Text(
-                          'Checker',
+                          'Approved By',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
-                        label: Text('Thời gian',
-                            style: style_text_Table_small_bold),
+                        label: Text(
+                          'Approved Date',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Details',
+                          style: style_text_Table_small_bold,
+                        ),
                       ),
                     ],
                     source: _list_filter,

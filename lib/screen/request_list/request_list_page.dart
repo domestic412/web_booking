@@ -166,44 +166,39 @@ class _RequestListPageState extends State<RequestListPage> {
                           ),
                         ),
                       ),
+                      // DataColumn(
+                      //   label: SizedBox(
+                      //     width: 300,
+                      //     child: Text(
+                      //       'content commitment'.tr,
+                      //       style: style_text_Table_small_bold,
+                      //     ),
+                      //   ),
+                      // ),
+                      // DataColumn(
+                      //   label: SizedBox(
+                      //     width: 400,
+                      //     child: Center(
+                      //       child: Text(
+                      //         'note'.tr,
+                      //         style: style_text_Table_small_bold,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       DataColumn(
-                        label: SizedBox(
-                          width: 300,
-                          child: Text(
-                            'content commitment'.tr,
-                            style: style_text_Table_small_bold,
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: 400,
-                          child: Center(
-                            child: Text(
-                              'note'.tr,
-                              style: style_text_Table_small_bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Container(
-                          width: 120,
-                          child: Center(
-                            child: Center(
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    _list_filter = DataTableRequest(
-                                        data: _dataRequest
-                                            .filter_trangthaiYC('C'));
-                                    _search_text.text = 'Chờ duyệt';
-                                  });
-                                },
-                                child: Text('status'.tr,
-                                    style: style_text_Table_small_bold),
-                              ),
-                            ),
+                        label: Center(
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _list_filter = DataTableRequest(
+                                    data: _dataRequest
+                                        .filter_trangthaiYC('C'));
+                                _search_text.text = 'Chờ duyệt';
+                              });
+                            },
+                            child: Text('status'.tr,
+                                style: style_text_Table_small_bold),
                           ),
                         ),
                       ),

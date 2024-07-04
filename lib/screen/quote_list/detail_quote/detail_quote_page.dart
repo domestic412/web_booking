@@ -3,40 +3,41 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/list_history/model_history_list.dart';
-import 'package:web_booking/screen/history_list/data/data_history_list.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/eqc_quote/model_quote_detail.dart';
 
-import 'button_download.dart';
+import 'data/data_detail_quote.dart';
+
 // import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
-class HistoryListPage extends StatefulWidget {
+class QuoteDetailsPage extends StatefulWidget {
   @override
-  State<HistoryListPage> createState() => _HistoryListPageState();
+  State<QuoteDetailsPage> createState() => _QuoteDetailsPageState();
 }
 
-class _HistoryListPageState extends State<HistoryListPage> {
-  DataTableHistory _dataHistoty = DataTableHistory(data: []);
-  DataTableHistory _list_filter = DataTableHistory(data: []);
+class _QuoteDetailsPageState extends State<QuoteDetailsPage> {
+  DataTableQuoteDetails _dataQuote = DataTableQuoteDetails(data: []);
+  DataTableQuoteDetails _list_filter = DataTableQuoteDetails(data: []);
 
-  TextEditingController _search_history = TextEditingController();
+  TextEditingController _search_quote = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    History().fetchHistoryList().then((data) {
+    EQCQuoteDetail().fetchQuoteDetails('bc99ddb4-36cd-40ae-bd78-93076fe939e1').then((data) {
       setState(() {
-        _dataHistoty = DataTableHistory(data: data);
-        _list_filter = _dataHistoty;
+        _dataQuote = DataTableQuoteDetails(data: data);
+        _list_filter = _dataQuote;
         // print('initial data history');
       });
     });
   }
 
-  void _filterHistory() {
+  void _filterQuoteDetails() {
     setState(() {
-      final filterData = _dataHistoty.list_filter(_search_history.text);
-      _list_filter = DataTableHistory(data: filterData);
+      final filterData = _dataQuote.list_filter(_search_quote.text);
+      _list_filter = DataTableQuoteDetails(data: filterData);
       // print('filter data history');
     });
   }
@@ -56,10 +57,20 @@ class _HistoryListPageState extends State<HistoryListPage> {
               children: <Widget>[
                 Stack(
                   children: [
-                    DownloadButtonHistory(),
+                    // DownloadButtonHistory(),
+                    ElevatedButton(
+          onPressed: () {
+            controller.selectWidget.value = quoteList;
+          },
+          style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll<Color>(grey),
+                          minimumSize: MaterialStateProperty.all(Size(100, 40))
+                        ),
+          child: Text('Back'),
+        ),
                   Center(
                     child: Text(
-                      "title history list".tr,
+                      "title quote details".tr,
                       style: style_title_page,
                     ),
                   ),]
@@ -76,27 +87,30 @@ class _HistoryListPageState extends State<HistoryListPage> {
                     ],
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(8),
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(color: Colors.black45)),
                     child: ListTile(
+                      dense: true,
                       leading: const Icon(Icons.search),
                       title: TextField(
-                        controller: _search_history,
+                        controller: _search_quote,
                         decoration: const InputDecoration(
-                            hintText: 'Search', border: InputBorder.none),
+                            hintText: 'Search', border: InputBorder.none,
+                            isDense: true,
+                            contentPadding: EdgeInsets.all(0)),
                         onChanged: (value) {
-                          _filterHistory();
+                          _filterQuoteDetails();
                         },
                       ),
                       trailing: IconButton(
                         icon: const Icon(Icons.cancel),
                         onPressed: () {
-                          _search_history.clear();
-                          _filterHistory();
+                          _search_quote.clear();
+                          _filterQuoteDetails();
                         },
                       ),
                     ),
@@ -120,6 +134,7 @@ class _HistoryListPageState extends State<HistoryListPage> {
                     //     MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
                     // sortAscending: true,
+                    
                     dataRowMaxHeight: 50,
                     columnSpacing: 16,
                     columns: [
@@ -128,74 +143,130 @@ class _HistoryListPageState extends State<HistoryListPage> {
                           width: 40,
                           child: Center(
                             child: Text(
-                              'STT',
+                              'Seq',
                               style: style_text_Table_small_bold,
                             ),
                           ),
                         ),
                       ),
                       DataColumn(
+                        label: Tooltip(
+                          message: 'Charge Type',
+                          child: Text(
+                            'Type',
+                            style: style_text_Table_small_bold,
+                          ),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Tooltip(
+                          message: 'Component',
+                          child: Text('Comp.', style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
                         label: Text(
-                          'Số Container',
+                          'Category',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
-                        label: Text('Size', style: style_text_Table_small_bold),
+                        label: Tooltip(
+                          message: 'Damage Code',
+                          child: Text(
+                            'D. Code',
+                            style: style_text_Table_small_bold,
+                          ),
+                        ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Số lần kết hợp',
+                          'Container',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Tooltip(
+                          message: 'Damage Details',
+                          child: Text(
+                            'D. Details',
+                            style: style_text_Table_small_bold,
+                          ),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Quantity',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Lần KH',
+                          'Dimension',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Lần CP',
+                          'Length',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Chất lượng',
+                          'Width',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Trạng thái',
+                          'Location',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
                         label: Text(
-                          'Shipper',
+                          'Labor Cost',
                           style: style_text_Table_small_bold,
                         ),
-                      ),
-                      DataColumn(
-                        label: Expanded(
-                            child: Center(
-                                child: Text(
-                          'Kết quả',
-                          style: style_text_Table_small_bold,
-                        ))),
                       ),
                       DataColumn(
                         label: Text(
-                          'Checker',
+                          'Mr. Cost',
                           style: style_text_Table_small_bold,
                         ),
                       ),
                       DataColumn(
-                        label: Text('Thời gian',
-                            style: style_text_Table_small_bold),
+                        label: Text(
+                          'Total Cost',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Tooltip(
+                          message: 'Estimate Date',
+                          child: Text(
+                            'Est. Date',
+                            style: style_text_Table_small_bold,
+                          ),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Payer',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'Status',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          '',
+                          style: style_text_Table_small_bold,
+                        ),
                       ),
                     ],
                     source: _list_filter,

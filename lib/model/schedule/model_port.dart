@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class Ports {

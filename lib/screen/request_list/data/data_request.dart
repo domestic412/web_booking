@@ -92,24 +92,24 @@ class DataTableRequest extends DataTableSource {
         rowData.sizeType!,
         style: style_text_Table_small,
       )),
-      DataCell(Container(
-        width: 300,
-        padding: EdgeInsets.symmetric(vertical: 5),
-        child: SelectableText(
-          rowData.noiDung!,
-          style: style_text_Table_small,
-        ),
-      )),
-      DataCell(Container(
-        width: 400,
-        padding: EdgeInsets.symmetric(vertical: 5),
-        child: Center(
-          child: SelectableText(
-            rowData.noteHangTau!,
-            style: style_text_Table_small,
-          ),
-        ),
-      )),
+      // DataCell(Container(
+      //   width: 300,
+      //   padding: EdgeInsets.symmetric(vertical: 5),
+      //   child: SelectableText(
+      //     rowData.noiDung!,
+      //     style: style_text_Table_small,
+      //   ),
+      // )),
+      // DataCell(Container(
+      //   width: 400,
+      //   padding: EdgeInsets.symmetric(vertical: 5),
+      //   child: Center(
+      //     child: SelectableText(
+      //       rowData.noteHangTau!,
+      //       style: style_text_Table_small,
+      //     ),
+      //   ),
+      // )),
       DataCell(Container(
         width: 110,
         padding: const EdgeInsets.only(top: 10, bottom: 10),

@@ -23,7 +23,8 @@ class DataTableHistory extends DataTableSource {
             (item.shipper?.contains(query.toUpperCase()) ?? false) ||
             (item.ketQua?.contains(query.toUpperCase()) ?? false) ||
             (item.acc?.contains(query.toUpperCase()) ?? false) ||
-            (item.updateTime?.contains(query.toUpperCase()) ?? false))
+            (item.updateTime?.contains(query.toUpperCase()) ?? false) ||
+            (item.remark?.contains(query.toUpperCase()) ?? false))
         .toList();
   }
 
@@ -37,12 +38,13 @@ class DataTableHistory extends DataTableSource {
     rowData.size ??= '';
     rowData.soLanKetHop ??= '';
     rowData.numKh ??= '';
-    rowData.numCp ??= '';
+    rowData.numCp ??= 0;
     rowData.chatLuong ??= '';
     rowData.status ??= '';
     rowData.shipper ??= '';
     rowData.ketQua ??= '';
     rowData.acc ??= '';
+    rowData.remark ??= '';
     rowData.updateTime != null
         ? _dt = DateFormat("dd-MM-yyyy  hh:mm")
             .format(DateTime.parse(rowData.updateTime!))
@@ -76,7 +78,7 @@ class DataTableHistory extends DataTableSource {
         style: style_text_Table_small,
       )),
       DataCell(SelectableText(
-        rowData.numCp!,
+        rowData.numCp!.toString(),
         style: style_text_Table_small,
       )),
       DataCell(SelectableText(
@@ -96,15 +98,18 @@ class DataTableHistory extends DataTableSource {
         ),
       )),
       DataCell(Center(
-          child: Container(
-        padding: EdgeInsets.all(7),
-        decoration: BoxDecoration(
-            color: _color, borderRadius: BorderRadius.circular(7)),
-        child: SelectableText(
-          rowData.ketQua!,
-          style: text_style_status,
-        ),
-      ))),
+          child: Tooltip(
+            message: rowData.remark!,
+            child: Container(
+                  padding: EdgeInsets.all(7),
+                  decoration: BoxDecoration(
+              color: _color, borderRadius: BorderRadius.circular(7)),
+                  child: SelectableText(
+            rowData.ketQua!,
+            style: text_style_status,
+                  ),
+                ),
+          ))),
       DataCell(SelectableText(
         rowData.acc!,
         style: style_text_Table_small,

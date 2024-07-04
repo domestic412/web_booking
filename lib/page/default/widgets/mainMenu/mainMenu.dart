@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
@@ -133,7 +134,7 @@ class _mainMenuState extends State<mainMenu> {
                 fontWeight: FontWeight.bold,
                 color: white,
                 shadows: const [Shadow(color: Colors.black, blurRadius: 10)]),
-          ),
+          ).animate().fade(duration: 500.ms).slideX(),
         ),
         SizedBox(
           height: 150,

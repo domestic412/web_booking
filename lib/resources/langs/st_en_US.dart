@@ -129,6 +129,7 @@ Map<String, String> en = {
   "number of times (combine)": "Number of times combine",
   "requests more combine": "Request more combine",
   "_comment_quality_page": "Quality Page",
+  "title quote list": "Quote List",
   "title quality list": "Quality List",
   "title create quality container": "Create Quality Container",
   "title adjust quality container": "Adjust Quality Container",

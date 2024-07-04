@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:web_booking/constants/variable.dart';
 
 import 'package:web_booking/page/default/widgets/mainMenu/mainMenu.dart';
@@ -28,7 +29,7 @@ class _DefaultPageState extends State<DefaultPage> {
             children: [
               appbar(),
               mainMenu(),
-              mainSearch(),
+              mainSearch().animate().fade(duration: 500.ms).slideY(),
               SizedBox(
                 height: 50,
               ),

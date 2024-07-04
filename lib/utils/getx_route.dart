@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:web_booking/model/booking_confirm/storage_controller/loading_booking_detail.dart';
 import 'package:web_booking/page/booking/booking_confirm/list_booking_confirm_page.dart';
 import 'package:web_booking/page/booking/booking_confirm/loading_booking_detail/loading_booking_detail_page.dart';
 import 'package:web_booking/page/booking/booking_list/booking_list_page.dart';

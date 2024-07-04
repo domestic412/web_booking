@@ -51,250 +51,252 @@ class _DataBookingListState extends State<DataBookingList> {
               borderRadius: BorderRadius.circular(8),
             ),
             margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                  // border: TableBorder.all(
-                  //     color: Colors.black38,
-                  //     borderRadius: BorderRadius.circular(5)),
-                  horizontalMargin: 20,
-                  sortColumnIndex: 0,
-                  dataRowMaxHeight: 70,
-                  columnSpacing: 12,
-                  columns: [
-                    DataColumn(
-                      label: Expanded(
-                        child: SelectableText('Seq',
-                            style: style_text_Table_small_bold),
-                      ),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText("Booking",
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText("Vessel",
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText("Voy",
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText("Depot",
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText("POL",
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText("POD",
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText('ETD',
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText('Commodity',
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText('20/40/45',
-                              style: style_text_Table_small_bold)),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: SelectableText('Confirm',
-                              style: style_text_Table_small_bold)),
-                    ),
-                  ],
-                  rows: List.generate(data!.length, (index) {
-                    var dataBooking = data[index];
-                    String bookingNo = dataBooking.bookingNo ?? '';
-                    String vessel = dataBooking.shipName ?? '';
-                    String voyId = dataBooking.voyId ?? '';
-                    String depotName = dataBooking.depotName ?? '';
-                    String pol = dataBooking.portLoad ?? '';
-                    String pod = dataBooking.finalDest ?? '';
-                    String etd = dataBooking.fromDate ?? '';
-                    // var dataVoyage1 = data.listBookingVoys?[index];
-                    // String? nameVoyage = dataVoyage1?.vesselName;
-                    // String? dateVoyage = dataVoyage1?.etd;
-                    String _dt = DateFormat("dd/MM/yyyy\n    hh:mm")
-                        .format(DateTime.parse(etd));
-                    // String shippingTerm = dataBooking.shippingTerm ?? '';
-                    // String paymentTerm = dataBooking.paymentTerm ?? '';
-                    String commodity = dataBooking.commodity ?? '';
-                    String cont20 = dataBooking.cont20.toString();
-                    String cont40 = dataBooking.cont40.toString();
-                    String cont45 = dataBooking.cont45.toString();
-                    bool confirmed = dataBooking.confirmed!;
-                    switch (confirmed) {
-                      case true:
-                        color = green;
-                        status = 'Confirmed';
-                        style_booking = style_text_Table_small_bold_container;
-                        boxDecoration_booking = BoxDecoration(
-                              border: Border( 
-                                  bottom: BorderSide(
-                            color: normalColor,
-                            width: 1,
-                          )));
-                      default:
-                        color = grey;
-                        status = 'Waitting';
-                        style_booking = style_text_Table_small;
-                        boxDecoration_booking = BoxDecoration(border: Border());
-                    }
-                    return DataRow(cells: [
-                      DataCell(Container(
-                        width: 40,
-                        child: Text(
-                          (index + 1).toString(),
-                          style: style_text_Table_small,
+            child: Center(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                    // border: TableBorder.all(
+                    //     color: Colors.black38,
+                    //     borderRadius: BorderRadius.circular(5)),
+                    horizontalMargin: 20,
+                    sortColumnIndex: 0,
+                    dataRowMaxHeight: 70,
+                    columnSpacing: 12,
+                    columns: [
+                      DataColumn(
+                        label: Expanded(
+                          child: SelectableText('Seq',
+                              style: style_text_Table_small_bold),
                         ),
-                      )),
-                      DataCell(
-                        InkWell(
-                          child: Container(
-                            decoration: boxDecoration_booking,
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText("Booking",
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText("Vessel",
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText("Voy",
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText("Depot",
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText("POL",
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText("POD",
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText('ETD',
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText('Commodity',
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText('20/40/45',
+                                style: style_text_Table_small_bold)),
+                      ),
+                      DataColumn(
+                        label: Expanded(
+                            child: SelectableText('Confirm',
+                                style: style_text_Table_small_bold)),
+                      ),
+                    ],
+                    rows: List.generate(data!.length, (index) {
+                      var dataBooking = data[index];
+                      String bookingNo = dataBooking.bookingNo ?? '';
+                      String vessel = dataBooking.shipName ?? '';
+                      String voyId = dataBooking.voyId ?? '';
+                      String depotName = dataBooking.depotName ?? '';
+                      String pol = dataBooking.portLoad ?? '';
+                      String pod = dataBooking.finalDest ?? '';
+                      String etd = dataBooking.fromDate ?? '';
+                      // var dataVoyage1 = data.listBookingVoys?[index];
+                      // String? nameVoyage = dataVoyage1?.vesselName;
+                      // String? dateVoyage = dataVoyage1?.etd;
+                      String _dt = DateFormat("dd/MM/yyyy\n    hh:mm")
+                          .format(DateTime.parse(etd));
+                      // String shippingTerm = dataBooking.shippingTerm ?? '';
+                      // String paymentTerm = dataBooking.paymentTerm ?? '';
+                      String commodity = dataBooking.commodity ?? '';
+                      String cont20 = dataBooking.cont20.toString();
+                      String cont40 = dataBooking.cont40.toString();
+                      String cont45 = dataBooking.cont45.toString();
+                      bool confirmed = dataBooking.confirmed!;
+                      switch (confirmed) {
+                        case true:
+                          color = green;
+                          status = 'Confirmed';
+                          style_booking = style_text_Table_small_bold_container;
+                          boxDecoration_booking = BoxDecoration(
+                                border: Border( 
+                                    bottom: BorderSide(
+                              color: normalColor,
+                              width: 1,
+                            )));
+                        default:
+                          color = grey;
+                          status = 'Waitting';
+                          style_booking = style_text_Table_small;
+                          boxDecoration_booking = BoxDecoration(border: Border());
+                      }
+                      return DataRow(cells: [
+                        DataCell(Container(
+                          width: 40,
+                          child: Text(
+                            (index + 1).toString(),
+                            style: style_text_Table_small,
+                          ),
+                        )),
+                        DataCell(
+                          InkWell(
+                            child: Container(
+                              decoration: boxDecoration_booking,
+                              child: Text(
+                                bookingNo,
+                                style: style_booking,
+                              ),
+                            ),
+                            onTap: () {
+                              switch (confirmed) {
+                        case true:
+                          cntr_no_tracking = data[index].bookingNo!;
+                              Get.toNamed(GetRoutes.Tracking);
+                        default:
+                          break;
+                      }
+                            },
+                          ),
+                        ),
+                        DataCell(
+                          Container(
+                            // width: 90,
                             child: Text(
-                              bookingNo,
-                              style: style_booking,
+                              vessel,
+                              style: style_text_Table_small,
                             ),
                           ),
-                          onTap: () {
-                            switch (confirmed) {
-                      case true:
-                        cntr_no_tracking = data[index].bookingNo!;
-                            Get.toNamed(GetRoutes.Tracking);;
-                      default:
-                        break;
-                    }
-                          },
                         ),
-                      ),
-                      DataCell(
-                        Container(
-                          // width: 90,
-                          child: Text(
-                            vessel,
+                        DataCell(
+                          Text(
+                            voyId,
                             style: style_text_Table_small,
                           ),
                         ),
-                      ),
-                      DataCell(
-                        Text(
-                          voyId,
-                          style: style_text_Table_small,
-                        ),
-                      ),
-                      DataCell(
-                        Text(
-                          depotName,
-                          style: style_text_Table_small,
-                        ),
-                      ),
-                      DataCell(
-                        Container(
-                          width: 120,
-                          child: Text(
-                            pol,
+                        DataCell(
+                          Text(
+                            depotName,
                             style: style_text_Table_small,
                           ),
                         ),
-                      ),
-                      DataCell(
-                        Container(
-                          width: 120,
-                          child: Text(
-                            pod,
-                            style: style_text_Table_small,
+                        DataCell(
+                          Container(
+                            width: 120,
+                            child: Text(
+                              pol,
+                              style: style_text_Table_small,
+                            ),
                           ),
                         ),
-                      ),
-                      DataCell(
-                        Container(
-                          width: 85,
-                          child: Text(
-                            _dt,
-                            style: style_text_Table_small,
+                        DataCell(
+                          Container(
+                            width: 120,
+                            child: Text(
+                              pod,
+                              style: style_text_Table_small,
+                            ),
                           ),
                         ),
-                      ),
-                      DataCell(
-                        Container(
-                          width: 80,
-                          child: Text(
-                            commodity,
-                            style: style_text_Table_small,
+                        DataCell(
+                          Container(
+                            width: 85,
+                            child: Text(
+                              _dt,
+                              style: style_text_Table_small,
+                            ),
                           ),
                         ),
-                      ),
-                      DataCell(
-                        Container(
-                          width: 65,
-                          child: Text(
-                            cont20 + '/' + cont40 + '/' + cont45,
-                            style: style_text_Table_small,
+                        DataCell(
+                          Container(
+                            width: 80,
+                            child: Text(
+                              commodity,
+                              style: style_text_Table_small,
+                            ),
                           ),
                         ),
-                      ),
-                      DataCell(
-                        ElevatedButton(
-                          onPressed: () {
-                            //update DetailBookingList
-                            detailBookingListController.updateDetailBookingList(
-                                payer: data[index].payer!,
-                                shipperName: data[index].shipperName!,
-                                shipper: data[index].shipper!,
-                                consignee: data[index].consignee!,
-                                notifyParty: data[index].notifyParty!,
-                                shipName: data[index].shipName!,
-                                voyId: data[index].voyId!,
-                                fromDate: data[index].fromDate!,
-                                toDate: data[index].toDate!,
-                                bookingNo: data[index].bookingNo!,
-                                bookingDate: data[index].bookingDate!,
-                                finalDest: data[index].finalDest!,
-                                coc: data[index].coc!,
-                                portLoad: data[index].portLoad!,
-                                confirmed: data[index].confirmed!,
-                                blNo: data[index].blNo!,
-                                shippingTerm: data[index].shippingTerm!,
-                                paymentTerm: data[index].paymentTerm!,
-                                depotName: data[index].depotName!,
-                                commodity: data[index].commodity!,
-                                cont20: data[index].cont20!,
-                                cont40: data[index].cont40!,
-                                cont45: data[index].cont45!);
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: color,
-                              padding: EdgeInsets.symmetric(horizontal: 5),
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5)))),
-                          child: Text(
-                            status!,
-                            style: style_text_button_detail_small,
-                            textAlign: TextAlign.center,
+                        DataCell(
+                          Container(
+                            width: 65,
+                            child: Text(
+                              cont20 + '/' + cont40 + '/' + cont45,
+                              style: style_text_Table_small,
+                            ),
                           ),
                         ),
-                      ),
-                    ]);
-                  })),
+                        DataCell(
+                          ElevatedButton(
+                            onPressed: () {
+                              //update DetailBookingList
+                              detailBookingListController.updateDetailBookingList(
+                                  payer: data[index].payer!,
+                                  shipperName: data[index].shipperName!,
+                                  shipper: data[index].shipper!,
+                                  consignee: data[index].consignee!,
+                                  notifyParty: data[index].notifyParty!,
+                                  shipName: data[index].shipName!,
+                                  voyId: data[index].voyId!,
+                                  fromDate: data[index].fromDate!,
+                                  toDate: data[index].toDate!,
+                                  bookingNo: data[index].bookingNo!,
+                                  bookingDate: data[index].bookingDate!,
+                                  finalDest: data[index].finalDest!,
+                                  coc: data[index].coc!,
+                                  portLoad: data[index].portLoad!,
+                                  confirmed: data[index].confirmed!,
+                                  blNo: data[index].blNo!,
+                                  shippingTerm: data[index].shippingTerm!,
+                                  paymentTerm: data[index].paymentTerm!,
+                                  depotName: data[index].depotName!,
+                                  commodity: data[index].commodity!,
+                                  cont20: data[index].cont20!,
+                                  cont40: data[index].cont40!,
+                                  cont45: data[index].cont45!);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: color,
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)))),
+                            child: Text(
+                              status!,
+                              style: style_text_button_detail_small,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ]);
+                    })),
+              ),
             ),
           );
         }

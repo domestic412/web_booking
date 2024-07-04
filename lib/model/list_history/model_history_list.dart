@@ -1,26 +1,27 @@
 import 'dart:convert';
+// import 'package:excel/excel.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class History {
-  int? id;
+  String? historyCheckContsId;
   String? cntrno;
   String? size;
   String? soLanKetHop;
   String? numKh;
-  String? numCp;
+  int? numCp;
   String? chatLuong;
   String? status;
   String? shipper;
   String? ketQua;
+  String? remark;
   String? updateTime;
   String? acc;
 
   History(
-      {this.id,
+      {this.historyCheckContsId,
       this.cntrno,
       this.size,
       this.soLanKetHop,
@@ -30,11 +31,12 @@ class History {
       this.status,
       this.shipper,
       this.ketQua,
+      this.remark,
       this.updateTime,
       this.acc});
 
   History.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    historyCheckContsId = json['historyCheckContsId'];
     cntrno = json['cntrno'];
     size = json['size'];
     soLanKetHop = json['soLanKetHop'];
@@ -44,13 +46,14 @@ class History {
     status = json['status'];
     shipper = json['shipper'];
     ketQua = json['ketQua'];
+    remark = json['remark'];
     updateTime = json['updateTime'];
     acc = json['acc'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['historyCheckContsId'] = this.historyCheckContsId;
     data['cntrno'] = this.cntrno;
     data['size'] = this.size;
     data['soLanKetHop'] = this.soLanKetHop;
@@ -60,6 +63,7 @@ class History {
     data['status'] = this.status;
     data['shipper'] = this.shipper;
     data['ketQua'] = this.ketQua;
+    data['remark'] = this.remark;
     data['updateTime'] = this.updateTime;
     data['acc'] = this.acc;
     return data;
@@ -74,14 +78,15 @@ class History {
       switch (response.statusCode) {
         case 200:
           var body = response.body;
+          // print(body);
           print('Data List History');
           List dataHistoryList = json.decode(body);
           return dataHistoryList.map((data) => History.fromJson(data)).toList();
         case 401:
           Get.toNamed(GetRoutes.SignIn);
-          throw Exception(response.reasonPhrase);
+          throw Exception(response.reasonPhrase! + ' Data History');
         default:
-          throw Exception(response.reasonPhrase);
+          throw Exception(response.reasonPhrase! + ' Data History');
       }
     } on Exception catch (e) {
       throw Exception('Error fetch History - $e');

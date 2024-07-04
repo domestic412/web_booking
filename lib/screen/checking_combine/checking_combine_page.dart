@@ -353,10 +353,13 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               ),
             )),
             DataCell(Center(
-              child: Text(
-                snapshot.data![index].soLanKetHop.toString(),
-                style: style_text_table_small_tracking,
-                textAlign: TextAlign.center,
+              child: Container(
+                width: 200,
+                child: Text(
+                  snapshot.data![index].soLanKetHop.toString(),
+                  style: style_text_table_small_tracking,
+                  textAlign: TextAlign.center,
+                ),
               ),
             )),
             DataCell(Center(
@@ -384,41 +387,44 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               child: Container(
                 width: 150,
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
-                child: ElevatedButton(
-                  onPressed: () {
-                    String cntrno = snapshot.data![index].cntrno ?? '';
-                    String sizeType = snapshot.data![index].sizeType ?? '';
-                    String shipper = snapshot.data![index].shipper ?? '';
-                    String remark = snapshot.data![index].remark ?? '';
-                    String ghiChuTinhTrang =
-                        snapshot.data![index].ghiChuTinhTrang ?? '';
-                    String luuYSuDung = snapshot.data![index].luuYSuDung ?? '';
-                    String soLanKetHop =
-                        snapshot.data![index].soLanKetHop ?? '';
-                    String ketQua = snapshot.data![index].ketQua ?? '';
-                    String approval = snapshot.data![index].approval ?? '';
-                    String updateTime = snapshot.data![index].updateTime ?? '';
-                    checkContainerController.updateCheckContainerController(
-                        cntrno: cntrno.obs,
-                        sizeType: sizeType.obs,
-                        soLanKetHop: soLanKetHop.obs,
-                        ghiChuTinhTrang: ghiChuTinhTrang.obs,
-                        luuYSuDung: luuYSuDung.obs,
-                        ketQua: ketQua.obs,
-                        approval: approval.obs,
-                        shipper: shipper.obs,
-                        remark: remark.obs,
-                        updateTime: updateTime.obs);
-                    PopUpCheckContainer(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: _color,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)))),
-                  child: Text(
-                    snapshot.data![index].approval.toString(),
-                    style: text_style_status,
-                    textAlign: TextAlign.center,
+                child: Tooltip(
+                  message: snapshot.data![index].remark,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      String cntrno = snapshot.data![index].cntrno ?? '';
+                      String sizeType = snapshot.data![index].sizeType ?? '';
+                      String shipper = snapshot.data![index].shipper ?? '';
+                      String remark = snapshot.data![index].remark ?? '';
+                      String ghiChuTinhTrang =
+                          snapshot.data![index].ghiChuTinhTrang ?? '';
+                      String luuYSuDung = snapshot.data![index].luuYSuDung ?? '';
+                      String soLanKetHop =
+                          snapshot.data![index].soLanKetHop ?? '';
+                      String ketQua = snapshot.data![index].ketQua ?? '';
+                      String approval = snapshot.data![index].approval ?? '';
+                      String updateTime = snapshot.data![index].updateTime ?? '';
+                      checkContainerController.updateCheckContainerController(
+                          cntrno: cntrno.obs,
+                          sizeType: sizeType.obs,
+                          soLanKetHop: soLanKetHop.obs,
+                          ghiChuTinhTrang: ghiChuTinhTrang.obs,
+                          luuYSuDung: luuYSuDung.obs,
+                          ketQua: ketQua.obs,
+                          approval: approval.obs,
+                          shipper: shipper.obs,
+                          remark: remark.obs,
+                          updateTime: updateTime.obs);
+                      PopUpCheckContainer(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: _color,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)))),
+                    child: Text(
+                      snapshot.data![index].approval.toString(),
+                      style: text_style_status,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),

@@ -126,6 +126,7 @@ Map<String, String> vi = {
   "note for use: item is packaged": "Lưu ý sử dụng: mặt hàng được đóng",
   "number of times (combine)": "Số lần kết hợp trong chính sách (kết hợp)",
   "requests more combine": "Xin kết hợp thêm vòng",
+  "title quote list": "Quote List",
   "title quality list": "Danh sách chất lượng",
   "title create quality container": "Tạo mới chất lượng Container",
   "title adjust quality container": "Chỉnh sửa chất lượng Container",

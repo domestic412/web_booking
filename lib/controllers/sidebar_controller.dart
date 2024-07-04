@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:web_booking/screen/approval_list/approval_list_page.dart';
 import 'package:web_booking/screen/approval_list/detail_approval/detail_approval_page.dart';
-import 'package:web_booking/screen/booking_list/booking_list_page.dart';
-import 'package:web_booking/screen/booking_list/detail_booking/detail_booking_request_page.dart';
 import 'package:web_booking/screen/checking_combine/checking_combine_page.dart';
 import 'package:web_booking/screen/container_stock/container_stock_page.dart';
 import 'package:web_booking/screen/container_stock/import_file_page.dart';
@@ -10,17 +8,12 @@ import 'package:web_booking/screen/dashboard/dashboard_page.dart';
 import 'package:web_booking/screen/history_list/history_list_page.dart';
 import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality_page.dart';
 import 'package:web_booking/screen/quality_list/quality_list_page.dart';
-import 'package:web_booking/screen/release_booking_list/detail_release_booking/detail_release_booking_request_page.dart';
-import 'package:web_booking/screen/release_booking_list/release_booking_list_page.dart';
+import 'package:web_booking/screen/quote_list/detail_quote/detail_quote_page.dart';
+import 'package:web_booking/screen/quote_list/quote_list_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_request_page.dart';
 import 'package:web_booking/screen/request_list/request_list_page.dart';
-import 'package:web_booking/screen/special_policy_list/CUD_special_policy/CUD_special_policy.dart';
-import 'package:web_booking/screen/special_policy_list/special_policy_list_page.dart';
 import 'package:web_booking/screen/tracking1/tracking_page1.dart';
-import 'package:web_booking/screen/user_list/CUD_user/CUD_user_page.dart';
-import 'package:web_booking/screen/user_list/CUD_user/change_pw/change_pw.page.dart';
-import 'package:web_booking/screen/user_list/user_list_page.dart';
 
 final SideBarController controller = SideBarController();
 const service = 'service';
@@ -33,6 +26,8 @@ const booking = 'booking';
 // const detailReleaseBookingList = 'detailReleaseBookingList';
 const approvalList = 'approvalList';
 const detailApproval = 'detailApproval';
+const quoteList = 'quoteList';
+const quoteDetails = 'quoteDetails';
 // const bookingRequestList = 'bookingRequestList';
 // const detailBookingRequest = 'detailBookingRequest';
 const requestList = 'requestList';
@@ -70,6 +65,10 @@ class SideBarController extends GetxController {
       case detailApproval:
         // Get.toNamed(GetRoutes.DetailApproval);
         return DetailApprovalPage();
+      case quoteList:
+      return QuoteListPage();
+      case quoteDetails:
+      return QuoteDetailsPage();
       // case bookingRequestList:
       //   // Get.toNamed(GetRoutes.RequestList);
       //   return BookingListPage();

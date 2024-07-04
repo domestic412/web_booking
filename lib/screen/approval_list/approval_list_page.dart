@@ -5,6 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_approval/model_approval_list.dart';
 import 'package:web_booking/screen/approval_list/data/data_list_approval.dart';
+import 'package:web_booking/screen/approval_list/widget/button_download.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
@@ -61,13 +62,15 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  width: deviceWidth(context),
-                  alignment: Alignment.center,
-                  child: Text(
-                    "approval list".tr,
-                    style: style_title_page,
-                  ),
+                Stack(
+                  children: [
+                    DownloadButtonApproval(),
+                  Center(
+                    child: Text(
+                      "approval list".tr,
+                      style: style_title_page,
+                    ),
+                  ),]
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 16),
