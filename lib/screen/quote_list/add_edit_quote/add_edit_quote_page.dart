@@ -6,6 +6,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 
+import 'widget/add_info_cont_quote.dart';
 import 'widget/port_quote.dart';
 
 // import 'package:easy_localization/easy_localization.dart';
@@ -48,7 +49,7 @@ class _AEQuotePageState extends State<AEQuotePage> {
                   ),
                 ]),
                 Container(
-                    margin: EdgeInsets.symmetric(vertical: 30),
+                    margin: EdgeInsets.only(top: 30, bottom: 10),
                     padding: EdgeInsets.all(17),
                     decoration: BoxDecoration(
                       color: white,
@@ -63,9 +64,19 @@ class _AEQuotePageState extends State<AEQuotePage> {
                     ),
                     child: PortQuote()),
                 Container(
-                  padding: EdgeInsets.all(10),
-                  color: red,
-                )
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    decoration: BoxDecoration(
+                      color: white,
+                      border: Border.all(color: blue.withOpacity(.4), width: .5),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 6),
+                          color: blue.withOpacity(.1),
+                          blurRadius: 12)
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: InfoContQuote()),
               ]),
         ),
       ),

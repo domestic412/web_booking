@@ -64,7 +64,7 @@ class _PortQuoteState extends State<PortQuote> {
                       DropdownMenu<PortQuotes>(
                         width: 150,
                         menuHeight: 500,
-                        controller: quoteController.port_select.value,
+                        // controller: quoteController.port_select.value,
                         enableFilter: true,
                         enableSearch: true,
                         // label: Text('Port/Dep'.tr),
@@ -109,7 +109,7 @@ class _PortQuoteState extends State<PortQuote> {
                       DropdownMenu<CurrencyQuotes>(
                         width: 150,
                         menuHeight: 500,
-                        controller: quoteController.currency_select.value,
+                        // controller: quoteController.currency_select.value,
                         enableFilter: true,
                         enableSearch: true,
                         // label: Text('Currency'.tr),
