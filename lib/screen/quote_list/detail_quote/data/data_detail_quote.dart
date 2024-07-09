@@ -138,7 +138,7 @@ class DataTableQuoteDetails extends DataTableSource {
         rowData.approveCode!,
         style: style_text_Table_small,
       )),
-      DataCell(ElevatedButton(onPressed: (){}, child: Text('Edit'))),
+      // DataCell(ElevatedButton(onPressed: (){}, child: Text('Edit'))),
     ]);
   }
 

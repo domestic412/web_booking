@@ -50,7 +50,11 @@ class DataTableQuote extends DataTableSource {
         : _dt2 = '';
     // rowData.ketQua == Accept ? _color = green : _color = red;
 
-    return DataRow(cells: [
+    return DataRow(
+      onSelectChanged: (value) {
+        controller.selectWidget.value = quoteDetails;
+      },
+      cells: [
       DataCell(SizedBox(
         width: 40,
         child: Center(
@@ -96,9 +100,9 @@ class DataTableQuote extends DataTableSource {
         _dt2!,
         style: style_text_Table_small,
       )),
-      DataCell(ElevatedButton(onPressed: (){
-        controller.selectWidget.value = quoteDetails;
-      }, child: Text('Details'))),
+      // DataCell(ElevatedButton(onPressed: (){
+      //   controller.selectWidget.value = quoteDetails;
+      // }, child: Text('Details'))),
     ]);
   }
 

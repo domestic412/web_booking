@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:web_booking/constants/global.dart';
+import 'package:http/http.dart' as http;
+
 class InitEQCQuote {
   List<ChargeTypeQuotes>? chargeTypeQuotes;
   List<ComponentQuotes>? componentQuotes;
@@ -89,6 +94,27 @@ class InitEQCQuote {
           this.currencyQuotes!.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  Future<InitEQCQuote> fetchInitQuote() async {
+    try {
+      var url = '$SERVER/EQCQuote/InitEQCQuote';
+      final response = await http.post(Uri.parse(url),
+      headers: {
+        "Content-Type": "application/json",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          print('Data init EQC Quote');
+          var dataInitQuote = json.decode(body);
+          return InitEQCQuote.fromJson(dataInitQuote);
+        default:
+          throw Exception('Error: Init EQC Quote ${response.reasonPhrase}');
+      }
+    } on Exception catch(e) {
+      throw Exception('Error: $e Init EQC Quote');
+    }
   }
 }
 

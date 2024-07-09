@@ -8,6 +8,7 @@ import 'package:web_booking/screen/dashboard/dashboard_page.dart';
 import 'package:web_booking/screen/history_list/history_list_page.dart';
 import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality_page.dart';
 import 'package:web_booking/screen/quality_list/quality_list_page.dart';
+import 'package:web_booking/screen/quote_list/add_edit_quote/add_edit_quote_page.dart';
 import 'package:web_booking/screen/quote_list/detail_quote/detail_quote_page.dart';
 import 'package:web_booking/screen/quote_list/quote_list_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
@@ -28,6 +29,7 @@ const approvalList = 'approvalList';
 const detailApproval = 'detailApproval';
 const quoteList = 'quoteList';
 const quoteDetails = 'quoteDetails';
+const quoteAE = 'quoteAddEdit';
 // const bookingRequestList = 'bookingRequestList';
 // const detailBookingRequest = 'detailBookingRequest';
 const requestList = 'requestList';
@@ -69,6 +71,8 @@ class SideBarController extends GetxController {
       return QuoteListPage();
       case quoteDetails:
       return QuoteDetailsPage();
+      case quoteAE:
+      return AEQuotePage();
       // case bookingRequestList:
       //   // Get.toNamed(GetRoutes.RequestList);
       //   return BookingListPage();

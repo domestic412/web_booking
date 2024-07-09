@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/model_quote_list.dart';
 
 import '../../controllers/sidebar_controller.dart';
@@ -61,6 +62,8 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     ElevatedButton(
           onPressed: () {
             // controller.selectWidget.value = quoteList;
+            InitEQCQuote().fetchInitQuote();
+            controller.selectWidget.value = quoteAE;
           },
           style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll<Color>(Colors.orange),
@@ -136,6 +139,7 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     // sortAscending: true,
                     dataRowMaxHeight: 50,
                     columnSpacing: 16,
+                    rowsPerPage: 5,
                     columns: [
                       DataColumn(
                         label: SizedBox(
@@ -199,12 +203,12 @@ class _QuoteListPageState extends State<QuoteListPage> {
                           style: style_text_Table_small_bold,
                         ),
                       ),
-                      DataColumn(
-                        label: Text(
-                          'Details',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
+                      // DataColumn(
+                      //   label: Text(
+                      //     'Details',
+                      //     style: style_text_Table_small_bold,
+                      //   ),
+                      // ),
                     ],
                     source: _list_filter,
                   ),

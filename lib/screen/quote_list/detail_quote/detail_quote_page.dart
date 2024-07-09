@@ -58,16 +58,31 @@ class _QuoteDetailsPageState extends State<QuoteDetailsPage> {
                 Stack(
                   children: [
                     // DownloadButtonHistory(),
-                    ElevatedButton(
+                    Row(
+                      children: [
+                        ElevatedButton(
           onPressed: () {
             controller.selectWidget.value = quoteList;
           },
           style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll<Color>(grey),
-                          minimumSize: MaterialStateProperty.all(Size(100, 40))
-                        ),
+                              backgroundColor: MaterialStatePropertyAll<Color>(grey),
+                              minimumSize: MaterialStateProperty.all(Size(100, 40))
+                            ),
           child: Text('Back'),
         ),
+        Expanded(child: SizedBox()),
+        ElevatedButton(
+          onPressed: () {
+            // controller.selectWidget.value = quoteList;
+          },
+          style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll<Color>(haian),
+                          minimumSize: MaterialStateProperty.all(Size(100, 40))
+                        ),
+          child: Text('Edit'),
+        ),
+                      ],
+                    ),
                   Center(
                     child: Text(
                       "title quote details".tr,
@@ -262,12 +277,12 @@ class _QuoteDetailsPageState extends State<QuoteDetailsPage> {
                           style: style_text_Table_small_bold,
                         ),
                       ),
-                      DataColumn(
-                        label: Text(
-                          '',
-                          style: style_text_Table_small_bold,
-                        ),
-                      ),
+                      // DataColumn(
+                      //   label: Text(
+                      //     '',
+                      //     style: style_text_Table_small_bold,
+                      //   ),
+                      // ),
                     ],
                     source: _list_filter,
                   ),
