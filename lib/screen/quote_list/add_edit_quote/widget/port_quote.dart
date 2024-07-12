@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
@@ -12,7 +11,7 @@ class PortQuote extends StatefulWidget {
 }
 
 class _PortQuoteState extends State<PortQuote> {
-  PortQuotes? selectPort;
+  // PortQuotes? selectPort;
   CurrencyQuotes? selectCurrency;
 
   @override
@@ -22,23 +21,23 @@ class _PortQuoteState extends State<PortQuote> {
 
   FutureBuilder<InitEQCQuote> buildPortQuote() {
     return FutureBuilder<InitEQCQuote>(
-        future: InitEQCQuote().fetchInitQuote(),
+        future: quoteController.initEQC,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            List listports = snapshot.data!.portQuotes!;
-            final List<DropdownMenuEntry<PortQuotes>> portEntries =
-                <DropdownMenuEntry<PortQuotes>>[];
-            for (final port in listports) {
-              portEntries.add(
-                DropdownMenuEntry<PortQuotes>(
-                  value: port,
-                  label: port.code,
-                ),
-              );
-            }
+            // List listports = snapshot.data!.portQuotes!;
+            // final List<DropdownMenuEntry<PortQuotes>> portEntries =
+            //     <DropdownMenuEntry<PortQuotes>>[];
+            // for (final port in listports) {
+            //   portEntries.add(
+            //     DropdownMenuEntry<PortQuotes>(
+            //       value: port,
+            //       label: port.code,
+            //     ),
+            //   );
+            // }
             List listcurrency = snapshot.data!.currencyQuotes!;
             final List<DropdownMenuEntry<CurrencyQuotes>> currencyEntries =
                 <DropdownMenuEntry<CurrencyQuotes>>[];
@@ -61,22 +60,35 @@ class _PortQuoteState extends State<PortQuote> {
                         margin: EdgeInsets.only(right: 10),
                         child: Text('Port/Dep'),
                       ),
-                      DropdownMenu<PortQuotes>(
+                      // DropdownMenu<PortQuotes>(
+                      //   width: 150,
+                      //   menuHeight: 500,
+                      //   // controller: quoteController.port_select.value,
+                      //   enableFilter: true,
+                      //   enableSearch: true,
+                      //   // label: Text('Port/Dep'.tr),
+                      //   dropdownMenuEntries: portEntries,
+                      //   onSelected: (PortQuotes? port) {
+                      //     // setState(() {
+                      //     selectPort = port;
+                      //     quoteController.portDepotId.value =
+                      //         selectPort?.portDepotId ?? '';
+                      //     // });
+                      //   },
+                      // ),
+                      Container(
                         width: 150,
-                        menuHeight: 500,
-                        // controller: quoteController.port_select.value,
-                        enableFilter: true,
-                        enableSearch: true,
-                        // label: Text('Port/Dep'.tr),
-                        dropdownMenuEntries: portEntries,
-                        onSelected: (PortQuotes? port) {
-                          // setState(() {
-                          selectPort = port;
-                          quoteController.portDepotId.value =
-                              selectPort?.portDepotId ?? '';
-                          // });
-                        },
-                      ),
+                        padding: EdgeInsets.symmetric(vertical: 13, horizontal: 13),
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          border: Border.all(
+                            width: 0.5,
+                            color: Colors.black87
+                          ),
+                          borderRadius: BorderRadius.circular(5)
+                        ),
+                        child: Text('VNVIC', style: TextStyle(color: Colors.black54),)
+                      )
                     ],
                   ),
                 ),

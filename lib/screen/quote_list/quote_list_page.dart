@@ -5,6 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/model_quote_list.dart';
+import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
 import '../../controllers/sidebar_controller.dart';
 import 'data/data_quote_list.dart';
@@ -62,7 +63,8 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     ElevatedButton(
           onPressed: () {
             // controller.selectWidget.value = quoteList;
-            InitEQCQuote().fetchInitQuote();
+            // quoteController.initEQC.value = InitEQCQuote().fetchInitQuote(eqcQuoteId_new);
+            quoteController.initEQC = InitEQCQuote().fetchInitQuote(eqcQuoteId_new);
             controller.selectWidget.value = quoteAE;
           },
           style: ButtonStyle(

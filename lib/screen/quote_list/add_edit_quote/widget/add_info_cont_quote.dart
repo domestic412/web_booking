@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
+import 'package:web_booking/model/eqc_quote/model_input_quote_detail.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 import 'package:intl/intl.dart';
 
@@ -15,7 +17,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
   ComponentQuotes? selectComponent;
   CategoryQuotes? selectCategory;
   ErrorQuotes? selectError;
-  PayerQuotes? selectPayer;
+  // PayerQuotes? selectPayer;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
 
   FutureBuilder<InitEQCQuote> buildInfoContQuote() {
     return FutureBuilder<InitEQCQuote>(
-        future: InitEQCQuote().fetchInitQuote(),
+        future: quoteController.initEQC,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -77,17 +79,17 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                 );
               }
             }
-            List listPayer = snapshot.data!.payerQuotes!;
-            final List<DropdownMenuEntry<PayerQuotes>> payerEntries =
-                <DropdownMenuEntry<PayerQuotes>>[];
-            for (final payer in listPayer) {
-              payerEntries.add(
-                DropdownMenuEntry<PayerQuotes>(
-                  value: payer,
-                  label: payer.payer,
-                ),
-              );
-            }
+            // List listPayer = snapshot.data!.payerQuotes!;
+            // final List<DropdownMenuEntry<PayerQuotes>> payerEntries =
+            //     <DropdownMenuEntry<PayerQuotes>>[];
+            // for (final payer in listPayer) {
+            //   payerEntries.add(
+            //     DropdownMenuEntry<PayerQuotes>(
+            //       value: payer,
+            //       label: payer.payer,
+            //     ),
+            //   );
+            // }
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,6 +121,8 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                               selectCharge = charge;
                               quoteController.chargeTypeId.value =
                                   selectCharge?.chargeTypeId ?? '';
+                              quoteController.chargeName.value =
+                                  selectCharge?.chargeType ?? '';
                             },
                           ),
                         ),
@@ -144,15 +148,13 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                                 firstDate: DateTime(2024),
                                 lastDate: DateTime(2123));
                             if (pickeddate != null) {
-                              // setState(() {
                                 quoteController.gateInDate.value.text =
                                     DateFormat('dd/MM/yyyy')
                                         .format(pickeddate);
-                                // routeController.dateSelect.value =
-                                //     DateFormat('MM/dd/yyyy')
-                                //         .format(pickeddate);
-                                // print(dateSelect);
-                              // });
+                                quoteController.gateInDate_value.value =
+                                    DateFormat('MM/dd/yyyy')
+                                        .format(pickeddate);
+                                        print(quoteController.gateInDate_value.value);
                             }
                           },
                         ),)),
@@ -168,6 +170,8 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                             selectComponent = component;
                             quoteController.componentId.value =
                                 selectComponent?.componentId ?? '';
+                            quoteController.componentName.value =
+                                selectComponent?.component ?? '';
                           },
                         ),
                       )),
@@ -191,6 +195,8 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                               selectError = error;
                               quoteController.errorId.value =
                                   selectError?.errorId ?? '';
+                              quoteController.errorName.value =
+                                  selectError?.error ?? '';
                             },
                           ),
                         ),
@@ -222,7 +228,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                     DataColumn(label: Text('Labor Cost')),
                     DataColumn(label: Text('Mr. Cost')),
                     DataColumn(label: Text('Total Cost')),
-                    DataColumn(label: Text('Payer')),
+                    // DataColumn(label: Text('Payer')),
                   ], rows: <DataRow>[
                     DataRow(cells: [
                       DataCell(Container(
@@ -269,6 +275,8 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                             selectCategory = category;
                             quoteController.categoryId.value =
                                 selectCategory?.categoryId ?? '';
+                            quoteController.categoryName.value =
+                                selectCategory?.category ?? '';
                           },
                         ),
                       )),
@@ -296,21 +304,23 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                               isDense: true, border: OutlineInputBorder()),
                         ),
                       )),
-                      DataCell(Container(
-                        width: 200,
-                        child: DropdownMenu<PayerQuotes>(
-                          width: 200,
-                          menuHeight: 500,
-                          enableFilter: true,
-                          enableSearch: true,
-                          dropdownMenuEntries: payerEntries,
-                          onSelected: (PayerQuotes? payer) {
-                            selectPayer = payer;
-                            quoteController.payerId.value =
-                                selectPayer?.payerId ?? 0;
-                          },
-                        ),
-                      )),
+                      // DataCell(Container(
+                      //   width: 200,
+                      //   child: DropdownMenu<PayerQuotes>(
+                      //     width: 200,
+                      //     menuHeight: 500,
+                      //     enableFilter: true,
+                      //     enableSearch: true,
+                      //     dropdownMenuEntries: payerEntries,
+                      //     onSelected: (PayerQuotes? payer) {
+                      //       selectPayer = payer;
+                      //       quoteController.payerId.value =
+                      //           selectPayer?.payerId ?? 0;
+                      //       quoteController.payerName.value =
+                      //           selectPayer?.payer ?? '';
+                      //     },
+                      //   ),
+                      // )),
                     ]),
                   ]),
                 ),
@@ -319,6 +329,45 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                   children: [
                     ElevatedButton(
                     onPressed: () {
+                      InputQuoteDetail _listInputQuoteDetail = InputQuoteDetail(
+                        chargeTypeId: quoteController.chargeTypeId.value,
+                        componentId: quoteController.componentId.value,
+                        categoryId: quoteController.categoryId.value,
+                        errorId: quoteController.errorId.value,
+                        container: quoteController.container.value.text,
+                        inGateDate: quoteController.gateInDate_value.value,
+                        damageDetail: quoteController.detailDamage.value.text,
+                        quantity: int.parse(quoteController.quantity.value.text),
+                        dimension: quoteController.dimension.value.text,
+                        length: int.parse(quoteController.length.value.text),
+                        width: int.parse(quoteController.width.value.text),
+                        location: quoteController.location.value.text,
+                        laborCost: int.parse(quoteController.laborCost.value.text),
+                        mrCost: int.parse(quoteController.mrCost.value.text),
+                        totalCost: int.parse(quoteController.totalCost.value.text),
+                      );
+                      quoteController.listInputQuoteDetail.add(_listInputQuoteDetail);
+                      quoteController.countRow.value = quoteController.countRow.value + 1;
+
+                      InputQuoteDetail _listInputQuoteDetail_show = InputQuoteDetail(
+                        chargeTypeId: quoteController.chargeName.value,
+                        componentId: quoteController.componentName.value,
+                        categoryId: quoteController.categoryName.value,
+                        errorId: quoteController.errorName.value,
+                        container: quoteController.container.value.text,
+                        inGateDate: quoteController.gateInDate_value.value,
+                        damageDetail: quoteController.detailDamage.value.text,
+                        quantity: int.parse(quoteController.quantity.value.text),
+                        dimension: quoteController.dimension.value.text,
+                        length: int.parse(quoteController.length.value.text),
+                        width: int.parse(quoteController.width.value.text),
+                        location: quoteController.location.value.text,
+                        laborCost: int.parse(quoteController.laborCost.value.text),
+                        mrCost: int.parse(quoteController.mrCost.value.text),
+                        totalCost: int.parse(quoteController.totalCost.value.text),
+                      );
+                      quoteController.listInputQuoteDetail_show.add(_listInputQuoteDetail_show);
+                      print(quoteController.listInputQuoteDetail);
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll<Color>(Colors.orange),

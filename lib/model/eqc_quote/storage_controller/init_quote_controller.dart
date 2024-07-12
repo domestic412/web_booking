@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
+import 'package:web_booking/model/eqc_quote/model_input_quote_detail.dart';
 
 final QuoteController quoteController = Get.put(QuoteController());
 
 class QuoteController extends GetxController {
+
+Future<InitEQCQuote>? initEQC;
+
+var eqcQuoteId = ''.obs;
+
 // var port_select = TextEditingController().obs;
-var portDepotId = ''.obs;
+var portDepotId = '84B9B9A3-99CE-4865-81B7-74070F075EAB'.obs;
 
 var quoteNo = TextEditingController().obs;
 
@@ -14,16 +21,21 @@ var currency = ''.obs;
 
 var exRate = TextEditingController().obs;
 
+var chargeName = ''.obs;
 var chargeTypeId = ''.obs;
 
 var container = TextEditingController().obs;
 
 var gateInDate = TextEditingController().obs;
 
+var gateInDate_value = ''.obs;
+
+var componentName = ''.obs;
 var componentId = ''.obs;
 
 var detailDamage = TextEditingController().obs;
 
+var errorName = ''.obs;
 var errorId = ''.obs;
 
 var quantity = TextEditingController().obs;
@@ -36,6 +48,7 @@ var width = TextEditingController().obs;
 
 var location = TextEditingController().obs;
 
+var categoryName = ''.obs;
 var categoryId = ''.obs;
 
 var laborCost = TextEditingController().obs;
@@ -44,5 +57,10 @@ var mrCost = TextEditingController().obs;
 
 var totalCost = TextEditingController().obs;
 
+var payerName = ''.obs;
 var payerId = 0.obs;
+
+RxList<InputQuoteDetail> listInputQuoteDetail = <InputQuoteDetail>[].obs;
+RxList<InputQuoteDetail> listInputQuoteDetail_show = <InputQuoteDetail>[].obs;
+var countRow = 0.obs;
 }

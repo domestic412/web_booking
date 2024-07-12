@@ -16,9 +16,7 @@ final formatCurrency = NumberFormat('#,##0');
 var box = GetStorage();
 String login = 'signIn';
 String is_staff_signin = 'IsStaff';
-// String authorize_signin = 'authorize';
 String maNV_signin = 'maNV';
-// String tenNV_signin = 'tenNV';
 String author_signin = 'author';
 String code_signin = 'code';
 
@@ -48,20 +46,6 @@ String ref_booking = 'ref';
 
 String savecntr = '';
 
-// Booking page
-// String? nameVoyage;
-// String? dateVoyage;
-// String? sizeVoyage;
-// String? idVoyage;
-// String? vesselName;
-// String? polVoyage;
-// List dataPorts = [];
-// Ports? selectPort1;
-// Ports? selectPort2;
-// String? idPort1;
-// String? namePort1;
-// String? idPort2;
-// String? namePort2;
 Future<Voyage>? fetchVoyage;
 TextEditingController soluongcntr = TextEditingController();
 
@@ -75,15 +59,6 @@ String? sizeContDepo;
 
 List<Depots> listPickDepo = <Depots>[];
 
-// Port select in Booking page and Schedule
-// String? dateSelect;
-// String port1 = '';
-// String port2 = '';
-// TextEditingController port_select1 = TextEditingController();
-// TextEditingController port_select2 = TextEditingController();
-// TextEditingController date_select = TextEditingController();
-// final List<DropdownMenuEntry<Ports>> portEntries = <DropdownMenuEntry<Ports>>[];
-
 // Tracking page
 Future<ContainerTracking>? containerTracking;
 List? list_filter; //Need fix here
@@ -94,37 +69,22 @@ Color? color_time;
 
 // Quality
 String? title_CUD_quality;
-// int? id_quality;
-// String? maChatLuong_quality;
-// String? tenChatLuong_quality;
-// String? ghiChu_quality;
 
 // Policy
 String? title_CUD_special_policy;
-// int? id_policy;
-// String? code_policy;
-// String? shipper_policy;
-// String? times_policy;
 
 // User
 String? title_user;
-// int? id_user;
-// String? maNV_user;
-// String? tenNv_user;
-// String? matKhau_user;
-// String? dienthoai_user;
-// String? email_user;
-// String? author_user;
 
 // CUD Quality-Policy-User
 String? text_button_CUD;
 Color? color_button_CUD;
 int? CUD;
 String? tittle_change_pw;
-// List dataCode = [];
-// String? codeValue;
 
 String? cntr_no;
+
+String eqcQuoteId_new = '00000000-0000-0000-0000-000000000000';
 
 // Choose language
 bool bool_lang = false;

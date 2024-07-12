@@ -8,6 +8,7 @@ import 'package:web_booking/controllers/sidebar_controller.dart';
 
 import 'widget/add_info_cont_quote.dart';
 import 'widget/port_quote.dart';
+import 'widget/table_input_quote.dart';
 
 // import 'package:easy_localization/easy_localization.dart';
 
@@ -77,6 +78,20 @@ class _AEQuotePageState extends State<AEQuotePage> {
                     borderRadius: BorderRadius.circular(8),
                     ),
                     child: InfoContQuote()),
+                Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    decoration: BoxDecoration(
+                      color: white,
+                      border: Border.all(color: blue.withOpacity(.4), width: .5),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 6),
+                          color: blue.withOpacity(.1),
+                          blurRadius: 12)
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: TableInputQuote()),
               ]),
         ),
       ),
