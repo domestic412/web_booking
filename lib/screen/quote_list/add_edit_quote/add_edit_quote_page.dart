@@ -92,6 +92,16 @@ class _AEQuotePageState extends State<AEQuotePage> {
                     borderRadius: BorderRadius.circular(8),
                     ),
                     child: TableInputQuote()),
+                ElevatedButton(
+                    onPressed: () {
+                      // controller.selectWidget.value = quoteList;
+                      
+                    },
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll<Color>(haian),
+                        minimumSize: MaterialStateProperty.all(Size(100, 40))),
+                    child: Text('Send Quote'),
+                  ),
               ]),
         ),
       ),

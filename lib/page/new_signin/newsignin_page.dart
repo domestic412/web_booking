@@ -180,7 +180,7 @@ class _NewSignInPageState extends State<NewSignInPage> {
                       // case booking:
                       //   Get.toNamed(GetRoutes.BookingRequest);
                       //   break;
-                      case service:
+                      case checkingCombine:
                         Get.toNamed(GetRoutes.Home);
                         break;
                       default:
