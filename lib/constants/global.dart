@@ -17,4 +17,7 @@ const URL_GET_BOOKING_CONFIRM = '$SERVER/NewBooking/GetBookingNoConfirm';
 const URL_LOAD_BOOKING_DETAIL = '$SERVER/NewBooking/LoadBookingDetail';
 const URL_CONFIRM_BOOKING = '$SERVER/NewBooking/ConfirmBooking';
 
+const URL_CREATE_QUOTE_DETAIL = '$SERVER/EQCQuote/InputQuoteDetail';
+const URL_CREATE_QUOTE = '$SERVER/EQCQuote/InputQuote';
+
 String? URL_QUALITY;

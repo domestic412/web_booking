@@ -185,19 +185,19 @@ class _TableInputQuoteState extends State<TableInputQuote> {
                         ? InkWell(
                             onTap: () {
                               //remove infoContainer in listInfoContainer
-                              createBookingController.listInfoContainer
+                              quoteController.listInputQuoteDetail_show
+                                  .removeAt(i);
+                              quoteController.listInputQuoteDetail
                                   .removeAt(i);
                               // subtract countRowContianer
-                              createBookingController.countRowContainer.value =
-                                  createBookingController
-                                          .countRowContainer.value -
-                                      1;
+                              quoteController.countRow.value =
+                                  quoteController.countRow.value - 1;
                               // if countRowContianer = 0 then Error Send Eequest
-                              createBookingController.countRowContainer.value ==
-                                      0
-                                  ? createBookingController
-                                      .boolErrorBookingRequest.value = true
-                                  : null;
+                              // quoteController.countRow.value ==
+                              //         0
+                              //     ? createBookingController
+                              //         .boolErrorBookingRequest.value = true
+                              //     : null;
                             },
                             child: Icon(Icons.delete),
                           )

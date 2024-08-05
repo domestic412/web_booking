@@ -32,40 +32,65 @@ class _InfoContQuoteState extends State<InfoContQuote> {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            List listCharge = snapshot.data!.chargeTypeQuotes!;
+
+            List<ChargeTypeQuotes> listCharge = snapshot.data!.chargeTypeQuotes!;
             final List<DropdownMenuEntry<ChargeTypeQuotes>> chargeEntries =
                 <DropdownMenuEntry<ChargeTypeQuotes>>[];
             for (final charge in listCharge) {
               chargeEntries.add(
                 DropdownMenuEntry<ChargeTypeQuotes>(
                   value: charge,
-                  label: charge.chargeType,
+                  label: charge.chargeType!,
                 ),
               );
             }
-            List listComponent = snapshot.data!.componentQuotes!;
+            findChargeId(String chargeName) {
+              for (final charge in listCharge) {
+                if (charge.chargeType! == chargeName) {
+                  return charge.chargeTypeId;
+                }
+              }
+            }
+
+            List<ComponentQuotes> listComponent = snapshot.data!.componentQuotes!;
             final List<DropdownMenuEntry<ComponentQuotes>> componentEntries =
                 <DropdownMenuEntry<ComponentQuotes>>[];
             for (final component in listComponent) {
               componentEntries.add(
                 DropdownMenuEntry<ComponentQuotes>(
                   value: component,
-                  label: component.component,
+                  label: component.component!,
                 ),
               );
             }
-            List listError = snapshot.data!.errorQuotes!;
+            findComponentId(String componentName) {
+              for (final component in listComponent) {
+                if (component.component! == componentName) {
+                  return component.componentId;
+                }
+              }
+            }
+
+            List<ErrorQuotes> listError = snapshot.data!.errorQuotes!;
             final List<DropdownMenuEntry<ErrorQuotes>> errorEntries =
                 <DropdownMenuEntry<ErrorQuotes>>[];
             for (final error in listError) {
               errorEntries.add(
                 DropdownMenuEntry<ErrorQuotes>(
                   value: error,
-                  label: error.error,
+                  label: error.error!,
                 ),
               );
             }
-            List listCategory = snapshot.data!.categoryQuotes!;
+            findErrorId(String errorName) {
+              for (final error in listError) {
+                if (error.error! == errorName) {
+                  return error.errorId;
+                }
+              }
+            }
+
+            List<CategoryQuotes> listCategory = snapshot.data!.categoryQuotes!;
             final List<DropdownMenuEntry<CategoryQuotes>> categoryEntries =
                 <DropdownMenuEntry<CategoryQuotes>>[];
             for (final category in listCategory) {
@@ -74,9 +99,16 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                 categoryEntries.add(
                   DropdownMenuEntry<CategoryQuotes>(
                     value: category,
-                    label: category.category,
+                    label: category.category!,
                   ),
                 );
+              }
+            }
+            findCategoryId(String categoryName) {
+              for (final category in listCategory) {
+                if (category.category! == categoryName) {
+                  return category.categoryId;
+                }
               }
             }
             // List listPayer = snapshot.data!.payerQuotes!;
@@ -330,6 +362,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                     ElevatedButton(
                     onPressed: () {
                       InputQuoteDetail _listInputQuoteDetail = InputQuoteDetail(
+                        eqcQuoteId: quoteController.eqcQuoteId.value,
                         chargeTypeId: quoteController.chargeTypeId.value,
                         componentId: quoteController.componentId.value,
                         categoryId: quoteController.categoryId.value,
@@ -345,6 +378,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                         laborCost: int.parse(quoteController.laborCost.value.text),
                         mrCost: int.parse(quoteController.mrCost.value.text),
                         totalCost: int.parse(quoteController.totalCost.value.text),
+                        edit: 'I'
                       );
                       quoteController.listInputQuoteDetail.add(_listInputQuoteDetail);
                       quoteController.countRow.value = quoteController.countRow.value + 1;
@@ -377,231 +411,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                   ],)
               ],
             );
-            // Column(
-            //   mainAxisAlignment: MainAxisAlignment.start,
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: [
-            //     Row(
-            //       children: [
-            //         Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                 margin: EdgeInsets.only(right: 10),
-            //                 child: Text('Charge'),
-            //               ),
-            //               DropdownMenu<ChargeTypeQuotes>(
-            //                 width: 250,
-            //                 menuHeight: 500,
-            //                 // controller: quoteController.port_select.value,
-            //                 enableFilter: true,
-            //                 enableSearch: true,
-            //                 // label: Text('Port/Dep'.tr),
-            //                 dropdownMenuEntries: chargeEntries,
-            //                 onSelected: (ChargeTypeQuotes? charge) {
-            //                   // setState(() {
-            //                   selectCharge = charge;
-            //                   quoteController.chargeTypeId.value =
-            //                       selectCharge?.chargeTypeId ?? '';
-            //                   // });
-            //                 },
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //         Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                   margin: EdgeInsets.only(right: 10),
-            //                   child: Text('Container')),
-            //               Container(
-            //                 width: 150,
-            //                 child: TextField(
-            //                   controller: quoteController.container.value,
-            //                   decoration: InputDecoration(
-            //                       isDense: true, border: OutlineInputBorder()),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //         Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                 margin: EdgeInsets.only(right: 10),
-            //                 child: Text('Gate In Date'),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //     Row(
-            //       children: [
-            //         Expanded(
-            //       child: Row(children: [
-            //         Container(
-            //           margin: EdgeInsets.only(right: 10),
-            //           child: Text('Component'),
-            //         ),
-            //         DropdownMenu<ComponentQuotes>(
-            //                 width: 250,
-            //                 menuHeight: 500,
-            //                 // controller: quoteController.port_select.value,
-            //                 enableFilter: true,
-            //                 enableSearch: true,
-            //                 // label: Text('Port/Dep'.tr),
-            //                 dropdownMenuEntries: componentEntries,
-            //                 onSelected: (ComponentQuotes? component) {
-            //                   // setState(() {
-            //                   selectComponent = component;
-            //                   quoteController.componentId.value =
-            //                       selectComponent?.componentId ?? '';
-            //                   // });
-            //                 },
-            //               ),
-            //       ]),
-            //     ),
-            //     Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                   margin: EdgeInsets.only(right: 10),
-            //                   child: Text('Detail of Damage')),
-            //               Container(
-            //                 width: 150,
-            //                 child: TextField(
-            //                   controller: quoteController.detailDamage.value,
-            //                   decoration: InputDecoration(
-            //                       isDense: true, border: OutlineInputBorder()),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //         Expanded(
-            //       child: Row(children: [
-            //         Container(
-            //           margin: EdgeInsets.only(right: 10),
-            //           child: Text('Damage Code'),
-            //         ),
-            //         DropdownMenu<ErrorQuotes>(
-            //                 width: 250,
-            //                 menuHeight: 500,
-            //                 // controller: quoteController.port_select.value,
-            //                 enableFilter: true,
-            //                 enableSearch: true,
-            //                 // label: Text('Port/Dep'.tr),
-            //                 dropdownMenuEntries: errorEntries,
-            //                 onSelected: (ErrorQuotes? error) {
-            //                   // setState(() {
-            //                   selectError = error;
-            //                   quoteController.errorId.value =
-            //                       selectError?.errorId ?? '';
-            //                   // });
-            //                 },
-            //               ),
-            //       ]),
-            //     ),
-            //     Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                   margin: EdgeInsets.only(right: 10),
-            //                   child: Text('Quantity')),
-            //               Container(
-            //                 width: 150,
-            //                 child: TextField(
-            //                   controller: quoteController.quantity.value,
-            //                   decoration: InputDecoration(
-            //                       isDense: true, border: OutlineInputBorder()),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //         Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                   margin: EdgeInsets.only(right: 10),
-            //                   child: Text('Dimension')),
-            //               Container(
-            //                 width: 150,
-            //                 child: TextField(
-            //                   controller: quoteController.dimension.value,
-            //                   decoration: InputDecoration(
-            //                       isDense: true, border: OutlineInputBorder()),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //         Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                   margin: EdgeInsets.only(right: 10),
-            //                   child: Text('Length')),
-            //               Container(
-            //                 width: 150,
-            //                 child: TextField(
-            //                   controller: quoteController.length.value,
-            //                   decoration: InputDecoration(
-            //                       isDense: true, border: OutlineInputBorder()),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //         Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                   margin: EdgeInsets.only(right: 10),
-            //                   child: Text('Width')),
-            //               Container(
-            //                 width: 150,
-            //                 child: TextField(
-            //                   controller: quoteController.width.value,
-            //                   decoration: InputDecoration(
-            //                       isDense: true, border: OutlineInputBorder()),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //         Expanded(
-            //           child: Row(
-            //             children: [
-            //               Container(
-            //                   margin: EdgeInsets.only(right: 10),
-            //                   child: Text('Location')),
-            //               Container(
-            //                 width: 150,
-            //                 child: TextField(
-            //                   controller: quoteController.location.value,
-            //                   decoration: InputDecoration(
-            //                       isDense: true, border: OutlineInputBorder()),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-
-            //     ElevatedButton(
-            //       onPressed: () {},
-            //       style: ButtonStyle(
-            //           backgroundColor: MaterialStatePropertyAll<Color>(haian),
-            //           minimumSize: MaterialStateProperty.all(Size(100, 50))),
-            //       child: Text('Import'),
-            //     ),
-            //   ],
-            // );
+            
           }
           return Text('Error');
         });

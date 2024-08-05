@@ -170,7 +170,7 @@ class _ButtonBookingRequestState extends State<ButtonBookingRequest> {
           createBookingController.countRowContainer.value = 0;
           clearDataCreateBooking();
         default:
-          print('Error ${response.statusCode}');
+          print('Error Detail Approval: ${response.statusCode}');
       }
     } catch (e) {
       print('Error fetch Detail Approval - $e');

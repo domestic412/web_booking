@@ -5,6 +5,9 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
+import 'package:web_booking/model/eqc_quote/model_add_quote.dart';
+import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 import 'widget/add_info_cont_quote.dart';
 import 'widget/port_quote.dart';
@@ -95,7 +98,16 @@ class _AEQuotePageState extends State<AEQuotePage> {
                 ElevatedButton(
                     onPressed: () {
                       // controller.selectWidget.value = quoteList;
-                      
+                      // PostNewQuote(
+                      //   eqcQuoteId: quoteController.eqcQuoteId.value, 
+                      //   portDepotId: '84B9B9A3-99CE-4865-81B7-74070F075EAB', 
+                      //   quoteNo: quoteController.quoteNo.value.text, 
+                      //   quoteCcy: quoteController.currency.value, 
+                      //   exRate: quoteController.exRate.value.text, 
+                      //   quoteUser: inforUserController.shipperName.value, 
+                      //   edit: 'I',
+                      //   );
+                      PostNewQuoteDetail(listQuoteDetail: quoteController.listInputQuoteDetail);
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll<Color>(haian),

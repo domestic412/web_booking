@@ -122,6 +122,7 @@ class InitEQCQuote {
           var dataInitQuote = json.decode(body);
           //save eqcQuoteId when create or edit Quote
           quoteController.eqcQuoteId.value = dataInitQuote['inputQuoteModels'][0]['eqcQuoteId'];
+          print(quoteController.eqcQuoteId.value);
           return InitEQCQuote.fromJson(dataInitQuote);
         default:
           throw Exception('Error: Init EQC Quote ${response.reasonPhrase}');
