@@ -122,6 +122,7 @@ class InitEQCQuote {
           var dataInitQuote = json.decode(body);
           //save eqcQuoteId when create or edit Quote
           quoteController.eqcQuoteId.value = dataInitQuote['inputQuoteModels'][0]['eqcQuoteId'];
+          quoteController.quoteNo.value = dataInitQuote['inputQuoteModels'][0]['quoteNo'];
           print(quoteController.eqcQuoteId.value);
           return InitEQCQuote.fromJson(dataInitQuote);
         default:
@@ -135,18 +136,21 @@ class InitEQCQuote {
 
 class ChargeTypeQuotes {
   String? chargeTypeId;
+  String? chargeTypeCode;
   String? chargeType;
 
-  ChargeTypeQuotes({this.chargeTypeId, this.chargeType});
+  ChargeTypeQuotes({this.chargeTypeId, this.chargeTypeCode, this.chargeType});
 
   ChargeTypeQuotes.fromJson(Map<String, dynamic> json) {
     chargeTypeId = json['chargeTypeId'];
+    chargeTypeCode = json['chargeTypeCode'];
     chargeType = json['chargeType'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['chargeTypeId'] = this.chargeTypeId;
+    data['chargeTypeCode'] = this.chargeTypeCode;
     data['chargeType'] = this.chargeType;
     return data;
   }
@@ -154,18 +158,21 @@ class ChargeTypeQuotes {
 
 class ComponentQuotes {
   String? componentId;
+  String? componentCode;
   String? component;
 
-  ComponentQuotes({this.componentId, this.component});
+  ComponentQuotes({this.componentId, this.componentCode, this.component});
 
   ComponentQuotes.fromJson(Map<String, dynamic> json) {
     componentId = json['componentId'];
+    componentCode = json['componentCode'];
     component = json['component'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['componentId'] = this.componentId;
+    data['componentCode'] = this.componentCode;
     data['component'] = this.component;
     return data;
   }
@@ -173,18 +180,21 @@ class ComponentQuotes {
 
 class CategoryQuotes {
   String? categoryId;
+  String? categoryCode;
   String? category;
 
-  CategoryQuotes({this.categoryId, this.category});
+  CategoryQuotes({this.categoryId, this.categoryCode, this.category});
 
   CategoryQuotes.fromJson(Map<String, dynamic> json) {
     categoryId = json['categoryId'];
+    categoryCode = json['categoryCode'];
     category = json['category'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['categoryId'] = this.categoryId;
+    data['categoryCode'] = this.categoryCode;
     data['category'] = this.category;
     return data;
   }
@@ -192,18 +202,21 @@ class CategoryQuotes {
 
 class ErrorQuotes {
   String? errorId;
+  String? errorCode;
   String? error;
 
-  ErrorQuotes({this.errorId, this.error});
+  ErrorQuotes({this.errorId, this.errorCode, this.error});
 
   ErrorQuotes.fromJson(Map<String, dynamic> json) {
     errorId = json['errorId'];
+    errorCode = json['errorCode'];
     error = json['error'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['errorId'] = this.errorId;
+    data['errorCode'] = this.errorCode;
     data['error'] = this.error;
     return data;
   }

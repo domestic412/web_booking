@@ -16,8 +16,8 @@ class InputQuoteDetail {
   int? mrCost;
   int? totalCost;
   String? edit;
-  String? approveCode;
-  int? payer;
+  // String? approveCode;
+  // int? payer;
 
   InputQuoteDetail(
       {this.eqcQuoteId,
@@ -37,8 +37,8 @@ class InputQuoteDetail {
       this.mrCost,
       this.totalCost,
       this.edit,
-      this.approveCode,
-      this.payer,
+      // this.approveCode,
+      // this.payer,
       });
 
   InputQuoteDetail.fromJson(Map<String, dynamic> json) {
@@ -59,8 +59,8 @@ class InputQuoteDetail {
     mrCost = json['mrCost'];
     totalCost = json['totalCost'];
     edit = json['edit'];
-    approveCode = json['approveCode'];
-    payer = json['payer'];
+    // approveCode = json['approveCode'];
+    // payer = json['payer'];
   }
 
   Map<String, dynamic> toJson() {
@@ -82,8 +82,8 @@ class InputQuoteDetail {
     data['mrCost'] = this.mrCost;
     data['totalCost'] = this.totalCost;
     data['edit'] = this.edit;
-    data['approveCode'] = this.approveCode;
-    data['payer'] = this.payer;
+    // data['approveCode'] = this.approveCode;
+    // data['payer'] = this.payer;
     return data;
   }
 

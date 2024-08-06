@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
 class TableInputQuote extends StatefulWidget {
@@ -110,7 +109,7 @@ class _TableInputQuoteState extends State<TableInputQuote> {
               ),
               DataColumn(
                 label: Text(
-                  'Repair Coode',
+                  'Repair Codes',
                   style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),

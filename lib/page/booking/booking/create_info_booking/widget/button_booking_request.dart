@@ -6,7 +6,6 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
 import 'package:web_booking/model/schedule/storage_controller/route_controller.dart';

@@ -27,7 +27,7 @@ class _QuoteListPageState extends State<QuoteListPage> {
   @override
   void initState() {
     super.initState();
-    EQCQuoteList().fetchQuoteList('06/01/2024', '06/27/2024').then((data) {
+    EQCQuoteList().fetchQuoteList('06/01/2024', '08/07/2024').then((data) {
       setState(() {
         _dataQuote = DataTableQuote(data: data);
         _list_filter = _dataQuote;
@@ -62,6 +62,9 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     // DownloadButtonHistory(),
                     ElevatedButton(
           onPressed: () {
+            quoteController.listInputQuoteDetail.value = [];
+            quoteController.listInputQuoteDetail_show.value = [];
+            quoteController.countRow.value = 0;
             // controller.selectWidget.value = quoteList;
             // quoteController.initEQC.value = InitEQCQuote().fetchInitQuote(eqcQuoteId_new);
             quoteController.initEQC = InitEQCQuote().fetchInitQuote(eqcQuoteId_new);

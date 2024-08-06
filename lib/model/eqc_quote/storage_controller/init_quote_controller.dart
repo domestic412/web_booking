@@ -9,12 +9,16 @@ class QuoteController extends GetxController {
 
 Future<InitEQCQuote>? initEQC;
 
+RxList<ChargeTypeQuotes> listCharge = <ChargeTypeQuotes>[].obs;
+RxList<ComponentQuotes> listComponent = <ComponentQuotes>[].obs;
+RxList<ErrorQuotes> listError = <ErrorQuotes>[].obs;
+RxList<CategoryQuotes> listCategory = <CategoryQuotes>[].obs;
+
 var eqcQuoteId = ''.obs;
+var quoteNo = ''.obs;
 
 // var port_select = TextEditingController().obs;
 var portDepotId = '84B9B9A3-99CE-4865-81B7-74070F075EAB'.obs;
-
-var quoteNo = TextEditingController().obs;
 
 // var currency_select = TextEditingController().obs;
 var currency = ''.obs;
@@ -59,6 +63,9 @@ var totalCost = TextEditingController().obs;
 
 var payerName = ''.obs;
 var payerId = 0.obs;
+
+var errorImport = 0.obs;
+var notify_error = ''.obs;
 
 RxList<InputQuoteDetail> listInputQuoteDetail = <InputQuoteDetail>[].obs;
 RxList<InputQuoteDetail> listInputQuoteDetail_show = <InputQuoteDetail>[].obs;

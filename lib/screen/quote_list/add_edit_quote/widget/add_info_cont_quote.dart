@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/model_input_quote_detail.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
@@ -33,10 +32,10 @@ class _InfoContQuoteState extends State<InfoContQuote> {
           }
           if (snapshot.hasData) {
 
-            List<ChargeTypeQuotes> listCharge = snapshot.data!.chargeTypeQuotes!;
+            quoteController.listCharge.value = snapshot.data!.chargeTypeQuotes!;
             final List<DropdownMenuEntry<ChargeTypeQuotes>> chargeEntries =
                 <DropdownMenuEntry<ChargeTypeQuotes>>[];
-            for (final charge in listCharge) {
+            for (final charge in quoteController.listCharge) {
               chargeEntries.add(
                 DropdownMenuEntry<ChargeTypeQuotes>(
                   value: charge,
@@ -44,18 +43,11 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                 ),
               );
             }
-            findChargeId(String chargeName) {
-              for (final charge in listCharge) {
-                if (charge.chargeType! == chargeName) {
-                  return charge.chargeTypeId;
-                }
-              }
-            }
 
-            List<ComponentQuotes> listComponent = snapshot.data!.componentQuotes!;
+            quoteController.listComponent.value = snapshot.data!.componentQuotes!;
             final List<DropdownMenuEntry<ComponentQuotes>> componentEntries =
                 <DropdownMenuEntry<ComponentQuotes>>[];
-            for (final component in listComponent) {
+            for (final component in quoteController.listComponent) {
               componentEntries.add(
                 DropdownMenuEntry<ComponentQuotes>(
                   value: component,
@@ -63,18 +55,12 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                 ),
               );
             }
-            findComponentId(String componentName) {
-              for (final component in listComponent) {
-                if (component.component! == componentName) {
-                  return component.componentId;
-                }
-              }
-            }
+            
 
-            List<ErrorQuotes> listError = snapshot.data!.errorQuotes!;
+            quoteController.listError.value = snapshot.data!.errorQuotes!;
             final List<DropdownMenuEntry<ErrorQuotes>> errorEntries =
                 <DropdownMenuEntry<ErrorQuotes>>[];
-            for (final error in listError) {
+            for (final error in quoteController.listError) {
               errorEntries.add(
                 DropdownMenuEntry<ErrorQuotes>(
                   value: error,
@@ -82,18 +68,12 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                 ),
               );
             }
-            findErrorId(String errorName) {
-              for (final error in listError) {
-                if (error.error! == errorName) {
-                  return error.errorId;
-                }
-              }
-            }
+            
 
-            List<CategoryQuotes> listCategory = snapshot.data!.categoryQuotes!;
+            quoteController.listCategory.value = snapshot.data!.categoryQuotes!;
             final List<DropdownMenuEntry<CategoryQuotes>> categoryEntries =
                 <DropdownMenuEntry<CategoryQuotes>>[];
-            for (final category in listCategory) {
+            for (final category in quoteController.listCategory) {
               if (category.category == null || category.categoryId == null) {
               } else {
                 categoryEntries.add(
@@ -104,13 +84,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                 );
               }
             }
-            findCategoryId(String categoryName) {
-              for (final category in listCategory) {
-                if (category.category! == categoryName) {
-                  return category.categoryId;
-                }
-              }
-            }
+         
             // List listPayer = snapshot.data!.payerQuotes!;
             // final List<DropdownMenuEntry<PayerQuotes>> payerEntries =
             //     <DropdownMenuEntry<PayerQuotes>>[];
@@ -154,7 +128,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                               quoteController.chargeTypeId.value =
                                   selectCharge?.chargeTypeId ?? '';
                               quoteController.chargeName.value =
-                                  selectCharge?.chargeType ?? '';
+                                  selectCharge?.chargeTypeCode ?? '';
                             },
                           ),
                         ),
@@ -181,7 +155,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                                 lastDate: DateTime(2123));
                             if (pickeddate != null) {
                                 quoteController.gateInDate.value.text =
-                                    DateFormat('dd/MM/yyyy')
+                                    DateFormat('MM/dd/yyyy')
                                         .format(pickeddate);
                                 quoteController.gateInDate_value.value =
                                     DateFormat('MM/dd/yyyy')
@@ -203,7 +177,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                             quoteController.componentId.value =
                                 selectComponent?.componentId ?? '';
                             quoteController.componentName.value =
-                                selectComponent?.component ?? '';
+                                selectComponent?.componentCode ?? '';
                           },
                         ),
                       )),
@@ -228,7 +202,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                               quoteController.errorId.value =
                                   selectError?.errorId ?? '';
                               quoteController.errorName.value =
-                                  selectError?.error ?? '';
+                                  selectError?.errorCode ?? '';
                             },
                           ),
                         ),
@@ -308,7 +282,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                             quoteController.categoryId.value =
                                 selectCategory?.categoryId ?? '';
                             quoteController.categoryName.value =
-                                selectCategory?.category ?? '';
+                                selectCategory?.categoryCode ?? '';
                           },
                         ),
                       )),
@@ -401,7 +375,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                         totalCost: int.parse(quoteController.totalCost.value.text),
                       );
                       quoteController.listInputQuoteDetail_show.add(_listInputQuoteDetail_show);
-                      print(quoteController.listInputQuoteDetail);
+                      // print(quoteController.listInputQuoteDetail);
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll<Color>(Colors.orange),

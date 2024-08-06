@@ -32,7 +32,7 @@ class _AEQuotePageState extends State<AEQuotePage> {
         child: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Stack(children: [
@@ -95,25 +95,26 @@ class _AEQuotePageState extends State<AEQuotePage> {
                     borderRadius: BorderRadius.circular(8),
                     ),
                     child: TableInputQuote()),
-                ElevatedButton(
-                    onPressed: () {
-                      // controller.selectWidget.value = quoteList;
-                      // PostNewQuote(
-                      //   eqcQuoteId: quoteController.eqcQuoteId.value, 
-                      //   portDepotId: '84B9B9A3-99CE-4865-81B7-74070F075EAB', 
-                      //   quoteNo: quoteController.quoteNo.value.text, 
-                      //   quoteCcy: quoteController.currency.value, 
-                      //   exRate: quoteController.exRate.value.text, 
-                      //   quoteUser: inforUserController.shipperName.value, 
-                      //   edit: 'I',
-                      //   );
-                      PostNewQuoteDetail(listQuoteDetail: quoteController.listInputQuoteDetail);
-                    },
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll<Color>(haian),
-                        minimumSize: MaterialStateProperty.all(Size(100, 40))),
-                    child: Text('Send Quote'),
-                  ),
+                Center(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        // controller.selectWidget.value = quoteList;
+                        PostNewQuote(
+                          eqcQuoteId: quoteController.eqcQuoteId.value, 
+                          portDepotId: '84B9B9A3-99CE-4865-81B7-74070F075EAB', 
+                          quoteNo: quoteController.quoteNo.value,
+                          quoteCcy: quoteController.currency.value,
+                          exRate: quoteController.exRate.value.text, 
+                          quoteUser: inforUserController.shipperName.value, 
+                          edit: 'I',
+                          );
+                      },
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll<Color>(haian),
+                          minimumSize: MaterialStateProperty.all(Size(100, 40))),
+                      child: Text('Send Quote'),
+                    ),
+                ),
               ]),
         ),
       ),

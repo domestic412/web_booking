@@ -1,5 +1,6 @@
 import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/model_input_quote_detail.dart';
@@ -108,11 +109,16 @@ class _PortQuoteState extends State<PortQuote> {
                           child: Text('Quote No.')),
                       Container(
                         width: 150,
-                        child: TextField(
-                          controller: quoteController.quoteNo.value,
-                          decoration: InputDecoration(
-                            isDense: true, border: OutlineInputBorder()),
+                        padding: EdgeInsets.symmetric(vertical: 13, horizontal: 13),
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          // border: Border.all(
+                          //   width: 0.5,
+                          //   color: Colors.black87
+                          // ),
+                          borderRadius: BorderRadius.circular(5)
                         ),
+                        child: Text(quoteController.quoteNo.value, style: TextStyle(color: Colors.black54),)
                       )
                     ],
                   ),
@@ -168,17 +174,22 @@ class _PortQuoteState extends State<PortQuote> {
   }
 }
 
-class ImportButton extends StatelessWidget {
+class ImportButton extends StatefulWidget {
   const ImportButton({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    int j = 0;
+  State<ImportButton> createState() => _ImportButtonState();
+}
 
-    String? chargeName;
-    String? componentName;
-    String? categoryName;
-    String? errorName;
+class _ImportButtonState extends State<ImportButton> {
+  @override
+  Widget build(BuildContext context) {
+    
+
+    String? chargeCode;
+    String? componentCode;
+    String? categoryCode;
+    String? errorCode;
     String? container;
     String? inGateDate;
     String? damageDetail;
@@ -194,6 +205,7 @@ class ImportButton extends StatelessWidget {
     int? payer;
     return ElevatedButton(
                   onPressed: () async {
+                    int j = 0;
                     await Import().ImportExcel();
                     if (resultPickedFile != null) {
                                   var bytes =
@@ -202,91 +214,122 @@ class ImportButton extends StatelessWidget {
                                   // choose sheet1 in file excel
                                   String table = 'Upload BRV';
                                   for (var row in excel.tables[table]!.rows) {
-                                    print(row);
                                       int i = 0;
                                       for (var cell in row) {
                                         if (j>0) {
-                                          // print(i);
                                           var value = cell?.value ?? '0';
                                           // print(i);
+                                          // print(j);
                                           // print(value);
                                           switch (i) {
                                               case 0:
-                                                chargeName = value.toString();
-                                                print(chargeName);
+                                                chargeCode = value.toString();
                                               case 1:
                                                 container = value.toString();
-                                                print(container);
                                               case 2:
                                                 inGateDate = value.toString();
-                                                print(inGateDate);
                                               case 3:
-                                                componentName = value.toString();
-                                                print(componentName);
+                                                componentCode = value.toString();
                                               case 4:
                                                 damageDetail = value.toString();
-                                                print(damageDetail);
                                               case 5:
-                                                errorName = value.toString();
-                                                print(errorName);
+                                                errorCode = value.toString();
                                               case 6:
                                                 quantity = int.parse(value.toString());
-                                                print(quantity);
                                               case 7:
                                                 dimension = value.toString();
-                                                print(dimension);
                                               case 8:
                                                 length = int.parse(value.toString());
-                                                print(length);
                                               case 9:
                                                 width = int.parse(value.toString());
-                                                print(width);
                                               case 10:
                                                 location = value.toString();
-                                                print(location);
                                               case 11:
-                                                categoryName = value.toString();
-                                                print(categoryName);
+                                                categoryCode = value.toString();
                                               case 12:
                                                 laborCost = int.parse(value.toString());
-                                                print(laborCost);
                                               case 13:
                                                 mrCost = int.parse(value.toString());
-                                                print(mrCost);
                                               case 14:
                                                 totalCost = int.parse(value.toString());
-                                                print(totalCost);
                                               case 15:
                                                 approveCode = value.toString();
-                                                print(approveCode);
                                               case 16:
                                                 payer = int.parse(value.toString());
-                                                print(payer);
                                           }
                                           i = i + 1;
                                         } else {}
                                       }
-                                      if (chargeName == null && 
+                                      if (chargeCode == null && 
                                       container == null && 
                                       inGateDate == null && 
-                                      componentName == null && 
+                                      componentCode == null && 
                                       damageDetail == null && 
-                                      errorName == null && 
+                                      errorCode == null && 
                                       quantity == null && 
                                       dimension == null && 
                                       length == null && 
                                       width == null && 
                                       location == null && 
-                                      categoryName == null && 
+                                      categoryCode == null && 
                                       laborCost == null && 
                                       mrCost == null && 
                                       totalCost == null) 
                                       {} else {
+                                        // print(findChargeId(chargeCode: chargeCode!));
+                                        // print(findComponentId(componentCode: componentCode!));
+                                        // print(findCategoryId(categoryCode: categoryCode!));
+                                        // print(findErrorId(errorCode: errorCode!));
+                                        // print(j);
+                                        if (findChargeId(chargeCode: chargeCode!) == null) {
+                                          Get.defaultDialog(
+                                            middleText: 'Not found $chargeCode in data Charge',
+                                          );
+                                          break;
+                                        } else if (findComponentId(componentCode: componentCode!) == null) {
+                                          Get.defaultDialog(
+                                            middleText: 'Not found $componentCode in data Component',
+                                          );
+                                          break;
+                                        } else if (findCategoryId(categoryCode: categoryCode!) == null) {
+                                          Get.defaultDialog(
+                                            middleText: 'Not found $categoryCode in data Repair Codes',
+                                          );
+                                          break;
+                                        } else if (findErrorId(errorCode: errorCode!) == null) {
+                                          Get.defaultDialog(
+                                            middleText: 'Not found $errorCode in data Damage Code',
+                                          );
+                                          break;
+                                        } else {
+                                          InputQuoteDetail _listInputQuoteDetail = InputQuoteDetail(
+                                          eqcQuoteId: quoteController.eqcQuoteId.value,
+                                          chargeTypeId: findChargeId(chargeCode: chargeCode!),
+                                          componentId: findComponentId(componentCode: componentCode!),
+                                          categoryId: findCategoryId(categoryCode: categoryCode!),
+                                          errorId: findErrorId(errorCode: errorCode!),
+                                          container: container,
+                                          inGateDate: inGateDate,
+                                          damageDetail: damageDetail,
+                                          quantity: quantity,
+                                          dimension: dimension,
+                                          length: length,
+                                          width: width,
+                                          location: location,
+                                          laborCost: laborCost,
+                                          mrCost: mrCost,
+                                          totalCost: totalCost,
+                                          edit: 'I'
+                                        );
+                                        quoteController.listInputQuoteDetail.add(_listInputQuoteDetail);
+
+                                        quoteController.countRow.value = quoteController.countRow.value + 1;
+
                                         InputQuoteDetail _listInputQuoteDetail_show = InputQuoteDetail(
-                                        chargeTypeId: chargeName,
-                                        componentId: componentName,
-                                        categoryId: categoryName,
-                                        errorId: errorName,
+                                        chargeTypeId: chargeCode,
+                                        componentId: componentCode,
+                                        categoryId: categoryCode,
+                                        errorId: errorCode,
                                         container: container,
                                         inGateDate: inGateDate,
                                         damageDetail: damageDetail,
@@ -300,7 +343,7 @@ class ImportButton extends StatelessWidget {
                                         totalCost: totalCost,
                                       );
                                       quoteController.listInputQuoteDetail_show.add(_listInputQuoteDetail_show);
-                                      print(quoteController.listInputQuoteDetail_show);
+                                        }
                                       }
                                       j = ++j;
                                     }
@@ -313,5 +356,37 @@ class ImportButton extends StatelessWidget {
                       minimumSize: MaterialStateProperty.all(Size(100, 50))),
                   child: Text('Import'),
                 );
+  }
+}
+
+findChargeId({required String chargeCode}) {
+  for (var charge in quoteController.listCharge) {
+    if (charge.chargeTypeCode!.trim() == chargeCode.trim()) {
+      return charge.chargeTypeId;
+    }
+  }
+}
+
+findComponentId({required String componentCode}) {
+  for (var component in quoteController.listComponent) {
+    if (component.componentCode!.trim() == componentCode.trim()) {
+      return component.componentId;
+    }
+  }
+}
+
+findErrorId({required String errorCode}) {
+  for (var error in quoteController.listError) {
+    if (error.errorCode!.trim() == errorCode.trim()) {
+      return error.errorId;
+    }
+  }
+}
+
+findCategoryId({required String categoryCode}) {
+  for (var category in quoteController.listCategory) {
+    if (category.categoryCode!.trim() == categoryCode.trim()) {
+      return category.categoryId;
+    }
   }
 }
