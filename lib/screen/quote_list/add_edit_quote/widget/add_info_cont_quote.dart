@@ -155,12 +155,12 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                                 lastDate: DateTime(2123));
                             if (pickeddate != null) {
                                 quoteController.gateInDate.value.text =
+                                    DateFormat('dd/MM/yyyy')
+                                        .format(pickeddate);
+                                quoteController.gateInDate_send.value =
                                     DateFormat('MM/dd/yyyy')
                                         .format(pickeddate);
-                                quoteController.gateInDate_value.value =
-                                    DateFormat('MM/dd/yyyy')
-                                        .format(pickeddate);
-                                        print(quoteController.gateInDate_value.value);
+                                print(pickeddate);
                             }
                           },
                         ),)),
@@ -342,7 +342,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                         categoryId: quoteController.categoryId.value,
                         errorId: quoteController.errorId.value,
                         container: quoteController.container.value.text,
-                        inGateDate: quoteController.gateInDate_value.value,
+                        inGateDate: quoteController.gateInDate_send.value,
                         damageDetail: quoteController.detailDamage.value.text,
                         quantity: int.parse(quoteController.quantity.value.text),
                         dimension: quoteController.dimension.value.text,
@@ -352,6 +352,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                         laborCost: int.parse(quoteController.laborCost.value.text),
                         mrCost: int.parse(quoteController.mrCost.value.text),
                         totalCost: int.parse(quoteController.totalCost.value.text),
+                        estimateDate: quoteController.currentDate_send.value,
                         edit: 'I'
                       );
                       quoteController.listInputQuoteDetail.add(_listInputQuoteDetail);
@@ -363,7 +364,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                         categoryId: quoteController.categoryName.value,
                         errorId: quoteController.errorName.value,
                         container: quoteController.container.value.text,
-                        inGateDate: quoteController.gateInDate_value.value,
+                        inGateDate: quoteController.gateInDate.value.text,
                         damageDetail: quoteController.detailDamage.value.text,
                         quantity: int.parse(quoteController.quantity.value.text),
                         dimension: quoteController.dimension.value.text,

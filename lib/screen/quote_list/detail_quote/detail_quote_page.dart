@@ -5,6 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/eqc_quote/model_quote_detail.dart';
+import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
 import 'data/data_detail_quote.dart';
 
@@ -25,7 +26,7 @@ class _QuoteDetailsPageState extends State<QuoteDetailsPage> {
   @override
   void initState() {
     super.initState();
-    EQCQuoteDetail().fetchQuoteDetails('bc99ddb4-36cd-40ae-bd78-93076fe939e1').then((data) {
+    EQCQuoteDetail().fetchQuoteDetails(quoteController.eqcQuoteId.value).then((data) {
       setState(() {
         _dataQuote = DataTableQuoteDetails(data: data);
         _list_filter = _dataQuote;

@@ -23,6 +23,14 @@ class AEQuotePage extends StatefulWidget {
 
 class _AEQuotePageState extends State<AEQuotePage> {
   @override
+  void initState(){
+    super.initState();
+    quoteController.currentDate_send.value = changeDatetoSend(date: DateTime.now());
+    quoteController.gateInDate.value.text = changeDatetoShow(date: DateTime.now());
+    quoteController.gateInDate_send.value = changeDatetoSend(date: DateTime.now());
+  }
+  
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       // use sizedbox to content always start on top

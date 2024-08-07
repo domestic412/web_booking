@@ -3,6 +3,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/eqc_quote/model_quote_list.dart';
 import 'package:intl/intl.dart';
+import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
 class DataTableQuote extends DataTableSource {
   List<EQCQuoteList>? data;
@@ -52,6 +53,7 @@ class DataTableQuote extends DataTableSource {
 
     return DataRow(
       onSelectChanged: (value) {
+        quoteController.eqcQuoteId.value = data![index].eqcQuoteId!;
         controller.selectWidget.value = quoteDetails;
       },
       cells: [

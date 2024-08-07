@@ -12,6 +12,14 @@ double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 //format currency
 final formatCurrency = NumberFormat('#,##0');
 
+//format date
+changeDatetoShow({required DateTime date}){
+  return DateFormat('dd/MM/yyyy').format(date);
+}
+changeDatetoSend({required DateTime date}){
+  return DateFormat('MM/dd/yyyy').format(date);
+}
+
 // Login
 var box = GetStorage();
 String login = 'signIn';

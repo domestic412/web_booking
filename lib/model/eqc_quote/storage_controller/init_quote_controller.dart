@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/model_input_quote_detail.dart';
 
@@ -13,6 +14,10 @@ RxList<ChargeTypeQuotes> listCharge = <ChargeTypeQuotes>[].obs;
 RxList<ComponentQuotes> listComponent = <ComponentQuotes>[].obs;
 RxList<ErrorQuotes> listError = <ErrorQuotes>[].obs;
 RxList<CategoryQuotes> listCategory = <CategoryQuotes>[].obs;
+
+var currentDate_send = ''.obs;
+RxList<XFile>? listImg;
+var pathImg = ''.obs;
 
 var eqcQuoteId = ''.obs;
 var quoteNo = ''.obs;
@@ -32,7 +37,7 @@ var container = TextEditingController().obs;
 
 var gateInDate = TextEditingController().obs;
 
-var gateInDate_value = ''.obs;
+var gateInDate_send = ''.obs;
 
 var componentName = ''.obs;
 var componentId = ''.obs;

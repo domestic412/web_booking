@@ -1,7 +1,16 @@
+import 'dart:typed_data';
+import 'package:archive/archive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/eqc_quote/model_add_quote.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
+
+import 'package:http/http.dart' as http;
+import 'package:universal_html/html.dart' as html;
 
 class TableInputQuote extends StatefulWidget {
   const TableInputQuote({super.key});
@@ -13,7 +22,6 @@ class TableInputQuote extends StatefulWidget {
 class _TableInputQuoteState extends State<TableInputQuote> {
   @override
   Widget build(BuildContext context) {
-    // print(createBookingController.listInfoContainer);
     return Obx(
       () => Container(
         // width: 1004,
@@ -29,7 +37,6 @@ class _TableInputQuoteState extends State<TableInputQuote> {
           ],
           borderRadius: BorderRadius.circular(8),
         ),
-        // margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: DataTable(
@@ -133,6 +140,18 @@ class _TableInputQuoteState extends State<TableInputQuote> {
               ),
               DataColumn(
                 label: Text(
+                  'Image File',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Update Image',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+              DataColumn(
+                label: Text(
                   'Remove',
                   style: TextStyle(fontStyle: FontStyle.italic),
                 ),
@@ -173,12 +192,22 @@ class _TableInputQuoteState extends State<TableInputQuote> {
                         .listInputQuoteDetail_show[i].mrCost!.toString())),
                     DataCell(Text(quoteController
                         .listInputQuoteDetail_show[i].totalCost!.toString())),                    
-                    // DataCell(Text(
-                    //     createBookingController.listInfoContainer[i].dg!
-                    //         ? 'YES'
-                    //         : 'NO')),
-                    // DataCell(
-                    //     Text(createBookingController.listInfoContainer[i].dg!)),
+                    DataCell(InkWell(
+                            onTap: () {
+                              downloadAndExtractZip(cntr: quoteController
+                        .listInputQuoteDetail_show[i].container!, esdate: changeDatetoSend(date: DateTime.now()));
+                            },
+                            child: Text('Container', style: TextStyle(color: haian)),
+                          )),
+                    DataCell(Center(
+                      child: InkWell(
+                              onTap: () {
+                                getImage(ImageSource.gallery, quoteController
+                        .listInputQuoteDetail_show[i].container!);
+                              },
+                              child: Icon(Icons.add_a_photo_outlined, color: haian,),
+                            ),
+                    )),
                     DataCell(quoteController.countRow.value !=
                             0
                         ? InkWell(
@@ -209,15 +238,188 @@ class _TableInputQuoteState extends State<TableInputQuote> {
       ),
     );
   }
-}
 
-// findChargeName(String chargeTypeId) {
-//   for (final charge in box
-//       .read(commodityList_signin)
-//       .map((e) => DataTable5s.fromJson(e))
-//       .toList()) {
-//     if (commodity.commodityId == commodityId) {
-//       return commodity.commodityName;
-//     }
-//   }
-// }
+  
+  List<XFile>? listImg;
+  Future getImage(ImageSource media, String cntr) async {
+
+  // String? base64image;
+    final ImagePicker _picker = ImagePicker();
+    List<XFile> img = await _picker.pickMultiImage();
+
+    // setState(() {
+      listImg = img;
+    // });
+
+    if (listImg!.length != 0) {
+      quoteController.pathImg.value =listImg![0].path;
+      return Get.defaultDialog(
+        title: 'Preview Image',
+        content: Container(
+          height: deviceHeight(context)*0.8,
+          width: deviceWidth(context)*0.8,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: deviceHeight(context)*0.8,
+                width: deviceWidth(context)*0.25,
+                decoration: BoxDecoration(
+                  border: Border.all()
+                ),
+                child:  
+                ListView.builder(
+                scrollDirection: Axis.vertical,
+                      itemCount: img.length,
+                      itemBuilder: (BuildContext context, index) {
+                      if (quoteController.pathImg.value.isEmpty) {
+                        quoteController.pathImg.value =listImg![0].path;
+                        print(quoteController.pathImg.value);
+                      }
+                        return Container(
+                          margin: EdgeInsets.all(15),
+                          child: InkWell(
+                            onTap: () {
+                                quoteController.pathImg.value = listImg![index].path;
+                                // print(quoteController.pathImg.value);
+                            },
+                            child: Text(listImg![index].name)));
+                      }),
+              ),
+              Obx(() => Container(
+                height: deviceHeight(context)*0.8,
+                width: deviceWidth(context)*0.5,
+                decoration: BoxDecoration(
+                  border: Border.all()
+                ),
+                child: Image.network(quoteController.pathImg.value, 
+                errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                return const Center(
+                  child: Text('This image type is not supported:'),
+                );
+                            }
+                            ),)) 
+            ],
+          ),
+        ),
+        confirm: ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: normalColor),
+          onPressed: () {
+            PostImgQuote(cntr: cntr, date: changeDatetoSend(date: DateTime.now()));
+            quoteController.pathImg.value = '';
+          }, 
+          child: Text('Send', style: TextStyle(color: white),)),
+
+        cancel: ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: grey),
+          onPressed: () {
+            quoteController.pathImg.value = '';
+            Get.back();
+          }, 
+          child: Text('Cancel', style: TextStyle(color: white),)),
+      );
+    }
+  }
+
+// List<File>? _extractedFiles;
+
+  Future<void> downloadAndExtractZip({required String cntr,required String esdate}) async {
+    try {
+      var url = '$SERVER/EQCQuote/DownloadImage?Container=$cntr&EstimateDate=$esdate';
+
+
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+      });
+      switch (response.statusCode) {
+        case 200:
+          Uint8List bytes = response.bodyBytes;
+          List<dynamic> files = await _extractZipFile(bytes);
+          return Get.defaultDialog(
+          title: 'Preview Image',
+          content: Container(
+            height: deviceHeight(context)*0.8,
+            width: deviceWidth(context)*0.8,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: deviceHeight(context)*0.8,
+                  width: deviceWidth(context)*0.25,
+                  decoration: BoxDecoration(
+                    border: Border.all()
+                  ),
+                  child:  
+                  ListView.builder(
+                  scrollDirection: Axis.vertical,
+                        itemCount: files.length,
+                        itemBuilder: (BuildContext context, index) {
+                        if (quoteController.pathImg.value == '') {
+                          quoteController.pathImg.value =files[0];
+                          print(quoteController.pathImg.value);
+                        }
+                          return Container(
+                            margin: EdgeInsets.all(15),
+                            child: InkWell(
+                              onTap: () {
+                                  quoteController.pathImg.value = files[index];
+                              },
+                              child: Text('$index'),));
+                        }),
+                ),
+                Obx(() => 
+                Container(
+                  height: deviceHeight(context)*0.8,
+                  width: deviceWidth(context)*0.5,
+                  decoration: BoxDecoration(
+                    border: Border.all()
+                  ),
+                  child: Image.network(quoteController.pathImg.value, 
+                    errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                      return const Center(
+                        child: Text('This image type is not supported:'),
+                      );
+                    }
+                  ),
+                )
+                ) 
+              ],
+            ),
+          ),
+          confirm: ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: normalColor),
+            onPressed: () {
+              quoteController.pathImg.value = '';
+              Get.back();
+            }, 
+            child: Text('OK', style: TextStyle(color: white),)),
+        );
+
+        case 401:
+          // Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase);
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      print(e);
+      throw Exception('Error fetch Image - $e');
+    }
+  }
+
+  Future<List<dynamic>> _extractZipFile(Uint8List zipData) async {
+    final archive = ZipDecoder().decodeBytes(zipData);
+    final extractedFiles = [];
+    for (final file in archive) {
+      if (file.isFile) {
+        final data = file.content as List<int>;
+        final blob = html.Blob([data], 'image/png');
+        final url = html.Url.createObjectUrlFromBlob(blob);
+        extractedFiles.add(url);
+      }
+    }
+    return extractedFiles;
+  }
+}

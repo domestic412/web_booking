@@ -2,6 +2,7 @@ import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/model_input_quote_detail.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
@@ -184,8 +185,6 @@ class ImportButton extends StatefulWidget {
 class _ImportButtonState extends State<ImportButton> {
   @override
   Widget build(BuildContext context) {
-    
-
     String? chargeCode;
     String? componentCode;
     String? categoryCode;
@@ -301,6 +300,11 @@ class _ImportButtonState extends State<ImportButton> {
                                             middleText: 'Not found $errorCode in data Damage Code',
                                           );
                                           break;
+                                        } else if (inGateDate == null) {
+                                          Get.defaultDialog(
+                                            middleText: 'Please input Ingate Date',
+                                          );
+                                          break;
                                         } else {
                                           InputQuoteDetail _listInputQuoteDetail = InputQuoteDetail(
                                           eqcQuoteId: quoteController.eqcQuoteId.value,
@@ -309,7 +313,7 @@ class _ImportButtonState extends State<ImportButton> {
                                           categoryId: findCategoryId(categoryCode: categoryCode!),
                                           errorId: findErrorId(errorCode: errorCode!),
                                           container: container,
-                                          inGateDate: inGateDate,
+                                          inGateDate: changeDatetoSend(date: DateTime.parse(inGateDate!)),
                                           damageDetail: damageDetail,
                                           quantity: quantity,
                                           dimension: dimension,
@@ -319,6 +323,7 @@ class _ImportButtonState extends State<ImportButton> {
                                           laborCost: laborCost,
                                           mrCost: mrCost,
                                           totalCost: totalCost,
+                                          estimateDate: quoteController.currentDate_send.value,
                                           edit: 'I'
                                         );
                                         quoteController.listInputQuoteDetail.add(_listInputQuoteDetail);
@@ -331,7 +336,7 @@ class _ImportButtonState extends State<ImportButton> {
                                         categoryId: categoryCode,
                                         errorId: errorCode,
                                         container: container,
-                                        inGateDate: inGateDate,
+                                        inGateDate: changeDatetoShow(date: DateTime.parse(inGateDate!)),
                                         damageDetail: damageDetail,
                                         quantity: quantity,
                                         dimension: dimension,

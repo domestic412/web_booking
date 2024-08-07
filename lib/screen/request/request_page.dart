@@ -9,7 +9,6 @@ import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
-import 'package:web_booking/screen/request/popUpAlert/alert.dart';
 import 'dart:html' as html;
 
 class SendRequestPage extends StatefulWidget {
@@ -41,12 +40,13 @@ class _SendRequestPageState extends State<SendRequestPage> {
 
     setState(() {
       _listImage = img;
-      if (_listImage!.length <= 5) {
-        numberImage = _listImage!.length;
-      } else {
-        numberImage = 5;
-        OverloadImageAlert(context);
-      }
+      // numberImage = _listImage!.length;
+      // if (_listImage!.length <= 5) {
+      //   numberImage = _listImage!.length;
+      // } else {
+      //   numberImage = 5;
+      //   OverloadImageAlert(context);
+      // }
     });
   }
 
@@ -56,7 +56,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
       height: 150,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: numberImage,
+        itemCount: _listImage!.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
             margin: EdgeInsets.only(right: 5, top: 10),

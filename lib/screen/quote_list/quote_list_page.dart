@@ -27,7 +27,7 @@ class _QuoteListPageState extends State<QuoteListPage> {
   @override
   void initState() {
     super.initState();
-    EQCQuoteList().fetchQuoteList('06/01/2024', '08/07/2024').then((data) {
+    EQCQuoteList().fetchQuoteList('06/01/2024', '08/08/2024').then((data) {
       setState(() {
         _dataQuote = DataTableQuote(data: data);
         _list_filter = _dataQuote;
@@ -138,13 +138,9 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
-                    // headingRowColor:
-                    //     MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
-                    // sortAscending: true,
                     dataRowMaxHeight: 50,
                     columnSpacing: 16,
-                    rowsPerPage: 5,
                     columns: [
                       DataColumn(
                         label: SizedBox(
