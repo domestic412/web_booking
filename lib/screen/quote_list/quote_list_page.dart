@@ -101,104 +101,132 @@ class _QuoteListPageState extends State<QuoteListPage> {
                   ),]
                 ),
                 SizedBox(height: 10,),
-                Row(
-                  children: [
-                    Container(
-                        width: 150,
-                        child: TextField(
-                          controller: quoteController.fromDate.value,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            isDense: true,
-                            fillColor: Colors.white,
-                          ),
-                          onTap: () async {
-                            DateTime? pickeddate = await showDatePicker(
-                                context: context,
-                                initialDate: DateFormat('MM/dd/yyyy').parse(quoteController.fromDate_send.value),
-                                firstDate: DateTime(2024),
-                                lastDate: DateTime(2123));
-                            if (pickeddate != null) {
-                                quoteController.fromDate.value.text =
-                                    DateFormat('dd/MM/yyyy')
-                                        .format(pickeddate);
-                                quoteController.fromDate_send.value =
-                                    DateFormat('MM/dd/yyyy')
-                                        .format(pickeddate);
-                                refreshQuoteList();
-                            }
-                          },
-                        ),),
-                        SizedBox(width: 100),
+                SingleChildScrollView(
+                   scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
                       Container(
-                        width: 150,
-                        child: TextField(
-                          controller: quoteController.toDate.value,
+                        decoration: BoxDecoration(
+                          color: white,
+                          border: Border.all(color: blue.withOpacity(.4), width: .5),
+                          boxShadow: [
+                            BoxShadow(
+                                offset: const Offset(0, 6),
+                                color: blue.withOpacity(.1),
+                                blurRadius: 12)
+                          ],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        // margin: const EdgeInsets.symmetric(vertical: 16),
+                        child: Row(
+                          children: [
+                            Text('From Date'),
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                                width: 150,
+                                child: TextField(
+                                  controller: quoteController.fromDate.value,
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    isDense: true,
+                                    fillColor: Colors.white,
+                                  ),
+                                  onTap: () async {
+                                    DateTime? pickeddate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateFormat('MM/dd/yyyy').parse(quoteController.fromDate_send.value),
+                                        firstDate: DateTime(2024),
+                                        lastDate: DateTime(2123));
+                                    if (pickeddate != null) {
+                                        quoteController.fromDate.value.text =
+                                            DateFormat('dd/MM/yyyy')
+                                                .format(pickeddate);
+                                        quoteController.fromDate_send.value =
+                                            DateFormat('MM/dd/yyyy')
+                                                .format(pickeddate);
+                                        refreshQuoteList();
+                                    }
+                                  },
+                                ),),
+                                Text('To Date'),
+                              Container(
+                                margin: EdgeInsets.only(left: 10),
+                                width: 150,
+                                child: TextField(
+                                  controller: quoteController.toDate.value,
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    isDense: true,
+                                    fillColor: Colors.white,
+                                  ),
+                                  onTap: () async {
+                                    DateTime? pickeddate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateFormat('MM/dd/yyyy').parse(quoteController.toDate_send.value),
+                                        firstDate: DateTime(2024),
+                                        lastDate: DateTime(2123));
+                                    if (pickeddate != null) {
+                                        quoteController.toDate.value.text =
+                                            DateFormat('dd/MM/yyyy')
+                                                .format(pickeddate);
+                                        quoteController.toDate_send.value =
+                                            DateFormat('MM/dd/yyyy')
+                                                .format(pickeddate);
+                                        refreshQuoteList();
+                                    }
+                                  },
+                                ),),
+                                
+                          ],
+                        ),
+                      ),
+                      Container(
+                                        decoration: BoxDecoration(
+                      color: white,
+                      border: Border.all(color: blue.withOpacity(.4), width: .5),
+                      boxShadow: [
+                        BoxShadow(
+                            offset: const Offset(0, 6),
+                            color: blue.withOpacity(.1),
+                            blurRadius: 12)
+                      ],
+                      borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        padding: const EdgeInsets.all(8),
+                                        margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+                                        child: Container(
+                      width: 1045,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.black45)),
+                      child: ListTile(
+                        dense: true,
+                        // leading: const Icon(Icons.search),
+                        title: TextField(
+                          controller: _search_quote,
                           decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            isDense: true,
-                            fillColor: Colors.white,
-                          ),
-                          onTap: () async {
-                            DateTime? pickeddate = await showDatePicker(
-                                context: context,
-                                initialDate: DateFormat('MM/dd/yyyy').parse(quoteController.toDate_send.value),
-                                firstDate: DateTime(2024),
-                                lastDate: DateTime(2123));
-                            if (pickeddate != null) {
-                                quoteController.toDate.value.text =
-                                    DateFormat('dd/MM/yyyy')
-                                        .format(pickeddate);
-                                quoteController.toDate_send.value =
-                                    DateFormat('MM/dd/yyyy')
-                                        .format(pickeddate);
-                                refreshQuoteList();
-                            }
+                              hintText: 'Search', border: InputBorder.none,
+                              isDense: true,
+                              contentPadding: EdgeInsets.all(0)),
+                          onChanged: (value) {
+                            _filterQuote();
                           },
-                        ),)
-                  ],
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: white,
-                    border: Border.all(color: blue.withOpacity(.4), width: .5),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(0, 6),
-                          color: blue.withOpacity(.1),
-                          blurRadius: 12)
+                        ),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.cancel),
+                          onPressed: () {
+                            _search_quote.clear();
+                            _filterQuote();
+                          },
+                        ),
+                      ),
+                                        ),
+                                      ),
                     ],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: const EdgeInsets.all(8),
-                  margin: const EdgeInsets.symmetric(vertical: 16),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.black45)),
-                    child: ListTile(
-                      dense: true,
-                      leading: const Icon(Icons.search),
-                      title: TextField(
-                        controller: _search_quote,
-                        decoration: const InputDecoration(
-                            hintText: 'Search', border: InputBorder.none,
-                            isDense: true,
-                            contentPadding: EdgeInsets.all(0)),
-                        onChanged: (value) {
-                          _filterQuote();
-                        },
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.cancel),
-                        onPressed: () {
-                          _search_quote.clear();
-                          _filterQuote();
-                        },
-                      ),
-                    ),
                   ),
                 ),
+                
                 Container(
                   width: deviceWidth(context),
                   decoration: BoxDecoration(

@@ -62,7 +62,7 @@ class _AEQuotePageState extends State<AEQuotePage> {
                 ]),
                 Container(
                     margin: EdgeInsets.only(top: 30, bottom: 10),
-                    padding: EdgeInsets.all(17),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     decoration: BoxDecoration(
                       color: white,
                       border: Border.all(color: blue.withOpacity(.4), width: .5),

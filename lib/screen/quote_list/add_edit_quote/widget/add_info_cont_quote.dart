@@ -105,7 +105,7 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                   child: DataTable(
                     columnSpacing: 15,
                     horizontalMargin: 0,
-                    dividerThickness: 0,
+                    dividerThickness: 0.0,
                     columns: <DataColumn>[
                     DataColumn(label: Text('Charge')),
                     DataColumn(label: Text('Container')),
