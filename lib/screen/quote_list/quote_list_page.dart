@@ -100,6 +100,7 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     ),
                   ),]
                 ),
+                SizedBox(height: 10,),
                 Row(
                   children: [
                     Container(
@@ -212,6 +213,7 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
+                    showCheckboxColumn: false,
                     sortColumnIndex: 0,
                     dataRowMaxHeight: 50,
                     columnSpacing: 16,

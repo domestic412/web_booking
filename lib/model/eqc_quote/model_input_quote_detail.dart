@@ -12,9 +12,9 @@ class InputQuoteDetail {
   int? length;
   int? width;
   String? location;
-  int? laborCost;
-  int? mrCost;
-  int? totalCost;
+  double? laborCost;
+  double? mrCost;
+  double? totalCost;
   String? estimateDate;
   String? edit;
   // String? approveCode;

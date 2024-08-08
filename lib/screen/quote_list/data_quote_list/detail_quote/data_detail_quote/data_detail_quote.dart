@@ -183,7 +183,7 @@ class DataTableQuoteDetails extends DataTableSource {
         case 200:
           Uint8List bytes = response.bodyBytes;
           List<dynamic> files = await _extractZipFile(bytes);
-          quoteController.pathImg.value =files[0];
+          quoteController.pathImg.value =files[0]['path'];
           return Get.defaultDialog(
           title: 'Preview Image',
           content: Container(
@@ -193,6 +193,7 @@ class DataTableQuoteDetails extends DataTableSource {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  margin: EdgeInsets.only(right: 5),
                   height: (fullSizeHeight?? 500)*0.8,
                   width: (fullSizeWidth?? 900) *0.25,
                   decoration: BoxDecoration(
@@ -207,10 +208,10 @@ class DataTableQuoteDetails extends DataTableSource {
                             margin: EdgeInsets.all(15),
                             child: InkWell(
                               onTap: () {
-                                  quoteController.pathImg.value = files[index];
+                                  quoteController.pathImg.value = files[index]['path'];
                                   print(quoteController.pathImg.value);
                               },
-                              child: Text('$index'),));
+                              child: Text(removeBeforeSlash(files[index]['name'])),));
                         }),
                 ),
                 Obx(() => 
@@ -272,11 +273,25 @@ class DataTableQuoteDetails extends DataTableSource {
     for (final file in archive) {
       if (file.isFile) {
         final data = file.content as List<int>;
+        final name = file.name;
         final blob = html.Blob([data], 'image/png');
         final url = html.Url.createObjectUrlFromBlob(blob);
-        extractedFiles.add(url);
+        extractedFiles.add({'name': name, 'path':url});
       }
     }
     return extractedFiles;
   }
+}
+
+String removeBeforeSlash(String string) {
+  //Find to index of the first '/'
+  int index = string.indexOf('/');
+
+  //If '/' is found, return the substring after it
+  if (index != -1) {
+    return string.substring(index +1);
+  }
+
+  // If '/' is not found, return the original string
+  return string;
 }

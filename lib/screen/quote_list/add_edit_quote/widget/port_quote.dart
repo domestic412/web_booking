@@ -197,9 +197,9 @@ class _ImportButtonState extends State<ImportButton> {
     int? length;
     int? width;
     String? location;
-    int? laborCost;
-    int? mrCost;
-    int? totalCost;
+    double? laborCost;
+    double? mrCost;
+    double? totalCost;
     String? approveCode;
     int? payer;
     return ElevatedButton(
@@ -215,14 +215,11 @@ class _ImportButtonState extends State<ImportButton> {
                                   for (var row in excel.tables[table]!.rows) {
                                       int i = 0;
                                       for (var cell in row) {
-                                        if (j>0) {
+                                        if ((j>0)) {
                                           var value = cell?.value ?? '0';
-                                          // print(i);
-                                          // print(j);
-                                          // print(value);
                                           switch (i) {
                                               case 0:
-                                                chargeCode = value.toString();
+                                                chargeCode = value.toString().trim();
                                               case 1:
                                                 container = value.toString();
                                               case 2:
@@ -246,11 +243,11 @@ class _ImportButtonState extends State<ImportButton> {
                                               case 11:
                                                 categoryCode = value.toString();
                                               case 12:
-                                                laborCost = int.parse(value.toString());
+                                                laborCost = double.parse(value.toString());
                                               case 13:
-                                                mrCost = int.parse(value.toString());
+                                                mrCost = double.parse(value.toString());
                                               case 14:
-                                                totalCost = int.parse(value.toString());
+                                                totalCost = double.parse(value.toString());
                                               case 15:
                                                 approveCode = value.toString();
                                               case 16:
@@ -259,7 +256,7 @@ class _ImportButtonState extends State<ImportButton> {
                                           i = i + 1;
                                         } else {}
                                       }
-                                      if (chargeCode == null && 
+                                      if ((chargeCode == null && 
                                       container == null && 
                                       inGateDate == null && 
                                       componentCode == null && 
@@ -273,13 +270,25 @@ class _ImportButtonState extends State<ImportButton> {
                                       categoryCode == null && 
                                       laborCost == null && 
                                       mrCost == null && 
-                                      totalCost == null) 
+                                      totalCost == null) ||
+                                        (chargeCode == '0' && 
+                                      container == '0' && 
+                                      inGateDate == '0' && 
+                                      componentCode == '0' && 
+                                      damageDetail == '0' && 
+                                      errorCode == '0' && 
+                                      quantity == 0 && 
+                                      dimension == '0' && 
+                                      length == 0 && 
+                                      width == 0 && 
+                                      location == '0' && 
+                                      categoryCode == '0' && 
+                                      laborCost == 0 && 
+                                      mrCost == 0 && 
+                                      totalCost == 0) 
+                                      // || (chargeCode == 'Dịch vụ')
+                                      ) 
                                       {} else {
-                                        // print(findChargeId(chargeCode: chargeCode!));
-                                        // print(findComponentId(componentCode: componentCode!));
-                                        // print(findCategoryId(categoryCode: categoryCode!));
-                                        // print(findErrorId(errorCode: errorCode!));
-                                        // print(j);
                                         if (findChargeId(chargeCode: chargeCode!) == null) {
                                           Get.defaultDialog(
                                             middleText: 'Not found $chargeCode in data Charge',
@@ -352,6 +361,23 @@ class _ImportButtonState extends State<ImportButton> {
                                       }
                                       j = ++j;
                                     }
+                                    chargeCode = null;
+                                    componentCode = null;
+                                    categoryCode = null;
+                                    errorCode = null;
+                                    container = null;
+                                    inGateDate = null;
+                                    damageDetail = null;
+                                    quantity = null;
+                                    dimension = null;
+                                    length = null;
+                                    width = null;
+                                    location = null;
+                                    laborCost = null;
+                                    mrCost = null;
+                                    totalCost = null;
+                                    approveCode = null;
+                                    payer = null;
                                   } else {
                                     print('no data');
                                   }

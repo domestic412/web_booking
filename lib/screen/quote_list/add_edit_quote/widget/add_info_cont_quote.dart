@@ -349,9 +349,9 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                         length: int.parse(quoteController.length.value.text),
                         width: int.parse(quoteController.width.value.text),
                         location: quoteController.location.value.text,
-                        laborCost: int.parse(quoteController.laborCost.value.text),
-                        mrCost: int.parse(quoteController.mrCost.value.text),
-                        totalCost: int.parse(quoteController.totalCost.value.text),
+                        laborCost: double.parse(quoteController.laborCost.value.text),
+                        mrCost: double.parse(quoteController.mrCost.value.text),
+                        totalCost: double.parse(quoteController.totalCost.value.text),
                         estimateDate: quoteController.currentDate_send.value,
                         edit: 'I'
                       );
@@ -371,9 +371,9 @@ class _InfoContQuoteState extends State<InfoContQuote> {
                         length: int.parse(quoteController.length.value.text),
                         width: int.parse(quoteController.width.value.text),
                         location: quoteController.location.value.text,
-                        laborCost: int.parse(quoteController.laborCost.value.text),
-                        mrCost: int.parse(quoteController.mrCost.value.text),
-                        totalCost: int.parse(quoteController.totalCost.value.text),
+                        laborCost: double.parse(quoteController.laborCost.value.text),
+                        mrCost: double.parse(quoteController.mrCost.value.text),
+                        totalCost: double.parse(quoteController.totalCost.value.text),
                       );
                       quoteController.listInputQuoteDetail_show.add(_listInputQuoteDetail_show);
                       // print(quoteController.listInputQuoteDetail);
