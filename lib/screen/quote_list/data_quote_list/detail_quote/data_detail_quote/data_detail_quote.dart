@@ -1,7 +1,17 @@
+import 'dart:typed_data';
+
+import 'package:archive/archive.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/eqc_quote/model_quote_detail.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
+import 'package:universal_html/html.dart' as html;
 
 class DataTableQuoteDetails extends DataTableSource {
   List<EQCQuoteDetail>? data;
@@ -138,6 +148,12 @@ class DataTableQuoteDetails extends DataTableSource {
         rowData.approveCode!,
         style: style_text_Table_small,
       )),
+      DataCell(InkWell(
+          onTap: () {
+            downloadAndExtractZip(cntr: data![index].container!, esdate: data![index].estimateDate!);
+          },
+          child: Text('Container', style: TextStyle(color: haian)),
+        )),
       // DataCell(ElevatedButton(onPressed: (){}, child: Text('Edit'))),
     ]);
   }
@@ -153,4 +169,114 @@ class DataTableQuoteDetails extends DataTableSource {
   @override
   // TODO: implement selectedRowCount
   int get selectedRowCount => 0;
+
+  Future<void> downloadAndExtractZip({required String cntr,required String esdate}) async {
+    try {
+      var url = '$SERVER/EQCQuote/DownloadImage?Container=$cntr&EstimateDate=$esdate';
+
+
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET", //use fot http, not use https
+      });
+      switch (response.statusCode) {
+        case 200:
+          Uint8List bytes = response.bodyBytes;
+          List<dynamic> files = await _extractZipFile(bytes);
+          quoteController.pathImg.value =files[0];
+          return Get.defaultDialog(
+          title: 'Preview Image',
+          content: Container(
+            height: (fullSizeHeight?? 500) *0.8,
+            width: (fullSizeWidth?? 900) *0.8,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: (fullSizeHeight?? 500)*0.8,
+                  width: (fullSizeWidth?? 900) *0.25,
+                  decoration: BoxDecoration(
+                    border: Border.all()
+                  ),
+                  child:  
+                  ListView.builder(
+                  scrollDirection: Axis.vertical,
+                        itemCount: files.length,
+                        itemBuilder: (BuildContext context, index) {
+                          return Container(
+                            margin: EdgeInsets.all(15),
+                            child: InkWell(
+                              onTap: () {
+                                  quoteController.pathImg.value = files[index];
+                                  print(quoteController.pathImg.value);
+                              },
+                              child: Text('$index'),));
+                        }),
+                ),
+                Obx(() => 
+                Container(
+                  height: (fullSizeHeight?? 500) *0.8 ,
+                  width: (fullSizeWidth?? 900) *0.5 ,
+                  decoration: BoxDecoration(
+                    border: Border.all()
+                  ),
+                  child: Image.network(quoteController.pathImg.value, 
+                    errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                      return const Center(
+                        child: Text('This image type is not supported:'),
+                      );
+                    }
+                  ),
+                )
+                ) 
+              ],
+            ),
+          ),
+          confirm: ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: normalColor),
+            onPressed: () {
+              // quoteController.pathImg.value = '';
+              Get.back();
+            }, 
+            child: Text('OK', style: TextStyle(color: white),)),
+        );
+        case 404:
+          return Get.defaultDialog(
+            title: 'ERROR',
+            middleText: 'No Image',
+            textConfirm: 'OK',
+            onConfirm: () {
+              Get.back();
+            },
+          );
+        default:
+          return Get.defaultDialog(
+            title: 'ERROR',
+            middleText: 'Error ${response.reasonPhrase}',
+            textConfirm: 'OK',
+            onConfirm: () {
+              Get.back();
+            },
+          );
+          // throw Exception(response.reasonPhrase);
+      }
+    } on Exception catch (e) {
+      print(e);
+      throw Exception('Error fetch Image - $e');
+    }
+  }
+
+  Future<List<dynamic>> _extractZipFile(Uint8List zipData) async {
+    final archive = ZipDecoder().decodeBytes(zipData);
+    final extractedFiles = [];
+    for (final file in archive) {
+      if (file.isFile) {
+        final data = file.content as List<int>;
+        final blob = html.Blob([data], 'image/png');
+        final url = html.Url.createObjectUrlFromBlob(blob);
+        extractedFiles.add(url);
+      }
+    }
+    return extractedFiles;
+  }
 }

@@ -9,6 +9,9 @@ import 'package:web_booking/model/schedule/model_voyage.dart';
 double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
+double? fullSizeHeight;
+double? fullSizeWidth;
+
 //format currency
 final formatCurrency = NumberFormat('#,##0');
 

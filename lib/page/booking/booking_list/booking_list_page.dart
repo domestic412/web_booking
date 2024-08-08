@@ -20,14 +20,12 @@ class _BookingListPageState extends State<BookingListPage> {
   @override
   void initState() {
     super.initState();
-    bookingListController.fromDate_select.value.text = DateFormat('dd/MM/yyyy')
-        .format(DateTime.now().subtract(Duration(days: 7)));
-    bookingListController.fromDate.value = DateFormat('MM/dd/yyyy')
-        .format(DateTime.now().subtract(Duration(days: 7)));
+    bookingListController.fromDate_select.value.text = changeDatetoShow(date: DateTime.now().subtract(Duration(days: 7)));  
+    bookingListController.fromDate.value = changeDatetoSend(date: DateTime.now().subtract(Duration(days: 7)));
     bookingListController.toDate_select.value.text =
-        DateFormat('dd/MM/yyyy').format(DateTime.now().add(Duration(days: 1)));
+        changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
     bookingListController.toDate.value =
-        DateFormat('MM/dd/yyyy').format(DateTime.now().add(Duration(days: 1)));
+        changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
     fetchBookingList = BookingList().fetchDataBookingList(
         shipperId: inforUserController.shipperId.value,
         fromDate: bookingListController.fromDate.value,

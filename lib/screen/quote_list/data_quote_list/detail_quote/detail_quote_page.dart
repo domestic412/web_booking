@@ -7,7 +7,7 @@ import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/eqc_quote/model_quote_detail.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
-import 'data/data_detail_quote.dart';
+import 'data_detail_quote/data_detail_quote.dart';
 
 // import 'package:easy_localization/easy_localization.dart';
 
@@ -278,12 +278,12 @@ class _QuoteDetailsPageState extends State<QuoteDetailsPage> {
                           style: style_text_Table_small_bold,
                         ),
                       ),
-                      // DataColumn(
-                      //   label: Text(
-                      //     '',
-                      //     style: style_text_Table_small_bold,
-                      //   ),
-                      // ),
+                      DataColumn(
+                        label: Text(
+                          'Image File',
+                          style: style_text_Table_small_bold,
+                        ),
+                      ),
                     ],
                     source: _list_filter,
                   ),

@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
 import 'package:web_booking/model/eqc_quote/model_quote_list.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
-import '../../controllers/sidebar_controller.dart';
-import 'data/data_quote_list.dart';
+import 'data_quote_list/data_quote_list.dart';
+import 'package:intl/intl.dart';
 
 // import 'package:easy_localization/easy_localization.dart';
 
@@ -27,7 +28,23 @@ class _QuoteListPageState extends State<QuoteListPage> {
   @override
   void initState() {
     super.initState();
-    EQCQuoteList().fetchQuoteList('06/01/2024', '08/08/2024').then((data) {
+
+    quoteController.fromDate_send.value = changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
+    quoteController.fromDate.value.text = changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
+
+    quoteController.toDate_send.value = changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
+    quoteController.toDate.value.text = changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
+    EQCQuoteList().fetchQuoteList(quoteController.fromDate_send.value, quoteController.toDate_send.value).then((data) {
+      setState(() {
+        _dataQuote = DataTableQuote(data: data);
+        _list_filter = _dataQuote;
+        // print('initial data history');
+      });
+    });
+  }
+
+  void refreshQuoteList(){
+    EQCQuoteList().fetchQuoteList(quoteController.fromDate_send.value, quoteController.toDate_send.value).then((data) {
       setState(() {
         _dataQuote = DataTableQuote(data: data);
         _list_filter = _dataQuote;
@@ -82,6 +99,63 @@ class _QuoteListPageState extends State<QuoteListPage> {
                       style: style_title_page,
                     ),
                   ),]
+                ),
+                Row(
+                  children: [
+                    Container(
+                        width: 150,
+                        child: TextField(
+                          controller: quoteController.fromDate.value,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            isDense: true,
+                            fillColor: Colors.white,
+                          ),
+                          onTap: () async {
+                            DateTime? pickeddate = await showDatePicker(
+                                context: context,
+                                initialDate: DateFormat('MM/dd/yyyy').parse(quoteController.fromDate_send.value),
+                                firstDate: DateTime(2024),
+                                lastDate: DateTime(2123));
+                            if (pickeddate != null) {
+                                quoteController.fromDate.value.text =
+                                    DateFormat('dd/MM/yyyy')
+                                        .format(pickeddate);
+                                quoteController.fromDate_send.value =
+                                    DateFormat('MM/dd/yyyy')
+                                        .format(pickeddate);
+                                refreshQuoteList();
+                            }
+                          },
+                        ),),
+                        SizedBox(width: 100),
+                      Container(
+                        width: 150,
+                        child: TextField(
+                          controller: quoteController.toDate.value,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            isDense: true,
+                            fillColor: Colors.white,
+                          ),
+                          onTap: () async {
+                            DateTime? pickeddate = await showDatePicker(
+                                context: context,
+                                initialDate: DateFormat('MM/dd/yyyy').parse(quoteController.toDate_send.value),
+                                firstDate: DateTime(2024),
+                                lastDate: DateTime(2123));
+                            if (pickeddate != null) {
+                                quoteController.toDate.value.text =
+                                    DateFormat('dd/MM/yyyy')
+                                        .format(pickeddate);
+                                quoteController.toDate_send.value =
+                                    DateFormat('MM/dd/yyyy')
+                                        .format(pickeddate);
+                                refreshQuoteList();
+                            }
+                          },
+                        ),)
+                  ],
                 ),
                 Container(
                   decoration: BoxDecoration(

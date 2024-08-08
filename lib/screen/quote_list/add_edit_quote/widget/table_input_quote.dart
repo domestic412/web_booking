@@ -6,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/eqc_quote/model_add_quote.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
 import 'package:http/http.dart' as http;
@@ -247,12 +246,10 @@ class _TableInputQuoteState extends State<TableInputQuote> {
     final ImagePicker _picker = ImagePicker();
     List<XFile> img = await _picker.pickMultiImage();
 
-    // setState(() {
-      listImg = img;
-    // });
+    listImg = img;
 
-    if (listImg!.length != 0) {
-      quoteController.pathImg.value =listImg![0].path;
+    if (listImg!.isNotEmpty) {
+      quoteController.pathImg.value = listImg![0].path;
       return Get.defaultDialog(
         title: 'Preview Image',
         content: Container(
@@ -270,12 +267,8 @@ class _TableInputQuoteState extends State<TableInputQuote> {
                 child:  
                 ListView.builder(
                 scrollDirection: Axis.vertical,
-                      itemCount: img.length,
+                      itemCount: listImg!.length,
                       itemBuilder: (BuildContext context, index) {
-                      if (quoteController.pathImg.value.isEmpty) {
-                        quoteController.pathImg.value =listImg![0].path;
-                        print(quoteController.pathImg.value);
-                      }
                         return Container(
                           margin: EdgeInsets.all(15),
                           child: InkWell(
@@ -307,19 +300,57 @@ class _TableInputQuoteState extends State<TableInputQuote> {
           style: ElevatedButton.styleFrom(backgroundColor: normalColor),
           onPressed: () {
             PostImgQuote(cntr: cntr, date: changeDatetoSend(date: DateTime.now()));
-            quoteController.pathImg.value = '';
+            // quoteController.pathImg.value = '';
           }, 
           child: Text('Send', style: TextStyle(color: white),)),
 
         cancel: ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: grey),
           onPressed: () {
-            quoteController.pathImg.value = '';
+            // quoteController.pathImg.value = '';
             Get.back();
           }, 
           child: Text('Cancel', style: TextStyle(color: white),)),
       );
     }
+  }
+
+  Future<void> PostImgQuote({required String cntr,required String date}) async {
+    try {
+      //PostRequest with multipartFile
+      // Create a FormData object to store your files
+      final formData = html.FormData();
+      final url = '$SERVER/EQCQuote/UploadImage?Container=$cntr&EstimateDate=$date';
+      // Assuming a list of XFile objects in _listImage
+      if (listImg != null) {
+        for (int i = 0; i < listImg!.length; i++) {
+          final file = listImg![i];
+          //Convert XFile to Blob
+          final blob = html.Blob([await file.readAsBytes()], file.mimeType);
+          // Add the Blob to the FormData object
+          formData.appendBlob('uploadfile', blob, file.name);
+        }
+      }
+      final request = html.HttpRequest();
+      request.open(
+        'POST',
+        url,
+      );
+      request.send(formData);
+      request.onLoad.listen((html.ProgressEvent event) {
+        switch (request.status) {
+          case 200:
+            print('Success send Image quote');
+            Get.back();
+          default:
+            print('Error ${request.status} send Image quote ' + cntr);
+        }
+      });
+    } on Exception catch (e) {
+      print(e);
+      throw Exception('Error fetch Image - $e');
+    }
+      
   }
 
 // List<File>? _extractedFiles;
@@ -337,6 +368,7 @@ class _TableInputQuoteState extends State<TableInputQuote> {
         case 200:
           Uint8List bytes = response.bodyBytes;
           List<dynamic> files = await _extractZipFile(bytes);
+          quoteController.pathImg.value =files[0];
           return Get.defaultDialog(
           title: 'Preview Image',
           content: Container(
@@ -356,15 +388,12 @@ class _TableInputQuoteState extends State<TableInputQuote> {
                   scrollDirection: Axis.vertical,
                         itemCount: files.length,
                         itemBuilder: (BuildContext context, index) {
-                        if (quoteController.pathImg.value == '') {
-                          quoteController.pathImg.value =files[0];
-                          print(quoteController.pathImg.value);
-                        }
                           return Container(
                             margin: EdgeInsets.all(15),
                             child: InkWell(
                               onTap: () {
                                   quoteController.pathImg.value = files[index];
+                                  print(quoteController.pathImg.value);
                               },
                               child: Text('$index'),));
                         }),
@@ -391,17 +420,30 @@ class _TableInputQuoteState extends State<TableInputQuote> {
           confirm: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: normalColor),
             onPressed: () {
-              quoteController.pathImg.value = '';
+              // quoteController.pathImg.value = '';
               Get.back();
             }, 
             child: Text('OK', style: TextStyle(color: white),)),
         );
-
-        case 401:
-          // Get.toNamed(GetRoutes.SignIn);
-          throw Exception(response.reasonPhrase);
+        case 404:
+          return Get.defaultDialog(
+            title: 'ERROR',
+            middleText: 'No Image',
+            textConfirm: 'OK',
+            onConfirm: () {
+              Get.back();
+            },
+          );
         default:
-          throw Exception(response.reasonPhrase);
+          return Get.defaultDialog(
+            title: 'ERROR',
+            middleText: 'Error ${response.reasonPhrase}',
+            textConfirm: 'OK',
+            onConfirm: () {
+              Get.back();
+            },
+          );
+          // throw Exception(response.reasonPhrase);
       }
     } on Exception catch (e) {
       print(e);

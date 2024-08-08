@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:web_booking/constants/variable.dart';
 
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/widgets/header.dart';
@@ -14,6 +15,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    fullSizeHeight = deviceHeight(context);
+    fullSizeWidth = deviceWidth(context);
     return Scaffold(
         // appBar: PreferredSize(
         //   child: AppbarWidget(),

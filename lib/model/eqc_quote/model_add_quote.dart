@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'dart:html' as html;
 
 import 'model_input_quote_detail.dart';
@@ -50,6 +51,7 @@ Future<void> PostNewQuoteDetail({required List<InputQuoteDetail> listQuoteDetail
         body: body);
   switch (response.statusCode) {
     case 200:
+      controller.selectWidget.value = quoteList;
       print('Post quote detail success');
     default:
       print('Error post quote detail: ${response.statusCode}');
@@ -59,36 +61,5 @@ Future<void> PostNewQuoteDetail({required List<InputQuoteDetail> listQuoteDetail
   }
 }
 
-Future<void> PostImgQuote({required String cntr,required String date}) async {
 
-    //PostRequest with multipartFile
-      // Create a FormData object to store your files
-      final formData = html.FormData();
-      final url = '$SERVER/EQCQuote/UploadImage?Container=$cntr&EstimateDate=$date';
-      // Assuming a list of XFile objects in _listImage
-      if (quoteController.listImg != null) {
-        for (int i = 0; i < quoteController.listImg!.length; i++) {
-          final file = quoteController.listImg![i];
-          //Convert XFile to Blob
-          final blob = html.Blob([await file.readAsBytes()], file.mimeType);
-          // Add the Blob to the FormData object
-          formData.appendBlob('uploadfile', blob, file.name);
-        }
-      }
-      final request = html.HttpRequest();
-      request.open(
-        'POST',
-        url,
-      );
-      request.send(formData);
-      request.onLoad.listen((html.ProgressEvent event) {
-        if (request.status == 200) {
-          print('Success send Image quote');
-          // EasyLoading.dismiss();
-          Get.back();
-        } else {
-          print('Error ${request.status} send Image quote ' + cntr);
-        }
-      });
-  }
 

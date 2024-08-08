@@ -19,6 +19,12 @@ var currentDate_send = ''.obs;
 RxList<XFile>? listImg;
 var pathImg = ''.obs;
 
+var fromDate = TextEditingController().obs;
+var toDate = TextEditingController().obs;
+
+var fromDate_send = ''.obs;
+var toDate_send = ''.obs;
+
 var eqcQuoteId = ''.obs;
 var quoteNo = ''.obs;
 
