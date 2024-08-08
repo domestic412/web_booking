@@ -1,6 +1,7 @@
 import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spreadsheet_decoder/spreadsheet_decoder.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/eqc_quote/model_init_quote.dart';
@@ -194,8 +195,8 @@ class _ImportButtonState extends State<ImportButton> {
     String? damageDetail;
     int? quantity;
     String? dimension;
-    int? length;
-    int? width;
+    double? length;
+    double? width;
     String? location;
     double? laborCost;
     double? mrCost;
@@ -209,49 +210,53 @@ class _ImportButtonState extends State<ImportButton> {
                     if (resultPickedFile != null) {
                                   var bytes =
                                       resultPickedFile?.files.single.bytes;
-                                  var excel = Excel.decodeBytes(bytes!);
+                                  // var excel = Excel.decodeBytes(bytes!);
+                                  var decoder = SpreadsheetDecoder.decodeBytes(bytes!, update: true);
                                   // choose sheet1 in file excel
                                   String table = 'Upload BRV';
-                                  for (var row in excel.tables[table]!.rows) {
+                                  for (var row in decoder.tables[table]!.rows) {
                                       int i = 0;
                                       for (var cell in row) {
+                                        print(row);
                                         if ((j>0)) {
-                                          var value = cell?.value ?? '0';
+                                          print(i);
+                                          // var value = cell?.value ?? '0';
+                                          // cell ?? '0';
                                           switch (i) {
                                               case 0:
-                                                chargeCode = value.toString().trim();
+                                                chargeCode = cell;
                                               case 1:
-                                                container = value.toString();
+                                                container = cell;
                                               case 2:
-                                                inGateDate = value.toString();
+                                                inGateDate = cell;
                                               case 3:
-                                                componentCode = value.toString();
+                                                componentCode = cell;
                                               case 4:
-                                                damageDetail = value.toString();
+                                                damageDetail = cell;
                                               case 5:
-                                                errorCode = value.toString();
+                                                errorCode = cell;
                                               case 6:
-                                                quantity = int.parse(value.toString());
+                                                quantity = cell ?? 0;
                                               case 7:
-                                                dimension = value.toString();
+                                                dimension = cell;
                                               case 8:
-                                                length = int.parse(value.toString());
+                                                length = cell ?? 0;
                                               case 9:
-                                                width = int.parse(value.toString());
+                                                width = cell ?? 0;
                                               case 10:
-                                                location = value.toString();
+                                                location = cell;
                                               case 11:
-                                                categoryCode = value.toString();
+                                                categoryCode = cell;
                                               case 12:
-                                                laborCost = double.parse(value.toString());
+                                                laborCost = cell ?? 0;
                                               case 13:
-                                                mrCost = double.parse(value.toString());
+                                                mrCost = cell ?? 0;
                                               case 14:
-                                                totalCost = double.parse(value.toString());
+                                                totalCost = cell ?? 0;
                                               case 15:
-                                                approveCode = value.toString();
+                                                approveCode = cell;
                                               case 16:
-                                                payer = int.parse(value.toString());
+                                                payer = cell ?? 0;
                                           }
                                           i = i + 1;
                                         } else {}

@@ -9,8 +9,8 @@ class InputQuoteDetail {
   String? damageDetail;
   int? quantity;
   String? dimension;
-  int? length;
-  int? width;
+  double? length;
+  double? width;
   String? location;
   double? laborCost;
   double? mrCost;
