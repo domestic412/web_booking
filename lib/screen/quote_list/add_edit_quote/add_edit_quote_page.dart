@@ -10,7 +10,7 @@ import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_contro
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 import 'widget/add_info_cont_quote.dart';
-import 'widget/port_quote.dart';
+import 'widget/port_quote/port_quote.dart';
 import 'widget/table_input_quote.dart';
 
 // import 'package:easy_localization/easy_localization.dart';
