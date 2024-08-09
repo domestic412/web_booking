@@ -162,29 +162,29 @@ class _TableInputQuoteState extends State<TableInputQuote> {
                   cells: <DataCell>[
                     DataCell(Text((i + 1).toString())),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].chargeTypeId!)),
+                        .listInputQuoteDetail_show[i].chargeTypeId ?? '')),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].container!)),
+                        .listInputQuoteDetail_show[i].container ?? '')),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].inGateDate!)),
+                        .listInputQuoteDetail_show[i].inGateDate ?? '')),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].componentId!)),
+                        .listInputQuoteDetail_show[i].componentId ?? '')),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].damageDetail!)),
+                        .listInputQuoteDetail_show[i].damageDetail ?? '')),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].errorId!)),
+                        .listInputQuoteDetail_show[i].errorId ?? '')),
                     DataCell(Text(quoteController
                         .listInputQuoteDetail_show[i].quantity!.toString())),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].dimension!)),
+                        .listInputQuoteDetail_show[i].dimension ?? '')),
                     DataCell(Text(quoteController
                         .listInputQuoteDetail_show[i].length!.toString())),
                     DataCell(Text(quoteController
                         .listInputQuoteDetail_show[i].width!.toString())),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].location!)),
+                        .listInputQuoteDetail_show[i].location ?? '')),
                     DataCell(Text(quoteController
-                        .listInputQuoteDetail_show[i].categoryId!)),
+                        .listInputQuoteDetail_show[i].categoryId ?? '')),
                     DataCell(Text(quoteController
                         .listInputQuoteDetail_show[i].laborCost!.toString())),
                     DataCell(Text(quoteController
@@ -393,7 +393,7 @@ class _TableInputQuoteState extends State<TableInputQuote> {
                             child: InkWell(
                               onTap: () {
                                   quoteController.pathImg.value = files[index];
-                                  print(quoteController.pathImg.value);
+                                  // print(quoteController.pathImg.value);
                               },
                               child: Text('$index'),));
                         }),
