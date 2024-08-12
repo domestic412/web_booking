@@ -1,15 +1,15 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
-final ExportHistoryController exportHistoryController = Get.put(ExportHistoryController());
+final HistoryController historyController = Get.put(HistoryController());
 
-class ExportHistoryController extends GetxController{
+class HistoryController extends GetxController {
   var fromDate = TextEditingController().obs;
   var toDate = TextEditingController().obs;
 
   var fromDate_send = ''.obs;
   var toDate_send = ''.obs;
+
+  RxMap fileImageCombine = Map<dynamic, dynamic>().obs;
 }

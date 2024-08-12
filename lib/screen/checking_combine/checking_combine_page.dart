@@ -1,7 +1,10 @@
-import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:spreadsheet_decoder/spreadsheet_decoder.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
@@ -11,6 +14,7 @@ import 'package:web_booking/screen/checking_combine/Widget/policy_checking_combi
 import 'package:web_booking/screen/checking_combine/Widget/radio_button_route.dart';
 import 'package:web_booking/screen/checking_combine/import_excel/import_excel.dart';
 import 'package:web_booking/screen/checking_combine/popUp_detail_container/popUp_detail_checking_combine.dart';
+import 'package:universal_html/html.dart' as html;
 // import 'package:easy_localization/easy_localization.dart';
 
 class CheckingCombinePage extends StatefulWidget {
@@ -85,20 +89,43 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                         decoration: InputDecoration(
                             hintText: 'enter container number'.tr,
                             border: InputBorder.none,
-                            suffix: InkWell(
-                              onTap: () {
-                                setState(
-                                  () {
-                                    _checkContainers = CheckContainer()
-                                        .fetchCheckContainers(
-                                            _CntrNo.text.trim(),
-                                            currentOptionsRoute);
-                                  },
-                                );
-                              },
-                              child: Text(
-                                'Search',
-                                style: TextStyle(color: blue),
+                            suffix: Container(
+                              width: 120,
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      setState(
+                                        () {
+                                          _checkContainers = CheckContainer()
+                                              .fetchCheckContainers(
+                                                  _CntrNo.text.trim(),
+                                                  currentOptionsRoute);
+                                        },
+                                      );
+                                    },
+                                    child: Text(
+                                      'Search',
+                                      style: TextStyle(color: blue),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(
+                                        () {
+                                          _CntrNo.text = '';
+                                        },
+                                      );
+                                    },
+                                    child: Text(
+                                      'Clear',
+                                      style: TextStyle(color: grey),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ))),
                   ),
@@ -122,7 +149,10 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                                 if (resultPickedFile != null) {
                                   var bytes =
                                       resultPickedFile?.files.single.bytes;
-                                  var excel = Excel.decodeBytes(bytes!);
+                                  // var excel = Excel.decodeBytes(bytes!);
+                                  var excel = SpreadsheetDecoder.decodeBytes(
+                                      bytes!,
+                                      update: true);
                                   // choose sheet1 in file excel
                                   String table = 'Sheet1';
                                   // for (var table in excel.tables.keys) {         // take data all sheet in file excel
@@ -322,6 +352,14 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               ),
             ),
           ),
+          DataColumn(
+            label: Expanded(
+              child: Center(
+                child:
+                    Text('upload image'.tr, style: style_text_Table_small_bold),
+              ),
+            ),
+          ),
         ],
         rows: List.generate(snapshot.data!.length, (index) {
           if (snapshot.data![index].approval == Accept) {
@@ -397,12 +435,14 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                       String remark = snapshot.data![index].remark ?? '';
                       String ghiChuTinhTrang =
                           snapshot.data![index].ghiChuTinhTrang ?? '';
-                      String luuYSuDung = snapshot.data![index].luuYSuDung ?? '';
+                      String luuYSuDung =
+                          snapshot.data![index].luuYSuDung ?? '';
                       String soLanKetHop =
                           snapshot.data![index].soLanKetHop ?? '';
                       String ketQua = snapshot.data![index].ketQua ?? '';
                       String approval = snapshot.data![index].approval ?? '';
-                      String updateTime = snapshot.data![index].updateTime ?? '';
+                      String updateTime =
+                          snapshot.data![index].updateTime ?? '';
                       checkContainerController.updateCheckContainerController(
                           cntrno: cntrno.obs,
                           sizeType: sizeType.obs,
@@ -419,7 +459,8 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: _color,
                         shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20)))),
                     child: Text(
                       snapshot.data![index].approval.toString(),
                       style: text_style_status,
@@ -428,8 +469,143 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                   ),
                 ),
               ),
-            ))
+            )),
+            DataCell(Center(
+                child: IconButton(
+                    onPressed: () {
+                      getImage(
+                          ImageSource.gallery, snapshot.data![index].cntrno!);
+                    },
+                    icon: Icon(
+                      Icons.image,
+                      color: haian,
+                    )))),
           ]);
         }));
+  }
+
+  List<XFile>? listImg;
+  Future getImage(ImageSource media, String cntr) async {
+    // String? base64image;
+    final ImagePicker _picker = ImagePicker();
+    List<XFile> img = await _picker.pickMultiImage();
+
+    listImg = img;
+
+    if (listImg!.isNotEmpty) {
+      checkContainerController.pathImg.value = listImg![0].path;
+      return Get.defaultDialog(
+        title: 'Preview Image',
+        content: Container(
+          height: deviceHeight(context) * 0.8,
+          width: deviceWidth(context) * 0.8,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: deviceHeight(context) * 0.8,
+                width: deviceWidth(context) * 0.25,
+                decoration: BoxDecoration(border: Border.all()),
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: listImg!.length,
+                    itemBuilder: (BuildContext context, index) {
+                      return Container(
+                          margin: EdgeInsets.all(15),
+                          child: InkWell(
+                              onTap: () {
+                                checkContainerController.pathImg.value =
+                                    listImg![index].path;
+                                // print(quoteController.pathImg.value);
+                              },
+                              child: Text(listImg![index].name)));
+                    }),
+              ),
+              Obx(() => Container(
+                    height: deviceHeight(context) * 0.8,
+                    width: deviceWidth(context) * 0.5,
+                    decoration: BoxDecoration(border: Border.all()),
+                    child: Image.network(checkContainerController.pathImg.value,
+                        errorBuilder: (BuildContext context, Object error,
+                            StackTrace? stackTrace) {
+                      return const Center(
+                        child: Text('This image type is not supported:'),
+                      );
+                    }),
+                  ))
+            ],
+          ),
+        ),
+        confirm: ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: normalColor),
+            onPressed: () {
+              PostImgQuote(
+                  cntr: cntr, date: changeDatetoSend(date: DateTime.now()));
+              // quoteController.pathImg.value = '';
+            },
+            child: Text(
+              'Send',
+              style: TextStyle(color: white),
+            )),
+        cancel: ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: grey),
+            onPressed: () {
+              // quoteController.pathImg.value = '';
+              Get.back();
+            },
+            child: Text(
+              'Cancel',
+              style: TextStyle(color: white),
+            )),
+      );
+    }
+  }
+
+  Future<void> PostImgQuote(
+      {required String cntr, required String date}) async {
+    try {
+      EasyLoading.show(
+        status: 'Loading...',
+        maskType: EasyLoadingMaskType.black,
+        dismissOnTap: true,
+      );
+      //PostRequest with multipartFile
+      // Create a FormData object to store your files
+      final formData = html.FormData();
+      final url = '$SERVER/ImageCombine?container=$cntr&UpdateTime=$date';
+      // Assuming a list of XFile objects in _listImage
+      if (listImg != null) {
+        for (int i = 0; i < listImg!.length; i++) {
+          final file = listImg![i];
+          //Convert XFile to Blob
+          final blob = html.Blob([await file.readAsBytes()], file.mimeType);
+          // Add the Blob to the FormData object
+          formData.appendBlob('files', blob, file.name);
+        }
+      }
+      final request = html.HttpRequest();
+      request.open(
+        'POST',
+        url,
+      );
+      request.send(formData);
+      request.onLoad.listen((html.ProgressEvent event) {
+        switch (request.status) {
+          case 200:
+            print('Success send Image quote');
+            EasyLoading.showSuccess('Upload Success');
+            if (Get.isDialogOpen == true) {
+              Get.back();
+            }
+          default:
+            EasyLoading.showError('Upload Fail');
+            print('Error ${request.status} send Image quote ' + cntr);
+        }
+      });
+    } on Exception catch (e) {
+      EasyLoading.showError('Upload Fail');
+      print(e);
+      throw Exception('Error fetch Image - $e');
+    }
   }
 }

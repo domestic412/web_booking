@@ -147,5 +147,6 @@ Map<String, String> vi = {
   "title history list": "Lịch sử kiểm tra kết hợp",
   "_comment_stock_page": "Stock Page",
   "title container stock": "Danh sách Container",
-  "hello": "Xin chào !!"
+  "hello": "Xin chào !!",
+  "upload image": "Hình ảnh"
 };

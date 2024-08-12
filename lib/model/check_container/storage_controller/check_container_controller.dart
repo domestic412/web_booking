@@ -5,6 +5,7 @@ final CheckContainerController checkContainerController =
     Get.put(CheckContainerController());
 
 class CheckContainerController extends GetxController {
+  var pathImg = ''.obs;
   var cntrno = ''.obs;
   var sizeType = ''.obs;
   var soLanKetHop = ''.obs;

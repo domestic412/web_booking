@@ -151,5 +151,6 @@ Map<String, String> en = {
   "title history list": "History List",
   "_comment_stock_page": "Stock Page",
   "title container stock": "Container Stock",
-  "hello": "Hello !!"
+  "hello": "Hello !!",
+  "upload image": "Upload Image",
 };

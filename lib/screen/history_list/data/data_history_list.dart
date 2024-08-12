@@ -4,6 +4,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/model/list_history/model_history_list.dart';
 import 'package:intl/intl.dart';
+import 'package:web_booking/model/list_history/model_image_combine.dart';
 
 class DataTableHistory extends DataTableSource {
   List<History>? data;
@@ -63,6 +64,10 @@ class DataTableHistory extends DataTableSource {
       )),
       DataCell(SelectableText(
         rowData.cntrno!,
+        onTap: () {
+          ImageCombine().fetchImageCombine(
+              data![index].cntrno!, data![index].numKh ?? '0');
+        },
         style: style_text_Table_small,
       )),
       DataCell(SelectableText(
@@ -99,17 +104,17 @@ class DataTableHistory extends DataTableSource {
       )),
       DataCell(Center(
           child: Tooltip(
-            message: rowData.remark!,
-            child: Container(
-                  padding: EdgeInsets.all(7),
-                  decoration: BoxDecoration(
+        message: rowData.remark!,
+        child: Container(
+          padding: EdgeInsets.all(7),
+          decoration: BoxDecoration(
               color: _color, borderRadius: BorderRadius.circular(7)),
-                  child: SelectableText(
+          child: SelectableText(
             rowData.ketQua!,
             style: text_style_status,
-                  ),
-                ),
-          ))),
+          ),
+        ),
+      ))),
       DataCell(SelectableText(
         rowData.acc!,
         style: style_text_Table_small,
