@@ -62,14 +62,26 @@ class DataTableHistory extends DataTableSource {
           ),
         ),
       )),
-      DataCell(SelectableText(
-        rowData.cntrno!,
-        onTap: () {
-          ImageCombine().fetchImageCombine(
-              data![index].cntrno!, data![index].numKh ?? '0');
-        },
-        style: style_text_Table_small,
-      )),
+      DataCell(TextButton(
+          onPressed: () {
+            ImageCombine().fetchImageCombine(
+                data![index].cntrno!, data![index].numKh ?? '0');
+          },
+          child: Text(rowData.cntrno!,
+              style: TextStyle(
+                fontSize: 14,
+                color: haian,
+                fontWeight: FontWeight.w600,
+              )))),
+      // DataCell(SelectableText(
+      //   rowData.cntrno!,
+      //   onTap: () {
+      //     ImageCombine().fetchImageCombine(
+      //         data![index].cntrno!, data![index].numKh ?? '0');
+      //   },
+      //   style: TextStyle(
+      //       fontSize: 14, color: haian, decoration: TextDecoration.underline),
+      // )),
       DataCell(SelectableText(
         rowData.size!,
         style: style_text_Table_small,

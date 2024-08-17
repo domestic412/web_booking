@@ -145,47 +145,65 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                               borderRadius: BorderRadius.circular(10)),
                           child: TextButton(
                               onPressed: () async {
+                                // int j = 0;
+                                String _listCont = '';
                                 await Import().ImportExcel();
                                 if (resultPickedFile != null) {
                                   var bytes =
                                       resultPickedFile?.files.single.bytes;
                                   // var excel = Excel.decodeBytes(bytes!);
-                                  var excel = SpreadsheetDecoder.decodeBytes(
+                                  var decoder = SpreadsheetDecoder.decodeBytes(
                                       bytes!,
                                       update: true);
                                   // choose sheet1 in file excel
-                                  String table = 'Sheet1';
+                                  // String table = 'Sheet1';
                                   // for (var table in excel.tables.keys) {         // take data all sheet in file excel
                                   // print(table);                                  // sheet Name
                                   // print(excel.tables[table]!.maxColumns);        // max number column
                                   // print(excel.tables[table]!.maxRows);               // print max number row
                                   // take all data, style, cell... each row
-                                  for (var row in excel.tables[table]!.rows) {
-                                    List list_cont = row
-                                        .map((e) => e?.value)
-                                        .toList(); //add data to list_cont with container is list_cont[0]
-                                    // print(list_cont[0]);
-                                    if (i < excel.tables[table]!.maxRows) {
-                                      if (i ==
-                                          (excel.tables[table]!.maxRows - 1)) {
-                                        //take last cont number
-                                        _list_input = _list_input +
-                                            list_cont[0].toString();
-                                      } else if (i > 0) {
-                                        //take cont number from 2
-                                        _list_input = _list_input +
-                                            list_cont[0].toString() +
-                                            ' ';
-                                      }
-                                      i++;
+                                  var sharedStrings = decoder.tables.values
+                                      .expand((table) => table.rows);
+                                  i = 0;
+                                  for (var cntr in sharedStrings) {
+                                    if (i < (sharedStrings.length - 1)) {
+                                      _listCont =
+                                          _listCont + cntr[0].toString() + ' ';
+                                    } else {
+                                      _listCont =
+                                          _listCont + cntr[0].toString();
                                     }
                                   }
-                                  // print(_list_input);
+                                  // print(_listCont);
                                   setState(() {
-                                    _CntrNo.text = _list_input;
-                                    _list_input = '';
-                                    i = 0;
+                                    _CntrNo.text = _listCont;
+                                    _listCont = '';
                                   });
+                                  // List list_cont = row
+                                  //       .map((e) => e?.value)
+                                  //       .toList(); //add data to list_cont with container is list_cont[0]
+                                  //   print(list_cont[0]);
+
+                                  // if (i < decoder.tables[table]!.maxRows) {
+                                  //   if (i ==
+                                  //       (decoder.tables[table]!.maxRows - 1)) {
+                                  //     //take last cont number
+                                  //     _list_input = _list_input +
+                                  //         list_cont[0].toString();
+                                  //   } else if (i > 0) {
+                                  //     //take cont number from 2
+                                  //     _list_input = _list_input +
+                                  //         list_cont[0].toString() +
+                                  //         ' ';
+                                  //   }
+                                  //   i++;
+                                  // }
+                                  // print(_list_input);
+                                  // setState(() {
+                                  //   _CntrNo.text = _list_input;
+                                  //   _list_input = '';
+                                  //   i = 0;
+                                  // });
                                   // }
                                 } else {
                                   print('no data');

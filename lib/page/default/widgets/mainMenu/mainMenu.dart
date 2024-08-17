@@ -90,12 +90,27 @@ class _mainMenuState extends State<mainMenu> {
                             onTap: () {
                               // context.go(AppRoutes.signUpRoute);
                               // Get.toNamed(GetRoutes.SignIn);
-                              inforUserController.shipperName.value == ''
-                                  ? Get.toNamed(GetRoutes.NewSignIn)
-                                  : Get.toNamed(GetRoutes.Home);
-                              currentRouteController.route.value = 'service';
-                              controller.selectWidget.value = dashboard;
+                              switch (inforUserController.shipperName.value) {
+                                case '':
+                                  currentRouteController.route.value =
+                                      checkingCombine;
+                                  controller.selectWidget.value =
+                                      checkingCombine;
+                                  // controller.selectWidget.value = dashboard;
+                                  Get.toNamed(GetRoutes.NewSignIn);
+                                default:
+                                  currentRouteController.route.value =
+                                      checkingCombine;
+                                  controller.selectWidget.value =
+                                      checkingCombine;
+                                  // controller.selectWidget.value = dashboard;
+                                  Get.toNamed(GetRoutes.Home);
+                              }
+                              // currentRouteController.route.value = 'service';
+                              // controller.selectWidget.value = dashboard;
                             },
+                            //   currentRouteController.route.value = checkingCombine;
+                            // controller.selectWidget.value = checkingCombine;
                             child: Container(
                               alignment: Alignment.center,
                               height: 50,

@@ -146,17 +146,24 @@ class _NewSignInPageState extends State<NewSignInPage> {
                       termList: box.read(termList_signin),
                     );
 
-                    switch (currentRouteController.route.value) {
-                      case booking:
-                        Get.toNamed(GetRoutes.BookingRequest);
-                        break;
-                      case service:
-                        Get.toNamed(GetRoutes.Home);
-                        break;
-                      default:
-                        Get.toNamed(GetRoutes.defaultRoute);
-                        break;
-                    }
+                    // currentRouteController.route.value = checkingCombine;
+                    controller.selectWidget.value = checkingCombine;
+                    Get.toNamed(GetRoutes.Home);
+
+                    // switch (currentRouteController.route.value) {
+                    //   case booking:
+                    //     Get.toNamed(GetRoutes.BookingRequest);
+                    //     break;
+                    //   case service:
+                    //     Get.toNamed(GetRoutes.Home);
+                    //     break;
+                    //   case checkingCombine:
+                    //     Get.toNamed(GetRoutes.Home);
+                    //     break;
+                    //   default:
+                    //     Get.toNamed(GetRoutes.defaultRoute);
+                    //     break;
+                    // }
                     print('Login Success');
                     // return ModelNewLogin.fromJson(dataNewLogIn);
                   }
@@ -176,17 +183,17 @@ class _NewSignInPageState extends State<NewSignInPage> {
                       managingOfficeId: box.read(managingOfficeId_signin),
                     );
 
-                    switch (currentRouteController.route.value) {
-                      // case booking:
-                      //   Get.toNamed(GetRoutes.BookingRequest);
-                      //   break;
-                      case checkingCombine:
-                        Get.toNamed(GetRoutes.Home);
-                        break;
-                      default:
-                        Get.toNamed(GetRoutes.defaultRoute);
-                        break;
-                    }
+                    controller.selectWidget.value = checkingCombine;
+                    Get.toNamed(GetRoutes.Home);
+
+                    // switch (currentRouteController.route.value) {
+                    //   case checkingCombine:
+                    //     Get.toNamed(GetRoutes.Home);
+                    //     break;
+                    //   default:
+                    //     Get.toNamed(GetRoutes.defaultRoute);
+                    //     break;
+                    // }
                   }
                 default:
                   LoginAlertDatabase(context);

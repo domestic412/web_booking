@@ -54,16 +54,15 @@ class _HistoryListPageState extends State<HistoryListPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Stack(
-                  children: [
-                    DownloadButtonHistory(),
+                Stack(children: [
+                  DownloadButtonHistory(),
                   Center(
                     child: Text(
                       "title history list".tr,
                       style: style_title_page,
                     ),
-                  ),]
-                ),
+                  ),
+                ]),
                 Container(
                   decoration: BoxDecoration(
                     color: white,
