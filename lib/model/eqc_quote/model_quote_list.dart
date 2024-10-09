@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:web_booking/constants/global.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
+import 'package:web_booking/constants/global.dart';
 
 class EQCQuoteList {
   String? eqcQuoteId;
@@ -63,23 +64,34 @@ class EQCQuoteList {
     return data;
   }
 
-  Future<List<EQCQuoteList>> fetchQuoteList(String fromDate,String toDate) async {
+  Future<List<EQCQuoteList>> fetchQuoteList(
+      String fromDate, String toDate) async {
     try {
-      var url = '$SERVER/EQCQuote/LoadEQCQuote?fromDate=$fromDate&toDate=$toDate';
-      final response = await http.post(Uri.parse(url),
-      headers: {
+      EasyLoading.show(
+        status: 'Loading...',
+        maskType: EasyLoadingMaskType.black,
+        dismissOnTap: true,
+      );
+      var url =
+          '$SERVER/EQCQuote/LoadEQCQuote?fromDate=$fromDate&toDate=$toDate';
+      final response = await http.post(Uri.parse(url), headers: {
         "Content-Type": "application/json",
       });
       switch (response.statusCode) {
         case 200:
+          EasyLoading.dismiss();
           var body = response.body;
           print('Data EQC Quote List');
           List dataQuoteList = json.decode(body);
-          return dataQuoteList.map((data) => EQCQuoteList.fromJson(data)).toList();
+          return dataQuoteList
+              .map((data) => EQCQuoteList.fromJson(data))
+              .toList();
         default:
+          EasyLoading.dismiss();
           throw Exception('Error: EQC_QuoteList ${response.reasonPhrase}');
       }
-    } on Exception catch(e) {
+    } on Exception catch (e) {
+      EasyLoading.dismiss();
       throw Exception('Error: $e EQC_QuoteList');
     }
   }

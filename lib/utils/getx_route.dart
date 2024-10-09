@@ -1,17 +1,19 @@
 import 'package:get/get.dart';
-import 'package:web_booking/page/booking/booking_confirm/list_booking_confirm_page.dart';
-import 'package:web_booking/page/booking/booking_confirm/loading_booking_detail/loading_booking_detail_page.dart';
-import 'package:web_booking/page/booking/booking_list/booking_list_page.dart';
-import 'package:web_booking/page/booking/booking/booking_page.dart';
-import 'package:web_booking/page/booking/booking/create_info_booking/create_booking_page.dart';
+import 'package:web_booking/page/menu/booking/booking_confirm/list_booking_confirm_page.dart';
+import 'package:web_booking/page/menu/booking/booking_confirm/loading_booking_detail/loading_booking_detail_page.dart';
+import 'package:web_booking/page/menu/booking/booking_list/booking_list_page.dart';
+import 'package:web_booking/page/menu/booking/booking/booking_page.dart';
+import 'package:web_booking/page/menu/booking/booking/create_info_booking/create_booking_page.dart';
 import 'package:web_booking/page/default/default_page.dart';
-import 'package:web_booking/page/new_signin/newsignin_page.dart';
-import 'package:web_booking/page/tracking/tracking_page.dart';
+import 'package:web_booking/page/menu/quote/add_edit_quote/add_edit_quote.dart';
+import 'package:web_booking/page/menu/quote/data_quote_list/detail_quote/detail_quote_page.dart';
+import 'package:web_booking/page/menu/quote/quote_page.dart';
+import 'package:web_booking/page/signin/signin_page.dart';
+import 'package:web_booking/page/menu/tracking/tracking_page.dart';
 import 'package:web_booking/screen/home/homepage_screen.dart';
 
 class GetRoutes {
   static const defaultRoute = "/";
-  static const NewSignIn = "/NewSignIn";
   static const SignIn = "/SignIn";
   static const Tracking = "/Tracking";
   static const Test = "/Test";
@@ -20,6 +22,9 @@ class GetRoutes {
   static const BookingList = "/BookingList";
   static const BookingConfirm = "/BookingConfirm";
   static const LoadingBookingDetail = "/BookingConfirmDetail";
+  static const QuoteList = "/QuoteList";
+  static const QuoteDetail = "$QuoteList/Detail";
+  static const AddQuote = "/AddQuote";
   static const Home = "/Home";
   static const Depo = "$Booking/Depo";
 
@@ -50,13 +55,9 @@ class GetRoutes {
       page: () => DefaultPage(),
     ),
     GetPage(
-      name: NewSignIn,
-      page: () => NewSignInPage(),
+      name: SignIn,
+      page: () => SignInPage(),
     ),
-    // GetPage(
-    //   name: SignIn,
-    //   page: () => SignInPage(),
-    // ),
     GetPage(
       name: Booking,
       page: () => BookingPage(),
@@ -80,6 +81,18 @@ class GetRoutes {
     GetPage(
       name: Tracking,
       page: () => TrackingPage(),
+    ),
+    GetPage(
+      name: QuoteList,
+      page: () => QuoteListPage(),
+    ),
+    GetPage(
+      name: QuoteDetail,
+      page: () => QuoteDetailsPage(),
+    ),
+    GetPage(
+      name: AddQuote,
+      page: () => AEQuotePage(),
     ),
     GetPage(
       name: Home,

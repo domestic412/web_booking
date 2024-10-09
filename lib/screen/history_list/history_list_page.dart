@@ -134,9 +134,13 @@ class _HistoryListPageState extends State<HistoryListPage> {
                         ),
                       ),
                       DataColumn(
-                        label: Text(
-                          'Số Container',
-                          style: style_text_Table_small_bold,
+                        label: Expanded(
+                          child: Center(
+                            child: Text(
+                              'Số Container',
+                              style: style_text_Table_small_bold,
+                            ),
+                          ),
                         ),
                       ),
                       DataColumn(

@@ -6,7 +6,7 @@ final InformationSignInController inforUserController =
     Get.put(InformationSignInController());
 
 class InformationSignInController extends GetxController {
-  var isStaff = 0.obs;
+  var isStaff = 0.obs; // 0: shipper, 1: admin, 2: depo
   //old
   // var user = TextEditingController().obs;
   // var pass = TextEditingController().obs;

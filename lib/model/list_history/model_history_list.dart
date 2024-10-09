@@ -19,6 +19,7 @@ class History {
   String? remark;
   String? updateTime;
   String? acc;
+  bool? isImgUpload;
 
   History(
       {this.historyCheckContsId,
@@ -33,7 +34,8 @@ class History {
       this.ketQua,
       this.remark,
       this.updateTime,
-      this.acc});
+      this.acc,
+      this.isImgUpload});
 
   History.fromJson(Map<String, dynamic> json) {
     historyCheckContsId = json['historyCheckContsId'];
@@ -49,6 +51,7 @@ class History {
     remark = json['remark'];
     updateTime = json['updateTime'];
     acc = json['acc'];
+    isImgUpload = json['isImgUpload'];
   }
 
   Map<String, dynamic> toJson() {
@@ -66,6 +69,7 @@ class History {
     data['remark'] = this.remark;
     data['updateTime'] = this.updateTime;
     data['acc'] = this.acc;
+    data['isImgUpload'] = this.isImgUpload;
     return data;
   }
 

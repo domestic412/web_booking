@@ -1,9 +1,11 @@
 // const SERVER = 'http://14.161.21.84:9090';
 // const SERVER = 'https://14.161.21.84:2214';
-const SERVER = 'http://14.161.21.84:1214';
+// const SERVER = 'http://14.161.21.84:1214';
+const SERVER = 'http://113.160.100.137:9999';
+
 const ServerPorts = '$SERVER/Ports';
 
-const URL_NEWLOGIN = '$SERVER/NewLoginUser/login';
+const URL_LOGIN = '$SERVER/Login';
 
 const URL_REQUEST = '$SERVER/Requests/SendRequest1';
 

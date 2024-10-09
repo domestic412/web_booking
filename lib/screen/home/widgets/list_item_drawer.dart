@@ -61,13 +61,13 @@ class _DrawItemsState extends State<DrawItems> {
                               // Get.toNamed(GetRoutes.ApprovalList);
                               controller.selectWidget.value = approvalList;
                             }),
-                        ListTile(
-                            title: Text('Quote List',
-                                style: TextStyle(color: white)),
-                            onTap: () {
-                              // Get.toNamed(GetRoutes.ApprovalList);
-                              controller.selectWidget.value = quoteList;
-                            }),
+                        // ListTile(
+                        //     title: Text('Quote List',
+                        //         style: TextStyle(color: white)),
+                        //     onTap: () {
+                        //       // Get.toNamed(GetRoutes.ApprovalList);
+                        //       controller.selectWidget.value = quoteList;
+                        //     }),
                         ListTile(
                             title: Text('Quality List',
                                 style: TextStyle(color: white)),

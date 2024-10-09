@@ -1,7 +1,11 @@
 import 'dart:convert';
-import 'package:web_booking/constants/global.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
+import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/page/menu/quote/add_edit_quote/add_edit_quote.dart';
+
+import 'storage_controller/init_quote_controller.dart';
 
 class InitEQCQuote {
   List<ChargeTypeQuotes>? chargeTypeQuotes;
@@ -107,6 +111,11 @@ class InitEQCQuote {
 
   Future<InitEQCQuote> fetchInitQuote(String eqcQuoteId) async {
     try {
+      EasyLoading.show(
+        status: 'Loading...',
+        maskType: EasyLoadingMaskType.black,
+        dismissOnTap: true,
+      );
       var url = '$SERVER/EQCQuote/InitEQCQuote';
       Map<String, String> data = {'eqcQuoteId': eqcQuoteId};
       var body = json.encode(data);
@@ -117,18 +126,44 @@ class InitEQCQuote {
           body: body);
       switch (response.statusCode) {
         case 200:
+          EasyLoading.dismiss();
           var body = response.body;
           print('Data init EQC Quote');
           var dataInitQuote = json.decode(body);
           //save eqcQuoteId when create or edit Quote
-          quoteController.eqcQuoteId.value = dataInitQuote['inputQuoteModels'][0]['eqcQuoteId'];
-          quoteController.quoteNo.value = dataInitQuote['inputQuoteModels'][0]['quoteNo'];
-          print(quoteController.eqcQuoteId.value);
+          quoteController.eqcQuoteId.value =
+              dataInitQuote['inputQuoteModels'][0]['eqcQuoteId'];
+          quoteController.quoteNo.value =
+              dataInitQuote['inputQuoteModels'][0]['quoteNo'];
+          quoteController.listCurrency.value =
+              (dataInitQuote['currencyQuotes'] as List)
+                  .map((data) => CurrencyQuotes.fromJson(data))
+                  .toList();
+          quoteController.listCharge.value =
+              (dataInitQuote['chargeTypeQuotes'] as List)
+                  .map((data) => ChargeTypeQuotes.fromJson(data))
+                  .toList();
+          quoteController.listComponent.value =
+              (dataInitQuote['componentQuotes'] as List)
+                  .map((data) => ComponentQuotes.fromJson(data))
+                  .toList();
+          quoteController.listError.value =
+              (dataInitQuote['errorQuotes'] as List)
+                  .map((data) => ErrorQuotes.fromJson(data))
+                  .toList();
+          quoteController.listCategory.value =
+              (dataInitQuote['categoryQuotes'] as List)
+                  .map((data) => CategoryQuotes.fromJson(data))
+                  .toList();
+          Get.to(() => AEQuotePage());
+          // print(quoteController.eqcQuoteId.value);
           return InitEQCQuote.fromJson(dataInitQuote);
         default:
+          EasyLoading.dismiss();
           throw Exception('Error: Init EQC Quote ${response.reasonPhrase}');
       }
     } on Exception catch (e) {
+      EasyLoading.dismiss();
       throw Exception('Error: $e Init EQC Quote');
     }
   }

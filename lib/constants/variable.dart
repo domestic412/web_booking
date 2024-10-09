@@ -5,23 +5,27 @@ import 'package:web_booking/model/booking/model_booking_list.dart';
 import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/model/schedule/model_voyage.dart';
 
-
 double deviceHeight(BuildContext context) => MediaQuery.of(context).size.height;
 double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
 double? fullSizeHeight;
 double? fullSizeWidth;
 
+String eqcQuoteId_new = '00000000-0000-0000-0000-000000000000';
+
 //format currency
 final formatCurrency = NumberFormat('#,##0');
 
 //format date
-changeDatetoShow({required DateTime date}){
+changeDatetoShow({required DateTime date}) {
   return DateFormat('dd/MM/yyyy').format(date);
 }
-changeDatetoSend({required DateTime date}){
+
+changeDatetoSend({required DateTime date}) {
   return DateFormat('MM/dd/yyyy').format(date);
 }
+
+DateFormat dateFormat = DateFormat('dd/MM/yyyy');
 
 // Login
 var box = GetStorage();
@@ -94,8 +98,6 @@ int? CUD;
 String? tittle_change_pw;
 
 String? cntr_no;
-
-String eqcQuoteId_new = '00000000-0000-0000-0000-000000000000';
 
 // Choose language
 bool bool_lang = false;

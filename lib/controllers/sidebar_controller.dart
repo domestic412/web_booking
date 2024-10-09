@@ -27,9 +27,9 @@ const booking = 'booking';
 // const detailReleaseBookingList = 'detailReleaseBookingList';
 const approvalList = 'approvalList';
 const detailApproval = 'detailApproval';
-const quoteList = 'quoteList';
-const quoteDetails = 'quoteDetails';
-const quoteAE = 'quoteAddEdit';
+// const quoteList = 'quoteList';
+// const quoteDetails = 'quoteDetails';
+// const quoteAE = 'quoteAddEdit';
 // const bookingRequestList = 'bookingRequestList';
 // const detailBookingRequest = 'detailBookingRequest';
 const requestList = 'requestList';
@@ -67,12 +67,12 @@ class SideBarController extends GetxController {
       case detailApproval:
         // Get.toNamed(GetRoutes.DetailApproval);
         return DetailApprovalPage();
-      case quoteList:
-      return QuoteListPage();
-      case quoteDetails:
-      return QuoteDetailsPage();
-      case quoteAE:
-      return AEQuotePage();
+      // case quoteList:
+      // return QuoteListPage();
+      // case quoteDetails:
+      // return QuoteDetailsPage();
+      // case quoteAE:
+      // return AEQuotePage();
       // case bookingRequestList:
       //   // Get.toNamed(GetRoutes.RequestList);
       //   return BookingListPage();

@@ -93,7 +93,7 @@ class _appbarState extends State<appbar> {
                           onTap: () {
                             // context.go(AppRoutes.signInRoute);
                             // Get.toNamed(GetRoutes.SignIn);
-                            Get.toNamed(GetRoutes.NewSignIn);
+                            Get.toNamed(GetRoutes.SignIn);
                           },
                           child: Container(
                               width: 70,

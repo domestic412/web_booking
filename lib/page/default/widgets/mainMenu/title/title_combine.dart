@@ -114,7 +114,7 @@ class _CombineMenuState extends State<CombineMenu> {
                           currentRouteController.route.value = checkingCombine;
                           controller.selectWidget.value = checkingCombine;
                           inforUserController.shipperName.value == ''
-                              ? Get.toNamed(GetRoutes.NewSignIn)
+                              ? Get.toNamed(GetRoutes.SignIn)
                               : Get.toNamed(GetRoutes.Home);
                         },
                         child: Text(
@@ -137,7 +137,7 @@ class _CombineMenuState extends State<CombineMenu> {
                           currentRouteController.route.value = sendRequest;
                           controller.selectWidget.value = sendRequest;
                           inforUserController.shipperName.value == ''
-                              ? Get.toNamed(GetRoutes.NewSignIn)
+                              ? Get.toNamed(GetRoutes.SignIn)
                               : Get.toNamed(GetRoutes.Home);
                         },
                         child: Text(

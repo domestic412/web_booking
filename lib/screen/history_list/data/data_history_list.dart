@@ -46,6 +46,7 @@ class DataTableHistory extends DataTableSource {
     rowData.ketQua ??= '';
     rowData.acc ??= '';
     rowData.remark ??= '';
+    rowData.isImgUpload ??= false;
     rowData.updateTime != null
         ? _dt = DateFormat("dd-MM-yyyy  hh:mm")
             .format(DateTime.parse(rowData.updateTime!))
@@ -62,17 +63,22 @@ class DataTableHistory extends DataTableSource {
           ),
         ),
       )),
-      DataCell(TextButton(
-          onPressed: () {
-            ImageCombine().fetchImageCombine(
-                data![index].cntrno!, data![index].numKh ?? '0');
-          },
-          child: Text(rowData.cntrno!,
-              style: TextStyle(
-                fontSize: 14,
-                color: haian,
-                fontWeight: FontWeight.w600,
-              )))),
+      DataCell(data![index].isImgUpload == true
+          ? Center(
+              child: TextButton(
+                  onPressed: () {
+                    ImageCombine().fetchImageCombine(
+                        data![index].cntrno!, data![index].numKh ?? '0');
+                  },
+                  child: Text(rowData.cntrno!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: haian,
+                        fontWeight: FontWeight.w600,
+                      ))),
+            )
+          : Center(
+              child: Text(rowData.cntrno!, style: style_text_Table_small))),
       // DataCell(SelectableText(
       //   rowData.cntrno!,
       //   onTap: () {

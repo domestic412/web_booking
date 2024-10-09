@@ -12,6 +12,8 @@ import 'package:web_booking/page/default/widgets/mainMenu/title/title_tracking.d
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
+import 'title/title_quote.dart';
+
 // ignore: camel_case_types
 class mainMenu extends StatefulWidget {
   const mainMenu({
@@ -78,7 +80,8 @@ class _mainMenuState extends State<mainMenu> {
                       BookingMenu(),
                       TrackingMenu(),
                       CombineMenu(),
-                      ScheduleMenu(),
+                      // ScheduleMenu(),
+                      QuoteMenu(),
                       Container(
                         alignment: Alignment.topRight,
                         padding: EdgeInsets.only(top: 20),
@@ -97,7 +100,7 @@ class _mainMenuState extends State<mainMenu> {
                                   controller.selectWidget.value =
                                       checkingCombine;
                                   // controller.selectWidget.value = dashboard;
-                                  Get.toNamed(GetRoutes.NewSignIn);
+                                  Get.toNamed(GetRoutes.SignIn);
                                 default:
                                   currentRouteController.route.value =
                                       checkingCombine;
