@@ -99,7 +99,7 @@ class _QuoteListPageState extends State<QuoteListPage> {
                     children: [
                       Text(
                         'Quote List',
-                        style: style20_blue,
+                        style: style_title_page,
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
