@@ -90,8 +90,46 @@ class DetailRequestPage extends StatelessWidget {
                     ),
                     Text(
                       dataDetailRequestController.tenYeuCau.value,
-                      // '$tenYeuCau_DetailRequest',
                       style: style_text_detail,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'sender'.tr,
+                          style: style_text_detail_bold,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          dataDetailRequestController.shipperName.value,
+                          style: style_text_detail,
+                        ),
+                        dataDetailRequestController.shipperNote.value == ''
+                            ? SizedBox()
+                            : Row(
+                                children: [
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Text(
+                                    'shipper'.tr,
+                                    style: style_text_detail_bold,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    dataDetailRequestController
+                                        .shipperNote.value,
+                                    style: style_text_detail,
+                                  ),
+                                ],
+                              )
+                      ],
                     ),
                     const SizedBox(
                       height: 10,

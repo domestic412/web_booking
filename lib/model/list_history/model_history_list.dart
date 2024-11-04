@@ -96,4 +96,29 @@ class History {
       throw Exception('Error fetch History - $e');
     }
   }
+
+  Future<List<History>> fetchHistoryShipperList(
+      {required String shipperId}) async {
+    try {
+      var url = '$SERVER/History/GetByUser?id=$shipperId';
+      final response = await http.get(Uri.parse(url), headers: {
+        "Access-Control-Allow-Origin": "*",
+      });
+      switch (response.statusCode) {
+        case 200:
+          var body = response.body;
+          // print(body);
+          print('Data List Shipper History');
+          List dataHistoryList = json.decode(body);
+          return dataHistoryList.map((data) => History.fromJson(data)).toList();
+        case 401:
+          Get.toNamed(GetRoutes.SignIn);
+          throw Exception(response.reasonPhrase! + ' Data History Shipper');
+        default:
+          throw Exception(response.reasonPhrase! + ' Data History Shipper');
+      }
+    } on Exception catch (e) {
+      throw Exception('Error fetch History - $e');
+    }
+  }
 }

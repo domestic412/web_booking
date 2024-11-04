@@ -112,7 +112,7 @@ class DataTableQuoteDetails extends DataTableSource {
         rowData.damageCode!,
         // style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.container!,
         // style: style_text_Table_small,
       )),

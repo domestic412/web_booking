@@ -57,7 +57,7 @@ class DataTableHistory extends DataTableSource {
       DataCell(SizedBox(
         width: 40,
         child: Center(
-          child: SelectableText(
+          child: Text(
             (index + 1).toString(),
             style: style_text_Table_small,
           ),
@@ -79,7 +79,7 @@ class DataTableHistory extends DataTableSource {
             )
           : Center(
               child: Text(rowData.cntrno!, style: style_text_Table_small))),
-      // DataCell(SelectableText(
+      // DataCell(Text(
       //   rowData.cntrno!,
       //   onTap: () {
       //     ImageCombine().fetchImageCombine(
@@ -88,34 +88,34 @@ class DataTableHistory extends DataTableSource {
       //   style: TextStyle(
       //       fontSize: 14, color: haian, decoration: TextDecoration.underline),
       // )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.size!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.soLanKetHop!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.numKh!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.numCp!.toString(),
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.chatLuong!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.status!,
         style: style_text_Table_small,
       )),
       DataCell(Container(
         width: 180,
         padding: const EdgeInsets.symmetric(vertical: 5),
-        child: SelectableText(
+        child: Text(
           rowData.shipper!,
           style: style_text_Table_small,
         ),
@@ -127,17 +127,17 @@ class DataTableHistory extends DataTableSource {
           padding: EdgeInsets.all(7),
           decoration: BoxDecoration(
               color: _color, borderRadius: BorderRadius.circular(7)),
-          child: SelectableText(
+          child: Text(
             rowData.ketQua!,
             style: text_style_status,
           ),
         ),
       ))),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.acc!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         _dt!,
         style: style_text_Table_small,
       )),

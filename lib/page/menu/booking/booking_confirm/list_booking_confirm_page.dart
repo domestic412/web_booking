@@ -29,7 +29,7 @@ class _BookingConfirmListState extends State<BookingConfirmList> {
                 padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                 child: Column(
                   children: [
-                    SelectableText(
+                    Text(
                       'List of Booking Confirmations',
                       style: style_title_page,
                     ),

@@ -101,6 +101,39 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                     const SizedBox(
                       height: 20,
                     ),
+                    Row(
+                      children: [
+                        Text(
+                          'sender'.tr,
+                          style: style_text_detail_bold,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(detailApprovalController.shipperName.value,
+                            style: style_text_detail),
+                        detailApprovalController.shipperNote.value == ''
+                            ? SizedBox.shrink()
+                            : Row(
+                                children: [
+                                  SizedBox(
+                                    width: 40,
+                                  ),
+                                  Text('shipper'.tr),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                      detailApprovalController
+                                          .shipperNote.value,
+                                      style: style_text_detail),
+                                ],
+                              ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(
                       'content'.tr,
                       style: style_text_detail_bold,

@@ -20,8 +20,10 @@ class _BookingListPageState extends State<BookingListPage> {
   @override
   void initState() {
     super.initState();
-    bookingListController.fromDate_select.value.text = changeDatetoShow(date: DateTime.now().subtract(Duration(days: 7)));  
-    bookingListController.fromDate.value = changeDatetoSend(date: DateTime.now().subtract(Duration(days: 7)));
+    bookingListController.fromDate_select.value.text =
+        changeDatetoShow(date: DateTime.now().subtract(Duration(days: 7)));
+    bookingListController.fromDate.value =
+        changeDatetoSend(date: DateTime.now().subtract(Duration(days: 7)));
     bookingListController.toDate_select.value.text =
         changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
     bookingListController.toDate.value =
@@ -54,7 +56,7 @@ class _BookingListPageState extends State<BookingListPage> {
                 padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                 child: Column(
                   children: [
-                    SelectableText(
+                    Text(
                       'Booking List',
                       style: style_title_page,
                     ),

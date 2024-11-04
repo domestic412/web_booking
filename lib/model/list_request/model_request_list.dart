@@ -15,6 +15,7 @@ class RequestList {
   String? shipperId;
   String? trangThaiYc;
   String? noteHangTau;
+  String? shipperNote;
   String? userId;
   String? updateTimeCheckRequest;
   String? updateTime;
@@ -31,6 +32,7 @@ class RequestList {
       this.shipperId,
       this.trangThaiYc,
       this.noteHangTau,
+      this.shipperNote,
       this.userId,
       this.updateTimeCheckRequest,
       this.updateTime,
@@ -47,6 +49,7 @@ class RequestList {
     shipperId = json['shipperId'];
     trangThaiYc = json['trangThaiYc'];
     noteHangTau = json['noteHangTau'];
+    shipperNote = json['shipperNote'];
     userId = json['userId'];
     updateTimeCheckRequest = json['updateTimeCheckRequest'];
     updateTime = json['updateTime'];
@@ -65,6 +68,7 @@ class RequestList {
     data['shipperId'] = this.shipperId;
     data['trangThaiYc'] = this.trangThaiYc;
     data['noteHangTau'] = this.noteHangTau;
+    data['shipperNote'] = this.shipperNote;
     data['userId'] = this.userId;
     data['updateTimeCheckRequest'] = this.updateTimeCheckRequest;
     data['updateTime'] = this.updateTime;

@@ -95,6 +95,7 @@ Map<String, String> vi = {
   "_comment_request_page": "Request Page",
   "send request title": "Gửi yêu cầu",
   "send request combine": "Gửi yêu cầu xin kết hợp",
+  "shipper note": "Shipper",
   "attach picture": "Ảnh đính kèm",
   "upload picture": "Tải ảnh lên",
   "customer requests": "Ý kiến khách hàng",

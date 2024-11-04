@@ -24,7 +24,7 @@ Future<void> PopUpContainerDetail(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Icon(Icons.arrow_right),
-                    SelectableText('title_container'.tr,
+                    Text('title_container'.tr,
                         style: const TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),

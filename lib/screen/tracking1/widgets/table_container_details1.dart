@@ -26,7 +26,7 @@ class TableContainerDetails1 extends StatelessWidget {
           DataColumn(
               label: Expanded(
                   child: Center(
-            child: SelectableText(
+            child: Text(
               'seq'.tr,
               style: style_text_Table_small_bold,
             ),
@@ -34,7 +34,7 @@ class TableContainerDetails1 extends StatelessWidget {
           DataColumn(
               label: Expanded(
                   child: Center(
-            child: SelectableText(
+            child: Text(
               'container'.tr,
               style: style_text_Table_small_bold,
             ),
@@ -42,7 +42,7 @@ class TableContainerDetails1 extends StatelessWidget {
           DataColumn(
               label: Expanded(
                   child: Center(
-            child: SelectableText(
+            child: Text(
               'status_container'.tr,
               style: style_text_Table_small_bold,
             ),
@@ -50,7 +50,7 @@ class TableContainerDetails1 extends StatelessWidget {
           DataColumn(
               label: Expanded(
                   child: Center(
-            child: SelectableText(
+            child: Text(
               'location_container'.tr,
               style: style_text_Table_small_bold,
             ),
@@ -58,7 +58,7 @@ class TableContainerDetails1 extends StatelessWidget {
           DataColumn(
               label: Expanded(
                   child: Center(
-            child: SelectableText(
+            child: Text(
               'eventDate_container'.tr,
               style: style_text_Table_small_bold,
             ),
@@ -80,28 +80,28 @@ class TableContainerDetails1 extends StatelessWidget {
           }
           return DataRow(cells: [
             DataCell(Center(
-                child: SelectableText(
+                child: Text(
               (index + 1).toString(),
               style: style_text_table_small_tracking,
             ))),
             DataCell(Center(
-                child: SelectableText(
+                child: Text(
               list_filter![index].container.toString(),
               style: style_text_table_small_tracking,
             ))),
             DataCell(Center(
-              child: SelectableText(
+              child: Text(
                 list_filter![index].status.toString(),
                 style: style_text_table_small_tracking,
               ),
             )),
             DataCell(Center(
-                child: SelectableText(
+                child: Text(
               list_filter![index].location.toString(),
               style: style_text_table_small_tracking,
             ))),
             DataCell(Center(
-                child: SelectableText(
+                child: Text(
               '$_dt',
               style: TextStyle(
                 fontSize: 15,

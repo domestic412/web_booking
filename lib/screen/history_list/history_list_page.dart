@@ -4,6 +4,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_history/model_history_list.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/history_list/data/data_history_list.dart';
 
 import 'button_download.dart';
@@ -24,13 +25,24 @@ class _HistoryListPageState extends State<HistoryListPage> {
   @override
   void initState() {
     super.initState();
-    History().fetchHistoryList().then((data) {
-      setState(() {
-        _dataHistoty = DataTableHistory(data: data);
-        _list_filter = _dataHistoty;
-        // print('initial data history');
-      });
-    });
+    inforUserController.isStaff.value == 1
+        ? History().fetchHistoryList().then((data) {
+            setState(() {
+              _dataHistoty = DataTableHistory(data: data);
+              _list_filter = _dataHistoty;
+              // print('initial data history');
+            });
+          })
+        : History()
+            .fetchHistoryShipperList(
+                shipperId: inforUserController.shipperId.value)
+            .then((data) {
+            setState(() {
+              _dataHistoty = DataTableHistory(data: data);
+              _list_filter = _dataHistoty;
+              // print('initial data history');
+            });
+          });
   }
 
   void _filterHistory() {
@@ -53,7 +65,7 @@ class _HistoryListPageState extends State<HistoryListPage> {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
+              children: [
                 Stack(children: [
                   DownloadButtonHistory(),
                   Center(

@@ -119,7 +119,7 @@
 //                         ),
 //                         DataColumn(
 //                           label: Expanded(
-//                             child: SelectableText(
+//                             child: Text(
 //                               'code'.tr,
 //                               style: style_text_Table_small_bold,
 //                             ),
@@ -127,13 +127,13 @@
 //                         ),
 //                         DataColumn(
 //                           label: Expanded(
-//                             child: SelectableText('shipper'.tr,
+//                             child: Text('shipper'.tr,
 //                                 style: style_text_Table_small_bold),
 //                           ),
 //                         ),
 //                         DataColumn(
 //                           label: Expanded(
-//                             child: SelectableText(
+//                             child: Text(
 //                               'times'.tr,
 //                               style: style_text_Table_small_bold,
 //                             ),
@@ -141,7 +141,7 @@
 //                         ),
 //                         DataColumn(
 //                           label: Expanded(
-//                             child: SelectableText(
+//                             child: Text(
 //                               'update time'.tr,
 //                               style: style_text_Table_small_bold,
 //                             ),
@@ -149,7 +149,7 @@
 //                         ),
 //                         DataColumn(
 //                           label: Expanded(
-//                             child: SelectableText(
+//                             child: Text(
 //                               'updater'.tr,
 //                               style: style_text_Table_small_bold,
 //                             ),

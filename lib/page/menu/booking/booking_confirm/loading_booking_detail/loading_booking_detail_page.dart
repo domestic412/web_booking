@@ -31,7 +31,7 @@ class _LoadingBookingDetailPage extends State<LoadingBookingDetailPage> {
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Column(
                   children: [
-                    SelectableText(
+                    Text(
                       'Details of Booking Confirm',
                       style: style_title_page,
                     ),

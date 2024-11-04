@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
 class DownloadButtonHistory extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _DownloadButtonHistoryState extends State<DownloadButtonHistory> {
 
   Future<void> downloadFile(String fromDate, String toDate) async {
     final url =
-        '$SERVER/History/ExportExcel?fromDay=$fromDate&toDay=$toDate'; // Replace with your direct link
+        '$SERVER/History/ExportExcel?fromDay=$fromDate&toDay=$toDate&id=${inforUserController.shipperId.value}'; // Replace with your direct link
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {

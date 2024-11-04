@@ -54,7 +54,7 @@ class _TrackingPageState extends State<TrackingPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SelectableText(
+                      Text(
                         'container tracking'.tr,
                         style: style_title_page,
                       ),
@@ -112,7 +112,7 @@ class _TrackingPageState extends State<TrackingPage> {
                         ),
                       ),
                       Container(
-                        child: SelectableText(
+                        child: Text(
                           'note_tracking'.tr,
                           style: style_text_Table_small,
                         ),

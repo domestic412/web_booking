@@ -36,33 +36,33 @@
 //       DataCell(SizedBox(
 //         width: 40,
 //         child: Center(
-//           child: SelectableText(
+//           child: Text(
 //             (index + 1).toString(),
 //             style: style_text_Table_small,
 //           ),
 //         ),
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.maNv!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.tenNv!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.code!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.email!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.dienThoai!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         _dt!,
 //         style: style_text_Table_small,
 //       )),

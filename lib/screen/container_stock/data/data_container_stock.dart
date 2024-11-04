@@ -64,65 +64,65 @@ class DataTableContainerStock extends DataTableSource {
       DataCell(SizedBox(
         width: 40,
         child: Center(
-          child: SelectableText(
+          child: Text(
             (index + 1).toString(),
             style: style_text_Table_small,
           ),
         ),
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.cntrno!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.sizeType!,
         style: style_text_Table_small,
       )),
       DataCell(Container(
         width: 180,
         padding: EdgeInsets.symmetric(vertical: 2),
-        child: SelectableText(
+        child: Text(
           rowData.shipper!,
           style: style_text_Table_small,
         ),
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         _dt_FO!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         _dt_EO!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         _dt_FA!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.terminal!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.combineStuffing!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.shipVoy!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.status!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.quanlity!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.checkRemark!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         '##',
         style: style_text_Table_small,
       )),

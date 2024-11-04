@@ -8,6 +8,8 @@ class DetailApprovalController extends GetxController {
   var note_controller = TextEditingController();
   var id = ''.obs;
   var tenYeuCau = ''.obs;
+  var shipperName = ''.obs;
+  var shipperNote = ''.obs;
   var noiDung = ''.obs;
   var cntrno = ''.obs;
   var sizeType = ''.obs;
@@ -18,18 +20,22 @@ class DetailApprovalController extends GetxController {
   var checkRemark = ''.obs;
 
   updateDetailApproval({
-    @required id,
-    @required tenYeuCau,
-    @required noiDung,
-    @required cntrno,
-    @required sizeType,
-    @required combineStuffing,
-    @required trangThaiYc,
-    @required noteHangTau,
-    @required updateTime,
-    @required checkRemark,
+    required id,
+    required shipperName,
+    required shipperNote,
+    required tenYeuCau,
+    required noiDung,
+    required cntrno,
+    required sizeType,
+    required combineStuffing,
+    required trangThaiYc,
+    required noteHangTau,
+    required updateTime,
+    required checkRemark,
   }) {
     this.id = id;
+    this.shipperName = shipperName;
+    this.shipperNote = shipperNote;
     this.tenYeuCau = tenYeuCau;
     this.noiDung = noiDung;
     this.cntrno = cntrno;

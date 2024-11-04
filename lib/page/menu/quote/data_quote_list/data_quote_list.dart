@@ -68,45 +68,45 @@ class DataTableQuote extends DataTableSource {
           DataCell(SizedBox(
             width: 40,
             child: Center(
-              child: SelectableText(
+              child: Text(
                 (index + 1).toString(),
                 // style: style_text_Table_small,
               ),
             ),
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             rowData.portDepot!,
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             rowData.quoteNo!,
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             _dt1!,
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             rowData.quoteCcy!,
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             rowData.exRate!.toString(),
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             rowData.quoteStatus!,
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             rowData.quoteUser!,
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             rowData.approveUser!,
             // style: style_text_Table_small,
           )),
-          DataCell(SelectableText(
+          DataCell(Text(
             _dt2!,
             // style: style_text_Table_small,
           )),

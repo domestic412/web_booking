@@ -8,6 +8,8 @@ final DataDetailRequestController dataDetailRequestController =
 class DataDetailRequestController extends GetxController {
   var id = ''.obs;
   var tenYeuCau = ''.obs;
+  var shipperName = ''.obs;
+  var shipperNote = ''.obs;
   var noiDung = ''.obs;
   var cntrno = ''.obs;
   var sizeType = ''.obs;
@@ -16,16 +18,20 @@ class DataDetailRequestController extends GetxController {
   var updateTime = ''.obs;
 
   void updateDetailRequestController(
-      {@required id,
-      @required tenYeuCau,
-      @required noiDung,
-      @required cntrno,
-      @required sizeType,
-      @required trangThaiYc,
-      @required noteHangTau,
-      @required updateTime}) {
+      {required id,
+      required tenYeuCau,
+      required shipperName,
+      required shipperNote,
+      required noiDung,
+      required cntrno,
+      required sizeType,
+      required trangThaiYc,
+      required noteHangTau,
+      required updateTime}) {
     this.id = id;
     this.tenYeuCau = tenYeuCau;
+    this.shipperName = shipperName;
+    this.shipperNote = shipperNote;
     this.noiDung = noiDung;
     this.cntrno = cntrno;
     this.sizeType = sizeType;

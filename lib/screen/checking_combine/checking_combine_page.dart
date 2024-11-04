@@ -39,7 +39,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.all(32.0),
+          padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -79,7 +79,8 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                           setState(() {
                             _checkContainers = CheckContainer()
                                 .fetchCheckContainers(
-                                    _CntrNo.text.trim(), currentOptionsRoute);
+                                    _CntrNo.text.trim().toUpperCase(),
+                                    currentOptionsRoute);
                           });
                         },
                         controller: _CntrNo,
@@ -99,7 +100,9 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                                         () {
                                           _checkContainers = CheckContainer()
                                               .fetchCheckContainers(
-                                                  _CntrNo.text.trim(),
+                                                  _CntrNo.text
+                                                      .trim()
+                                                      .toUpperCase(),
                                                   currentOptionsRoute);
                                         },
                                       );
@@ -311,7 +314,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
             verticalInside: BorderSide(color: Colors.black12)),
         sortColumnIndex: 0,
         dataRowMaxHeight: 50,
-        columnSpacing: 16,
+        columnSpacing: 10,
         columns: [
           DataColumn(
             label: Expanded(
@@ -336,8 +339,11 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
           DataColumn(
             label: Expanded(
               child: Center(
-                child: Text('number of times combine'.tr,
-                    style: style_text_Table_small_bold),
+                child: SizedBox(
+                  width: 110,
+                  child: Text('number of times combine'.tr,
+                      style: style_text_Table_small_bold),
+                ),
               ),
             ),
           ),
@@ -410,7 +416,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
             )),
             DataCell(Center(
               child: Container(
-                width: 200,
+                width: 110,
                 child: Text(
                   snapshot.data![index].soLanKetHop.toString(),
                   style: style_text_table_small_tracking,
@@ -433,10 +439,15 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               ),
             )),
             DataCell(Center(
-              child: Text(
-                snapshot.data![index].shipper.toString(),
-                style: style_text_table_small_tracking,
-                textAlign: TextAlign.center,
+              child: Container(
+                width: 100,
+                child: SingleChildScrollView(
+                  child: Text(
+                    snapshot.data![index].shipper.toString(),
+                    style: style_text_table_small_tracking,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             )),
             DataCell(Center(

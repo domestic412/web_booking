@@ -25,8 +25,19 @@ class _SignInPageState extends State<SignInPage> {
   // InformationNewSignInController infoSignInController =
   //     Get.put(InformationNewSignInController());
   GetRef getRef = GetRef();
+
   @override
   Widget build(BuildContext context) {
+    // switch (inforUserController.shipperName.value) {
+    //   case '':
+    //     currentRouteController.route.value = checkingCombine;
+    //     controller.selectWidget.value = checkingCombine;
+    //     Get.toNamed(GetRoutes.SignIn);
+    //   default:
+    //     currentRouteController.route.value = checkingCombine;
+    //     controller.selectWidget.value = checkingCombine;
+    //     Get.toNamed(GetRoutes.Home);
+    // }
     return Scaffold(
         body: Container(
       constraints: const BoxConstraints.expand(),
@@ -82,6 +93,19 @@ class _SignInPageState extends State<SignInPage> {
     ));
   }
 
+  /// SignIn with username and password.
+  ///
+  /// If the username and password are correct, login and store the shipperId and shipperName
+  /// in the box and navigate to the home page.
+  ///
+  /// If the username and password are incorrect, show a snackbar with an error message.
+  ///
+  /// If there is an error with the request, throw an exception with the error message.
+  ///
+  /// [username] is the username of the user.
+  ///
+  /// [password] is the password of the user.
+  ///
   Future<void> signIn(String username, String password) async {
     try {
       final url = URL_LOGIN;

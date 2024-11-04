@@ -74,77 +74,77 @@
 //       DataCell(SizedBox(
 //         width: 40,
 //         child: Center(
-//           child: SelectableText(
+//           child: Text(
 //             (index + 1).toString(),
 //             style: style_text_Table_small,
 //           ),
 //         ),
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.chargeType!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.component!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.category!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.damageCode!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.container!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.damageDetail!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.quantity!.toString(),
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.dimension!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.length!.toString(),
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.width!.toString(),
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.location!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.laborCost!.toString(),
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.mrCost!.toString(),
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.totalCost!.toString(),
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         _dt1!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.payer!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.approveCode!,
 //         style: style_text_Table_small,
 //       )),

@@ -19,6 +19,7 @@ class SendRequestPage extends StatefulWidget {
 class _SendRequestPageState extends State<SendRequestPage> {
   TextEditingController _input_cntr = TextEditingController();
   TextEditingController _input_camKet = TextEditingController();
+  TextEditingController _input_shipperNote = TextEditingController();
 
   List<XFile>? _listImage;
 
@@ -123,21 +124,66 @@ class _SendRequestPageState extends State<SendRequestPage> {
                   ],
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(5),
                 // margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       border: Border.all(color: Colors.black45)),
                   child: ListTile(
-                    leading: const Icon(Icons.calendar_view_week_rounded),
+                    leading: const Icon(
+                      Icons.calendar_view_week_rounded,
+                    ),
                     title: TextField(
                       controller: _input_cntr,
+                      // style: TextStyle(fontSize: 18),
                       decoration: InputDecoration(
-                          hintText: 'container'.tr, border: InputBorder.none),
+                        isDense: true,
+                        hintText: 'container'.tr,
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Text('shipper note'.tr, style: style_text_detail),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: white,
+                      border:
+                          Border.all(color: blue.withOpacity(.4), width: .5),
+                      boxShadow: [
+                        BoxShadow(
+                            offset: const Offset(0, 6),
+                            color: blue.withOpacity(.1),
+                            blurRadius: 12)
+                      ],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: const EdgeInsets.all(5),
+                    child: Container(
+                      width: 200,
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: white,
+                          border: Border.all(color: Colors.black45),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: TextField(
+                        controller: _input_shipperNote,
+                        decoration: InputDecoration(
+                            border: InputBorder.none, isDense: true),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,
@@ -324,6 +370,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
       formData.append('tenYeuCau', NameRequest);
       formData.append('noiDung', _input_camKet.text);
       formData.append('cntrno', cntr.toUpperCase());
+      formData.append('shipperNote', _input_shipperNote.text);
       formData.append('shipperId', inforUserController.shipperId.value);
       formData.append('shipperName', inforUserController.shipperName.value);
 

@@ -62,16 +62,15 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Stack(
-                  children: [
-                    DownloadButtonApproval(),
+                Stack(children: [
+                  DownloadButtonApproval(),
                   Center(
                     child: Text(
                       "approval list".tr,
                       style: style_title_page,
                     ),
-                  ),]
-                ),
+                  ),
+                ]),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 16),
                   decoration: BoxDecoration(
@@ -126,8 +125,6 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: PaginatedDataTable(
-                    // headingRowColor:
-                    //     MaterialStateColor.resolveWith((states) => lightGrey),
                     sortColumnIndex: 0,
                     columnSpacing: 16,
                     columns: [
@@ -160,7 +157,6 @@ class _ApprovalListPageState extends State<ApprovalListPage> {
                                 _list_filter = DataTableApproval(
                                     data:
                                         _dataApproval.filter_trangthaiYC('C'));
-                                // print(list_filter_Admin);
                                 _search_text.text = 'Chờ duyệt';
                               });
                             },

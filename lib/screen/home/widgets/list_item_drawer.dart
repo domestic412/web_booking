@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
@@ -163,6 +162,13 @@ class _DrawItemsState extends State<DrawItems> {
                         onTap: () {
                           // Get.toNamed(GetRoutes.Tracking1);
                           controller.selectWidget.value = tracking1;
+                        }),
+                    ListTile(
+                        title: Text('History List',
+                            style: TextStyle(color: white)),
+                        onTap: () {
+                          // Get.toNamed(GetRoutes.HistoryList);
+                          controller.selectWidget.value = historyList;
                         }),
                   ]),
             ],

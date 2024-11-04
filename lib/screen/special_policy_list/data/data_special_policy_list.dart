@@ -34,29 +34,29 @@
 //       DataCell(SizedBox(
 //         width: 40,
 //         child: Center(
-//           child: SelectableText(
+//           child: Text(
 //             (index + 1).toString(),
 //             style: style_text_Table_small,
 //           ),
 //         ),
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.code!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.shipper!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.times!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         _dt!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.updateUser!,
 //         style: style_text_Table_small,
 //       )),

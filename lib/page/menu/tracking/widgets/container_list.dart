@@ -59,7 +59,7 @@ class _ContainerListState extends State<ContainerList> {
                       child: Row(
                         children: [
                           Icon(Icons.arrow_right),
-                          SelectableText('title_booking'.tr)
+                          Text('title_booking'.tr)
                         ],
                       ),
                     ),
@@ -106,7 +106,7 @@ class _ContainerListState extends State<ContainerList> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SelectableText('seq'.tr, style: style_text_Table_small_bold),
+                Text('seq'.tr, style: style_text_Table_small_bold),
               ],
             )),
           ),
@@ -115,8 +115,7 @@ class _ContainerListState extends State<ContainerList> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SelectableText('container'.tr,
-                    style: style_text_Table_small_bold),
+                Text('container'.tr, style: style_text_Table_small_bold),
               ],
             )),
           ),
@@ -125,8 +124,7 @@ class _ContainerListState extends State<ContainerList> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SelectableText('size_booking'.tr,
-                    style: style_text_Table_small_bold),
+                Text('size_booking'.tr, style: style_text_Table_small_bold),
               ],
             )),
           ),
@@ -136,7 +134,7 @@ class _ContainerListState extends State<ContainerList> {
             DataCell(Container(
               width: 30,
               child: Center(
-                  child: SelectableText(
+                  child: Text(
                 (index + 1).toString(),
                 style: style_text_Table_small,
               )),
@@ -183,7 +181,7 @@ class _ContainerListState extends State<ContainerList> {
             DataCell(Container(
               width: 120,
               child: Center(
-                  child: SelectableText(data_bk[index].size.toString(),
+                  child: Text(data_bk[index].size.toString(),
                       style: style_text_Table_small)),
             )),
           ]);

@@ -30,35 +30,35 @@
 //                   DataColumn(
 //                     label: Expanded(
 //                         child: Center(
-//                       child: SelectableText('Seq',
+//                       child: Text('Seq',
 //                           style: style_text_Table_small_bold),
 //                     )),
 //                   ),
 //                   DataColumn(
 //                     label: Expanded(
 //                         child: Center(
-//                       child: SelectableText("DEPOT NAME",
+//                       child: Text("DEPOT NAME",
 //                           style: style_text_Table_small_bold),
 //                     )),
 //                   ),
 //                   DataColumn(
 //                     label: Expanded(
 //                         child: Center(
-//                       child: SelectableText("SIZE / QUANTITY",
+//                       child: Text("SIZE / QUANTITY",
 //                           style: style_text_Table_small_bold),
 //                     )),
 //                   ),
 //                   // DataColumn(
 //                   //   label: Expanded(
 //                   //       child: Center(
-//                   //     child: SelectableText("SIZE",
+//                   //     child: Text("SIZE",
 //                   //         style: style_text_Table_small_bold),
 //                   //   )),
 //                   // ),
 //                   // DataColumn(
 //                   //   label: Expanded(
 //                   //       child: Center(
-//                   //     child: SelectableText("BOOKING",
+//                   //     child: Text("BOOKING",
 //                   //         style: style_text_Table_small_bold),
 //                   //   )),
 //                   // ),

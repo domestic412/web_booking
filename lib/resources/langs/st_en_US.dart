@@ -96,6 +96,7 @@ Map<String, String> en = {
   "_comment_request_page": "Request Page",
   "send request title": "Send request",
   "send request combine": "Send Request Combine",
+  "shipper note": "Shipper",
   "attach picture": "Attach picture",
   "upload picture": "Upload picture",
   "customer requests": "Customer requests",
@@ -118,7 +119,7 @@ Map<String, String> en = {
   "only cont types a0 & a1 are combined":
       "Only container types A0 & A1 are combined !",
   "result combine": "Result combine",
-  "number of times combine": "Number of times combine",
+  "number of times combine": "Number of times\ncombine",
   "container quality": "Container quality",
   "status": "Status",
   "shipper": "Shipper",

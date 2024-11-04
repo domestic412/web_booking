@@ -37,7 +37,7 @@ class DataTableQuality extends DataTableSource {
           DataCell(Container(
             width: 40,
             child: Center(
-              child: SelectableText(
+              child: Text(
                 (index + 1).toString(),
                 style: style_text_Table_small,
               ),
@@ -45,35 +45,35 @@ class DataTableQuality extends DataTableSource {
           )),
           DataCell(Container(
             width: 100,
-            child: SelectableText(
+            child: Text(
               rowData.maChatLuong!,
               style: style_text_Table_small,
             ),
           )),
           DataCell(Container(
             width: 120,
-            child: SelectableText(
+            child: Text(
               rowData.tenChatLuong!,
               style: style_text_Table_small,
             ),
           )),
           DataCell(Container(
             width: 850,
-            child: SelectableText(
+            child: Text(
               rowData.ghiChu!,
               style: style_text_Table_small,
             ),
           )),
           DataCell(Container(
             width: 80,
-            child: SelectableText(
+            child: Text(
               _dt!,
               style: style_text_Table_small,
             ),
           )),
           DataCell(Container(
             width: 100,
-            child: SelectableText(
+            child: Text(
               rowData.updateUser!,
               style: style_text_Table_small,
             ),

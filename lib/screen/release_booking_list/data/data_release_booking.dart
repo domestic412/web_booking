@@ -92,41 +92,41 @@
 //       DataCell(SizedBox(
 //         width: 40,
 //         child: Center(
-//           child: SelectableText(
+//           child: Text(
 //             (index + 1).toString(),
 //             style: style_text_Table_small,
 //           ),
 //         ),
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.id!.toString(),
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.vessel!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.voyage!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.date!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.consignee!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.serviceTerm!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.term!,
 //         style: style_text_Table_small,
 //       )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         rowData.paymentTerm!,
 //         style: style_text_Table_small,
 //       )),
@@ -168,11 +168,11 @@
 //           ),
 //         ),
 //       )),
-//       // DataCell(SelectableText(
+//       // DataCell(Text(
 //       //   rowData.processUser!,
 //       //   style: style_text_Table_small,
 //       // )),
-//       DataCell(SelectableText(
+//       DataCell(Text(
 //         _dt!,
 //         style: style_text_Table_small,
 //       )),

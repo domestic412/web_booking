@@ -121,26 +121,25 @@ class _ListContainer1State extends State<ListContainer1> {
           DataColumn(
             label: Expanded(
                 child: Center(
-                    child: SelectableText('seq'.tr,
+                    child: Text('seq'.tr, style: style_text_Table_small_bold))),
+          ),
+          DataColumn(
+            label: Expanded(
+                child: Center(
+                    child: Text('container'.tr,
                         style: style_text_Table_small_bold))),
           ),
           DataColumn(
             label: Expanded(
                 child: Center(
-                    child: SelectableText('container'.tr,
-                        style: style_text_Table_small_bold))),
-          ),
-          DataColumn(
-            label: Expanded(
-                child: Center(
-                    child: SelectableText('size'.tr,
-                        style: style_text_Table_small_bold))),
+                    child:
+                        Text('size'.tr, style: style_text_Table_small_bold))),
           ),
         ],
         rows: List.generate(data_bk!.length, (index) {
           return DataRow(cells: [
             DataCell(Center(
-                child: SelectableText(
+                child: Text(
               (index + 1).toString(),
               style: style_text_Table_small,
             ))),
@@ -173,7 +172,7 @@ class _ListContainer1State extends State<ListContainer1> {
                       ))),
             )),
             DataCell(Center(
-                child: SelectableText(data_bk[index].size.toString(),
+                child: Text(data_bk[index].size.toString(),
                     style: style_text_Table_small))),
           ]);
         }));

@@ -22,7 +22,7 @@ class _ContainerDetailsState extends State<ContainerDetails> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Icon(Icons.arrow_right),
-              SelectableText('title_container'.tr),
+              Text('title_container'.tr),
             ],
           ),
         ),

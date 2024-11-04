@@ -192,8 +192,7 @@ class _RequestListPageState extends State<RequestListPage> {
                             onTap: () {
                               setState(() {
                                 _list_filter = DataTableRequest(
-                                    data: _dataRequest
-                                        .filter_trangthaiYC('C'));
+                                    data: _dataRequest.filter_trangthaiYC('C'));
                                 _search_text.text = 'Chờ duyệt';
                               });
                             },

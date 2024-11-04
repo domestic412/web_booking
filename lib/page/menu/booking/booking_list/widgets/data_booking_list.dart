@@ -65,58 +65,58 @@ class _DataBookingListState extends State<DataBookingList> {
                     columns: [
                       DataColumn(
                         label: Expanded(
-                          child: SelectableText('Seq',
-                              style: style_text_Table_small_bold),
+                          child:
+                              Text('Seq', style: style_text_Table_small_bold),
                         ),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText("Booking",
+                            child: Text("Booking",
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText("Vessel",
+                            child: Text("Vessel",
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText("Voy",
+                            child: Text("Voy",
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText("Depot",
+                            child: Text("Depot",
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText("POL",
+                            child: Text("POL",
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText("POD",
+                            child: Text("POD",
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText('ETD',
+                            child: Text('ETD',
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText('Commodity',
+                            child: Text('Commodity',
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText('20/40/45',
+                            child: Text('20/40/45',
                                 style: style_text_Table_small_bold)),
                       ),
                       DataColumn(
                         label: Expanded(
-                            child: SelectableText('Confirm',
+                            child: Text('Confirm',
                                 style: style_text_Table_small_bold)),
                       ),
                     ],
@@ -147,16 +147,17 @@ class _DataBookingListState extends State<DataBookingList> {
                           status = 'Confirmed';
                           style_booking = style_text_Table_small_bold_container;
                           boxDecoration_booking = BoxDecoration(
-                                border: Border( 
-                                    bottom: BorderSide(
-                              color: normalColor,
-                              width: 1,
-                            )));
+                              border: Border(
+                                  bottom: BorderSide(
+                            color: normalColor,
+                            width: 1,
+                          )));
                         default:
                           color = grey;
                           status = 'Waitting';
                           style_booking = style_text_Table_small;
-                          boxDecoration_booking = BoxDecoration(border: Border());
+                          boxDecoration_booking =
+                              BoxDecoration(border: Border());
                       }
                       return DataRow(cells: [
                         DataCell(Container(
@@ -177,12 +178,12 @@ class _DataBookingListState extends State<DataBookingList> {
                             ),
                             onTap: () {
                               switch (confirmed) {
-                        case true:
-                          cntr_no_tracking = data[index].bookingNo!;
-                              Get.toNamed(GetRoutes.Tracking);
-                        default:
-                          break;
-                      }
+                                case true:
+                                  cntr_no_tracking = data[index].bookingNo!;
+                                  Get.toNamed(GetRoutes.Tracking);
+                                default:
+                                  break;
+                              }
                             },
                           ),
                         ),
@@ -256,30 +257,31 @@ class _DataBookingListState extends State<DataBookingList> {
                           ElevatedButton(
                             onPressed: () {
                               //update DetailBookingList
-                              detailBookingListController.updateDetailBookingList(
-                                  payer: data[index].payer!,
-                                  shipperName: data[index].shipperName!,
-                                  shipper: data[index].shipper!,
-                                  consignee: data[index].consignee!,
-                                  notifyParty: data[index].notifyParty!,
-                                  shipName: data[index].shipName!,
-                                  voyId: data[index].voyId!,
-                                  fromDate: data[index].fromDate!,
-                                  toDate: data[index].toDate!,
-                                  bookingNo: data[index].bookingNo!,
-                                  bookingDate: data[index].bookingDate!,
-                                  finalDest: data[index].finalDest!,
-                                  coc: data[index].coc!,
-                                  portLoad: data[index].portLoad!,
-                                  confirmed: data[index].confirmed!,
-                                  blNo: data[index].blNo!,
-                                  shippingTerm: data[index].shippingTerm!,
-                                  paymentTerm: data[index].paymentTerm!,
-                                  depotName: data[index].depotName!,
-                                  commodity: data[index].commodity!,
-                                  cont20: data[index].cont20!,
-                                  cont40: data[index].cont40!,
-                                  cont45: data[index].cont45!);
+                              detailBookingListController
+                                  .updateDetailBookingList(
+                                      payer: data[index].payer!,
+                                      shipperName: data[index].shipperName!,
+                                      shipper: data[index].shipper!,
+                                      consignee: data[index].consignee!,
+                                      notifyParty: data[index].notifyParty!,
+                                      shipName: data[index].shipName!,
+                                      voyId: data[index].voyId!,
+                                      fromDate: data[index].fromDate!,
+                                      toDate: data[index].toDate!,
+                                      bookingNo: data[index].bookingNo!,
+                                      bookingDate: data[index].bookingDate!,
+                                      finalDest: data[index].finalDest!,
+                                      coc: data[index].coc!,
+                                      portLoad: data[index].portLoad!,
+                                      confirmed: data[index].confirmed!,
+                                      blNo: data[index].blNo!,
+                                      shippingTerm: data[index].shippingTerm!,
+                                      paymentTerm: data[index].paymentTerm!,
+                                      depotName: data[index].depotName!,
+                                      commodity: data[index].commodity!,
+                                      cont20: data[index].cont20!,
+                                      cont40: data[index].cont40!,
+                                      cont45: data[index].cont45!);
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: color,

@@ -22,6 +22,7 @@ class DataTableRequest extends DataTableSource {
         .where((item) =>
             (item.cntrno?.contains(query.toUpperCase()) ?? false) ||
             (item.sizeType?.contains(query.toUpperCase()) ?? false) ||
+            (item.shipperNote?.contains(query.toUpperCase()) ?? false) ||
             (item.noteHangTau?.contains(query.toUpperCase()) ?? false) ||
             (item.trangThaiYc?.contains(query.toUpperCase()) ?? false) ||
             (item.updateTime?.contains(query.toUpperCase()) ?? false))
@@ -49,6 +50,7 @@ class DataTableRequest extends DataTableSource {
     rowData.shipperId ??= '';
     rowData.trangThaiYc ??= '';
     rowData.noteHangTau ??= '';
+    rowData.shipperNote ??= '';
     rowData.userId ??= '';
     rowData.updateTimeCheckRequest ??= '';
     rowData.updateUser ??= '';
@@ -74,49 +76,31 @@ class DataTableRequest extends DataTableSource {
       DataCell(SizedBox(
         width: 40,
         child: Center(
-          child: SelectableText(
+          child: Text(
             (index + 1).toString(),
             style: style_text_Table_small,
           ),
         ),
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.tenYeuCau!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.cntrno!,
         style: style_text_Table_small,
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         rowData.sizeType!,
         style: style_text_Table_small,
       )),
-      // DataCell(Container(
-      //   width: 300,
-      //   padding: EdgeInsets.symmetric(vertical: 5),
-      //   child: SelectableText(
-      //     rowData.noiDung!,
-      //     style: style_text_Table_small,
-      //   ),
-      // )),
-      // DataCell(Container(
-      //   width: 400,
-      //   padding: EdgeInsets.symmetric(vertical: 5),
-      //   child: Center(
-      //     child: SelectableText(
-      //       rowData.noteHangTau!,
-      //       style: style_text_Table_small,
-      //     ),
-      //   ),
-      // )),
       DataCell(Container(
         width: 110,
         padding: const EdgeInsets.only(top: 10, bottom: 10),
         child: ElevatedButton(
           onPressed: () async {
             await _detailRequest.fetchDetailRequest(
-                data![index].cntrno!, data![index].requestCheckContsId!);
+                id: data![index].requestCheckContsId!);
             // add id request for image request
             // id_request_for_image = data![index].id;
             String? id = data![index].requestCheckContsId!;
@@ -135,7 +119,7 @@ class DataTableRequest extends DataTableSource {
           ),
         ),
       )),
-      DataCell(SelectableText(
+      DataCell(Text(
         _dt!,
         style: style_text_Table_small,
       )),

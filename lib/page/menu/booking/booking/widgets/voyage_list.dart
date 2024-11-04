@@ -61,50 +61,50 @@ class _VoyageListState extends State<VoyageList> {
                           child: Container(
                         width: 40,
                         child: Center(
-                          child: SelectableText('Seq',
-                              style: style_text_Table_small_bold),
+                          child:
+                              Text('Seq', style: style_text_Table_small_bold),
                         ),
                       )),
                     ),
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("VESSEL",
+                        child:
+                            Text("VESSEL", style: style_text_Table_small_bold),
+                      )),
+                    ),
+                    DataColumn(
+                      label: Expanded(
+                          child: Center(
+                        child:
+                            Text("VOY.NO", style: style_text_Table_small_bold),
+                      )),
+                    ),
+                    DataColumn(
+                      label: Expanded(
+                          child: Center(
+                        child: Text("PORT OF LOADING",
                             style: style_text_Table_small_bold),
                       )),
                     ),
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("VOY.NO",
+                        child: Text("PORT OF DISCHARGE",
                             style: style_text_Table_small_bold),
                       )),
                     ),
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("PORT OF LOADING",
+                        child: Text('DEPARTURE\n (ETD/ATD)',
                             style: style_text_Table_small_bold),
                       )),
                     ),
                     DataColumn(
                       label: Expanded(
                           child: Center(
-                        child: SelectableText("PORT OF DISCHARGE",
-                            style: style_text_Table_small_bold),
-                      )),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: Center(
-                        child: SelectableText('DEPARTURE\n (ETD/ATD)',
-                            style: style_text_Table_small_bold),
-                      )),
-                    ),
-                    DataColumn(
-                      label: Expanded(
-                          child: Center(
-                        child: SelectableText('BOOKING REQUEST',
+                        child: Text('BOOKING REQUEST',
                             style: style_text_Table_small_bold),
                       )),
                     ),

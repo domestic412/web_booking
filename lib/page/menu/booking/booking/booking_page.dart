@@ -43,7 +43,7 @@ class _BookingPageState extends State<BookingPage> {
                 padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                 child: Column(
                   children: [
-                    SelectableText(
+                    Text(
                       'Booking',
                       style: style_title_page,
                     ),

@@ -60,24 +60,23 @@ class _DataListBookingConfirmState extends State<DataListBookingConfirm> {
                     label: Container(
                       width: 60,
                       child: Center(
-                        child: SelectableText('Seq',
-                            style: style_text_Table_small_bold),
+                        child: Text('Seq', style: style_text_Table_small_bold),
                       ),
                     ),
                   ),
                   DataColumn(
                     label: Expanded(
                         child: Center(
-                      child: SelectableText("Booking",
-                          style: style_text_Table_small_bold),
+                      child:
+                          Text("Booking", style: style_text_Table_small_bold),
                     )),
                   ),
                   DataColumn(
                     label: Container(
                       width: 130,
                       child: Center(
-                        child: SelectableText('Confirm',
-                            style: style_text_Table_small_bold),
+                        child:
+                            Text('Confirm', style: style_text_Table_small_bold),
                       ),
                     ),
                   ),

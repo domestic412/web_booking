@@ -7,69 +7,84 @@ import 'package:web_booking/model/list_approval/storage_controller/detail_approv
 import 'package:web_booking/utils/getx_route.dart';
 
 class DetailApproval {
-  String? id;
+  String? requestCheckContsId;
   String? tenYeuCau;
   String? noiDung;
   String? cntrno;
   String? sizeType;
-  String? nguoiGui;
+  String? quanlity;
+  String? shipperId;
+  String? shipperName;
   String? trangThaiYc;
   String? noteHangTau;
-  String? userXuly;
+  String? shipperNote;
   String? updateTimeCheckRequest;
   String? updateTime;
   String? updateUser;
+  String? checkRemark;
+  String? combineStuffing;
 
   DetailApproval(
-      {this.id,
+      {this.requestCheckContsId,
       this.tenYeuCau,
       this.noiDung,
       this.cntrno,
       this.sizeType,
-      this.nguoiGui,
+      this.quanlity,
+      this.shipperId,
+      this.shipperName,
       this.trangThaiYc,
       this.noteHangTau,
-      this.userXuly,
+      this.shipperNote,
       this.updateTimeCheckRequest,
       this.updateTime,
-      this.updateUser});
+      this.updateUser,
+      this.checkRemark,
+      this.combineStuffing});
 
   DetailApproval.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    requestCheckContsId = json['requestCheckContsId'];
     tenYeuCau = json['tenYeuCau'];
     noiDung = json['noiDung'];
     cntrno = json['cntrno'];
     sizeType = json['sizeType'];
-    nguoiGui = json['nguoiGui'];
+    quanlity = json['quanlity'];
+    shipperId = json['shipperId'];
+    shipperName = json['shipperName'];
     trangThaiYc = json['trangThaiYc'];
     noteHangTau = json['noteHangTau'];
-    userXuly = json['userXuly'];
+    shipperNote = json['shipperNote'];
     updateTimeCheckRequest = json['updateTimeCheckRequest'];
     updateTime = json['updateTime'];
     updateUser = json['updateUser'];
+    checkRemark = json['checkRemark'];
+    combineStuffing = json['combineStuffing'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['requestCheckContsId'] = this.requestCheckContsId;
     data['tenYeuCau'] = this.tenYeuCau;
     data['noiDung'] = this.noiDung;
     data['cntrno'] = this.cntrno;
     data['sizeType'] = this.sizeType;
-    data['nguoiGui'] = this.nguoiGui;
+    data['quanlity'] = this.quanlity;
+    data['shipperId'] = this.shipperId;
+    data['shipperName'] = this.shipperName;
     data['trangThaiYc'] = this.trangThaiYc;
     data['noteHangTau'] = this.noteHangTau;
-    data['userXuly'] = this.userXuly;
+    data['shipperNote'] = this.shipperNote;
     data['updateTimeCheckRequest'] = this.updateTimeCheckRequest;
     data['updateTime'] = this.updateTime;
     data['updateUser'] = this.updateUser;
+    data['checkRemark'] = this.checkRemark;
+    data['combineStuffing'] = this.combineStuffing;
     return data;
   }
 
-  Future<List<DetailApproval>> fetchDetailApproval(
-      String cntr, String id) async {
+  Future<List<DetailApproval>> fetchDetailApproval({required String id}) async {
     try {
-      var url = '$SERVER/Requests/container?container=$cntr&id=$id';
+      var url = '$SERVER/Requests/GetRequestById?Id=$id';
       final response = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",
       });
@@ -82,6 +97,8 @@ class DetailApproval {
           try {
             String id = dataDetail[0]['requestCheckContsId'] ?? '';
             String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
+            String shipperName = dataDetail[0]['shipperName'] ?? '';
+            String shipperNote = dataDetail[0]['shipperNote'] ?? '';
             String noiDung = dataDetail[0]['noiDung'] ?? '';
             String cntrno = dataDetail[0]['cntrno'] ?? '';
             String sizeType = dataDetail[0]['sizeType'] ?? '';
@@ -92,6 +109,8 @@ class DetailApproval {
             String checkRemark = dataDetail[0]['checkRemark'] ?? '';
             detailApprovalController.updateDetailApproval(
                 id: id.obs,
+                shipperName: shipperName.obs,
+                shipperNote: shipperNote.obs,
                 tenYeuCau: tenYeuCau.obs,
                 noiDung: noiDung.obs,
                 cntrno: cntrno.obs,

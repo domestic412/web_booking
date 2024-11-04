@@ -89,7 +89,7 @@ class BookingRequestPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: Column(
                 children: [
-                  SelectableText(
+                  Text(
                     'Booking Request',
                     style: style_title_page,
                   ),

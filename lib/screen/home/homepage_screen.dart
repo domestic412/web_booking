@@ -18,10 +18,6 @@ class _HomePageState extends State<HomePage> {
     fullSizeHeight = deviceHeight(context);
     fullSizeWidth = deviceWidth(context);
     return Scaffold(
-        // appBar: PreferredSize(
-        //   child: AppbarWidget(),
-        //   preferredSize: const Size.fromHeight(50),
-        // ),
         body: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -42,8 +38,10 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Expanded(
-                  child: Obx(() =>
-                      controller.changeWidget(controller.selectWidget.value)))
+                  child: SelectionArea(
+                child: Obx(() =>
+                    controller.changeWidget(controller.selectWidget.value)),
+              ))
             ],
           ),
         ),

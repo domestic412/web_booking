@@ -22,6 +22,7 @@ class DataTableApproval extends DataTableSource {
         .where((item) =>
             (item.cntrno?.contains(query.toUpperCase()) ?? false) ||
             (item.shipperName?.contains(query) ?? false) ||
+            (item.shipperNote?.contains(query.toUpperCase()) ?? false) ||
             (item.trangThaiYc?.contains(query.toUpperCase()) ?? false) ||
             (item.updateTime?.contains(query.toUpperCase()) ?? false))
         .toList();
@@ -42,6 +43,7 @@ class DataTableApproval extends DataTableSource {
     final rowData = data![index];
     rowData.cntrno ??= '';
     rowData.shipperName ??= '';
+    rowData.shipperNote ??= '';
     rowData.updateUser ??= '';
     rowData.updateTime != null
         ? _dt = DateFormat("dd-MM-yyyy  hh:mm a")
@@ -65,18 +67,18 @@ class DataTableApproval extends DataTableSource {
       DataCell(SizedBox(
         width: 40,
         child: Center(
-            child: SelectableText(
+            child: Text(
           (index + 1).toString(),
           style: style_text_Table_small,
         )),
       )),
       DataCell(Center(
-          child: SelectableText(
+          child: Text(
         rowData.cntrno!,
         style: style_text_Table_small,
       ))),
       DataCell(Center(
-          child: SelectableText(
+          child: Text(
         rowData.shipperName!,
         style: style_text_Table_small,
       ))),
@@ -87,7 +89,7 @@ class DataTableApproval extends DataTableSource {
           child: ElevatedButton(
             onPressed: () async {
               await _detailApproval.fetchDetailApproval(
-                  data![index].cntrno!, data![index].requestCheckContsId!);
+                  id: data![index].requestCheckContsId!);
               // add id request for image request
               // id_request_for_image = data![index].id;
               String? id = data![index].requestCheckContsId!;
@@ -108,12 +110,12 @@ class DataTableApproval extends DataTableSource {
         ),
       )),
       DataCell(Center(
-          child: SelectableText(
+          child: Text(
         rowData.updateUser!,
         style: style_text_Table_small,
       ))),
       DataCell(Center(
-          child: SelectableText(
+          child: Text(
         _dt!,
         style: style_text_Table_small,
       ))),
