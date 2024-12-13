@@ -18,21 +18,26 @@ class DetailApprovalController extends GetxController {
   var noteHangTau = ''.obs;
   var updateTime = ''.obs;
   var checkRemark = ''.obs;
+  var quanlity = ''.obs;
+  var combineTimes = 0.obs;
+  var combineTimesA = 0.obs;
 
-  updateDetailApproval({
-    required id,
-    required shipperName,
-    required shipperNote,
-    required tenYeuCau,
-    required noiDung,
-    required cntrno,
-    required sizeType,
-    required combineStuffing,
-    required trangThaiYc,
-    required noteHangTau,
-    required updateTime,
-    required checkRemark,
-  }) {
+  updateDetailApproval(
+      {required id,
+      required shipperName,
+      required shipperNote,
+      required tenYeuCau,
+      required noiDung,
+      required cntrno,
+      required sizeType,
+      required combineStuffing,
+      required trangThaiYc,
+      required noteHangTau,
+      required updateTime,
+      required checkRemark,
+      required quanlity,
+      required combineTimes,
+      required combineTimesA}) {
     this.id = id;
     this.shipperName = shipperName;
     this.shipperNote = shipperNote;
@@ -45,6 +50,9 @@ class DetailApprovalController extends GetxController {
     this.noteHangTau = noteHangTau;
     this.updateTime = updateTime;
     this.checkRemark = checkRemark;
+    this.quanlity = quanlity;
+    this.combineTimes = combineTimes;
+    this.combineTimesA = combineTimesA;
   }
 
   // inputNoteDetailApproval({@required note_controller}) {

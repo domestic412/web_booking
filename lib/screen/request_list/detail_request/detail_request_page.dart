@@ -152,7 +152,7 @@ class DetailRequestPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'container/size'.tr,
+                      'container/size/grade'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(

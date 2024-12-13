@@ -20,4 +20,6 @@ class AppAssets {
   static const String langs_en_EN_json = 'lib/resources/langs/en-EN.json';
 
   static const String langs_vi_VN_json = 'lib/resources/langs/vi-VN.json';
+  static const String icons_send_request_svg = '/icons/container-truck.svg';
+  static const String icons_deny_svg = '/icons/deny-cancel.svg';
 }

@@ -23,7 +23,8 @@ class DetailApproval {
   String? updateUser;
   String? checkRemark;
   String? combineStuffing;
-
+  int? combineTimes;
+  int? combineTimesA;
   DetailApproval(
       {this.requestCheckContsId,
       this.tenYeuCau,
@@ -40,7 +41,9 @@ class DetailApproval {
       this.updateTime,
       this.updateUser,
       this.checkRemark,
-      this.combineStuffing});
+      this.combineStuffing,
+      this.combineTimes,
+      this.combineTimesA});
 
   DetailApproval.fromJson(Map<String, dynamic> json) {
     requestCheckContsId = json['requestCheckContsId'];
@@ -59,6 +62,8 @@ class DetailApproval {
     updateUser = json['updateUser'];
     checkRemark = json['checkRemark'];
     combineStuffing = json['combineStuffing'];
+    combineTimes = json['combineTimes'];
+    combineTimesA = json['combineTimesA'];
   }
 
   Map<String, dynamic> toJson() {
@@ -79,6 +84,8 @@ class DetailApproval {
     data['updateUser'] = this.updateUser;
     data['checkRemark'] = this.checkRemark;
     data['combineStuffing'] = this.combineStuffing;
+    data['combineTimes'] = this.combineTimes;
+    data['combineTimesA'] = this.combineTimesA;
     return data;
   }
 
@@ -93,7 +100,7 @@ class DetailApproval {
           var body = response.body;
           // print('Data list approval Detail');
           List dataDetail = jsonDecode(body);
-          // print(dataDetail);
+          print(dataDetail);
           try {
             String id = dataDetail[0]['requestCheckContsId'] ?? '';
             String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
@@ -107,6 +114,10 @@ class DetailApproval {
             String updateTime = dataDetail[0]['updateTime'] ?? '';
             String combineStuffing = dataDetail[0]['combineStuffing'] ?? '';
             String checkRemark = dataDetail[0]['checkRemark'] ?? '';
+            String quanlity = dataDetail[0]['quanlity'] ?? '';
+            int combineTimes = dataDetail[0]['combineTimes'] ?? '';
+            int combineTimesA = dataDetail[0]['combineTimesA'] ?? '';
+
             detailApprovalController.updateDetailApproval(
                 id: id.obs,
                 shipperName: shipperName.obs,
@@ -119,7 +130,10 @@ class DetailApproval {
                 trangThaiYc: trangThaiYc.obs,
                 noteHangTau: noteHangTau.obs,
                 updateTime: updateTime.obs,
-                checkRemark: checkRemark.obs);
+                checkRemark: checkRemark.obs,
+                quanlity: quanlity.obs,
+                combineTimes: combineTimes.obs,
+                combineTimesA: combineTimesA.obs);
           } catch (e) {
             print('data fetch Detail Approval have null - $e');
           }

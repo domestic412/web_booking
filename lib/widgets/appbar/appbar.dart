@@ -4,7 +4,9 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/default/default_page.dart';
+import 'package:web_booking/page/default/widgets/mainMenu/title/title_booking.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/screen/notifications/notification_screen.dart';
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/dropdownLeaguage.dart';
 
@@ -102,10 +104,12 @@ class _appbarState extends State<appbar> {
                                 style: style14_white,
                               )),
                         ),
-                  // const SizedBox(
-                  //   width: 30,
-                  // ),
                   const DropdownLeaguage(),
+                  // inforUserController.shipperName.value != ''
+                  //     ? NotificationIconButton(
+                  //         userId: inforUserController.shipperId.value,
+                  //       )
+                  //     : SizedBox(),
                 ],
               ),
             ),

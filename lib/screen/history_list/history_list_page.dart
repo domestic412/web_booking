@@ -5,6 +5,7 @@ import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/list_history/model_history_list.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
+import 'package:web_booking/screen/approval_list/widget/button_special.dart';
 import 'package:web_booking/screen/history_list/data/data_history_list.dart';
 
 import 'button_download.dart';
@@ -66,15 +67,19 @@ class _HistoryListPageState extends State<HistoryListPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Stack(children: [
-                  DownloadButtonHistory(),
-                  Center(
-                    child: Text(
-                      "title history list".tr,
-                      style: style_title_page,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DownloadButtonHistory(),
+                    Center(
+                      child: Text(
+                        "title history list".tr,
+                        style: style_title_page,
+                      ),
                     ),
-                  ),
-                ]),
+                    ButtonSpecialCustomer(),
+                  ],
+                ),
                 Container(
                   decoration: BoxDecoration(
                     color: white,
