@@ -1,0 +1,25 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "haian-container",
+          "appId": "1:778353578504:android:52f2329974dc4e2c7777bd",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "haian-container",
+          "configurations": {
+            "android": "1:778353578504:android:52f2329974dc4e2c7777bd",
+            "ios": "1:778353578504:ios:ed7998d75cfad2437777bd",
+            "macos": "1:778353578504:ios:ed7998d75cfad2437777bd",
+            "web": "1:778353578504:web:1a8b24b1a755b45c7777bd",
+            "windows": "1:778353578504:web:35085b00c6396ce47777bd"
+          }
+        }
+      }
+    }
+  }
+}

@@ -22,6 +22,8 @@ class RequestList {
   String? updateUser;
   String? checkRemark;
   String? combineStuffing;
+  String? combineTimes;
+  String? combineTimesA;
 
   RequestList(
       {this.requestCheckContsId,
@@ -38,7 +40,9 @@ class RequestList {
       this.updateTime,
       this.updateUser,
       this.checkRemark,
-      this.combineStuffing});
+      this.combineStuffing,
+      this.combineTimes,
+      this.combineTimesA});
 
   RequestList.fromJson(Map<String, dynamic> json) {
     requestCheckContsId = json['requestCheckContsId'];
@@ -56,6 +60,8 @@ class RequestList {
     updateUser = json['updateUser'];
     checkRemark = json['checkRemark'];
     combineStuffing = json['combineStuffing'];
+    combineTimes = json['combineTimes'];
+    combineTimesA = json['combineTimesA'];
   }
 
   Map<String, dynamic> toJson() {
@@ -75,6 +81,9 @@ class RequestList {
     data['updateUser'] = this.updateUser;
     data['checkRemark'] = this.checkRemark;
     data['combineStuffing'] = this.combineStuffing;
+    data['combineTimes'] = this.combineTimes;
+    data['combineTimesA'] = this.combineTimesA;
+
     return data;
   }
 

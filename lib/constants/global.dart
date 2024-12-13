@@ -2,6 +2,8 @@
 // const SERVER = 'https://14.161.21.84:2214';
 // const SERVER = 'http://14.161.21.84:1214';
 const SERVER = 'http://113.160.100.137:9999';
+//const SERVER = 'https://localhost:7100';
+//const SERVER = 'https://api.haiants.vn:2214';
 
 const ServerPorts = '$SERVER/Ports';
 

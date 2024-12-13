@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
@@ -123,7 +124,7 @@ class CheckContainer {
   }
 
   Future<List<CheckContainer>> fetchCheckContainers(
-      String cntr, int tuyenngoai) async {
+      BuildContext context, String cntr, int tuyenngoai) async {
     try {
       var url =
           '$SERVER/CheckContainer?container=$cntr&shipperId=${inforUserController.shipperId.value}&tuyenngoai=$tuyenngoai';
@@ -138,11 +139,14 @@ class CheckContainer {
             return dataCheckCntr
                 .map((data) => CheckContainer.fromJson(data))
                 .toList();
+          case 404:
+            await dialog_error_checkcombine(context);
+            throw Exception('List updating, please try again later');
           case 401:
             Get.toNamed(GetRoutes.SignIn);
-            throw Exception(response.reasonPhrase);
+            throw Exception("Test");
           default:
-            throw Exception(response.reasonPhrase);
+            throw Exception("A0 vs A1");
         }
       } else {
         throw Exception('Container null');
@@ -150,5 +154,29 @@ class CheckContainer {
     } on Exception catch (e) {
       return throw Exception(e);
     }
+  }
+
+  Future<dynamic> dialog_error_checkcombine(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Lỗi',
+            style: TextStyle(color: Colors.red, fontSize: 32),
+          ),
+          content: Text(
+              'Danh sách đang được cập nhật, vui lòng quay lại sau 5 phút nữa'),
+          actions: [
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

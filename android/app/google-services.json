@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "778353578504",
+    "project_id": "haian-container",
+    "storage_bucket": "haian-container.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778353578504:android:52f2329974dc4e2c7777bd",
+        "android_client_info": {
+          "package_name": "com.example.web_booking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvGkGal43A-YYmSoWlmrVdBhYXab31yfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

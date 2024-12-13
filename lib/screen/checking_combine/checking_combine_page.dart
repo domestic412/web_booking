@@ -79,6 +79,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                           setState(() {
                             _checkContainers = CheckContainer()
                                 .fetchCheckContainers(
+                                    context,
                                     _CntrNo.text.trim().toUpperCase(),
                                     currentOptionsRoute);
                           });
@@ -100,6 +101,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                                         () {
                                           _checkContainers = CheckContainer()
                                               .fetchCheckContainers(
+                                                  context,
                                                   _CntrNo.text
                                                       .trim()
                                                       .toUpperCase(),
@@ -291,15 +293,16 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               style: TextStyle(fontSize: 16, color: red),
             ),
           );
-        } else if (snapshot.hasError && _CntrNo.text != '') {
-          return Container(
-            padding: const EdgeInsets.only(left: 32, right: 32),
-            child: Text(
-              'only cont types a0 & a1 are combined'.tr,
-              style: TextStyle(fontSize: 16, color: red),
-            ),
-          );
         }
+        // else if (snapshot.hasError && _CntrNo.text != '') {
+        //   return Container(
+        //     padding: const EdgeInsets.only(left: 32, right: 32),
+        //     child: Text(
+        //       snapshot.error.toString(),
+        //       style: TextStyle(fontSize: 16, color: red),
+        //     ),
+        //   );
+        // }
         return SizedBox();
       },
     );

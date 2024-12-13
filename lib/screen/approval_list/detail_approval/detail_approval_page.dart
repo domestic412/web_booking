@@ -147,7 +147,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 20,
                     ),
                     Text(
-                      'container/size'.tr,
+                      'container/size/grade'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(
@@ -161,6 +161,9 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                               const TextStyle(color: Colors.red, fontSize: 16)),
                       TextSpan(
                           text: '/ ${detailApprovalController.sizeType.value}',
+                          style: style_text_detail),
+                      TextSpan(
+                          text: '/ ${detailApprovalController.quanlity.value}',
                           style: style_text_detail)
                     ])),
                     const SizedBox(
@@ -235,7 +238,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -251,8 +254,32 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                         )
                       ],
                     ),
+                    Text(
+                      'comebine time'.tr,
+                      style: TextStyle(color: Colors.red, fontSize: 20),
+                    ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
+                    ),
+                    RichText(
+                        text: TextSpan(children: <TextSpan>[
+                      TextSpan(
+                          text: 'Số lần cho phép loại A: ',
+                          style: style_text_detail_bold),
+                      TextSpan(
+                          text: detailApprovalController.combineTimesA.value
+                              .toString(),
+                          style: style_text_detail_bold),
+                      TextSpan(
+                          text: ' - Số lần cho phép loại B/C: ',
+                          style: style_text_detail_bold),
+                      TextSpan(
+                          text:
+                              ' ${detailApprovalController.combineTimes.value.toString()}',
+                          style: style_text_detail_bold),
+                    ])),
+                    const SizedBox(
+                      height: 10,
                     ),
                     Text(
                       'status approve'.tr,
