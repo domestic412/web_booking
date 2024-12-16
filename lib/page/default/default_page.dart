@@ -5,6 +5,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/default/widgets/mainMenu/mainMenu.dart';
 import 'package:web_booking/page/default/widgets/mainSearch/mainSearch.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
+import 'package:web_booking/widgets/appbar/checkInfoUser/infoUser_appbar.dart';
 
 class DefaultPage extends StatefulWidget {
   @override

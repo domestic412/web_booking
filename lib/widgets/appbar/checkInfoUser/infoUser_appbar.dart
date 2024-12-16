@@ -4,6 +4,7 @@ import 'package:web_booking/page/signin/controller_signin.dart/info_signin_contr
 void checkInfoUser() {
   switch (box.read(shipperName_signin)) {
     case null:
+      print('null');
       break;
     default:
       {
@@ -13,6 +14,7 @@ void checkInfoUser() {
               switch (box.read(is_staff_signin)) {
                 case 0:
                   {
+                    print('0');
                     inforUserController.updateInfoShipperController(
                       isStaff: 0,
                       shipperId: box.read(shipperId_signin),
@@ -25,6 +27,7 @@ void checkInfoUser() {
                   break;
                 case 1:
                   {
+                    print('1');
                     inforUserController.updateInfoStaffController(
                       isStaff: 1,
                       shipperId: box.read(shipperId_signin),

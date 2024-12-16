@@ -100,7 +100,6 @@ class DetailApproval {
           var body = response.body;
           // print('Data list approval Detail');
           List dataDetail = jsonDecode(body);
-          print(dataDetail);
           try {
             String id = dataDetail[0]['requestCheckContsId'] ?? '';
             String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';

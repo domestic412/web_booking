@@ -28,12 +28,12 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (inforUserController.shipperName.value != "") {
-      print(inforUserController.shipperName.value);
-      currentRouteController.route.value = checkingCombine;
-      controller.selectWidget.value = checkingCombine;
-      Get.toNamed(GetRoutes.Home);
-    }
+    // if (inforUserController.shipperName.value != "") {
+    //   print(inforUserController.shipperName.value);
+    //   currentRouteController.route.value = checkingCombine;
+    //   controller.selectWidget.value = checkingCombine;
+    //   Get.toNamed(GetRoutes.Home);
+    // }
     // switch (inforUserController.shipperName.value) {
     //   case '':
     //     currentRouteController.route.value = checkingCombine;

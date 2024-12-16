@@ -6,7 +6,7 @@ FilePickerResult? resultPickedFile;
 class Import {
   Future ImportExcel() async {
     try {
-      resultPickedFile = await FilePickerWeb.platform.pickFiles(
+      resultPickedFile = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['xlsx', 'xls'],
         allowMultiple: false,

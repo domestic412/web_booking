@@ -6,6 +6,7 @@ import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/widgets/header.dart';
 import 'package:web_booking/screen/home/widgets/list_item_drawer.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
+import 'package:web_booking/widgets/appbar/checkInfoUser/infoUser_appbar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    checkInfoUser();
     fullSizeHeight = deviceHeight(context);
     fullSizeWidth = deviceWidth(context);
     return Scaffold(

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
@@ -20,6 +21,18 @@ class QualityList {
       this.ghiChu,
       this.updateTime,
       this.updateUser});
+
+  DataGridRow getDataGridRow_Quality() {
+    return DataGridRow(cells: [
+      DataGridCell<int>(columnName: 'id', value: id),
+      DataGridCell<String>(columnName: 'quality code'.tr, value: maChatLuong),
+      DataGridCell<String>(columnName: 'quality name'.tr, value: tenChatLuong),
+      DataGridCell<String>(columnName: 'note'.tr, value: ghiChu),
+      DataGridCell<String>(columnName: 'update time'.tr, value: updateTime),
+      DataGridCell<String>(columnName: 'updater'.tr, value: updateUser),
+      DataGridCell<String>(columnName: '##', value: ''),
+    ]);
+  }
 
   QualityList.fromJson(Map<String, dynamic> json) {
     id = json['id'];

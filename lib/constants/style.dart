@@ -8,7 +8,9 @@ TextStyle style14_white = TextStyle(fontSize: 14, color: contentColor);
 TextStyle style14_white_bold =
     TextStyle(fontSize: 14, color: contentColor, fontWeight: FontWeight.bold);
 
-TextStyle style12_black = TextStyle(fontSize: 13, color: Colors.black);
+TextStyle style12_black = TextStyle(fontSize: 12, color: black);
+TextStyle style12_white = TextStyle(fontSize: 12, color: white);
+
 TextStyle style13_black = TextStyle(fontSize: 13, color: Colors.black);
 TextStyle style15_black = TextStyle(fontSize: 15, color: Colors.black);
 TextStyle style15_black_bold =
@@ -75,7 +77,8 @@ TextStyle style_text_red = TextStyle(fontSize: 16, color: red);
 TextStyle style_text_green = TextStyle(fontSize: 16, color: green);
 
 //style title page
-TextStyle style_title_page = TextStyle(fontSize: 30, color: haian);
+// TextStyle style_title_page = TextStyle(fontSize: 30, color: haian);
+TextStyle style_title_page = TextStyle(fontSize: 20, color: haian);
 
 //style text request
 TextStyle style_text_box = TextStyle(fontSize: 16, color: Colors.black54);

@@ -62,80 +62,72 @@ class _mainMenuState extends State<mainMenu> {
                 color: Colors.white70,
               ),
               Container(
-                alignment: Alignment.topCenter,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            height: 100,
-                            width: 200,
-                            padding: const EdgeInsets.all(15),
-                            child: Image.asset('assets/images/hact_logo.png')),
-                        const SizedBox(
-                          width: 70,
-                        ),
-                        BookingMenu(),
-                        TrackingMenu(),
-                        CombineMenu(),
-                        // ScheduleMenu(),
-                        QuoteMenu(),
-                        Container(
-                          alignment: Alignment.topRight,
-                          padding: EdgeInsets.only(top: 20),
-                          width: 250,
-                          child: MouseRegion(
-                            onEnter: handleMouseEnter_signUp,
-                            onExit: handleMouseExit_signUp,
-                            child: InkWell(
-                              onTap: () {
-                                // context.go(AppRoutes.signUpRoute);
-                                // Get.toNamed(GetRoutes.SignIn);
-                                switch (inforUserController.shipperName.value) {
-                                  case '':
-                                    currentRouteController.route.value =
-                                        checkingCombine;
-                                    controller.selectWidget.value =
-                                        checkingCombine;
-                                    // controller.selectWidget.value = dashboard;
-                                    Get.toNamed(GetRoutes.SignIn);
-                                  default:
-                                    currentRouteController.route.value =
-                                        checkingCombine;
-                                    controller.selectWidget.value =
-                                        checkingCombine;
-                                    // controller.selectWidget.value = dashboard;
-                                    Get.toNamed(GetRoutes.Home);
-                                }
-                                // currentRouteController.route.value = 'service';
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        height: 100,
+                        // width: 200,
+                        padding: const EdgeInsets.all(15),
+                        child: Image.asset('assets/images/hact_logo.png')),
+                    const SizedBox(
+                      width: 70,
+                    ),
+                    BookingMenu(),
+                    TrackingMenu(),
+                    CombineMenu(),
+                    // ScheduleMenu(),
+                    QuoteMenu(),
+                    Container(
+                      alignment: Alignment.topRight,
+                      padding: EdgeInsets.only(top: 20),
+                      width: 250,
+                      child: MouseRegion(
+                        onEnter: handleMouseEnter_signUp,
+                        onExit: handleMouseExit_signUp,
+                        child: InkWell(
+                          onTap: () {
+                            // context.go(AppRoutes.signUpRoute);
+                            // Get.toNamed(GetRoutes.SignIn);
+                            switch (inforUserController.shipperName.value) {
+                              case '':
+                                currentRouteController.route.value =
+                                    checkingCombine;
+                                controller.selectWidget.value = checkingCombine;
                                 // controller.selectWidget.value = dashboard;
-                              },
-                              //   currentRouteController.route.value = checkingCombine;
-                              // controller.selectWidget.value = checkingCombine;
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 50,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    color: signUp_color,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Text(
-                                  'Service'.tr,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      // fontWeight: FontWeight.bold,
-                                      color: white),
-                                ),
-                              ),
+                                Get.toNamed(GetRoutes.SignIn);
+                              default:
+                                currentRouteController.route.value =
+                                    checkingCombine;
+                                controller.selectWidget.value = checkingCombine;
+                                // controller.selectWidget.value = dashboard;
+                                Get.toNamed(GetRoutes.Home);
+                            }
+                            // currentRouteController.route.value = 'service';
+                            // controller.selectWidget.value = dashboard;
+                          },
+                          //   currentRouteController.route.value = checkingCombine;
+                          // controller.selectWidget.value = checkingCombine;
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 50,
+                            width: 100,
+                            decoration: BoxDecoration(
+                                color: signUp_color,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Text(
+                              'Service'.tr,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  // fontWeight: FontWeight.bold,
+                                  color: white),
                             ),
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ],
