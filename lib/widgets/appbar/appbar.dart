@@ -69,6 +69,7 @@ class _appbarState extends State<appbar> {
                         IconButton(
                           onPressed: () {
                             box.remove(shipperName_signin);
+                            box.remove(shipperId_signin);
                             inforUserController.resetInfoController();
                             Get.toNamed(GetRoutes.defaultRoute);
                             currentRouteController.route.value = 'default';

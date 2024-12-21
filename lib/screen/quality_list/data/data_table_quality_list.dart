@@ -11,11 +11,14 @@ import 'package:web_booking/model/list_quality/storage_controller/quality_contro
 
 class DataQualitySource extends DataGridSource {
   DataQualitySource(this._quality) {
+    // _paginateQuality = _quality.getRange(0, 13).toList();
     buildDataGridRow();
   }
 
   List<QualityList> _quality = <QualityList>[];
+  // List<QualityList> _paginateQuality = [];
   List<DataGridRow> _dataGridRows = <DataGridRow>[];
+  // int _rowsPerPage = 10;
 
   void buildDataGridRow() {
     _dataGridRows = _quality
@@ -145,12 +148,55 @@ class DataQualitySource extends DataGridSource {
                               )
                             ],
                           )
-                        : Text(
+                        : SelectableText(
                             maxLines: 2,
                             dataGridCell.value.toString(),
                             style: style12_black,
-                            overflow: TextOverflow.ellipsis));
+                            // overflow: TextOverflow.ellipsis,
+                          ));
+        // : _buildTextwithTooltip(dataGridCell));
       })
     ]);
   }
+
+  // Widget _buildTextwithTooltip(DataGridCell<dynamic> dataGridCell) {
+  //   return LayoutBuilder(builder: (context, constraints) {
+  //     final TextPainter textPainter = TextPainter(
+  //       text: TextSpan(
+  //         text: dataGridCell.value.toString(),
+  //         style: style12_black,
+  //       ),
+  //       maxLines: 2,
+  //       textDirection: TextDirection.ltr,
+  //     )..layout(
+  //         maxWidth: constraints.maxWidth,
+  //       );
+  //     final bool isOverflowing = textPainter.didExceedMaxLines;
+  //     return Tooltip(
+  //       message: isOverflowing ? dataGridCell.value.toString() : '',
+  //       child: Text(
+  //         maxLines: 2,
+  //         dataGridCell.value.toString(),
+  //         style: style12_black,
+  //         overflow: TextOverflow.ellipsis,
+  //       ),
+  //     );
+  //   });
+  // }
+
+  // @override
+  // Future<bool> handlePageChange(int oldPageIndex, int newPageIndex) async {
+  //   int startIndex = newPageIndex * _rowsPerPage;
+  //   int endIndex = startIndex + _rowsPerPage;
+  //   if (startIndex < _quality.length && endIndex <= _quality.length) {
+  //     _paginateQuality =
+  //         _quality.getRange(startIndex, endIndex).toList(growable: false);
+  //     buildDataGridRow();
+  //     notifyListeners();
+  //   } else {
+  //     _paginateQuality = [];
+  //   }
+
+  //   return true;
+  // }
 }

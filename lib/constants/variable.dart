@@ -35,6 +35,7 @@ changeStringDatetoSend({required String date}) {
 
 DateFormat dateFormat = DateFormat('dd/MM/yyyy');
 
+String hostName = 'hostname';
 // Login
 var box = GetStorage();
 String login = 'signIn';

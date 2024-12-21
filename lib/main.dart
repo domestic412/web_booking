@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/resources/localization_service.dart';
 import 'package:web_booking/widgets/horizontal_scroll.dart';
+import 'dart:html';
 
 import 'utils/getx_route.dart';
 
@@ -53,6 +55,7 @@ void main() async {
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
   await GetStorage.init();
+  box.write(hostName, getWebHostname());
   // // on background notification tapped
   // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
   //   if (message.notification != null) {
@@ -101,11 +104,15 @@ void main() async {
   );
 }
 
+String getWebHostname() {
+  return window.location.hostname!;
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
   Widget build(BuildContext context) {
+    // printHostname();
     return GetMaterialApp(
       theme: ThemeData(
         useMaterial3: false,

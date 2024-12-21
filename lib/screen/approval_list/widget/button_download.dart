@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
+import 'package:web_booking/widgets/container/widget_Button.dart';
 
 class DownloadButtonApproval extends StatefulWidget {
   @override
@@ -41,20 +42,32 @@ class _DownloadButtonApprovalState extends State<DownloadButtonApproval> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ElevatedButton(
+        WidgetButton(
+          text: 'Export data',
+          style: ElevatedButton.styleFrom(
+            backgroundColor: haian,
+            minimumSize: Size(90, 35),
+          ),
           onPressed: () {
             setState(() {
               isExport = !isExport;
             });
           },
-          style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll<Color>(haian),
-              minimumSize: MaterialStateProperty.all(Size(100, 40))),
-          child: Text('Export data'),
         ),
-        SizedBox(
-          height: 10,
-        ),
+        // ElevatedButton(
+        //   onPressed: () {
+        //     setState(() {
+        //       isExport = !isExport;
+        //     });
+        //   },
+        //   style: ButtonStyle(
+        //       backgroundColor: WidgetStatePropertyAll<Color>(haian),
+        //       minimumSize: WidgetStateProperty.all(Size(100, 40))),
+        //   child: Text('Export data'),
+        // ),
+        // SizedBox(
+        //   height: 10,
+        // ),
         isExport == true ? dateDownload(context) : SizedBox.shrink(),
       ],
     );
@@ -124,7 +137,12 @@ class _DownloadButtonApprovalState extends State<DownloadButtonApproval> {
             },
           ),
         ),
-        ElevatedButton(
+        WidgetButton(
+          text: 'Download',
+          style: ElevatedButton.styleFrom(
+            backgroundColor: haian,
+            minimumSize: Size(90, 35),
+          ),
           onPressed: () {
             if (historyController.fromDate_send.value == '' ||
                 historyController.toDate_send.value == '') {
@@ -134,11 +152,22 @@ class _DownloadButtonApprovalState extends State<DownloadButtonApproval> {
                   historyController.toDate_send.value);
             }
           },
-          style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll<Color>(haian),
-              minimumSize: MaterialStateProperty.all(Size(100, 40))),
-          child: Text('Download'),
-        ),
+        )
+        // ElevatedButton(
+        //   onPressed: () {
+        //     if (historyController.fromDate_send.value == '' ||
+        //         historyController.toDate_send.value == '') {
+        //       print('Error: Choose date');
+        //     } else {
+        //       downloadFile(historyController.fromDate_send.value,
+        //           historyController.toDate_send.value);
+        //     }
+        //   },
+        //   style: ButtonStyle(
+        //       backgroundColor: MaterialStatePropertyAll<Color>(haian),
+        //       minimumSize: MaterialStateProperty.all(Size(100, 40))),
+        //   child: Text('Download'),
+        // ),
       ],
     );
   }

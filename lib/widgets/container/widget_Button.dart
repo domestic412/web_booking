@@ -11,3 +11,8 @@ ElevatedButton WidgetButton(
     child: Text(text, style: style12_white),
   );
 }
+
+// ElevatedButton.styleFrom(
+//   backgroundColor: haian,
+//   minimumSize: Size(100, 35),
+// ),

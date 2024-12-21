@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
@@ -127,7 +128,7 @@ class CheckContainer {
       BuildContext context, String cntr, int tuyenngoai) async {
     try {
       var url =
-          '$SERVER/CheckContainer?container=$cntr&shipperId=${inforUserController.shipperId.value}&tuyenngoai=$tuyenngoai';
+          '$SERVER/CheckContainer?container=$cntr&shipperId=${inforUserController.shipperId.value}&tuyenngoai=$tuyenngoai&hostname=${box.read(hostName)}';
       if (cntr.isNotEmpty) {
         final response = await http.post(Uri.parse(url), headers: {
           "Content-Type": "application/json",

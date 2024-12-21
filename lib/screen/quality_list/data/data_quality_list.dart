@@ -27,59 +27,55 @@
 //     rowData.ghiChu ??= '';
 //     rowData.updateUser ??= '';
 //     rowData.updateTime != null
-//         ? _dt = DateFormat("dd-MM-yyyy\nhh:mm a")
-//             .format(DateTime.parse(rowData.updateTime!))
+//         ? _dt =
+//             DateFormat("dd-MM-yyyy").format(DateTime.parse(rowData.updateTime!))
 //         : _dt = '';
 //     // index % 2 == 1 ? _color = lightGrey : _color = white;
 //     return DataRow(
 //         // color: MaterialStateProperty.all(_color),
 //         cells: [
-//           DataCell(Container(
+//           DataCell(SizedBox(
 //             width: 40,
-//             child: Center(
-//               child: Text(
-//                 (index + 1).toString(),
-//                 style: style_text_Table_small,
-//               ),
+//             child: Text(
+//               (index + 1).toString(),
+//               style: style12_black,
 //             ),
 //           )),
-//           DataCell(Container(
-//             width: 100,
+//           DataCell(SizedBox(
+//             width: 80,
 //             child: Text(
+//               maxLines: 2,
 //               rowData.maChatLuong!,
-//               style: style_text_Table_small,
+//               style: style12_black,
 //             ),
 //           )),
-//           DataCell(Container(
-//             width: 120,
+//           DataCell(SizedBox(
+//             width: 200,
 //             child: Text(
+//               maxLines: 2,
 //               rowData.tenChatLuong!,
-//               style: style_text_Table_small,
+//               style: style12_black,
 //             ),
 //           )),
-//           DataCell(Container(
-//             width: 850,
-//             child: Text(
-//               rowData.ghiChu!,
-//               style: style_text_Table_small,
-//             ),
+//           DataCell(Text(
+//             rowData.ghiChu!,
+//             style: style12_black,
 //           )),
-//           DataCell(Container(
+//           DataCell(SizedBox(
 //             width: 80,
 //             child: Text(
 //               _dt!,
-//               style: style_text_Table_small,
+//               style: style12_black,
 //             ),
 //           )),
-//           DataCell(Container(
-//             width: 100,
+//           DataCell(SizedBox(
+//             width: 60,
 //             child: Text(
 //               rowData.updateUser!,
-//               style: style_text_Table_small,
+//               style: style12_black,
 //             ),
 //           )),
-//           DataCell(Center(
-//               child: Row(
+//           DataCell(Row(
 //             children: [
 //               InkWell(
 //                 onTap: () {
@@ -146,7 +142,7 @@
 //                 ),
 //               )
 //             ],
-//           ))),
+//           )),
 //         ]);
 //   }
 

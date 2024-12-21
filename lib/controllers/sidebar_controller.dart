@@ -7,7 +7,6 @@ import 'package:web_booking/screen/container_stock/import_file_page.dart';
 import 'package:web_booking/screen/dashboard/dashboard_page.dart';
 import 'package:web_booking/screen/history_list/history_list_page.dart';
 import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality.dart';
-import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality_page.dart';
 import 'package:web_booking/screen/quality_list/quality_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
 import 'package:web_booking/screen/request_list/detail_request/detail_request_page.dart';

@@ -192,6 +192,7 @@ class _SignInPageState extends State<SignInPage> {
                     //     break;
                     // }
                     print('Login Success');
+                    print(box.read(hostName));
                     // return ModelNewLogin.fromJson(dataNewLogIn);
                   }
                 case 1:
@@ -227,6 +228,7 @@ class _SignInPageState extends State<SignInPage> {
                           Get.toNamed(GetRoutes.Home);
                         }
                     }
+                    print(box.read(hostName));
                     // switch (currentRouteController.route.value) {
                     //   case checkingCombine:
                     //     Get.toNamed(GetRoutes.Home);

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/utils/getx_route.dart';
@@ -79,6 +80,19 @@ class ApprovalList {
     data['checkRemark'] = this.checkRemark;
     data['combineStuffing'] = this.combineStuffing;
     return data;
+  }
+
+  DataGridRow getDataGridRow_Approval() {
+    return DataGridRow(cells: [
+      DataGridCell<String>(
+          columnName: 'requestCheckContsId', value: requestCheckContsId),
+      DataGridCell<String>(columnName: 'container'.tr, value: cntrno),
+      DataGridCell<String>(columnName: 'sender'.tr, value: shipperName),
+      DataGridCell<String>(
+          columnName: 'approve request'.tr, value: trangThaiYc),
+      DataGridCell<String>(columnName: 'update user'.tr, value: updateUser),
+      DataGridCell<String>(columnName: 'update time'.tr, value: updateTime),
+    ]);
   }
 
   Future<List<ApprovalList>> fetchApprovalList() async {

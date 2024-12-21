@@ -9,8 +9,11 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/list_quality/storage_controller/quality_controller.dart';
+import 'package:web_booking/page/default/widgets/mainMenu/mainMenu.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/widgets/container/widget_Button.dart';
+import 'package:web_booking/widgets/container/widget_ContainerLabel.dart';
+import 'package:web_booking/widgets/container/widget_TextField.dart';
 
 class CUD_QualityPage extends StatefulWidget {
   @override
@@ -56,27 +59,6 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                   controller.selectWidget.value = qualityList;
                 }),
           ),
-          // Container(
-          //   margin: EdgeInsets.only(bottom: 16),
-          //   child: InkWell(
-          //     onTap: () {
-          //       controller.selectWidget.value = qualityList;
-          //     },
-          //     child: Container(
-          //       alignment: Alignment.center,
-          //       height: 35,
-          //       width: 100,
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(10),
-          //         color: grey,
-          //       ),
-          //       child: Text(
-          //         'back'.tr,
-          //         style: style_text_button_detail,
-          //       ),
-          //     ),
-          //   ),
-          // ),
           Container(
             decoration: BoxDecoration(
               color: white,
@@ -87,71 +69,116 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                     color: blue.withOpacity(.1),
                     blurRadius: 12)
               ],
-              borderRadius: BorderRadius.circular(8),
+              // borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(4),
             ),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('quality code'.tr, style: style12_black),
+                Row(
+                  children: [
+                    WidgetContainerLabel(label: 'quality code'.tr, width: 90),
+                    Expanded(
+                      child: WidgetTextField(
+                          controller: _input_maChatLuong, width: null),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                // TextField(
+                //   controller: _input_maChatLuong,
+                //   decoration: InputDecoration(
+                //       border: OutlineInputBorder(),
+                //       hintText: 'quality code'.tr),
+                // ),
+                // Text('quality name'.tr, style: style12_black),
+                Row(
+                  children: [
+                    WidgetContainerLabel(label: 'quality name'.tr, width: 90),
+                    Expanded(
+                      child: WidgetTextField(
+                          controller: _input_tenChatLuong, width: null),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                // TextField(
+                //   controller: _input_tenChatLuong,
+                //   decoration: InputDecoration(
+                //       border: OutlineInputBorder(),
+                //       hintText: 'quality name'.tr),
+                // ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    WidgetContainerLabel(label: 'note'.tr, width: 90),
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.all(5),
+                        child: TextField(
+                          controller: _input_ghiChu,
+                          minLines: 1,
+                          maxLines: 15,
+                          style: style12_black,
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.all(10),
+                            isDense: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(0.0),
+                            )),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // TextField(
+                //   controller: _input_ghiChu,
+                //   minLines: 1,
+                //   maxLines: 15,
+                //   decoration: InputDecoration(
+                //       border: OutlineInputBorder(), hintText: 'note'.tr),
+                // ),
                 const SizedBox(
-                  height: 10,
-                ),
-                TextField(
-                  controller: _input_maChatLuong,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'quality code'.tr),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text('quality name'.tr, style: style12_black),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextField(
-                  controller: _input_tenChatLuong,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'quality name'.tr),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text('note'.tr, style: style12_black),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextField(
-                  controller: _input_ghiChu,
-                  minLines: 1,
-                  maxLines: 15,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(), hintText: 'note'.tr),
-                ),
-                const SizedBox(
-                  height: 50,
+                  height: 15,
                 ),
                 Center(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: color_button_CUD,
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)))),
-                        onPressed: () {
-                          PostCUDQuality(_input_maChatLuong.text,
-                              _input_tenChatLuong.text, _input_ghiChu.text);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 10),
-                          child: Text(text_button_CUD!,
-                              style: style_text_box_button),
-                        ))),
-                const SizedBox(height: 20)
+                  child: WidgetButton(
+                      text: text_button_CUD!,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: haian,
+                        minimumSize: Size(100, 35),
+                      ),
+                      onPressed: () {
+                        PostCUDQuality(_input_maChatLuong.text,
+                            _input_tenChatLuong.text, _input_ghiChu.text);
+                      }),
+                ),
+                // Center(
+                //     child: ElevatedButton(
+                //         style: ElevatedButton.styleFrom(
+                //             backgroundColor: color_button_CUD,
+                //             shape: const RoundedRectangleBorder(
+                //                 borderRadius:
+                //                     BorderRadius.all(Radius.circular(10)))),
+                //         onPressed: () {
+                //           PostCUDQuality(_input_maChatLuong.text,
+                //               _input_tenChatLuong.text, _input_ghiChu.text);
+                //         },
+                //         child: Container(
+                //           padding: EdgeInsets.symmetric(
+                //               horizontal: 15, vertical: 10),
+                //           child: Text(text_button_CUD!,
+                //               style: style_text_box_button),
+                //         ))),
+                const SizedBox(height: 10)
               ],
             ),
           ),
