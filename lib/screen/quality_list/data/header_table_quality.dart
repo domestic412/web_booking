@@ -5,7 +5,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/model/list_quality/model_quality_list.dart';
 import 'package:web_booking/screen/quality_list/data/data_table_quality_list.dart';
-import 'package:web_booking/widgets/container/widget_GridColumn_Quality.dart';
+import 'package:web_booking/screen/quality_list/widget/widget_GridColumn_Quality.dart';
 
 class TableQuality extends StatelessWidget {
   const TableQuality({super.key});

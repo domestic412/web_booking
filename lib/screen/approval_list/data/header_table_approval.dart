@@ -37,16 +37,16 @@ class TableApproval extends StatelessWidget {
           headerColor: Colors.grey[200],
         ),
         child: SfDataGrid(
-            // rowHeight: 30,
+            rowHeight: 30,
             headerRowHeight: 40,
-            isScrollbarAlwaysShown: true,
+            // isScrollbarAlwaysShown: true,
             columnWidthMode: ColumnWidthMode.fill,
-            selectionMode: SelectionMode.single,
+            // selectionMode: SelectionMode.single,
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
             source: _dataApprovalSource,
             columns: [
-              WidgetGridColumnApproval(label: 'Seq.', visible: true),
+              WidgetGridColumnApproval(label: 'seq'.tr, visible: true),
               WidgetGridColumnApproval(
                   label: 'requestCheckContsId', visible: false),
               WidgetGridColumnApproval(label: 'container'.tr, visible: true),

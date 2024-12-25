@@ -33,7 +33,7 @@ class DataQualitySource extends DataGridSource {
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(cells: [
       Container(
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
         padding: EdgeInsets.all(5.0),
         child: Text(
           (_dataGridRows.indexOf(row) + 1).toString(),
@@ -51,7 +51,8 @@ class DataQualitySource extends DataGridSource {
                         changeStringDatetoShow(
                             date: dataGridCell.value.toString()),
                         style: style12_black,
-                        overflow: TextOverflow.ellipsis)
+                        // overflow: TextOverflow.ellipsis,
+                      )
                     : dataGridCell.columnName == '##'
                         ? Row(
                             children: [
@@ -149,7 +150,7 @@ class DataQualitySource extends DataGridSource {
                             ],
                           )
                         : SelectableText(
-                            maxLines: 2,
+                            // maxLines: 2,
                             dataGridCell.value.toString(),
                             style: style12_black,
                             // overflow: TextOverflow.ellipsis,

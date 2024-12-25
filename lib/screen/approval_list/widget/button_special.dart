@@ -14,7 +14,7 @@ class ButtonSpecialCustomer extends StatelessWidget {
           text: 'Policy',
           style: ElevatedButton.styleFrom(
             backgroundColor: haian,
-            minimumSize: Size(90, 35),
+            minimumSize: Size(100, 35),
           ),
           onPressed: () async {
             showSpecialList(context);

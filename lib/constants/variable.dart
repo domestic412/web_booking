@@ -21,8 +21,16 @@ changeDatetoShow({required DateTime date}) {
   return DateFormat('dd/MM/yyyy').format(date);
 }
 
+changeDateHourtoShow({required DateTime date}) {
+  return DateFormat('dd/MM/yyyy HH:mm').format(date);
+}
+
 changeStringDatetoShow({required String date}) {
   return changeDatetoShow(date: DateTime.parse(date));
+}
+
+changeStringDateHourtoShow({required String date}) {
+  return changeDateHourtoShow(date: DateTime.parse(date));
 }
 
 changeDatetoSend({required DateTime date}) {

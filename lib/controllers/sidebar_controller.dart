@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:web_booking/screen/approval_list/approval_list_page.dart';
+import 'package:web_booking/screen/approval_list/approval_page.dart';
 import 'package:web_booking/screen/approval_list/detail_approval/detail_approval_page.dart';
 import 'package:web_booking/screen/checking_combine/checking_combine_page.dart';
 import 'package:web_booking/screen/container_stock/container_stock_page.dart';
@@ -60,7 +60,7 @@ class SideBarController extends GetxController {
       // case detailReleaseBookingList:
       //   return DetailReleaseBookingRequestPage();
       case approvalList:
-        return ApprovalListPage();
+        return ApprovalPage();
       case detailApproval:
         // Get.toNamed(GetRoutes.DetailApproval);
         return DetailApprovalPage();

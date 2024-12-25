@@ -16,6 +16,7 @@ class DataApprovalSource extends DataGridSource {
   }
 
   List<ApprovalList> _approval = <ApprovalList>[];
+  List<ApprovalList> _approval_original = <ApprovalList>[];
   List<DataGridRow> _dataGridRows = <DataGridRow>[];
 
   void buildDataGridRow() {
@@ -57,7 +58,7 @@ class DataApprovalSource extends DataGridSource {
                               : dataGridCell.value == 'R'
                                   ? red
                                   : grey,
-                          minimumSize: Size(100, 35),
+                          minimumSize: Size(100, 30),
                         ),
                         onPressed: () async {
                           String id = _approval[_dataGridRows.indexOf(row)]
@@ -68,12 +69,12 @@ class DataApprovalSource extends DataGridSource {
                         })
                     : dataGridCell.columnName == 'update time'.tr
                         ? Text(
-                            changeStringDatetoShow(
+                            changeStringDateHourtoShow(
                                 date: dataGridCell.value.toString()),
                             style: style12_black,
                             overflow: TextOverflow.ellipsis)
                         : SelectableText(
-                            maxLines: 2,
+                            // maxLines: 2,
                             dataGridCell.value.toString(),
                             style: style12_black,
                           ));

@@ -7,17 +7,17 @@ WidgetGridColumnApproval({required String label, required bool visible}) {
   return GridColumn(
       visible: visible,
       columnName: label,
-      // width: label == 'seq'.tr
-      //     ? 40
-      //     : label == 'container'.tr
-      //         ? 150
-      //         // : label == 'sender'.tr
-      //         //     ? 200
-      //         : label == 'update time'.tr
-      //             ? 150
-      //             : label == 'updater'.tr
-      //                 ? 100
-      //                 : double.nan,
+      width: label == 'seq'.tr
+          ? 40
+          : label == 'container'.tr
+              ? 150
+              : label == 'approve request'.tr
+                  ? 110
+                  : label == 'update user'.tr
+                      ? 110
+                      : label == 'update time'.tr
+                          ? 120
+                          : double.nan,
       label: Container(
           padding: const EdgeInsets.all(5.0),
           alignment: Alignment.centerLeft,
