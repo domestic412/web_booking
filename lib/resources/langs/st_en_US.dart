@@ -74,6 +74,7 @@ Map<String, String> en = {
   "request reject": "Request reject: ",
   "_comment_approvalList_page": "Approval List Page",
   "approval list": "Approval List",
+  "policy": "Policy",
   "sender": "Sender",
   "pending": "Pending",
   "approve request": "Approve request",

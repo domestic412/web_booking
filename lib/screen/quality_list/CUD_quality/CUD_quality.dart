@@ -81,8 +81,7 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                   children: [
                     WidgetContainerLabel(label: 'quality code'.tr, width: 90),
                     Expanded(
-                      child: WidgetTextField(
-                          controller: _input_maChatLuong, width: null),
+                      child: WidgetTextField(_input_maChatLuong, null),
                     ),
                   ],
                 ),
@@ -100,8 +99,7 @@ class _CUD_QualityPageState extends State<CUD_QualityPage> {
                   children: [
                     WidgetContainerLabel(label: 'quality name'.tr, width: 90),
                     Expanded(
-                      child: WidgetTextField(
-                          controller: _input_tenChatLuong, width: null),
+                      child: WidgetTextField(_input_tenChatLuong),
                     ),
                   ],
                 ),

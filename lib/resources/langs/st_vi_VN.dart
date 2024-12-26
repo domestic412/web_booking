@@ -73,6 +73,7 @@ Map<String, String> vi = {
   "request reject": "Yêu cầu bị từ chối: ",
   "_comment_approvalList_page": "Approval List Page",
   "approval list": "Danh sách duyệt yêu cầu",
+  "policy": "Chính sách",
   "sender": "Người gửi",
   "pending": "Chờ duyệt",
   "approve request": "Duyệt yêu cầu",

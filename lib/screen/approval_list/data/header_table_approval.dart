@@ -1,20 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_popup/flutter_popup.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
+import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 import 'package:web_booking/model/list_approval/model_approval_list.dart';
 import 'package:web_booking/screen/approval_list/data/data_table_approval.dart';
 import 'package:web_booking/screen/approval_list/widget/widget_grid_column_approval.dart';
+import 'package:web_booking/widgets/container/widget_ContainerLabel.dart';
+import 'package:web_booking/widgets/container/widget_TextField.dart';
+import 'package:web_booking/widgets/container/widget_calendar.dart';
 
-class TableApproval extends StatelessWidget {
+class TableApproval extends StatefulWidget {
   const TableApproval({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    late DataApprovalSource _dataApprovalSource;
-    List<ApprovalList> _approval = <ApprovalList>[];
+  State<TableApproval> createState() => _TableApprovalState();
+}
 
+class _TableApprovalState extends State<TableApproval> {
+  late DataApprovalSource _dataApprovalSource;
+  List<ApprovalList> _approval = <ApprovalList>[];
+  TextEditingController _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    quoteController.fromDate_send.value =
+        changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
+    quoteController.fromDate_text.value =
+        changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
+    quoteController.toDate_send.value =
+        changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
+    quoteController.toDate_text.value =
+        changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return FutureBuilder<List<ApprovalList>>(
         future: ApprovalList().fetchApprovalList(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -25,10 +51,41 @@ class TableApproval extends StatelessWidget {
             _approval = snapshot.data!;
             _dataApprovalSource = DataApprovalSource(_approval);
             return Container(
-                color: white, child: _buildDataGrid(_dataApprovalSource));
+                color: white,
+                child: Column(
+                  children: [
+                    WidgetCalendar(),
+                    Row(
+                      children: [
+                        WidgetTextFieldSearch(
+                            controller: _controller, width: 300),
+                        WidgetButtonFilter()
+                      ],
+                    ),
+                    Expanded(child: _buildDataGrid(_dataApprovalSource)),
+                  ],
+                ));
           }
           return SizedBox.shrink();
         });
+  }
+
+  Container WidgetButtonFilter() {
+    return Container(
+      margin: EdgeInsets.all(5),
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: haian,
+            minimumSize: Size(100, 35),
+          ),
+          onPressed: () {
+            _dataApprovalSource.applyFilter(filter: _controller.text);
+          },
+          child: Text(
+            'Filter',
+            style: style12_white,
+          )),
+    );
   }
 
   SfDataGridTheme _buildDataGrid(DataApprovalSource _dataApprovalSource) {

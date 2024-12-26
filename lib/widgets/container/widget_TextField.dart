@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/style.dart';
 
-Container WidgetTextField(
-    {required TextEditingController controller, required double? width}) {
+Container WidgetTextField(TextEditingController controller, double? width) {
   return Container(
-    width: width,
+    width: width ?? double.infinity,
     margin: EdgeInsets.all(5),
     child: TextField(
       controller: controller,
@@ -31,7 +30,7 @@ Container WidgetTextFieldSearch(
       controller: controller,
       style: style12_black,
       decoration: const InputDecoration(
-        contentPadding: EdgeInsets.all(8),
+        contentPadding: EdgeInsets.all(10),
         isDense: true,
         hintText: 'Enter text to search...',
         border: OutlineInputBorder(

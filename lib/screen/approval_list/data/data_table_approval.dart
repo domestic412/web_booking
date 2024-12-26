@@ -12,6 +12,7 @@ import 'package:web_booking/widgets/container/widget_Button.dart';
 
 class DataApprovalSource extends DataGridSource {
   DataApprovalSource(this._approval) {
+    _approval_original = _approval;
     buildDataGridRow();
   }
 
@@ -80,5 +81,21 @@ class DataApprovalSource extends DataGridSource {
                           ));
       })
     ]);
+  }
+
+  void applyFilter({required String filter}) {
+    _approval = _approval_original
+        .where((value) =>
+            (value.cntrno?.toUpperCase().contains(filter.toUpperCase()) ??
+                false) ||
+            (value.shipperName?.toUpperCase().contains(filter.toUpperCase()) ??
+                false) ||
+            (value.updateUser?.toUpperCase().contains(filter.toUpperCase()) ??
+                false) ||
+            (value.updateTime?.toUpperCase().contains(filter.toUpperCase()) ??
+                false))
+        .toList();
+    buildDataGridRow();
+    notifyListeners();
   }
 }
