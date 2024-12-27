@@ -37,7 +37,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'container'.tr,
+                          'cntrno'.tr,
                           style: style_text_detail_bold,
                         ),
                         const SizedBox(

@@ -170,7 +170,7 @@ class _DetailApprovalPageState extends State<DetailApprovalPage> {
                       height: 20,
                     ),
                     Text(
-                      'update time'.tr,
+                      'updateTime'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(

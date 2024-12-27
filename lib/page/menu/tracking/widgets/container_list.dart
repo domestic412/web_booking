@@ -115,7 +115,7 @@ class _ContainerListState extends State<ContainerList> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('container'.tr, style: style_text_Table_small_bold),
+                Text('cntrno'.tr, style: style_text_Table_small_bold),
               ],
             )),
           ),

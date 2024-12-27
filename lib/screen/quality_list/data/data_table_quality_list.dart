@@ -46,7 +46,7 @@ class DataQualitySource extends DataGridSource {
             padding: EdgeInsets.all(5.0),
             child: dataGridCell.value == null
                 ? SizedBox()
-                : dataGridCell.columnName == 'update time'.tr
+                : dataGridCell.columnName == 'updateTime'.tr
                     ? Text(
                         changeStringDatetoShow(
                             date: dataGridCell.value.toString()),

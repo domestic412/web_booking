@@ -144,7 +144,7 @@
 //                       DataColumn(
 //                         label: Expanded(
 //                             child: Center(
-//                           child: Text('container'.tr,
+//                           child: Text('cntrno'.tr,
 //                               style: style_text_Table_small_bold),
 //                         )),
 //                       ),
@@ -181,7 +181,7 @@
 //                       DataColumn(
 //                           label: Expanded(
 //                               child: Center(
-//                         child: Text('update time'.tr,
+//                         child: Text('updateTime'.tr,
 //                             style: style_text_Table_small_bold),
 //                       ))),
 //                     ],

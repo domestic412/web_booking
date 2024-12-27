@@ -71,7 +71,7 @@ class TableQuality extends StatelessWidget {
               WidgetGridColumnQuality(label: 'quality code'.tr, visible: true),
               WidgetGridColumnQuality(label: 'quality name'.tr, visible: true),
               WidgetGridColumnQuality(label: 'note'.tr, visible: true),
-              WidgetGridColumnQuality(label: 'update time'.tr, visible: true),
+              WidgetGridColumnQuality(label: 'updateTime'.tr, visible: true),
               WidgetGridColumnQuality(label: 'updater'.tr, visible: true),
               WidgetGridColumnQuality(label: '##', visible: true),
             ]));

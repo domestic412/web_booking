@@ -210,7 +210,7 @@ class DetailRequestPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'update time'.tr,
+                      'updateTime'.tr,
                       style: style_text_detail_bold,
                     ),
                     const SizedBox(

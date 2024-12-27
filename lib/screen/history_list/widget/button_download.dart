@@ -6,33 +6,35 @@ import 'package:flutter/services.dart';
 
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
-import 'package:web_booking/model/list_approval/storage_controller/approval_controller.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/widgets/container/widget_Button.dart';
 
-class DownloadButtonApproval extends StatefulWidget {
+class DownloadButtonHistory extends StatefulWidget {
   @override
-  _DownloadButtonApprovalState createState() => _DownloadButtonApprovalState();
+  _DownloadButtonHistoryState createState() => _DownloadButtonHistoryState();
 }
 
-class _DownloadButtonApprovalState extends State<DownloadButtonApproval> {
+class _DownloadButtonHistoryState extends State<DownloadButtonHistory> {
+  bool isExport = false;
+
   Future<void> downloadFile(String fromDate, String toDate) async {
     final url =
-        '$SERVER/Requests/Export?fromDay=$fromDate&toDay=$toDate'; // Replace with your direct link
+        '$SERVER/History/ExportExcel?fromDay=$fromDate&toDay=$toDate&id=${inforUserController.shipperId.value}'; // Replace with your direct link
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      print('Export approval list done');
+      print('Export history done');
       final bytes = response.bodyBytes;
       final blob = html.Blob([bytes]);
       final url = html.Url.createObjectUrlFromBlob(blob);
       final anchor = html.AnchorElement(href: url)
         ..setAttribute('download',
-            'Requests List.xlsx') // Change file name and extension as needed
+            'history.xlsx') // Change file name and extension as needed
         ..click();
       html.Url.revokeObjectUrl(url);
     } else {
-      print('Error export approval list: ' + response.statusCode.toString());
+      print('Error export history: ' + response.statusCode.toString());
     }
   }
 
@@ -45,8 +47,8 @@ class _DownloadButtonApprovalState extends State<DownloadButtonApproval> {
         minimumSize: Size(90, 35),
       ),
       onPressed: () {
-        downloadFile(approvalController.fromDate_send.value,
-            approvalController.toDate_send.value);
+        downloadFile(historyController.fromDate_send.value,
+            historyController.toDate_send.value);
       },
     );
   }

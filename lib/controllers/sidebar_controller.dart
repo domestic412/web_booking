@@ -5,7 +5,7 @@ import 'package:web_booking/screen/checking_combine/checking_combine_page.dart';
 import 'package:web_booking/screen/container_stock/container_stock_page.dart';
 import 'package:web_booking/screen/container_stock/import_file_page.dart';
 import 'package:web_booking/screen/dashboard/dashboard_page.dart';
-import 'package:web_booking/screen/history_list/history_list_page.dart';
+import 'package:web_booking/screen/history_list/history_page.dart';
 import 'package:web_booking/screen/quality_list/CUD_quality/CUD_quality.dart';
 import 'package:web_booking/screen/quality_list/quality_page.dart';
 import 'package:web_booking/screen/request/request_page.dart';
@@ -105,7 +105,7 @@ class SideBarController extends GetxController {
       //   return CUD_SpecialPolicyPage();
       case historyList:
         // Get.toNamed(GetRoutes.HistoryList);
-        return HistoryListPage();
+        return HistoryPage();
       case containerStock:
         // Get.toNamed(GetRoutes.ContainerStock);
         return ContainerStockPage();

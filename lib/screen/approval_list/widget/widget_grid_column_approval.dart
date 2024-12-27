@@ -9,13 +9,13 @@ WidgetGridColumnApproval({required String label, required bool visible}) {
       columnName: label,
       width: label == 'seq'.tr
           ? 40
-          : label == 'container'.tr
+          : label == 'cntrno'.tr
               ? 150
               : label == 'approve request'.tr
                   ? 110
                   : label == 'update user'.tr
                       ? 110
-                      : label == 'update time'.tr
+                      : label == 'updateTime'.tr
                           ? 120
                           : double.nan,
       label: Container(

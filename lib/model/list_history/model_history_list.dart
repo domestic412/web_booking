@@ -1,11 +1,12 @@
 import 'dart:convert';
 // import 'package:excel/excel.dart';
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/utils/getx_route.dart';
 
-class History {
+class HistoryList {
   String? historyCheckContsId;
   String? cntrno;
   String? size;
@@ -21,7 +22,7 @@ class History {
   String? acc;
   bool? isImgUpload;
 
-  History(
+  HistoryList(
       {this.historyCheckContsId,
       this.cntrno,
       this.size,
@@ -37,7 +38,7 @@ class History {
       this.acc,
       this.isImgUpload});
 
-  History.fromJson(Map<String, dynamic> json) {
+  HistoryList.fromJson(Map<String, dynamic> json) {
     historyCheckContsId = json['historyCheckContsId'];
     cntrno = json['cntrno'];
     size = json['size'];
@@ -73,9 +74,28 @@ class History {
     return data;
   }
 
-  Future<List<History>> fetchHistoryList() async {
+  DataGridRow getDataGridRow_History() {
+    return DataGridRow(cells: [
+      DataGridCell<String>(
+          columnName: 'isImgUpload'.tr, value: isImgUpload.toString()),
+      DataGridCell<String>(columnName: 'cntrno'.tr, value: cntrno),
+      DataGridCell<String>(columnName: 'size'.tr, value: size),
+      DataGridCell<String>(columnName: 'chatLuong'.tr, value: chatLuong),
+      DataGridCell<String>(columnName: 'soLanKetHop'.tr, value: soLanKetHop),
+      DataGridCell<String>(columnName: 'numCp'.tr, value: numCp.toString()),
+      DataGridCell<String>(columnName: 'status'.tr, value: status),
+      DataGridCell<String>(columnName: 'shipper'.tr, value: shipper),
+      DataGridCell<String>(columnName: 'remark'.tr, value: remark),
+      DataGridCell<String>(columnName: 'ketQua'.tr, value: ketQua),
+      DataGridCell<String>(columnName: 'sender'.tr, value: acc),
+      DataGridCell<String>(columnName: 'updateTime'.tr, value: updateTime),
+    ]);
+  }
+
+  Future<List<HistoryList>> fetchHistoryList(
+      {required String fromDate, required String toDate}) async {
     try {
-      var url = URL_HISTORY;
+      var url = '$SERVER/History/GetHistory?fromDay=$fromDate&toDay=$toDate';
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
       });
@@ -85,7 +105,9 @@ class History {
           // print(body);
           print('Data List History');
           List dataHistoryList = json.decode(body);
-          return dataHistoryList.map((data) => History.fromJson(data)).toList();
+          return dataHistoryList
+              .map((data) => HistoryList.fromJson(data))
+              .toList();
         case 401:
           Get.toNamed(GetRoutes.SignIn);
           throw Exception(response.reasonPhrase! + ' Data History');
@@ -97,7 +119,7 @@ class History {
     }
   }
 
-  Future<List<History>> fetchHistoryShipperList(
+  Future<List<HistoryList>> fetchHistoryShipperList(
       {required String shipperId}) async {
     try {
       var url = '$SERVER/History/GetByUser?id=$shipperId';
@@ -110,7 +132,9 @@ class History {
           // print(body);
           print('Data List Shipper History');
           List dataHistoryList = json.decode(body);
-          return dataHistoryList.map((data) => History.fromJson(data)).toList();
+          return dataHistoryList
+              .map((data) => HistoryList.fromJson(data))
+              .toList();
         case 401:
           Get.toNamed(GetRoutes.SignIn);
           throw Exception(response.reasonPhrase! + ' Data History Shipper');

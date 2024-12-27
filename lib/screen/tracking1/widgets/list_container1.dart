@@ -126,8 +126,8 @@ class _ListContainer1State extends State<ListContainer1> {
           DataColumn(
             label: Expanded(
                 child: Center(
-                    child: Text('container'.tr,
-                        style: style_text_Table_small_bold))),
+                    child:
+                        Text('cntrno'.tr, style: style_text_Table_small_bold))),
           ),
           DataColumn(
             label: Expanded(

@@ -28,7 +28,7 @@ class QualityList {
       DataGridCell<String>(columnName: 'quality code'.tr, value: maChatLuong),
       DataGridCell<String>(columnName: 'quality name'.tr, value: tenChatLuong),
       DataGridCell<String>(columnName: 'note'.tr, value: ghiChu),
-      DataGridCell<String>(columnName: 'update time'.tr, value: updateTime),
+      DataGridCell<String>(columnName: 'updateTime'.tr, value: updateTime),
       DataGridCell<String>(columnName: 'updater'.tr, value: updateUser),
       DataGridCell<String>(columnName: '##', value: ''),
     ]);

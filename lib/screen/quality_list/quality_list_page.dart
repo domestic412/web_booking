@@ -127,7 +127,7 @@
 //                     ),
 //                     DataColumn(
 //                       label: Text(
-//                         'update time'.tr,
+//                         'updateTime'.tr,
 //                         // style: style_text_Table_small_bold,
 //                         style: style12_black,
 //                       ),

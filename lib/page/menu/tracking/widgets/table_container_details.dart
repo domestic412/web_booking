@@ -38,7 +38,7 @@ class TableContainerDetails extends StatelessWidget {
                 width: 100,
                 child: Center(
                   child: Text(
-                    'container'.tr,
+                    'cntrno'.tr,
                     style: style_text_Table_small_bold,
                   ),
                 ),

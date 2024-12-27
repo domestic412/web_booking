@@ -108,7 +108,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
                   style: style_title_page,
                 ),
               ),
-              Text('container'.tr, style: style_text_detail),
+              Text('cntrno'.tr, style: style_text_detail),
               const SizedBox(
                 height: 10,
               ),
@@ -139,7 +139,7 @@ class _SendRequestPageState extends State<SendRequestPage> {
                       // style: TextStyle(fontSize: 18),
                       decoration: InputDecoration(
                         isDense: true,
-                        hintText: 'container'.tr,
+                        hintText: 'cntrno'.tr,
                         border: InputBorder.none,
                       ),
                     ),

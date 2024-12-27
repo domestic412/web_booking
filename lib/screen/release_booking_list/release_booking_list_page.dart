@@ -248,7 +248,7 @@
 //                         label: Container(
 //                           width: 130,
 //                           child: Text(
-//                             'Update Time'.tr,
+//                             'updateTime'.tr,
 //                             style: style_text_Table_small_bold,
 //                           ),
 //                         ),

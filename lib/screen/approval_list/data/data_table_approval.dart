@@ -68,7 +68,7 @@ class DataApprovalSource extends DataGridSource {
                           imageController.id.value = id;
                           controller.selectWidget.value = detailApproval;
                         })
-                    : dataGridCell.columnName == 'update time'.tr
+                    : dataGridCell.columnName == 'updateTime'.tr
                         ? Text(
                             changeStringDateHourtoShow(
                                 date: dataGridCell.value.toString()),

@@ -153,7 +153,7 @@ class _RequestListPageState extends State<RequestListPage> {
                       DataColumn(
                         label: Container(
                           width: 110,
-                          child: Text('container'.tr,
+                          child: Text('cntrno'.tr,
                               style: style_text_Table_small_bold),
                         ),
                       ),
@@ -205,7 +205,7 @@ class _RequestListPageState extends State<RequestListPage> {
                         label: Container(
                           width: 130,
                           child: Text(
-                            'update time'.tr,
+                            'updateTime'.tr,
                             style: style_text_Table_small_bold,
                           ),
                         ),

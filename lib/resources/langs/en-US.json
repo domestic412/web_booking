@@ -4,7 +4,7 @@
     "booking": "Booking",
     "tracking": "Tracking",
     "combine": "Combine",
-    "container tracking":   "Container Tracking",
+    "container tracking": "Container Tracking",
     "searchNumber": "B/L No. or Booking No.",
     "schedule": "Schedule",
     "departure": "Departure Location",
@@ -12,19 +12,17 @@
     "signin": "Sign In",
     "signup": "Sign Up",
     "inquiry": "Inquiry",
-
     "_comment_tracking_page": "Tracking Page",
     "title tracking container": "Tracking Container",
-    "search":   "Search",
-    "note_tracking":     "Our system does not accept House BL numbers assigned by NVOCC or Freight Forwarder.",
-    "title_booking":    "Booking Detail",
-    "seq":              "Seq",
-    "container":        "Container",
-    "title_container":  "Container Tracking Detail",
+    "search": "Search",
+    "note_tracking": "Our system does not accept House BL numbers assigned by NVOCC or Freight Forwarder.",
+    "title_booking": "Booking Detail",
+    "seq": "Seq",
+    "container": "Container",
+    "title_container": "Container Tracking Detail",
     "status_container": "Status",
-    "location_container":"Location",
-    "eventDate_container":"Event Date",
-
+    "location_container": "Location",
+    "eventDate_container": "Event Date",
     "_comment_signup_page": "Sign Up Page",
     "user information": "User Information",
     "user id": "User ID",
@@ -42,13 +40,11 @@
     "i agree to terms": "I agree to terms and conditions.",
     "create account": "CREATE ACCOUNT",
     "cancle": "Cancle",
-
     "_comment_signin_page": "Sign In Page",
     "welcome to HAI AN": "Welcome to HAI AN",
     "user name": "User Name",
     "sign in": "SIGN IN",
     "create_account": "Create Account",
-
     "_comment_userList_page": "User List Page",
     "title user list": "User List",
     "create user": "Create User",
@@ -56,14 +52,12 @@
     "create": "Create",
     "user code": "User Code",
     "customer code": "Customer Code",
-    "update time": "Update",
-
+    "updateTime": "Update",
     "update user": "Update User",
     "update": "Update",
     "adjust": "Adjust",
     "delete user": "Delete User",
     "delete": "Delete",
-
     "_comment_CUD_page": "CUD User Page",
     "back": "Back",
     "change password": "Change Password",
@@ -71,13 +65,11 @@
     "error duplicate user": "Error duplicate User Code",
     "fill info ": "Fill in all information in box marked (*)",
     "code": "Code",
-
     "title dashboard": "Dashboard",
     "all request": "All requirements: ",
     "request wait": "Unprocessed request: ",
     "request approval": "Request approval: ",
     "request reject": "Request reject: ",
-
     "_comment_approvalList_page": "Approval List Page",
     "approval list": "Approval List",
     "sender": "Sender",
@@ -93,7 +85,6 @@
     "status approve": "Status",
     "agree combine": "Agree",
     "reject combine": "Reject",
-
     "_comment_requestList_page": "Request List Page",
     "request list": "Request List",
     "request name": "Request Name",
@@ -101,7 +92,6 @@
     "content commitment": "Content of requirements and customer\ncommitments",
     "details": "Details",
     "resend request": "Resend Request Combine",
-
     "_comment_request_page": "Request Page",
     "send request title": "Send request",
     "send request combine": "Send request combine",
@@ -116,7 +106,6 @@
     "cont number null": "Please enter container number",
     "error": "Error",
     "error maximum 5 picture": "Only pick maximum 5 picture",
-
     "_comment_checking_combine_page": "Checking Combine Page",
     "checking combine": "Checking Combine",
     "enter container number": "Enter container number",
@@ -136,7 +125,6 @@
     "note for use: item is packaged": "Note for use: item is packaged",
     "number of times (combine)": "Number of times combine",
     "requests more combine": "Request more combine",
-
     "_comment_quality_page": "Quality Page",
     "title quality list": "Quality List",
     "title create quality container": "Create Quality Container",
@@ -145,7 +133,6 @@
     "quality code": "Quality Code",
     "quality name": "Quality Name",
     "updater": "Updater",
-
     "_comment_policy_page": "Policy Page",
     "title special policy list": "Special Policy List",
     "title create policy container": "Create Special Policy Container",
@@ -156,14 +143,9 @@
     "shipper (owner)": "Shipper (Owner)",
     "policy code": "Special Policy Code",
     "policy name": "Special Policy Name",
-
     "_comment_history_page": "History Page",
     "title history list": "History List",
-
     "_comment_stock_page": "Stock Page",
     "title container stock": "Container Stock",
-
-
-
     "hello": "Hello !!"
 }

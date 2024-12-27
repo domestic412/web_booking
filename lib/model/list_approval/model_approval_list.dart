@@ -86,12 +86,12 @@ class ApprovalList {
     return DataGridRow(cells: [
       DataGridCell<String>(
           columnName: 'requestCheckContsId', value: requestCheckContsId),
-      DataGridCell<String>(columnName: 'container'.tr, value: cntrno),
+      DataGridCell<String>(columnName: 'cntrno'.tr, value: cntrno),
       DataGridCell<String>(columnName: 'sender'.tr, value: shipperName),
       DataGridCell<String>(
           columnName: 'approve request'.tr, value: trangThaiYc),
       DataGridCell<String>(columnName: 'update user'.tr, value: updateUser),
-      DataGridCell<String>(columnName: 'update time'.tr, value: updateTime),
+      DataGridCell<String>(columnName: 'updateTime'.tr, value: updateTime),
     ]);
   }
 

@@ -13,7 +13,7 @@ WidgetGridColumnQuality({required String label, required bool visible}) {
               ? 90
               : label == 'quality name'.tr
                   ? 200
-                  : label == 'update time'.tr
+                  : label == 'updateTime'.tr
                       ? 80
                       : label == 'updater'.tr
                           ? 60

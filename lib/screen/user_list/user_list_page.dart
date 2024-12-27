@@ -159,7 +159,7 @@
 //                         DataColumn(
 //                           label: Expanded(
 //                             child: Text(
-//                               'update time'.tr,
+//                               'updateTime'.tr,
 //                               style: style_text_Table_small_bold,
 //                             ),
 //                           ),

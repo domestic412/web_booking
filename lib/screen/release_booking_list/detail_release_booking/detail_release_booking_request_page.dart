@@ -379,7 +379,7 @@
 //                       Row(
 //                         children: [
 //                           Text(
-//                             'Update Time'.tr,
+//                             'updateTime'.tr,
 //                             style: style_text_detail,
 //                           ),
 //                           Container(

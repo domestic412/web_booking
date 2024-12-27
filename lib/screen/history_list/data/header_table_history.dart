@@ -5,61 +5,62 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
-import 'package:web_booking/model/list_approval/model_approval_list.dart';
-import 'package:web_booking/model/list_approval/storage_controller/approval_controller.dart';
-import 'package:web_booking/screen/approval_list/data/data_table_approval.dart';
-import 'package:web_booking/screen/approval_list/widget/widget_grid_column_approval.dart';
+import 'package:web_booking/model/list_history/model_history_list.dart';
+import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
+import 'package:web_booking/screen/history_list/widget/widget_grid_column_history.dart';
 import 'package:web_booking/widgets/container/widget_TextField.dart';
 import 'package:web_booking/widgets/container/widget_calendar.dart';
+import 'data_table_history.dart';
 
-class TableApproval extends StatefulWidget {
-  const TableApproval({super.key});
+class TableHistory extends StatefulWidget {
+  const TableHistory({super.key});
 
   @override
-  State<TableApproval> createState() => _TableApprovalState();
+  State<TableHistory> createState() => _TableHistoryState();
 }
 
-class _TableApprovalState extends State<TableApproval> {
-  late DataApprovalSource _dataApprovalSource;
-  List<ApprovalList> _approval = <ApprovalList>[];
+class _TableHistoryState extends State<TableHistory> {
+  late DataHistorySource _dataHistorySource;
+  List<HistoryList> _History = <HistoryList>[];
   TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    approvalController.fromDate_send.value =
+    historyController.fromDate_send.value =
         changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
-    approvalController.fromDate_show.value =
+    historyController.fromDate_show.value =
         changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
-    approvalController.toDate_send.value =
+    historyController.toDate_send.value =
         changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
-    approvalController.toDate_show.value =
+    historyController.toDate_show.value =
         changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ApprovalList>>(
-        future: ApprovalList().fetchApprovalList(),
+    return FutureBuilder<List<HistoryList>>(
+        future: HistoryList().fetchHistoryList(
+            fromDate: historyController.fromDate_send.value,
+            toDate: historyController.toDate_send.value),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            _approval = snapshot.data!;
-            _dataApprovalSource = DataApprovalSource(_approval);
+            _History = snapshot.data!;
+            _dataHistorySource = DataHistorySource(_History);
             return Container(
                 color: white,
                 child: Column(
                   children: [
                     WidgetCalendar(
-                        fromDate_show: approvalController.fromDate_show.value,
-                        fromDate_send: approvalController.fromDate_send.value,
-                        toDate_show: approvalController.toDate_show.value,
-                        toDate_send: approvalController.toDate_send.value,
+                        fromDate_show: historyController.fromDate_show.value,
+                        fromDate_send: historyController.fromDate_send.value,
+                        toDate_show: historyController.toDate_show.value,
+                        toDate_send: historyController.toDate_send.value,
                         voidCallback: () {
-                          print('1234');
+                          setState(() {});
                         }),
                     Row(
                       children: [
@@ -67,13 +68,13 @@ class _TableApprovalState extends State<TableApproval> {
                           controller: _controller,
                           width: 300,
                           function: (value) {
-                            _dataApprovalSource.applyFilter(filter: value);
+                            _dataHistorySource.applyFilter(filter: value);
                           },
                         ),
                         WidgetButtonFilter()
                       ],
                     ),
-                    Expanded(child: _buildDataGrid(_dataApprovalSource)),
+                    Expanded(child: _buildDataGrid(_dataHistorySource)),
                   ],
                 ));
           }
@@ -90,7 +91,7 @@ class _TableApprovalState extends State<TableApproval> {
             minimumSize: Size(100, 35),
           ),
           onPressed: () {
-            _dataApprovalSource.applyFilter(filter: _controller.text);
+            _dataHistorySource.applyFilter(filter: _controller.text);
           },
           child: Text(
             'Filter',
@@ -99,30 +100,34 @@ class _TableApprovalState extends State<TableApproval> {
     );
   }
 
-  SfDataGridTheme _buildDataGrid(DataApprovalSource _dataApprovalSource) {
+  SfDataGridTheme _buildDataGrid(DataHistorySource _dataHistorySource) {
     return SfDataGridTheme(
         data: SfDataGridThemeData(
           headerColor: Colors.grey[200],
         ),
         child: SfDataGrid(
-            rowHeight: 30,
+            rowHeight: 40,
             headerRowHeight: 40,
             // isScrollbarAlwaysShown: true,
             columnWidthMode: ColumnWidthMode.fill,
-            // selectionMode: SelectionMode.single,
+            selectionMode: SelectionMode.single,
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
-            source: _dataApprovalSource,
+            source: _dataHistorySource,
             columns: [
-              WidgetGridColumnApproval(label: 'seq'.tr, visible: true),
-              WidgetGridColumnApproval(
-                  label: 'requestCheckContsId', visible: false),
-              WidgetGridColumnApproval(label: 'cntrno'.tr, visible: true),
-              WidgetGridColumnApproval(label: 'sender'.tr, visible: true),
-              WidgetGridColumnApproval(
-                  label: 'approve request'.tr, visible: true),
-              WidgetGridColumnApproval(label: 'update user'.tr, visible: true),
-              WidgetGridColumnApproval(label: 'updateTime'.tr, visible: true),
+              WidgetGridColumnHistory(label: 'seq'.tr),
+              WidgetGridColumnHistory(label: 'isImgUpload', visible: false),
+              WidgetGridColumnHistory(label: 'cntrno'.tr),
+              WidgetGridColumnHistory(label: 'size'.tr),
+              WidgetGridColumnHistory(label: 'chatLuong'.tr),
+              WidgetGridColumnHistory(label: 'soLanKetHop'.tr),
+              WidgetGridColumnHistory(label: 'numCp'.tr),
+              WidgetGridColumnHistory(label: 'status'.tr),
+              WidgetGridColumnHistory(label: 'shipper'.tr),
+              WidgetGridColumnHistory(label: 'remark'.tr, visible: false),
+              WidgetGridColumnHistory(label: 'ketQua'.tr),
+              WidgetGridColumnHistory(label: 'sender'.tr),
+              WidgetGridColumnHistory(label: 'updateTime'.tr),
             ]));
   }
 }
