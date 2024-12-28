@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/screen/approval_list/approval_page.dart';
 import 'package:web_booking/screen/approval_list/detail_approval/detail_approval_page.dart';
 import 'package:web_booking/screen/checking_combine/checking_combine_page.dart';
-import 'package:web_booking/screen/container_stock/container_stock_page.dart';
+import 'package:web_booking/screen/container_stock/container_page.dart';
 import 'package:web_booking/screen/container_stock/import_file_page.dart';
 import 'package:web_booking/screen/dashboard/dashboard_page.dart';
 import 'package:web_booking/screen/history_list/history_page.dart';

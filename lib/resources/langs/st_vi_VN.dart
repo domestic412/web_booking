@@ -153,6 +153,13 @@ Map<String, String> vi = {
   "ketQua": "Kết quả",
   "_comment_stock_page": "Stock Page",
   "title container stock": "Danh sách Container",
+  "shipVoy": "Chuyến tàu",
+  "dateEmptyOut": "Empty Out",
+  "dateFullArrived": "Full Arrived",
+  "dateFullOut": "Full Out",
+  "terminal": "Cảng",
+  "combineStuffing": "Số lần kết hợp",
+  "checkDetKh": "Check",
   "hello": "Xin chào !!",
   "upload image": "Hình ảnh"
 };

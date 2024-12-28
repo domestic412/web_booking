@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/controllers/date_controller.dart';
 import 'package:web_booking/model/list_approval/storage_controller/approval_controller.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
 import 'package:web_booking/widgets/container/widget_Button.dart';
@@ -45,8 +46,8 @@ class _DownloadButtonApprovalState extends State<DownloadButtonApproval> {
         minimumSize: Size(90, 35),
       ),
       onPressed: () {
-        downloadFile(approvalController.fromDate_send.value,
-            approvalController.toDate_send.value);
+        downloadFile(dateController.fromDate_send.value,
+            dateController.toDate_send.value);
       },
     );
   }

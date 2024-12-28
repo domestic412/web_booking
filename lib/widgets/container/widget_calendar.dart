@@ -3,22 +3,13 @@ import 'package:flutter_popup/flutter_popup.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/date_controller.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
 import 'package:web_booking/widgets/container/widget_ContainerLabel.dart';
 
 class WidgetCalendar extends StatefulWidget {
-  WidgetCalendar({
-    required this.fromDate_show,
-    required this.fromDate_send,
-    required this.toDate_show,
-    required this.toDate_send,
-    required this.voidCallback,
-  });
-  String fromDate_show;
-  String fromDate_send;
-  String toDate_show;
-  String toDate_send;
-  Function voidCallback;
+  WidgetCalendar({required this.refresh});
+  Function refresh;
 
   @override
   State<WidgetCalendar> createState() => _WidgetCalendarState();
@@ -37,18 +28,18 @@ class _WidgetCalendarState extends State<WidgetCalendar> {
             height: 270,
             width: 270,
             child: CalendarDatePicker(
-              initialDate: dateFormat.parse(widget.fromDate_show),
+              initialDate: dateFormat.parse(dateController.fromDate_show.value),
               firstDate: DateTime(2024),
               lastDate: DateTime(2123),
               onDateChanged: (value) {
-                widget.fromDate_show = changeDatetoShow(date: value);
-                widget.fromDate_send = changeDatetoSend(date: value);
-                print(historyController.fromDate_show);
-                print(historyController.toDate_show);
-                setState(() {
-                  Navigator.pop(context);
-                });
-                widget.voidCallback();
+                dateController.fromDate_show.value =
+                    changeDatetoShow(date: value);
+                dateController.fromDate_send.value =
+                    changeDatetoSend(date: value);
+                // setState(() {
+                Navigator.pop(context);
+                // });
+                widget.refresh();
               },
             ),
           ),
@@ -57,7 +48,7 @@ class _WidgetCalendarState extends State<WidgetCalendar> {
             margin: EdgeInsets.symmetric(horizontal: 10),
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             child: Text(
-              widget.fromDate_show,
+              dateController.fromDate_show.value,
               style: style12_black,
             ),
           ),
@@ -71,15 +62,18 @@ class _WidgetCalendarState extends State<WidgetCalendar> {
               height: 270,
               width: 270,
               child: CalendarDatePicker(
-                initialDate: dateFormat.parse(widget.toDate_show),
+                initialDate: dateFormat.parse(dateController.toDate_show.value),
                 firstDate: DateTime(2024),
                 lastDate: DateTime(2123),
                 onDateChanged: (value) {
-                  widget.toDate_show = changeDatetoShow(date: value);
-                  widget.toDate_send = changeDatetoSend(date: value);
+                  dateController.toDate_show.value =
+                      changeDatetoShow(date: value);
+                  dateController.toDate_send.value =
+                      changeDatetoSend(date: value);
                   // setState(() {
-                  //   Navigator.pop(context);
+                  Navigator.pop(context);
                   // });
+                  widget.refresh();
                 },
               ),
             ),
@@ -90,7 +84,7 @@ class _WidgetCalendarState extends State<WidgetCalendar> {
               margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Text(
-                widget.toDate_show,
+                dateController.toDate_show.value,
                 style: style12_black,
               ),
             ),

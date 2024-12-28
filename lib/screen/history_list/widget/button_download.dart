@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
+import 'package:web_booking/controllers/date_controller.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/widgets/container/widget_Button.dart';
@@ -47,8 +48,8 @@ class _DownloadButtonHistoryState extends State<DownloadButtonHistory> {
         minimumSize: Size(90, 35),
       ),
       onPressed: () {
-        downloadFile(historyController.fromDate_send.value,
-            historyController.toDate_send.value);
+        downloadFile(dateController.fromDate_send.value,
+            dateController.toDate_send.value);
       },
     );
   }

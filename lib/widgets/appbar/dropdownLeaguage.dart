@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 
 const List<String> list = <String>['VN', 'EN'];
@@ -51,7 +52,7 @@ class _DropdownLeaguageState extends State<DropdownLeaguage> {
               value: value,
               child: Text(
                 value,
-                style: TextStyle(color: white),
+                style: style14_white,
               ),
             );
           }).toList()),

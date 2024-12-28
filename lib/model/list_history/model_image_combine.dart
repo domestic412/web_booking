@@ -7,8 +7,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/constants/variable.dart';
-
-import 'storage_controller/history_controller.dart';
+import 'package:web_booking/controllers/date_controller.dart';
 
 class ImageCombine {
   String? combineImageId;
@@ -65,7 +64,7 @@ class ImageCombine {
           if (data.length == 0) {
             return EasyLoading.showError('No Image');
           } else {
-            historyController.fileImageCombine.value = data[0];
+            dateController.fileImageCombine.value = data[0];
             return Get.defaultDialog(
               title: 'Current combinations of $cntr : $numKh',
               titleStyle: TextStyle(color: red),
@@ -88,7 +87,7 @@ class ImageCombine {
                                 margin: EdgeInsets.all(15),
                                 child: InkWell(
                                   onTap: () {
-                                    historyController.fileImageCombine.value =
+                                    dateController.fileImageCombine.value =
                                         data[index];
                                   },
                                   child: Text('(' +
@@ -104,7 +103,7 @@ class ImageCombine {
                           decoration: BoxDecoration(border: Border.all()),
                           child: Image.memory(
                               base64.decode(
-                                  historyController.fileImageCombine['data']),
+                                  dateController.fileImageCombine['data']),
                               errorBuilder: (BuildContext context, Object error,
                                   StackTrace? stackTrace) {
                             return const Center(

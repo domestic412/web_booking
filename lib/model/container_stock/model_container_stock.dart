@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/utils/getx_route.dart';
@@ -19,9 +20,9 @@ class ContainerStock {
   String? remark;
   String? shipVoy;
   String? status;
-  String? quanlity;
+  String? quality;
   String? checkRemark;
-  Null? checkDetKh;
+  bool? checkDetKh;
   String? updateTime;
   String? updateUser;
 
@@ -39,7 +40,7 @@ class ContainerStock {
       this.remark,
       this.shipVoy,
       this.status,
-      this.quanlity,
+      this.quality,
       this.checkRemark,
       this.checkDetKh,
       this.updateTime,
@@ -59,7 +60,7 @@ class ContainerStock {
     remark = json['remark'];
     shipVoy = json['shipVoy'];
     status = json['status'];
-    quanlity = json['quanlity'];
+    quality = json['quality'];
     checkRemark = json['checkRemark'];
     checkDetKh = json['checkDetKh'];
     updateTime = json['updateTime'];
@@ -81,12 +82,32 @@ class ContainerStock {
     data['remark'] = this.remark;
     data['shipVoy'] = this.shipVoy;
     data['status'] = this.status;
-    data['quanlity'] = this.quanlity;
+    data['quality'] = this.quality;
     data['checkRemark'] = this.checkRemark;
     data['checkDetKh'] = this.checkDetKh;
     data['updateTime'] = this.updateTime;
     data['updateUser'] = this.updateUser;
     return data;
+  }
+
+  DataGridRow getDataGridRow_ContainerStock() {
+    return DataGridRow(cells: [
+      DataGridCell<String>(columnName: 'cntrno'.tr, value: cntrno),
+      DataGridCell<String>(columnName: 'size'.tr, value: sizeType),
+      DataGridCell<String>(columnName: 'quality'.tr, value: quality),
+      DataGridCell<String>(columnName: 'status'.tr, value: status),
+      DataGridCell<String>(columnName: 'shipVoy'.tr, value: shipVoy),
+      DataGridCell<String>(columnName: 'dateEmptyOut'.tr, value: dateEmptyOut),
+      DataGridCell<String>(
+          columnName: 'dateFullArrived'.tr, value: dateFullArrived),
+      DataGridCell<String>(columnName: 'dateFullOut'.tr, value: dateFullOut),
+      DataGridCell<String>(columnName: 'terminal'.tr, value: terminal),
+      DataGridCell<String>(
+          columnName: 'combineStuffing'.tr, value: combineStuffing),
+      DataGridCell<String>(columnName: 'shipper'.tr, value: shipper),
+      DataGridCell<String>(
+          columnName: 'checkDetKh'.tr, value: checkDetKh.toString()),
+    ]);
   }
 
   Future<List<ContainerStock>> fetchContainerStock() async {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
+import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 
@@ -17,7 +18,7 @@ class _DrawItemsState extends State<DrawItems> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(5),
         child: Obx(
           () => Wrap(
             runSpacing: 10,
@@ -25,10 +26,20 @@ class _DrawItemsState extends State<DrawItems> {
               inforUserController.isStaff.value == 1
                   // box.read(is_staff_signin) == 1
                   ? ExpansionTile(
-                      title: Text('Management', style: TextStyle(color: white)),
-                      leading: Icon(
-                        (Icons.supervised_user_circle_sharp),
-                        color: white,
+                      title: Row(
+                        children: [
+                          Icon(
+                            (Icons.supervised_user_circle_sharp),
+                            color: white,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            'Management',
+                            style: style14_white,
+                          ),
+                        ],
                       ),
                       initiallyExpanded: true,
                       trailing: Icon(
@@ -40,57 +51,54 @@ class _DrawItemsState extends State<DrawItems> {
                       children: [
                         // ListTile(
                         //     title: Text('User List',
-                        //         style: TextStyle(color: white)),
+                        //         style: style14_white),
                         //     onTap: () {
                         //       // Get.toNamed(GetRoutes.UserList);
                         //       controller.selectWidget.value = userList;
                         //     }),
                         // ListTile(
                         //     title: Text('Release Booking List',
-                        //         style: TextStyle(color: white)),
+                        //         style: style14_white),
                         //     onTap: () {
                         //       // Get.toNamed(GetRoutes.ApprovalList);
                         //       controller.selectWidget.value =
                         //           releaseBookingList;
                         //     }),
                         ListTile(
-                            title: Text('Approval List',
-                                style: TextStyle(color: white)),
+                            title: Text('Approval List', style: style14_white),
                             onTap: () {
                               // Get.toNamed(GetRoutes.ApprovalList);
                               controller.selectWidget.value = approvalList;
                             }),
                         // ListTile(
                         //     title: Text('Quote List',
-                        //         style: TextStyle(color: white)),
+                        //         style: style14_white),
                         //     onTap: () {
                         //       // Get.toNamed(GetRoutes.ApprovalList);
                         //       controller.selectWidget.value = quoteList;
                         //     }),
                         ListTile(
-                            title: Text('Quality List',
-                                style: TextStyle(color: white)),
+                            title: Text('Quality List', style: style14_white),
                             onTap: () {
                               // Get.toNamed(GetRoutes.QualityList);
                               controller.selectWidget.value = qualityList;
                             }),
                         // ListTile(
                         //     title: Text('Special Policy List',
-                        //         style: TextStyle(color: white)),
+                        //         style: style14_white),
                         //     onTap: () {
                         //       // Get.toNamed(GetRoutes.SpecialPolicyList);
                         //       controller.selectWidget.value = specialPolicyList;
                         // }),
                         ListTile(
-                            title: Text('History List',
-                                style: TextStyle(color: white)),
+                            title: Text('History List', style: style14_white),
                             onTap: () {
                               // Get.toNamed(GetRoutes.HistoryList);
                               controller.selectWidget.value = historyList;
                             }),
                         ListTile(
-                            title: Text('Container Stock',
-                                style: TextStyle(color: white)),
+                            title:
+                                Text('Container Stock', style: style14_white),
                             onTap: () {
                               // Get.toNamed(GetRoutes.ContainerStock);
                               controller.selectWidget.value = containerStock;
@@ -110,7 +118,7 @@ class _DrawItemsState extends State<DrawItems> {
                   ),
                   title: Text(
                     'Services',
-                    style: TextStyle(color: white),
+                    style: style14_white,
                   ),
                   trailing: Icon(
                     _bool_dropdown_services
@@ -130,42 +138,37 @@ class _DrawItemsState extends State<DrawItems> {
                   children: [
                     // ListTile(
                     //     title: Text('Booking Request List',
-                    //         style: TextStyle(color: white)),
+                    //         style: style14_white),
                     //     onTap: () {
                     //       // Get.toNamed(GetRoutes.RequestList);
                     //       controller.selectWidget.value = bookingRequestList;
                     //     }),
                     ListTile(
-                        title: Text('Request List',
-                            style: TextStyle(color: white)),
+                        title: Text('Request List', style: style14_white),
                         onTap: () {
                           // Get.toNamed(GetRoutes.RequestList);
                           controller.selectWidget.value = requestList;
                         }),
                     ListTile(
-                        title: Text('Send Request',
-                            style: TextStyle(color: white)),
+                        title: Text('Send Request', style: style14_white),
                         onTap: () {
                           // Get.toNamed(GetRoutes.SendRequest);
                           controller.selectWidget.value = sendRequest;
                         }),
                     ListTile(
-                        title: Text('Checking Combine',
-                            style: TextStyle(color: white)),
+                        title: Text('Checking Combine', style: style14_white),
                         onTap: () {
                           // Get.toNamed(GetRoutes.CheckingCombine);
                           controller.selectWidget.value = checkingCombine;
                         }),
                     ListTile(
-                        title: Text('Tracking Container',
-                            style: TextStyle(color: white)),
+                        title: Text('Tracking Container', style: style14_white),
                         onTap: () {
                           // Get.toNamed(GetRoutes.Tracking1);
                           controller.selectWidget.value = tracking1;
                         }),
                     ListTile(
-                        title: Text('History List',
-                            style: TextStyle(color: white)),
+                        title: Text('History List', style: style14_white),
                         onTap: () {
                           // Get.toNamed(GetRoutes.HistoryList);
                           controller.selectWidget.value = historyList;

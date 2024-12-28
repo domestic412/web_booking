@@ -5,6 +5,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/date_controller.dart';
 import 'package:web_booking/model/list_history/model_history_list.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
 import 'package:web_booking/screen/history_list/widget/widget_grid_column_history.dart';
@@ -24,25 +25,25 @@ class _TableHistoryState extends State<TableHistory> {
   List<HistoryList> _History = <HistoryList>[];
   TextEditingController _controller = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    historyController.fromDate_send.value =
-        changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
-    historyController.fromDate_show.value =
-        changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
-    historyController.toDate_send.value =
-        changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
-    historyController.toDate_show.value =
-        changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   historyController.fromDate_send.value =
+  //       changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
+  //   historyController.fromDate_show.value =
+  //       changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
+  //   historyController.toDate_send.value =
+  //       changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
+  //   historyController.toDate_show.value =
+  //       changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
+  // }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<HistoryList>>(
         future: HistoryList().fetchHistoryList(
-            fromDate: historyController.fromDate_send.value,
-            toDate: historyController.toDate_send.value),
+            fromDate: dateController.fromDate_send.value,
+            toDate: dateController.toDate_send.value),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -54,14 +55,9 @@ class _TableHistoryState extends State<TableHistory> {
                 color: white,
                 child: Column(
                   children: [
-                    WidgetCalendar(
-                        fromDate_show: historyController.fromDate_show.value,
-                        fromDate_send: historyController.fromDate_send.value,
-                        toDate_show: historyController.toDate_show.value,
-                        toDate_send: historyController.toDate_send.value,
-                        voidCallback: () {
-                          setState(() {});
-                        }),
+                    WidgetCalendar(refresh: () {
+                      setState(() {});
+                    }),
                     Row(
                       children: [
                         WidgetTextFieldSearch(

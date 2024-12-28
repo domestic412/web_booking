@@ -5,6 +5,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/date_controller.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 import 'package:web_booking/model/list_approval/model_approval_list.dart';
 import 'package:web_booking/model/list_approval/storage_controller/approval_controller.dart';
@@ -25,18 +26,18 @@ class _TableApprovalState extends State<TableApproval> {
   List<ApprovalList> _approval = <ApprovalList>[];
   TextEditingController _controller = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    approvalController.fromDate_send.value =
-        changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
-    approvalController.fromDate_show.value =
-        changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
-    approvalController.toDate_send.value =
-        changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
-    approvalController.toDate_show.value =
-        changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   dateController.fromDate_send.value =
+  //       changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
+  //   dateController.fromDate_show.value =
+  //       changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
+  //   dateController.toDate_send.value =
+  //       changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
+  //   dateController.toDate_show.value =
+  //       changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +54,9 @@ class _TableApprovalState extends State<TableApproval> {
                 color: white,
                 child: Column(
                   children: [
-                    WidgetCalendar(
-                        fromDate_show: approvalController.fromDate_show.value,
-                        fromDate_send: approvalController.fromDate_send.value,
-                        toDate_show: approvalController.toDate_show.value,
-                        toDate_send: approvalController.toDate_send.value,
-                        voidCallback: () {
-                          print('1234');
-                        }),
+                    WidgetCalendar(refresh: () {
+                      print('1234');
+                    }),
                     Row(
                       children: [
                         WidgetTextFieldSearch(

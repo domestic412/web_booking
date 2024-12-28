@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
+import 'package:web_booking/controllers/date_controller.dart';
 
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/widgets/header.dart';
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             children: [
               Drawer(
+                width: 220,
                 backgroundColor: const Color.fromRGBO(9, 34, 126, 1),
                 child: SingleChildScrollView(
                   child: Column(

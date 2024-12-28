@@ -61,7 +61,7 @@ class _appbarState extends State<appbar> {
                       children: [
                         Text(
                           inforUserController.shipperName.value,
-                          style: TextStyle(color: white),
+                          style: style14_white,
                         ),
                         const SizedBox(
                           width: 10,

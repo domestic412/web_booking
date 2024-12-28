@@ -154,6 +154,13 @@ Map<String, String> en = {
   "ketQua": "Result",
   "_comment_stock_page": "Stock Page",
   "title container stock": "Container Stock",
+  "shipVoy": "Ship Voy",
+  "dateEmptyOut": "Empty Out",
+  "dateFullArrived": "Full Arrived",
+  "dateFullOut": "Full Out",
+  "terminal": "Terminal",
+  "combineStuffing": "Times Combinations",
+  "checkDetKh": "Check",
   "hello": "Hello !!",
   "upload image": "Upload Image",
 };
