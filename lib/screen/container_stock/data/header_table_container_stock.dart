@@ -38,15 +38,12 @@ class _TableContainerStockState extends State<TableContainerStock> {
                 color: white,
                 child: Column(
                   children: [
-                    WidgetCalendar(refresh: () {
-                      setState(() {});
-                    }),
                     Row(
                       children: [
                         WidgetTextFieldSearch(
                           controller: _controller,
                           width: 300,
-                          function: (value) {
+                          onSubmitted: (value) {
                             _dataContainerStockSource.applyFilter(
                                 filter: value);
                           },
@@ -101,16 +98,16 @@ class _TableContainerStockState extends State<TableContainerStock> {
                   label: 'isImgUpload', visible: false),
               WidgetGridColumnContainerStock(label: 'cntrno'.tr),
               WidgetGridColumnContainerStock(label: 'size'.tr),
-              WidgetGridColumnContainerStock(label: 'chatLuong'.tr),
-              WidgetGridColumnContainerStock(label: 'soLanKetHop'.tr),
-              WidgetGridColumnContainerStock(label: 'numCp'.tr),
+              WidgetGridColumnContainerStock(label: 'quality'.tr),
               WidgetGridColumnContainerStock(label: 'status'.tr),
+              WidgetGridColumnContainerStock(label: 'shipVoy'.tr),
+              WidgetGridColumnContainerStock(label: 'dateEmptyOut'.tr),
+              WidgetGridColumnContainerStock(label: 'dateFullArrived'.tr),
+              WidgetGridColumnContainerStock(label: 'dateFullOut'.tr),
+              WidgetGridColumnContainerStock(label: 'terminal'.tr),
+              WidgetGridColumnContainerStock(label: 'combineStuffing'.tr),
               WidgetGridColumnContainerStock(label: 'shipper'.tr),
-              WidgetGridColumnContainerStock(
-                  label: 'remark'.tr, visible: false),
-              WidgetGridColumnContainerStock(label: 'ketQua'.tr),
-              WidgetGridColumnContainerStock(label: 'sender'.tr),
-              WidgetGridColumnContainerStock(label: 'updateTime'.tr),
+              // WidgetGridColumnContainerStock(label: 'checkDetKh'.tr),
             ]));
   }
 }

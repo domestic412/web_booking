@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
@@ -83,8 +84,19 @@ class RequestList {
     data['combineStuffing'] = this.combineStuffing;
     data['combineTimes'] = this.combineTimes;
     data['combineTimesA'] = this.combineTimesA;
-
     return data;
+  }
+
+  DataGridRow getDataGridRow_RequestList() {
+    return DataGridRow(cells: [
+      DataGridCell<String>(
+          columnName: 'requestCheckContsId', value: requestCheckContsId),
+      DataGridCell<String>(columnName: 'tenYeuCau'.tr, value: tenYeuCau),
+      DataGridCell<String>(columnName: 'cntrno'.tr, value: cntrno),
+      DataGridCell<String>(columnName: 'size'.tr, value: sizeType),
+      DataGridCell<String>(columnName: 'status'.tr, value: trangThaiYc),
+      DataGridCell<String>(columnName: 'updateTime'.tr, value: updateTime),
+    ]);
   }
 
   Future<List<RequestList>> fetchRequestList() async {

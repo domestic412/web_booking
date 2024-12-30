@@ -7,29 +7,23 @@ import 'package:web_booking/model/tracking/model_tracking.dart';
 import 'package:web_booking/page/menu/tracking/widgets/dropdownbox.dart';
 // import 'package:easy_localization/easy_localization.dart';
 import 'package:web_booking/screen/tracking1/widgets/list_container1.dart';
+import 'package:web_booking/widgets/container/widget_Button.dart';
+import 'package:web_booking/widgets/container/widget_TextField.dart';
 
 class Tracking1Page extends StatefulWidget {
   @override
   State<Tracking1Page> createState() => _Tracking1PageState();
 }
 
-TextEditingController inputTracking1 = TextEditingController();
+TextEditingController _controller = TextEditingController();
 
 class _Tracking1PageState extends State<Tracking1Page> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   CntrNo.clear();
-  // }
-
-  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: deviceHeight(context),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -51,61 +45,86 @@ class _Tracking1PageState extends State<Tracking1Page> {
                         color: blue.withOpacity(.1),
                         blurRadius: 12)
                   ],
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(4),
                 ),
-                padding: const EdgeInsets.all(16),
-                margin: const EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.all(4),
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   children: [
                     DropdownButtonSearch(),
                     Expanded(
-                      child: Container(
-                        height: 50,
-                        width: 500,
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: TextField(
-                            controller: inputTracking1,
-                            onSubmitted: (value) {
-                              setState(() {
-                                containerTracking = ContainerTracking()
-                                    .fetchContainerTracking(
-                                        inputTracking1.text.toUpperCase());
-                              });
-                            },
-                            style: style_textfield,
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder())),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
+                        child: WidgetTextFieldSearch(
+                      controller: _controller,
+                      width: 500,
+                      onSubmitted: (value) {
                         setState(() {
                           containerTracking = ContainerTracking()
                               .fetchContainerTracking(
-                                  inputTracking1.text.toUpperCase());
+                                  _controller.text.toUpperCase());
                         });
                       },
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 50,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: normalColor),
-                        child: Text(
-                          'search'.tr,
-                          style: style_text_button_detail,
-                        ),
-                      ),
                     )
+                        // Container(
+                        //   height: 40,
+                        //   width: 500,
+                        //   margin: EdgeInsets.symmetric(horizontal: 20),
+                        //   child: TextField(
+                        //       controller: inputTracking1,
+                        //       onSubmitted: (value) {
+                        //         setState(() {
+                        //           containerTracking = ContainerTracking()
+                        //               .fetchContainerTracking(
+                        //                   inputTracking1.text.toUpperCase());
+                        //         });
+                        //       },
+                        //       style: style_textfield,
+                        //       decoration: const InputDecoration(
+                        //           border: OutlineInputBorder())),
+                        // ),
+                        ),
+                    WidgetButton(
+                      text: 'search'.tr,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: haian,
+                        minimumSize: Size(50, 35),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          containerTracking = ContainerTracking()
+                              .fetchContainerTracking(
+                                  _controller.text.toUpperCase());
+                        });
+                      },
+                    )
+                    // InkWell(
+                    //   onTap: () {
+                    //     setState(() {
+                    //       containerTracking = ContainerTracking()
+                    //           .fetchContainerTracking(
+                    //               _controller.text.toUpperCase());
+                    //     });
+                    //   },
+                    //   child: Container(
+                    //     alignment: Alignment.center,
+                    //     height: 30,
+                    //     width: 80,
+                    //     decoration: BoxDecoration(
+                    //         borderRadius: BorderRadius.circular(5),
+                    //         color: normalColor),
+                    //     child: Text(
+                    //       'search'.tr,
+                    //       style: style_text_button_detail,
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ),
-              ListContainer1(),
+              ListContainer1(_controller.text),
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 }

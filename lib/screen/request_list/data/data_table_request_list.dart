@@ -5,24 +5,24 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
-import 'package:web_booking/model/list_approval/model_approval_list.dart';
-import 'package:web_booking/model/list_approval/storage_controller/detail_approval_controller.dart';
+import 'package:web_booking/model/list_request/model_request_list.dart';
+import 'package:web_booking/model/list_request/storage_controller/detail_request_controller.dart';
 import 'package:web_booking/storage_controller.dart/controller_image.dart';
 import 'package:web_booking/widgets/container/widget_Button.dart';
 
-class DataApprovalSource extends DataGridSource {
-  DataApprovalSource(this._approval) {
-    _approval_original = _approval;
+class DataRequestListSource extends DataGridSource {
+  DataRequestListSource(this._request) {
+    _request_original = _request;
     buildDataGridRow();
   }
 
-  List<ApprovalList> _approval = <ApprovalList>[];
-  List<ApprovalList> _approval_original = <ApprovalList>[];
+  List<RequestList> _request = <RequestList>[];
+  List<RequestList> _request_original = <RequestList>[];
   List<DataGridRow> _dataGridRows = <DataGridRow>[];
 
   void buildDataGridRow() {
-    _dataGridRows = _approval
-        .map<DataGridRow>((data) => data.getDataGridRow_Approval())
+    _dataGridRows = _request
+        .map<DataGridRow>((data) => data.getDataGridRow_RequestList())
         .toList();
   }
 
@@ -46,7 +46,7 @@ class DataApprovalSource extends DataGridSource {
             padding: EdgeInsets.all(5.0),
             child: dataGridCell.value == null
                 ? SizedBox()
-                : dataGridCell.columnName == 'approve request'.tr
+                : dataGridCell.columnName == 'status'.tr
                     ? WidgetButton(
                         text: dataGridCell.value == 'A'
                             ? 'Đồng ý'
@@ -62,12 +62,11 @@ class DataApprovalSource extends DataGridSource {
                           minimumSize: Size(100, 30),
                         ),
                         onPressed: () async {
-                          String id = _approval[_dataGridRows.indexOf(row)]
+                          String id = _request[_dataGridRows.indexOf(row)]
                               .requestCheckContsId!;
-                          // await DetailApproval().fetchDetailApproval(id: id);
-                          detailApprovalController.id.value = id;
+                          dataDetailRequestController.id.value = id;
                           imageController.id.value = id;
-                          controller.selectWidget.value = detailApproval;
+                          controller.selectWidget.value = detailRequest;
                         })
                     : dataGridCell.columnName == 'updateTime'.tr
                         ? Text(
@@ -85,13 +84,13 @@ class DataApprovalSource extends DataGridSource {
   }
 
   void applyFilter({required String filter}) {
-    _approval = _approval_original
+    _request = _request_original
         .where((value) =>
             (value.cntrno?.toUpperCase().contains(filter.toUpperCase()) ??
                 false) ||
-            (value.shipperName?.toUpperCase().contains(filter.toUpperCase()) ??
+            (value.tenYeuCau?.toUpperCase().contains(filter.toUpperCase()) ??
                 false) ||
-            (value.updateUser?.toUpperCase().contains(filter.toUpperCase()) ??
+            (value.sizeType?.toUpperCase().contains(filter.toUpperCase()) ??
                 false) ||
             (value.updateTime?.toUpperCase().contains(filter.toUpperCase()) ??
                 false))

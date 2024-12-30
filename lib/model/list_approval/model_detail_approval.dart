@@ -12,7 +12,7 @@ class DetailApproval {
   String? noiDung;
   String? cntrno;
   String? sizeType;
-  String? quanlity;
+  String? quality;
   String? shipperId;
   String? shipperName;
   String? trangThaiYc;
@@ -31,7 +31,7 @@ class DetailApproval {
       this.noiDung,
       this.cntrno,
       this.sizeType,
-      this.quanlity,
+      this.quality,
       this.shipperId,
       this.shipperName,
       this.trangThaiYc,
@@ -51,7 +51,7 @@ class DetailApproval {
     noiDung = json['noiDung'];
     cntrno = json['cntrno'];
     sizeType = json['sizeType'];
-    quanlity = json['quanlity'];
+    quality = json['quality'];
     shipperId = json['shipperId'];
     shipperName = json['shipperName'];
     trangThaiYc = json['trangThaiYc'];
@@ -73,7 +73,7 @@ class DetailApproval {
     data['noiDung'] = this.noiDung;
     data['cntrno'] = this.cntrno;
     data['sizeType'] = this.sizeType;
-    data['quanlity'] = this.quanlity;
+    data['quality'] = this.quality;
     data['shipperId'] = this.shipperId;
     data['shipperName'] = this.shipperName;
     data['trangThaiYc'] = this.trangThaiYc;
@@ -100,42 +100,42 @@ class DetailApproval {
           var body = response.body;
           // print('Data list approval Detail');
           List dataDetail = jsonDecode(body);
-          try {
-            String id = dataDetail[0]['requestCheckContsId'] ?? '';
-            String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
-            String shipperName = dataDetail[0]['shipperName'] ?? '';
-            String shipperNote = dataDetail[0]['shipperNote'] ?? '';
-            String noiDung = dataDetail[0]['noiDung'] ?? '';
-            String cntrno = dataDetail[0]['cntrno'] ?? '';
-            String sizeType = dataDetail[0]['sizeType'] ?? '';
-            String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
-            String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
-            String updateTime = dataDetail[0]['updateTime'] ?? '';
-            String combineStuffing = dataDetail[0]['combineStuffing'] ?? '';
-            String checkRemark = dataDetail[0]['checkRemark'] ?? '';
-            String quanlity = dataDetail[0]['quanlity'] ?? '';
-            int combineTimes = dataDetail[0]['combineTimes'] ?? '';
-            int combineTimesA = dataDetail[0]['combineTimesA'] ?? '';
+          // try {
+          //   String id = dataDetail[0]['requestCheckContsId'] ?? '';
+          //   String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
+          //   String shipperName = dataDetail[0]['shipperName'] ?? '';
+          //   String shipperNote = dataDetail[0]['shipperNote'] ?? '';
+          //   String noiDung = dataDetail[0]['noiDung'] ?? '';
+          //   String cntrno = dataDetail[0]['cntrno'] ?? '';
+          //   String sizeType = dataDetail[0]['sizeType'] ?? '';
+          //   String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
+          //   String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
+          //   String updateTime = dataDetail[0]['updateTime'] ?? '';
+          //   String combineStuffing = dataDetail[0]['combineStuffing'] ?? '';
+          //   String checkRemark = dataDetail[0]['checkRemark'] ?? '';
+          //   String quanlity = dataDetail[0]['quanlity'] ?? '';
+          //   int combineTimes = dataDetail[0]['combineTimes'] ?? '';
+          //   int combineTimesA = dataDetail[0]['combineTimesA'] ?? '';
 
-            detailApprovalController.updateDetailApproval(
-                id: id.obs,
-                shipperName: shipperName.obs,
-                shipperNote: shipperNote.obs,
-                tenYeuCau: tenYeuCau.obs,
-                noiDung: noiDung.obs,
-                cntrno: cntrno.obs,
-                sizeType: sizeType.obs,
-                combineStuffing: combineStuffing.obs,
-                trangThaiYc: trangThaiYc.obs,
-                noteHangTau: noteHangTau.obs,
-                updateTime: updateTime.obs,
-                checkRemark: checkRemark.obs,
-                quanlity: quanlity.obs,
-                combineTimes: combineTimes.obs,
-                combineTimesA: combineTimesA.obs);
-          } catch (e) {
-            print('data fetch Detail Approval have null - $e');
-          }
+          //   detailApprovalController.updateDetailApproval(
+          //       id: id.obs,
+          //       shipperName: shipperName.obs,
+          //       shipperNote: shipperNote.obs,
+          //       tenYeuCau: tenYeuCau.obs,
+          //       noiDung: noiDung.obs,
+          //       cntrno: cntrno.obs,
+          //       sizeType: sizeType.obs,
+          //       combineStuffing: combineStuffing.obs,
+          //       trangThaiYc: trangThaiYc.obs,
+          //       noteHangTau: noteHangTau.obs,
+          //       updateTime: updateTime.obs,
+          //       checkRemark: checkRemark.obs,
+          //       quanlity: quanlity.obs,
+          //       combineTimes: combineTimes.obs,
+          //       combineTimesA: combineTimesA.obs);
+          // } catch (e) {
+          //   print('data fetch Detail Approval have null - $e');
+          // }
           return dataDetail
               .map((data) => DetailApproval.fromJson(data))
               .toList();

@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_booking/model/list_request/storage_controller/detail_request_controller.dart';
-import 'package:web_booking/storage_controller.dart/controller_image.dart';
 import 'package:web_booking/utils/getx_route.dart';
 
 class DetailRequest {
@@ -13,7 +11,7 @@ class DetailRequest {
   String? noiDung;
   String? cntrno;
   String? sizeType;
-  String? quanlity;
+  String? quality;
   String? shipperId;
   String? shipperName;
   String? trangThaiYc;
@@ -31,7 +29,7 @@ class DetailRequest {
       this.noiDung,
       this.cntrno,
       this.sizeType,
-      this.quanlity,
+      this.quality,
       this.shipperId,
       this.shipperName,
       this.trangThaiYc,
@@ -49,7 +47,7 @@ class DetailRequest {
     noiDung = json['noiDung'];
     cntrno = json['cntrno'];
     sizeType = json['sizeType'];
-    quanlity = json['quanlity'];
+    quality = json['quality'];
     shipperId = json['shipperId'];
     shipperName = json['shipperName'];
     trangThaiYc = json['trangThaiYc'];
@@ -69,7 +67,7 @@ class DetailRequest {
     data['noiDung'] = this.noiDung;
     data['cntrno'] = this.cntrno;
     data['sizeType'] = this.sizeType;
-    data['quanlity'] = this.quanlity;
+    data['quality'] = this.quality;
     data['shipperId'] = this.shipperId;
     data['shipperName'] = this.shipperName;
     data['trangThaiYc'] = this.trangThaiYc;
@@ -83,7 +81,7 @@ class DetailRequest {
     return data;
   }
 
-  Future<void> fetchDetailRequest({required String id}) async {
+  Future<List<DetailRequest>> fetchDetailRequest({required String id}) async {
     try {
       var url = '$SERVER/Requests/GetRequestById?Id=$id';
       final response = await http.get(Uri.parse(url), headers: {
@@ -94,35 +92,38 @@ class DetailRequest {
           var body = response.body;
           print('Data List Request Detail');
           List dataDetail = jsonDecode(body);
-          try {
-            String id = dataDetail[0]['requestCheckContsId'] ?? '';
-            String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
-            String shipperName = dataDetail[0]['shipperName'] ?? '';
-            String shipperNote = dataDetail[0]['shipperNote'] ?? '';
-            String noiDung = dataDetail[0]['noiDung'] ?? '';
-            String cntrno = dataDetail[0]['cntrno'] ?? '';
-            String sizeType = dataDetail[0]['sizeType'] ?? '';
-            String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
-            String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
-            String updateTime = dataDetail[0]['updateTime'] ?? '';
+          // try {
+          //   String id = dataDetail[0]['requestCheckContsId'] ?? '';
+          //   String tenYeuCau = dataDetail[0]['tenYeuCau'] ?? '';
+          //   String shipperName = dataDetail[0]['shipperName'] ?? '';
+          //   String shipperNote = dataDetail[0]['shipperNote'] ?? '';
+          //   String noiDung = dataDetail[0]['noiDung'] ?? '';
+          //   String cntrno = dataDetail[0]['cntrno'] ?? '';
+          //   String sizeType = dataDetail[0]['sizeType'] ?? '';
+          //   String trangThaiYc = dataDetail[0]['trangThaiYc'] ?? '';
+          //   String noteHangTau = dataDetail[0]['noteHangTau'] ?? '';
+          //   String updateTime = dataDetail[0]['updateTime'] ?? '';
 
-            // add id request for image in request
-            imageController.updateIdImageController(id: id.obs);
-            // add storage DetailRequest
-            dataDetailRequestController.updateDetailRequestController(
-                id: id.obs,
-                tenYeuCau: tenYeuCau.obs,
-                shipperName: shipperName.obs,
-                shipperNote: shipperNote.obs,
-                noiDung: noiDung.obs,
-                cntrno: cntrno.obs,
-                sizeType: sizeType.obs,
-                trangThaiYc: trangThaiYc.obs,
-                noteHangTau: noteHangTau.obs,
-                updateTime: updateTime.obs);
-          } catch (e) {
-            print('Error data fetch Detail Request have null - $e');
-          }
+          //   // add id request for image in request
+          //   imageController.id.value = id;
+          //   // add storage DetailRequest
+          //   dataDetailRequestController.updateDetailRequestController(
+          //       id: id.obs,
+          //       tenYeuCau: tenYeuCau.obs,
+          //       shipperName: shipperName.obs,
+          //       shipperNote: shipperNote.obs,
+          //       noiDung: noiDung.obs,
+          //       cntrno: cntrno.obs,
+          //       sizeType: sizeType.obs,
+          //       trangThaiYc: trangThaiYc.obs,
+          //       noteHangTau: noteHangTau.obs,
+          //       updateTime: updateTime.obs);
+          // } catch (e) {
+          //   print('Error data fetch Detail Request have null - $e');
+          // }
+          return dataDetail
+              .map((data) => DetailRequest.fromJson(data))
+              .toList();
         case 401:
           Get.toNamed(GetRoutes.SignIn);
           throw Exception(response.reasonPhrase);

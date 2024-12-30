@@ -19,7 +19,7 @@ String HistoryCheck_db = 'Lịch sử\nkiểm tra';
 String NameRequest = 'Xin kết hợp thêm vòng';
 String noiDung =
     'Chúng tôi xin tự chịu trách nhiệm về hàng hóa trong container và tình trạng vỏ container.\nChụp ảnh chi tiết container trước khi đóng hàng.';
-String StatusRequest = 'Gửi chờ duyệt';
+// String StatusRequest = 'Gửi chờ duyệt';
 String NotFound = 'Không tìm thấy số Container';
 String Accept = 'Được phép kết hợp';
 String Reject = 'Yêu cầu trả vỏ';

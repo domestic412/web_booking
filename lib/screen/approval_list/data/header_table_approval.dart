@@ -4,11 +4,7 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/style.dart';
-import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/controllers/date_controller.dart';
-import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 import 'package:web_booking/model/list_approval/model_approval_list.dart';
-import 'package:web_booking/model/list_approval/storage_controller/approval_controller.dart';
 import 'package:web_booking/screen/approval_list/data/data_table_approval.dart';
 import 'package:web_booking/screen/approval_list/widget/widget_grid_column_approval.dart';
 import 'package:web_booking/widgets/container/widget_TextField.dart';
@@ -110,15 +106,14 @@ class _TableApprovalState extends State<TableApproval> {
             headerGridLinesVisibility: GridLinesVisibility.both,
             source: _dataApprovalSource,
             columns: [
-              WidgetGridColumnApproval(label: 'seq'.tr, visible: true),
+              WidgetGridColumnApproval(label: 'seq'.tr),
               WidgetGridColumnApproval(
                   label: 'requestCheckContsId', visible: false),
-              WidgetGridColumnApproval(label: 'cntrno'.tr, visible: true),
-              WidgetGridColumnApproval(label: 'sender'.tr, visible: true),
-              WidgetGridColumnApproval(
-                  label: 'approve request'.tr, visible: true),
-              WidgetGridColumnApproval(label: 'update user'.tr, visible: true),
-              WidgetGridColumnApproval(label: 'updateTime'.tr, visible: true),
+              WidgetGridColumnApproval(label: 'cntrno'.tr),
+              WidgetGridColumnApproval(label: 'sender'.tr),
+              WidgetGridColumnApproval(label: 'approve request'.tr),
+              WidgetGridColumnApproval(label: 'update user'.tr),
+              WidgetGridColumnApproval(label: 'updateTime'.tr),
             ]));
   }
 }

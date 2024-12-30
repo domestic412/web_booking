@@ -92,6 +92,7 @@ class ContainerStock {
 
   DataGridRow getDataGridRow_ContainerStock() {
     return DataGridRow(cells: [
+      DataGridCell<String>(columnName: 'isImgUpload'.tr, value: cntrno),
       DataGridCell<String>(columnName: 'cntrno'.tr, value: cntrno),
       DataGridCell<String>(columnName: 'size'.tr, value: sizeType),
       DataGridCell<String>(columnName: 'quality'.tr, value: quality),
@@ -105,8 +106,8 @@ class ContainerStock {
       DataGridCell<String>(
           columnName: 'combineStuffing'.tr, value: combineStuffing),
       DataGridCell<String>(columnName: 'shipper'.tr, value: shipper),
-      DataGridCell<String>(
-          columnName: 'checkDetKh'.tr, value: checkDetKh.toString()),
+      // DataGridCell<String>(
+      //     columnName: 'checkDetKh'.tr, value: checkDetKh.toString()),
     ]);
   }
 

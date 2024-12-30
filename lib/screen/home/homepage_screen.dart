@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
-import 'package:web_booking/controllers/date_controller.dart';
 
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/screen/home/widgets/header.dart';
@@ -23,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         appbar(),
         Expanded(

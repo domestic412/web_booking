@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:web_booking/constants/style.dart';
 
 class DropdownButtonSearch extends StatefulWidget {
   const DropdownButtonSearch({super.key});
@@ -16,14 +17,20 @@ class _DropdownButtonSearchState extends State<DropdownButtonSearch> {
     return DropdownButtonHideUnderline(
         child: DropdownButton2<String>(
       // style: style13_black,
-      items: const [
+      items: [
         DropdownMenuItem(
           value: 'bk',
-          child: Text('BL No. or Booking No.'),
+          child: Text(
+            'BL No. or Booking No.',
+            style: style12_black,
+          ),
         ),
         DropdownMenuItem(
           value: 'cntr',
-          child: Text('Container No.'),
+          child: Text(
+            'Container No.',
+            style: style12_black,
+          ),
         ),
       ],
       value: selectedValue,
@@ -36,7 +43,7 @@ class _DropdownButtonSearchState extends State<DropdownButtonSearch> {
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black54),
             borderRadius: BorderRadius.circular(5)),
-        height: 50,
+        height: 40,
       ),
       menuItemStyleData: const MenuItemStyleData(
         height: 40,

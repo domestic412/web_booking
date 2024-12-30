@@ -10,15 +10,9 @@ import 'package:web_booking/screen/tracking1/tracking_page1.dart';
 import 'package:web_booking/screen/tracking1/widgets/container_details1.dart';
 
 // ignore: must_be_immutable
-class ListContainer1 extends StatefulWidget {
-  @override
-  State<ListContainer1> createState() => _ListContainer1State();
-}
-
-// Future<ContainerTracking>? containerTracking;
-// List? list_filter;
-
-class _ListContainer1State extends State<ListContainer1> {
+class ListContainer1 extends StatelessWidget {
+  ListContainer1(this.inputTracking1);
+  String? inputTracking1;
   @override
   Widget build(BuildContext context) {
     return dataBooking();
@@ -80,7 +74,7 @@ class _ListContainer1State extends State<ListContainer1> {
                 ]);
           } else {
             if (data_cntr_en.toString() != [].toString()) {
-              cntr_no = inputTracking1.text.toUpperCase().toString();
+              cntr_no = inputTracking1!.toUpperCase().toString();
               if (bool_lang == false) {
                 list_filter = data_cntr_en!
                     .where((item) => item.container!.contains(cntr_no!))

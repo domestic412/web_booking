@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:web_booking/constants/style.dart';
 
-Container WidgetContainerLabel(
-    {required String label, required double? width}) {
+Container WidgetContainerLabel({required String label, double? width}) {
   return Container(
-    width: width,
+    width: width ?? 100,
     padding: const EdgeInsets.all(6),
     margin: const EdgeInsets.all(5),
     color: const Color.fromARGB(255, 92, 117, 160),
