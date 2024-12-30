@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
@@ -30,7 +31,7 @@ class CheckContainer {
   String? remark;
   String? shipVoy;
   String? status;
-  String? quanlity;
+  String? quality;
   String? checkRemark;
   String? checkDetKH;
   String? updateUser;
@@ -58,7 +59,7 @@ class CheckContainer {
       this.remark,
       this.shipVoy,
       this.status,
-      this.quanlity,
+      this.quality,
       this.checkRemark,
       this.checkDetKH,
       this.updateUser,
@@ -86,7 +87,7 @@ class CheckContainer {
     remark = json['remark'];
     shipVoy = json['shipVoy'];
     status = json['status'];
-    quanlity = json['quanlity'];
+    quality = json['quality'];
     checkRemark = json['checkRemark'];
     checkDetKH = json['checkDetKH'];
     updateUser = json['updateUser'];
@@ -116,12 +117,25 @@ class CheckContainer {
     data['remark'] = remark;
     data['shipVoy'] = shipVoy;
     data['status'] = status;
-    data['quanlity'] = quanlity;
+    data['quality'] = quality;
     data['checkRemark'] = checkRemark;
     data['checkDetKH'] = checkDetKH;
     data['updateUser'] = updateUser;
     data['updateTime'] = updateTime;
     return data;
+  }
+
+  DataGridRow getDataGridRow_CheckContainer() {
+    return DataGridRow(cells: [
+      DataGridCell<String>(columnName: 'cntrno'.tr, value: cntrno),
+      DataGridCell<String>(columnName: 'size'.tr, value: sizeType),
+      DataGridCell<String>(columnName: 'soLanKetHop'.tr, value: soLanKetHop),
+      DataGridCell<String>(columnName: 'quality'.tr, value: quality),
+      DataGridCell<String>(columnName: 'status'.tr, value: status),
+      DataGridCell<String>(columnName: 'shipper'.tr, value: shipper),
+      DataGridCell<String>(columnName: 'result'.tr, value: approval),
+      DataGridCell<String>(columnName: 'upload image'.tr, value: ''),
+    ]);
   }
 
   Future<List<CheckContainer>> fetchCheckContainers(

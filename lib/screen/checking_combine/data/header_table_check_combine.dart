@@ -3,24 +3,19 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/constants/style.dart';
-import 'package:web_booking/model/list_approval/model_approval_list.dart';
-import 'package:web_booking/screen/approval_list/data/data_table_approval.dart';
-import 'package:web_booking/screen/approval_list/widget/widget_grid_column_approval.dart';
-import 'package:web_booking/widgets/container/widget_TextField.dart';
-import 'package:web_booking/widgets/container/widget_calendar.dart';
+import 'package:web_booking/model/check_container/model_check_container.dart';
+import 'package:web_booking/screen/checking_combine/data/data_table_check_combine.dart';
 
-class TableApproval extends StatefulWidget {
-  const TableApproval({super.key});
+class TableCheckCombine extends StatefulWidget {
+  const TableCheckCombine({super.key});
 
   @override
-  State<TableApproval> createState() => _TableApprovalState();
+  State<TableCheckCombine> createState() => _TableCheckCombineState();
 }
 
-class _TableApprovalState extends State<TableApproval> {
-  late DataApprovalSource _dataApprovalSource;
-  List<ApprovalList> _approval = <ApprovalList>[];
-  TextEditingController _controller = TextEditingController();
+class _TableCheckCombineState extends State<TableCheckCombine> {
+  late DataCheckCombineSource _dataCheckCombineSource;
+  List<CheckContainer> _checkContainer = <CheckContainer>[];
 
   // @override
   // void initState() {
@@ -37,58 +32,21 @@ class _TableApprovalState extends State<TableApproval> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ApprovalList>>(
-        future: ApprovalList().fetchApprovalList(),
+    return FutureBuilder<List<CheckContainer>>(
+        future: CheckContainer().fetchCheckContainers(context, '', 0),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            _approval = snapshot.data!;
-            _dataApprovalSource = DataApprovalSource(_approval);
+            _checkContainer = snapshot.data!;
+            _dataApprovalSource = DataApprovalSource(_checkContainer);
             return Container(
                 color: white,
-                child: Column(
-                  children: [
-                    WidgetCalendar(refresh: () {
-                      print('1234');
-                    }),
-                    Row(
-                      children: [
-                        WidgetTextFieldSearch(
-                          controller: _controller,
-                          width: 300,
-                          onSubmitted: (value) {
-                            _dataApprovalSource.applyFilter(filter: value);
-                          },
-                        ),
-                        WidgetButtonFilter()
-                      ],
-                    ),
-                    Expanded(child: _buildDataGrid(_dataApprovalSource)),
-                  ],
-                ));
+                child: Expanded(child: _buildDataGrid(_dataApprovalSource)));
           }
           return SizedBox.shrink();
         });
-  }
-
-  Container WidgetButtonFilter() {
-    return Container(
-      margin: EdgeInsets.all(5),
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: haian,
-            minimumSize: Size(100, 35),
-          ),
-          onPressed: () {
-            _dataApprovalSource.applyFilter(filter: _controller.text);
-          },
-          child: Text(
-            'Filter',
-            style: style12_white,
-          )),
-    );
   }
 
   SfDataGridTheme _buildDataGrid(DataApprovalSource _dataApprovalSource) {

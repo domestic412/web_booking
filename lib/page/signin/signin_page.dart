@@ -12,6 +12,7 @@ import 'package:web_booking/page/signin/popUpAlert/alert.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_booking/utils/getx_route.dart';
 import 'package:web_booking/widgets/appbar/appbar.dart';
+import 'package:web_booking/widgets/appbar/checkInfoUser/infoUser_appbar.dart';
 
 class SignInPage extends StatefulWidget {
   @override

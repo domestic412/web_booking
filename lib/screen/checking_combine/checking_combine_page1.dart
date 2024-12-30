@@ -54,6 +54,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               ),
               WidgetTextFieldSearch(
                 controller: _controller,
+                style: style14_black,
                 onSubmitted: (value) {
                   setState(() {
                     _checkContainers = CheckContainer().fetchCheckContainers(
@@ -118,9 +119,9 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                   Expanded(flex: 2, child: RadioButtonRoute()),
                 ],
               ),
-              SizedBox(
-                height: 20,
-              ),
+              // SizedBox(
+              //   height: 20,
+              // ),
               Container(child: fetchDataListContainer()),
             ],
           ),
@@ -157,8 +158,8 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
               Container(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  'result combine'.tr,
-                  style: style12_black_bold,
+                  'result'.tr,
+                  style: style14_black,
                 ),
               ),
               Container(
@@ -318,7 +319,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
             )),
             DataCell(Center(
               child: Text(
-                snapshot.data![index].quanlity.toString(),
+                snapshot.data![index].quality.toString(),
                 style: style12_black,
                 textAlign: TextAlign.center,
               ),
@@ -357,6 +358,7 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                     onPressed: () {
                       String cntrno = snapshot.data![index].cntrno ?? '';
                       String sizeType = snapshot.data![index].sizeType ?? '';
+                      String quality = snapshot.data![index].quality ?? '';
                       String shipper = snapshot.data![index].shipper ?? '';
                       String remark = snapshot.data![index].remark ?? '';
                       String ghiChuTinhTrang =
@@ -367,19 +369,18 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                           snapshot.data![index].soLanKetHop ?? '';
                       String ketQua = snapshot.data![index].ketQua ?? '';
                       String approval = snapshot.data![index].approval ?? '';
-                      String updateTime =
-                          snapshot.data![index].updateTime ?? '';
                       checkContainerController.updateCheckContainerController(
-                          cntrno: cntrno.obs,
-                          sizeType: sizeType.obs,
-                          soLanKetHop: soLanKetHop.obs,
-                          ghiChuTinhTrang: ghiChuTinhTrang.obs,
-                          luuYSuDung: luuYSuDung.obs,
-                          ketQua: ketQua.obs,
-                          approval: approval.obs,
-                          shipper: shipper.obs,
-                          remark: remark.obs,
-                          updateTime: updateTime.obs);
+                        cntrno: cntrno,
+                        sizeType: sizeType,
+                        quality: quality,
+                        soLanKetHop: soLanKetHop,
+                        ghiChuTinhTrang: ghiChuTinhTrang,
+                        luuYSuDung: luuYSuDung,
+                        ketQua: ketQua,
+                        approval: approval,
+                        shipper: shipper,
+                        remark: remark,
+                      );
                       PopUpCheckContainer(context);
                     },
                   ),

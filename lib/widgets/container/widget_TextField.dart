@@ -33,7 +33,8 @@ Container WidgetTextField(
 Container WidgetTextFieldSearch(
     {required TextEditingController controller,
     double? width,
-    ValueChanged? onSubmitted}) {
+    ValueChanged? onSubmitted,
+    TextStyle? style}) {
   return Container(
     // width: 300,
     width: width,
@@ -41,7 +42,7 @@ Container WidgetTextFieldSearch(
     child: TextField(
       controller: controller,
       onSubmitted: onSubmitted,
-      style: style12_black,
+      style: style ?? style12_black,
       decoration: const InputDecoration(
         contentPadding: EdgeInsets.all(10),
         isDense: true,
