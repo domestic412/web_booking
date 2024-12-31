@@ -22,7 +22,7 @@ class TableHistory extends StatefulWidget {
 
 class _TableHistoryState extends State<TableHistory> {
   late DataHistorySource _dataHistorySource;
-  List<HistoryList> _History = <HistoryList>[];
+  List<HistoryList> _history = <HistoryList>[];
   TextEditingController _controller = TextEditingController();
 
   // @override
@@ -49,8 +49,8 @@ class _TableHistoryState extends State<TableHistory> {
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            _History = snapshot.data!;
-            _dataHistorySource = DataHistorySource(_History);
+            _history = snapshot.data!;
+            _dataHistorySource = DataHistorySource(_history);
             return Container(
                 color: white,
                 child: Column(

@@ -18,18 +18,19 @@ Future<void> PopUpCheckContainer(BuildContext context) {
               child: Container(
                 width: 500,
                 child: AlertDialog(
-                  backgroundColor: Color(0xFFEFEFF4),
+                  backgroundColor: white,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(10)),
                   title: Column(
                     children: [
                       Text(
                         "details".tr,
                         style: style_title_detail,
                       ),
-                      const Divider(
-                        color: Colors.black,
-                      )
+                      // const Divider(
+                      //   color: Colors.black,
+                      //   thickness: 0.5,
+                      // )
                     ],
                   ),
                   content: Column(
@@ -38,7 +39,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                       children: <Widget>[
                         Text(
                           'cntrno'.tr,
-                          style: style_text_detail_bold,
+                          style: style12_black_bold,
                         ),
                         const SizedBox(
                           height: 5,
@@ -46,14 +47,14 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         Text(
                           checkContainerController.cntrno.value,
                           // cntrno_CheckCntr.toString(),
-                          style: style_text_detail,
+                          style: style12_black,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           'size'.tr,
-                          style: style_text_detail_bold,
+                          style: style12_black_bold,
                         ),
                         const SizedBox(
                           height: 5,
@@ -61,14 +62,29 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         Text(
                           checkContainerController.sizeType.value,
                           // sizeType_CheckCntr.toString(),
-                          style: style_text_detail,
+                          style: style12_black,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'quality'.tr,
+                          style: style12_black_bold,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          checkContainerController.quality.value,
+                          // sizeType_CheckCntr.toString(),
+                          style: style12_black,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           'shipper'.tr,
-                          style: style_text_detail_bold,
+                          style: style12_black_bold,
                         ),
                         const SizedBox(
                           height: 5,
@@ -76,14 +92,14 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         Text(
                           checkContainerController.shipper.value,
                           // shipper_CheckCntr.toString(),
-                          style: style_text_detail,
+                          style: style12_black,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           'remark'.tr,
-                          style: style_text_detail_bold,
+                          style: style12_black_bold,
                         ),
                         const SizedBox(
                           height: 5,
@@ -92,14 +108,14 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                           checkContainerController.remark.value,
                           // remark_CheckCntr.toString(),
                           textAlign: TextAlign.left,
-                          style: style_text_detail,
+                          style: style12_black,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           'damage warning'.tr,
-                          style: style_text_detail_bold,
+                          style: style12_black_bold,
                         ),
                         const SizedBox(
                           height: 5,
@@ -123,7 +139,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         ),
                         Text(
                           'note for use: item is packaged'.tr,
-                          style: style_text_detail_bold,
+                          style: style12_black_bold,
                         ),
                         const SizedBox(
                           height: 5,
@@ -132,14 +148,14 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                           checkContainerController.luuYSuDung.value,
                           // luuYSuDung_CheckCntr.toString(),
                           textAlign: TextAlign.left,
-                          style: style_text_detail,
+                          style: style12_black,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           'number of times (combine)'.tr,
-                          style: style_text_detail_bold,
+                          style: style12_black_bold,
                         ),
                         const SizedBox(
                           height: 5,
@@ -148,7 +164,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                           checkContainerController.soLanKetHop.value,
                           // soLanKetHop_CheckCntr.toString(),
                           textAlign: TextAlign.left,
-                          style: style_text_detail,
+                          style: style12_black,
                         ),
                         const SizedBox(
                           height: 20,

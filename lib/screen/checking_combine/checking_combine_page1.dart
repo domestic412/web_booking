@@ -3,6 +3,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:spreadsheet_decoder/spreadsheet_decoder.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/constants/style.dart';
@@ -18,6 +20,10 @@ import 'package:universal_html/html.dart' as html;
 import 'package:web_booking/widgets/container/widget_Button.dart';
 import 'package:web_booking/widgets/container/widget_TextField.dart';
 
+import 'Widget/widget_grid_column_check_container.dart';
+import 'data/data_table_check_combine.dart';
+import 'data/header_table_check_combine.dart';
+
 class CheckingCombinePage extends StatefulWidget {
   @override
   State<CheckingCombinePage> createState() => _CheckingCombinePageState();
@@ -26,7 +32,9 @@ class CheckingCombinePage extends StatefulWidget {
 class _CheckingCombinePageState extends State<CheckingCombinePage> {
   TextEditingController _controller = TextEditingController();
   List _countCont = [];
-  Future<List<CheckContainer>>? _checkContainers;
+  Future<List<CheckContainer>>? _fetch_checkContainers;
+  List<CheckContainer> _checkContainer = <CheckContainer>[];
+  late DataCheckCombineSource _dataCheckCombineSource;
   Color? _color;
 
   int i = 0;
@@ -57,10 +65,11 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                 style: style14_black,
                 onSubmitted: (value) {
                   setState(() {
-                    _checkContainers = CheckContainer().fetchCheckContainers(
-                        context,
-                        _controller.text.trim().toUpperCase(),
-                        currentOptionsRoute);
+                    _fetch_checkContainers = CheckContainer()
+                        .fetchCheckContainers(
+                            context,
+                            _controller.text.trim().toUpperCase(),
+                            currentOptionsRoute);
                   });
                 },
               ),
@@ -119,9 +128,6 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                   Expanded(flex: 2, child: RadioButtonRoute()),
                 ],
               ),
-              // SizedBox(
-              //   height: 20,
-              // ),
               Container(child: fetchDataListContainer()),
             ],
           ),
@@ -132,12 +138,15 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
 
   FutureBuilder<List<CheckContainer>> fetchDataListContainer() {
     return FutureBuilder<List<CheckContainer>>(
-      future: _checkContainers,
+      future: _fetch_checkContainers,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasData) {
+          _checkContainer = snapshot.data!;
+          _dataCheckCombineSource =
+              DataCheckCombineSource(_checkContainer, context);
           _countCont = _controller.text
               .trim()
               .split(' '); // list space to count the number of containers
@@ -163,20 +172,19 @@ class _CheckingCombinePageState extends State<CheckingCombinePage> {
                 ),
               ),
               Container(
-                width: deviceWidth(context),
-                decoration: BoxDecoration(
-                  color: white,
-                  // border: Border.all(color: blue.withOpacity(.4), width: .5),                            // error excel
-                  boxShadow: [
-                    BoxShadow(
-                        offset: const Offset(0, 6),
-                        color: blue.withOpacity(.1),
-                        blurRadius: 12)
-                  ],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: DataCheckContainer(snapshot, context),
-              ),
+                  width: deviceWidth(context),
+                  decoration: BoxDecoration(
+                    color: white,
+                    // border: Border.all(color: blue.withOpacity(.4), width: .5),                            // error excel
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 6),
+                          color: blue.withOpacity(.1),
+                          blurRadius: 12)
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: TableCheckCombine(_dataCheckCombineSource)),
             ],
           );
         } else if (snapshot.hasError && _controller.text == '') {
