@@ -8,6 +8,7 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/date_controller.dart';
 import 'package:web_booking/model/list_history/model_history_list.dart';
 import 'package:web_booking/model/list_history/storage_controller/history_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/history_list/widget/widget_grid_column_history.dart';
 import 'package:web_booking/widgets/container/widget_TextField.dart';
 import 'package:web_booking/widgets/container/widget_calendar.dart';
@@ -25,25 +26,17 @@ class _TableHistoryState extends State<TableHistory> {
   List<HistoryList> _history = <HistoryList>[];
   TextEditingController _controller = TextEditingController();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   historyController.fromDate_send.value =
-  //       changeDatetoSend(date: DateTime.now().subtract(Duration(days: 30)));
-  //   historyController.fromDate_show.value =
-  //       changeDatetoShow(date: DateTime.now().subtract(Duration(days: 30)));
-  //   historyController.toDate_send.value =
-  //       changeDatetoSend(date: DateTime.now().add(Duration(days: 1)));
-  //   historyController.toDate_show.value =
-  //       changeDatetoShow(date: DateTime.now().add(Duration(days: 1)));
-  // }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<HistoryList>>(
-        future: HistoryList().fetchHistoryList(
-            fromDate: dateController.fromDate_send.value,
-            toDate: dateController.toDate_send.value),
+        future: inforUserController.isStaff.value == 1
+            ? HistoryList().fetchHistoryList(
+                fromDate: dateController.fromDate_send.value,
+                toDate: dateController.toDate_send.value)
+            : HistoryList().fetchHistoryShipperList(
+                shipperId: inforUserController.shipperId.value,
+                fromDate: dateController.fromDate_send.value,
+                toDate: dateController.toDate_send.value),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

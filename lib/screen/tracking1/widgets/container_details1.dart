@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/screen/tracking1/widgets/table_container_details1.dart';
-// import 'package:easy_localization/easy_localization.dart';
 
 class ContainerDetails1 extends StatefulWidget {
   const ContainerDetails1({super.key});

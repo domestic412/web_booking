@@ -13,6 +13,7 @@ TextStyle style12_black = TextStyle(fontSize: 12, color: black);
 TextStyle style12_black_bold =
     TextStyle(fontSize: 12, color: black, fontWeight: FontWeight.bold);
 TextStyle style12_white = TextStyle(fontSize: 12, color: white);
+TextStyle style12_haian = TextStyle(fontSize: 12, color: haian);
 TextStyle style12_red_bold =
     TextStyle(fontSize: 12, color: red, fontWeight: FontWeight.bold);
 

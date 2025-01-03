@@ -45,3 +45,15 @@ void checkInfoUser() {
       }
   }
 }
+
+void checkDataLogin(dataLogin) {
+  if (dataLogin is List) {
+    box.write(is_staff_signin, 1);
+    // print('data type list');
+  } else if (dataLogin is Map<dynamic, dynamic>) {
+    box.write(is_staff_signin, 0);
+    // print('data type Map');
+  } else {
+    // print(dataLogin);
+  }
+}

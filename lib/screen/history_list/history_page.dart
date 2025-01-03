@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/style.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/date_controller.dart';
+import 'package:web_booking/page/signin/controller_signin.dart/info_signin_controller.dart';
 import 'package:web_booking/screen/approval_list/widget/button_special.dart';
 
 import 'data/header_table_history.dart';
@@ -47,7 +48,9 @@ class _HistoryPageState extends State<HistoryPage> {
                     style: style_title_page,
                   ),
                 ),
-                ButtonSpecialCustomer(),
+                inforUserController.isStaff.value == 1
+                    ? ButtonSpecialCustomer()
+                    : SizedBox.shrink(),
               ],
             ),
             const SizedBox(

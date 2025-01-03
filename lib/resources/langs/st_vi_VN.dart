@@ -167,5 +167,8 @@ Map<String, String> vi = {
   "select file": "Chọn Tập Tin",
   "upload file": "Tải lên tập tin",
   "hello": "Xin chào !!",
-  "upload image": "Hình ảnh"
+  "upload image": "Hình ảnh",
+  "container": "Container",
+  "location": "Vị trí",
+  "eventDate": "Thời gian"
 };

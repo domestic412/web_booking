@@ -6,6 +6,7 @@ import 'package:web_booking/constants/text.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/controllers/sidebar_controller.dart';
 import 'package:web_booking/model/check_container/storage_controller/check_container_controller.dart';
+import 'package:web_booking/widgets/container/widget_Button.dart';
 
 Future<void> PopUpCheckContainer(BuildContext context) {
   return showDialog<void>(
@@ -47,7 +48,7 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         Text(
                           checkContainerController.cntrno.value,
                           // cntrno_CheckCntr.toString(),
-                          style: style12_black,
+                          style: style12_red_bold,
                         ),
                         const SizedBox(
                           height: 10,
@@ -120,20 +121,28 @@ Future<void> PopUpCheckContainer(BuildContext context) {
                         const SizedBox(
                           height: 5,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(10),
+                        WidgetButton(
+                          text: checkContainerController.ghiChuTinhTrang.value,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: red,
+                            minimumSize: Size(150, 35),
                           ),
-                          margin: EdgeInsets.only(top: 5),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
-                          child: Text(
-                            checkContainerController.ghiChuTinhTrang.value,
-                            // ghiChuTinhTrang_CheckCntr.toString(),
-                            style: style_text_button_detail,
-                          ),
+                          onPressed: () {},
                         ),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.red,
+                        //     borderRadius: BorderRadius.circular(10),
+                        //   ),
+                        //   margin: EdgeInsets.only(top: 5),
+                        //   padding: const EdgeInsets.symmetric(
+                        //       horizontal: 12, vertical: 6),
+                        //   child: Text(
+                        //     checkContainerController.ghiChuTinhTrang.value,
+                        //     // ghiChuTinhTrang_CheckCntr.toString(),
+                        //     style: style_text_button_detail,
+                        //   ),
+                        // ),
                         const SizedBox(
                           height: 10,
                         ),

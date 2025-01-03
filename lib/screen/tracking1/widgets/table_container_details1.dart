@@ -15,8 +15,7 @@ class TableContainerDetails1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DataTable(
-        headingRowColor:
-            MaterialStateProperty.resolveWith((states) => lightGrey),
+        headingRowColor: WidgetStateProperty.resolveWith((states) => lightGrey),
         border: const TableBorder(
             verticalInside: BorderSide(color: Colors.black12)),
         sortColumnIndex: 0,

@@ -169,4 +169,7 @@ Map<String, String> en = {
   "upload file": "Upload File",
   "hello": "Hello !!",
   "upload image": "Upload Image",
+  "container": "Container",
+  "location": "Location",
+  "eventDate": "Event Date"
 };

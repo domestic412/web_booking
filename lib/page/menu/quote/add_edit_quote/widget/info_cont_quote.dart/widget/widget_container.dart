@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:web_booking/model/eqc_quote/storage_controller/init_quote_controller.dart';
 
-class WidgetContainer extends StatefulWidget {
+class WidgetContainer extends StatelessWidget {
   const WidgetContainer({super.key});
 
-  @override
-  State<WidgetContainer> createState() => _WidgetContainerState();
-}
-
-class _WidgetContainerState extends State<WidgetContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +12,7 @@ class _WidgetContainerState extends State<WidgetContainer> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Container'),
+            Text('container'.tr),
             SizedBox(
               height: 5,
             ),

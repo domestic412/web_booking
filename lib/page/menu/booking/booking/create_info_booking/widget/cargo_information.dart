@@ -5,7 +5,7 @@ import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_create_booking.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
-import 'package:web_booking/model/new_login/model_newlogin.dart';
+import 'package:web_booking/model/login/model_login.dart';
 
 import 'checkPrice.dart';
 
@@ -183,7 +183,9 @@ class _CargoInformationState extends State<CargoInformation> {
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 140),
                   child: Text(
                     'Ocean Freight: ' +
-                        formatCurrency.format(createBookingController.checkPrice.value).toString() +
+                        formatCurrency
+                            .format(createBookingController.checkPrice.value)
+                            .toString() +
                         ' VND/Container',
                     style: TextStyle(color: red),
                   ),
@@ -445,24 +447,26 @@ class _CargoInformationState extends State<CargoInformation> {
                         : SizedBox.shrink(),
                     ElevatedButton(
                         onPressed: () {
-                          if (
-                              (createBookingController.status.value == 'F' &&
-                                      createBookingController
-                                              .weight_controller.value.text
-                                              .trim() ==
-                                          '') ||
-                                  (createBookingController.status.value ==
-                                          'F' &&
-                                      createBookingController.reefer.value ==
-                                          true &&
-                                      createBookingController
-                                              .temp_controller.value.text
-                                              .trim() ==
-                                          '') ||
-                                  (createBookingController
-                                          .commodity_controller.value.text
+                          if ((createBookingController.status.value == 'F' &&
+                                  createBookingController
+                                          .weight_controller.value.text
                                           .trim() ==
-                                      '') || (createBookingController.volume_controller.value.text.trim() == '')) {
+                                      '') ||
+                              (createBookingController.status.value == 'F' &&
+                                  createBookingController.reefer.value ==
+                                      true &&
+                                  createBookingController
+                                          .temp_controller.value.text
+                                          .trim() ==
+                                      '') ||
+                              (createBookingController
+                                      .commodity_controller.value.text
+                                      .trim() ==
+                                  '') ||
+                              (createBookingController
+                                      .volume_controller.value.text
+                                      .trim() ==
+                                  '')) {
                             //miss field input
                             createBookingController.boolErrorAdd.value = true;
                           } else {
@@ -522,7 +526,9 @@ class _CargoInformationState extends State<CargoInformation> {
                                 .add(_listBookingDetails);
                           }
                         },
-                        style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => normalColor)),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateColor.resolveWith(
+                                (states) => normalColor)),
                         child: Text('ADD CARGO')),
                   ],
                 ),

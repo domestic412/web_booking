@@ -1,23 +1,25 @@
 // import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:web_booking/constants/color.dart';
-import 'package:web_booking/screen/tracking1/widgets/table_container_details1.dart';
+import 'package:web_booking/screen/tracking1/data%20container/data_table_tracking_zim.dart';
+import 'package:web_booking/screen/tracking1/data%20container/header_table_tracking_zim.dart';
 
 // String? _dt;
-Future<void> PopUpContainerDetail1(BuildContext context) {
+Future<void> PopUpContainerDetail1(
+    BuildContext context, DataTrackingZimSource _dataTrackingZimSource) async {
   return showDialog(
     context: context,
     builder: (BuildContext context) {
-      return Center(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: AlertDialog(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            content: Column(children: [
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        content: Container(
+          // height: 1000,
+          width: 1000,
+          child: ListView(
+            children: [
               Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -31,25 +33,18 @@ Future<void> PopUpContainerDetail1(BuildContext context) {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                // width: deviceWidth(context),
-                decoration: BoxDecoration(
-                  color: white,
-                  border: Border.all(color: blue.withOpacity(.4), width: .5),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: const Offset(0, 6),
-                        color: blue.withOpacity(.1),
-                        blurRadius: 12)
-                  ],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                margin: const EdgeInsets.only(bottom: 16, left: 32, right: 32),
-                child: TableContainerDetails1(),
-              ),
-            ]),
+              TableTrackingZim(_dataTrackingZimSource),
+            ],
           ),
         ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       );
     },
   );

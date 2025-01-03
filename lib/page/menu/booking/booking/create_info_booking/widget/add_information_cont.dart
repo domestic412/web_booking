@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/color.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
-import 'package:web_booking/model/new_login/model_newlogin.dart';
+import 'package:web_booking/model/login/model_login.dart';
 
 class TableInformationContainer extends StatefulWidget {
   const TableInformationContainer({super.key});
@@ -119,8 +119,9 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                     DataCell(Text(findCommodityName(createBookingController
                             .listInfoContainer[i].commodityId!) ??
                         '')),
-                    DataCell(Text(
-                        createBookingController.listInfoContainer[i].sizeId! + createBookingController.listInfoContainer[i].type!)),
+                    DataCell(Text(createBookingController
+                            .listInfoContainer[i].sizeId! +
+                        createBookingController.listInfoContainer[i].type!)),
                     // DataCell(Text(
                     //     createBookingController.listInfoContainer[i].type!)),
                     DataCell(Text(
@@ -128,12 +129,14 @@ class _TableInformationContainerState extends State<TableInformationContainer> {
                     DataCell(Text(createBookingController
                         .listInfoContainer[i].volume!
                         .toString())),
-                    DataCell(Text(formatCurrency.format(createBookingController
-                        .listInfoContainer[i].weight!)
+                    DataCell(Text(formatCurrency
+                        .format(createBookingController
+                            .listInfoContainer[i].weight!)
                         .toString())),
-                    DataCell(Text(createBookingController
-                        .listInfoContainer[i].dg! ? 'YES' : 'NO'
-                        )),
+                    DataCell(Text(
+                        createBookingController.listInfoContainer[i].dg!
+                            ? 'YES'
+                            : 'NO')),
                     // DataCell(
                     //     Text(createBookingController.listInfoContainer[i].dg!)),
                     DataCell(createBookingController.countRowContainer.value !=

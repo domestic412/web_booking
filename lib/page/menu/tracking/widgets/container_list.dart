@@ -18,6 +18,7 @@ class ContainerList extends StatefulWidget {
 // List<TrackingZimsVN>? list_filter_vn;
 
 class _ContainerListState extends State<ContainerList> {
+  List<TrackingZims>? data;
   @override
   Widget build(BuildContext context) {
     return dataBooking();
@@ -37,15 +38,20 @@ class _ContainerListState extends State<ContainerList> {
           var data_cntr_vn = snapshot.data!.trackingZimsVN;
           if (data_bk.toString() != [].toString()) {
             if (data_cntr_en.toString() != [].toString() && cntr_no != null) {
-              if (bool_lang == false) {
-                list_filter = data_cntr_en!
-                    .where((item) => item.container!.contains(cntr_no!))
-                    .toList();
-              } else {
-                list_filter = data_cntr_vn!
-                    .where((item) => item.container!.contains(cntr_no!))
-                    .toList();
-              }
+              // bool_lang == false ? data = data_cntr_en! : data = data_cntr_vn!;
+              // List<TrackingZims> list_filter = data!
+              //     .where((item) => item.container!.contains(cntr_no!))
+              //     .toList();
+
+              // if (bool_lang == false) {
+              //   List<TrackingZims> list_filter = data_cntr_en!
+              //       .where((item) => item.container!.contains(cntr_no!))
+              //       .toList();
+              // } else {
+              //   List<TrackingZims> list_filter = data_cntr_vn!
+              //       .where((item) => item.container!.contains(cntr_no!))
+              //       .toList();
+              // }
             }
             return Container(
               padding: const EdgeInsets.only(bottom: 30),
@@ -95,8 +101,8 @@ class _ContainerListState extends State<ContainerList> {
 
   DataTable DataListCont(
       List<TrackingContainers>? data_bk,
-      List<TrackingZimsEN>? data_cntr_en,
-      List<TrackingZimsVN>? data_cntr_vn,
+      List<TrackingZims>? data_cntr_en,
+      List<TrackingZims>? data_cntr_vn,
       BuildContext context) {
     return DataTable(
         border: TableBorder.all(),

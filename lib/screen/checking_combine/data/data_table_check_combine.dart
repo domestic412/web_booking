@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,6 +13,8 @@ import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/check_container/model_check_container.dart';
 import 'package:web_booking/model/check_container/storage_controller/check_container_controller.dart';
 import 'package:web_booking/screen/checking_combine/popUp_detail_container/popUp_detail_checking_combine.dart';
+import 'package:web_booking/screen/request_list/detail_request/detail_image_request_list.dart';
+import 'package:web_booking/storage_controller.dart/controller_image.dart';
 import 'package:web_booking/widgets/container/widget_Button.dart';
 
 class DataCheckCombineSource extends DataGridSource {
@@ -136,57 +139,103 @@ class DataCheckCombineSource extends DataGridSource {
     ]);
   }
 
-  List<XFile>? listImg;
+  List<XFile>? _listImg;
   Future getImage(ImageSource media, String cntr) async {
     // String? base64image;
     final ImagePicker _picker = ImagePicker();
     List<XFile> img = await _picker.pickMultiImage();
 
-    listImg = img;
+    _listImg = img;
 
-    if (listImg!.isNotEmpty) {
-      checkContainerController.pathImg.value = listImg![0].path;
+    if (_listImg!.isNotEmpty) {
+      imageController.i.value = 0;
+      checkContainerController.pathImg.value = _listImg![0].path;
       return Get.defaultDialog(
         title: 'Preview Image',
-        content: Container(
-          height: deviceHeight(context) * 0.8,
-          width: deviceWidth(context) * 0.8,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: deviceHeight(context) * 0.8,
-                width: deviceWidth(context) * 0.25,
-                decoration: BoxDecoration(border: Border.all()),
-                child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemCount: listImg!.length,
-                    itemBuilder: (BuildContext context, index) {
-                      return Container(
-                          margin: EdgeInsets.all(15),
-                          child: InkWell(
-                              onTap: () {
-                                checkContainerController.pathImg.value =
-                                    listImg![index].path;
-                                // print(quoteController.pathImg.value);
-                              },
-                              child: Text(listImg![index].name)));
-                    }),
-              ),
-              Obx(() => Container(
-                    height: deviceHeight(context) * 0.8,
-                    width: deviceWidth(context) * 0.5,
-                    decoration: BoxDecoration(border: Border.all()),
-                    child: Image.network(checkContainerController.pathImg.value,
-                        errorBuilder: (BuildContext context, Object error,
-                            StackTrace? stackTrace) {
-                      return const Center(
-                        child: Text('This image type is not supported:'),
-                      );
-                    }),
-                  ))
-            ],
-          ),
+        radius: 5,
+        // contentPadding: EdgeInsets.all(0),
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: deviceHeight(context) * 0.7,
+              width: deviceWidth(context) * 0.25,
+              decoration: BoxDecoration(border: Border.all()),
+              child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: _listImg!.length,
+                  itemBuilder: (BuildContext context, index) {
+                    return Container(
+                        margin: EdgeInsets.only(left: 5, top: 5, bottom: 5),
+                        child: InkWell(
+                            onTap: () {
+                              imageController.i.value = index;
+                              checkContainerController.pathImg.value =
+                                  _listImg![index].path;
+                              // print(quoteController.pathImg.value);
+                            },
+                            child: Text(
+                              '${index}.  ${_listImg![index].name}',
+                            )));
+                  }),
+            ),
+            Obx(() => Actions(
+                  actions: <Type, Action<Intent>>{
+                    DownIntent: CallbackAction<DownIntent>(
+                      onInvoke: (DownIntent intent) {
+                        if (imageController.i.value == 0) {
+                        } else {
+                          --imageController.i.value;
+                          checkContainerController.pathImg.value =
+                              _listImg![imageController.i.value].path;
+                          print(imageController.i.value);
+                        }
+                        return null;
+                      },
+                    ),
+                    UpIntent: CallbackAction<UpIntent>(
+                      onInvoke: (UpIntent intent) {
+                        if (imageController.i.value == _listImg!.length - 1) {
+                        } else {
+                          ++imageController.i.value;
+                          checkContainerController.pathImg.value =
+                              _listImg![imageController.i.value].path;
+                          print(imageController.i.value);
+                        }
+                        return null;
+                      },
+                    ),
+                  },
+                  child: Shortcuts(
+                    shortcuts: <LogicalKeySet, Intent>{
+                      LogicalKeySet(
+                        LogicalKeyboardKey.arrowUp,
+                      ): DownIntent(),
+                      LogicalKeySet(
+                        LogicalKeyboardKey.arrowDown,
+                      ): UpIntent(),
+                    },
+                    child: Focus(
+                      autofocus: true,
+                      child: Container(
+                        height: deviceHeight(context) * 0.7,
+                        width: deviceWidth(context) * 0.5,
+                        decoration: BoxDecoration(border: Border.all()),
+                        child: Image.network(
+                            checkContainerController.pathImg.value,
+                            fit: BoxFit.contain, errorBuilder:
+                                (BuildContext context, Object error,
+                                    StackTrace? stackTrace) {
+                          print(error);
+                          return const Center(
+                            child: Text('This image type is not supported:'),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+                ))
+          ],
         ),
         confirm: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: normalColor),
@@ -226,9 +275,9 @@ class DataCheckCombineSource extends DataGridSource {
       final formData = html.FormData();
       final url = '$SERVER/ImageCombine?container=$cntr&UpdateTime=$date';
       // Assuming a list of XFile objects in _listImage
-      if (listImg != null) {
-        for (int i = 0; i < listImg!.length; i++) {
-          final file = listImg![i];
+      if (_listImg != null) {
+        for (int i = 0; i < _listImg!.length; i++) {
+          final file = _listImg![i];
           //Convert XFile to Blob
           final blob = html.Blob([await file.readAsBytes()], file.mimeType);
           // Add the Blob to the FormData object

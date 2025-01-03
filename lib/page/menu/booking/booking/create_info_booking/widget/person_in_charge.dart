@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_booking/constants/variable.dart';
 import 'package:web_booking/model/booking/model_get_ref.dart';
 import 'package:web_booking/model/booking/storage_controller/create_booking_controller.dart';
-import 'package:web_booking/model/new_login/model_newlogin.dart';
+import 'package:web_booking/model/login/model_login.dart';
 
 import 'checkPrice.dart';
 

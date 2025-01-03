@@ -1,13 +1,15 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:web_booking/constants/global.dart';
 import 'package:web_booking/page/menu/tracking/widgets/dropdownbox.dart';
 import 'package:http/http.dart' as http;
 
 class ContainerTracking {
   List<TrackingContainers>? trackingContainers;
-  List<TrackingZimsEN>? trackingZimsEN;
-  List<TrackingZimsVN>? trackingZimsVN;
+  List<TrackingZims>? trackingZimsEN;
+  List<TrackingZims>? trackingZimsVN;
 
   ContainerTracking(
       {this.trackingContainers, this.trackingZimsEN, this.trackingZimsVN});
@@ -20,15 +22,15 @@ class ContainerTracking {
       });
     }
     if (json['trackingZimsEN'] != null) {
-      trackingZimsEN = <TrackingZimsEN>[];
+      trackingZimsEN = <TrackingZims>[];
       json['trackingZimsEN'].forEach((v) {
-        trackingZimsEN!.add(new TrackingZimsEN.fromJson(v));
+        trackingZimsEN!.add(new TrackingZims.fromJson(v));
       });
     }
     if (json['trackingZimsVN'] != null) {
-      trackingZimsVN = <TrackingZimsVN>[];
+      trackingZimsVN = <TrackingZims>[];
       json['trackingZimsVN'].forEach((v) {
-        trackingZimsVN!.add(new TrackingZimsVN.fromJson(v));
+        trackingZimsVN!.add(new TrackingZims.fromJson(v));
       });
     }
   }
@@ -100,17 +102,24 @@ class TrackingContainers {
     data['size'] = this.size;
     return data;
   }
+
+  DataGridRow getDataGridRow_TrackingContainers() {
+    return DataGridRow(cells: [
+      DataGridCell<String>(columnName: 'container'.tr, value: container),
+      DataGridCell<String>(columnName: 'size'.tr, value: size),
+    ]);
+  }
 }
 
-class TrackingZimsEN {
+class TrackingZims {
   String? container;
   String? status;
   String? location;
   String? eventDate;
 
-  TrackingZimsEN({this.container, this.status, this.location, this.eventDate});
+  TrackingZims({this.container, this.status, this.location, this.eventDate});
 
-  TrackingZimsEN.fromJson(Map<String, dynamic> json) {
+  TrackingZims.fromJson(Map<String, dynamic> json) {
     container = json['container'];
     status = json['status'];
     location = json['location'];
@@ -125,29 +134,38 @@ class TrackingZimsEN {
     data['eventDate'] = this.eventDate;
     return data;
   }
-}
 
-class TrackingZimsVN {
-  String? container;
-  String? status;
-  String? location;
-  String? eventDate;
-
-  TrackingZimsVN({this.container, this.status, this.location, this.eventDate});
-
-  TrackingZimsVN.fromJson(Map<String, dynamic> json) {
-    container = json['container'];
-    status = json['status'];
-    location = json['location'];
-    eventDate = json['eventDate'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['container'] = this.container;
-    data['status'] = this.status;
-    data['location'] = this.location;
-    data['eventDate'] = this.eventDate;
-    return data;
+  DataGridRow getDataGridRow_TrackingZims() {
+    return DataGridRow(cells: [
+      DataGridCell<String>(columnName: 'container'.tr, value: container),
+      DataGridCell<String>(columnName: 'status'.tr, value: status),
+      DataGridCell<String>(columnName: 'location'.tr, value: location),
+      DataGridCell<String>(columnName: 'eventDate'.tr, value: eventDate),
+    ]);
   }
 }
+
+// class TrackingZimsVN {
+//   String? container;
+//   String? status;
+//   String? location;
+//   String? eventDate;
+
+//   TrackingZimsVN({this.container, this.status, this.location, this.eventDate});
+
+//   TrackingZimsVN.fromJson(Map<String, dynamic> json) {
+//     container = json['container'];
+//     status = json['status'];
+//     location = json['location'];
+//     eventDate = json['eventDate'];
+//   }
+
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['container'] = this.container;
+//     data['status'] = this.status;
+//     data['location'] = this.location;
+//     data['eventDate'] = this.eventDate;
+//     return data;
+//   }
+// }

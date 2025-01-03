@@ -120,9 +120,12 @@ class HistoryList {
   }
 
   Future<List<HistoryList>> fetchHistoryShipperList(
-      {required String shipperId}) async {
+      {required String shipperId,
+      required String fromDate,
+      required String toDate}) async {
     try {
-      var url = '$SERVER/History/GetByUser?id=$shipperId';
+      var url =
+          '$SERVER/History/GetByUser?id=$shipperId&fromDay=$fromDate&toDay=$toDate';
       final response = await http.get(Uri.parse(url), headers: {
         "Access-Control-Allow-Origin": "*",
       });
